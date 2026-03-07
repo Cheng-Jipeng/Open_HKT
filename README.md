@@ -120,9 +120,9 @@ The module is organised into 12 sections:
 
 Condition (2b) requires summability of
 
-\[
+$$
 \sum_t \left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}.
-\]
+$$
 
 In simulations, this term is numerically close to
 \((R_{A,t}^b/R_{A,t}^u)^{1-\gamma}\). If the return ratio stays close to a positive
