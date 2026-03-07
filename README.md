@@ -1,6 +1,6 @@
 # Open_HKT
 
-Numerical implementation of a **two-country overlapping-generations (OLG) bubble model**, extending [Hirano (2025)](https://doi.org/10.48550/arXiv.2312.11956) to an open-economy setting with two countries (US and Rest of World). The model studies the existence and dynamics of rational asset-price bubbles under regime-switching growth.
+Numerical implementation of a **two-country overlapping-generations (OLG) bubble model**, extending [Hirano (2025)](https://arxiv.org/abs/2501.08215) to an open-economy setting with two countries (US and Rest of World). The model studies the existence and dynamics of rational asset-price bubbles under regime-switching growth.
 
 ## Overview
 
@@ -114,4 +114,4 @@ The module is organised into 12 sections:
 
 ## References
 
-- Hirano, T. (2025). *Technological Innovations Generating Rational Bubbles*. [arXiv:2312.11956](https://doi.org/10.48550/arXiv.2312.11956)
+- Hirano, T. (2025). *Technological Innovations Generating Rational Bubbles*. [arXiv:2312.11956](https://arxiv.org/abs/2501.08215)
