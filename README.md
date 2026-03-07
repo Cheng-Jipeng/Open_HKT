@@ -114,7 +114,7 @@ The module is organised into 12 sections:
 
 ## References
 
-- Hirano, T. (2025). *Technological Innovations Generating Rational Bubbles*. [arXiv:2312.11956](https://arxiv.org/abs/2501.08215)
+- Hirano, T., Kishi, K., & Toda, A. A. (2025).  *Technological Innovations Generating Rational Bubbles*. [arXiv:2312.11956](https://arxiv.org/abs/2501.08215)
 
 ## Notes on Corollary 1 Condition (2b)
 
