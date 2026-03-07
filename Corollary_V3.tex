@@ -1,0 +1,920 @@
+
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for a conference paper, prepared for the
+%% Food and Resource Economics Department - IFAS
+%% UNIVERSITY OF FLORIDA
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Version 1.0 // November 2019
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ariel Soto-Caro
+%%  - asotocaro@ufl.edu
+%%  - arielsotocaro@gmail.com
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{UF_FRED_paper_style}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{amsmath} 
+\usepackage{lipsum}  %% Package to create dummy text (comment or erase before start)
+\usepackage{graphicx}
+
+\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{ass}{Assumption}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{coro}{Corollary}
+
+\usepackage{hyperref}					% Reference
+\usepackage[nameinlink]{cleveref} % nameinlink optional but nice
+\hypersetup{colorlinks,%				% Reference color setup	
+	linkcolor=red,%
+	citecolor=blue}
+% Tell cleveref how to name this environment
+\crefname{thm}{Theorem}{Theorems}
+\Crefname{thm}{Theorem}{Theorems}
+\crefname{ass}{Assumption}{Assumptions}
+\Crefname{ass}{Assumption}{Assumptions}
+\crefname{defi}{Definition}{Definitions}
+\Crefname{defi}{Definition}{Definitions}
+\crefname{prop}{Proposition}{Propositions}
+\Crefname{prop}{Proposition}{Propositions}
+\crefname{lem}{Lemma}{Lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+\crefname{coro}{Corollary}{Corollaries}
+\Crefname{coro}{Corollary}{Corollaries}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\orange}[1]{{\color{orange} #1}}
+\newcommand{\gray}[1]{{\color{gray} #1}}
+\newcommand{\green}[1]{{\color{OliveGreen} #1}}
+\newcommand{\proptoinverse}{\mathrel{\mskip1mu\reflectbox{$\propto$}\mskip-1mu}}
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D..{#1}}
+\newcommand{\mc}[1]{\multicolumn{1}{c@{}}{#1}}
+\newcommand{\mX}[1]{\multicolumn{1}{X}{\centering #1}}
+%% ===============================================
+%% Setting the line spacing (3 options: only pick one)
+% \doublespacing
+% \singlespacing
+\onehalfspacing
+%% ===============================================
+
+\setlength{\droptitle}{-5em} %% Don't touch
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SET THE TITLE
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TITLE:
+\title{Two-country Version of \cite{hirano2025technological}
+%\thanks{}
+}
+
+% AUTHORS:
+\author{
+    }
+    
+% DATE:
+\date{\today}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\setstretch{.8}
+\maketitle
+}
+\section{Model setup}
+
+\subsection{Representative household}
+
+%--------------------------------------------------------
+% US household (equities + US bond only; bond-share cost)
+%--------------------------------------------------------
+\subsubsection{US}
+
+Let
+\[
+S_t \equiv Q_{US,t}n_{US,t}+Q_{W,t}n_{W,t},
+\qquad
+\omega_t \equiv \frac{Q_{US,t}n_{US,t}}{S_t},
+\qquad
+q_{US,t}\equiv \frac{1}{R_{f,t}}
+\]
+denote, respectively, the market value of equity purchases, the portfolio weight on US equity within equity
+holdings, and the date-$t$ price of the one-period US riskless bond (gross risk-free return $R_{f,t}$).
+The US household trades US and RoW equities and the US bond only (it does \emph{not} trade the RoW bond).
+It chooses
+\[
+\{C_{y,t},\,n_{US,t},\,n_{W,t},\,B_{US,t+1}\}
+\]
+to solve
+\[
+\max
+\ (1-\beta)\log C_{y,t}
++\frac{\beta}{1-\gamma}\log E_t\!\left[(C_{o,t+1})^{1-\gamma}\right]
+-\frac{\kappa}{2}(\omega_t-\bar\omega)^2
+-\eta\,\Upsilon(\theta_t)
+\]
+subject to
+\begin{align*}
+C_{y,t}
+&+Q_{US,t}n_{US,t}+Q_{W,t}n_{W,t}
++q_{US,t}B_{US,t+1}
+= e_{US,t},\\
+C_{o,t+1}
+&=
+(Q_{US,t+1}+D_{US,t+1})n_{US,t}
++(Q_{W,t+1}+D_{W,t+1})n_{W,t}
++B_{US,t+1}.
+\end{align*}
+Here $\bar\omega\in[1/2,1]$ is the targeted portfolio weight on US equity (home bias). The term
+$\eta\,\Upsilon(\theta_t)$ captures a convex cost in the present-value bond share $\theta_t$ (defined below),
+disciplines large bond positions, and preserves the saving separation.
+
+\paragraph{Stock pricing (US effective SDF).}
+The FOCs for equity positions imply, for $i\in\{US,W\}$,
+\begin{align}\label{US_AP_bond_cost}
+Q_{i,t}
+=
+E_t\!\left[\tilde M^{\,i}_{t,t+1}\bigl(Q_{i,t+1}+D_{i,t+1}\bigr)\right],
+\end{align}
+with\footnote{We defer the discussion of how to guarantee the effective pricing kernels are well-behaved to
+\Cref{sec:existence_of_bubbles}.}
+\begin{align*}
+\tilde M^{\,US}_{t,t+1}=\frac{M_{t,t+1}}{1+\phi_t(1-\omega_t)},
+\qquad
+\tilde M^{\,W}_{t,t+1}=\frac{M_{t,t+1}}{1-\phi_t\omega_t},\\
+M_{t,t+1}
+=\frac{\beta}{1-\beta}\,
+\frac{C_{y,t}\,C_{o,t+1}^{-\gamma}}{E_t\!\left[C_{o,t+1}^{1-\gamma}\right]},
+\qquad
+\phi_t \equiv \frac{\kappa C_{y,t}}{(1-\beta)S_t}\,(\omega_t-\bar\omega).
+\end{align*}
+
+\paragraph{Reformulation in terms of total saving, bond share, and equity share.}
+Define the present value of the US bond position and total saving:
+\[
+b_t\equiv q_{US,t}B_{US,t+1},
+\qquad
+A_t \equiv S_t+b_t,
+\qquad
+C_{y,t}=e_{US,t}-A_t.
+\]
+Define the (present-value) bond share in total saving
+\[
+\theta_t \equiv \frac{b_t}{A_t},
+\qquad
+S_t=(1-\theta_t)A_t,
+\]
+and the gross return on total saving
+\[
+R_{A,t+1}\equiv (1-\theta_t)R_{p,t+1}+\theta_t R_{f,t},
+\qquad
+R_{f,t}\equiv \frac{1}{q_{US,t}},
+\]
+where
+\[
+R_{p,t+1}=\omega_t R_{US,t+1}+(1-\omega_t)R_{W,t+1},
+\qquad
+R_{i,t+1}=\frac{Q_{i,t+1}+D_{i,t+1}}{Q_{i,t}},
+\ \ i\in\{US,W\}.
+\]
+Old-age consumption satisfies $C_{o,t+1}=A_tR_{A,t+1}$, so the problem can be written as
+\[
+\max_{A_t,\omega_t,\theta_t}
+\ (1-\beta)\log(e_{US,t}-A_t)
++\frac{\beta}{1-\gamma}\log E_t\!\left[(A_tR_{A,t+1})^{1-\gamma}\right]
+-\frac{\kappa}{2}(\omega_t-\bar\omega)^2
+-\eta\,\Upsilon(\theta_t).
+\]
+Under log utility in youth and the risk-sensitive aggregator in old age, the saving choice separates and yields
+\begin{align}\label{US_saving_rule_bond_cost}
+\frac{1-\beta}{e_{US,t}-A_t}=\frac{\beta}{A_t}
+\quad\Rightarrow\quad
+A_t=\beta e_{US,t},
+\qquad
+C_{y,t}=(1-\beta)e_{US,t}.
+\end{align}
+
+\paragraph{Portfolio FOCs.}
+Define the normalized portfolio kernel
+\[
+\mathcal M_{t,t+1} \equiv \frac{R_{A,t+1}^{-\gamma}}{E_t\!\left[R_{A,t+1}^{1-\gamma}\right]}.
+\]
+The FOC for $\omega_t$ implies the (scaled) return wedge condition
+\begin{align}\label{US_omega_FOC_bond_cost}
+\beta(1-\theta_t)\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{US,t+1}-R_{W,t+1}\bigr)\right]
+=\kappa(\omega_t-\bar\omega).
+\end{align}
+The FOC for $\theta_t$ (bond vs equity share) is
+\begin{align}\label{US_theta_FOC_bond_cost}
+\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]
+=\eta\,\Upsilon'(\theta_t).
+\end{align}
+
+%--------------------------------------------------------
+% RoW household (equities + US bond + RoW bond; convenience yield; NO bond-share costs)
+%--------------------------------------------------------
+\subsubsection{Rest-of-World (RoW)}
+
+Let
+\[
+S_t^* \equiv Q_{US,t}n^*_{US,t}+Q_{W,t}n^*_{W,t},
+\qquad
+\omega_t^* \equiv \frac{Q_{US,t}n^*_{US,t}}{S_t^*},
+\qquad
+q_{W,t}\equiv \frac{1}{R_{f,t}^W}
+\]
+where $q_{W,t}$ is the date-$t$ price of the one-period RoW riskless bond (gross return $R_{f,t}^W$).
+The RoW household trades both equities, the US bond, and the RoW bond, and chooses
+\[
+\{C^*_{y,t},\,n^*_{US,t},\,n^*_{W,t},\,B^*_{US,t+1},\,B^*_{W,t+1}\}
+\]
+to solve
+\begin{align*}
+\max\quad U_t^*
+&=
+(1-\beta)\log C^*_{y,t}
++\frac{\beta}{1-\gamma}\log E_t\!\left[\left(C^*_{o,t+1}\right)^{1-\gamma}\right]
+-\frac{\kappa}{2}\left(\omega_t^*-\bar\omega^*\right)^2
++\chi\log\!\left(q_{US,t}B^*_{US,t+1}\right),
+\end{align*}
+subject to
+\begin{align*}
+C^*_{y,t}
+&+Q_{US,t}n^*_{US,t}+Q_{W,t}n^*_{W,t}
++q_{US,t}B^*_{US,t+1}+q_{W,t}B^*_{W,t+1}
+= e_{W,t},\\
+C^*_{o,t+1}
+&=
+(Q_{US,t+1}+D_{US,t+1})n^*_{US,t}
++(Q_{W,t+1}+D_{W,t+1})n^*_{W,t}
++B^*_{US,t+1}+B^*_{W,t+1}.
+\end{align*}
+The term $\chi>0$ generates a convenience yield from holding US bonds and the ``exorbitant privilege'' of US bonds as a consequence.
+
+\paragraph{Stock pricing (RoW effective SDF).}
+The FOCs for equity positions imply, for $i\in\{US,W\}$,
+\[
+Q_{i,t}
+=
+E_t\!\left[\tilde M^{*,i}_{t,t+1}\bigl(Q_{i,t+1}+D_{i,t+1}\bigr)\right],
+\]
+with
+\begin{align*}
+\tilde M^{*,US}_{t,t+1}=\frac{M^*_{t,t+1}}{1+\phi_t^*(1-\omega_t^*)},
+\qquad
+\tilde M^{*,W}_{t,t+1}=\frac{M^*_{t,t+1}}{1-\phi_t^*\omega_t^*},\\
+M^*_{t,t+1}
+=\frac{\beta}{1-\beta}\,
+\frac{C^*_{y,t}(C^*_{o,t+1})^{-\gamma}}{E_t\!\left[(C^*_{o,t+1})^{1-\gamma}\right]},
+\qquad
+\phi_t^* \equiv \frac{\kappa C^*_{y,t}}{(1-\beta)S_t^*}\,(\omega_t^*-\bar\omega^*).
+\end{align*}
+
+\paragraph{Saving notation and portfolio shares.}
+Define present values and total saving:
+\[
+b_{US,t}^*\equiv q_{US,t}B^*_{US,t+1},
+\qquad
+b_{W,t}^*\equiv q_{W,t}B^*_{W,t+1},
+\qquad
+A_t^*\equiv S_t^*+b_{US,t}^*+b_{W,t}^*,
+\qquad
+C^*_{y,t}=e_{W,t}-A_t^*.
+\]
+Define bond shares in total saving:
+\[
+\theta_{US,t}^*\equiv \frac{b_{US,t}^*}{A_t^*},
+\qquad
+\theta_{W,t}^*\equiv \frac{b_{W,t}^*}{A_t^*},
+\qquad
+S_t^*=(1-\theta_{US,t}^*-\theta_{W,t}^*)A_t^*.
+\]
+Define the gross return on total saving:
+\[
+R_{A,t+1}^*
+\equiv
+(1-\theta_{US,t}^*-\theta_{W,t}^*)R_{p,t+1}^*
++\theta_{US,t}^* R_{f,t}
++\theta_{W,t}^* R_{f,t}^W,
+\]
+where
+\[
+R_{f,t}\equiv \frac{1}{q_{US,t}},
+\qquad
+R_{f,t}^W\equiv \frac{1}{q_{W,t}},
+\qquad
+R_{p,t+1}^*=\omega_t^*R_{US,t+1}+(1-\omega_t^*)R_{W,t+1}.
+\]
+Then $C^*_{o,t+1}=A_t^*R_{A,t+1}^*$.
+
+\paragraph{RoW saving rule.}
+Because $\chi\log(q_{US,t}B_{US,t+1}^*)=\chi\log(\theta_{US,t}^*A_t^*)$ contributes $\chi\log A_t^*$,
+the saving choice separates and yields
+\begin{align}\label{RoW_saving_rule_bond_cost}
+\frac{1-\beta}{e_{W,t}-A_t^*}=\frac{\beta+\chi}{A_t^*}
+\quad\Rightarrow\quad
+A_t^*=\frac{\beta+\chi}{1+\chi}\,e_{W,t},
+\qquad
+C^*_{y,t}=\frac{1-\beta}{1+\chi}\,e_{W,t}.
+\end{align}
+
+\paragraph{RoW portfolio FOCs.}
+Define the normalized RoW portfolio kernel
+\[
+\mathcal M_{t,t+1}^* \equiv \frac{(R_{A,t+1}^*)^{-\gamma}}{E_t\!\left[(R_{A,t+1}^*)^{1-\gamma}\right]}.
+\]
+The FOC for $\omega_t^*$ is
+\begin{align}\label{RoW_omega_FOC_mod}
+\beta\bigl(1-\theta_{US,t}^*-\theta_{W,t}^*\bigr)\,
+E_t\!\left[\mathcal M_{t,t+1}^*\bigl(R_{US,t+1}-R_{W,t+1}\bigr)\right]
+=
+\kappa(\omega_t^*-\bar\omega^*).
+\end{align}
+The FOC for the RoW bond share $\theta_{W,t}^*$ is
+\begin{align}\label{RoW_thetaW_FOC_mod}
+\beta\,E_t\!\left[\mathcal M_{t,t+1}^*\bigl(R_{f,t}^W-R_{p,t+1}^*\bigr)\right]
+=
+0.
+\end{align}
+The FOC for the US bond share $\theta_{US,t}^*$ is
+\begin{align}\label{RoW_thetaUS_FOC_mod}
+\beta\,E_t\!\left[\mathcal M_{t,t+1}^*\bigl(R_{f,t}-R_{p,t+1}^*\bigr)\right]
++\frac{\chi}{\theta_{US,t}^*}
+=
+0.
+\end{align}
+And the FOC for the US bond amount $B_{US,t+1}^*$ delivers the exorbitant privilege wedge:
+\[
+q_{US,t}
+=
+E_t\!\left[M^*_{t,t+1}\right]
++\frac{\chi}{1+\chi}\,\frac{e_{W,t}}{B^*_{US,t+1}}.
+\]
+
+%--------------------------------------------------------
+% Market clearing (two bonds with zero net supply)
+%--------------------------------------------------------
+\subsection{Market clearing}
+
+\paragraph{World stock market clearing.}
+\begin{align}\label{stock_clear_mod}
+\begin{split}
+n_{US,t}+n^*_{US,t}=1,\\
+n_{W,t}+n^*_{W,t}=1.
+\end{split}
+\end{align}
+
+\paragraph{Bond market clearing.}
+Assume both one-period riskless bonds are in zero net supply. Since only RoW trades the RoW bond, bond market
+clearing is
+\begin{align}\label{bond_clear_mod_zerosupply}
+B_{US,t+1}+B^*_{US,t+1}=0,
+\qquad
+B^*_{W,t+1}=0.
+\end{align}
+Equivalently, in present values,
+\[
+b_t+b_{US,t}^*=0,
+\qquad
+b_{W,t}^*=0.
+\]
+
+\paragraph{Stock market clearing in value form.}
+Using portfolio weights,
+\begin{align}\label{stock_weight_clear_mod}
+\begin{split}
+Q_{US,t} &= \omega_t S_t + \omega_t^* S_t^*,\\
+Q_{W,t}  &= (1-\omega_t) S_t + (1-\omega_t^*) S_t^* .
+\end{split}
+\end{align}
+
+\paragraph{Aggregate market-cap identity.}
+Since $S_t=A_t-b_t$ and $S_t^*=A_t^*-b_{US,t}^*-b_{W,t}^*$, we have
+\[
+Q_{US,t}+Q_{W,t}=S_t+S_t^*=A_t+A_t^*-(b_t+b_{US,t}^*)-b_{W,t}^*.
+\]
+Using bond clearing \eqref{bond_clear_mod_zerosupply} and the saving rules
+\eqref{US_saving_rule_bond_cost} and \eqref{RoW_saving_rule_bond_cost}, it follows that
+\begin{align}\label{Qsum_identity_mod_zerosupply}
+\boxed{
+Q_{US,t}+Q_{W,t}
+=
+\beta e_{US,t}
++\frac{\beta+\chi}{1+\chi}\,e_{W,t}.
+}
+\end{align}
+
+\paragraph{Goods market clearing.}
+\begin{align}\label{goods_clear_mod}
+C_{y,t}+C^*_{y,t}+C_{o,t}+C^*_{o,t}
+=
+e_{US,t}+e_{W,t}+D_{US,t}+D_{W,t}.
+\end{align}
+
+
+
+\section{Existence of bubbles}\label{sec:existence_of_bubbles}
+
+With some abuse of notation, in this section we denote the \emph{effective} pricing kernel that prices the US stock,
+$\tilde M^{\,US}_{t,t+1}$ in \eqref{US_AP_bond_cost}, by $\mathcal M_{t,t+1}$. That is,
+\[
+\mathcal M_{t,t+1}\equiv \tilde M^{\,US}_{t,t+1}
+=\frac{M_{t,t+1}}{1+\phi_t(1-\omega_t)}.
+\]
+Using the saving rule \eqref{US_saving_rule_bond_cost} and the fact that $C_{o,t+1}=A_tR_{A,t+1}$, the US \emph{undistorted}
+SDF simplifies to
+\[
+M_{t,t+1}
+=\frac{R_{A,t+1}^{-\gamma}}{E_t\!\left[R_{A,t+1}^{1-\gamma}\right]}
+\equiv \mathcal K_{t,t+1},
+\]
+so the only additional distortion in the effective kernel $\mathcal M_{t,t+1}$ comes from the portfolio wedge.
+Note that because the RoW utility includes $\chi\log(q_{US,t}B^*_{US,t+1})$, feasibility requires $B^*_{US,t+1}>0$.
+With zero net supply of US bonds, $B_{US,t+1}+B^*_{US,t+1}=0$ implies $B_{US,t+1}<0$, hence
+$b_t=q_{US,t}B_{US,t+1}<0$ and
+\begin{equation}\label{theta_nonpos}
+\theta_t=\frac{b_t}{A_t}\le 0
+\quad\Rightarrow\quad
+1-\theta_t\ge 1 .
+\end{equation}
+Below we provide sufficient conditions for well-behaved effective kernels.
+
+\begin{lem}\label{lem1}
+Let
+\[
+\Delta_t \equiv \phi_t(1-\omega_t),
+\qquad\text{where}\qquad
+\phi_t=\frac{\kappa C_{y,t}}{(1-\beta)S_t}\,(\omega_t-\bar\omega).
+\]
+If $\bar\omega < \frac{\beta}{\kappa}$,
+then $1+\Delta_t>0$ for all $t$.
+\end{lem}
+
+Therefore, we will limit parameters so that $\frac{1}{2}<\bar\omega<\beta/\kappa$ from now on.\footnote{
+	This may force $\kappa$ to be extremely small as $\kappa <2 \beta$ is implicitly imposed. 
+	But also note that this is just a sufficient condition for $\mathcal{\tilde M}^{US}_{t,t+1}$ 
+	to be well-behaved, and the actual safe range for $\kappa$ could be much larger.}
+
+\subsection{Temporary unbalanced growth and stochastic bubbles}
+
+Following \citet{hirano2025technological}, let
+\[
+\mathcal{M}_{t,t+s}:=\prod_{j=0}^{s-1} \mathcal{M}_{t+j,t+j+1}.
+\]
+The US stock pricing equation \eqref{US_AP_bond_cost} (for $i=US$) implies
+\[
+Q_{US,0}=
+\mathrm{E}_0 \left[\sum_{s=1}^{\infty} \mathcal{M}_{0,s} D_{US,s}\right]
++\lim_{t \rightarrow \infty} \mathrm{E}_0\left[\mathcal{M}_{0,t} Q_{US,t}\right],
+\]
+or more generally,
+\[
+Q_{US,t}=
+\underbrace{\mathrm{E}_t \left[ \sum_{s=1}^{\infty} \mathcal{M}_{t,t+s} D_{US,t+s}\right]}_{\text{fundamental value }V_{US,t}}
++\underbrace{\lim_{T \rightarrow \infty} \mathrm{E}_t\left[\mathcal{M}_{t,T} Q_{US,T}\right]}_{\text{bubble }B_{US,t}}.
+\]
+
+Consider a regime-switching model with an absorbing state, as in \citet{weil1987confidence}.
+
+\begin{ass}\label{ass1}
+There are two states of the US economy denoted by $u, b$. Letting $z_t \in \{u, b\}$ denote the state at time $t$,
+the transition probabilities are given by
+\[
+P[z_{t+1} = u \mid z_t = u] = \pi \in (0,1), \qquad P[z_{t+1} = b \mid z_t = b] = 1.
+\]
+\end{ass}
+
+\Cref{ass1} implies that state $b$ is absorbing. We further assume that once state $b$ is reached, uncertainty is resolved,
+and endowments and dividends grow at the same rate (balanced growth). On the other hand, the RoW is always on its balanced growth path (BGP hereafter).
+
+\begin{ass}\label{ass2}
+For any $\tau$, conditional on $z_\tau = b$, the sequence
+$\{e_{US,t}, D_{US,t}, e_{W,t}, D_{W,t}\}_{t=\tau}^\infty$ is deterministic and
+\[
+\frac{e_{US,t+1}}{e_{US, t}} =
+\frac{D_{US, t+1}}{D_{US,t}}=
+\frac{e_{W,t+1}}{e_{W, t}} =
+\frac{D_{W, t+1}}{D_{W,t}} ,\quad \forall t \geq \tau.
+\]
+\end{ass}
+
+We can show that once state $b$ is reached, there is no bubble in the US stock market.
+
+\begin{prop}\label{prop1}
+If \Cref{ass1,ass2} hold, once state $b$ is reached, the US stock price equals its fundamental value:
+$Q_{US,t}=V_{US,t}$.
+\end{prop}
+
+\begin{proof}
+The proof directly follows from \citet{hirano2025technological} because the US stock continues to satisfy a standard
+Euler equation with the effective kernel $\mathcal M_{t,t+1}$, and state $b$ is deterministic balanced growth.
+\end{proof}
+
+By \Cref{prop1}, bubbles cannot arise in state $b$. So we assume $z_0=u$ from now on. Let $\tau$ be the stopping time that represents the first time the US economy switches to state $b$:
+$\tau =\min \{t:z_t=b\}$. By \Cref{ass1}, $\tau$ follows a geometric distribution,
+\[
+\mathrm{P}[\tau=j]=\pi^{j-1}(1-\pi), \quad j=1,2,\dots.
+\]
+Then the bubble term can be written as
+\[
+\mathrm{E}_0\left[\mathcal{M}_{0 , t} Q_{US,t}\right]
+=\sum_{j=1}^t \pi^{j-1}(1-\pi) \mathrm{E}_0\left[\mathcal{M}_{0,t} Q_{US,t} \mid \tau=j\right]
++\pi^t \mathrm{E}_0\left[\mathcal{M}_{0, t} Q_{US,t} \mid \tau>t\right].
+\]
+
+The following proposition provides a sufficient condition for the nonexistence of bubbles.
+
+\begin{prop}\label{prop2}
+Suppose \Cref{ass1,ass2} hold. Then there is no bubble if and only if
+\[
+\lim _{t \rightarrow \infty} \pi^t \mathrm{E}_0\left[\mathcal{M}_{0,t} Q_{US,t} \mid \tau>t\right]=0.
+\]
+If $(e_{US,t}, D_{US,t})$ is known at time $t-1$ (i.e., $(e_{US,t},D_{US,t})$ is $\mathcal{F}_{t-1}$-measurable), then there is no bubble.
+\end{prop}
+
+\begin{proof}
+The proof directly follows from \citet{hirano2025technological}.
+\end{proof}
+
+Aligned with the sufficient conditions in \Cref{prop2}, we introduce the following assumption.
+
+\begin{ass}\label{ass3}
+Conditional on time $t-1$ information, the US endowment $e_{US,t}$ and US dividend $D_{US,t}$ depend only on the state
+$z_t \in \{u,b\}$.
+\end{ass}
+
+
+Now we are ready to present a more general but less primitive version of Theorem 1 in \citet{hirano2025technological}.
+For $z\in\{u,b\}$, let $x_t^z$ be the value of $x_{US,t}^z$ conditional on $z_0=\cdots=z_{t-1}=u$ and $z_t=z$,
+and let $C_t^z=C_{o,t}^z$ denote US old-age consumption at date $t$ on branch $z$.
+
+\begin{thm}\label{thm_1}
+Suppose Assumptions \ref{ass1}--\ref{ass3} hold. If $z_0=u$, then there is a bubble at $t=0$ if and only if
+\begin{subequations}\label{thm_cond1}
+\begin{align}
+\sum_{t=1}^\infty \frac{D_t^u}{Q_t^u}&<\infty, \label{thm_cond_1a}\\
+\sum_{t=1}^\infty
+\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}\;
+\frac{Q_t^b+D_t^b}{C_t^b}\;
+\frac{C_t^u}{Q_t^u}&<\infty. \label{thm_cond_1b}
+\end{align}
+\end{subequations}
+\end{thm}
+
+\begin{proof}
+Let
+\[
+B_t \equiv \mathbb E_0\!\left[\mathcal M_{0,t}\,Q_t^u\,\mathbf 1\{\tau>t\}\right].
+\]
+Because $\mathbb P(\tau>t)=\pi^t$, this is equivalent to
+\[
+B_t=\pi^t\,\mathbb E_0\!\left[\mathcal M_{0,t}\,Q_t^u\mid \tau>t\right].
+\]
+By \Cref{prop2}, there is a bubble at $0$ if and only if $\lim_{t\to\infty}B_t>0$ (and no bubble if and only if $\lim_{t\to\infty}B_t=0$).
+
+On histories with $z_{t-1}=u$, the US stock Euler equation is
+\[
+Q_{t-1}^u
+=\mathbb E_{t-1}\!\left[\mathcal M_{t-1,t}\,(Q_t^{z}+D_t^{z})\right],
+\qquad z\in\{u,b\}.
+\]
+Multiply both sides by $\mathcal M_{0,t-1}\mathbf 1\{\tau>t-1\}$ and take $\mathbb E_0$. Using
+$\mathcal M_{0,t}=\mathcal M_{0,t-1}\mathcal M_{t-1,t}$, we obtain the exact identity
+\begin{equation}\label{recursion_bubble_1}
+\mathbb E_0\!\left[\mathcal M_{0,t-1}Q_{t-1}^u\mathbf 1\{\tau>t-1\}\right]
+=
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^u+D_t^u)\mathbf 1\{\tau>t\}\right]
++
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right].
+\end{equation}
+Split the first term on the right-hand side to get
+\[
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^u+D_t^u)\mathbf 1\{\tau>t\}\right]
+=
+B_t+\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right].
+\]
+Thus \eqref{recursion_bubble_1} becomes
+\begin{equation}\label{bubble_recursion_2}
+B_{t-1}
+=
+B_t
++\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]
++\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right].
+\end{equation}
+
+Define the leakage ratio
+\[
+a_t\equiv
+\frac{
+\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]
++\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
+}{
+\mathbb E_0\!\left[\mathcal M_{0,t}Q_t^u\mathbf 1\{\tau>t\}\right]
+}
+=\frac{\text{two leakage terms}}{B_t}\ge 0.
+\]
+Then \eqref{bubble_recursion_2} implies $B_{t-1}=(1+a_t)B_t$, so iterating yields
+\[
+B_t=B_0\prod_{s=1}^t\frac{1}{1+a_s},
+\qquad B_0=Q_0^u>0.
+\]
+Since $a_s\ge 0$,
+\[
+B_0\left(1+\sum_{s=1}^t a_s\right)^{-1}
+\ge B_0\prod_{s=1}^t\frac{1}{1+a_s}
+\ge B_0\exp\!\left(-\sum_{s=1}^t a_s\right).
+\]
+Hence,
+\[
+\lim_{t\to\infty}B_t>0
+\quad\Longleftrightarrow\quad
+\sum_{t=1}^\infty a_t<\infty.
+\]
+
+It remains to express $a_t$ in terms of observables along the $u$-history and at the switching date.
+On $\{\tau>t\}$ we have $z_1=\cdots=z_t=u$, hence
+\[
+\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]
+=\pi^t\,\mathcal M_{0,t}^u\,D_t^u,
+\qquad
+B_t=\pi^t\,\mathcal M_{0,t}^u\,Q_t^u,
+\]
+so
+\[
+\frac{\mathbb E_0[\mathcal M_{0,t}D_t^u\,\mathbf 1\{\tau>t\}]}{B_t}
+=\frac{D_t^u}{Q_t^u}.
+\]
+
+On $\{\tau=t\}$, we have $z_1=\cdots=z_{t-1}=u$ and $z_t=b$. Hence
+\[
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
+=\pi^{t-1}(1-\pi)\,\mathcal M_{0,t-1}^u\,\mathcal M_{t-1,t}^b\,(Q_t^b+D_t^b).
+\]
+Dividing by $B_t=\pi^{t}\mathcal M_{0,t-1}^u\mathcal M_{t-1,t}^u Q_t^u$ gives
+\[
+\frac{\mathbb E_0[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}]}{B_t}
+=
+\frac{1-\pi}{\pi}\;
+\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}\;
+\frac{Q_t^b+D_t^b}{Q_t^u}.
+\]
+
+Finally, under \Cref{ass3}, the portfolio choices $(\omega_{t-1},\theta_{t-1})$ are $\mathcal F_{t-1}$-measurable and do not depend on $z_t$.
+Thus the wedge term $1+\Delta_{t-1}=1+\phi_{t-1}(1-\omega_{t-1})$ is common across $z_t\in\{u,b\}$ and cancels in the ratio:
+\[
+\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}
+=
+\frac{\mathcal K_{t-1,t}^b}{\mathcal K_{t-1,t}^u}
+=
+\frac{(C_t^b)^{-\gamma}}{(C_t^u)^{-\gamma}}
+=
+\left(\frac{C_t^u}{C_t^b}\right)^{\gamma}.
+\]
+Therefore,
+\[
+a_t
+=
+\frac{D_t^u}{Q_t^u}
++\frac{1-\pi}{\pi}\left(\frac{C_t^u}{C_t^b}\right)^{\gamma}\frac{Q_t^b+D_t^b}{Q_t^u}
+=
+\frac{D_t^u}{Q_t^u}
++\frac{1-\pi}{\pi}
+\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}
+\frac{Q_t^b+D_t^b}{C_t^b}\frac{C_t^u}{Q_t^u}.
+\]
+Hence $\sum_{t=1}^\infty a_t<\infty$ is equivalent to \eqref{thm_cond1}.
+\end{proof}
+
+\subsection{Primitive sufficient and necessary conditions}
+
+We now derive primitive conditions for the existence of bubbles by translating the two summability conditions
+in \Cref{thm_1} into exogenous variables along the $u$-history and at the switching date. We first impose mild
+restrictions on relative country size and on the nature of regime switching.
+
+\begin{ass}\label{ass4}
+There exists $\overline\varepsilon_e<\infty$ such that
+\[
+\frac{e_{W,t}}{e_{US,t}^u}\le \overline\varepsilon_e
+\qquad\text{for all }t\le \tau .
+\]
+\end{ass}
+
+\begin{ass}\label{ass5}
+For $x\in\{e_{US},D_{US},e_W,D_W\}$, $x_t^b=x_t^u$ whenever $z_{t-1}=u$ and $z_t=b$.
+\end{ass}
+
+
+We also assume that issuance-cost function $\Upsilon$
+ satisfies standard regularity and Inada-type conditions.
+
+\begin{ass}[Issuance costs]\label{ass6}
+The issuance-cost function $\Upsilon:\,(-\infty,1)\to\mathbb R$ is $C^1$, strictly convex, and satisfies
+\[
+\lim_{\theta\uparrow 1}\Upsilon'(\theta)=+\infty,
+\qquad
+\lim_{\theta\downarrow -\infty}\Upsilon'(\theta)=-\infty.
+\]
+\end{ass}
+
+\begin{lem}[Endogenous bounds on the bond share]\label{lem2}
+Suppose \Cref{ass6} holds and the bond-share FOC \eqref{US_theta_FOC_bond_cost} holds with $\eta>0$ and finite LHS,
+i.e.,
+\[
+\left|\,\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]\right|\le \overline\xi.
+\]
+Then there exist constants $\underline\theta<\overline\theta<1$ such that
+\[
+\theta_t\in[\underline\theta,\overline\theta]
+\qquad\text{for all }t\le\tau.
+\]
+In particular, $\theta_t$ is bounded below ($\theta_t$ cannot diverge to $-\infty$) and the equity share is
+bounded away from zero:
+\[
+\theta_t \ge \underline\theta>-\infty,
+\qquad
+1-\theta_t \ge 1-\overline\theta>0,
+\qquad t\le\tau.
+\]
+\end{lem}
+
+\begin{proof}
+By \eqref{US_theta_FOC_bond_cost},
+\[
+\eta\,\Upsilon'(\theta_t)
+=\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right].
+\]
+Hence $\Upsilon'(\theta_t)\in[-\overline\xi/\eta,\overline\xi/\eta]$. Since $\Upsilon$ is strictly convex,
+$\Upsilon'$ is strictly increasing and continuous on $(-\infty,1)$, and by \Cref{ass6} it is onto $\mathbb R$.
+Therefore there exist unique $\underline\theta,\overline\theta\in(-\infty,1)$ such that
+$\Upsilon'(\underline\theta)=-\overline\xi/\eta$ and $\Upsilon'(\overline\theta)=\overline\xi/\eta$.
+Monotonicity of $\Upsilon'$ yields $\theta_t\in[\underline\theta,\overline\theta]$ for all $t\le\tau$, implying
+$\theta_t\ge \underline\theta$ and $1-\theta_t\ge 1-\overline\theta>0$.
+\end{proof}
+
+
+Finally, as shown in \eqref{theta_nonpos}, the convenience-yield term forces the US to be a net borrower:
+$\theta_t\le 0$ and $1-\theta_t\ge 1$. With these ingredients, we can state a single corollary that 
+gives primitive conditions ensuring that the
+summability conditions in \Cref{thm_1} reduce to \eqref{thm_cond2}.
+
+\begin{coro}\label{coro1}
+Suppose Assumptions \ref{ass1}--\ref{ass6} hold. If:
+
+(i) $\omega_t$ is interior, i.e., there exists $\underline{\varepsilon}_\omega>0$ such that
+$\omega_t\ge \underline{\varepsilon}_\omega$ for all $t\le\tau$;
+
+(ii) the bond-share FOC \eqref{US_theta_FOC_bond_cost} holds with $\eta>0$ and finite LHS, i.e.,
+$\left|\,\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]\right|\le \overline\xi$;
+
+(iii) $R_{f,t}$ is uniformly bounded above on $t\le\tau$, i.e., $R_{f,t}\le \overline R_f<\infty$; and
+
+(iv) $(D_{W,t}^z/e_{US,t}^z)\le \bar\delta_W$ for all $t$ and $z\in\{u,b\}$,
+
+then the two conditions \eqref{thm_cond1} in \Cref{thm_1} are equivalent to the primitive conditions
+\begin{subequations}\label{thm_cond2}
+\begin{align}
+\sum_{t=1}^\infty \frac{D_t^u}{e_{US,t}^u}&<\infty, \label{thm_cond_2a}\\
+\sum_{t=1}^\infty
+\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}&<\infty. \label{thm_cond_2b}
+\end{align}
+\end{subequations}
+\end{coro}
+
+\begin{proof}
+We show (a) \eqref{thm_cond_1a} $\Longleftrightarrow$ \eqref{thm_cond_2a} and (b) \eqref{thm_cond_1b}
+$\Longleftrightarrow$ \eqref{thm_cond_2b}.
+
+\medskip
+\noindent\textbf{(a) Proof of \eqref{thm_cond_1a} $\Longleftrightarrow$ \eqref{thm_cond_2a}.}
+By \eqref{Qsum_identity_mod_zerosupply} and \Cref{ass4},
+\[
+Q_{US,t}^u \le Q_{US,t}^u+Q_{W,t}^u
+=\beta e_{US,t}^u+\frac{\beta+\chi}{1+\chi}e_{W,t}
+\le \left(\beta+\frac{\beta+\chi}{1+\chi}\overline\varepsilon_e\right)e_{US,t}^u,
+\qquad t\le\tau.
+\]
+Moreover, by \eqref{stock_weight_clear_mod},
+\[
+Q_{US,t}^u=\omega_t^u S_t^u+\omega_t^{*,u}S_t^{*,u}\ge \omega_t^u S_t^u.
+\]
+Using $S_t^u=(1-\theta_t^u)A_t^u=(1-\theta_t^u)\beta e_{US,t}^u$ and \eqref{theta_nonpos}, we obtain
+$Q_{US,t}^u\ge \underline\varepsilon_\omega\,\beta\,e_{US,t}^u$ for all $t\le\tau$.
+Hence there exist constants $0<\underline q\le \bar q<\infty$ such that
+$\underline q\,e_{US,t}^u\le Q_{US,t}^u\le \bar q\,e_{US,t}^u$ for all $t\le\tau$, implying
+$\sum_t D_t^u/Q_t^u<\infty$ if and only if $\sum_t D_t^u/e_{US,t}^u<\infty$.
+
+\medskip
+\noindent\textbf{(b) Proof of \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}.}
+Define
+\[
+m_t:=\frac{Q_t^b+D_t^b}{C_t^b}\cdot \frac{C_t^u}{Q_t^u}.
+\]
+It suffices to show that $m_t$ is bounded above and below by strictly positive constants uniformly over $t\le\tau$.
+
+Old-age consumption at date $t$ is
+\[
+C_t^z
+=
+(Q_{US,t}^z+D_{US,t}^z)n_{US,t-1}^u
++(Q_{W,t}^z+D_{W,t}^z)n_{W,t-1}^u
++B_{US,t}^u,
+\qquad z\in\{u,b\}.
+\]
+By \Cref{ass4,ass5} and \eqref{Qsum_identity_mod_zerosupply}, there exists $\bar q<\infty$ such that
+$0<Q_{US,t}^z\le Q_{US,t}^z+Q_{W,t}^z\le \bar q\,e_{US,t}^u$ for all $t\le\tau$ and $z\in\{u,b\}$.
+The dividend bound in (iv) implies $0\le D_{W,t}^z\le \bar\delta_W e_{US,t}^u$. If \eqref{thm_cond_2a} holds, then
+$\sup_t D_{US,t}^u/e_{US,t}^u<\infty$, and by \Cref{ass5} the same bound applies at the switching date, so
+$0\le D_{US,t}^z\le \bar\delta_{US}e_{US,t}^u$ for some $\bar\delta_{US}<\infty$.
+
+Next, the holdings satisfy
+\[
+n_{US,t-1}^u
+=\frac{\omega_{t-1}^u S_{t-1}^u}{Q_{US,t-1}^u}
+=\frac{\omega_{t-1}^u}{\omega_{t-1}^u+\omega_{t-1}^{*,u}\,S_{t-1}^{*,u}/S_{t-1}^u}.
+\]
+Using \eqref{theta_nonpos}, we have $S_{t-1}^u\ge \beta e_{US,t-1}^u$, while
+$S_{t-1}^{*,u}\le Q_{US,t-1}^u+Q_{W,t-1}^u\le \bar q\,e_{US,t-1}^u$, hence
+$S_{t-1}^{*,u}/S_{t-1}^u\le \bar q/\beta =:\overline\rho<\infty$. Together with $\omega_{t-1}^u\ge \underline\varepsilon_\omega$
+and $\omega_{t-1}^{*,u}\le 1$, this yields $n_{US,t-1}^u\ge \underline n>0$ uniformly for $t\le\tau$.
+
+Finally, by \Cref{lem2} we have $\theta_t\ge \underline\theta$ for all $t\le\tau$, and by \eqref{theta_nonpos} we also have
+$\theta_t\le 0$. Using $B_{US,t}=b_{t-1}R_{f,t-1}=\theta_{t-1}A_{t-1}R_{f,t-1}$, $A_{t-1}=\beta e_{US,t-1}^u$, and
+$R_{f,t-1}\le \overline R_f$ from (iii), we obtain a uniform lower bound
+$B_{US,t}^u \ge \underline\theta\,\beta\,\overline R_f\,e_{US,t-1}^u$.
+Combining this bound with the payoff bounds above and the holdings bounds yields constants
+$0<\underline C\le \bar C<\infty$ such that for all $t\le\tau$ and $z\in\{u,b\}$,
+\[
+\underline C\,e_{US,t}^u \le C_t^z \le \bar C\,e_{US,t}^u.
+\]
+Therefore $(Q_t^b+D_t^b)/C_t^b$ and $C_t^u/Q_t^u$ are both bounded above and below by strictly positive constants, and so
+is their product $m_t$. Hence \eqref{thm_cond_1b} holds if and only if \eqref{thm_cond_2b}.
+\end{proof}
+
+
+
+%========================================================
+% Appendix
+%========================================================
+
+\appendix
+\section{Proof of \Cref{lem1}}
+Recall
+\[
+\Delta_t=\phi_t(1-\omega_t),\qquad 
+\phi_t=\frac{\kappa C_{y,t}}{(1-\beta)S_t}(\omega_t-\bar\omega).
+\]
+Using the saving rule $C_{y,t}=(1-\beta)e_{US,t}$ and $A_t=\beta e_{US,t}$, we have
+\[
+\frac{C_{y,t}}{(1-\beta)}=e_{US,t}=\frac{A_t}{\beta}.
+\]
+Also $S_t=(1-\theta_t)A_t$, hence
+\[
+\frac{C_{y,t}}{(1-\beta)S_t}
+=\frac{A_t/\beta}{(1-\theta_t)A_t}
+=\frac{1}{\beta(1-\theta_t)}.
+\]
+Therefore
+\[
+\phi_t=\frac{\kappa}{\beta(1-\theta_t)}(\omega_t-\bar\omega),
+\qquad
+\Delta_t=\frac{\kappa}{\beta(1-\theta_t)}(\omega_t-\bar\omega)(1-\omega_t).
+\]
+
+Moreover, $\omega_t\in[0,1]$ implies $(1-\omega_t)\in[0,1]$ and
+\[
+(\omega_t-\bar\omega)(1-\omega_t)\ge -\bar\omega(1-\omega_t)\ge -\bar\omega.
+\]
+Combining the bounds yields
+\[
+\Delta_t
+=\frac{\kappa}{\beta(1-\theta_t)}(\omega_t-\bar\omega)(1-\omega_t)
+\ge \frac{\kappa}{\beta(1-\theta_t)}\cdot(-\bar\omega)
+= -\frac{\kappa\bar\omega}{\beta(1-\theta_t)}.
+\]
+Hence
+\[
+1+\Delta_t \;\ge\; 1-\frac{\kappa\bar\omega}{\beta(1-\theta_t)} 
+\Longleftarrow \bar \omega \leq \frac{\beta(1-\theta_t)}{\kappa}.
+\]
+If $\bar\omega \leq \beta/\kappa$, then the right-hand side is strictly positive because of 
+$1-\theta_t > 1$, so
+$1+\Delta_t>0$ for all $t$.
+\medskip
+
+\bibliography{references.bib} 
+
+\end{document}
