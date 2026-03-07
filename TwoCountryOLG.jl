@@ -12,7 +12,7 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
 @with_kw struct ModelParams
     # Preferences
     β::Float64  = 0.50          # discount / saving propensity
-    γ::Float64  = 2.0           # old-age risk aversion (CRRA)
+    γ::Float64  = 0.5           # old-age risk aversion (CRRA); γ < 1 follows Hirano (2025)
 
     # Portfolio frictions
     κ::Float64      = 0.01      # home-bias cost coefficient
@@ -54,7 +54,7 @@ function validate_params(p::ModelParams)
     @assert p.κ < p.β / p.ω̄  "Lemma 1: need κ=$(p.κ) < β/ω̄=$(p.β/p.ω̄)"
     @assert 0.5 ≤ p.ω̄ ≤ 1.0  "ω̄ must be in [1/2, 1]"
     @assert 0.0 < p.ω̄_star < 0.5  "ω̄* must be in (0, 1/2)"
-    @assert p.γ > 1.0  "Need γ > 1 for non-trivial bubble conditions"
+    @assert 0.0 < p.γ  "Need γ > 0 (CRRA curvature); γ < 1 follows Hirano (2025) for easier bubble existence"
     @assert 0.0 < p.π_persist < 1.0
     @assert p.χ > 0.0
     @assert p.η > 0.0
