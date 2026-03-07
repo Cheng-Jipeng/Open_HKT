@@ -115,3 +115,30 @@ The module is organised into 12 sections:
 ## References
 
 - Hirano, T. (2025). *Technological Innovations Generating Rational Bubbles*. [arXiv:2312.11956](https://arxiv.org/abs/2501.08215)
+
+## Notes on Corollary 1 Condition (2b)
+
+Condition (2b) requires summability of
+
+\[
+\sum_t \left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}.
+\]
+
+In simulations, this term is numerically close to
+\((R_{A,t}^b/R_{A,t}^u)^{1-\gamma}\). If the return ratio stays close to a positive
+constant (often near 1), the series may fail to converge over long horizons.
+
+Practical levers to move the path of \(R_A^b/R_A^u\):
+
+- **Regime persistence (`π_persist`)**: lower persistence increases switching risk,
+  which can widen differences between continuation (`u`) and switch (`b`) returns.
+- **Relative growth gap (`g_e_u`, `g_e_b`, `g_D_u`)**: larger state-dependent growth
+  wedges typically increase spread between the two return objects.
+- **Risk curvature (`γ`)**: changing \(1-\gamma\) alters how strongly return ratios map
+  into condition (2b) terms.
+- **Portfolio frictions (`κ`, `χ`, `η`)**: these reshape equilibrium portfolios and
+  bond positions, which feed into portfolio returns and thus \(R_A^b/R_A^u\).
+
+For diagnostics, notebook `04_bubble_diagnostics.ipynb` plots
+`consump_ratio[t] = ret_b.R_A / ret_u.R_A`, which is the direct empirical object
+behind condition (2b).
