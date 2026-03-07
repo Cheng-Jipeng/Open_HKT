@@ -85,13 +85,13 @@ Each OLG period represents approximately **5 years**. Key baseline calibration:
 | Risk aversion | γ | 0.50 | Old-age CRRA curvature (γ < 1 aids bubble existence) |
 | Home-bias cost | κ | 0.01 | Quadratic cost of deviating from target portfolio weight |
 | US equity target (US) | ω̄ | 0.80 | US investor target weight on US equity |
-| US equity target (RoW) | ω̄\* | 0.20 | RoW investor target weight on US equity |
+| US equity target (RoW) | ω̄* | 0.20 | RoW investor target weight on US equity |
 | Convenience yield | χ | 0.03 | RoW convenience yield on US bonds |
 | Issuance cost | η | 0.01 | Scaling of bond-issuance cost function |
 | Persistence | π | 0.70 | Probability that unbalanced growth continues |
-| US growth (unbalanced) | g\_e,u | 1.035⁵ | US endowment growth per period in state u |
-| Balanced growth | g\_e,b | 1.02⁵ | Common growth rate in the balanced state |
-| Horizon | T\_max | 120 | Number of OLG periods simulated |
+| US growth (unbalanced) | g_e,u | 1.035⁵ | US endowment growth per period in state u |
+| Balanced growth | g_e,b | 1.02⁵ | Common growth rate in the balanced state |
+| Horizon | T_max | 120 | Number of OLG periods simulated |
 
 ## Module Architecture (`TwoCountryOLG.jl`)
 
