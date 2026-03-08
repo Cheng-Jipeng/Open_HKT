@@ -1,6 +1,6 @@
 #= ================================================================
    TwoCountryOLG.jl  –  Shared types & helpers for the two-country
-   OLG bubble model (Corollary_V3.tex)
+   OLG bubble model (Corollary_V4.tex)
    ================================================================ =#
 
 using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
@@ -41,6 +41,11 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     D_e_ratio_0::Float64   = 0.04   # D_{US,0}/e_{US,0}
     D_W_e_W_ratio_0::Float64 = 0.04 # D_{W,0}/e_{W,0}
 
+    # Switch-date scaling (Assumption 5, V4): e_US^b / e_US^u and D_US^b / D_US^u
+    # Default 1.0 restores V3 behaviour (x^b = x^u at switch date)
+    λ_e::Float64 = 1.0   # e_US^b / e_US^u  at switch date
+    λ_D::Float64 = 1.0   # D_US^b / D_US^u  at switch date
+
     # Simulation horizon (number of OLG periods)
     T_max::Int = 120
 
@@ -62,6 +67,8 @@ function validate_params(p::ModelParams)
     @assert p.g_e_u > 1.0
     @assert p.g_e_b > 1.0
     @assert p.g_D_u > 1.0
+    @assert p.λ_e > 0.0  "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
+    @assert p.λ_D > 0.0  "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
     nothing
 end
 
@@ -422,11 +429,13 @@ function _u_path_core_residual!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
 
     # Returns under b at t+1
+    # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e * e_US^u
+    # D_US^b = λ_D * D_US^u  (V4 Assumption 5)
     q_US_b = bs_next.Q_US_hat
     q_W_b  = bs_next.Q_W_hat
 
-    R_US_b = g_e * (q_US_b + d_next) / q_US
-    R_W_b  = g_e * (q_W_b  + d_W_next_hat) / q_W
+    R_US_b = g_e * (q_US_b * p.λ_e + p.λ_D * d_next) / q_US
+    R_W_b  = g_e * (q_W_b  * p.λ_e + d_W_next_hat)   / q_W
 
     R_p_b    = ω * R_US_b + (1 - ω) * R_W_b
     R_A_b    = (1 - θ) * R_p_b + θ * Rf
@@ -648,8 +657,10 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
     u_path = Vector{PeriodState}(undef, T)
 
     # ── Terminal condition: u-path at T = balanced state ──
+    # Q_US^b_T = bs_T.Q_US_hat * e_US^b_T = bs_T.Q_US_hat * λ_e * e_US^u_T
+    # so q_US_T (detrended by e_US^u_T) = bs_T.Q_US_hat * λ_e
     bs_T = balanced_states[T]
-    q_US_T = bs_T.Q_US_hat
+    q_US_T = bs_T.Q_US_hat * p.λ_e
     Q_US_T = q_US_T * paths.e_US[T]
     u_path[T] = build_period_state(T, paths,
                     bs_T.ω_b, bs_T.ω_star_b, bs_T.θ_b,
@@ -710,13 +721,16 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
         Q_W_next_u  = u_path[t+1].Q_W
 
         bs_next = balanced_states[t+1]
-        Q_US_next_b = bs_next.Q_US_hat * paths.e_US[t+1]
-        Q_W_next_b  = bs_next.Q_W_hat  * paths.e_US[t+1]
+        # V4: actual b-state price level = Q_hat * λ_e * e_US^u
+        # V4: D_US^b = λ_D * D_US^u
+        Q_US_next_b = bs_next.Q_US_hat * p.λ_e * paths.e_US[t+1]
+        Q_W_next_b  = bs_next.Q_W_hat  * p.λ_e * paths.e_US[t+1]
+        D_US_next_b = p.λ_D * D_US_next
 
-        R_US_u = (Q_US_next_u + D_US_next) / s.Q_US
-        R_W_u  = (Q_W_next_u  + D_W_next)  / s.Q_W
-        R_US_b = (Q_US_next_b + D_US_next) / s.Q_US
-        R_W_b  = (Q_W_next_b  + D_W_next)  / s.Q_W
+        R_US_u = (Q_US_next_u + D_US_next)   / s.Q_US
+        R_W_u  = (Q_W_next_u  + D_W_next)    / s.Q_W
+        R_US_b = (Q_US_next_b + D_US_next_b) / s.Q_US
+        R_W_b  = (Q_W_next_b  + D_W_next)    / s.Q_W
 
         R_ps_u = s.ω_star * R_US_u + (1 - s.ω_star) * R_W_u
         R_ps_b = s.ω_star * R_US_b + (1 - s.ω_star) * R_W_b
@@ -771,12 +785,14 @@ function compute_bubble_diagnostics(p::ModelParams,
                     s_prev.θ, s_prev.θ_US_star, s_prev.R_f)
 
         # Returns under b at t (switch)
+        # V4: Q^b = Q_hat * λ_e * e_US^u,  D_US^b = λ_D * D_US^u
         bs_t = balanced_states[t]
-        Q_US_b = bs_t.Q_US_hat * paths.e_US[t]
-        Q_W_b  = bs_t.Q_W_hat  * paths.e_US[t]
+        Q_US_b = bs_t.Q_US_hat * p.λ_e * paths.e_US[t]
+        Q_W_b  = bs_t.Q_W_hat  * p.λ_e * paths.e_US[t]
+        D_US_b = p.λ_D * paths.D_US[t]
         ret_b = compute_returns(s_prev.Q_US, s_prev.Q_W,
                     Q_US_b, Q_W_b,
-                    paths.D_US[t], paths.D_W[t],
+                    D_US_b, paths.D_W[t],
                     s_prev.ω, s_prev.ω_star,
                     s_prev.θ, s_prev.θ_US_star, s_prev.R_f)
 
@@ -787,7 +803,7 @@ function compute_bubble_diagnostics(p::ModelParams,
         ratio = C_b / C_u
         cond_2b_terms[t] = ratio^(1 - γ)
 
-        Q_b_plus_D = Q_US_b + paths.D_US[t]
+        Q_b_plus_D = Q_US_b + D_US_b
         cond_1b[t] = ratio^(1 - γ) * Q_b_plus_D / C_b * C_u / Q_u
 
         a_t[t] = cond_1a[t] +
@@ -829,14 +845,17 @@ function run_simulation(p::ModelParams=ModelParams(); verbose=true)
     x0_bs = nothing
 
     for t in 1:T
-        d   = paths.D_US[t] / paths.e_US[t]
-        dW  = paths.D_W[t]  / paths.e_W[t]
-        eps = paths.e_W[t]  / paths.e_US[t]
+        # V4 Assumption 5: b-state US fundamentals are scaled by λ_e, λ_D
+        # d_b = D_US^b/e_US^b = (λ_D·D_US^u)/(λ_e·e_US^u)
+        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e   (RoW endowment unchanged)
+        d_b   = (p.λ_D / p.λ_e) * paths.D_US[t] / paths.e_US[t]
+        dW    = paths.D_W[t] / paths.e_W[t]
+        eps_b = (paths.e_W[t] / paths.e_US[t]) / p.λ_e
         try
-            bs[t] = solve_balanced_state(p, d, dW, eps; x0=x0_bs)
+            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=x0_bs)
         catch
             # Reset initial guess on failure
-            bs[t] = solve_balanced_state(p, d, dW, eps; x0=nothing)
+            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=nothing)
         end
         if !bs[t].converged
             @warn "Balanced state did not converge at t=$t"
