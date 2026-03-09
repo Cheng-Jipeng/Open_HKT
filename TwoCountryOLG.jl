@@ -29,15 +29,15 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     π_persist::Float64 = 0.70   # P(z_{t+1}=u | z_t=u)
 
     # Growth rates (per-period; interpret each OLG period as ~5 years)
-    g_e_u::Float64 = 1.035^5    # US endowment growth in state u  (~18.8% per 5yr)
-    g_e_b::Float64 = 1.02^5     # balanced growth (state b, all)  (~10.4% per 5yr)
+    g_e_u::Float64 = 1.025^5    # US endowment growth in state u  (~18.8% per 5yr)
+    g_e_b::Float64 = 1.01^5     # balanced growth (state b, all)  (~10.4% per 5yr)
     g_D_u::Float64 = 1.015^5    # US dividend growth in state u   (~7.7% per 5yr)
-    g_D_W::Float64 = 1.02^5     # RoW dividend growth (always BGP)
-    g_e_W::Float64 = 1.02^5     # RoW endowment growth (always BGP)
+    g_D_W::Float64 = 1.01^5     # RoW dividend growth (always BGP)
+    g_e_W::Float64 = 1.01^5     # RoW endowment growth (always BGP)
 
     # Initial conditions
     e_US_0::Float64 = 1.0
-    e_W_0::Float64  = 1.0
+    e_W_0::Float64  = 15.0
     D_e_ratio_0::Float64   = 0.04   # D_{US,0}/e_{US,0}
     D_W_e_W_ratio_0::Float64 = 0.04 # D_{W,0}/e_{W,0}
 
