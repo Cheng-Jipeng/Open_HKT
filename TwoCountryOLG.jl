@@ -470,6 +470,138 @@ function _u_path_core_residual!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
 end
 
 """
+Core residual for u-path asymptote: identical to `_u_path_core_residual!` but
+accepts scalar `g_e`, `d_next`, `d_W_next_hat`, `ε` directly instead of
+reading from `paths[t]`.  Used by `solve_u_state_asymptote`.
+"""
+function _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
+                                  q_US_u_next, q_W_u_next,
+                                  g_e, d_next, d_W_next_hat, ε,
+                                  bs_next, p)
+    β, γ, κ, η, χ = p.β, p.γ, p.κ, p.η, p.χ
+    ω̄, ω̄s = p.ω̄, p.ω̄_star
+    π_p = p.π_persist
+
+    ε_t = ε
+
+    hat_A    = β
+    hat_A_s  = (β + χ) / (1 + χ) * ε_t
+
+    hat_S    = (1 - θ) * hat_A
+    hat_S_s  = (1 - θ_Us) * hat_A_s
+
+    hat_Qsum = hat_A + hat_A_s
+    q_W      = hat_Qsum - q_US
+
+    # Guard: only require stock prices positive
+    if q_US ≤ 0 || q_W ≤ 0
+        pen = 1e10
+        if q_US ≤ 0; pen += abs(q_US) * 1e12; end
+        if q_W ≤ 0; pen += abs(q_W) * 1e12; end
+        F .= pen; return
+    end
+
+    # Returns under u at t+1
+    R_US_u = g_e * (q_US_u_next + d_next) / q_US
+    R_W_u  = g_e * (q_W_u_next  + d_W_next_hat) / q_W
+
+    R_p_u    = ω * R_US_u + (1 - ω) * R_W_u
+    R_A_u    = (1 - θ) * R_p_u + θ * Rf
+    R_ps_u   = ω_s * R_US_u + (1 - ω_s) * R_W_u
+    R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
+
+    # Returns under b at t+1
+    q_US_b = bs_next.Q_US_hat
+    q_W_b  = bs_next.Q_W_hat
+
+    R_US_b = g_e * (q_US_b * p.λ_e + p.λ_D * d_next) / q_US
+    R_W_b  = g_e * (q_W_b  * p.λ_e + d_W_next_hat)   / q_W
+
+    R_p_b    = ω * R_US_b + (1 - ω) * R_W_b
+    R_A_b    = (1 - θ) * R_p_b + θ * Rf
+    R_ps_b   = ω_s * R_US_b + (1 - ω_s) * R_W_b
+    R_As_b   = (1 - θ_Us) * R_ps_b + θ_Us * Rf
+
+    if R_A_u ≤ 0 || R_A_b ≤ 0 || R_As_u ≤ 0 || R_As_b ≤ 0
+        pen = 1e10
+        for v in [R_A_u, R_A_b, R_As_u, R_As_b]
+            if v ≤ 0; pen += abs(v) * 1e12; end
+        end
+        F .= pen; return
+    end
+
+    # Kernels
+    M_u, M_b   = us_kernel(R_A_u, R_A_b, γ, π_p)
+    Ms_u, Ms_b = row_kernel(R_As_u, R_As_b, γ, π_p)
+
+    # Expected terms
+    E_M_dR   = expect_Mf(M_u, M_b, R_US_u - R_W_u, R_US_b - R_W_b, π_p)
+    E_M_dRf  = expect_Mf(M_u, M_b, Rf - R_p_u, Rf - R_p_b, π_p)
+    E_Ms_dR  = expect_Mf(Ms_u, Ms_b, R_US_u - R_W_u, R_US_b - R_W_b, π_p)
+    E_Ms_dRf = expect_Mf(Ms_u, Ms_b, Rf - R_ps_u, Rf - R_ps_b, π_p)
+
+    # 6 residuals
+    F[1] = β * (1 - θ)    * E_M_dR  - κ * (ω   - ω̄)
+    F[2] = β * E_M_dRf  - η * upsilon_prime(DEFAULT_COST, θ)
+    F[3] = β * (1 - θ_Us) * E_Ms_dR - κ * (ω_s - ω̄s)
+    F[4] = β * E_Ms_dRf + χ / θ_Us
+    F[5] = ω * hat_S + ω_s * hat_S_s - q_US
+    F[6] = θ * hat_A + θ_Us * hat_A_s
+end
+
+"""
+Compute the u-path self-consistent fixed point as d_t → 0, ε_t → 0.
+This is the correct infinite-horizon boundary condition (no-bubble asymptote)
+for use as the terminal condition in backward induction.
+"""
+function solve_u_state_asymptote(p::ModelParams; ε_min::Float64 = 1e-6)
+    # Step 1: b-state asymptote at d_b = 0, ε_b = ε_min / λ_e
+    bs_asym = solve_balanced_state(p, 0.0, 0.0, ε_min / p.λ_e)
+
+    β, χ = p.β, p.χ
+    ε = ε_min
+    hat_Qsum = β + (β + χ) / (1 + χ) * ε
+
+    # Step 2: self-referential residual — fixed point: q_US_u_next = q_US
+    function resid!(F, x_c)
+        x = _from_constrained(x_c)
+        ω, ω_s, θ, θ_Us, Rf, q_US = x
+        q_US_u_next = q_US               # fixed-point condition
+        q_W_u_next  = hat_Qsum - q_US
+        _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
+                                 q_US_u_next, q_W_u_next,
+                                 p.g_e_u, 0.0, 0.0, ε, bs_asym, p)
+    end
+
+    # Step 3: try two initial guesses, keep best-converged result
+    # Guess A: balanced-state asymptote (high-ω branch)
+    x0_a = [bs_asym.ω_b, bs_asym.ω_star_b, bs_asym.θ_b,
+             bs_asym.θ_US_star_b, bs_asym.R_f_b, bs_asym.Q_US_hat * p.λ_e]
+    # Guess B: low-ω branch (typical u-path solution at late dates)
+    x0_b = [0.15, p.ω̄_star, -0.5, 0.5, p.g_e_u, β * 0.15]
+
+    best = nothing
+    for x0 in [x0_a, x0_b]
+        x0_c = _to_constrained(x0)
+        try
+            r = nlsolve(resid!, x0_c, autodiff=:forward, method=:trust_region,
+                        ftol=p.ftol, xtol=p.xtol, iterations=p.iterations)
+            if converged(r) && (best === nothing || r.residual_norm < best.residual_norm)
+                best = r
+            end
+        catch; end
+    end
+
+    best === nothing && @warn "solve_u_state_asymptote did not converge; falling back to balanced-state"
+    x = best !== nothing ? _from_constrained(best.zero) : x0_a
+
+    ω, ω_s, θ, θ_Us, Rf, q_US = x
+    q_W = hat_Qsum - q_US
+    return (q_US=q_US, q_W=q_W, ω=ω, ω_s=ω_s, θ=θ, θ_Us=θ_Us, Rf=Rf,
+            converged = best !== nothing && converged(best))
+end
+
+"""
 UNCONSTRAINED residual: x = [ω, ω*, θ, θ*_US, R_f, q_US] directly.
 """
 function u_path_residual!(F, x, t, paths, bs_next,
@@ -656,15 +788,16 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
     T = p.T_max
     u_path = Vector{PeriodState}(undef, T)
 
-    # ── Terminal condition: u-path at T = balanced state ──
-    # Q_US^b_T = bs_T.Q_US_hat * e_US^b_T = bs_T.Q_US_hat * λ_e * e_US^u_T
-    # so q_US_T (detrended by e_US^u_T) = bs_T.Q_US_hat * λ_e
-    bs_T = balanced_states[T]
-    q_US_T = bs_T.Q_US_hat * p.λ_e
+    # ── Terminal condition: u-path self-consistent asymptote ──
+    # Solves the fixed point of the 6-eq system as d_t → 0, ε_t → 0.
+    # This is the correct infinite-horizon boundary for the no-bubble equilibrium,
+    # replacing the previous b-state price (which caused an artificial jump at T).
+    asym   = solve_u_state_asymptote(p)
+    q_US_T = asym.q_US
     Q_US_T = q_US_T * paths.e_US[T]
     u_path[T] = build_period_state(T, paths,
-                    bs_T.ω_b, bs_T.ω_star_b, bs_T.θ_b,
-                    bs_T.θ_US_star_b, bs_T.R_f_b, Q_US_T, p)
+                    asym.ω, asym.ω_s, asym.θ,
+                    asym.θ_Us, asym.Rf, Q_US_T, p)
 
     ε_T = paths.e_W[T] / paths.e_US[T]
     hat_Qsum_T = p.β + (p.β + p.χ) / (1 + p.χ) * ε_T
@@ -673,8 +806,7 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
     q_US_u_next = q_US_T
     q_W_u_next  = q_W_T
 
-    x_prev = [bs_T.ω_b, bs_T.ω_star_b, bs_T.θ_b,
-              bs_T.θ_US_star_b, bs_T.R_f_b, q_US_T]
+    x_prev = [asym.ω, asym.ω_s, asym.θ, asym.θ_Us, asym.Rf, q_US_T]
 
     n_fail = 0
     for t in (T-1):-1:1
