@@ -44,13 +44,19 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     # Switch-date scaling (Assumption 5, V4): e_US^b / e_US^u and D_US^b / D_US^u
     # Default 1.0 restores V3 behaviour (x^b = x^u at switch date)
     λ_e::Float64 = 1.0   # level scalar at t=0: e_US^b / e_US^u at switch date τ=0
-    λ_D::Float64 = 1.0   # D_US^b / D_US^u  at switch date
+    λ_D::Float64 = 1.0   # D_US^b / D_US^u  at switch date τ=0
     # Per-period decay of the b-state US endowment relative to u-state.
     # Effective scaling at switch date τ: λ_e_τ = λ_e · ρ^τ
     # ρ = 1          → constant λ_e (original spec)
     # ρ < 1          → b-state becomes increasingly worse than continuation as τ grows
     # Natural default: ρ = g_e_b/g_e_u so e_US^b(τ) = λ_e·e_US_0·g_e_b^τ regardless of τ
     ρ::Float64 = 1.01^5 / 1.025^5   # ≈ 0.929 per 5-year OLG period
+    # Per-period decay of the b-state US dividends relative to u-state.
+    # Effective dividend scaling at switch date τ: λ_D_τ = λ_D · ρ_D^τ
+    # Natural default: ρ_D = g_e_b/g_D_u so D_US^b(τ) grows at g_e_b (same as e_US^b),
+    # keeping d_b = D_US^b/e_US^b = (λ_D/λ_e)·d_0 constant — a genuine balanced state.
+    # Without this, d_b ∝ (g_D_u/g_e_b)^τ → ∞, breaking the BGP assumption.
+    ρ_D::Float64 = 1.01^5 / 1.015^5  # ≈ 0.976 per 5-year OLG period
 
     # Simulation horizon (number of OLG periods)
     T_max::Int = 120
@@ -73,9 +79,10 @@ function validate_params(p::ModelParams)
     @assert p.g_e_u > 1.0
     @assert p.g_e_b > 1.0
     @assert p.g_D_u > 1.0
-    @assert p.λ_e > 0.0       "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
-    @assert p.λ_D > 0.0       "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
-    @assert 0.0 < p.ρ ≤ 1.0  "ρ must be in (0, 1]; ρ=1 recovers constant-λ_e spec"
+    @assert p.λ_e > 0.0        "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
+    @assert p.λ_D > 0.0        "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
+    @assert 0.0 < p.ρ  ≤ 1.0  "ρ must be in (0, 1]; ρ=1 recovers constant-λ_e spec"
+    @assert 0.0 < p.ρ_D ≤ 1.0 "ρ_D must be in (0, 1]; ρ_D=1 keeps dividends on u-state growth path"
     nothing
 end
 
@@ -438,12 +445,13 @@ function _u_path_core_residual!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     # Returns under b at t+1
     # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e_tp1 * e_US^u
     # λ_e at switch date t+1: λ_e · ρ^(t+1)  (decays with the switch date)
-    # D_US^b = λ_D * D_US^u  (V4 Assumption 5)
-    q_US_b  = bs_next.Q_US_hat
-    q_W_b   = bs_next.Q_W_hat
-    λ_e_tp1 = p.λ_e * p.ρ^(t + 1)
+    # D_US^b = λ_D · ρ_D^(t+1) · D_US^u  (b-state dividend scaling at switch date t+1)
+    q_US_b   = bs_next.Q_US_hat
+    q_W_b    = bs_next.Q_W_hat
+    λ_e_tp1  = p.λ_e  * p.ρ^(t + 1)
+    λ_D_tp1  = p.λ_D  * p.ρ_D^(t + 1)
 
-    R_US_b = g_e * (q_US_b * λ_e_tp1 + p.λ_D * d_next) / q_US
+    R_US_b = g_e * (q_US_b * λ_e_tp1 + λ_D_tp1 * d_next) / q_US
     R_W_b  = g_e * (q_W_b  * λ_e_tp1 + d_W_next_hat)   / q_W
 
     R_p_b    = ω * R_US_b + (1 - ω) * R_W_b
@@ -871,10 +879,11 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
         bs_next = balanced_states[t+1]
         # Effective λ_e at switch date t+1: λ_e · ρ^(t+1)
         # actual b-state price = Q_hat * λ_e_{t+1} * e_US^u
-        λ_e_tp1 = p.λ_e * p.ρ^(t + 1)
+        λ_e_tp1 = p.λ_e  * p.ρ^(t + 1)
+        λ_D_tp1 = p.λ_D  * p.ρ_D^(t + 1)
         Q_US_next_b = bs_next.Q_US_hat * λ_e_tp1 * paths.e_US[t+1]
         Q_W_next_b  = bs_next.Q_W_hat  * λ_e_tp1 * paths.e_US[t+1]
-        D_US_next_b = p.λ_D * D_US_next
+        D_US_next_b = λ_D_tp1 * D_US_next
 
         R_US_u = (Q_US_next_u + D_US_next)   / s.Q_US
         R_W_u  = (Q_W_next_u  + D_W_next)    / s.Q_W
@@ -935,12 +944,13 @@ function compute_bubble_diagnostics(p::ModelParams,
 
         # Returns under b at t (switch)
         # Effective λ_e at switch date t: λ_e · ρ^t
-        # V4: Q^b = Q_hat * λ_e_t * e_US^u,  D_US^b = λ_D * D_US^u
+        # Q^b = Q_hat * λ_e_t * e_US^u,  D_US^b = λ_D_t * D_US^u
         bs_t   = balanced_states[t]
-        λ_e_t  = p.λ_e * p.ρ^t
+        λ_e_t  = p.λ_e  * p.ρ^t
+        λ_D_t  = p.λ_D  * p.ρ_D^t
         Q_US_b = bs_t.Q_US_hat * λ_e_t * paths.e_US[t]
         Q_W_b  = bs_t.Q_W_hat  * λ_e_t * paths.e_US[t]
-        D_US_b = p.λ_D * paths.D_US[t]
+        D_US_b = λ_D_t * paths.D_US[t]
         ret_b = compute_returns(s_prev.Q_US, s_prev.Q_W,
                     Q_US_b, Q_W_b,
                     D_US_b, paths.D_W[t],
@@ -996,12 +1006,12 @@ function run_simulation(p::ModelParams=ModelParams(); verbose=true)
     x0_bs = nothing
 
     for t in 1:T
-        # Effective λ_e at switch date t: λ_e · ρ^t  (decays with the switch date)
-        # V4 Assumption 5: b-state US fundamentals are scaled by λ_e_t, λ_D
-        # d_b = D_US^b/e_US^b = (λ_D·D_US^u)/(λ_e_t·e_US^u)
-        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e_t   (RoW endowment unchanged)
-        λ_e_t = p.λ_e * p.ρ^t
-        d_b   = (p.λ_D / λ_e_t) * paths.D_US[t] / paths.e_US[t]
+        # Effective scalings at switch date t: λ_e_t = λ_e·ρ^t, λ_D_t = λ_D·ρ_D^t
+        # d_b = D_US^b/e_US^b = (λ_D_t·D_US^u)/(λ_e_t·e_US^u)  → (λ_D/λ_e)·d_0  (constant)
+        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e_t                (RoW endowment unchanged)
+        λ_e_t = p.λ_e  * p.ρ^t
+        λ_D_t = p.λ_D  * p.ρ_D^t
+        d_b   = (λ_D_t / λ_e_t) * paths.D_US[t] / paths.e_US[t]
         dW    = paths.D_W[t] / paths.e_W[t]
         eps_b = (paths.e_W[t] / paths.e_US[t]) / λ_e_t
         try
