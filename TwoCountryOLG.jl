@@ -43,8 +43,14 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
 
     # Switch-date scaling (Assumption 5, V4): e_US^b / e_US^u and D_US^b / D_US^u
     # Default 1.0 restores V3 behaviour (x^b = x^u at switch date)
-    λ_e::Float64 = 1.0   # e_US^b / e_US^u  at switch date
+    λ_e::Float64 = 1.0   # level scalar at t=0: e_US^b / e_US^u at switch date τ=0
     λ_D::Float64 = 1.0   # D_US^b / D_US^u  at switch date
+    # Per-period decay of the b-state US endowment relative to u-state.
+    # Effective scaling at switch date τ: λ_e_τ = λ_e · ρ^τ
+    # ρ = 1          → constant λ_e (original spec)
+    # ρ < 1          → b-state becomes increasingly worse than continuation as τ grows
+    # Natural default: ρ = g_e_b/g_e_u so e_US^b(τ) = λ_e·e_US_0·g_e_b^τ regardless of τ
+    ρ::Float64 = 1.01^5 / 1.025^5   # ≈ 0.929 per 5-year OLG period
 
     # Simulation horizon (number of OLG periods)
     T_max::Int = 120
@@ -67,8 +73,9 @@ function validate_params(p::ModelParams)
     @assert p.g_e_u > 1.0
     @assert p.g_e_b > 1.0
     @assert p.g_D_u > 1.0
-    @assert p.λ_e > 0.0  "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
-    @assert p.λ_D > 0.0  "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
+    @assert p.λ_e > 0.0       "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
+    @assert p.λ_D > 0.0       "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
+    @assert 0.0 < p.ρ ≤ 1.0  "ρ must be in (0, 1]; ρ=1 recovers constant-λ_e spec"
     nothing
 end
 
@@ -429,13 +436,15 @@ function _u_path_core_residual!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
 
     # Returns under b at t+1
-    # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e * e_US^u
+    # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e_tp1 * e_US^u
+    # λ_e at switch date t+1: λ_e · ρ^(t+1)  (decays with the switch date)
     # D_US^b = λ_D * D_US^u  (V4 Assumption 5)
-    q_US_b = bs_next.Q_US_hat
-    q_W_b  = bs_next.Q_W_hat
+    q_US_b  = bs_next.Q_US_hat
+    q_W_b   = bs_next.Q_W_hat
+    λ_e_tp1 = p.λ_e * p.ρ^(t + 1)
 
-    R_US_b = g_e * (q_US_b * p.λ_e + p.λ_D * d_next) / q_US
-    R_W_b  = g_e * (q_W_b  * p.λ_e + d_W_next_hat)   / q_W
+    R_US_b = g_e * (q_US_b * λ_e_tp1 + p.λ_D * d_next) / q_US
+    R_W_b  = g_e * (q_W_b  * λ_e_tp1 + d_W_next_hat)   / q_W
 
     R_p_b    = ω * R_US_b + (1 - ω) * R_W_b
     R_A_b    = (1 - θ) * R_p_b + θ * Rf
@@ -473,11 +482,15 @@ end
 Core residual for u-path asymptote: identical to `_u_path_core_residual!` but
 accepts scalar `g_e`, `d_next`, `d_W_next_hat`, `ε` directly instead of
 reading from `paths[t]`.  Used by `solve_u_state_asymptote`.
+
+`λ_e_eff` is the effective b-state scaling at the terminal date T:
+  λ_e_eff = λ_e · ρ^T   (passed explicitly so the asymptote reflects the
+  actual decay at T rather than the level-0 value λ_e).
 """
 function _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
                                   q_US_u_next, q_W_u_next,
                                   g_e, d_next, d_W_next_hat, ε,
-                                  bs_next, p)
+                                  bs_next, p, λ_e_eff)
     β, γ, κ, η, χ = p.β, p.γ, p.κ, p.η, p.χ
     ω̄, ω̄s = p.ω̄, p.ω̄_star
     π_p = p.π_persist
@@ -510,12 +523,12 @@ function _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     R_ps_u   = ω_s * R_US_u + (1 - ω_s) * R_W_u
     R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
 
-    # Returns under b at t+1
+    # Returns under b at t+1 (uses λ_e_eff = λ_e · ρ^T for terminal-period asymptote)
     q_US_b = bs_next.Q_US_hat
     q_W_b  = bs_next.Q_W_hat
 
-    R_US_b = g_e * (q_US_b * p.λ_e + p.λ_D * d_next) / q_US
-    R_W_b  = g_e * (q_W_b  * p.λ_e + d_W_next_hat)   / q_W
+    R_US_b = g_e * (q_US_b * λ_e_eff + p.λ_D * d_next) / q_US
+    R_W_b  = g_e * (q_W_b  * λ_e_eff + d_W_next_hat)   / q_W
 
     R_p_b    = ω * R_US_b + (1 - ω) * R_W_b
     R_A_b    = (1 - θ) * R_p_b + θ * Rf
@@ -555,8 +568,11 @@ This is the correct infinite-horizon boundary condition (no-bubble asymptote)
 for use as the terminal condition in backward induction.
 """
 function solve_u_state_asymptote(p::ModelParams; ε_min::Float64 = 1e-6)
-    # Step 1: b-state asymptote at d_b = 0, ε_b = ε_min / λ_e
-    bs_asym = solve_balanced_state(p, 0.0, 0.0, ε_min / p.λ_e)
+    # Effective λ_e at the terminal date T: λ_e · ρ^T
+    λ_e_T = p.λ_e * p.ρ^p.T_max
+
+    # Step 1: b-state asymptote at d_b = 0, ε_b = ε_min / λ_e_T
+    bs_asym = solve_balanced_state(p, 0.0, 0.0, ε_min / λ_e_T)
 
     β, χ = p.β, p.χ
     ε = ε_min
@@ -570,13 +586,13 @@ function solve_u_state_asymptote(p::ModelParams; ε_min::Float64 = 1e-6)
         q_W_u_next  = hat_Qsum - q_US
         _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
                                  q_US_u_next, q_W_u_next,
-                                 p.g_e_u, 0.0, 0.0, ε, bs_asym, p)
+                                 p.g_e_u, 0.0, 0.0, ε, bs_asym, p, λ_e_T)
     end
 
     # Step 3: try two initial guesses, keep best-converged result
     # Guess A: balanced-state asymptote (high-ω branch)
     x0_a = [bs_asym.ω_b, bs_asym.ω_star_b, bs_asym.θ_b,
-             bs_asym.θ_US_star_b, bs_asym.R_f_b, bs_asym.Q_US_hat * p.λ_e]
+             bs_asym.θ_US_star_b, bs_asym.R_f_b, bs_asym.Q_US_hat * λ_e_T]
     # Guess B: low-ω branch (typical u-path solution at late dates)
     x0_b = [0.15, p.ω̄_star, -0.5, 0.5, p.g_e_u, β * 0.15]
 
@@ -853,10 +869,11 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
         Q_W_next_u  = u_path[t+1].Q_W
 
         bs_next = balanced_states[t+1]
-        # V4: actual b-state price level = Q_hat * λ_e * e_US^u
-        # V4: D_US^b = λ_D * D_US^u
-        Q_US_next_b = bs_next.Q_US_hat * p.λ_e * paths.e_US[t+1]
-        Q_W_next_b  = bs_next.Q_W_hat  * p.λ_e * paths.e_US[t+1]
+        # Effective λ_e at switch date t+1: λ_e · ρ^(t+1)
+        # actual b-state price = Q_hat * λ_e_{t+1} * e_US^u
+        λ_e_tp1 = p.λ_e * p.ρ^(t + 1)
+        Q_US_next_b = bs_next.Q_US_hat * λ_e_tp1 * paths.e_US[t+1]
+        Q_W_next_b  = bs_next.Q_W_hat  * λ_e_tp1 * paths.e_US[t+1]
         D_US_next_b = p.λ_D * D_US_next
 
         R_US_u = (Q_US_next_u + D_US_next)   / s.Q_US
@@ -917,10 +934,12 @@ function compute_bubble_diagnostics(p::ModelParams,
                     s_prev.θ, s_prev.θ_US_star, s_prev.R_f)
 
         # Returns under b at t (switch)
-        # V4: Q^b = Q_hat * λ_e * e_US^u,  D_US^b = λ_D * D_US^u
-        bs_t = balanced_states[t]
-        Q_US_b = bs_t.Q_US_hat * p.λ_e * paths.e_US[t]
-        Q_W_b  = bs_t.Q_W_hat  * p.λ_e * paths.e_US[t]
+        # Effective λ_e at switch date t: λ_e · ρ^t
+        # V4: Q^b = Q_hat * λ_e_t * e_US^u,  D_US^b = λ_D * D_US^u
+        bs_t   = balanced_states[t]
+        λ_e_t  = p.λ_e * p.ρ^t
+        Q_US_b = bs_t.Q_US_hat * λ_e_t * paths.e_US[t]
+        Q_W_b  = bs_t.Q_W_hat  * λ_e_t * paths.e_US[t]
         D_US_b = p.λ_D * paths.D_US[t]
         ret_b = compute_returns(s_prev.Q_US, s_prev.Q_W,
                     Q_US_b, Q_W_b,
@@ -977,12 +996,14 @@ function run_simulation(p::ModelParams=ModelParams(); verbose=true)
     x0_bs = nothing
 
     for t in 1:T
-        # V4 Assumption 5: b-state US fundamentals are scaled by λ_e, λ_D
-        # d_b = D_US^b/e_US^b = (λ_D·D_US^u)/(λ_e·e_US^u)
-        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e   (RoW endowment unchanged)
-        d_b   = (p.λ_D / p.λ_e) * paths.D_US[t] / paths.e_US[t]
+        # Effective λ_e at switch date t: λ_e · ρ^t  (decays with the switch date)
+        # V4 Assumption 5: b-state US fundamentals are scaled by λ_e_t, λ_D
+        # d_b = D_US^b/e_US^b = (λ_D·D_US^u)/(λ_e_t·e_US^u)
+        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e_t   (RoW endowment unchanged)
+        λ_e_t = p.λ_e * p.ρ^t
+        d_b   = (p.λ_D / λ_e_t) * paths.D_US[t] / paths.e_US[t]
         dW    = paths.D_W[t] / paths.e_W[t]
-        eps_b = (paths.e_W[t] / paths.e_US[t]) / p.λ_e
+        eps_b = (paths.e_W[t] / paths.e_US[t]) / λ_e_t
         try
             bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=x0_bs)
         catch
