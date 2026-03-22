@@ -23,6 +23,7 @@
 
 using Parameters
 using Printf
+using Statistics
 
 # ─────────────────────────────────────────────────────────────────
 # 1. Parameters
@@ -211,12 +212,43 @@ function compute_sc_bubble_diagnostics(p::SCParams, states::Vector{SCPeriodState
     sum_2b  = cumsum(cond_2b_terms)
     sum_at  = cumsum(a_t)
 
+    # Convergence test: empirical plateau OR geometric extrapolation.
+    # The empirical plateau alone fails for slowly-decaying geometric series
+    # (e.g. ρ^{1-γ} ≈ 0.964): at T=120 the tail has not plateaued yet even
+    # though the infinite series converges.  The geometric extrapolation fix:
+    #   estimate the decay ratio r from the last n_fit terms,
+    #   extrapolate tail_∞ = last_term * r / (1 - r),
+    #   the series converges iff tail_∞ is finite and small relative to sum.
     n_tail   = max(1, T ÷ 10)
     tail_2a  = sum_dr[end] - sum_dr[end - n_tail]
     tail_2b  = sum_2b[end] - sum_2b[end - n_tail]
 
     conv_2a  = tail_2a < 0.01 * max(sum_dr[end], 1e-15)
-    conv_2b  = tail_2b < 0.01 * max(sum_2b[end], 1e-15)
+
+    # Plateau test (sufficient for fast decay)
+    plateau_2b = tail_2b < 0.01 * max(sum_2b[end], 1e-15)
+
+    # Geometric extrapolation test (catches slow geometric decay)
+    n_fit    = max(2, T ÷ 20)        # use last ~5% of periods to fit ratio
+    t_start  = T - n_fit + 1
+    t_end    = T
+    # Estimate geometric ratio r from average of consecutive-term ratios
+    geo_ratios = [cond_2b_terms[t] / max(cond_2b_terms[t-1], 1e-300)
+                  for t in (t_start+1):t_end
+                  if cond_2b_terms[t-1] > 1e-300]
+    if !isempty(geo_ratios)
+        r_est = median(geo_ratios)
+        if r_est < 1.0 - 1e-6          # decaying geometric series
+            tail_inf = cond_2b_terms[T] * r_est / (1 - r_est)
+            geo_conv_2b = tail_inf < 0.05 * (sum_2b[end] + tail_inf)
+        else
+            geo_conv_2b = false         # r ≥ 1 → diverges
+        end
+    else
+        geo_conv_2b = false
+    end
+
+    conv_2b  = plateau_2b || geo_conv_2b
 
     SCBubbleDiagnostics(dividend_ratio, sum_dr,
                         consump_ratio, cond_2b_terms, sum_2b,
