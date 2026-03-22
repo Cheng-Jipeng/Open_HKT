@@ -37,7 +37,7 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
 
     # Initial conditions
     e_US_0::Float64 = 1.0
-    e_W_0::Float64  = 15.0
+    e_W_0::Float64  = 3.0
     D_e_ratio_0::Float64   = 0.04   # D_{US,0}/e_{US,0}
     D_W_e_W_ratio_0::Float64 = 0.04 # D_{W,0}/e_{W,0}
 
