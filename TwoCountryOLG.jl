@@ -1,6 +1,6 @@
 #= ================================================================
    TwoCountryOLG.jl  –  Shared types & helpers for the two-country
-   OLG bubble model (Corollary_V4.tex)
+   OLG bubble model (V7_Theorem_Conditions.tex)
    ================================================================ =#
 
 using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
@@ -41,8 +41,8 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     D_e_ratio_0::Float64   = 0.04   # D_{US,0}/e_{US,0}
     D_W_e_W_ratio_0::Float64 = 0.04 # D_{W,0}/e_{W,0}
 
-    # Switch-date scaling (Assumption 5, V4): e_US^b / e_US^u and D_US^b / D_US^u
-    # Default 1.0 restores V3 behaviour (x^b = x^u at switch date)
+    # Switch-date scaling (Assumption 7, V7): e_US^b / e_US^u and D_US^b / D_US^u
+    # Default 1.0 restores original behaviour (x^b = x^u at switch date)
     λ_e::Float64 = 1.0   # level scalar at t=0: e_US^b / e_US^u at switch date τ=0
     λ_D::Float64 = 1.0   # D_US^b / D_US^u  at switch date τ=0
     # Per-period decay of the b-state US endowment relative to u-state.
@@ -68,7 +68,7 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
 end
 
 function validate_params(p::ModelParams)
-    @assert p.κ < p.β / p.ω̄  "Lemma 1: need κ=$(p.κ) < β/ω̄=$(p.β/p.ω̄)"
+    @assert p.κ < p.β / p.ω̄  "Sufficient for Ψ_t>0 (V7 Ass. 2): need κ=$(p.κ) < β/ω̄=$(p.β/p.ω̄)"
     @assert 0.5 ≤ p.ω̄ ≤ 1.0  "ω̄ must be in [1/2, 1]"
     @assert 0.0 < p.ω̄_star < 0.5  "ω̄* must be in (0, 1/2)"
     @assert 0.0 < p.γ  "Need γ > 0 (CRRA curvature); γ < 1 follows Hirano (2025) for easier bubble existence"
@@ -79,8 +79,8 @@ function validate_params(p::ModelParams)
     @assert p.g_e_u > 1.0
     @assert p.g_e_b > 1.0
     @assert p.g_D_u > 1.0
-    @assert p.λ_e > 0.0        "Assumption 5 (V4): λ_e = e_US^b/e_US^u must be positive"
-    @assert p.λ_D > 0.0        "Assumption 5 (V4): λ_D = D_US^b/D_US^u must be positive"
+    @assert p.λ_e > 0.0        "Assumption 7 (V7): λ_e = e_US^b/e_US^u must be positive"
+    @assert p.λ_D > 0.0        "Assumption 7 (V7): λ_D = D_US^b/D_US^u must be positive"
     @assert 0.0 < p.ρ  ≤ 1.0  "ρ must be in (0, 1]; ρ=1 recovers constant-λ_e spec"
     @assert 0.0 < p.ρ_D ≤ 1.0 "ρ_D must be in (0, 1]; ρ_D=1 keeps dividends on u-state growth path"
     nothing
@@ -187,7 +187,7 @@ end
 expect_Mf(M_u, M_b, f_u, f_b, π_p) = π_p * M_u * f_u + (1 - π_p) * M_b * f_b
 
 # ─────────────────────────────────────────────────────────────────
-# 6. Aggregate market-cap identity  (tex eq Qsum_identity)
+# 6. Aggregate market-cap identity  (V7 eq. 467-474)
 # ─────────────────────────────────────────────────────────────────
 
 Qsum(e_US, e_W, β, χ) = β * e_US + (β + χ) / (1 + χ) * e_W
@@ -305,19 +305,19 @@ function solve_balanced_state(p::ModelParams, d, d_W, ε; x0=nothing)
         end
 
         # Deterministic kernel: M = 1/R_A
-        # FOC 1: US ω  (tex line 217)
+        # FOC 1: US ω  (V7 eq. 210-215)
         F[1] = β * (1 - θ_b) * (1 / R_A) * (R_US - R_W) - κ * (ω_b - ω̄)
 
-        # FOC 2: US θ  (tex line 222)
+        # FOC 2: US θ  (V7 eq. 217-222)
         F[2] = β * (1 / R_A) * (Rf_b - R_p) - η * upsilon_prime(DEFAULT_COST, θ_b)
 
-        # FOC 3: RoW ω*  (tex line 341)
+        # FOC 3: RoW ω*  (V7 eq. 393-398; θ*_W=0 by bond clearing B*_W=0, V7 eq. 439-449)
         F[3] = β * (1 - θ_Us_b) * (1 / R_A_s) * (R_US - R_W) - κ * (ω_s_b - ω̄s)
 
-        # FOC 4: RoW US-bond  (tex line 354)
+        # FOC 4: RoW US-bond  (V7 eq. 406-411)
         F[4] = β * (1 / R_A_s) * (Rf_b - R_p_s) + χ / θ_Us_b
 
-        # FOC 5: Bond clearing  (tex line 391)
+        # FOC 5: Bond clearing  (V7 eq. 444-449: b_t + b*_US = 0)
         F[5] = θ_b * hat_A + θ_Us_b * hat_A_s
     end
 
@@ -376,7 +376,7 @@ function solve_balanced_state(p::ModelParams, d, d_W, ε; x0=nothing)
     R_p_s = ω_s_b * R_US + (1 - ω_s_b) * R_W
     R_A_s = (1 - θ_Us_b) * R_p_s + θ_Us_b * Rf_b
 
-    # RoW domestic bond FOC (deterministic): R_f_W = R_p* (tex line 348)
+    # RoW domestic bond FOC (deterministic): R_f_W = R_p* (V7 eq. 400-404, B*_W=0)
     R_f_W_b = R_p_s
 
     BalancedStateResult(ω_b, ω_s_b, θ_b, θ_Us_b, Rf_b, R_f_W_b,
