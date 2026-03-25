@@ -141,32 +141,16 @@ C_{o,t+1}
 \end{align*}
 Here $\bar\omega\in[1/2,1]$ is the targeted portfolio weight on US equity (home bias). The term
 $\eta\,\Upsilon(\theta_t)$ captures a convex cost in the present-value bond share $\theta_t$,
-disciplines large bond positions, and preserves the saving separation. We assume that issuance-cost function $\Upsilon$
- satisfies standard regularity and Inada-type conditions.
+disciplines large bond positions, and preserves the saving separation. We assume that issuance-cost function $\Upsilon$ satisfies standard regularity and Inada-type conditions.
 
 \begin{ass}[Issuance costs]\label{ass_issuance_costs}
-The issuance-cost function $\Upsilon:\,(-\infty,1)\to\mathbb R$ is $C^1$, strictly convex, and satisfies
+The issuance-cost function $\Upsilon:\,(-\infty,1)\to\mathbb R$ is $C^1$, and satisfies
 \[
-\lim_{\theta\uparrow 1}\Upsilon'(\theta)=+\infty,
+\lim_{\theta\downarrow -\infty}\Upsilon'(\theta)=-\infty,
 \qquad
-\lim_{\theta\downarrow -\infty}\Upsilon'(\theta)=-\infty.
+\Upsilon(\theta)\to+\infty \text{ as } \theta\downarrow -\infty.
 \]
 \end{ass}
-
-
-\begin{proof}
-By \eqref{US_theta_FOC_bond_cost},
-\[
-\eta\,\Upsilon'(\theta_t)
-=\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right].
-\]
-Hence $\Upsilon'(\theta_t)\in[-\overline\xi/\eta,\overline\xi/\eta]$. Since $\Upsilon$ is strictly convex,
-$\Upsilon'$ is strictly increasing and continuous on $(-\infty,1)$, and by \Cref{ass_issuance_costs} it is onto $\mathbb R$.
-Therefore there exist unique $\underline\theta,\overline\theta\in(-\infty,1)$ such that
-$\Upsilon'(\underline\theta)=-\overline\xi/\eta$ and $\Upsilon'(\overline\theta)=\overline\xi/\eta$.
-Monotonicity of $\Upsilon'$ yields $\theta_t\in[\underline\theta,\overline\theta]$ for all $t\le\tau$, implying
-$\theta_t\ge \underline\theta$ and $1-\theta_t\ge 1-\overline\theta>0$.
-\end{proof}
 
 \paragraph{Reformulation in terms of total saving, bond share, and equity share.}
 Define the present value of the US bond position and total saving:
@@ -204,7 +188,7 @@ Old-age consumption satisfies $C_{o,t+1}=A_tR_{A,t+1}$, so the problem can be wr
 -\frac{\kappa}{2}(\omega_t-\bar\omega)^2
 -\eta\,\Upsilon(\theta_t).
 \]
-Under log utility in youth and the risk-sensitive aggregator in old age, the saving choice separates and yields
+Under log utility in youth and the risk-sensitive aggregator in old age, the optimal saving choice yields
 \begin{align}\label{US_saving_rule_bond_cost}
 \frac{1-\beta}{e_{US,t}-A_t}=\frac{\beta}{A_t}
 \quad\Rightarrow\quad
@@ -236,28 +220,6 @@ E_t\!\left[\mathcal K_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]
 =
 \eta\,\Upsilon'(\theta_t).
 \end{align}
-The following lemma shows how \Cref{ass_issuance_costs} guarantees that $\theta_t$ is bounded.
-\begin{lem}[Endogenous bounds on the bond share]\label{lem2}
-Suppose \Cref{ass_issuance_costs} holds and the bond-share FOC \eqref{US_theta_FOC_bond_cost} holds with $\eta>0$ and finite LHS,
-i.e.,
-\[
-\left|\,\beta\,E_t\!\left[\mathcal M_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]\right|\le \overline\xi.
-\]
-Then there exist constants $\underline\theta<\overline\theta<1$ such that
-\[
-\theta_t\in[\underline\theta,\overline\theta]
-\qquad\text{for all }t\le\tau.
-\]
-In particular, $\theta_t$ is bounded below ($\theta_t$ cannot diverge to $-\infty$) and the equity share is
-bounded away from zero:
-\[
-\theta_t \ge \underline\theta>-\infty,
-\qquad
-1-\theta_t \ge 1-\overline\theta>0,
-\qquad t\le\tau.
-\]
-\end{lem}
-
 
 For later use, define
 \[
@@ -447,13 +409,16 @@ The FOC for the US bond share $\theta_{US,t}^*$ is
 =
 0.
 \end{align}
-And the FOC for the US bond amount $B_{US,t+1}^*$ delivers the exorbitant privilege wedge:
-\[
-q_{US,t}
-=
-E_t\!\left[M^*_{t,t+1}\right]
-+\frac{\chi}{1+\chi}\,\frac{e_{W,t}}{B^*_{US,t+1}}.
-\]
+And the FOCs for the bond amounts $(B_{W,t+1}^*,B_{US,t+1}^*)$ imply the bond-pricing equations for RoW agents:
+\begin{align}
+q_{W,t}&=E_t\!\left[M^*_{t,t+1}\right], \label{RoW_BW_FOC}\\
+q_{US,t}&=E_t\!\left[M^*_{t,t+1}\right]
++\frac{\chi}{1+\chi}\,\frac{e_{W,t}}{B^*_{US,t+1}}. \label{RoW_BUS_FOC}
+\end{align}
+Since the convenience-yield term $\chi\log(q_{US,t}B_{US,t+1}^*)$ requires $B_{US,t+1}^*>0$, the wedge term in
+\eqref{RoW_BUS_FOC} is strictly positive; combing with \eqref{RoW_BW_FOC} immediately gives  $q_{US,t}>q_{W,t}$, generating the exorbitant privilege of US bonds.
+
+
 
 %--------------------------------------------------------
 % Market clearing (two bonds with zero net supply)
@@ -515,8 +480,6 @@ C_{y,t}+C^*_{y,t}+C_{o,t}+C^*_{o,t}
 e_{US,t}+e_{W,t}+D_{US,t}+D_{W,t}.
 \end{align}
 
-
-
 \section{Existence of bubbles}\label{sec:existence_of_bubbles}
 
 In this section we reserve $\mathcal K_{t,t+1}$ for the undistorted normalized portfolio kernel,
@@ -545,27 +508,25 @@ where
 \lambda_t=\frac{\eta\theta_t}{\beta}\,\Upsilon'(\theta_t).
 \]
 
-Using the saving rule \eqref{US_saving_rule_bond_cost} and the fact that $C_{o,t+1}=A_tR_{A,t+1}$,
-the US \emph{undistorted} SDF simplifies to
+By \eqref{US_saving_rule_bond_cost} and the identity $C_{o,t+1}=A_tR_{A,t+1}$, the undistorted
+intertemporal marginal rate of substitution equals
 \[
-M_{t,t+1}
-=
 \frac{\beta}{1-\beta}\,
 \frac{C_{y,t}C_{o,t+1}^{-\gamma}}{E_t\!\left[C_{o,t+1}^{1-\gamma}\right]}
 =
-\frac{R_{A,t+1}^{-\gamma}}{E_t\!\left[R_{A,t+1}^{1-\gamma}\right]}
-=
 \mathcal K_{t,t+1}.
 \]
-Hence the only difference between the stock-pricing kernel $\mathcal M_{t,t+1}$ and the undistorted kernel
-$\mathcal K_{t,t+1}$ is the time-$t$ portfolio wedge $\Psi_t^{-1}$.
+Hence the only difference between the stock-pricing kernel $\mathcal M_{t,t+1}$ and the
+undistorted kernel $\mathcal K_{t,t+1}$ is the time-$t$ portfolio wedge $\Psi_t^{-1}$.
 
-We henceforth restrict attention to equilibria such that
-\begin{equation}\label{kernel_regular}
+We impose the following regularity condition.
+
+\begin{ass}[Regular effective kernel]\label{ass_regular_kernel}
+\[
 \Psi_t>0
-\qquad\text{a.s. for all }t,
-\end{equation}
-so that the effective pricing kernel $\mathcal M_{t,t+1}$ is well defined and strictly positive.
+\qquad\text{a.s. for all }t.
+\]
+\end{ass}
 
 Also note that because the RoW utility includes $\chi\log(q_{US,t}B^*_{US,t+1})$, feasibility requires
 $B^*_{US,t+1}>0$. With zero net supply of US bonds,
@@ -702,32 +663,42 @@ Suppose Assumptions \ref{ass_regime_switch}, \ref{ass_balanced_growth}, and \ref
 \begin{align}
 \sum_{t=1}^\infty \frac{D_t^u}{Q_t^u}&<\infty, \label{thm_cond_1a}\\
 \sum_{t=1}^\infty
-\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}\;
-\frac{Q_t^b+D_t^b}{C_t^b}\;
-\frac{C_t^u}{Q_t^u}&<\infty. \label{thm_cond_1b}
+{\frac{Q_t^b+D_t^b}{(C_t^b)^\gamma}}\big/\left({\frac{Q_t^u}{(C_t^u)^\gamma}}\right)&<\infty. \label{thm_cond_1b}
 \end{align}
 \end{subequations}
 \end{thm}
-
 \begin{proof}
 Let
 \[
-B_t \equiv \mathbb E_0\!\left[\mathcal M_{0,t}\,Q_t^u\,\mathbf 1\{\tau>t\}\right].
+\mathcal B_t \equiv \mathbb E_0\!\left[\mathcal M_{0,t}\,Q_t^u\,\mathbf 1\{\tau>t\}\right].
 \]
 Because $\mathbb P(\tau>t)=\pi^t$, this is equivalent to
 \[
-B_t=\pi^t\,\mathbb E_0\!\left[\mathcal M_{0,t}\,Q_t^u\mid \tau>t\right].
+\mathcal B_t
+=
+\pi^t\,\mathbb E_0\!\left[\mathcal M_{0,t}Q_t^u\mid \tau>t\right].
 \]
-By \Cref{prop2}, there is a bubble at $0$ if and only if $\lim_{t\to\infty}B_t>0$ (and no bubble if and only if $\lim_{t\to\infty}B_t=0$).
+By \Cref{prop2}, there is a bubble at $t=0$ if and only if
+\[
+\lim_{t\to\infty}\mathcal B_t>0,
+\]
+and there is no bubble if and only if $\lim_{t\to\infty}\mathcal B_t=0$.
 
-On histories with $z_{t-1}=u$, the US stock Euler equation is
+On histories with $z_{t-1}=u$, the one-step US stock pricing equation is
 \[
 Q_{t-1}^u
-=\mathbb E_{t-1}\!\left[\mathcal M_{t-1,t}\,(Q_t^{z}+D_t^{z})\right],
-\qquad z\in\{u,b\}.
+=
+\mathbb E_{t-1}\!\left[
+\mathcal M_{t-1,t}
+\Bigl(
+(Q_t^u+D_t^u)\mathbf 1_{\{z_t=u\}}
++
+(Q_t^b+D_t^b)\mathbf 1_{\{z_t=b\}}
+\Bigr)
+\right].
 \]
 Multiply both sides by $\mathcal M_{0,t-1}\mathbf 1\{\tau>t-1\}$ and take $\mathbb E_0$. Using
-$\mathcal M_{0,t}=\mathcal M_{0,t-1}\mathcal M_{t-1,t}$, we obtain the exact identity
+$\mathcal M_{0,t}=\mathcal M_{0,t-1}\mathcal M_{t-1,t}$, we obtain
 \begin{equation}\label{recursion_bubble_1}
 \mathbb E_0\!\left[\mathcal M_{0,t-1}Q_{t-1}^u\mathbf 1\{\tau>t-1\}\right]
 =
@@ -735,325 +706,850 @@ $\mathcal M_{0,t}=\mathcal M_{0,t-1}\mathcal M_{t-1,t}$, we obtain the exact ide
 +
 \mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right].
 \end{equation}
-Split the first term on the right-hand side to get
+Since
 \[
 \mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^u+D_t^u)\mathbf 1\{\tau>t\}\right]
 =
-B_t+\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right].
+\mathcal B_t+\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right],
 \]
-Thus \eqref{recursion_bubble_1} becomes
+\eqref{recursion_bubble_1} becomes
 \begin{equation}\label{bubble_recursion_2}
-B_{t-1}
+\mathcal B_{t-1}
 =
-B_t
+\mathcal B_t
 +\underbrace{\mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]}_{\text{dividend leakage term}}
 +\underbrace{\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]}_{
 	\text{switch-at-t leakage term}},
 \end{equation}
 where the last two terms can be interpreted as leakage terms that prevent the bubble from growing too fast. 
 In other words, \textit{leakage} is defined as the amount of present value that drains out of the 
-continuation bubble mass when we move one period forward. It’s exactly the gap $B_{t-1}-B_t$.
+continuation bubble mass when we move one period forward. It’s exactly the gap $\mathcal  B_{t-1}-\mathcal B_t$.
 
 Define the leakage ratio
 \[
 a_t\equiv
 \frac{
 \mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]
-+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
++
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
 }{
-\mathbb E_0\!\left[\mathcal M_{0,t}Q_t^u\mathbf 1\{\tau>t\}\right]
-}
-=\frac{\text{two leakage terms}}{B_t}\ge 0.
+\mathcal B_t
+}.
 \]
-Then \eqref{bubble_recursion_2} implies $B_{t-1}=(1+a_t)B_t$, so iterating yields
+Then \eqref{bubble_recursion_2} implies
 \[
-B_t=B_0\prod_{s=1}^t\frac{1}{1+a_s},
-\qquad B_0=Q_0^u>0.
+\mathcal B_{t-1}=(1+a_t)\mathcal B_t,
+\]
+so iterating yields
+\[
+\mathcal B_t=\mathcal B_0\prod_{s=1}^t\frac{1}{1+a_s},
+\qquad
+\mathcal B_0=Q_0^u>0.
 \]
 Since $a_s\ge 0$,
 \[
-B_0\left(1+\sum_{s=1}^t a_s\right)^{-1}
-\ge B_0\prod_{s=1}^t\frac{1}{1+a_s}
-\ge B_0\exp\!\left(-\sum_{s=1}^t a_s\right).
+\mathcal B_0\left(1+\sum_{s=1}^t a_s\right)^{-1}
+\ge
+\mathcal B_t
+\ge
+\mathcal B_0\exp\!\left(-\sum_{s=1}^t a_s\right).
 \]
-Hence,
+Hence
 \[
-\lim_{t\to\infty}B_t>0
+\lim_{t\to\infty}\mathcal B_t>0
 \quad\Longleftrightarrow\quad
 \sum_{t=1}^\infty a_t<\infty.
 \]
 
-It remains to express $a_t$ in terms of observables along the $u$-history and at the switching date.
-On $\{\tau>t\}$ we have $z_1=\cdots=z_t=u$, hence
+It remains to express $a_t$ in terms of branch variables. On $\{\tau>t\}$ we have
+$z_1=\cdots=z_t=u$, so
 \[
+\frac{
 \mathbb E_0\!\left[\mathcal M_{0,t}D_t^u\mathbf 1\{\tau>t\}\right]
-=\pi^t\,\mathcal M_{0,t}^u\,D_t^u,
-\qquad
-B_t=\pi^t\,\mathcal M_{0,t}^u\,Q_t^u,
-\]
-so
-\[
-\frac{\mathbb E_0[\mathcal M_{0,t}D_t^u\,\mathbf 1\{\tau>t\}]}{B_t}
-=\frac{D_t^u}{Q_t^u}.
+}{
+\mathcal B_t
+}
+=
+\frac{D_t^u}{Q_t^u}.
 \]
 
-On $\{\tau=t\}$, we have $z_1=\cdots=z_{t-1}=u$ and $z_t=b$. Hence
+On $\{\tau=t\}$ we have $z_1=\cdots=z_{t-1}=u$ and $z_t=b$, hence
 \[
 \mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
-=\pi^{t-1}(1-\pi)\,\mathcal M_{0,t-1}^u\,\mathcal M_{t-1,t}^b\,(Q_t^b+D_t^b).
-\]
-Dividing by $B_t=\pi^{t}\mathcal M_{0,t-1}^u\mathcal M_{t-1,t}^u Q_t^u$ gives
-\[
-\frac{\mathbb E_0[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}]}{B_t}
 =
-\frac{1-\pi}{\pi}\;
-\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}\;
-\frac{Q_t^b+D_t^b}{Q_t^u}.
+\pi^{t-1}(1-\pi)\,
+\mathcal M_{0,t-1}^u\,
+\mathcal M_{t-1,t}^b\,
+(Q_t^b+D_t^b),
 \]
+while
+\[
+\mathcal B_t
+=
+\pi^t\,
+\mathcal M_{0,t-1}^u\,
+\mathcal M_{t-1,t}^u\,
+Q_t^u.
+\]
+Therefore,
+\[
+\frac{
+\mathbb E_0\!\left[\mathcal M_{0,t}(Q_t^b+D_t^b)\mathbf 1\{\tau=t\}\right]
+}{
+\mathcal B_t
+}
+=
+\frac{1-\pi}{\pi}\,
+\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}\,
+\frac{Q_t^b+D_t^b}{Q_t^u},
+\]
+which is the ratio of the discounted b-state cum-dividend stock price to the discounted u-state ex-dividend stock price.
 
-Finally, under \Cref{ass_switch_dependence}, the portfolio choices $(\omega_{t-1},\theta_{t-1})$ are $\mathcal F_{t-1}$-measurable and do not depend on $z_t$.
-Thus the full time-$(t-1)$ denominator
+Finally, under \Cref{ass_switch_dependence}, the time-$(t-1)$ portfolio choices
+$(\omega_{t-1},\theta_{t-1})$ are $\mathcal F_{t-1}$-measurable and do not depend on $z_t$.
+Hence the time-$(t-1)$ wedge
 \[
 \Psi_{t-1}=1-\lambda_{t-1}+\phi_{t-1}(1-\omega_{t-1})
 \]
-is $\mathcal F_{t-1}$-measurable and common across $z_t\in\{u,b\}$, so it cancels in the ratio:
+is common across the two realizations $z_t\in\{u,b\}$, so it cancels in the ratio:
 \[
 \frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}
 =
+\frac{\mathcal K_{t-1,t}^b}{\mathcal K_{t-1,t}^u}.
+\]
+Moreover, the denominator
+$E_{t-1}[R_{A,t}^{1-\gamma}]$ in $\mathcal K_{t-1,t}$ is also common across the two realizations,
+so
+\[
 \frac{\mathcal K_{t-1,t}^b}{\mathcal K_{t-1,t}^u}
 =
-\frac{(C_t^b)^{-\gamma}}{(C_t^u)^{-\gamma}}
+\left(\frac{R_{A,t}^b}{R_{A,t}^u}\right)^{-\gamma}
 =
-\left(\frac{C_t^u}{C_t^b}\right)^{\gamma}.
+\left(\frac{C_t^b}{C_t^u}\right)^{-\gamma}
 \]
 Therefore,
 \[
 a_t
 =
 \frac{D_t^u}{Q_t^u}
-+\frac{1-\pi}{\pi}\left(\frac{C_t^u}{C_t^b}\right)^{\gamma}\frac{Q_t^b+D_t^b}{Q_t^u}
++\frac{1-\pi}{\pi}
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+\frac{Q_t^b+D_t^b}{Q_t^u}
 =
 \frac{D_t^u}{Q_t^u}
 +\frac{1-\pi}{\pi}
-\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}
-\frac{Q_t^b+D_t^b}{C_t^b}\frac{C_t^u}{Q_t^u}.
+\frac{\frac{Q_t^b+D_t^b}{(C_t^b)^\gamma}}{\frac{Q_t^u}{(C_t^u)^\gamma}}.
 \]
 Hence $\sum_{t=1}^\infty a_t<\infty$ is equivalent to \eqref{thm_cond1}.
 \end{proof}
 
 Intuitively, the first summability condition \eqref{thm_cond_1a} requires that dividends along the $u$-history 
-do not grow too fast relative to stock prices, while the second summability condition \eqref{thm_cond_1b} 
-requires that the discounted value of dividends and stock prices at the switching date does not grow too 
-fast relative to old-age consumption along the $u$-history. Therefore, the bubble candidate survives only if,
+do not grow too fast relative to stock prices, while the second summability condition \eqref{thm_cond_1b} requires that the stock prices discounted by the consumption-based SDF along the $u$-history grow much faster than the cum-dividend stock prices would have in b-state. Therefore, the bubble candidate survives if and only if,
  over time, dividends and switching events do not drain too much value relative to what remains; that is, 
- only if the cumulative leakage $\sum a_t$ is finite.
+ if and only if the cumulative leakage $\sum a_t$ is finite.
 
 \subsection{Primitive sufficient and necessary conditions}
 
 We now derive primitive conditions for the existence of bubbles by translating the two summability conditions
-in \Cref{thm_1} into exogenous variables along the $u$-history and at the switching date. We first impose primitive
-boundedness restrictions on relative country size, switch-date US fundamentals, and dividends.
+in \Cref{thm_1} into exogenous variables along the $u$-history and at the switching date. We first impose
+primitive boundedness restrictions on relative country size, switch-date US fundamentals, portfolio weights,
+and continuation-branch growth and dividends.
 
 \begin{ass}[Relative country size and dividend bounds]\label{ass_relative_dividend_bounds}
 There exists $\overline\lambda_{e_W}<\infty$ and $\overline\lambda_{D_W}<\infty$ such that
 \[
-\frac{e_{W,t}}{e_{US,t}^u}\le \overline\lambda_{e_W},
-\qquad 
-\frac{D_{W,t}}{e_{US,t}^u} \le \overline\lambda_{D_W},
+\frac{e_{W,t}}{e_{US,t}^z}\le \overline\lambda_{e_W},
+\qquad
+\frac{D_{W,t}}{e_{US,t}^z}\le \overline\lambda_{D_W},
 \qquad\text{for all }t\le \tau.
 \]
 \end{ass}
 
 \begin{ass}[Switch-date US fundamentals]\label{ass_switch_us_fundamentals}
-There exist constants $0<\underline\lambda_e\le \overline\lambda_e<\infty$ and
-$0\le \overline\lambda_{D_{US}}<\infty$ such that, whenever $z_{t-1}=u$ and $z_t=b$,
+There exist constants $0< \overline\lambda_e<\infty$ and
+$0\le \overline\lambda_{D^b_{US}}<\infty$ such that, whenever $z_{t-1}=u$ and $z_t=b$,
 \[
-\underline\lambda_e
-\le
 \frac{e_{US,t}^b}{e_{US,t}^u}
 \le
 \overline\lambda_e,
 \qquad
 \frac{D_{US,t}^b}{e_{US,t}^u}
 \le
-\overline\lambda_{D_{US}}.
+\overline\lambda_{D^b_{US}}.
 \]
 \end{ass}
 
-
-Finally, as shown in \eqref{theta_nonpos}, the convenience-yield term forces the US to be a net borrower:
-$\theta_t\le 0$ and $1-\theta_t\ge 1$. With these ingredients, we can state a single corollary that 
-gives primitive conditions ensuring that the
-summability conditions in \Cref{thm_1} reduce to \eqref{thm_cond2}.
-
-\begin{coro}\label{coro1}
-Suppose \Crefrange{ass_issuance_costs}{ass_switch_us_fundamentals} hold. If:
-
-(i) equity weights are uniformly interior along both relevant branches, i.e., there exists
-$\underline{\lambda}_\omega>0$ such that
+\begin{ass}[Uniformly interior equity weights]\label{ass_interior_equity_weights}
+There exists $\underline\lambda_\omega\in(0,1/2)$ such that, for each
+$z\in\{u,b\}$ and all $t\le \tau$,
 \[
-\omega_t^u\ge \underline{\lambda}_\omega,
+\underline\lambda_\omega
+\le
+\omega_t^z,\ \omega_t^{*,z}
+\le
+1-\underline\lambda_\omega.
+\]
+\end{ass}
+
+\begin{ass}[Continuation-branch US dividends and one-step US growth]\label{ass_u_dividend_growth}
+There exist constants $0<\underline g_u\le \overline g_u<\infty$ and
+$\overline\lambda_{D_{US}}<\infty$ such that
+\[
+\underline g_u
+\le
+\frac{e_{US,t}^u}{e_{US,t-1}^u}
+\le
+\overline g_u,
 \qquad
-\omega_t^b\ge \underline{\lambda}_\omega,
-\qquad\text{for all }t\le\tau;
+\frac{D_{US,t}^z}{e_{US,t}^z}
+\le
+\overline\lambda_{D_{US}},
+\qquad t\ge 1.
+\]
+\end{ass}
+
+Then in the following lemmas, we show that stock prices are bounded and proportional to endowments; thus, the return rates for stocks, bonds, and the mixed portfolio are also finite, which finally leads to consumption that is proportional to endowments.
+
+\begin{lem}[Equilibrium bounds on stock market values]\label{lem_stock_value_bounds}
+Suppose
+\Cref{ass_relative_dividend_bounds,ass_interior_equity_weights}
+hold. Then there exist constants $0<\underline q\le \overline q<\infty$ such that, for each
+$i\in\{US,W\}$, each $z\in\{u,b\}$, and all $t\le\tau$,
+\[
+\underline q\,e_{US,t}^z
+\le
+Q_{i,t}^z
+\le
+\overline q\,e_{US,t}^z,
+\]
+where one may take
+\[
+\underline q\equiv \underline\lambda_\omega\,\beta,
+\qquad
+\overline q\equiv
+\beta
++\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}.
+\]
+\end{lem}
+
+\begin{proof}
+For $z=u$, \eqref{US_saving_rule_bond_cost}, \eqref{stock_weight_clear_mod},  \eqref{theta_nonpos}, and
+\Cref{ass_interior_equity_weights} imply
+\[
+Q_{US,t}^u
+=
+\omega_t^u S_t^u+\omega_t^{*,u}S_t^{*,u}
+\ge
+\omega_t^u S_t^u
+\ge
+\underline\lambda_\omega(1-\theta_t^u)A_t^u
+\ge
+\underline\lambda_\omega\,\beta\,e_{US,t}^u,
+\]
+and similarly
+\[
+Q_{W,t}^u
+=
+(1-\omega_t^u)S_t^u+(1-\omega_t^{*,u})S_t^{*,u}
+\ge
+(1-\omega_t^u)S_t^u
+\ge
+\underline\lambda_\omega\,\beta\,e_{US,t}^u.
 \]
 
-(ii) the bond-share FOC \eqref{US_theta_FOC_bond_cost} holds with $\eta>0$ and finite LHS, i.e.,
+For $z=b$, 
 \[
-\left|\,\beta\,E_t\!\left[\mathcal K_{t,t+1}\bigl(R_{f,t}-R_{p,t+1}\bigr)\right]\right|
-\le \overline\xi;
+Q_{US,t}^b
+\ge
+\omega_t^b S_t^b
+\ge
+\underline\lambda_\omega(1-\theta_t^b)A_t^b
+\ge
+\underline\lambda_\omega\,\beta\,e_{US,t}^b,
+\]
+and likewise
+\[
+Q_{W,t}^b
+\ge
+(1-\omega_t^b)S_t^b
+\ge
+\underline\lambda_\omega\,\beta \,e_{US,t}^b.
+\]
+Hence
+\[
+Q_{i,t}^z\ge \underline q\,e_{US,t}^z,
+\qquad
+\underline q\equiv \underline\lambda_\omega\,\beta.
 \]
 
-(iii) $R_{f,t}$ is uniformly bounded above on $t\le\tau$, i.e.,
+For the upper bound, \eqref{Qsum_identity_mod_zerosupply},
+\Cref{ass_relative_dividend_bounds} imply
 \[
-R_{f,t}\le \overline R_f<\infty;
+Q_{i,t}^z
+\le
+Q_{US,t}^z+Q_{W,t}^z
+=
+\beta e_{US,t}^z+\frac{\beta+\chi}{1+\chi}e_{W,t}
+\le
+\left(
+\beta
++\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}
+\right)e_{US,t}^z.
+\]
+Thus
+\[
+Q_{i,t}^z\le \overline q\,e_{US,t}^z,
+\qquad
+\overline q\equiv
+\beta
++\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}.
+\]
+\end{proof}
+
+\begin{lem}[Equilibrium bounds on risky returns]\label{lem_risky_return_bounds}
+Suppose
+\Cref{ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth}
+hold, and suppose dividends are nonnegative:
+\[
+D_{US,t}\ge 0,
+\qquad
+D_{W,t}\ge 0,
+\qquad \forall t.
+\]
+Then there exist constants $0< \overline R<\infty$ such that, for each
+$z\in\{u,b\}$ and all $t\le\tau$,
+\[
+0
+<
+R_{US,t}^z,\ R_{W,t}^z,\ R_{p,t}^z,\ R_{p,t}^{*,z}
+\le
+\overline R^z.
+\]
+\end{lem}
+
+\begin{proof}
+By \Cref{lem_stock_value_bounds},
+\[
+\underline q\,e_{US,t}^z
+\le
+Q_{i,t}^z
+\le
+\overline q\,e_{US,t}^z,
+\qquad
+i\in\{US,W\},\ z\in\{u,b\}.
+\]
+Let
+\[
+\overline d_{US}\equiv \max\{\overline\lambda_{D_{US}},\overline\lambda_{D^b_{US}}\},
+\qquad
+\overline d_W\equiv \overline\lambda_{D_W},
+\qquad
+\overline d\equiv \max\{\overline d_{US},\overline d_W\}.
+\]
+Then
+\[
+D_{US,t}^z\le \overline d_{US}\,e_{US,t}^u,
+\qquad
+D_{W,t}^z\le \overline d_W\,e_{US,t}^u,
+\qquad
+z\in\{u,b\},\ \forall t\le\tau.
 \]
 
-(iv) old-age consumption is uniformly comparable to $e_{US,t}^u$, i.e., there exist constants
-$0<\underline{\lambda}_C\le \overline{\lambda}_C<\infty$ such that
+For $i\in\{US,W\}$ and $z\in\{u,b\}$, the one-period stock return from date $t-1$ on the $u$-history to
+date $t$ on branch $z$ is
 \[
-\underline{\lambda}_C\,e_{US,t}^u
+R_{i,t}^z=\frac{Q_{i,t}^z+D_{i,t}^z}{Q_{i,t-1}^u}.
+\]
+Since dividends are nonnegative,
+\begin{align*}
+\begin{split}
+R_{i,t}^u
+& \ge
+\frac{Q_{i,t}^u}{Q_{i,t-1}^u}
+\ge
+\frac{\underline q\,e_{US,t}^u}{\overline q\,e_{US,t-1}^u}
+\ge
+\frac{\underline q\,\underline g_u}{\overline q}
+\equiv
+\underline R^u
+>0.
+\\
+R_{i,t}^b
+& \ge
+\frac{Q_{i,t}^b}{Q_{i,t-1}^u}
+\ge
+\frac{\underline q\,e_{US,t}^b}{\overline q\,e_{US,t-1}^u}
+\equiv
+\underline R^b_t
+>0.
+\end{split}
+\end{align*}
+Similarly,
+\begin{align*}
+\begin{split}
+R_{i,t}^u
+\le
+\frac{Q_{i,t}^u+D_{i,t}^u}{Q_{i,t-1}^u}
+\le
+\frac{(\overline q+\overline d)e_{US,t}^u}{\underline q\,e_{US,t-1}^u}
+\le
+\frac{(\overline q+\overline d)\overline g_u }{\underline q}
+\equiv
+\overline R^u
+<\infty.
+\\
+R_{i,t}^b
+\le
+\frac{Q_{i,t}^b+D_{i,t}^b}{Q_{i,t-1}^u}
+\le
+\frac{(\overline q+\overline d)e_{US,t}^b}{\underline q\,e_{US,t-1}^u}
+\le
+\frac{(\overline q+\overline d)\overline g_u \overline \lambda_e}{\underline q}
+\equiv
+\overline R^b
+<\infty.
+\end{split}
+\end{align*}
+
+Now
+\[
+R_{p,t}^z
+=
+\omega_{t-1}^u R_{US,t}^z+(1-\omega_{t-1}^u)R_{W,t}^z,
+\]
+and
+\[
+R_{p,t}^{*,z}
+=
+\omega_{t-1}^{*,u} R_{US,t}^z+(1-\omega_{t-1}^{*,u})R_{W,t}^z.
+\]
+Because \Cref{ass_interior_equity_weights} implies
+\[
+0\le \omega_{t-1}^u,\ \omega_{t-1}^{*,u}\le 1,
+\]
+both $R_{p,t}^z$ and $R_{p,t}^{*,z}$ are convex combinations of
+$R_{US,t}^z$ and $R_{W,t}^z$. Therefore
+\[
+0
+<
+R_{p,t}^z,\ R_{p,t}^{*,z}
+\le
+\overline R^z.
+\]
+\end{proof}
+
+\begin{lem}[Equilibrium upper bound on the US risk-free rate]\label{lem_rf_upper_bound}
+Under the assumptions of \Cref{lem_risky_return_bounds}, there exists
+$\overline R_f<\infty$ such that
+\[
+R_{f,t}\le \overline R_f
+\qquad\text{for all }t\le\tau.
+\]
+One may take
+\[
+\overline R_f=\overline R,
+\]
+where $\overline R\equiv \max \{\overline R^u, \overline R^b\}$ is given by \Cref{lem_risky_return_bounds}.
+\end{lem}
+
+\begin{proof}
+From \eqref{RoW_thetaW_FOC_mod},
+\[
+\beta E_t\!\left[\mathcal M_{t,t+1}^*\bigl(R_{f,t}^W-R_{p,t+1}^*\bigr)\right]=0,
+\]
+so
+\[
+R_{f,t}^W
+=
+\frac{E_t\!\left[\mathcal M_{t,t+1}^*R_{p,t+1}^*\right]}
+{E_t\!\left[\mathcal M_{t,t+1}^*\right]}.
+\]
+Since $\mathcal M_{t,t+1}^*>0$ and, by \Cref{lem_risky_return_bounds} we can let $\overline R\equiv \max \{\overline R^u, \overline R^b\}$,
+\[
+R_{p,t+1}^*\le \overline R
+\qquad\text{a.s.},
+\]
+it follows that
+\[
+R_{f,t}^W\le \overline R.
+\]
+Recall that $q_{US,t}>q_{W,t}$, hence
+\[
+R_{f,t}=\frac{1}{q_{US,t}}<\frac{1}{q_{W,t}}=R_{f,t}^W\le \overline R.
+\]
+Therefore
+\[
+R_{f,t}\le \overline R_f,
+\qquad
+\overline R_f\equiv \overline R.
+\]
+\end{proof}
+
+
+As shown in \eqref{theta_nonpos}, the convenience-yield term forces the US to be a net borrower:
+\[
+\theta_t<0,
+\qquad
+1-\theta_t>1.
+\]
+Thus, for the US, only the left tail $\theta_t\downarrow-\infty$ is potentially problematic. The next lemma
+shows that the issuance cost prevents this from happening.
+
+\begin{lem}[Endogenous lower bound on the US bond share]\label{lem2}
+Suppose the assumptions of \Cref{lem_risky_return_bounds,lem_rf_upper_bound} hold, and suppose
+\Cref{ass_issuance_costs} holds. Then there exists a constant $\underline\theta>-\infty$ such that
+\[
+\theta_t\ge \underline\theta
+\qquad\text{for all }t\le\tau.
+\]
+\end{lem}
+
+\begin{proof}
+Fix $t$. After saving separation, the US chooses $(\omega_t,\theta_t)$ to maximize
+\[
+J_t(\omega,\theta)
+\equiv
+\frac{\beta}{1-\gamma}\log E_t\!\left[R_{A,t+1}(\omega,\theta)^{1-\gamma}\right]
+-\frac{\kappa}{2}(\omega-\bar\omega)^2
+-\eta\,\Upsilon(\theta),
+\]
+where
+\[
+R_{A,t+1}(\omega,\theta)
+=
+(1-\theta)R_{p,t+1}(\omega)+\theta R_{f,t},
+\qquad
+R_{p,t+1}(\omega)=\omega R_{US,t+1}+(1-\omega)R_{W,t+1}.
+\]
+
+Consider the feasible reference choice $(\omega,\theta)=(\bar\omega,0)$. By \Cref{lem_risky_return_bounds},
+\[
+R_{p,t+1}(\bar\omega) \ge \underline R >0,
+\]
+so this choice yields a finite lower bound
+\[
+J_t(\bar\omega,0)\ge \underline J>-\infty,
+\]
+where $\underline J$ is independent of $t$.
+
+Now evaluate the objective at the equilibrium choice $(\omega_t,\theta_t)$. Since $\theta_t<0$ by
+\eqref{theta_nonpos}, and since \Cref{lem_risky_return_bounds,lem_rf_upper_bound} give
+\[
+R_{p,t+1}(\omega_t)\le \overline R,
+\qquad
+R_{f,t}\le \overline R_f,
+\]
+we have
+\[
+R_{A,t+1}(\omega_t,\theta_t)
+=
+(1-\theta_t)R_{p,t+1}(\omega_t)+\theta_t R_{f,t}
+\le
+(1-\theta_t)\overline R
+\le
+\overline R(1+|\theta_t|).
+\]
+Hence
+\[
+\frac{\beta}{1-\gamma}\log E_t\!\left[R_{A,t+1}(\omega_t,\theta_t)^{1-\gamma}\right]
+\le
+\beta\log\!\bigl(\overline R(1+|\theta_t|)\bigr),
+\]
+and therefore
+\[
+J_t(\omega_t,\theta_t)
+\le
+\beta\log\!\bigl(\overline R(1+|\theta_t|)\bigr)-\eta\,\Upsilon(\theta_t).
+\]
+Since $(\omega_t,\theta_t)$ is optimal,
+\[
+J_t(\omega_t,\theta_t)\ge J_t(\bar\omega,0)\ge \underline J.
+\]
+Thus
+\[
+\beta\log\!\bigl(\overline R(1+|\theta_t|)\bigr)-\eta\,\Upsilon(\theta_t)\ge \underline J.
+\]
+
+By \Cref{ass_issuance_costs},
+\[
+\lim_{\theta\downarrow -\infty}\Upsilon'(\theta)=-\infty,
+\]
+so, in particular,
+\[
+\Upsilon(\theta)\to+\infty
+\qquad\text{as }\theta\downarrow -\infty,
+\]
+and $\Upsilon(\theta)$ dominates $\log(1+|\theta|)$ in the left tail. Hence the last inequality cannot hold if
+$\theta_t\downarrow -\infty$. Therefore there exists $\underline\theta>-\infty$ such that
+\[
+\theta_t\ge \underline\theta
+\qquad\text{for all }t\le\tau.
+\]
+\end{proof}
+
+
+\begin{ass}[Positive lower bound on US total-saving returns]\label{ass_positive_total_saving_return}
+\[
+(1-\underline\theta)\underline R_t+\underline\theta\,\overline R_f>0,
+\]
+where $\underline\theta$ is given by \Cref{lem2}, and
+$\underline R_t\equiv \min\{\underline R^u, \underline R^b_t\},\overline R_f$ are given by \Cref{lem_risky_return_bounds,lem_rf_upper_bound}.
+\end{ass}
+
+\begin{lem}[Equilibrium bounds on total-saving returns and old-age consumption]\label{lem_total_return_consumption_bounds}
+Suppose
+\Cref{ass_issuance_costs,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_positive_total_saving_return}
+hold.
+Then there exist constants $0< \overline R^z_A<\infty$ and
+$0<\underline\lambda^z_C\le \overline\lambda^z_C<\infty$ such that, for each $z\in\{u,b\}$ and all $t\le\tau$,
+\[
+0< R_{A,t}^z\le \overline R^z_A<\infty,
+\]
+and
+\[
+\underline\lambda^z_C\,e_{US,t}^z
 \le
 C_t^z
 \le
-\overline{\lambda}_C\,e_{US,t}^u,
-\qquad
-z\in\{u,b\},\ \forall t\le\tau,
+\overline\lambda^z_C\,e_{US,t}^z.
+\]
+\end{lem}
+
+\begin{proof}
+\Cref{lem_risky_return_bounds,lem_rf_upper_bound,lem2} imply that there exist constants
+$0<\underline R^u\le \overline R^u<\infty$, $\overline R^b<\infty$, $\overline R_f<\infty$, and $\underline\theta>-\infty$ together with $\underline R^b_t>0$ such that
+\[
+\underline R^u\le R_{p,t}^u\le \overline R^u,
+\quad
+\underline R^b_t\le R_{p,t}^z\le \overline R^b,
+\quad
+R_{f,t}\le \overline R_f,
+\quad
+	\theta_t\ge \underline{\theta},
+\quad
+z\in\{u,b\},\ \forall t\le\tau.
+\]
+Also, by \eqref{theta_nonpos},
+\[
+	\theta_t<0
+\qquad\text{for all }t\le\tau.
 \]
 
-then the two conditions \eqref{thm_cond1} in \Cref{thm_1} are equivalent to the primitive conditions
+For $z\in\{u,b\}$,
+\[
+R_{A,t}^z=(1-\theta_{t-1}^u)R_{p,t}^z+\theta_{t-1}^u R_{f,t-1}.
+\]
+Using
+\[
+R_{p,t}^u\ge \underline R^u,
+\qquad
+R_{p,t}^b\ge \underline R^b_t,
+\qquad
+R_{f,t-1}\le \overline R_f,
+\qquad
+	\theta_{t-1}^u\in[\underline\theta,0),
+\]
+we obtain
+\begin{align*}
+R_{A,t}^u
+\ge
+(1-\theta_{t-1}^u)\underline R^u+\theta_{t-1}^u\overline R_f
+\ge
+\min\!\left\{
+\underline R^u,\,
+(1-\underline\theta)\underline R^u+\underline\theta\,\overline R_f
+\right\}
+\equiv
+\underline R^u_A,
+\\
+R_{A,t}^b
+\ge
+(1-\theta_{t-1}^u)\underline R^b_t+\theta_{t-1}^u\overline R_f
+\ge
+\min\!\left\{
+\underline R^b_t,\,
+(1-\underline\theta)\underline R^b_t+\underline\theta\,\overline R_f
+\right\}
+\equiv
+\underline R^b_{A,t}.
+\end{align*}
+By \Cref{ass_positive_total_saving_return}, $\underline R^u_{A}, \underline R^b_{A,t}>0$.
+
+Similarly,
+\[
+R_{A,t}^z
+\le
+(1-\theta_{t-1}^u)\overline R^z+\theta_{t-1}^u R_{f,t-1}
+\le
+(1-\theta_{t-1}^u)\overline R^z
+\le
+(1-\underline\theta)\overline R^z
+\equiv
+\overline R^z_A.
+\]
+Therefore,
+\begin{align*}
+    0<\underline R^u_{A}\le R_{A,t}^u\le \overline R^u_A<\infty,
+    \\
+    0<\underline R^b_{A,t}\le R_{A,t}^b\le \overline R^b_A<\infty.
+\end{align*}
+
+% Now show C^u is proportional to e^u
+Since
+\[
+C_t^z=A_{t-1}^uR_{A,t}^z=\beta e_{US,t-1}^uR_{A,t}^z,
+\]
+and by \Cref{ass_u_dividend_growth} it follows that
+\[
+\frac{\beta\underline R^u_A}{\overline g_u}\,e_{US,t}^u
+\le 
+\beta e_{US,t-1}^u\underline R^u_A
+\le
+C_t^u
+\le
+\beta e_{US,t-1}^u\overline R^u_A
+\le
+\frac{\beta\overline R^u_A}{\underline g_u}\,e_{US,t}^u.
+\]
+% Show C^b is proportional to e^b
+For $C^b_t$, we first show that its upper bound is proportional to $e^b_t$:
+\begin{align*}
+    C^b_t 
+    &=
+    \beta e^u_{US,t-1} R^b_{A,t}
+    \\& \le
+    \beta e^u_{US,t-1}(1-\underline{\theta}) R^b_{p,t}
+    \\& \le
+    \beta e^u_{US,t-1}(1-\underline{\theta})\frac{(\bar q+\bar d)e^b_{US,t}}{\underline{q} e^u_{US,t-1}}
+    \\&=
+     \beta(1-\underline{\theta})\frac{(\bar q+\bar d)}{\underline{q}}e^b_{US,t}
+\end{align*}
+For the lower bound, we first consider the case with $\underline R^b_{A,t}=(1-\underline\theta)\underline R^b_t+\underline\theta\,\overline R_f$:
+\begin{align*}
+\begin{split}
+		{C^b_t}
+    &={\beta e^u_{US,t-1}R^b_{A,t}}
+    \\& \geq{\beta e^u_{US,t-1}} \left[(1-\underline{\theta} )\underline{R}^b_t
+    + \underline{\theta} \overline{R}_f  \right] 
+     \\& ={\beta e^u_{US,t-1}} \left[(1-\underline{\theta} )\frac{\underline{q} e^b_{US,t}}{\overline{q}e^u_{US,t-1}}+ \underline{\theta} \overline{R}_f  \right]
+      \\&=\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}e^b_{US,t}
+      + \beta \frac{e^u_{US,t-1}}{e^u_{US,t}} \frac{e^u_{US,t}}{e^b_{US,t}} e^b_{US,t}\underline{\theta} \overline{R}_f  
+      \\& \geq \left[\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}
+      + \beta \frac{\bar \lambda_e}{\underline{g}_u} \underline{\theta} \overline{R}_f  \right] e^b_{US,t};
+\end{split}
+\end{align*}
+if $\underline R^b_{A,t}=\underline R^b_t$, then
+\[
+		C^b_t
+ 		\geq{\beta e^u_{US,t-1}} \underline{R}^b_t
+     ={\beta e^u_{US,t-1}} \frac{\underline{q} e^b_{US,t}}{\overline{q}e^u_{US,t-1}}
+      =\beta\frac{\underline{q} }{\overline{q}}e^b_{US,t}.
+\]
+
+Hence one may take
+\begin{align*}
+    &\underline\lambda^u_C\equiv \frac{\beta\underline R^u_A}{\overline g_u}>0,
+\qquad
+\overline\lambda^u_C\equiv \frac{\beta\overline R^u_A}{\underline g_u}<\infty,
+\\ &
+\underline\lambda^b_C\equiv \min\{\beta\frac{\underline{q} }{\overline{q}},\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}
+      + \beta \frac{\bar \lambda_e}{\underline{g}_u} \underline{\theta} \overline{R}_f \}>0,
+\\ &
+\overline\lambda^b_C\equiv  \beta(1-\underline{\theta})\frac{(\bar q+\bar d)}{\underline{q}}<\infty,
+\end{align*}
+which proves the claim.
+\end{proof}
+
+
+With these ingredients, we can state a single
+corollary that gives primitive conditions ensuring that the summability conditions
+in \Cref{thm_1} reduce to \eqref{thm_cond2}.
+
+\begin{coro}\label{coro1}
+Suppose
+\Cref{ass_issuance_costs,ass_regime_switch,ass_balanced_growth,ass_switch_dependence,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_positive_total_saving_return}
+hold. 
+For $z\in\{u,b\}$, let $x_t^z$ be the value of $x_{t}^z$ conditional on $z_0=\cdots=z_{t-1}=u$ and $z_t=z$.
+Then the two conditions \eqref{thm_cond1} in \Cref{thm_1} are equivalent to the primitive conditions
 \begin{subequations}\label{thm_cond2}
 \begin{align}
-\sum_{t=1}^\infty \frac{D_t^u}{e_{US,t}^u}&<\infty, \label{thm_cond_2a}\\
+\sum_{t=1}^\infty \frac{D_t^u}{e_{t}^u}&<\infty, \label{thm_cond_2a}\\
 \sum_{t=1}^\infty
-\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}&<\infty. \label{thm_cond_2b}
+\left(\frac{e_{t}^b}{e_{t}^u}\right)^{1-\gamma}&<\infty. \label{thm_cond_2b}
 \end{align}
 \end{subequations}
 \end{coro}
 
 \begin{proof}
 We show (a) \eqref{thm_cond_1a} $\Longleftrightarrow$ \eqref{thm_cond_2a} and
-(b) \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}.
+(b) \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}. 
 
 \medskip
 \noindent\textbf{(a) Proof of \eqref{thm_cond_1a} $\Longleftrightarrow$ \eqref{thm_cond_2a}.}
-By \eqref{Qsum_identity_mod_zerosupply} and \Cref{ass_relative_dividend_bounds},
+By \Cref{lem_stock_value_bounds}, there exist constants $0<\underline q\le \overline q<\infty$ such that
 \[
-Q_{US,t}^u \le Q_{US,t}^u+Q_{W,t}^u
-=\beta e_{US,t}^u+\frac{\beta+\chi}{1+\chi}e_{W,t}
-\le \left(\beta+\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}\right)e_{US,t}^u,
-\qquad t\le\tau.
-\]
-Moreover, by \eqref{stock_weight_clear_mod},
-\[
-Q_{US,t}^u=\omega_t^u S_t^u+\omega_t^{*,u}S_t^{*,u}\ge \omega_t^u S_t^u.
-\]
-Using $S_t^u=(1-\theta_t^u)A_t^u=(1-\theta_t^u)\beta e_{US,t}^u$ and \eqref{theta_nonpos}, we obtain
-\[
-Q_{US,t}^u\ge \underline\lambda_\omega\,\beta\,e_{US,t}^u
+\underline q\,e_{t}^u\le Q_{t}^u\le \overline q\,e_{t}^u
 \qquad\text{for all }t\le\tau.
 \]
-Hence there exist constants $0<\underline q\le \bar q<\infty$ such that
-\[
-\underline q\,e_{US,t}^u\le Q_{US,t}^u\le \bar q\,e_{US,t}^u
-\qquad\text{for all }t\le\tau,
-\]
-which implies
+Therefore
 \[
 \sum_{t=1}^\infty \frac{D_t^u}{Q_t^u}<\infty
 \quad\Longleftrightarrow\quad
-\sum_{t=1}^\infty \frac{D_t^u}{e_{US,t}^u}<\infty.
+\sum_{t=1}^\infty \frac{D_t^u}{e_{t}^u}<\infty.
 \]
 
 \medskip
 \noindent\textbf{(b) Proof of \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}.}
-Define
-\[
-m_t:=\frac{Q_t^b+D_t^b}{C_t^b}\cdot \frac{C_t^u}{Q_t^u}.
-\]
-It suffices to show that $m_t$ is bounded above and below by strictly positive constants uniformly over $t\le\tau$.
 
-From part (a), there exist constants $0<\underline q\le \overline q<\infty$ such that
+By \Cref{lem_stock_value_bounds},
 \[
-\underline q\,e_{US,t}^u\le Q_t^u\le \overline q\,e_{US,t}^u
+\underline q\,e_{t}^z\le Q_t^z\le \overline q\,e_{t}^z
 \qquad\text{for all }t\le\tau.
 \]
-Next, by \eqref{stock_weight_clear_mod}, condition (i), the US saving rule, \eqref{theta_nonpos}, and \Cref{ass_switch_us_fundamentals},
+By \Cref{ass_u_dividend_growth}, there exist constants $0<\underline q_b\le \overline q_b<\infty$ such that
 \[
-Q_t^b=\omega_t^b S_t^b+\omega_t^{*,b}S_t^{*,b}
-\ge \omega_t^b S_t^b
-\ge \underline\lambda_\omega (1-\theta_t^b)A_t^b
-\ge \underline\lambda_\omega\,\beta\,e_{US,t}^b
-\ge \underline\lambda_\omega\,\beta\,\underline\lambda_e\,e_{US,t}^u.
-\]
-Also, by \eqref{Qsum_identity_mod_zerosupply} and \Cref{ass_relative_dividend_bounds,ass_switch_us_fundamentals},
-\[
-Q_t^b\le Q_t^b+Q_{W,t}^b
-=\beta e_{US,t}^b+\frac{\beta+\chi}{1+\chi}e_{W,t}
-\le
-\left(\beta\overline\lambda_e+\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}\right)e_{US,t}^u.
-\]
-Using again \Cref{ass_switch_us_fundamentals}, we obtain
-\[
-\underline\lambda_\omega\,\beta\,\underline\lambda_e\,e_{US,t}^u
-\le Q_t^b+D_t^b
-\le
-\left(\beta\overline\lambda_e+\frac{\beta+\chi}{1+\chi}\overline\lambda_{e_W}+\overline\lambda_{D_{US}}\right)e_{US,t}^u.
-\]
-Therefore there exist constants $0<\underline q_b\le \overline q_b<\infty$ such that
-\[
-\underline q_b\,e_{US,t}^u
+\underline q_b\,e_{t}^b
 \le
 Q_t^b+D_t^b
 \le
-\overline q_b\,e_{US,t}^u
-\qquad\text{for all }t\le\tau.
+\overline q_b\,e_{t}^b
+\qquad\text{for all }t\le\tau,
+\]
+where one may take
+\[
+\underline q_b\equiv \underline q,
+\qquad
+\overline q_b\equiv \overline q+\overline\lambda_{D_{US}}.
 \]
 
-By condition (iv),
+By
+\Cref{lem_total_return_consumption_bounds}, there exist constants
+$0<\underline\lambda^z_C\le \overline\lambda^z_C<\infty$ such that
 \[
-\underline\lambda_C\,e_{US,t}^u
+\underline\lambda^z_C\,e_{t}^z
 \le
 C_t^z
 \le
-\overline\lambda_C\,e_{US,t}^u,
-\qquad z\in\{u,b\},\ \forall t\le\tau.
+\overline\lambda^z_C\,e_{t}^z,
+\qquad
+z\in\{u,b\},\ \forall t\le\tau.
 \]
 Hence
 \[
-\frac{\underline q_b}{\overline\lambda_C}
-\le
-\frac{Q_t^b+D_t^b}{C_t^b}
-\le
-\frac{\overline q_b}{\underline\lambda_C},
+\frac{Q^b_t+D^b_t}{(C^b_t)^\gamma} 
+\propto \frac{e^b_t}{(e^b_t)^\gamma}= (e^b_t)^{1-\gamma},
 \qquad
-\frac{\underline\lambda_C}{\overline q}
-\le
-\frac{C_t^u}{Q_t^u}
-\le
-\frac{\overline\lambda_C}{\underline q}.
+\frac{Q^u_t}{(C^u_t)^\gamma} 
+\propto \frac{e^u_t}{(e^u_t)^\gamma}= (e^u_t)^{1-\gamma},
 \]
-Thus $m_t$ is bounded above and below by strictly positive constants uniformly over $t\le\tau$.
-Therefore,
-\[
-\sum_{t=1}^\infty
-\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}
-\frac{Q_t^b+D_t^b}{C_t^b}
-\frac{C_t^u}{Q_t^u}
-<\infty
-\quad\Longleftrightarrow\quad
-\sum_{t=1}^\infty
-\left(\frac{C_t^b}{C_t^u}\right)^{1-\gamma}
-<\infty.
-\]
+
 This proves \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}.
 \end{proof}
-
-
 
 %========================================================
 % Appendix
 %========================================================
+
 
 \appendix
 %\section{Proof of Lemma~\ref{lem1}}
