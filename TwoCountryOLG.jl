@@ -15,12 +15,12 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     γ::Float64  = 0.5           # old-age risk aversion (CRRA); γ < 1 follows Hirano (2025)
 
     # Portfolio frictions
-    κ::Float64      = 0.01      # home-bias cost coefficient
+    κ::Float64      = 0.5      # home-bias cost coefficient
     ω̄::Float64      = 0.80      # US target weight on US equity
     ω̄_star::Float64 = 0.20      # RoW target weight on US equity
 
     # Convenience yield
-    χ::Float64 = 0.03           # RoW convenience yield on US bonds
+    χ::Float64 = 0.005           # RoW convenience yield on US bonds
 
     # Bond-issuance cost
     η::Float64 = 0.01           # scaling of Υ cost
