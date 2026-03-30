@@ -1288,18 +1288,27 @@ $\theta_t\downarrow -\infty$. Therefore there exists $\underline\theta>-\infty$ 
 \end{proof}
 
 
-\begin{ass}[Positive lower bound on US total-saving returns]\label{ass_positive_total_saving_return}
+\begin{ass}[Switch-date debt drag is dominated by risky payoffs]\label{ass_switch_debt_drag}
+There exists a constant $\xi\in[0,1)$ such that, whenever $z_{t-1}=u$ and $z_t=b$,
 \[
-(1-\underline\theta)\underline R_t+\underline\theta\,\overline R_f>0,
+-\theta_{t-1}^u\bigl(R_{f,t-1}-R_{p,t}^b\bigr)\le \xi R_{p,t}^b.
 \]
-where $\underline\theta$ is given by \Cref{lem2}, and
-$\underline R_t\equiv \min\{\underline R^u, \underline R^b_t\},\overline R_f$ are given by \Cref{lem_risky_return_bounds,lem_rf_upper_bound}.
+Equivalently,
+\[
+R_{A,t}^b\ge (1-\xi)R_{p,t}^b.
+\]
 \end{ass}
+
+Assumption \ref{ass_switch_debt_drag} controls the debt-repayment drag on the switch branch directly. In the next lemma we keep a direct lower bound on the continuation-branch total-saving return $R_{A,t}^u$ as an explicit hypothesis.
 
 \begin{lem}[Equilibrium bounds on total-saving returns and old-age consumption]\label{lem_total_return_consumption_bounds}
 Suppose
-\Cref{ass_issuance_costs,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_positive_total_saving_return}
-hold.
+\Cref{ass_issuance_costs,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_switch_debt_drag}
+hold, suppose dividends are nonnegative, and suppose there exists a constant $\underline R_A^u>0$ such that
+\[
+R_{A,t}^u\ge \underline R_A^u
+\qquad\text{for all }t\le\tau.
+\]
 Then there exist constants $0< \overline R^z_A<\infty$ and
 $0<\underline\lambda^z_C\le \overline\lambda^z_C<\infty$ such that, for each $z\in\{u,b\}$ and all $t\le\tau$,
 \[
@@ -1316,147 +1325,130 @@ C_t^z
 \end{lem}
 
 \begin{proof}
-\Cref{lem_risky_return_bounds,lem_rf_upper_bound,lem2} imply that there exist constants
-$0<\underline R^u\le \overline R^u<\infty$, $\overline R^b<\infty$, $\overline R_f<\infty$, and $\underline\theta>-\infty$ together with $\underline R^b_t>0$ such that
+By \Cref{lem_risky_return_bounds,lem_rf_upper_bound,lem2}, there exist constants
+$0<\underline R^u\le \overline R^u<\infty$, $\overline R^b<\infty$,
+$\overline R_f<\infty$, and $\underline\theta>-\infty$ such that
 \[
 \underline R^u\le R_{p,t}^u\le \overline R^u,
-\quad
-\underline R^b_t\le R_{p,t}^z\le \overline R^b,
-\quad
+\qquad
+0<R_{p,t}^b\le \overline R^b,
+\qquad
 R_{f,t}\le \overline R_f,
-\quad
-	\theta_t\ge \underline{\theta},
-\quad
-z\in\{u,b\},\ \forall t\le\tau.
+\qquad
+\theta_t\in[\underline\theta,0)
 \]
-Also, by \eqref{theta_nonpos},
-\[
-	\theta_t<0
-\qquad\text{for all }t\le\tau.
-\]
-
+for all $t\le\tau$.
 For $z\in\{u,b\}$,
 \[
 R_{A,t}^z=(1-\theta_{t-1}^u)R_{p,t}^z+\theta_{t-1}^u R_{f,t-1}.
 \]
-Using
-\[
-R_{p,t}^u\ge \underline R^u,
-\qquad
-R_{p,t}^b\ge \underline R^b_t,
-\qquad
-R_{f,t-1}\le \overline R_f,
-\qquad
-	\theta_{t-1}^u\in[\underline\theta,0),
-\]
-we obtain
-\begin{align*}
-R_{A,t}^u
-\ge
-(1-\theta_{t-1}^u)\underline R^u+\theta_{t-1}^u\overline R_f
-\ge
-\min\!\left\{
-\underline R^u,\,
-(1-\underline\theta)\underline R^u+\underline\theta\,\overline R_f
-\right\}
-\equiv
-\underline R^u_A,
-\\
-R_{A,t}^b
-\ge
-(1-\theta_{t-1}^u)\underline R^b_t+\theta_{t-1}^u\overline R_f
-\ge
-\min\!\left\{
-\underline R^b_t,\,
-(1-\underline\theta)\underline R^b_t+\underline\theta\,\overline R_f
-\right\}
-\equiv
-\underline R^b_{A,t}.
-\end{align*}
-By \Cref{ass_positive_total_saving_return}, $\underline R^u_{A}, \underline R^b_{A,t}>0$.
-
-Similarly,
+Since $\theta_{t-1}^u<0$ and $R_{f,t-1}>0$,
 \[
 R_{A,t}^z
 \le
-(1-\theta_{t-1}^u)\overline R^z+\theta_{t-1}^u R_{f,t-1}
-\le
-(1-\theta_{t-1}^u)\overline R^z
+(1-\theta_{t-1}^u)R_{p,t}^z
 \le
 (1-\underline\theta)\overline R^z
 \equiv
-\overline R^z_A.
+\overline R_A^z,
 \]
-Therefore,
-\begin{align*}
-    0<\underline R^u_{A}\le R_{A,t}^u\le \overline R^u_A<\infty,
-    \\
-    0<\underline R^b_{A,t}\le R_{A,t}^b\le \overline R^b_A<\infty.
-\end{align*}
+where
+\[
+\overline R_A^u\equiv (1-\underline\theta)\overline R^u,
+\qquad
+\overline R_A^b\equiv (1-\underline\theta)\overline R^b.
+\]
+The displayed continuation-branch hypothesis therefore gives
+\[
+0<\underline R_A^u\le R_{A,t}^u\le \overline R_A^u<\infty.
+\]
 
-% Now show C^u is proportional to e^u
+On the switch branch, \Cref{ass_switch_debt_drag} implies
+\[
+R_{A,t}^b
+=
+R_{p,t}^b-\bigl[-\theta_{t-1}^u(R_{f,t-1}-R_{p,t}^b)\bigr]
+\ge
+(1-\xi)R_{p,t}^b
+>
+0.
+\]
+Let
+\[
+\overline d\equiv \max\{\overline\lambda_{D_{US}},\overline\lambda_{D_W}\}.
+\]
+By \Cref{lem_stock_value_bounds}, nonnegative dividends, and \Cref{ass_u_dividend_growth}, for each $i\in\{US,W\}$,
+\[
+\underline q\,e_{US,t}^b
+\le
+Q_{i,t}^b+D_{i,t}^b
+\le
+(\overline q+\overline d)e_{US,t}^b,
+\qquad
+\underline q\,e_{US,t-1}^u
+\le
+Q_{i,t-1}^u
+\le
+\overline q\,e_{US,t-1}^u.
+\]
+Hence
+\[
+\frac{\underline q}{\overline q}\frac{e_{US,t}^b}{e_{US,t-1}^u}
+\le
+R_{i,t}^b
+\le
+\frac{\overline q+\overline d}{\underline q}\frac{e_{US,t}^b}{e_{US,t-1}^u},
+\qquad i\in\{US,W\}.
+\]
+Because $R_{p,t}^b$ is a convex combination of $R_{US,t}^b$ and $R_{W,t}^b$, it follows that
+\[
+\frac{\underline q}{\overline q}\frac{e_{US,t}^b}{e_{US,t-1}^u}
+\le
+R_{p,t}^b
+\le
+\frac{\overline q+\overline d}{\underline q}\frac{e_{US,t}^b}{e_{US,t-1}^u}.
+\]
+Combining the last display with the switch-debt-drag condition yields
+\[
+(1-\xi)\frac{\underline q}{\overline q}\frac{e_{US,t}^b}{e_{US,t-1}^u}
+\le
+R_{A,t}^b
+\le
+(1-\underline\theta)\frac{\overline q+\overline d}{\underline q}\frac{e_{US,t}^b}{e_{US,t-1}^u}.
+\]
+
 Since
 \[
 C_t^z=A_{t-1}^uR_{A,t}^z=\beta e_{US,t-1}^uR_{A,t}^z,
 \]
-and by \Cref{ass_u_dividend_growth} it follows that
+\Cref{ass_u_dividend_growth} implies
 \[
-\frac{\beta\underline R^u_A}{\overline g_u}\,e_{US,t}^u
-\le 
-\beta e_{US,t-1}^u\underline R^u_A
+\frac{\beta\underline R_A^u}{\overline g_u}\,e_{US,t}^u
 \le
 C_t^u
 \le
-\beta e_{US,t-1}^u\overline R^u_A
-\le
-\frac{\beta\overline R^u_A}{\underline g_u}\,e_{US,t}^u.
+\frac{\beta\overline R_A^u}{\underline g_u}\,e_{US,t}^u,
 \]
-% Show C^b is proportional to e^b
-For $C^b_t$, we first show that its upper bound is proportional to $e^b_t$:
-\begin{align*}
-    C^b_t 
-    &=
-    \beta e^u_{US,t-1} R^b_{A,t}
-    \\& \le
-    \beta e^u_{US,t-1}(1-\underline{\theta}) R^b_{p,t}
-    \\& \le
-    \beta e^u_{US,t-1}(1-\underline{\theta})\frac{(\bar q+\bar d)e^b_{US,t}}{\underline{q} e^u_{US,t-1}}
-    \\&=
-     \beta(1-\underline{\theta})\frac{(\bar q+\bar d)}{\underline{q}}e^b_{US,t}
-\end{align*}
-For the lower bound, we first consider the case with $\underline R^b_{A,t}=(1-\underline\theta)\underline R^b_t+\underline\theta\,\overline R_f$:
-\begin{align*}
-\begin{split}
-		{C^b_t}
-    &={\beta e^u_{US,t-1}R^b_{A,t}}
-    \\& \geq{\beta e^u_{US,t-1}} \left[(1-\underline{\theta} )\underline{R}^b_t
-    + \underline{\theta} \overline{R}_f  \right] 
-     \\& ={\beta e^u_{US,t-1}} \left[(1-\underline{\theta} )\frac{\underline{q} e^b_{US,t}}{\overline{q}e^u_{US,t-1}}+ \underline{\theta} \overline{R}_f  \right]
-      \\&=\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}e^b_{US,t}
-      + \beta \frac{e^u_{US,t-1}}{e^u_{US,t}} \frac{e^u_{US,t}}{e^b_{US,t}} e^b_{US,t}\underline{\theta} \overline{R}_f  
-      \\& \geq \left[\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}
-      + \beta \frac{\bar \lambda_e}{\underline{g}_u} \underline{\theta} \overline{R}_f  \right] e^b_{US,t};
-\end{split}
-\end{align*}
-if $\underline R^b_{A,t}=\underline R^b_t$, then
+and the switch-branch bounds imply
 \[
-		C^b_t
- 		\geq{\beta e^u_{US,t-1}} \underline{R}^b_t
-     ={\beta e^u_{US,t-1}} \frac{\underline{q} e^b_{US,t}}{\overline{q}e^u_{US,t-1}}
-      =\beta\frac{\underline{q} }{\overline{q}}e^b_{US,t}.
+\beta(1-\xi)\frac{\underline q}{\overline q}e_{US,t}^b
+\le
+C_t^b
+\le
+\beta(1-\underline\theta)\frac{\overline q+\overline d}{\underline q}e_{US,t}^b.
 \]
-
 Hence one may take
-\begin{align*}
-    &\underline\lambda^u_C\equiv \frac{\beta\underline R^u_A}{\overline g_u}>0,
+\[
+\underline\lambda^u_C\equiv \frac{\beta\underline R_A^u}{\overline g_u},
 \qquad
-\overline\lambda^u_C\equiv \frac{\beta\overline R^u_A}{\underline g_u}<\infty,
-\\ &
-\underline\lambda^b_C\equiv \min\{\beta\frac{\underline{q} }{\overline{q}},\beta(1-\underline{\theta} )\frac{\underline{q} }{\overline{q}}
-      + \beta \frac{\bar \lambda_e}{\underline{g}_u} \underline{\theta} \overline{R}_f \}>0,
-\\ &
-\overline\lambda^b_C\equiv  \beta(1-\underline{\theta})\frac{(\bar q+\bar d)}{\underline{q}}<\infty,
-\end{align*}
+\overline\lambda^u_C\equiv \frac{\beta\overline R_A^u}{\underline g_u},
+\]
+and
+\[
+\underline\lambda^b_C\equiv \beta(1-\xi)\frac{\underline q}{\overline q},
+\qquad
+\overline\lambda^b_C\equiv \beta(1-\underline\theta)\frac{\overline q+\overline d}{\underline q},
+\]
 which proves the claim.
 \end{proof}
 
@@ -1467,9 +1459,13 @@ in \Cref{thm_1} reduce to \eqref{thm_cond2}.
 
 \begin{coro}\label{coro1}
 Suppose
-\Cref{ass_issuance_costs,ass_regime_switch,ass_balanced_growth,ass_switch_dependence,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_positive_total_saving_return}
-hold. 
-For $z\in\{u,b\}$, let $x_t^z$ be the value of $x_{t}^z$ conditional on $z_0=\cdots=z_{t-1}=u$ and $z_t=z$.
+\Cref{ass_issuance_costs,ass_regime_switch,ass_balanced_growth,ass_switch_dependence,ass_relative_dividend_bounds,ass_switch_us_fundamentals,ass_interior_equity_weights,ass_u_dividend_growth,ass_switch_debt_drag}
+hold, suppose dividends are nonnegative, and suppose there exists a constant $\underline R_A^u>0$ such that
+\[
+R_{A,t}^u\ge \underline R_A^u
+\qquad\text{for all }t\le\tau.
+\]
+For $z\in\{u,b\}$, let $x_t^z$ denote the value of $x_t$ conditional on $z_0=\cdots=z_{t-1}=u$ and $z_t=z$.
 Then the two conditions \eqref{thm_cond1} in \Cref{thm_1} are equivalent to the primitive conditions
 \begin{subequations}\label{thm_cond2}
 \begin{align}
@@ -1503,46 +1499,69 @@ Therefore
 
 By \Cref{lem_stock_value_bounds},
 \[
-\underline q\,e_{t}^z\le Q_t^z\le \overline q\,e_{t}^z
-\qquad\text{for all }t\le\tau.
+\underline q\,e_{t}^u\le Q_t^u\le \overline q\,e_{t}^u,
+\qquad
+\underline q\,e_{t}^b\le Q_t^b\le \overline q\,e_{t}^b.
 \]
-By \Cref{ass_u_dividend_growth}, there exist constants $0<\underline q_b\le \overline q_b<\infty$ such that
-\[
-\underline q_b\,e_{t}^b
-\le
-Q_t^b+D_t^b
-\le
-\overline q_b\,e_{t}^b
-\qquad\text{for all }t\le\tau,
-\]
-where one may take
+By nonnegative dividends and \Cref{ass_u_dividend_growth}, if we set
 \[
 \underline q_b\equiv \underline q,
 \qquad
-\overline q_b\equiv \overline q+\overline\lambda_{D_{US}}.
+\overline q_b\equiv \overline q+\overline\lambda_{D_{US}},
 \]
-
-By
-\Cref{lem_total_return_consumption_bounds}, there exist constants
-$0<\underline\lambda^z_C\le \overline\lambda^z_C<\infty$ such that
+then
 \[
-\underline\lambda^z_C\,e_{t}^z
+\underline q_b\,e_t^b
+\le
+Q_t^b+D_t^b
+\le
+\overline q_b\,e_t^b.
+\]
+By \Cref{lem_total_return_consumption_bounds}, there exist constants
+$0<\underline\lambda_C^z\le \overline\lambda_C^z<\infty$ such that
+\[
+\underline\lambda_C^z\,e_t^z
 \le
 C_t^z
 \le
-\overline\lambda^z_C\,e_{t}^z,
+\overline\lambda_C^z\,e_t^z,
 \qquad
 z\in\{u,b\},\ \forall t\le\tau.
 \]
-Hence
+Therefore,
 \[
-\frac{Q^b_t+D^b_t}{(C^b_t)^\gamma} 
-\propto \frac{e^b_t}{(e^b_t)^\gamma}= (e^b_t)^{1-\gamma},
-\qquad
-\frac{Q^u_t}{(C^u_t)^\gamma} 
-\propto \frac{e^u_t}{(e^u_t)^\gamma}= (e^u_t)^{1-\gamma},
+\frac{\underline q_b}{(\overline\lambda_C^b)^\gamma}(e_t^b)^{1-\gamma}
+\le
+\frac{Q_t^b+D_t^b}{(C_t^b)^\gamma}
+\le
+\frac{\overline q_b}{(\underline\lambda_C^b)^\gamma}(e_t^b)^{1-\gamma},
 \]
-
+and
+\[
+\frac{\underline q}{(\overline\lambda_C^u)^\gamma}(e_t^u)^{1-\gamma}
+\le
+\frac{Q_t^u}{(C_t^u)^\gamma}
+\le
+\frac{\overline q}{(\underline\lambda_C^u)^\gamma}(e_t^u)^{1-\gamma}.
+\]
+Hence there exist constants $0<c_1\le c_2<\infty$ such that
+\[
+c_1\left(\frac{e_t^b}{e_t^u}\right)^{1-\gamma}
+\le
+\frac{\frac{Q_t^b+D_t^b}{(C_t^b)^\gamma}}{\frac{Q_t^u}{(C_t^u)^\gamma}}
+\le
+c_2\left(\frac{e_t^b}{e_t^u}\right)^{1-\gamma}
+\]
+for all $t\le\tau$. Therefore
+\[
+\sum_{t=1}^\infty
+\frac{\frac{Q_t^b+D_t^b}{(C_t^b)^\gamma}}{\frac{Q_t^u}{(C_t^u)^\gamma}}
+<\infty
+\quad\Longleftrightarrow\quad
+\sum_{t=1}^\infty
+\left(\frac{e_t^b}{e_t^u}\right)^{1-\gamma}
+<\infty.
+\]
 This proves \eqref{thm_cond_1b} $\Longleftrightarrow$ \eqref{thm_cond_2b}.
 \end{proof}
 
