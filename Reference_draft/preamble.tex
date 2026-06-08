@@ -1,0 +1,57 @@
+\usepackage{UF_FRED_paper_style}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{lipsum} %% Package to create dummy text (comment or erase before start)
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{ass}{Assumption}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{coro}{Corollary}
+
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref}
+\hypersetup{colorlinks,
+	linkcolor=red,
+	citecolor=blue}
+\crefname{thm}{Theorem}{Theorems}
+\Crefname{thm}{Theorem}{Theorems}
+\crefname{ass}{Assumption}{Assumptions}
+\Crefname{ass}{Assumption}{Assumptions}
+\crefname{defi}{Definition}{Definitions}
+\Crefname{defi}{Definition}{Definitions}
+\crefname{prop}{Proposition}{Propositions}
+\Crefname{prop}{Proposition}{Propositions}
+\crefname{lem}{Lemma}{Lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+\crefname{coro}{Corollary}{Corollaries}
+\Crefname{coro}{Corollary}{Corollaries}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\orange}[1]{{\color{orange} #1}}
+\newcommand{\gray}[1]{{\color{gray} #1}}
+\newcommand{\green}[1]{{\color{OliveGreen} #1}}
+\newenvironment{removedref}{\begin{quote}\begingroup\normalfont\color{orange}\small}{\endgroup\end{quote}}
+\newcommand{\proptoinverse}{\mathrel{\mskip1mu\reflectbox{$\propto$}\mskip-1mu}}
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D..{#1}}
+\newcommand{\mc}[1]{\multicolumn{1}{c@{}}{#1}}
+\newcommand{\mX}[1]{\multicolumn{1}{X}{\centering #1}}
+
+% Line spacing
+% \doublespacing
+% \singlespacing
+\onehalfspacing
+
+\setlength{\droptitle}{-5em}
+
+\title{Two-country Production Version of \cite{hirano2025technological}}
+\author{}
+\date{\today}

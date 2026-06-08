@@ -61,11 +61,6 @@ using NLsolve, ForwardDiff, Parameters, LinearAlgebra, Printf, Statistics
     # Simulation horizon (number of OLG periods)
     T_max::Int = 120
 
-    # Scratch-buffer periods beyond T_max.  These absorb the finite-horizon
-    # terminal artifact from the asymptotic all-u boundary, then are trimmed.
-    # -1 ⇒ use max(5, ceil(T_max/5)); ≥0 overrides it.
-    n_buffer::Int = -1
-
     # Solver tolerances
     ftol::Float64    = 1e-12
     xtol::Float64    = 1e-12
@@ -88,7 +83,6 @@ function validate_params(p::ModelParams)
     @assert p.λ_D > 0.0        "Assumption 7 (V7): λ_D = D_US^b/D_US^u must be positive"
     @assert 0.0 < p.ρ  ≤ 1.0  "ρ must be in (0, 1]; ρ=1 recovers constant-λ_e spec"
     @assert 0.0 < p.ρ_D ≤ 1.0 "ρ_D must be in (0, 1]; ρ_D=1 keeps dividends on u-state growth path"
-    @assert p.n_buffer ≥ -1    "n_buffer must be -1 (automatic) or nonnegative"
     nothing
 end
 
@@ -118,9 +112,8 @@ struct ExogenousPaths
     T::Int
 end
 
-function generate_exogenous_paths(p::ModelParams; T_total::Int = p.T_max + 1)
-    @assert T_total ≥ 1 "T_total must be positive"
-    T = T_total
+function generate_exogenous_paths(p::ModelParams)
+    T = p.T_max + 1          # need values at t+1 for last period
     e_US = Vector{Float64}(undef, T)
     D_US = Vector{Float64}(undef, T)
     e_W  = Vector{Float64}(undef, T)
@@ -138,47 +131,6 @@ function generate_exogenous_paths(p::ModelParams; T_total::Int = p.T_max + 1)
         D_W[t]  = D_W[t-1]  * p.g_D_W
     end
     ExogenousPaths(e_US, D_US, e_W, D_W, T)
-end
-
-_endowment_buffer(p::ModelParams) = p.n_buffer ≥ 0 ? p.n_buffer : max(5, cld(p.T_max, 5))
-
-function _balanced_state_inputs(p::ModelParams, paths::ExogenousPaths, t::Int)
-    # paths[1] is model date 0, so switch scalars at index t use exponent t-1.
-    λ_e_t = p.λ_e  * p.ρ^(t - 1)
-    λ_D_t = p.λ_D  * p.ρ_D^(t - 1)
-    d_b   = (λ_D_t / λ_e_t) * paths.D_US[t] / paths.e_US[t]
-    dW    = paths.D_W[t] / paths.e_W[t]
-    eps_b = (paths.e_W[t] / paths.e_US[t]) / λ_e_t
-    return (d_b, dW, eps_b)
-end
-
-function solve_balanced_states(p::ModelParams, paths::ExogenousPaths;
-                               T_total::Int = paths.T,
-                               verbose::Bool = false)
-    @assert paths.T ≥ T_total "paths must contain at least T_total entries"
-    bs = Vector{BalancedStateResult}(undef, T_total)
-    x0_bs = nothing
-
-    for t in 1:T_total
-        d_b, dW, eps_b = _balanced_state_inputs(p, paths, t)
-        try
-            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=x0_bs)
-        catch
-            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=nothing)
-        end
-        if !bs[t].converged
-            @warn "Balanced state did not converge at t=$t"
-        end
-        if bs[t].converged
-            x0_bs = [bs[t].ω_b, bs[t].ω_star_b, bs[t].θ_b,
-                     bs[t].θ_US_star_b, bs[t].R_f_b]
-        end
-        verbose && t % 20 == 0 &&
-            @printf("  t=%3d: ω_b=%.4f  θ_b=%.6f  R_f_b=%.4f\n",
-                    t, bs[t].ω_b, bs[t].θ_b, bs[t].R_f_b)
-    end
-
-    return bs
 end
 
 # ─────────────────────────────────────────────────────────────────
@@ -491,14 +443,13 @@ function _u_path_core_residual!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
 
     # Returns under b at t+1
-    # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e_tp1 * e_US^u.
-    # Julia index t+1 is model date t because paths[1] is date 0.
-    # λ_e at the successor date: λ_e · ρ^t  (decays with the switch date)
-    # D_US^b = λ_D · ρ_D^t · D_US^u  (b-state dividend scaling at successor date)
+    # bs_next stores Q_hat detrended by e_US^b; actual level = Q_hat * λ_e_tp1 * e_US^u
+    # λ_e at switch date t+1: λ_e · ρ^(t+1)  (decays with the switch date)
+    # D_US^b = λ_D · ρ_D^(t+1) · D_US^u  (b-state dividend scaling at switch date t+1)
     q_US_b   = bs_next.Q_US_hat
     q_W_b    = bs_next.Q_W_hat
-    λ_e_tp1  = p.λ_e  * p.ρ^t
-    λ_D_tp1  = p.λ_D  * p.ρ_D^t
+    λ_e_tp1  = p.λ_e  * p.ρ^(t + 1)
+    λ_D_tp1  = p.λ_D  * p.ρ_D^(t + 1)
 
     R_US_b = g_e * (q_US_b * λ_e_tp1 + λ_D_tp1 * d_next) / q_US
     R_W_b  = g_e * (q_W_b  * λ_e_tp1 + d_W_next_hat)   / q_W
@@ -541,7 +492,7 @@ accepts scalar `g_e`, `d_next`, `d_W_next_hat`, `ε` directly instead of
 reading from `paths[t]`.  Used by `solve_u_state_asymptote`.
 
 `λ_e_eff` is the effective b-state scaling at the terminal date T:
-  λ_e_eff = λ_e · ρ^(T-1)   (passed explicitly so the asymptote reflects the
+  λ_e_eff = λ_e · ρ^T   (passed explicitly so the asymptote reflects the
   actual decay at T rather than the level-0 value λ_e).
 """
 function _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
@@ -580,7 +531,7 @@ function _u_path_asymptote_core!(F, ω, ω_s, θ, θ_Us, Rf, q_US,
     R_ps_u   = ω_s * R_US_u + (1 - ω_s) * R_W_u
     R_As_u   = (1 - θ_Us) * R_ps_u + θ_Us * Rf
 
-    # Returns under b at t+1 (uses λ_e_eff = λ_e · ρ^(T-1) for terminal-period asymptote)
+    # Returns under b at t+1 (uses λ_e_eff = λ_e · ρ^T for terminal-period asymptote)
     q_US_b = bs_next.Q_US_hat
     q_W_b  = bs_next.Q_W_hat
 
@@ -621,13 +572,12 @@ end
 
 """
 Compute the u-path self-consistent fixed point as d_t → 0, ε_t → 0.
-This is the infinite-horizon all-u boundary used as a successor beyond the
-finite solve horizon.
+This is the correct infinite-horizon boundary condition (no-bubble asymptote)
+for use as the terminal condition in backward induction.
 """
-function solve_u_state_asymptote(p::ModelParams; ε_min::Float64 = 1e-6,
-                                 terminal_index::Int = p.T_max + 1)
-    # paths[1] is model date 0, so index terminal_index uses exponent terminal_index-1.
-    λ_e_T = p.λ_e * p.ρ^(terminal_index - 1)
+function solve_u_state_asymptote(p::ModelParams; ε_min::Float64 = 1e-6)
+    # Effective λ_e at the terminal date T: λ_e · ρ^T
+    λ_e_T = p.λ_e * p.ρ^p.T_max
 
     # Step 1: b-state asymptote at d_b = 0, ε_b = ε_min / λ_e_T
     bs_asym = solve_balanced_state(p, 0.0, 0.0, ε_min / λ_e_T)
@@ -750,18 +700,16 @@ Uses constrained (log-transform) formulation first, then unconstrained fallback.
 function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
                             p, x_bs_actual, x_prev_actual)
     ftol, xtol, iters = p.ftol, p.xtol, p.iterations
-    best_x_actual = nothing
+    best_res = nothing
     best_rnorm = Inf
-    best_conv = false
 
     # Helper to try a solve and track best
-    function try_solve!(make_res; constrained::Bool)
+    function try_solve!(make_res)
         try
             r = make_res()
             if converged(r) && r.residual_norm < best_rnorm
-                best_x_actual = constrained ? _from_constrained(r.zero) : r.zero
+                best_res = r
                 best_rnorm = r.residual_norm
-                best_conv = converged(r)
             end
         catch
         end
@@ -770,7 +718,7 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
 
     # ── Strategy 1: Constrained solver from balanced-state guess ──
     x_c_bs = _to_constrained(x_bs_actual)
-    done = try_solve!(constrained=true) do
+    done = try_solve!() do
         nlsolve(
             (F, x) -> u_path_residual_constrained!(F, x, t, paths, bs_next,
                                                     q_US_u_next, q_W_u_next, p),
@@ -781,7 +729,7 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
 
     # ── Strategy 2: Constrained solver from previous solution ──
     x_c_prev = _to_constrained(x_prev_actual)
-    done = try_solve!(constrained=true) do
+    done = try_solve!() do
         nlsolve(
             (F, x) -> u_path_residual_constrained!(F, x, t, paths, bs_next,
                                                     q_US_u_next, q_W_u_next, p),
@@ -791,7 +739,7 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
     done && @goto finish_constrained
 
     # ── Strategy 3: Constrained Newton from balanced-state ──
-    done = try_solve!(constrained=true) do
+    done = try_solve!() do
         nlsolve(
             (F, x) -> u_path_residual_constrained!(F, x, t, paths, bs_next,
                                                     q_US_u_next, q_W_u_next, p),
@@ -804,7 +752,7 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
     for α in [0.95, 1.05, 0.90, 1.10, 0.80, 1.20]
         x_c_pert = copy(x_c_bs)
         x_c_pert[6] *= α
-        done = try_solve!(constrained=true) do
+        done = try_solve!() do
             nlsolve(
                 (F, x) -> u_path_residual_constrained!(F, x, t, paths, bs_next,
                                                         q_US_u_next, q_W_u_next, p),
@@ -815,12 +763,15 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
     end
 
     @label finish_constrained
-    if best_x_actual !== nothing && best_rnorm < 1e-8
-        return (true, best_x_actual, best_rnorm)
+    # If we found a constrained solution, convert back
+    if best_res !== nothing && best_rnorm < 1e-8
+        x_c = best_res.zero
+        x_actual = _from_constrained(x_c)
+        return (true, x_actual, best_rnorm)
     end
 
     # ── Strategy 5: Unconstrained fallback from balanced-state ──
-    done = try_solve!(constrained=false) do
+    done = try_solve!() do
         nlsolve(
             (F, x) -> u_path_residual!(F, x, t, paths, bs_next,
                                        q_US_u_next, q_W_u_next, p),
@@ -830,7 +781,7 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
 
     # ── Strategy 6: Unconstrained from previous ──
     if !done
-        try_solve!(constrained=false) do
+        try_solve!() do
             nlsolve(
                 (F, x) -> u_path_residual!(F, x, t, paths, bs_next,
                                            q_US_u_next, q_W_u_next, p),
@@ -839,8 +790,16 @@ function _solve_u_path_at_t(t, paths, bs_next, q_US_u_next, q_W_u_next,
         end
     end
 
-    if best_x_actual !== nothing
-        return (best_conv, best_x_actual, best_rnorm)
+    if best_res !== nothing
+        x = best_res.zero
+        # Check if this is a constrained result
+        if best_rnorm < 1e-8 && length(x) == 6
+            # Try to distinguish: if x[3] and x[4] look like log values,
+            # it's a constrained result
+        end
+        # For unconstrained, the result is direct
+        x_actual = x
+        return (converged(best_res), x_actual, best_rnorm)
     end
 
     # Complete failure — return balanced-state values
@@ -850,45 +809,33 @@ end
 function solve_u_path(p::ModelParams, paths::ExogenousPaths,
                       balanced_states::Vector{BalancedStateResult};
                       verbose=false)
-    T_report = p.T_max
-    n_buffer = _endowment_buffer(p)
-    T = T_report + n_buffer
+    T = p.T_max
+    u_path = Vector{PeriodState}(undef, T)
 
-    # Ensure the backward solve has a successor date T+1.  Existing notebook
-    # calls can still pass paths/balanced states for only the reported horizon;
-    # the solver extends them internally when the scratch buffer is active.
-    if paths.T < T + 1 || length(balanced_states) < T + 1
-        paths_ext = paths.T ≥ T + 1 ? paths : generate_exogenous_paths(p; T_total = T + 1)
-        bs_ext = length(balanced_states) ≥ T + 1 ?
-                 balanced_states :
-                 solve_balanced_states(p, paths_ext; T_total = T + 1)
-        return solve_u_path(p, paths_ext, bs_ext; verbose=verbose)
-    end
+    # ── Terminal condition: u-path self-consistent asymptote ──
+    # Solves the fixed point of the 6-eq system as d_t → 0, ε_t → 0.
+    # This is the correct infinite-horizon boundary for the no-bubble equilibrium,
+    # replacing the previous b-state price (which caused an artificial jump at T).
+    asym   = solve_u_state_asymptote(p)
+    q_US_T = asym.q_US
+    Q_US_T = q_US_T * paths.e_US[T]
+    u_path[T] = build_period_state(T, paths,
+                    asym.ω, asym.ω_s, asym.θ,
+                    asym.θ_Us, asym.Rf, Q_US_T, p)
 
-    paths_solve = paths
-    balanced_solve = balanced_states
+    ε_T = paths.e_W[T] / paths.e_US[T]
+    hat_Qsum_T = p.β + (p.β + p.χ) / (1 + p.χ) * ε_T
+    q_W_T = hat_Qsum_T - q_US_T
 
-    u_solve = Vector{PeriodState}(undef, T)
+    q_US_u_next = q_US_T
+    q_W_u_next  = q_W_T
 
-    # ── Terminal successor: asymptotic all-u boundary beyond the solve horizon ──
-    # This boundary is not returned as a period state.  Period T is still solved
-    # from the six equilibrium equations using this no-switch successor; the
-    # scratch buffer is then trimmed so reported periods are not boundary objects.
-    asym = solve_u_state_asymptote(p; terminal_index = T + 1)
-    q_US_boundary = asym.q_US
-    ε_boundary = paths_solve.e_W[T + 1] / paths_solve.e_US[T + 1]
-    hat_Qsum_boundary = p.β + (p.β + p.χ) / (1 + p.χ) * ε_boundary
-    q_W_boundary = hat_Qsum_boundary - q_US_boundary
-
-    q_US_u_next = q_US_boundary
-    q_W_u_next  = q_W_boundary
-
-    x_prev = [asym.ω, asym.ω_s, asym.θ, asym.θ_Us, asym.Rf, q_US_boundary]
+    x_prev = [asym.ω, asym.ω_s, asym.θ, asym.θ_Us, asym.Rf, q_US_T]
 
     n_fail = 0
-    for t in T:-1:1
-        bs_next = balanced_solve[t+1]
-        bs_t = balanced_solve[t]
+    for t in (T-1):-1:1
+        bs_next = balanced_states[t+1]
+        bs_t = balanced_states[t]
 
         x_bs = [bs_t.ω_b, bs_t.ω_star_b, bs_t.θ_b,
                 bs_t.θ_US_star_b, bs_t.R_f_b, bs_t.Q_US_hat]
@@ -903,11 +850,11 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
 
         ω, ω_s, θ, θ_Us, Rf, q_US = x_sol
 
-        Q_US_level = q_US * paths_solve.e_US[t]
-        u_solve[t] = build_period_state(t, paths_solve, ω, ω_s, θ, θ_Us, Rf, Q_US_level, p)
+        Q_US_level = q_US * paths.e_US[t]
+        u_path[t] = build_period_state(t, paths, ω, ω_s, θ, θ_Us, Rf, Q_US_level, p)
 
         q_US_u_next = q_US
-        ε_t = paths_solve.e_W[t] / paths_solve.e_US[t]
+        ε_t = paths.e_W[t] / paths.e_US[t]
         hat_Qsum_t = p.β + (p.β + p.χ) / (1 + p.χ) * ε_t
         q_W_u_next  = hat_Qsum_t - q_US
 
@@ -918,30 +865,24 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
                     t, ω, θ, θ_Us, Rf, q_US, rnorm)
     end
 
-    verbose && println("  u-path: $(T-n_fail)/$(T) periods converged ($(T_report) reported, $(n_buffer) buffer).")
+    verbose && println("  u-path: $(T-1-n_fail)/$(T-1) periods converged.")
 
     # ── Fill R_f_W by the RoW domestic-bond FOC ──
-    for t in 1:T_report
-        s = u_solve[t]
-        D_US_next = paths_solve.D_US[t+1]
-        D_W_next  = paths_solve.D_W[t+1]
+    for t in 1:(T-1)
+        s = u_path[t]
+        D_US_next = paths.D_US[t+1]
+        D_W_next  = paths.D_W[t+1]
 
-        if t < T
-            Q_US_next_u = u_solve[t+1].Q_US
-            Q_W_next_u  = u_solve[t+1].Q_W
-        else
-            Q_US_next_u = q_US_boundary * paths_solve.e_US[t+1]
-            Q_W_next_u  = q_W_boundary  * paths_solve.e_US[t+1]
-        end
+        Q_US_next_u = u_path[t+1].Q_US
+        Q_W_next_u  = u_path[t+1].Q_W
 
-        bs_next = balanced_solve[t+1]
-        # Julia index t+1 is model date t because paths[1] is date 0.
-        # Effective λ_e at the successor date: λ_e · ρ^t
+        bs_next = balanced_states[t+1]
+        # Effective λ_e at switch date t+1: λ_e · ρ^(t+1)
         # actual b-state price = Q_hat * λ_e_{t+1} * e_US^u
-        λ_e_tp1 = p.λ_e  * p.ρ^t
-        λ_D_tp1 = p.λ_D  * p.ρ_D^t
-        Q_US_next_b = bs_next.Q_US_hat * λ_e_tp1 * paths_solve.e_US[t+1]
-        Q_W_next_b  = bs_next.Q_W_hat  * λ_e_tp1 * paths_solve.e_US[t+1]
+        λ_e_tp1 = p.λ_e  * p.ρ^(t + 1)
+        λ_D_tp1 = p.λ_D  * p.ρ_D^(t + 1)
+        Q_US_next_b = bs_next.Q_US_hat * λ_e_tp1 * paths.e_US[t+1]
+        Q_W_next_b  = bs_next.Q_W_hat  * λ_e_tp1 * paths.e_US[t+1]
         D_US_next_b = λ_D_tp1 * D_US_next
 
         R_US_u = (Q_US_next_u + D_US_next)   / s.Q_US
@@ -958,10 +899,11 @@ function solve_u_path(p::ModelParams, paths::ExogenousPaths,
         E_Ms      = p.π_persist * Ms_u + (1 - p.π_persist) * Ms_b
         E_Ms_Rps  = expect_Mf(Ms_u, Ms_b, R_ps_u, R_ps_b, p.π_persist)
 
-        u_solve[t].R_f_W = E_Ms_Rps / E_Ms
+        u_path[t].R_f_W = E_Ms_Rps / E_Ms
     end
+    u_path[T].R_f_W = balanced_states[T].R_f_W_b
 
-    return u_solve[1:T_report]
+    u_path
 end
 
 # ─────────────────────────────────────────────────────────────────
@@ -1001,12 +943,11 @@ function compute_bubble_diagnostics(p::ModelParams,
                     s_prev.θ, s_prev.θ_US_star, s_prev.R_f)
 
         # Returns under b at t (switch)
-        # Julia index t is model date t-1 because paths[1] is date 0.
-        # Effective λ_e at switch date t-1: λ_e · ρ^(t-1)
+        # Effective λ_e at switch date t: λ_e · ρ^t
         # Q^b = Q_hat * λ_e_t * e_US^u,  D_US^b = λ_D_t * D_US^u
         bs_t   = balanced_states[t]
-        λ_e_t  = p.λ_e  * p.ρ^(t - 1)
-        λ_D_t  = p.λ_D  * p.ρ_D^(t - 1)
+        λ_e_t  = p.λ_e  * p.ρ^t
+        λ_D_t  = p.λ_D  * p.ρ_D^t
         Q_US_b = bs_t.Q_US_hat * λ_e_t * paths.e_US[t]
         Q_W_b  = bs_t.Q_W_hat  * λ_e_t * paths.e_US[t]
         D_US_b = λ_D_t * paths.D_US[t]
@@ -1060,7 +1001,37 @@ function run_simulation(p::ModelParams=ModelParams(); verbose=true)
     paths = generate_exogenous_paths(p)
 
     verbose && println("Solving balanced-growth states...")
-    bs = solve_balanced_states(p, paths; T_total = paths.T, verbose=verbose)
+    T = p.T_max + 1
+    bs = Vector{BalancedStateResult}(undef, T)
+    x0_bs = nothing
+
+    for t in 1:T
+        # Effective scalings at switch date t: λ_e_t = λ_e·ρ^t, λ_D_t = λ_D·ρ_D^t
+        # d_b = D_US^b/e_US^b = (λ_D_t·D_US^u)/(λ_e_t·e_US^u)  → (λ_D/λ_e)·d_0  (constant)
+        # eps_b = e_W/e_US^b = (e_W/e_US^u)/λ_e_t                (RoW endowment unchanged)
+        λ_e_t = p.λ_e  * p.ρ^t
+        λ_D_t = p.λ_D  * p.ρ_D^t
+        d_b   = (λ_D_t / λ_e_t) * paths.D_US[t] / paths.e_US[t]
+        dW    = paths.D_W[t] / paths.e_W[t]
+        eps_b = (paths.e_W[t] / paths.e_US[t]) / λ_e_t
+        try
+            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=x0_bs)
+        catch
+            # Reset initial guess on failure
+            bs[t] = solve_balanced_state(p, d_b, dW, eps_b; x0=nothing)
+        end
+        if !bs[t].converged
+            @warn "Balanced state did not converge at t=$t"
+        end
+        # Only warm-start from converged solutions
+        if bs[t].converged
+            x0_bs = [bs[t].ω_b, bs[t].ω_star_b, bs[t].θ_b,
+                     bs[t].θ_US_star_b, bs[t].R_f_b]
+        end
+        verbose && t % 20 == 0 &&
+            @printf("  t=%3d: ω_b=%.4f  θ_b=%.6f  R_f_b=%.4f\n",
+                    t, bs[t].ω_b, bs[t].θ_b, bs[t].R_f_b)
+    end
 
     verbose && println("Solving u-path by backward induction...")
     u = solve_u_path(p, paths, bs; verbose=verbose)

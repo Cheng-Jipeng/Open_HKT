@@ -7,19 +7,19 @@
 # Assets:   One Lucas tree (stock) with dividends D_t.  No bonds (θ = 0 trivially).
 # Prices:   Q_t = β·e_t always (market clearing, trivial — no portfolio solver needed).
 # Regimes:  u-state (bubble continues, growth g_e_u) vs b-state (bubble pops, g_e_b).
-# b-state:  Q^b_t = β·λ_e·ρ^τ·e^u_t,  D^b_t = λ_D·D^u_t
+# b-state:  Q^b_t = β·λ_e·ρ^t·e^u_t,  D^b_t = λ_D·D^u_t
 #           where ρ ∈ (0,1] is a per-period decay factor for the b-state price.
 #           Natural default: ρ = g_e_b/g_e_u, so Q^b_t = β·e_0·g_e_b^t
 #           (b-state price is what the endowment would be under fundamental growth).
 #
 # Equilibrium is closed-form:
 #   R^u_t = g_e_u·(β + d^u_t)/β               (u-continuation return)
-#   R^b_t = g_e_u·(β·λ_e·ρ^τ + λ_D·d^u_t)/β  (b-switch return)
-#   C^b/C^u = R^b/R^u → λ_e·ρ^τ → 0  as τ → ∞  (when ρ < 1)
+#   R^b_t = g_e_u·(β·λ_e·ρ^t + λ_D·d^u_t)/β  (b-switch return)
+#   C^b/C^u = R^b/R^u → λ_e·ρ^t → 0  as t → ∞  (when ρ < 1)
 #
-# Condition 2b ≡ Σ(C^b/C^u)^{1-γ} ≈ Σ (λ_e·ρ^τ)^{1-γ}:
+# Condition 2b ≡ Σ(C^b/C^u)^{1-γ} ≈ Σ (λ_e·ρ^t)^{1-γ}:
 #   ρ = 1:  terms → (λ_e)^{1-γ} = constant  → sum grows linearly → DIVERGES
-#   ρ < 1:  terms ~ (ρ^{1-γ})^τ → 0        → geometric series  → CONVERGES ✓
+#   ρ < 1:  terms ~ (ρ^{1-γ})^t → 0        → geometric series  → CONVERGES ✓
 
 using Parameters
 using Printf
@@ -51,13 +51,13 @@ Adapted from ModelParams in TwoCountryOLG.jl; drops all RoW-specific fields.
     e_0::Float64         = 1.0    # initial endowment      (= e_US_0)
     D_e_ratio_0::Float64 = 0.04   # initial D/e ratio      (same)
 
-    # Switch-date scaling: Q^b_t = β·λ_e·ρ^τ·e^u_t,  D^b_t = λ_D·D^u_t
+    # Switch-date scaling: Q^b_t = β·λ_e·ρ^t·e^u_t,  D^b_t = λ_D·D^u_t
     λ_e::Float64 = 1.0           # level scalar at t=0  (same default as two-country)
     λ_D::Float64 = 1.0           # dividend scalar      (same default)
     # Per-period decay of the b-state price.
     # ρ = 1   → constant λ_e (original spec, condition 2b diverges)
-    # ρ < 1   → λ_e·ρ^τ → 0, condition 2b converges as geometric series
-    # Natural default: ρ = g_e_b/g_e_u so Q^b_τ = β·e_0·g_e_b^τ
+    # ρ < 1   → λ_e·ρ^t → 0, condition 2b converges as geometric series
+    # Natural default: ρ = g_e_b/g_e_u so Q^b_t = β·e_0·g_e_b^t
     #   (b-state price = endowment on the fundamental growth path)
     ρ::Float64 = 1.01^5 / 1.025^5   # ≈ 0.929 per 5-year period
 
@@ -101,7 +101,7 @@ Equilibrium state at period t on the u-path.
 
 Stock prices (market clearing, trivial):
   Q_u   = β·e_t                   (u-path: all savings = stock market cap)
-  λ_e_t = λ_e · ρ^(t-1)           (paths[1] is model date 0)
+  λ_e_t = λ_e · ρ^t               (effective b-state scaling at date t)
   Q_b   = β·λ_e_t·e_t             (b-state price if bubble pops at t)
 
 Returns received by the old agent at t (who saved A_{t-1} = β·e_{t-1}):
@@ -114,7 +114,7 @@ struct SCPeriodState
     e::Float64        # e^u_t
     D::Float64        # D^u_t
     d::Float64        # D_t / e_t  (dividend ratio, declines since g_D_u < g_e_u)
-    λ_e_t::Float64    # effective b-state scaling = λ_e · ρ^(t-1)
+    λ_e_t::Float64    # effective b-state scaling = λ_e · ρ^t
     Q_u::Float64      # β·e_t
     Q_b::Float64      # β·λ_e_t·e_t
     R_u::Float64      # u-continuation return
@@ -130,7 +130,7 @@ function solve_sc_u_path(p::SCParams, paths::SCPaths)
     for t in 1:T
         e_t    = paths.e[t]
         D_t    = paths.D[t]
-        λ_e_t  = p.λ_e * p.ρ^(t - 1)  # paths[1] is model date 0
+        λ_e_t  = p.λ_e * p.ρ^t      # decays as ρ^t; ρ=1 recovers constant λ_e
         Q_u    = p.β * e_t
         Q_b    = p.β * λ_e_t * e_t
         d      = D_t / e_t
@@ -158,8 +158,8 @@ Condition 2a: Σ d_t = Σ D^u_t / e^u_t < ∞
   → converges iff g_D_u < g_e_u  (holds with default params)
 
 Condition 2b: Σ (C^b_t / C^u_t)^{1-γ} < ∞
-  C^b/C^u = (β·λ_e·ρ^τ + λ_D·d_t) / (β + d_t) → λ_e·ρ^τ  as d_t → 0
-  Terms ~ (λ_e·ρ^τ)^{1-γ} = λ_e^{1-γ} · (ρ^{1-γ})^τ
+  C^b/C^u = (β·λ_e·ρ^t + λ_D·d_t) / (β + d_t) → λ_e·ρ^t  as d_t → 0
+  Terms ~ (λ_e·ρ^t)^{1-γ} = λ_e^{1-γ} · (ρ^{1-γ})^t
   → ρ = 1: constant → sum linear → DIVERGES
   → ρ < 1: geometric decay → sum CONVERGES  (iff ρ^{1-γ} < 1, i.e. γ < 1)
 
@@ -284,8 +284,8 @@ function run_sc_simulation(p::SCParams = SCParams(); verbose::Bool = true)
                        p.g_e_u, p.g_e_b, p.g_D_u)
     verbose && @printf("  Switch scaling: λ_e=%.3f  λ_D=%.3f  ρ=%.6f\n",
                        p.λ_e, p.λ_D, p.ρ)
-    verbose && @printf("  b-state price: Q^b_τ = β·λ_e·ρ^τ·e^u_t  (ρ^(T-1) = %.2e)\n",
-                       p.ρ^(p.T_max - 1))
+    verbose && @printf("  b-state price: Q^b_t = β·λ_e·ρ^t·e^u_t  (ρ^T = %.2e)\n",
+                       p.ρ^p.T_max)
 
     paths  = generate_sc_paths(p)
     states = solve_sc_u_path(p, paths)
@@ -310,7 +310,7 @@ function run_sc_simulation(p::SCParams = SCParams(); verbose::Bool = true)
         println("  Condition 2a: converges iff g_D_u < g_e_u (default ✓).")
         println()
         if p.ρ < 1.0
-            println("  Condition 2b: λ_e·ρ^τ → 0 so (C^b/C^u)^{1-γ} ~ (ρ^{1-γ})^τ.")
+            println("  Condition 2b: λ_e·ρ^t → 0 so (C^b/C^u)^{1-γ} ~ (ρ^{1-γ})^t.")
             if ρ_geom < 1
                 println("  ρ^{1-γ} < 1  → geometric series → CONVERGES ✓  bubble exists.")
             else
