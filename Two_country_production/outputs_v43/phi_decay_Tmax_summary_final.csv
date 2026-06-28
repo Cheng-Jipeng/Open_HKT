@@ -1,0 +1,17 @@
+scenario,a_US,a_W,recommended_T_max,last_valid_T,first_invalid_or_timeout_T,floor_t_direct,floor_t_projected,corner_test,stop_reason,φ_final_last_valid,max_u_residual_last_valid,decay_rate_last_valid
+us_only,0.20,0.20,100,100,,,172.9136,>100 pass,reached_100,0.0358,5.118e-08,0.0304
+us_only,0.25,0.20,50,50,60,,167.1008,>100 pass,first_invalid_residual,0.1464,4.478e-07,0.0298
+us_only,0.30,0.20,40,40,50,,140.6582,>100 pass,first_invalid_residual,0.1524,2.093e-08,0.0349
+us_only,0.40,0.20,15,15,20,,138.8515,>100 pass,first_invalid_residual,0.3382,4.953e-06,0.0341
+us_only,0.50,0.20,10,10,15,,121.3513,>100 pass,first_invalid_residual,0.3691,5.567e-06,0.0387
+us_only,0.75,0.20,2,2,3,,,,first_invalid_residual,0.4754,2.655e-08,NaN
+us_only,1.00,0.20,10,10,15,,77.7397,projected 77.7,first_invalid_residual,0.2923,5.213e-09,0.0604
+us_only,1.20,0.20,10,10,15,,57.1223,projected 57.1,first_invalid_residual,0.2484,4.423e-09,0.0834
+paired,0.20,0.20,100,100,,,172.9136,>100 pass,reached_100,0.0358,5.118e-08,0.0304
+paired,0.25,0.25,100,100,,,121.5891,>100 pass,reached_100,0.0098,5.356e-07,0.0433
+paired,0.30,0.30,92,100,,93,95.2895,direct 93,hit_phi_floor_band,0.0030,3.646e-06,0.0553
+paired,0.40,0.40,60,60,80,,73.9252,projected 73.9,timeout_unresolved,0.0106,2.246e-06,0.0677
+paired,0.50,0.50,40,40,50,,61.8997,projected 61.9,first_invalid_residual,0.0238,4.074e-06,0.0780
+paired,0.75,0.75,25,25,30,,43.4137,projected 43.4,first_invalid_residual,0.0323,2.039e-06,0.1071
+paired,1.00,1.00,10,10,15,,40.0215,projected 40.0,first_invalid_residual,0.1333,2.603e-06,0.1101
+paired,1.20,1.20,10,10,15,,33.1524,projected 33.2,first_invalid_residual,0.1045,2.787e-06,0.1324

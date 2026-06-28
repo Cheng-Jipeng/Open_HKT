@@ -1,0 +1,31 @@
+HKT INCREASING-Q / LARGE-BUBBLE TWO-COUNTRY PRODUCTION REPORT
+================================================================
+
+Selected T_max = 35, n_buffer = 5, branch_iters = 60
+common_world_growth = false; literal ν_b = 0.500000
+γ = 0.250000, π = 0.800000, ξ_u = 2.000000, ν_u = 1.500000, ξ_W = 0.500000, ϑ_US = 0.800000
+
+Horizon attempts:
+  T=35 buffer= 5 valid=true max_u=5.22e-08 max_bgp=9.99e-10 q_T/q_1=0.9475 B/Q_T=2.8749e-02 elapsed=27.4s
+
+Baseline comparison at selected horizon:
+  baseline q_T/q_1 = 0.070033, B/Q_T = 2.160077e-02, max B/Q = 2.160077e-02, max_u = 9.83e-10
+  combo    q_T/q_1 = 0.947546, B/Q_T = 2.874948e-02, max B/Q = 2.874948e-02, max_u = 5.22e-08
+
+Residual and regularity checks:
+  u-branch converged = true
+  max u residual = 5.22e-08
+  max BGP residual = 9.99e-10
+  min Ψ = 9.554656e-01; psi_ok = true
+  equity-weight min slack = 6.158989e-02; ok = true
+
+Market clearing / identities:
+  US stock-clearing max = 5.06e-08
+  RoW stock-clearing max = 1.97e-07
+  bond-clearing max = 1.11e-16
+  aggregate-cap identity max = 1.46e-07
+  Y=e+D-I US max = 8.88e-16
+  Y=e+D-I RoW max = 8.88e-16
+  V+B-Q additivity max = 0.00e+00
+  NFA split additivity max = 0.00e+00
+  Delta split additivity max = 0.00e+00

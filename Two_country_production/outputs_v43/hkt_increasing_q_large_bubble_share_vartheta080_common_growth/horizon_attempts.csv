@@ -1,0 +1,2 @@
+T_max,n_buffer,elapsed_sec,valid_core,branch_converged,max_u_residual,max_bgp_residual,psi_min,equity_weight_min,nu_b_effective,q_growth,bubble_share_final,bubble_share_max
+45.0,5.0,22.686537981033325,1.0,1.0,1.1771082974506947e-9,9.828136013356747e-10,0.9826938381102874,0.14498945947201605,1.7000088441005867,3.511742320021257,-0.10527418936289631,-4.1648053185492793e-7

@@ -1,0 +1,40 @@
+HKT INCREASING-Q / LARGE-BUBBLE TWO-COUNTRY PRODUCTION REPORT
+================================================================
+
+Selected T_max = 45, n_buffer = 5, branch_iters = 100
+common_world_growth = true; seed ν_b = 0.500000; effective ν_b = 0.408594
+γ = 0.250000, π = 0.800000, ξ_u = 2.000000, ν_u = 1.500000, ξ_W = 0.500000
+
+Horizon attempts:
+  T=45 buffer= 5 valid=true max_u=8.51e-06 max_bgp=7.03e-10 q_T/q_1=6.8177 B/Q_T=7.5923e-01 elapsed=42.9s
+
+Baseline comparison at selected horizon:
+  baseline q_T/q_1 = 0.023980, B/Q_T = 3.400815e-02, max B/Q = 3.400815e-02, max_u = 1.13e-09
+  combo    q_T/q_1 = 6.817687, B/Q_T = 7.592254e-01, max B/Q = 7.592254e-01, max_u = 8.51e-06
+
+Residual and regularity checks:
+  u-branch converged = true
+  max u residual = 8.51e-06
+  max BGP residual = 7.03e-10
+  min Ψ = 9.887779e-01; psi_ok = true
+  equity-weight min slack = 1.049292e-01; ok = true
+
+Market clearing / identities:
+  US stock-clearing max = 2.88e-03
+  RoW stock-clearing max = 2.63e-03
+  bond-clearing max = 1.11e-16
+  aggregate-cap identity max = 5.51e-03
+  Y=e+D-I US max = 1.14e-13
+  Y=e+D-I RoW max = 5.33e-15
+  V+B-Q additivity max = 0.00e+00
+  NFA split additivity max = 2.84e-14
+  Delta split additivity max = 2.13e-14
+
+Replicated 11_v9 diagnostics:
+  Q/e demand additivity max = 3.20e-06
+  Q/e production additivity max = 1.11e-16
+  NFA position component additivity max = 2.88e-03 (3.20e-06 of e_US)
+  AHP NFA identity max = 2.88e-03 (3.20e-06 of e_US)
+  AHP period residual max = 3.77e-15
+  AHP VA subcomponent additivity max = 0.00e+00
+  AHP CA subcomponent additivity max = 0.00e+00
