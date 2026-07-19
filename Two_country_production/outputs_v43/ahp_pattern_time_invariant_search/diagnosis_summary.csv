@@ -1,0 +1,27 @@
+scope,metric,value,interpretation
+Notebook 12 baseline,raw_cum_CA_monotone,true,Raw cumulative CA never reverses within numerical tolerance.
+Notebook 12 baseline,raw_cum_CA_final,49.634438114085,The numerator continues to rise through the endpoint.
+Notebook 12 baseline,Y_US_growth_T_over_1,499.88672065153554,Current U.S. output is the rapidly expanding denominator.
+Notebook 12 baseline,cum_CA_over_current_Y_peak,0.11414825707500963,Peak of the moving-denominator ratio.
+Notebook 12 baseline,cum_CA_over_current_Y_final,0.05724711433789439,Endpoint after output growth outruns cumulative CA.
+Notebook 12 baseline,cum_CA_ratio_backtracking,0.05690114273711524,Peak minus endpoint; denominator-driven because raw cum CA is monotone.
+Notebook 12 baseline,e_US_growth_T_over_1,534.9260295949477,Current U.S. equity value is the denominator in the `_e` figure.
+Notebook 12 baseline,cum_CA_over_current_e_peak,0.11452053418184843,Peak of cumulative CA divided by current e_US.
+Notebook 12 baseline,cum_CA_over_current_e_final,0.05521604610712213,Endpoint after e_US growth outruns cumulative CA.
+Notebook 12 baseline,cum_CA_over_current_e_backtracking,0.059304488074726304,Peak minus endpoint in the `_e` figure; also denominator-driven.
+Notebook 12 baseline,cum_CA_ratio_cross_csv_error,0.0,Agreement between the two saved Notebook 12 accounting CSVs.
+Notebook 12 baseline,Y_US_cross_csv_error,0.0,Agreement with the saved all-u endogenous-path CSV.
+Selected final calibration,selected_candidate,F_foreign_target025,Best hard-valid time-invariant candidate under the AHP-prioritized score.
+Selected final calibration,selected_horizon,35,T=35 reporting horizon; the T=45 branch is excluded as horizon-stiff.
+Selected final calibration,late_NFA_move_endpoint_Y,-0.038540578912412214,Fixed-endpoint mechanism diagnostic; negative is desired but this is not the AHP level-ratio change.
+Selected final calibration,late_NFA_over_current_Y_change,0.10910272684934307,"Primary AHP-direction check; positive means NFA/current output improves, so the pattern gate fails."
+Selected final calibration,full_NFA_over_current_Y_change,-0.02578678296491807,Full-path AHP-direction check; negative is required for a match.
+Selected final calibration,full_path_match,false,False is reported explicitly rather than treating the revaluation mechanism as an AHP pattern pass.
+Selected final calibration,economic_classification,partial_ahp_pattern,Partial AHP pattern when the full ratio deteriorates but the stricter late-window direction gate fails.
+Selected final calibration,late_liability_VA_endpoint_Y,-0.05672879630045581,Price revaluation of foreign-held U.S. equity claims; negative is desired.
+Selected final calibration,late_net_VA_endpoint_Y,-0.05143687756265152,Net valuation channel over the late window.
+Selected final calibration,late_CA_endpoint_Y,0.012896298650239276,Quantity-flow channel; comparatively small and smooth is desired.
+Selected final calibration,full_CA_turnover_reversal,0.023812570599384734,One half of gross normalized-flow turnover minus the absolute net flow; zero for a one-direction path.
+Selected final calibration,late_CA_turnover_reversal,0.02381257059938473,Same turnover-based reversal statistic over the fixed late window.
+Selected final calibration,late_foreign_exposure,0.38598260100312437,Large foreign-held U.S. equity claims support liability revaluation.
+Selected final calibration,AHP_anchor_distance,1.2049408171574183,Secondary distance anchor only; not a 100% replication target.
