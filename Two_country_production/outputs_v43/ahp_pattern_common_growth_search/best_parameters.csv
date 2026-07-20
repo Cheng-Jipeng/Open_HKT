@@ -1,0 +1,18 @@
+parameter,baseline_value,value,effect
+label,F_foreign_target025,cg_us_u_level_111,Selected literal fixed-nu_b mechanism case.
+common_world_growth,false,false,Kept false after one reference-BGP calibration so nu_b remains literally time invariant.
+a_W,0.1,0.05,Halving RoW research productivity reduces the old-F implied nu_b from about 6.28 to a feasible value and stabilizes q_W.
+xi_W,1.0,1.0,Kept high so RoW values share the common trend without the q_W collapse seen in literal fixed-nu_b roots.
+nu_b_seed,0.1,0.1,Only the starting value supplied to the common-growth calibration.
+nu_b_calibrated,0.1,0.6335189879299027,Absorbs the remaining reference-BGP cross-country growth mismatch after the RoW adjustment.
+max_switch_state_log_growth_gap,not audited,0.005996816131900997,"Cost of literal time invariance: reference common growth is exact, while switch-state equality is approximate."
+beta,0.45,0.35,Part of the jointly calibrated low-beta financial block; its isolated causal effect is not identified here.
+kappa,1.0,0.75,Part of the jointly calibrated intermediate-friction block; its isolated causal effect is not identified here.
+omega_bar_star,0.25,0.25,Held fixed at the robust foreign U.S.-equity target; it is not an adjusted driver of the selected comparison.
+omega_bar,0.5,0.5,Kept at its admissible floor to avoid crowding out U.S. holdings of foreign equity.
+vartheta_US,0.8,0.8,Kept high so U.S. growth news is transmitted into U.S. equity valuation.
+chi,0.0002,0.0002,Held fixed and small; it is not an adjusted driver of the selected comparison.
+eta,0.01,0.01,Held fixed; it is not an adjusted driver of the selected comparison.
+nu_u,1.4,1.895,"Raised above calibrated nu_b and close to xi_u, preserving exponent ordering and solver interiority."
+xi_u,1.9,1.9,Kept fixed; raising both U.S. exponents increased CA faster than liability revaluation.
+US_unbalanced_productivity_level_scale,1.0,1.11,The decisive local adjustment: it raises q_US relative to q_W and creates the liability price revaluation that makes NFA fall.

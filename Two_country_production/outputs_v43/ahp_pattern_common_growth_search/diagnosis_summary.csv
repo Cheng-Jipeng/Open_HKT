@@ -1,0 +1,17 @@
+scope,metric,value,interpretation
+Notebook 12 baseline,raw_cum_CA_monotone,true,Raw cumulative CA never reverses within numerical tolerance.
+Notebook 12 baseline,raw_cum_CA_final,49.634438114085,The numerator continues to rise through the endpoint.
+Notebook 12 baseline,Y_US_growth_T_over_1,499.88672065153554,Current U.S. output is the rapidly expanding denominator.
+Notebook 12 baseline,cum_CA_over_current_Y_peak,0.11414825707500963,Peak of the moving-denominator ratio.
+Notebook 12 baseline,cum_CA_over_current_Y_final,0.05724711433789439,Endpoint after output growth outruns cumulative CA.
+Notebook 12 baseline,cum_CA_ratio_backtracking,0.05690114273711524,Peak minus endpoint; denominator-driven because raw cum CA is monotone.
+Notebook 12 baseline,e_US_growth_T_over_1,534.9260295949477,Current U.S. equity value is the denominator in the `_e` figure.
+Notebook 12 baseline,cum_CA_over_current_e_peak,0.11452053418184843,Peak of cumulative CA divided by current e_US.
+Notebook 12 baseline,cum_CA_over_current_e_final,0.05521604610712213,Endpoint after e_US growth outruns cumulative CA.
+Notebook 12 baseline,cum_CA_over_current_e_backtracking,0.059304488074726304,Peak minus endpoint in the `_e` figure; also denominator-driven.
+Notebook 12 baseline,cum_CA_ratio_cross_csv_error,0.0,Agreement between the two saved Notebook 12 accounting CSVs.
+Notebook 12 baseline,Y_US_cross_csv_error,0.0,Agreement with the saved all-u endogenous-path CSV.
+Notebook 15 common growth,old_F_implied_nu_b,6.27868006279726,Why the unmodified old-F common-growth calibration is infeasible: implied nu_b exceeds the old nu_u ceiling.
+Notebook 15 common growth,strict_row_failure_confirmed,true,Every hard-valid root in the five-case bounded RoW audit failed the AHP mechanism check; this is not a global impossibility theorem.
+Notebook 15 common growth,fallback_activated,true,One constant nu_b absorbs the reference-BGP mismatch only after the bounded Stage-A failure assertion.
+Notebook 15 common growth,best_matches_ahp_nfa_direction,true,False means the selected case is explicitly reported as a mechanism near miss.
