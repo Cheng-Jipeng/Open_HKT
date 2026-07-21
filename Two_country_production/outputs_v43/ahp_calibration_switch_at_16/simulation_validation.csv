@@ -1,0 +1,15 @@
+check,value,tolerance,passed,required,interpretation
+regime_timing,true,exact,true,true,u in periods 1:15 and b in periods 16:30.
+pre_switch_state_match,0.0,1.0e-7,true,true,Realized path equals the solved all-u branch before the switch.
+switch_knowledge_inheritance,0.0,1.0e-7,true,true,Period-16 knowledge is inherited from period-15 u innovation.
+switch_bgp_match,0.0,1.0e-7,true,true,The period-16 b state equals the stored switch successor at the same state.
+post_switch_US_knowledge_recursion,0.0,1.0e-7,true,true,Post-switch U.S. knowledge uses absorbing allocations.
+post_switch_RoW_knowledge_recursion,0.0,1.0e-7,true,true,Post-switch RoW knowledge uses absorbing allocations.
+checked_path_all_finite,true,exact,true,true,No non-finite state is allowed into the reported path.
+realized_bgp_convergence,true,exact,true,true,Every realized absorbing equilibrium converges.
+max_realized_bgp_residual,9.727653010693595e-10,1.0e-5,true,true,Maximum residual over realized b states.
+max_common_growth_log_gap,9.614995952200722e-10,1.0e-7,true,true,Pathwise common growth at every realized b state.
+effective_exponent_ordering,0.7883546449126457,1.749,true,true,Every realized nu_b_eff remains below nu_u.
+switch_price_below_all_u_counterfactual,-0.20944733981407004,< 0,true,true,"At the same inherited state, the realized b equity price is below the all-u price."
+original_helper_audit_completed,true,exact,true,false,The auxiliary Notebook-05 literal-helper audit returned a full-length path.
+original_helper_match_before_failure,6.887839471615918e-7,1.0e-6,true,true,Checked continuation agrees within 1e-6 with Notebook 05 wherever its literal helper remains finite.

@@ -1,0 +1,25 @@
+parameter,value,source
+selected_candidate,pathwise_hi_exp_pi075,Notebook 15 T=30 finalist re-ranking
+switch_period,16,User-specified realized event
+beta,0.45,Notebook 15
+gamma,0.25,Notebook 15
+pi_persist,0.75,Notebook 15
+kappa,1.0,Notebook 15
+omega_bar,0.5,Notebook 15
+omega_bar_star,0.25,Notebook 15
+chi,0.0002,Notebook 15
+eta,0.01,Notebook 15
+a_US,0.2,Notebook 15
+vartheta_US,0.85,Notebook 15
+a_W,0.06,Notebook 15
+H_W,3.0,Notebook 15
+L_W,3.0,Notebook 15
+A_X_US_u,15.0,Notebook 15
+A_L_US_u,1.5,Notebook 15
+nu_u,1.75,Notebook 15
+xi_u,2.25,Notebook 15
+xi_W,1.0,Notebook 15
+nu_b_input_seed,0.1,Notebook 15
+nu_b_reference_calibrated,1.6606529874949896,Cold re-solve
+realized_nu_b_eff_min,0.7883546229342256,Period-16 realized b path
+realized_nu_b_eff_max,0.7883546449126457,Period-16 realized b path
