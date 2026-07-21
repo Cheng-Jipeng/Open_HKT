@@ -1,0 +1,13 @@
+metric,value,interpretation
+row_only_failure_confirmed,true,Both representative hard-valid RoW-only cases miss the AHP mechanism before the broader search is activated.
+score_uses_periods,1:15,Only the empirical first window enters the objective.
+tail_is_unscored,true,The late rebound remains visible and exported but has exactly zero score weight.
+selected_candidate,pathwise_hi_exp_pi075,"Preferred center: preserves the financial block and exponent gap, with slightly faster transition timing."
+selected_classification,first_window_common_growth_strong_partial_match,Qualitative partial match; 100% empirical magnitude replication is not required.
+VA_dominates_CA,true,Core AHP mechanism criterion in the first window.
+VA_to_CA_magnitude_ratio,4.53921699907407,Magnitude dominance of price revaluation over quantity flows.
+liability_share_of_gross_VA,0.7616604837857546,Share of gross absolute VA attributable to foreign-held U.S. equity claims.
+pathwise_common_growth_exact,true,Every reported-plus-buffer absorbing BGP satisfies the common-growth identity.
+max_pathwise_common_log_gap,1.7771472071714811e-9,Numerical error in the exact growth identity.
+nu_b_eff_range,"[0.3816202061077737, 1.6606529874949896]",State-specific selectors restore common growth while all primitives remain time invariant.
+post_target_rebased_change,0.042887005659806375,Late-path diagnostic only; positive values indicate rebound after the evidence endpoint.

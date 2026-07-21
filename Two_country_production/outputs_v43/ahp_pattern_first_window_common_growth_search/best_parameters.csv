@@ -1,0 +1,20 @@
+parameter,time_invariant_value,selected_value,changed,role
+common_world_growth,false,true,true,Restores exact common growth at every switch-state BGP using a state-specific effective exponent.
+beta,0.45,0.45,false,Savings/portfolio block retained from the preferred time-invariant calibration.
+kappa,1.0,1.0,false,Portfolio adjustment strength retained; financial re-optimization did not improve the first-window match.
+omega_bar,0.5,0.5,false,U.S. target foreign-equity weight retained.
+omega_bar_star,0.25,0.25,false,"Foreign target weight in U.S. equity retained, preserving large gross U.S. liabilities."
+chi,0.0002,0.0002,false,Small portfolio-cost term retained.
+eta,0.01,0.01,false,Portfolio curvature term retained.
+pi_persist,0.8,0.75,true,A modest reduction advances the transition slightly and strengthens early liability revaluation.
+a_W,0.1,0.06,true,Lowers RoW growth pressure enough to keep the common-growth exponent feasible without collapsing q_W.
+xi_W,1.0,1.0,false,Retained at one; low-xi_W alternatives generated a collapsing q_W and asset-led VA.
+vartheta_US,0.8,0.85,true,"Raises the transmission of U.S. growth news into q_US, enlarging liability price revaluation."
+A_X_US_u,10.0,15.0,true,The main magnitude lever: a time-invariant 50% level increase raises U.S. equity appreciation.
+A_L_US_u,1.0,1.5,true,Scaled with A_X_US_u so the unbalanced U.S. technology block shifts coherently.
+nu_u,1.4,1.75,true,Raises the ceiling above every state-specific nu_b_eff.
+xi_u,1.9,2.25,true,"Raised one-for-one with nu_u, preserving the original xi_u-nu_u gap of 0.50 and hence the unbalanced-growth force."
+nu_b_input_seed,0.1,0.1,false,Only a numerical starting value for common-growth calibration.
+nu_b_reference_calibrated,0.1,1.6606529874949896,true,Absorbs the remaining reference-BGP cross-country growth mismatch after the RoW adjustment.
+nu_b_eff_min,not used,0.3816202061077737,true,Minimum pathwise selector required for exact common growth.
+nu_b_eff_max,not used,1.6606529874949896,true,Maximum pathwise selector; remains below nu_u with both registered and 0.02 robustness margins.
