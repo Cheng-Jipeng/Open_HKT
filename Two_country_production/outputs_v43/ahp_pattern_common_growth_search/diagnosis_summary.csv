@@ -13,5 +13,7 @@ Notebook 12 baseline,cum_CA_ratio_cross_csv_error,0.0,Agreement between the two 
 Notebook 12 baseline,Y_US_cross_csv_error,0.0,Agreement with the saved all-u endogenous-path CSV.
 Notebook 15 common growth,old_F_implied_nu_b,6.27868006279726,Why the unmodified old-F common-growth calibration is infeasible: implied nu_b exceeds the old nu_u ceiling.
 Notebook 15 common growth,strict_row_failure_confirmed,true,Every hard-valid root in the five-case bounded RoW audit failed the AHP mechanism check; this is not a global impossibility theorem.
-Notebook 15 common growth,fallback_activated,true,One constant nu_b absorbs the reference-BGP mismatch only after the bounded Stage-A failure assertion.
+Notebook 15 common growth,fallback_activated,true,"After the bounded Stage-A failure assertion, a global reference exponent plus state-specific effective exponents restores exact pathwise common growth."
+Notebook 15 common growth,pathwise_common_growth_exact,true,All absorbing switch-state BGPs satisfy common growth within the registered numerical tolerance.
+Notebook 15 common growth,extended_bgp_sequence_valid,true,Every reported and buffer switch-state BGP converges below the residual tolerance.
 Notebook 15 common growth,best_matches_ahp_nfa_direction,true,False means the selected case is explicitly reported as a mechanism near miss.
