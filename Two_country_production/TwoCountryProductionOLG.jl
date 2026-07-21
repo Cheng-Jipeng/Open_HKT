@@ -1044,6 +1044,43 @@ function _extrapolate_terminal!(pol::Matrix{Float64}, T::Int)
 end
 
 """
+Seed a longer-horizon policy matrix from an already solved u-path. Existing
+dates are copied exactly; newly appended dates carry the portfolio/return
+coordinates forward and extend the two labour allocations log-linearly. This
+changes only the numerical initial guess, not the equilibrium equations or the
+terminal closure applied during the solve.
+"""
+function _seed_policy_from_u_path!(pol::Matrix{Float64},
+                                   initial_u_path::AbstractVector,
+                                   T::Int)
+    isempty(initial_u_path) && return 0
+    n_available = min(length(initial_u_path), T)
+    n_seed = 0
+    for t in 1:n_available
+        s = initial_u_path[t]
+        values = Float64[s.φ_US, s.φ_W, s.ω, s.θ_US_star,
+                         s.ω_star, s.R_f, s.R_f_W]
+        all(isfinite, values) || break
+        pol[:, t] .= values
+        n_seed = t
+    end
+    n_seed == 0 && return 0
+
+    for t in (n_seed + 1):(T + 1)
+        pol[:, t] .= pol[:, t - 1]
+        if t >= 3
+            for i in (1, 2)
+                a, b = pol[i, t - 2], pol[i, t - 1]
+                if isfinite(a) && isfinite(b) && a > 1e-12 && b > 1e-12
+                    pol[i, t] = clamp(b * b / a, 1e-8, 1 - 1e-8)
+                end
+            end
+        end
+    end
+    return n_seed
+end
+
+"""
 Solve the unbalanced branch by forward-backward iteration.
 - At iteration k, hold the trajectory {N_US,t^u} fixed (computed forward
   from a guess of φ_US^u).
@@ -1053,7 +1090,8 @@ Solve the unbalanced branch by forward-backward iteration.
 """
 function solve_unbalanced_branch(p::ProductionParams,
                                  bgp_init::BGPResult;
-                                 verbose::Bool=false)
+                                 verbose::Bool=false,
+                                 initial_u_path=nothing)
     # Solve a few "scratch" buffer periods beyond the reported horizon so that
     # every *reported* period 1..T_report has a genuinely solved u-successor.
     # The finite-horizon terminal artifact — both the moving-target decay
@@ -1089,10 +1127,16 @@ function solve_unbalanced_branch(p::ProductionParams,
         pol[:, t] .= [bgp_seq[t].φ_US, bgp_seq[t].φ_W, bgp_seq[t].ω, bgp_seq[t].θ_US_star,
                       bgp_seq[t].ω_star, bgp_seq[t].R_f, bgp_seq[t].R_f_W]
     end
+    if initial_u_path !== nothing
+        n_seed = _seed_policy_from_u_path!(pol, initial_u_path, T)
+        verbose && println("  warm-started u-policy from $n_seed solved periods")
+    end
     # Finite-horizon terminal condition for the all-u continuation:
     # decay-consistent extrapolation of the u-successor (not a flat repeat,
     # which would contradict the period-T Euler equation on a decaying branch).
     _extrapolate_terminal!(pol, T)
+    φ_US_path = copy(pol[1, 1:T+1])
+    φ_W_path  = copy(pol[2, 1:T+1])
 
     converged_flag = false
     last_residual_norms = fill(NaN, T)
@@ -1496,7 +1540,8 @@ Steps:
    (V4_3 thm_bubble_characterization, ass_regular_kernel).
 """
 function run_production_simulation(p::ProductionParams=ProductionParams();
-                                    verbose::Bool=true)
+                                    verbose::Bool=true,
+                                    initial_u_path=nothing)
     validate_params(p)
 
     p_use = p
@@ -1521,7 +1566,9 @@ function run_production_simulation(p::ProductionParams=ProductionParams();
                        bgp0.residual_norm, bgp0.converged)
 
     verbose && println("Solving unbalanced branch by forward-backward iteration...")
-    branch = solve_unbalanced_branch(p_use, bgp0; verbose=verbose)
+    branch = solve_unbalanced_branch(p_use, bgp0;
+                                     verbose=verbose,
+                                     initial_u_path=initial_u_path)
 
     verbose && println("Computing bubble diagnostics...")
     diag = compute_diagnostics(p_use, branch.u_path, branch.bgp_seq)

@@ -1,0 +1,2 @@
+T_report,n_buffer,T0,endpoint_is_terminal_contaminated,t_max_abs_bubble_share_difference,max_abs_bubble_share_difference,bubble_share_LL_at_t,bubble_share_HKT_scalar_at_t,endpoint_bubble_share_LL,endpoint_bubble_share_HKT_scalar,endpoint_fundamental_share_LL,endpoint_fundamental_share_HKT_scalar
+105,0,105,true,53,2.521620839912586e-8,0.4185269730742956,0.418526998290504,0.9999998203592264,0.9999998203591443,1.796407736567318e-7,1.796408557595468e-7

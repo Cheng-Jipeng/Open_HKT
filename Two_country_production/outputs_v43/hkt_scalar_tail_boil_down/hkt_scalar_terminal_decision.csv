@@ -1,0 +1,2 @@
+T_report,hkt_entry_gate,hkt_entry_reason,hkt_attempted,hkt_residual_safe,hkt_scalar_root_residual,psi_ok,equity_weights_ok,hkt_admissible,hkt_admissibility_reason
+105,true,passed,true,true,0.0,true,false,true,passed
