@@ -309,6 +309,11 @@ switch_price_drop_ok =
 max_nfa_identity_error = maximum(
     scaled_error(us_nfa(s, p), us_nfa_from_portfolios(s, p)) for s in sim
 )
+notebook15_target_rebased_nfa = as_float(selected_row["target_rebased_NFA"])
+realized_target_rebased_nfa =
+    (us_nfa(sim[15], p) - us_nfa(sim[1], p)) / sim[15].Y_US
+notebook15_rebased_nfa_error =
+    abs(realized_target_rebased_nfa - notebook15_target_rebased_nfa)
 
 validation_rows = Dict{String,Any}[
     Dict("check"=>"regime_timing", "value"=>regime_timing_ok,
@@ -352,6 +357,11 @@ validation_rows = Dict{String,Any}[
          "tolerance"=>STATE_MATCH_TOL,
          "passed"=>max_nfa_identity_error <= STATE_MATCH_TOL,
          "interpretation"=>"NFA = beta*e_US - Q_US equals the explicit foreign-asset, equity-liability, and bond position."),
+    Dict("check"=>"Notebook15_rebased_NFA_match",
+         "value"=>notebook15_rebased_nfa_error,
+         "tolerance"=>STATE_MATCH_TOL,
+         "passed"=>notebook15_rebased_nfa_error <= STATE_MATCH_TOL,
+         "interpretation"=>"The period-15 rebased NFA change uses Notebook 15's (NFA_t-NFA_1)/current Y_t definition."),
     Dict("check"=>"original_helper_audit_completed",
          "value"=>original_helper_completed, "tolerance"=>"exact",
          "passed"=>original_helper_completed,
@@ -386,12 +396,17 @@ QD_path = Float64[s.Q_US / (s.N_US * s.d_US) for s in sim]
 Y_path = Float64[s.Y_US for s in sim]
 rel_path = Float64[s.Y_W / s.Y_US for s in sim]
 all_u_qd = Float64[s.q_US / s.d_US for s in result.u_path[1:T]]
-stock_price_path = Float64[s.q_US for s in sim]
-all_u_stock_price = Float64[s.q_US for s in result.u_path[1:T]]
+market_cap_path = Float64[s.Q_US for s in sim]
+all_u_market_cap = Float64[s.Q_US for s in result.u_path[1:T]]
+labor_income_path = Float64[s.e_US for s in sim]
+all_u_labor_income = Float64[s.e_US for s in result.u_path[1:T]]
 nfa_path = Float64[us_nfa(s, p) for s in sim]
 nfa_over_Y_path = nfa_path ./ Y_path
 all_u_nfa = Float64[us_nfa(s, p) for s in result.u_path[1:T]]
-all_u_nfa_over_Y = all_u_nfa ./ Float64[s.Y_US for s in result.u_path[1:T]]
+all_u_Y_path = Float64[s.Y_US for s in result.u_path[1:T]]
+all_u_nfa_over_Y = all_u_nfa ./ all_u_Y_path
+rebased_nfa_path = (nfa_path .- nfa_path[1]) ./ Y_path
+all_u_rebased_nfa_path = (all_u_nfa .- all_u_nfa[1]) ./ all_u_Y_path
 switch_x = SWITCH_PERIOD - 0.5
 
 p1 = plot(
@@ -407,7 +422,7 @@ vline!(p1, [switch_x], ls=:dash, color=:red,
 
 p2 = plot(
     tt, φ_path, lw=2.2, marker=:circle, label=L"\varphi_{US,t}",
-    xlabel="period t", ylabel=L"\varphi", title="U.S. labour allocation",
+    xlabel="period t", ylabel=L"\varphi", title="U.S. labor allocation",
 )
 vline!(p2, [switch_x], ls=:dash, color=:red, label="")
 
@@ -418,34 +433,37 @@ p3 = plot(
 )
 vline!(p3, [switch_x], ls=:dash, color=:red, label="")
 
-p4 = plot(
-    tt, rel_path, lw=2.2, marker=:circle, label=L"Y_W/Y_{US}",
-    xlabel="period t", ylabel="ratio", title="Relative country size",
+p_market_cap = plot(
+    tt, market_cap_path, lw=2.2, marker=:circle,
+    label=L"Q_{US,t}", xlabel="period t", ylabel="aggregate market value",
+    title="U.S. market capitalization",
 )
-vline!(p4, [switch_x], ls=:dash, color=:red, label="")
-
-p_stock = plot(
-    tt, stock_price_path, lw=2.2, marker=:circle,
-    label=L"q_{US,t}", xlabel="period t", ylabel="per-variety price",
-    title="U.S. stock price",
-)
-plot!(p_stock, tt, all_u_stock_price, lw=1.7, ls=:dot, color=:gray45,
+plot!(p_market_cap, tt, all_u_market_cap, lw=1.7, ls=:dot, color=:gray45,
       label="no-switch all-u counterfactual")
-vline!(p_stock, [switch_x], ls=:dash, color=:red, label="")
+vline!(p_market_cap, [switch_x], ls=:dash, color=:red, label="")
+
+p_labor_income = plot(
+    tt, labor_income_path, lw=2.2, marker=:circle,
+    label=L"e_{US,t}", xlabel="period t", ylabel="labor income",
+    title="U.S. labor income",
+)
+plot!(p_labor_income, tt, all_u_labor_income, lw=1.7, ls=:dot, color=:gray45,
+      label="no-switch all-u counterfactual")
+vline!(p_labor_income, [switch_x], ls=:dash, color=:red, label="")
 
 p_nfa = plot(
-    tt, nfa_over_Y_path, lw=2.2, marker=:circle,
-    label=L"NFA_{US,t}/Y_{US,t}", xlabel="period t",
+    tt, rebased_nfa_path, lw=2.2, marker=:circle,
+    label=L"(NFA_{US,t}-NFA_{US,1})/Y_{US,t}", xlabel="period t",
     ylabel="fraction of current U.S. output",
-    title="U.S. net foreign assets",
+    title="Rebased U.S. NFA change (Notebook 15 normalization)",
 )
-plot!(p_nfa, tt, all_u_nfa_over_Y, lw=1.7, ls=:dot, color=:gray45,
+plot!(p_nfa, tt, all_u_rebased_nfa_path, lw=1.7, ls=:dot, color=:gray45,
       label="no-switch all-u counterfactual")
 hline!(p_nfa, [0.0], ls=:dot, color=:gray65, label="")
 vline!(p_nfa, [switch_x], ls=:dash, color=:red, label="")
 
 section2_plot = plot(
-    p1, p_stock, p2, p3, p4, p_nfa,
+    p1, p2, p_market_cap, p3, p_labor_income, p_nfa,
     layout=(3, 2), size=(1200, 1180), margin=8mm,
 )
 section2_png = joinpath(OUTDIR, "section2_transition_t16.png")
@@ -528,11 +546,13 @@ for t in 1:T
         "bgp_residual"=>s.bgp_residual,
         "common_growth_log_gap"=>s.common_growth_log_gap,
         "NFA_US"=>nfa_path[t], "NFA_US_over_Y"=>nfa_over_Y_path[t],
+        "rebased_NFA_change_current_Y"=>rebased_nfa_path[t],
         "all_u_q_US"=>u.q_US, "all_u_d_US"=>u.d_US,
         "all_u_q_US_over_d_US"=>all_u_qd[t],
         "all_u_Y_US"=>u.Y_US, "all_u_e_US"=>u.e_US,
         "all_u_Q_US"=>u.Q_US, "all_u_NFA_US"=>all_u_nfa[t],
         "all_u_NFA_US_over_Y"=>all_u_nfa_over_Y[t],
+        "all_u_rebased_NFA_change_current_Y"=>all_u_rebased_nfa_path[t],
         "original_helper_finite"=>original_finite[t],
     ))
 end
@@ -545,9 +565,11 @@ path_columns = [
     "omega", "omega_star", "theta", "theta_US_star", "R_f", "R_f_W",
     "I_US", "I_W", "Psi", "nu_b_eff", "bgp_converged", "bgp_residual",
     "common_growth_log_gap", "NFA_US", "NFA_US_over_Y",
+    "rebased_NFA_change_current_Y",
     "all_u_q_US", "all_u_d_US", "all_u_q_US_over_d_US",
     "all_u_Y_US", "all_u_e_US", "all_u_Q_US", "all_u_NFA_US",
-    "all_u_NFA_US_over_Y", "original_helper_finite",
+    "all_u_NFA_US_over_Y", "all_u_rebased_NFA_change_current_Y",
+    "original_helper_finite",
 ]
 write_rows_csv(joinpath(OUTDIR, "switch_path_t16.csv"), path_rows, path_columns)
 
@@ -610,6 +632,9 @@ write_rows_csv(
         pre.d_US, burst.d_US, percent_change(burst.d_US, pre.d_US))
 @printf("  Y_US:      t15 %.6f -> t16 b %.6f (%+.3f%%)\n",
         pre.Y_US, burst.Y_US, percent_change(burst.Y_US, pre.Y_US))
+@printf("  rebased NFA/current Y: t15 %+.6f -> t16 b %+.6f; t16 all-u %+.6f\n",
+        rebased_nfa_path[SWITCH_PERIOD - 1], rebased_nfa_path[SWITCH_PERIOD],
+        all_u_rebased_nfa_path[SWITCH_PERIOD])
 @printf("  realized nu_b_eff range: [%.9f, %.9f], span %.3e\n",
         nu_eff_min, nu_eff_max, nu_eff_span)
 @printf("  maximum b residual: %.3e; common-growth log gap: %.3e\n",
