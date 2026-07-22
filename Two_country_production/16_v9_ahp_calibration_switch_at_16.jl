@@ -238,6 +238,20 @@ numeric_state_fields = (
 
 scaled_error(x, y) = abs(x - y) / max(1.0, abs(x), abs(y))
 
+function us_nfa(s, p::ProductionParams)
+    return p.β * s.e_US - s.Q_US
+end
+
+function us_nfa_from_portfolios(s, p::ProductionParams)
+    A_US = p.β * s.e_US
+    # RoW convenience demand for the U.S. bond changes total RoW saving.
+    A_W = (p.β + p.χ) / (1 + p.χ) * s.e_W
+    foreign_equity_assets = (1 - s.ω) * (1 - s.θ) * A_US
+    foreign_held_US_equity = s.ω_star * (1 - s.θ_US_star) * A_W
+    US_bond_position = s.θ * A_US
+    return foreign_equity_assets - foreign_held_US_equity + US_bond_position
+end
+
 regime_timing_ok = all(sim[t].regime == (t < SWITCH_PERIOD ? :u : :b)
                        for t in eachindex(sim))
 pre_switch_state_error = maximum(
@@ -292,6 +306,9 @@ original_match_error = original_comparison_end >= 1 ? maximum(
 ) : Inf
 switch_price_drop_ok =
     sim[SWITCH_PERIOD].q_US < result.u_path[SWITCH_PERIOD].q_US
+max_nfa_identity_error = maximum(
+    scaled_error(us_nfa(s, p), us_nfa_from_portfolios(s, p)) for s in sim
+)
 
 validation_rows = Dict{String,Any}[
     Dict("check"=>"regime_timing", "value"=>regime_timing_ok,
@@ -331,6 +348,10 @@ validation_rows = Dict{String,Any}[
          "value"=>sim[SWITCH_PERIOD].q_US / result.u_path[SWITCH_PERIOD].q_US - 1.0,
          "tolerance"=>"< 0", "passed"=>switch_price_drop_ok,
          "interpretation"=>"At the same inherited state, the realized b equity price is below the all-u price."),
+    Dict("check"=>"US_NFA_portfolio_identity", "value"=>max_nfa_identity_error,
+         "tolerance"=>STATE_MATCH_TOL,
+         "passed"=>max_nfa_identity_error <= STATE_MATCH_TOL,
+         "interpretation"=>"NFA = beta*e_US - Q_US equals the explicit foreign-asset, equity-liability, and bond position."),
     Dict("check"=>"original_helper_audit_completed",
          "value"=>original_helper_completed, "tolerance"=>"exact",
          "passed"=>original_helper_completed,
@@ -365,6 +386,12 @@ QD_path = Float64[s.Q_US / (s.N_US * s.d_US) for s in sim]
 Y_path = Float64[s.Y_US for s in sim]
 rel_path = Float64[s.Y_W / s.Y_US for s in sim]
 all_u_qd = Float64[s.q_US / s.d_US for s in result.u_path[1:T]]
+stock_price_path = Float64[s.q_US for s in sim]
+all_u_stock_price = Float64[s.q_US for s in result.u_path[1:T]]
+nfa_path = Float64[us_nfa(s, p) for s in sim]
+nfa_over_Y_path = nfa_path ./ Y_path
+all_u_nfa = Float64[us_nfa(s, p) for s in result.u_path[1:T]]
+all_u_nfa_over_Y = all_u_nfa ./ Float64[s.Y_US for s in result.u_path[1:T]]
 switch_x = SWITCH_PERIOD - 0.5
 
 p1 = plot(
@@ -397,8 +424,29 @@ p4 = plot(
 )
 vline!(p4, [switch_x], ls=:dash, color=:red, label="")
 
+p_stock = plot(
+    tt, stock_price_path, lw=2.2, marker=:circle,
+    label=L"q_{US,t}", xlabel="period t", ylabel="per-variety price",
+    title="U.S. stock price",
+)
+plot!(p_stock, tt, all_u_stock_price, lw=1.7, ls=:dot, color=:gray45,
+      label="no-switch all-u counterfactual")
+vline!(p_stock, [switch_x], ls=:dash, color=:red, label="")
+
+p_nfa = plot(
+    tt, nfa_over_Y_path, lw=2.2, marker=:circle,
+    label=L"NFA_{US,t}/Y_{US,t}", xlabel="period t",
+    ylabel="fraction of current U.S. output",
+    title="U.S. net foreign assets",
+)
+plot!(p_nfa, tt, all_u_nfa_over_Y, lw=1.7, ls=:dot, color=:gray45,
+      label="no-switch all-u counterfactual")
+hline!(p_nfa, [0.0], ls=:dot, color=:gray65, label="")
+vline!(p_nfa, [switch_x], ls=:dash, color=:red, label="")
+
 section2_plot = plot(
-    p1, p2, p3, p4, layout=(2, 2), size=(1200, 820), margin=8mm,
+    p1, p_stock, p2, p3, p4, p_nfa,
+    layout=(3, 2), size=(1200, 1180), margin=8mm,
 )
 section2_png = joinpath(OUTDIR, "section2_transition_t16.png")
 savefig(section2_plot, section2_png)
@@ -467,6 +515,7 @@ for t in 1:T
     push!(path_rows, Dict{String,Any}(
         "t"=>t, "regime"=>s.regime, "is_switch"=>t == SWITCH_PERIOD,
         "N_US"=>s.N_US, "N_W"=>s.N_W,
+        "e_US"=>s.e_US, "e_W"=>s.e_W,
         "phi_US"=>s.φ_US, "phi_W"=>s.φ_W,
         "q_US"=>s.q_US, "d_US"=>s.d_US, "q_US_over_d_US"=>qd_path[t],
         "Q_US"=>s.Q_US, "aggregate_price_dividend_US"=>QD_path[t],
@@ -478,20 +527,27 @@ for t in 1:T
         "nu_b_eff"=>s.nu_b_eff, "bgp_converged"=>s.bgp_converged,
         "bgp_residual"=>s.bgp_residual,
         "common_growth_log_gap"=>s.common_growth_log_gap,
+        "NFA_US"=>nfa_path[t], "NFA_US_over_Y"=>nfa_over_Y_path[t],
         "all_u_q_US"=>u.q_US, "all_u_d_US"=>u.d_US,
         "all_u_q_US_over_d_US"=>all_u_qd[t],
+        "all_u_Y_US"=>u.Y_US, "all_u_e_US"=>u.e_US,
+        "all_u_Q_US"=>u.Q_US, "all_u_NFA_US"=>all_u_nfa[t],
+        "all_u_NFA_US_over_Y"=>all_u_nfa_over_Y[t],
         "original_helper_finite"=>original_finite[t],
     ))
 end
 
 path_columns = [
-    "t", "regime", "is_switch", "N_US", "N_W", "phi_US", "phi_W",
+    "t", "regime", "is_switch", "N_US", "N_W", "e_US", "e_W",
+    "phi_US", "phi_W",
     "q_US", "d_US", "q_US_over_d_US", "Q_US",
     "aggregate_price_dividend_US", "Y_US", "Y_W", "Y_W_over_Y_US",
     "omega", "omega_star", "theta", "theta_US_star", "R_f", "R_f_W",
     "I_US", "I_W", "Psi", "nu_b_eff", "bgp_converged", "bgp_residual",
-    "common_growth_log_gap", "all_u_q_US", "all_u_d_US",
-    "all_u_q_US_over_d_US", "original_helper_finite",
+    "common_growth_log_gap", "NFA_US", "NFA_US_over_Y",
+    "all_u_q_US", "all_u_d_US", "all_u_q_US_over_d_US",
+    "all_u_Y_US", "all_u_e_US", "all_u_Q_US", "all_u_NFA_US",
+    "all_u_NFA_US_over_Y", "original_helper_finite",
 ]
 write_rows_csv(joinpath(OUTDIR, "switch_path_t16.csv"), path_rows, path_columns)
 
