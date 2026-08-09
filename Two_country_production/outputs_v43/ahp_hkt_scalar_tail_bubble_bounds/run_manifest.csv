@@ -1,0 +1,66 @@
+field,value
+run_started_utc,2026-08-09T19:43:29Z
+artifact_scope,bounded_grid_right_censored_not_a_frontier
+run_mode,grid
+project_dir,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes
+output_dir,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/outputs_v43/ahp_hkt_scalar_tail_bubble_bounds
+julia_version,1.12.1
+machine,arm64-apple-darwin24.0.0
+horizon_candidates,"30,45,60"
+custom_horizon_grid,true
+configured_search_cap,105
+horizon_search_cap,60
+search_coarse_step,5
+refine_local_frontier,true
+selected_T_report,60
+search_right_censored,true
+search_outcome,safe_at_cap_right_censored
+branch_iter_schedule,"60,200"
+verify_selected_cold,false
+cold_verification_attempt_note,timed_out_after_2400_seconds_on_T60_cold_solve
+selected_cold_status,not_requested
+selected_cold_max_log_phi_US_gap,
+selected_cold_max_log_q_US_gap,
+reference_branch_iters,60
+verify_buffered_reference,false
+run_extended_terminal_rules,false
+terminal_rules,"local_loglinear,hkt_scalar_terminal_us"
+ahp_match_tolerance,1.0e-5
+residual_tolerance,1.0e-5
+psi_interior_tolerance,0.02
+equity_interior_tolerance,0.01
+theta_interior_tolerance,0.01
+accounting_scaled_tolerance,1.0e-7
+common_growth_tolerance,1.0e-7
+nu_order_buffer,0.001
+nu_order_robust_buffer_diagnostic,0.02
+cold_path_tolerance,1.0e-5
+hkt_e_ratio_tolerance,0.0001
+hkt_qw_income_ratio_tolerance_diagnostic,0.0001
+hkt_funding_gap_tolerance,0.001
+hkt_successor_phi_gap_tolerance,0.001
+hkt_scalar_root_tolerance,1.0e-10
+hkt_prerequisite_tail_window,8
+tail_regression_window,8
+hkt_gate_passed_selected,false
+bound_evaluation_dates,"1,5,10,15"
+bound_endpoint_guard,8
+configured_bound_cutoff,nothing
+effective_bound_cutoff,22
+bound_prefix_stability_tolerance,0.0001
+hkt_zeta_lower,0.5
+hkt_q_price_epsilon,0.5
+configured_lambda_ratio_bound,nothing
+configured_nu_b_uniform_bound,nothing
+future_envelope_certified,false
+model_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/TwoCountryProductionOLG.jl
+model_sha256,e451e61bfbec182b9aae6100790e4e0600ee8534d08f49f433f21fdaca031911
+notebook_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/17_v9_ahp_hkt_scalar_tail_bubble_bounds.ipynb
+notebook_input_sha256,9cf820ecf3f27100f8431f80124db02e9b18f5404fe662ff883ae6c7126b582a
+notebook_hash_semantics,input notebook before nbconvert writes execution outputs
+notebook_code_sha256,fcb8838cbc1bdd20dc768aecb2e9439060f4c1a23cced1155a896c3d59d2e947
+notebook_code_hash_semantics,nbconvert Julia script; invariant to execution counts and outputs
+notebook_15_source_sha256,c8c850776057fb6caa53778a248607876dda5b2b6f6f72465a3ba08e73cd5164
+notebook_16_source_sha256,f98ace446a397be41465522305ce40a7d59c2f6781bb4b7aca07c34cd5436629
+candidate_summary_sha256,91f6ee3858b9d892240e668df3e314f1c4b6d42e45da3e8aec60a974668a6f08
+tracked_ahp_path_sha256,795a842d2683b213e1f5ab767ba05969ccc7a016fce5a5573dba6786c6bc0220
