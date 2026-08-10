@@ -1,0 +1,4 @@
+metric,max_abs_error,tolerance,passed
+cum_CA_current_Y,0.0,1.0e-5,true
+cum_VA_current_Y,0.0,1.0e-5,true
+rebased_NFA_change_current_Y,0.0,1.0e-5,true
