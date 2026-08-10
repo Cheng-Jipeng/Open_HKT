@@ -252,6 +252,78 @@ function us_nfa_from_portfolios(s, p::ProductionParams)
     return foreign_equity_assets - foreign_held_US_equity + US_bond_position
 end
 
+"""
+Apply Notebook 15's exact discrete AHP accounting to an arbitrary realized path.
+
+For each position q_t n_t, the period-t change is split as
+    n_{t-1}(q_t-q_{t-1}) + q_t(n_t-n_{t-1}).
+The first term is the valuation (VA) effect on inherited quantities and the
+second is the current-account (CA) quantity-flow effect at current prices.
+"""
+function ahp_accounting_path(path, p::ProductionParams)
+    T = length(path)
+    T >= 2 || error("AHP accounting needs at least two periods.")
+
+    q_US = Float64[s.q_US for s in path]
+    q_W = Float64[s.q_W for s in path]
+    Y_US = Float64[s.Y_US for s in path]
+    A_US = Float64[p.β * s.e_US for s in path]
+    A_W = Float64[(p.β + p.χ) / (1 + p.χ) * s.e_W for s in path]
+    n_W = Float64[
+        (1 - s.ω) * (1 - s.θ) * A_US[t] / s.q_W for (t, s) in enumerate(path)
+    ]
+    n_US_star = Float64[
+        s.ω_star * (1 - s.θ_US_star) * A_W[t] / s.q_US
+        for (t, s) in enumerate(path)
+    ]
+    bond = Float64[s.θ * A_US[t] for (t, s) in enumerate(path)]
+
+    asset_position = q_W .* n_W
+    liability_position = q_US .* n_US_star
+    NFA = asset_position .+ bond .- liability_position
+
+    VA_asset = zeros(T)
+    VA_liability = zeros(T)
+    CA_asset = zeros(T)
+    CA_liability = zeros(T)
+    CA_bond = zeros(T)
+    ΔNFA = zeros(T)
+    RES = zeros(T)
+    for t in 2:T
+        VA_asset[t] = n_W[t - 1] * (q_W[t] - q_W[t - 1])
+        VA_liability[t] = -n_US_star[t - 1] * (q_US[t] - q_US[t - 1])
+        CA_asset[t] = q_W[t] * (n_W[t] - n_W[t - 1])
+        CA_liability[t] = -q_US[t] * (n_US_star[t] - n_US_star[t - 1])
+        CA_bond[t] = bond[t] - bond[t - 1]
+        ΔNFA[t] = NFA[t] - NFA[t - 1]
+        RES[t] = ΔNFA[t] -
+                 (VA_asset[t] + VA_liability[t]) -
+                 (CA_asset[t] + CA_liability[t] + CA_bond[t])
+    end
+
+    VA = VA_asset .+ VA_liability
+    CA = CA_asset .+ CA_liability .+ CA_bond
+    return (
+        q_US=q_US, q_W=q_W, Y_US=Y_US, A_US=A_US, A_W=A_W,
+        n_W=n_W, n_US_star=n_US_star, bond=bond,
+        asset_position=asset_position, liability_position=liability_position,
+        NFA=NFA, ΔNFA=ΔNFA,
+        VA_asset=VA_asset, VA_liability=VA_liability, VA=VA,
+        CA_asset=CA_asset, CA_liability=CA_liability, CA_bond=CA_bond, CA=CA,
+        RES=RES,
+        cum_VA_asset=cumsum(VA_asset),
+        cum_VA_liability=cumsum(VA_liability),
+        cum_VA=cumsum(VA),
+        cum_CA_asset=cumsum(CA_asset),
+        cum_CA_liability=cumsum(CA_liability),
+        cum_CA_bond=cumsum(CA_bond),
+        cum_CA=cumsum(CA),
+        cum_RES=cumsum(RES),
+    )
+end
+
+realized_ahp = ahp_accounting_path(sim, p)
+
 regime_timing_ok = all(sim[t].regime == (t < SWITCH_PERIOD ? :u : :b)
                        for t in eachindex(sim))
 pre_switch_state_error = maximum(
@@ -309,6 +381,16 @@ switch_price_drop_ok =
 max_nfa_identity_error = maximum(
     scaled_error(us_nfa(s, p), us_nfa_from_portfolios(s, p)) for s in sim
 )
+max_ahp_nfa_identity_error = maximum(
+    scaled_error(realized_ahp.NFA[t], us_nfa(sim[t], p)) for t in eachindex(sim)
+)
+max_ahp_period_residual = maximum(abs.(realized_ahp.RES[2:end]))
+rebased_ahp_identity_error = maximum(abs.(
+    (realized_ahp.NFA .- realized_ahp.NFA[1]) ./ realized_ahp.Y_US .-
+    realized_ahp.cum_VA ./ realized_ahp.Y_US .-
+    realized_ahp.cum_CA ./ realized_ahp.Y_US .-
+    realized_ahp.cum_RES ./ realized_ahp.Y_US
+))
 notebook15_target_rebased_nfa = as_float(selected_row["target_rebased_NFA"])
 realized_target_rebased_nfa =
     (us_nfa(sim[15], p) - us_nfa(sim[1], p)) / sim[15].Y_US
@@ -357,6 +439,18 @@ validation_rows = Dict{String,Any}[
          "tolerance"=>STATE_MATCH_TOL,
          "passed"=>max_nfa_identity_error <= STATE_MATCH_TOL,
          "interpretation"=>"NFA = beta*e_US - Q_US equals the explicit foreign-asset, equity-liability, and bond position."),
+    Dict("check"=>"AHP_NFA_path_identity", "value"=>max_ahp_nfa_identity_error,
+         "tolerance"=>STATE_MATCH_TOL,
+         "passed"=>max_ahp_nfa_identity_error <= STATE_MATCH_TOL,
+         "interpretation"=>"Notebook 15's explicit portfolio positions reproduce the realized NFA path."),
+    Dict("check"=>"AHP_period_accounting_residual", "value"=>max_ahp_period_residual,
+         "tolerance"=>STATE_MATCH_TOL,
+         "passed"=>max_ahp_period_residual <= STATE_MATCH_TOL,
+         "interpretation"=>"Each NFA change equals its VA plus CA terms under the exact discrete product decomposition."),
+    Dict("check"=>"rebased_NFA_component_identity", "value"=>rebased_ahp_identity_error,
+         "tolerance"=>STATE_MATCH_TOL,
+         "passed"=>rebased_ahp_identity_error <= STATE_MATCH_TOL,
+         "interpretation"=>"Cumulative VA, CA, and residual divided by current Y sum to the rebased NFA change."),
     Dict("check"=>"Notebook15_rebased_NFA_match",
          "value"=>notebook15_rebased_nfa_error,
          "tolerance"=>STATE_MATCH_TOL,
@@ -470,6 +564,73 @@ section2_png = joinpath(OUTDIR, "section2_transition_t16.png")
 savefig(section2_plot, section2_png)
 
 # -----------------------------------------------------------------------------
+# AHP decomposition of the realized rebased NFA change
+# -----------------------------------------------------------------------------
+
+cum_va_y = realized_ahp.cum_VA ./ Y_path
+cum_ca_y = realized_ahp.cum_CA ./ Y_path
+cum_res_y = realized_ahp.cum_RES ./ Y_path
+cum_va_asset_y = realized_ahp.cum_VA_asset ./ Y_path
+cum_va_liability_y = realized_ahp.cum_VA_liability ./ Y_path
+cum_ca_asset_y = realized_ahp.cum_CA_asset ./ Y_path
+cum_ca_liability_y = realized_ahp.cum_CA_liability ./ Y_path
+cum_ca_bond_y = realized_ahp.cum_CA_bond ./ Y_path
+
+p_ahp_switch = plot(
+    tt, rebased_nfa_path, color=:navy, lw=2.8,
+    label="rebased NFA change", xlabel="",
+    ylabel="fraction of current U.S. output",
+    title="Rebased NFA decomposition",
+    legend=:outerbottom, legend_columns=2,
+)
+plot!(p_ahp_switch, tt, cum_va_y, color=:seagreen, lw=2.5,
+      label="cumulative VA")
+plot!(p_ahp_switch, tt, cum_ca_y, color=:crimson, lw=2.5,
+      label="cumulative CA")
+plot!(p_ahp_switch, tt, cum_res_y, color=:purple, lw=1.8, ls=:dot,
+      label="cumulative residual")
+hline!(p_ahp_switch, [0.0], color=:gray60, ls=:dot, label="")
+vline!(p_ahp_switch, [switch_x], color=:red, ls=:dash,
+       label="switch to b at t=$(SWITCH_PERIOD)")
+
+p_va_switch = plot(
+    tt, cum_va_asset_y, color=:steelblue, lw=2.5,
+    label="RoW-equity asset VA", xlabel="",
+    ylabel="fraction of current U.S. output",
+    title="Cumulative valuation effects",
+    legend=:outerbottom, legend_columns=2,
+)
+plot!(p_va_switch, tt, cum_va_liability_y, color=:tomato, lw=2.7,
+      label="foreign-held U.S.-equity liability VA")
+plot!(p_va_switch, tt, cum_va_y, color=:black, lw=2.1, ls=:dash,
+      label="net VA")
+hline!(p_va_switch, [0.0], color=:gray60, ls=:dot, label="")
+vline!(p_va_switch, [switch_x], color=:red, ls=:dash, label="")
+
+p_ca_switch = plot(
+    tt, cum_ca_asset_y, color=:steelblue, lw=2.4,
+    label="RoW-equity quantity CA", xlabel="",
+    ylabel="fraction of current U.S. output",
+    title="Cumulative quantity-flow effects",
+    legend=:outerbottom, legend_columns=2,
+)
+plot!(p_ca_switch, tt, cum_ca_liability_y, color=:tomato, lw=2.4,
+      label="U.S.-equity liability quantity CA")
+plot!(p_ca_switch, tt, cum_ca_bond_y, color=:darkgreen, lw=2.4,
+      label="bond-position CA")
+plot!(p_ca_switch, tt, cum_ca_y, color=:black, lw=2.1, ls=:dash,
+      label="total CA")
+hline!(p_ca_switch, [0.0], color=:gray60, ls=:dot, label="")
+vline!(p_ca_switch, [switch_x], color=:red, ls=:dash, label="")
+
+nfa_components_plot = plot(
+    p_ahp_switch, p_va_switch, p_ca_switch,
+    layout=(1, 3), size=(1900, 680), margin=9mm, bottom_margin=13mm,
+)
+nfa_components_png = joinpath(OUTDIR, "rebased_nfa_components_t16.png")
+savefig(nfa_components_plot, nfa_components_png)
+
+# -----------------------------------------------------------------------------
 # Switch-event diagnostics and exports
 # -----------------------------------------------------------------------------
 
@@ -525,6 +686,55 @@ function write_rows_csv(path, rows, columns)
     end
     return path
 end
+
+component_rows = Dict{String,Any}[]
+for t in 1:T
+    push!(component_rows, Dict{String,Any}(
+        "t"=>t, "regime"=>sim[t].regime,
+        "is_switch"=>t == SWITCH_PERIOD,
+        "Y_US"=>Y_path[t], "NFA_US"=>realized_ahp.NFA[t],
+        "rebased_NFA_change_current_Y"=>rebased_nfa_path[t],
+        "q_US"=>realized_ahp.q_US[t], "q_W"=>realized_ahp.q_W[t],
+        "n_W"=>realized_ahp.n_W[t],
+        "n_US_star"=>realized_ahp.n_US_star[t],
+        "foreign_equity_assets"=>realized_ahp.asset_position[t],
+        "foreign_held_US_equity_liabilities"=>realized_ahp.liability_position[t],
+        "US_bond_position"=>realized_ahp.bond[t],
+        "VA_asset"=>realized_ahp.VA_asset[t],
+        "VA_liability"=>realized_ahp.VA_liability[t],
+        "VA"=>realized_ahp.VA[t],
+        "CA_asset"=>realized_ahp.CA_asset[t],
+        "CA_liability"=>realized_ahp.CA_liability[t],
+        "CA_bond"=>realized_ahp.CA_bond[t],
+        "CA"=>realized_ahp.CA[t], "RES"=>realized_ahp.RES[t],
+        "VA_current_Y"=>realized_ahp.VA[t] / Y_path[t],
+        "CA_current_Y"=>realized_ahp.CA[t] / Y_path[t],
+        "cum_VA_asset_current_Y"=>cum_va_asset_y[t],
+        "cum_VA_liability_current_Y"=>cum_va_liability_y[t],
+        "cum_VA_current_Y"=>cum_va_y[t],
+        "cum_CA_asset_current_Y"=>cum_ca_asset_y[t],
+        "cum_CA_liability_current_Y"=>cum_ca_liability_y[t],
+        "cum_CA_bond_current_Y"=>cum_ca_bond_y[t],
+        "cum_CA_current_Y"=>cum_ca_y[t],
+        "cum_RES_current_Y"=>cum_res_y[t],
+    ))
+end
+component_columns = [
+    "t", "regime", "is_switch", "Y_US", "NFA_US",
+    "rebased_NFA_change_current_Y", "q_US", "q_W", "n_W", "n_US_star",
+    "foreign_equity_assets", "foreign_held_US_equity_liabilities",
+    "US_bond_position", "VA_asset", "VA_liability", "VA",
+    "CA_asset", "CA_liability", "CA_bond", "CA", "RES",
+    "VA_current_Y", "CA_current_Y",
+    "cum_VA_asset_current_Y", "cum_VA_liability_current_Y",
+    "cum_VA_current_Y", "cum_CA_asset_current_Y",
+    "cum_CA_liability_current_Y", "cum_CA_bond_current_Y",
+    "cum_CA_current_Y", "cum_RES_current_Y",
+]
+write_rows_csv(
+    joinpath(OUTDIR, "rebased_nfa_components_t16.csv"),
+    component_rows, component_columns,
+)
 
 path_rows = Dict{String,Any}[]
 for t in 1:T
@@ -635,6 +845,13 @@ write_rows_csv(
 @printf("  rebased NFA/current Y: t15 %+.6f -> t16 b %+.6f; t16 all-u %+.6f\n",
         rebased_nfa_path[SWITCH_PERIOD - 1], rebased_nfa_path[SWITCH_PERIOD],
         all_u_rebased_nfa_path[SWITCH_PERIOD])
+@printf("  period-16 effects/current Y: VA %+.6f, CA %+.6f, residual %+.3e\n",
+        realized_ahp.VA[SWITCH_PERIOD] / Y_path[SWITCH_PERIOD],
+        realized_ahp.CA[SWITCH_PERIOD] / Y_path[SWITCH_PERIOD],
+        realized_ahp.RES[SWITCH_PERIOD] / Y_path[SWITCH_PERIOD])
+@printf("  cumulative effects/current Y at t16: VA %+.6f, CA %+.6f, residual %+.3e\n",
+        cum_va_y[SWITCH_PERIOD], cum_ca_y[SWITCH_PERIOD],
+        cum_res_y[SWITCH_PERIOD])
 @printf("  realized nu_b_eff range: [%.9f, %.9f], span %.3e\n",
         nu_eff_min, nu_eff_max, nu_eff_span)
 @printf("  maximum b residual: %.3e; common-growth log gap: %.3e\n",
@@ -651,4 +868,5 @@ println("the definition of bubble collapse: here q drops, but d drops by more, s
 println("\nExports:")
 foreach(name -> println("  - ", name), sort(readdir(OUTDIR)))
 
-section2_plot
+isdefined(Main, :IJulia) && display(section2_plot)
+nfa_components_plot

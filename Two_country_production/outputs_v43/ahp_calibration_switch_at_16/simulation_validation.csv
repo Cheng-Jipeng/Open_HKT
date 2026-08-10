@@ -12,6 +12,9 @@ max_common_growth_log_gap,9.614995952200722e-10,1.0e-7,true,true,Pathwise common
 effective_exponent_ordering,0.7883546449126457,1.749,true,true,Every realized nu_b_eff remains below nu_u.
 switch_price_below_all_u_counterfactual,-0.20944733981407004,< 0,true,true,"At the same inherited state, the realized b equity price is below the all-u price."
 US_NFA_portfolio_identity,5.841525929639602e-9,1.0e-7,true,true,"NFA = beta*e_US - Q_US equals the explicit foreign-asset, equity-liability, and bond position."
+AHP_NFA_path_identity,5.841525929639602e-9,1.0e-7,true,true,Notebook 15's explicit portfolio positions reproduce the realized NFA path.
+AHP_period_accounting_residual,2.3245294578089215e-16,1.0e-7,true,true,Each NFA change equals its VA plus CA terms under the exact discrete product decomposition.
+rebased_NFA_component_identity,5.924935094877526e-17,1.0e-7,true,true,"Cumulative VA, CA, and residual divided by current Y sum to the rebased NFA change."
 Notebook15_rebased_NFA_match,4.2748291018135376e-11,1.0e-7,true,true,The period-15 rebased NFA change uses Notebook 15's (NFA_t-NFA_1)/current Y_t definition.
 original_helper_audit_completed,true,exact,true,false,The auxiliary Notebook-05 literal-helper audit returned a full-length path.
 original_helper_match_before_failure,6.887839471615918e-7,1.0e-6,true,true,Checked continuation agrees within 1e-6 with Notebook 05 wherever its literal helper remains finite.
