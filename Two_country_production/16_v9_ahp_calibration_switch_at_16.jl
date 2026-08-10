@@ -485,15 +485,28 @@ isempty(failed_required_checks) ||
 T = length(sim)
 tt = collect(1:T)
 qd_path = Float64[s.q_US / s.d_US for s in sim]
+qd_W_path = Float64[s.q_W / s.d_W for s in sim]
 QD_path = Float64[s.Q_US / (s.N_US * s.d_US) for s in sim]
+QD_W_path = Float64[s.Q_W / (s.N_W * s.d_W) for s in sim]
 φ_path = Float64[s.φ_US for s in sim]
+φ_W_path = Float64[s.φ_W for s in sim]
 Y_path = Float64[s.Y_US for s in sim]
+Y_W_path = Float64[s.Y_W for s in sim]
 rel_path = Float64[s.Y_W / s.Y_US for s in sim]
 all_u_qd = Float64[s.q_US / s.d_US for s in result.u_path[1:T]]
+all_u_qd_W = Float64[s.q_W / s.d_W for s in result.u_path[1:T]]
 market_cap_path = Float64[s.Q_US for s in sim]
+market_cap_W_path = Float64[s.Q_W for s in sim]
 all_u_market_cap = Float64[s.Q_US for s in result.u_path[1:T]]
+all_u_market_cap_W = Float64[s.Q_W for s in result.u_path[1:T]]
 labor_income_path = Float64[s.e_US for s in sim]
+labor_income_W_path = Float64[s.e_W for s in sim]
 all_u_labor_income = Float64[s.e_US for s in result.u_path[1:T]]
+all_u_labor_income_W = Float64[s.e_W for s in result.u_path[1:T]]
+ω_path = Float64[s.ω for s in sim]
+ω_star_path = Float64[s.ω_star for s in sim]
+all_u_ω_path = Float64[s.ω for s in result.u_path[1:T]]
+all_u_ω_star_path = Float64[s.ω_star for s in result.u_path[1:T]]
 nfa_path = Float64[us_nfa(s, p) for s in sim]
 nfa_over_Y_path = nfa_path ./ Y_path
 all_u_nfa = Float64[us_nfa(s, p) for s in result.u_path[1:T]]
@@ -504,49 +517,80 @@ all_u_rebased_nfa_path = (all_u_nfa .- all_u_nfa[1]) ./ all_u_Y_path
 switch_x = SWITCH_PERIOD - 0.5
 
 p1 = plot(
-    tt, qd_path, lw=2.2, marker=:circle,
+    tt, qd_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
     label=L"q_{US,t}/d_{US,t}", xlabel="period t",
     ylabel="price-dividend ratio",
-    title="Per-variety U.S. price-dividend ratio (b is fundamental)",
+    title="Per-variety price-dividend ratios (b is fundamental)",
 )
-plot!(p1, tt, all_u_qd, lw=1.7, ls=:dot, color=:gray45,
-      label="no-switch all-u counterfactual")
+plot!(p1, tt, qd_W_path, lw=2.2, marker=:diamond, ms=3.2,
+      color=:darkorange, label=L"q_{W,t}/d_{W,t}")
+plot!(p1, tt, all_u_qd, lw=1.7, ls=:dot, color=:navy,
+      label="U.S. no-switch all-u")
+plot!(p1, tt, all_u_qd_W, lw=1.7, ls=:dot, color=:darkorange,
+      label="RoW no-switch all-u")
 vline!(p1, [switch_x], ls=:dash, color=:red,
        label="realized switch tau = $(SWITCH_PERIOD)")
 
 p2 = plot(
-    tt, φ_path, lw=2.2, marker=:circle, label=L"\varphi_{US,t}",
-    xlabel="period t", ylabel=L"\varphi", title="U.S. labor allocation",
+    tt, φ_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
+    label=L"\varphi_{US,t}", xlabel="period t", ylabel=L"\varphi",
+    title="Labor allocations",
 )
+plot!(p2, tt, φ_W_path, lw=2.2, marker=:diamond, ms=3.2,
+      color=:darkorange, label=L"\varphi_{W,t}")
 vline!(p2, [switch_x], ls=:dash, color=:red, label="")
 
 p3 = plot(
-    tt, Y_path, lw=2.2, marker=:circle, label=L"Y_{US,t}",
+    tt, Y_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
+    label=L"Y_{US,t}",
     xlabel="period t", ylabel="output (log)", yscale=:log10,
-    title="U.S. output",
+    title="Outputs",
 )
+plot!(p3, tt, Y_W_path, lw=2.2, marker=:diamond, ms=3.2,
+      color=:darkorange, label=L"Y_{W,t}")
 vline!(p3, [switch_x], ls=:dash, color=:red, label="")
 
 p_market_cap = plot(
-    tt, market_cap_path, lw=2.2, marker=:circle,
+    tt, market_cap_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
     label=L"Q_{US,t}", xlabel="period t", ylabel="aggregate market value",
-    title="U.S. market capitalization",
+    title="Market capitalizations",
 )
-plot!(p_market_cap, tt, all_u_market_cap, lw=1.7, ls=:dot, color=:gray45,
-      label="no-switch all-u counterfactual")
+plot!(p_market_cap, tt, market_cap_W_path, lw=2.2, marker=:diamond, ms=3.2,
+      color=:darkorange, label=L"Q_{W,t}")
+plot!(p_market_cap, tt, all_u_market_cap, lw=1.7, ls=:dot, color=:navy,
+      label="U.S. no-switch all-u")
+plot!(p_market_cap, tt, all_u_market_cap_W, lw=1.7, ls=:dot,
+      color=:darkorange, label="RoW no-switch all-u")
 vline!(p_market_cap, [switch_x], ls=:dash, color=:red, label="")
 
 p_labor_income = plot(
-    tt, labor_income_path, lw=2.2, marker=:circle,
+    tt, labor_income_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
     label=L"e_{US,t}", xlabel="period t", ylabel="labor income",
-    title="U.S. labor income",
+    title="Labor incomes",
 )
-plot!(p_labor_income, tt, all_u_labor_income, lw=1.7, ls=:dot, color=:gray45,
-      label="no-switch all-u counterfactual")
+plot!(p_labor_income, tt, labor_income_W_path, lw=2.2,
+      marker=:diamond, ms=3.2, color=:darkorange, label=L"e_{W,t}")
+plot!(p_labor_income, tt, all_u_labor_income, lw=1.7, ls=:dot,
+      color=:navy, label="U.S. no-switch all-u")
+plot!(p_labor_income, tt, all_u_labor_income_W, lw=1.7, ls=:dot,
+      color=:darkorange, label="RoW no-switch all-u")
 vline!(p_labor_income, [switch_x], ls=:dash, color=:red, label="")
 
+p_portfolio_weights = plot(
+    tt, ω_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
+    label=L"\omega_t", xlabel="period t", ylabel="portfolio share",
+    title="Equity portfolio weights",
+)
+plot!(p_portfolio_weights, tt, ω_star_path, lw=2.2,
+      marker=:diamond, ms=3.2, color=:darkorange, label=L"\omega_t^*")
+plot!(p_portfolio_weights, tt, all_u_ω_path, lw=1.7, ls=:dot,
+      color=:navy, label="U.S. no-switch all-u")
+plot!(p_portfolio_weights, tt, all_u_ω_star_path, lw=1.7, ls=:dot,
+      color=:darkorange, label="RoW no-switch all-u")
+vline!(p_portfolio_weights, [switch_x], ls=:dash, color=:red, label="")
+
 p_nfa = plot(
-    tt, rebased_nfa_path, lw=2.2, marker=:circle,
+    tt, rebased_nfa_path, lw=2.2, marker=:circle, ms=3.2, color=:navy,
     label=L"(NFA_{US,t}-NFA_{US,1})/Y_{US,t}", xlabel="period t",
     ylabel="fraction of current U.S. output",
     title="Rebased U.S. NFA change (Notebook 15 normalization)",
@@ -557,8 +601,9 @@ hline!(p_nfa, [0.0], ls=:dot, color=:gray65, label="")
 vline!(p_nfa, [switch_x], ls=:dash, color=:red, label="")
 
 section2_plot = plot(
-    p1, p2, p_market_cap, p3, p_labor_income, p_nfa,
-    layout=(3, 2), size=(1200, 1180), margin=8mm,
+    p1, p2, p_market_cap, p3, p_labor_income, p_portfolio_weights, p_nfa,
+    layout=@layout([a b; c d; e f; g]),
+    size=(1280, 1540), margin=8mm,
 )
 section2_png = joinpath(OUTDIR, "section2_transition_t16.png")
 savefig(section2_plot, section2_png)
@@ -746,7 +791,9 @@ for t in 1:T
         "e_US"=>s.e_US, "e_W"=>s.e_W,
         "phi_US"=>s.φ_US, "phi_W"=>s.φ_W,
         "q_US"=>s.q_US, "d_US"=>s.d_US, "q_US_over_d_US"=>qd_path[t],
+        "q_W"=>s.q_W, "d_W"=>s.d_W, "q_W_over_d_W"=>qd_W_path[t],
         "Q_US"=>s.Q_US, "aggregate_price_dividend_US"=>QD_path[t],
+        "Q_W"=>s.Q_W, "aggregate_price_dividend_W"=>QD_W_path[t],
         "Y_US"=>s.Y_US, "Y_W"=>s.Y_W, "Y_W_over_Y_US"=>rel_path[t],
         "omega"=>s.ω, "omega_star"=>s.ω_star,
         "theta"=>s.θ, "theta_US_star"=>s.θ_US_star,
@@ -759,8 +806,13 @@ for t in 1:T
         "rebased_NFA_change_current_Y"=>rebased_nfa_path[t],
         "all_u_q_US"=>u.q_US, "all_u_d_US"=>u.d_US,
         "all_u_q_US_over_d_US"=>all_u_qd[t],
+        "all_u_q_W"=>u.q_W, "all_u_d_W"=>u.d_W,
+        "all_u_q_W_over_d_W"=>all_u_qd_W[t],
         "all_u_Y_US"=>u.Y_US, "all_u_e_US"=>u.e_US,
-        "all_u_Q_US"=>u.Q_US, "all_u_NFA_US"=>all_u_nfa[t],
+        "all_u_Q_US"=>u.Q_US,
+        "all_u_Y_W"=>u.Y_W, "all_u_e_W"=>u.e_W, "all_u_Q_W"=>u.Q_W,
+        "all_u_omega"=>u.ω, "all_u_omega_star"=>u.ω_star,
+        "all_u_NFA_US"=>all_u_nfa[t],
         "all_u_NFA_US_over_Y"=>all_u_nfa_over_Y[t],
         "all_u_rebased_NFA_change_current_Y"=>all_u_rebased_nfa_path[t],
         "original_helper_finite"=>original_finite[t],
@@ -770,14 +822,20 @@ end
 path_columns = [
     "t", "regime", "is_switch", "N_US", "N_W", "e_US", "e_W",
     "phi_US", "phi_W",
-    "q_US", "d_US", "q_US_over_d_US", "Q_US",
-    "aggregate_price_dividend_US", "Y_US", "Y_W", "Y_W_over_Y_US",
+    "q_US", "d_US", "q_US_over_d_US",
+    "q_W", "d_W", "q_W_over_d_W",
+    "Q_US", "aggregate_price_dividend_US",
+    "Q_W", "aggregate_price_dividend_W",
+    "Y_US", "Y_W", "Y_W_over_Y_US",
     "omega", "omega_star", "theta", "theta_US_star", "R_f", "R_f_W",
     "I_US", "I_W", "Psi", "nu_b_eff", "bgp_converged", "bgp_residual",
     "common_growth_log_gap", "NFA_US", "NFA_US_over_Y",
     "rebased_NFA_change_current_Y",
     "all_u_q_US", "all_u_d_US", "all_u_q_US_over_d_US",
-    "all_u_Y_US", "all_u_e_US", "all_u_Q_US", "all_u_NFA_US",
+    "all_u_q_W", "all_u_d_W", "all_u_q_W_over_d_W",
+    "all_u_Y_US", "all_u_e_US", "all_u_Q_US",
+    "all_u_Y_W", "all_u_e_W", "all_u_Q_W",
+    "all_u_omega", "all_u_omega_star", "all_u_NFA_US",
     "all_u_NFA_US_over_Y", "all_u_rebased_NFA_change_current_Y",
     "original_helper_finite",
 ]
