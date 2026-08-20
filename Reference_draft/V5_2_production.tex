@@ -1,0 +1,2662 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for a conference paper, prepared for the
+%% Food and Resource Economics Department - IFAS
+%% UNIVERSITY OF FLORIDA
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Version 1.0 // November 2019
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ariel Soto-Caro
+%%  - asotocaro@ufl.edu
+%%  - arielsotocaro@gmail.com
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+\input{preamble}
+\pdfstringdefDisableCommands{%
+  \def\green#1{#1}%
+}
+
+\begin{document}
+
+{\setstretch{.8}
+\maketitle
+}
+
+\section{Model setup}
+
+We replace the exogenous-endowment block of the previous draft with a two-country production economy while keeping the portfolio structure that drives the asset-pricing results. Countries are indexed by $i\in\{US,W\}$, where $W$ denotes the rest of the world (RoW). Following \citet{hirano2025technological}, each country has overlapping generations of type-specific young agents: a mass $H_i>0$ of skilled agents and a mass $L_i>0$ of unskilled agents are born each date and live for two periods. Skilled agents can either produce knowledge-intensive intermediates or engage in R\&D; unskilled agents supply labor in the final-good sector. The primitive equity object is a firm-level, per-variety stock claim: each intermediate variety has one stock claim, new R\&D creates new varieties and hence new firm-level claims, and young agents trade measures of these claims. Aggregate country stock-market values are accounting objects, not primitive stock prices. To keep the international portfolio block tractable while staying close to HKT, we solve the type-specific young agents' portfolio problems and then work with the resulting aggregate country holdings and savings. The aggregate variables are sums of type-level choices, not choices of a primitive representative production household. To make the dynamic structure explicit, we formulate the economy in Markov form. Later, Section~\ref{sec:existence_of_bubbles} specializes the regime process through \Cref{ass_regime_switch}.
+
+\subsection{Production block}
+
+\begin{ass}[Primitive Markov state and productivity maps]\label{ass_recursive_state}
+Time is discrete, $t=0,1,2,\ldots$. At the beginning of date $t$, the aggregate state is
+\[
+s_t=(z_t,N_{US,t},N_{W,t})\in\mathcal S\equiv \{u,b\}\times\mathbb R_{++}^2,
+\]
+where $z_t\in\{u,b\}$ is an exogenous regime state with Markov transition matrix $\Pi$, and, for each country $i\in\{US,W\}$, the factor-augmenting productivities are measurable functions of the current state:
+\[
+A_{X,i,t}=A_{X,i}(s_t),
+\qquad
+A_{L,i,t}=A_{L,i}(s_t).
+\]
+\end{ass}
+
+Because each generation is born without financial wealth and lives for two periods only, current portfolio positions are not inherited across cohorts. Hence the endogenous predetermined states are the two country knowledge stocks, together with the exogenous regime component $z_t$.
+
+\begin{ass}[Primitive country production technologies]\label{ass_country_technology}
+For each country $i\in\{US,W\}$, the final-good production function $F_i:\mathbb R_{++}^2\to\mathbb R_{++}$ is continuously differentiable, concave, homogeneous of degree one, and has strictly positive partial derivatives.
+\end{ass}
+
+\paragraph{Final goods, intermediates, and knowledge.}
+In country $i$, a competitive final-good firm produces
+\begin{equation}\label{country_final_good}
+Y_{i,t}=F_i(A_{X,i,t}X_{i,t},A_{L,i,t}L_i).
+\end{equation}
+Here $A_{X,i,t}$ and $A_{L,i,t}$ are country-specific factor-augmenting productivities, $X_{i,t}$ is the knowledge-intensive input, and $L_i$ is the fixed mass of unskilled labor.
+
+The knowledge-intensive good is produced competitively from a continuum of intermediate varieties:
+\begin{equation}\label{country_knowledge_good}
+X_{i,t}=N_{i,t}^{1-1/\vartheta_i}
+\left(\int_0^{N_{i,t}} x_{i,t}(j)^{\vartheta_i}\,dj\right)^{1/\vartheta_i},
+\qquad
+\vartheta_i\in(0,1).
+\end{equation}
+
+Each intermediate good is produced by a monopolistically competitive firm using skilled labor one-for-one.
+
+\begin{lem}[Within-country production symmetry]\label{lem_within_country_prod_symmetry}
+Fix a country $i$, date $t$, and aggregate variables
+$(P_{i,t},X_{i,t},N_{i,t},w_{H,i,t})$. Suppose all country-$i$
+intermediate varieties enter the Dixit--Stiglitz aggregator symmetrically,
+use skilled labor one-for-one, and face the same skilled wage $w_{H,i,t}$.
+Then every intermediate-good firm charges the same monopoly price,
+\[
+p_{i,t}(j)=\frac{w_{H,i,t}}{\vartheta_i}
+\qquad\text{for a.e. }j\in[0,N_{i,t}],
+\]
+and hence produces the same quantity,
+\[
+x_{i,t}(j)=\frac{X_{i,t}}{N_{i,t}},
+\]
+and pays the same dividend,
+\[
+d_{i,t}(j)
+=
+\frac{1-\vartheta_i}{\vartheta_i}\,
+w_{H,i,t}\frac{X_{i,t}}{N_{i,t}}.
+\]
+\end{lem}
+
+\begin{proof}
+The competitive knowledge-good firm's first-order condition implies the
+demand curve
+\[
+x_{i,t}(j)
+=
+\frac{X_{i,t}}{N_{i,t}}
+\left(\frac{p_{i,t}(j)}{P_{i,t}}\right)^{-1/(1-\vartheta_i)} .
+\]
+Thus an intermediate producer of variety $j$ solves
+\[
+\max_{p>0}
+\ (p-w_{H,i,t})
+\frac{X_{i,t}}{N_{i,t}}
+\left(\frac{p}{P_{i,t}}\right)^{-1/(1-\vartheta_i)} .
+\]
+Since $1/(1-\vartheta_i)>1$, the constant-elasticity monopoly problem has
+the unique maximizer
+\[
+p=\frac{w_{H,i,t}}{\vartheta_i}.
+\]
+This price is independent of $j$. Substituting the common price back into demand gives common quantities, and the normalization in Eq.~\eqref{country_knowledge_good} then gives $x_{i,t}(j)=X_{i,t}/N_{i,t}$. Substituting into monopoly profits gives the stated common dividend.
+\end{proof}
+
+By \Cref{lem_within_country_prod_symmetry}, we can write the common per-variety quantity as $x_{i,t}$, and the normalization in Eq.~\eqref{country_knowledge_good} implies
+\[
+X_{i,t}=N_{i,t}x_{i,t}.
+\]
+Let $\varphi_{i,t}\in(0,1]$ denote the fraction of country-$i$ skilled labor employed in intermediate production, so that the remaining share $1-\varphi_{i,t}$ engages in R\&D.  \green{The boundary} $\green{\varphi}_{\green{i},\green{t}}\green{=1}$ \green{is allowed and corresponds to zero R}\&\green{D}.
+
+A skilled worker engaged in R\&D creates $a_iN_{i,t}$ new varieties, where $a_i>0$ is country-specific research productivity. Therefore knowledge evolves according to
+\begin{equation}\label{country_knowledge_law}
+N_{i,t+1}=(1+a_i(1-\varphi_{i,t})H_i)N_{i,t}.
+\end{equation}
+By \Cref{lem_within_country_prod_symmetry} and skilled-labor market clearing,
+\begin{equation}\label{country_X_phi}
+X_{i,t}=\varphi_{i,t}H_i.
+\end{equation}
+
+\paragraph{Country-$i$ prices, wages, and HKT per-variety stocks.}
+Let $P_{i,t}$ be the price of the country-$i$ knowledge-intensive good, and let $F_{i,X,t}$ and $F_{i,L,t}$ denote the partial derivatives of $F_i$ evaluated at $(A_{X,i,t}X_{i,t},A_{L,i,t}L_i)$. Standard Dixit--Stiglitz calculations imply
+\begin{equation}\label{country_factor_prices}
+P_{i,t}=F_{i,X,t}A_{X,i,t},
+\qquad
+w_{L,i,t}=F_{i,L,t}A_{L,i,t},
+\qquad
+w_{H,i,t}=\vartheta_i P_{i,t}=\vartheta_i F_{i,X,t}A_{X,i,t}.
+\end{equation}
+
+Let $q_{i,t}(j)$ be the ex-dividend price of one firm-level stock claim on variety $j$, and let $d_{i,t}(j)$ be the dividend paid by variety $j$ at date $t$. By \Cref{lem_within_country_prod_symmetry}, incumbent varieties have the common per-variety dividend $d_{i,t}(j)=d_{i,t}$.
+
+Production symmetry is therefore not imposed; it follows from the symmetric Dixit--Stiglitz aggregator, the common skilled wage, and the unique monopoly pricing rule. We impose only the following law-of-one-price condition for identical within-country equity claims.
+
+\begin{ass}[Market structure: law of one price for identical within-country equity claims]\label{ass_within_country_lop}
+For each country $i$ and date $t$, all incumbent country-$i$ firm-level equity claims with identical state-contingent future dividends are perfect substitutes and trade at the same ex-dividend price:
+\[
+q_{i,t}(j)=q_{i,t}
+\qquad\text{for a.e. }j\in[0,N_{i,t}].
+\]
+The incumbent--entrant valuation parity condition in \Cref{ass_entry_valuation} applies to newly created date-$t$ claims.
+\end{ass}
+
+By \Cref{lem_within_country_prod_symmetry,ass_within_country_lop}, the primitive HKT stock objects can be summarized by the within-country per-variety price $q_{i,t}$ and dividend $d_{i,t}$.
+Aggregate country market capitalization and aggregate country dividends are accounting objects:
+\begin{equation}\label{country_stock_aggregation}
+\mathcal Q_{i,t}
+:=
+N_{i,t+1}q_{i,t},
+\qquad
+\mathcal D_{i,t}
+:=
+N_{i,t}d_{i,t}.
+\end{equation}
+The timing follows \citet{hirano2025technological}: date-$t$ dividends are paid by incumbent varieties $N_{i,t}$, while date-$t$ R\&D creates new varieties and new firm-level stock claims, so the end-of-period stock supply purchased by young investors is $N_{i,t+1}$.
+
+The dividend formula in \Cref{lem_within_country_prod_symmetry} can be written as
+\begin{equation}\label{country_variety_profit}
+d_{i,t}
+=
+\frac{1-\vartheta_i}{\vartheta_i}\,w_{H,i,t}\,x_{i,t}.
+\end{equation}
+Thus aggregate dividends are
+\begin{equation}\label{country_dividend_formula}
+\mathcal D_{i,t}
+=
+N_{i,t}d_{i,t}
+=
+\frac{1-\vartheta_i}{\vartheta_i}w_{H,i,t}X_{i,t}.
+\end{equation}
+
+We impose the following valuation-parity condition.
+
+\begin{ass}[Claim definition: incumbent--entrant valuation parity]\label{ass_entry_valuation}
+For each country $i$ and date $t$, a claim on a newly created date-$t$ variety that becomes productive at date $t+1$ trades at the same ex-dividend price as a claim on an incumbent date-$t$ variety after current dividends are paid.
+\end{ass}
+
+R\&D \green{is subject to the standard free-entry complementarity condition}.  \green{The skilled-labor allocation satisfies}
+\[
+\green{0<\varphi}_{i,t}\green{\le 1},
+\]
+\green{and the value of a newly created set of} claims \green{cannot exceed} the \green{skilled wage}:
+\begin{equation}\label{country_Q_from_wage}
+a_iN_{i,t}q_{i,t}\green{\le} w_{H,i,t},
+\qquad
+(\green{1-\varphi}_{i,t})
+\bigl[w_{H,i,t}\green{-}a_iN_{i,t}\green{q}_{\green{i},\green{t}}\bigr]\green{=0}.
+\end{equation}
+\green{Hence}
+\[
+\green{q}_{\green{i},\green{t}}\green{\le} \frac{\green{w}_{\green{H},\green{i},\green{t}}}{\green{a}_\green{iN}_{\green{i},\green{t}}},
+\]
+\green{with equality whenever R}\&\green{D is active}, $\green{\varphi}_{\green{i},\green{t}}\green{<1}$.
+
+\green{When R}\&\green{D is active}, \green{combining} Eqs.~\eqref{country_variety_profit}, \eqref{country_X_phi}, and \eqref{country_Q_from_wage} gives the HKT per-variety dividend yield:
+\begin{equation}\label{country_dividend_yield}
+\frac{d_{i,t}}{q_{i,t}}
+=
+a_i\frac{1-\vartheta_i}{\vartheta_i}X_{i,t}
+=
+a_i\frac{1-\vartheta_i}{\vartheta_i}\varphi_{i,t}H_i,
+\qquad \green{\varphi}_{\green{i},\green{t}}\green{<1}.
+\end{equation}
+
+Thus a falling production share $\varphi_{i,t}$ directly lowers the per-variety dividend yield and raises the per-variety price-dividend ratio. In aggregate terms,
+\[
+\frac{\mathcal D_{i,t}}{\mathcal Q_{i,t}}
+=
+\frac{N_{i,t}}{N_{i,t+1}}\frac{d_{i,t}}{q_{i,t}},
+\]
+so the aggregate dividend yield has the same asymptotic order whenever $N_{i,t+1}/N_{i,t}$ is bounded above and below.
+
+\paragraph{Country-$i$ young resources and output decomposition.}
+Each skilled young agent earns $w_{H,i,t}$: production workers receive the skilled wage, while, \green{whenever R}\&\green{D is active}, R\&D workers receive IPO revenue equal to $a_iN_{i,t}q_{i,t}=w_{H,i,t}$ by free entry. Each unskilled young agent earns $w_{L,i,t}$. Therefore aggregate young resources in country $i$ are
+\begin{equation}\label{country_labor_income}
+e_{i,t}=w_{H,i,t}H_i+w_{L,i,t}L_i.
+\end{equation}
+This object is aggregate young-agent budget income used to summarize the sum of type-level portfolio budgets. It is not identical to current final-good output because the R\&D component is paid by buyers of newly issued equity claims. Define the date-$t$ IPO transfer to R\&D workers by
+\begin{equation}\label{country_ipo_transfer}
+\mathcal I_{i,t}
+:=(1-\varphi_{i,t})H_iw_{H,i,t}
+=\bigl(N_{i,t+1}-N_{i,t}\bigr)q_{i,t},
+\end{equation}
+where the second equality uses Eqs.~\eqref{country_knowledge_law} and \eqref{country_Q_from_wage}. Since the final-good and knowledge-good sectors are competitive and have zero profits, current final-good output decomposes as
+\begin{equation}\label{country_output_income_identity}
+Y_{i,t}
+=
+\varphi_{i,t}H_iw_{H,i,t}+w_{L,i,t}L_i+\mathcal D_{i,t}
+=
+e_{i,t}+\mathcal D_{i,t}-\mathcal I_{i,t}.
+\end{equation}
+Thus the endowment objects in the previous draft are now generated endogenously by country-specific production, innovation, monopoly profits, and IPO transfers.
+
+
+\subsection{Type-specific young-agent portfolio problems and aggregation}
+
+At the portfolio stage of date $t$, the current state $s_t$, the type-specific young incomes summarized by Eq.~\eqref{country_labor_income}, and the per-variety stock objects in Eqs.~\eqref{country_stock_aggregation}--\eqref{country_dividend_yield} are taken as given. Asset trade takes place after date-$t$ dividends are distributed and after date-$t$ R\&D claims are issued, so young investors purchase measures of firm-level equity claims at the ex-dividend per-variety prices $q_{US,t}$ and $q_{W,t}$.
+
+Preference parameters satisfy $0<\beta<1$ and $\gamma>0$, with $\gamma\ne1$ in the displayed Epstein--Zin aggregator below.  The bubble-existence result will additionally impose $0<\gamma<1$.
+
+The production side follows HKT's skilled/unskilled OLG structure. \magenta{Let $\mathfrak T=\{H,L\}$, and use the type-specific wage $w_{a,i,t}$ directly as the type-$a$ young agent's budget income.} Thus
+\[
+e_{i,t}=\magenta{H_iw_{H,i,t}+L_iw_{L,i,t}}
+\]
+is aggregate young-agent budget income. The primitive portfolio problems below are type-specific. Aggregate objects such as $e_{i,t}$, $C_{y,t}$, and $n_{US,t}$ are sums of type-level choices, not choices of a primitive representative production household. Because preferences are homogeneous and all types in a country face the same returns and portfolio-share frictions, the optimal portfolio shares are common across types within a country. As in \citet{hirano2025technological}, asset pricing can therefore use the SDF of the skilled type; aggregate market clearing still sums the asset demands of both skilled and unskilled young agents.
+
+\subsubsection{US}
+
+A young US agent of type $a\in\mathfrak T$ trades US and RoW firm-level equity claims and the US bond only; the agent does \emph{not} trade the RoW bond. Let
+\[
+\magenta{S_{a,t}}\equiv q_{US,t}\magenta{n_{US,a,t}}+q_{W,t}\magenta{n_{W,a,t}},
+\qquad
+\omega_{a,t}\equiv\frac{q_{US,t}\magenta{n_{US,a,t}}}{\magenta{S_{a,t}}},
+\qquad
+q^B_{US,t}\equiv \frac{1}{R_{f,t}}.
+\]
+The type-$a$ US agent chooses
+\[
+\{\magenta{c_{y,a,t}},\,\magenta{n_{US,a,t}},\,\magenta{n_{W,a,t}},\,\magenta{B_{a,t+1}}\}
+\]
+to solve
+\[
+\max
+\ (1-\beta)\log \magenta{c_{y,a,t}}
++\frac{\beta}{1-\gamma}\log E_t\!\left[(\magenta{c_{o,a,t+1}})^{1-\gamma}\right]
+-\frac{\kappa}{2}(\omega_{a,t}-\bar\omega)^2
+-\eta\,\Upsilon(\theta_{a,t})
+\]
+subject to
+\begin{align*}
+\magenta{c_{y,a,t}}
+&+q_{US,t}\magenta{n_{US,a,t}}+q_{W,t}\magenta{n_{W,a,t}}
++q^B_{US,t}\magenta{B_{a,t+1}}
+= \magenta{w_{a,US,t}},\\
+\magenta{c_{o,a,t+1}}
+&=
+(q_{US,t+1}+d_{US,t+1})\magenta{n_{US,a,t}}
++(q_{W,t+1}+d_{W,t+1})\magenta{n_{W,a,t}}
++\magenta{B_{a,t+1}}.
+\end{align*}
+Equity positions are constrained to be nonnegative,
+\[
+\magenta{n_{US,a,t}}\ge0,
+\qquad
+\magenta{n_{W,a,t}}\ge0,
+\]
+so $\omega_{a,t}\in[0,1]$.  The bond position may be negative subject to the budget constraint and strictly positive consumption in every successor state.  The equity first-order condition below applies at interior finite-date choices; the selected paths studied later may converge to a boundary portfolio asymptotically.
+Here $\bar\omega\in[1/2,1]$ is the targeted portfolio weight on US equity. The term $\eta\Upsilon(\theta_{a,t})$ \green{permits} a \green{wedge} in the \green{bond-share optimality condition while preserving} saving separation. \green{For the bubble result}, \green{only local boundedness of} $\Upsilon'$ \green{near zero is imposed}; \green{no global coercivity or debt-discipline property is used}.
+
+\begin{ass}[Primitive \green{bond-cost regularity}]\label{ass_issuance_costs}
+The \green{bond-share cost} $\Upsilon:(-\infty,1)\to\mathbb R$ is \green{differentiable}, and $\Upsilon'$ \green{is bounded on some neighborhood of zero}.  \green{No coercivity restriction as} $\theta\green{\to}-\infty$ \green{is imposed for the bubble result}.
+\end{ass}
+
+For each type define
+\[
+\magenta{b_{a,t}}\equiv q^B_{US,t}\magenta{B_{a,t+1}},
+\qquad
+\magenta{A_{a,t}}\equiv \magenta{S_{a,t}}+\magenta{b_{a,t}},
+\qquad
+\theta_{a,t}\equiv\frac{\magenta{b_{a,t}}}{\magenta{A_{a,t}}}.
+\]
+The gross per-variety stock returns are
+\[
+R_{i,t+1}=\frac{q_{i,t+1}+d_{i,t+1}}{q_{i,t}},
+\qquad i\in\{US,W\},
+\]
+and the type-$a$ portfolio and total-saving returns are
+\[
+R_{p,a,t+1}=\omega_{a,t}R_{US,t+1}+(1-\omega_{a,t})R_{W,t+1},
+\qquad
+R_{A,a,t+1}=(1-\theta_{a,t})R_{p,a,t+1}+\theta_{a,t}R_{f,t}.
+\]
+Because the objective can be written in terms of \magenta{$(A_{a,t}/w_{a,US,t},\omega_{a,t},\theta_{a,t})$} and the scale \magenta{$w_{a,US,t}$} cancels, all US types choose the same shares. We write these common shares as $(\omega_t,\theta_t)$ and the common returns as
+\[
+R_{p,t+1}=\omega_tR_{US,t+1}+(1-\omega_t)R_{W,t+1},
+\qquad
+R_{A,t+1}=(1-\theta_t)R_{p,t+1}+\theta_tR_{f,t}.
+\]
+The type-level saving rule is
+\[
+\magenta{A_{a,t}}=\magenta{\beta w_{a,US,t}},
+\qquad
+\magenta{c_{y,a,t}}=\magenta{(1-\beta)w_{a,US,t}}.
+\]
+Aggregating over type masses gives
+\begin{align}\label{US_saving_rule_bond_cost}
+A_t&:=\magenta{H_{US}A_{H,t}+L_{US}A_{L,t}}=\beta e_{US,t},
+&
+C_{y,t}&:=\magenta{H_{US}c_{y,H,t}+L_{US}c_{y,L,t}}=(1-\beta)e_{US,t}.
+\end{align}
+Aggregate US asset positions are
+\[
+n_{US,t}=\magenta{H_{US}n_{US,H,t}+L_{US}n_{US,L,t}},
+\qquad
+n_{W,t}=\magenta{H_{US}n_{W,H,t}+L_{US}n_{W,L,t}},
+\qquad
+B_{US,t+1}=\magenta{H_{US}B_{H,t+1}+L_{US}B_{L,t+1}},
+\]
+so
+\[
+S_t=q_{US,t}n_{US,t}+q_{W,t}n_{W,t}=(1-\theta_t)A_t,
+\qquad
+b_t=q^B_{US,t}B_{US,t+1}=\theta_t A_t.
+\]
+Aggregate old-age consumption is $C_{o,t+1}=A_tR_{A,t+1}$.
+
+\paragraph{US SDF and stock-pricing implications.}
+Following HKT, because all US types have homogeneous preferences and face the same portfolio returns, we use the skilled type's SDF for pricing. \magenta{The undistorted US SDF is}
+\begin{equation}\label{US_K_def}
+\magenta{M}_{t,t+1}
+\equiv
+\frac{R_{A,t+1}^{-\gamma}}{E_t\!\left[R_{A,t+1}^{1-\gamma}\right]},
+\qquad
+E_t\!\left[\magenta{M}_{t,t+1}R_{A,t+1}\right]=1.
+\end{equation}
+\green{When both equity positions are positive}, \green{the} first-order condition for the common US equity share implies
+\begin{align}\label{US_omega_FOC_bond_cost}
+\beta(1-\theta_t)
+E_t\!\left[\magenta{M}_{t,t+1}(R_{US,t+1}-R_{W,t+1})\right]
+=
+\kappa(\omega_t-\bar\omega).
+\end{align}
+\green{At an equity boundary this equality is replaced by the corresponding Kuhn--Tucker condition}.
+The first-order condition for the common US bond share implies
+\begin{align}\label{US_theta_FOC_bond_cost}
+\beta
+E_t\!\left[\magenta{M}_{t,t+1}(R_{f,t}-R_{p,t+1})\right]
+=
+\eta\,\Upsilon'(\theta_t).
+\end{align}
+
+For later use, define
+\[
+\phi_t
+\equiv
+\frac{\kappa}{\beta(1-\theta_t)}(\omega_t-\bar\omega),
+\qquad
+\lambda_t
+\equiv
+\frac{\eta\theta_t}{\beta}\Upsilon'(\theta_t).
+\]
+
+\green{US stock pricing can be obtained without using the bond-share first-order condition}.  \green{For any US type} $\green{a}$, \green{write the stock-value and bond-value positions as}
+\[
+\green{x}_{\green{US},\green{a},\green{t}}:\green{=q}_{\green{US},\green{t}}\green{n}_{\green{US},\green{a},\green{t}},
+\qquad
+\green{x}_{\green{W},\green{a},\green{t}}:\green{=q}_{\green{W},\green{t}}\green{n}_{\green{W},\green{a},\green{t}},
+\qquad
+\green{b}_{\green{a},\green{t}}:\green{=q}^\green{B}_{\green{US},\green{t}}\green{B}_{\green{a},\green{t+1}}.
+\]
+\green{Then}
+\[
+\green{A}_{\green{a},\green{t}}\green{=x}_{\green{US},\green{a},\green{t}}\green{+x}_{\green{W},\green{a},\green{t}}\green{+b}_{\green{a},\green{t}},
+\qquad
+\green{\omega}_\green{t=}\frac{\green{x}_{\green{US},\green{a},\green{t}}}{\green{x}_{\green{US},\green{a},\green{t}}\green{+x}_{\green{W},\green{a},\green{t}}},
+\qquad
+\green{\theta}_\green{t=}\frac{\green{b}_{\green{a},\green{t}}}{\green{A}_{\green{a},\green{t}}},
+\]
+\green{and}
+\[
+\frac{\green{\partial\omega}_\green{t}}{\green{\partial x}_{\green{US},\green{a},\green{t}}}
+\green{=}\frac{\green{1-\omega}_\green{t}}{\green{S}_{\green{a},\green{t}}},
+\qquad
+\frac{\green{\partial\theta}_\green{t}}{\green{\partial x}_{\green{US},\green{a},\green{t}}}
+\green{=-}\frac{\green{\theta}_\green{t}}{\green{A}_{\green{a},\green{t}}}.
+\]
+\green{At a positive US-stock position}, \green{the direct first-order condition with respect to} $\green{x}_{\green{US},\green{a},\green{t}}$, \green{together with the saving rule}, \green{gives}
+\begin{align}
+\green{E}_\green{t}\!\left[\magenta{\green{M}}_{\green{t},\green{t+1}}\green{R}_{\green{US},\green{t+1}}\right]
+&\green{=}
+\green{1-\lambda}_\green{t+\phi}_\green{t}(\green{1-\omega}_\green{t}).
+\label{US_RUS_pricing}
+\end{align}
+\green{Thus}
+\[
+\green{\Psi}_\green{t}
+:\green{=}
+\green{1-\lambda}_\green{t+\phi}_\green{t}(\green{1-\omega}_\green{t})
+\green{=E}_\green{t}\!\left[\magenta{\green{M}}_{\green{t},\green{t+1}}\green{R}_{\green{US},\green{t+1}}\right]\green{>0},
+\]
+\green{because the undistorted SDF and the gross US stock payoff are strictly positive}.  \green{Positivity of the effective US stock-pricing kernel is therefore an implication of a positive pricing-holder position}, \green{not a separate regularity assumption}.
+
+
+Using $R_{A,t+1}=(1-\theta_t)R_{p,t+1}+\theta_tR_{f,t}$ and Eq.~\eqref{US_K_def}, the bond-share first-order condition implies
+\begin{align}\label{US_Rp_pricing}
+E_t\!\left[\magenta{M}_{t,t+1}R_{p,t+1}\right]
+=
+1-\lambda_t.
+\end{align}
+\green{If the RoW-stock position is also positive}, \green{its direct stock-value first-order condition gives}
+\begin{align}
+E_t\!\left[\magenta{M}_{t,t+1}R_{W,t+1}\right]
+&=
+1-\lambda_t-\phi_t\omega_t.\label{US_RW_pricing}
+\end{align}
+\green{At a zero RoW-stock position}, \green{Eq}.~\green{\eqref{US_RW_pricing} is replaced by its Kuhn--Tucker inequality}.  \green{In particular}, \green{neither stock-pricing equality requires bond-share interiority}, \green{and the US equality does not require the RoW equity weight to be positive}.
+
+\green{At a positive US-stock position}, the per-variety \green{US} stock-pricing \green{equation} can \green{therefore} be written as
+\begin{align}
+q_{US,t}
+&=
+E_t\!\left[\magenta{\mathcal M}_{t,t+1}(q_{US,t+1}+d_{US,t+1})\right],\label{US_AP_bond_cost}
+\end{align}
+\green{where}
+\begin{align*}
+\magenta{\mathcal M}_{t,t+1}
+&=
+\frac{\magenta{M}_{t,t+1}}{\green{\Psi}_t}.
+\end{align*}
+
+Thus the kernel that prices the US per-variety stock differs from the undistorted skilled-type kernel \magenta{$M_{t,t+1}$} because of both the home-bias wedge $\phi_t$ and the bond-share wedge $\lambda_t$.
+
+\subsubsection{Rest-of-World (RoW)}
+
+A young RoW agent of type $a\in\mathfrak T$ trades both firm-level equity claims, the US bond, and the RoW bond. Let
+\[
+\magenta{S_{a,t}^{*}}\equiv q_{US,t}\magenta{n^{*}_{US,a,t}}+q_{W,t}\magenta{n^{*}_{W,a,t}},
+\qquad
+\omega^*_{a,t}\equiv\frac{q_{US,t}\magenta{n^{*}_{US,a,t}}}{\magenta{S^{*}_{a,t}}},
+\qquad
+q^B_{W,t}\equiv\frac{1}{R_{f,t}^W}.
+\]
+The type-$a$ RoW agent chooses
+\[
+\{\magenta{c^*_{y,a,t}},\,\magenta{n^*_{US,a,t}},\,\magenta{n^*_{W,a,t}},\,\magenta{B^*_{US,a,t+1}},\,\magenta{B^*_{W,a,t+1}}\}
+\]
+to solve
+\begin{align*}
+\max\quad \magenta{U_{a,t}^*}
+&=
+(1-\beta)\log \magenta{c^*_{y,a,t}}
++\frac{\beta}{1-\gamma}\log E_t\!\left[(\magenta{c^*_{o,a,t+1}})^{1-\gamma}\right]
+-\frac{\kappa}{2}(\omega^*_{a,t}-\bar\omega^*)^2
++\chi\log\!\left(q^B_{US,t}\magenta{B^*_{US,a,t+1}}\right),
+\end{align*}
+subject to
+\begin{align*}
+\magenta{c^*_{y,a,t}}
+&+q_{US,t}\magenta{n^*_{US,a,t}}+q_{W,t}\magenta{n^*_{W,a,t}}
++q^B_{US,t}\magenta{B^*_{US,a,t+1}}+q^B_{W,t}\magenta{B^*_{W,a,t+1}}
+= \magenta{w_{a,W,t}},\\
+\magenta{c^*_{o,a,t+1}}
+&=
+(q_{US,t+1}+d_{US,t+1})\magenta{n^*_{US,a,t}}
++(q_{W,t+1}+d_{W,t+1})\magenta{n^*_{W,a,t}}
++\magenta{B^*_{US,a,t+1}}+\magenta{B^*_{W,a,t+1}}.
+\end{align*}
+RoW equity positions are likewise constrained to be nonnegative,
+\[
+\magenta{n^*_{US,a,t}}\ge0,
+\qquad
+\magenta{n^*_{W,a,t}}\ge0,
+\]
+so $\omega^*_{a,t}\in[0,1]$.  The displayed RoW equity first-order condition applies at interior finite-date choices, while limiting portfolio weights may lie on the boundary.
+The term $\chi>0$ generates a convenience yield from holding US bonds and the ``exorbitant privilege'' of US bonds as a consequence.
+
+As on the US side, homogeneity implies common RoW portfolio shares across types. Write these common shares as $(\omega_t^*,\theta_{US,t}^*,\theta_{W,t}^*)$. Aggregating type-level choices gives
+\[
+n^*_{US,t}=\magenta{H_Wn^*_{US,H,t}+L_Wn^*_{US,L,t}},
+\qquad
+n^*_{W,t}=\magenta{H_Wn^*_{W,H,t}+L_Wn^*_{W,L,t}},
+\]
+\[
+B^*_{US,t+1}=\magenta{H_WB^*_{US,H,t+1}+L_WB^*_{US,L,t+1}},
+\qquad
+B^*_{W,t+1}=\magenta{H_WB^*_{W,H,t+1}+L_WB^*_{W,L,t+1}}.
+\]
+Define
+\[
+S_t^*=q_{US,t}n^*_{US,t}+q_{W,t}n^*_{W,t},
+\qquad
+b_{US,t}^*=q^B_{US,t}B^*_{US,t+1},
+\qquad
+b_{W,t}^*=q^B_{W,t}B^*_{W,t+1},
+\]
+\[
+A_t^*=S_t^*+b_{US,t}^*+b_{W,t}^*,
+\qquad
+\theta_{US,t}^*\equiv\frac{b_{US,t}^*}{A_t^*},
+\qquad
+\theta_{W,t}^*\equiv\frac{b_{W,t}^*}{A_t^*}.
+\]
+Then
+\[
+S_t^*=(1-\theta_{US,t}^*-\theta_{W,t}^*)A_t^*,
+\qquad
+C^*_{y,t}=e_{W,t}-A_t^*.
+\]
+The gross return on aggregate RoW total saving is
+\[
+R_{A,t+1}^*
+=
+(1-\theta_{US,t}^*-\theta_{W,t}^*)R_{p,t+1}^*
++\theta_{US,t}^*R_{f,t}
++\theta_{W,t}^*R_{f,t}^W,
+\]
+where
+\[
+R_{p,t+1}^*=\omega_t^*R_{US,t+1}+(1-\omega_t^*)R_{W,t+1}.
+\]
+Thus $C^*_{o,t+1}=A_t^*R_{A,t+1}^*$.
+
+\paragraph{RoW saving rule and portfolio FOCs.}
+For each RoW type, the convenience-yield term contributes \magenta{$\chi\log A^*_{a,t}$} after writing \magenta{$q^B_{US,t}B^*_{US,a,t+1}=\theta_{US,t}^*A^*_{a,t}$}. Hence type-level saving is \magenta{$A^*_{a,t}=\frac{\beta+\chi}{1+\chi}w_{a,W,t}$}, and aggregation gives
+\begin{align}\label{RoW_saving_rule_bond_cost}
+A_t^*&=\frac{\beta+\chi}{1+\chi}\,e_{W,t},
+&
+C^*_{y,t}&=\frac{1-\beta}{1+\chi}\,e_{W,t}.
+\end{align}
+Following HKT's SDF shortcut, we use the RoW skilled type's SDF. \magenta{Define the undistorted RoW SDF and the associated normalized kernel}
+\[
+\magenta{M^*}_{t,t+1}
+\equiv
+\magenta{\frac{\beta}{1-\beta}
+\frac{C^*_{y,t}(C^*_{o,t+1})^{-\gamma}}{E_t\!\left[(C^*_{o,t+1})^{1-\gamma}\right]}},
+\qquad
+\magenta{\tilde M^*}_{t,t+1}
+\equiv
+\magenta{\frac{(R_{A,t+1}^*)^{-\gamma}}{E_t\!\left[(R_{A,t+1}^*)^{1-\gamma}\right]}
+=\frac{\beta+\chi}{\beta}M^*_{t,t+1}}.
+\]
+\green{When both} RoW equity \green{positions are strictly positive}, \green{the equity-share optimality condition reduces to}
+\begin{align}\label{RoW_omega_FOC_mod}
+\beta(1-\theta_{US,t}^*-\theta_{W,t}^*)
+E_t\!\left[\magenta{\tilde M^*}_{t,t+1}(R_{US,t+1}-R_{W,t+1})\right]
+=
+\kappa(\omega_t^*-\bar\omega^*).
+\end{align}
+\green{At a boundary equity allocation}, \green{the corresponding Kuhn--Tucker inequality applies instead}.
+The first-order condition for the RoW bond share $\theta_{W,t}^*$ is
+\begin{align}\label{RoW_thetaW_FOC_mod}
+\beta\,E_t\!\left[\magenta{\tilde M^*}_{t,t+1}(R_{f,t}^W-R_{p,t+1}^*)\right]
+=
+0.
+\end{align}
+The first-order condition for the US bond share $\theta_{US,t}^*$ is
+\begin{align}\label{RoW_thetaUS_FOC_mod}
+\beta\,E_t\!\left[\magenta{\tilde M^*}_{t,t+1}(R_{f,t}-R_{p,t+1}^*)\right]
++\frac{\chi}{\theta_{US,t}^*}
+=
+0.
+\end{align}
+\green{At a positive RoW holding of country-}$\green{i}$ \green{equity}, \green{the corresponding stock-value} first-order \green{condition implies}
+\begin{equation}\label{RoW_stock_pricing}
+q_{i,t}
+=
+E_t\!\left[\magenta{\mathcal M}^{*,i}_{t,t+1}(q_{i,t+1}+d_{i,t+1})\right],
+\qquad i\in\{US,W\},
+\end{equation}
+\green{At a zero position}, \green{this equality is replaced by the corresponding Kuhn--Tucker inequality}.
+\green{The effective kernels are}
+\begin{align*}
+\magenta{\mathcal M}^{*,US}_{t,t+1}&=\frac{\magenta{M^*}_{t,t+1}}{1+\phi_t^*(1-\omega_t^*)},
+\qquad
+\magenta{\mathcal M}^{*,W}_{t,t+1}&=\frac{\magenta{M^*}_{t,t+1}}{1-\phi_t^*\omega_t^*},\\
+\phi_t^*
+&\equiv \frac{\kappa C^*_{y,t}}{(1-\beta)S_t^*}(\omega_t^*-\bar\omega^*).
+\end{align*}
+The first-order conditions for the bond amounts $(B_{W,t+1}^*,B_{US,t+1}^*)$ imply the bond-pricing equations for RoW agents:
+\begin{align}
+q^B_{W,t}&=E_t\!\left[M^*_{t,t+1}\right], \label{RoW_BW_FOC}\\
+q^B_{US,t}&=E_t\!\left[M^*_{t,t+1}\right]
++\frac{\chi}{1+\chi} \frac{e_{W,t}}{B^*_{US,t+1}}. \label{RoW_BUS_FOC}
+\end{align}
+Since the convenience-yield term requires $B^*_{US,t+1}>0$ after aggregation, the wedge term in Eq.~\eqref{RoW_BUS_FOC} is strictly positive. Combining Eqs.~\eqref{RoW_BUS_FOC} and \eqref{RoW_BW_FOC} immediately gives $q^B_{US,t}>q^B_{W,t}$, generating the exorbitant privilege of US bonds.
+
+\subsection{Market clearing}
+
+\paragraph{World stock market clearing.}
+Because young investors trade measures of firm-level claims and date-$t$ R\&D creates the new claims sold at date $t$, the supply of country-$i$ equity purchased by the young equals the post-issuance measure of varieties:
+\begin{align}\label{stock_clear_mod}
+\begin{split}
+n_{US,t}+n^*_{US,t}=N_{US,t+1},\\
+n_{W,t}+n^*_{W,t}=N_{W,t+1}.
+\end{split}
+\end{align}
+
+\paragraph{Bond market clearing.}
+Assume both one-period riskless bonds are in zero net supply. Since only RoW trades the RoW bond, bond market clearing is
+\begin{align}\label{bond_clear_mod_zerosupply}
+B_{US,t+1}+B^*_{US,t+1}=0,
+\qquad
+B^*_{W,t+1}=0.
+\end{align}
+Equivalently, in present values,
+\[
+b_t+b_{US,t}^*=0,
+\qquad
+b_{W,t}^*=0.
+\]
+
+\paragraph{Stock market clearing in value form.}
+Using portfolio weights and the aggregate capitalization objects in Eq.~\eqref{country_stock_aggregation},
+\begin{align}\label{stock_weight_clear_mod}
+\begin{split}
+\mathcal Q_{US,t}=q_{US,t}N_{US,t+1} &= \omega_t S_t+\omega_t^*S_t^*,\\
+\mathcal Q_{W,t}=q_{W,t}N_{W,t+1}  &= (1-\omega_t)S_t+(1-\omega_t^*)S_t^*.
+\end{split}
+\end{align}
+
+\paragraph{Aggregate market-cap identity.}
+Since $S_t=A_t-b_t$ and $S_t^*=A_t^*-b_{US,t}^*-b_{W,t}^*$, we have
+\[
+\mathcal Q_{US,t}+\mathcal Q_{W,t}=S_t+S_t^*
+=
+A_t+A_t^*-(b_t+b_{US,t}^*)-b_{W,t}^*.
+\]
+Using bond clearing in Eq.~\eqref{bond_clear_mod_zerosupply} and the saving rules in Eqs.~\eqref{US_saving_rule_bond_cost} and \eqref{RoW_saving_rule_bond_cost}, it follows that
+\begin{align}\label{Qsum_identity_mod_zerosupply}
+\boxed{
+q_{US,t}N_{US,t+1}+q_{W,t}N_{W,t+1}
+=
+\mathcal Q_{US,t}+\mathcal Q_{W,t}
+=
+\beta e_{US,t}
++\frac{\beta+\chi}{1+\chi}\,e_{W,t}.
+}
+\end{align}
+In the production economy, Eq.~\eqref{Qsum_identity_mod_zerosupply} links the aggregate value of the two stock markets to the endogenous labor incomes generated by Eq.~\eqref{country_labor_income}.
+
+\paragraph{Goods market clearing.}
+Using Eq.~\eqref{country_output_income_identity}, goods-market clearing can be written as
+\begin{align}\label{goods_clear_mod}
+C_{y,t}+C^*_{y,t}+C_{o,t}+C^*_{o,t}
+&=
+Y_{US,t}+Y_{W,t}\notag\\
+&=
+e_{US,t}+e_{W,t}
++\mathcal D_{US,t}+\mathcal D_{W,t}
+-\mathcal I_{US,t}-\mathcal I_{W,t}.
+\end{align}
+Equivalently, current final-good resources equal the two countries' aggregate young-agent budget incomes plus incumbent dividends, net of the IPO transfers that young savers pay to R\&D founders for newly created equity claims.
+
+\subsection{\texorpdfstring{Markov competitive equilibrium}{Markov competitive equilibrium}}
+
+Because agents live for two periods and enter the portfolio stage without inherited individual financial wealth, their optimization problems are static conditional on the current state and the state-contingent price system. Hence no Bellman equation is needed. The Markov formulation below means that equilibrium allocations, prices, and returns are measurable functions of the aggregate state
+\[
+s=(z,N_{US},N_W)\in\mathcal S.
+\]
+
+For any Markov labor-allocation functions $\varphi_{US}$ and $\varphi_W$, define the one-step state transition map by
+\begin{equation}\label{recursive_next_state}
+\Gamma(s,z')
+=
+\Bigl(
+ z',
+ [1+a_{US}(1-\varphi_{US}(s))H_{US}]N_{US},
+ [1+a_W(1-\varphi_W(s))H_W]N_W
+\Bigr),
+\qquad
+s=(z,N_{US},N_W)\in\mathcal S.
+\end{equation}
+Along any equilibrium history,
+\[
+s_{t+1}=\Gamma(s_t,z_{t+1}).
+\]
+For notational convenience, write
+\[
+N_i^+(s,\varphi_i)
+:=
+[1+a_i(1-\varphi_i)H_i]N_i,
+\qquad
+i\in\{US,W\},
+\]
+for the post-issuance supply of country-$i$ firm-level claims generated by current state $s$ and current labor allocation $\varphi_i$. When a reduced vector $x$ is introduced below, $N_i^+(s,x)$ denotes the same expression evaluated at the country-$i$ labor-allocation coordinate of $x$.
+
+Given state-contingent per-variety equity price and dividend functions $(q_i,d_i)$, the corresponding one-period equity returns are
+\begin{equation}\label{recursive_returns}
+R_i(s,z')
+=
+\frac{q_i(\Gamma(s,z'))+d_i(\Gamma(s,z'))}{q_i(s)},
+\qquad
+i\in\{US,W\}.
+\end{equation}
+The one-period bond returns $R_f(s)$ and $R_f^W(s)$ are equilibrium return functions; the associated bond prices, when needed, are $q^B_{US}(s)=1/R_f(s)$ and $q^B_W(s)=1/R_f^W(s)$.
+
+\begin{defi}[Markov competitive equilibrium]\label{def_recursive_equilibrium}
+Fix an initial state $s_0\in\mathcal S$. A Markov competitive equilibrium is a collection of measurable functions of $s=(z,N_{US},N_W)$ consisting of price and return functions
+\[
+\mathcal P(s)=
+\{P_i(s),w_{H,i}(s),w_{L,i}(s),q_i(s)\}_{i\in\{US,W\}},
+\qquad
+R_f(s),\,R_f^W(s),
+\]
+production and innovation choices
+\[
+\{\varphi_i(s),X_i(s),N_i^+(s)\}_{i\in\{US,W\}},
+\]
+household portfolio choices
+\[
+\omega(s),\,\theta(s),\,\omega^*(s),\,\theta_{US}^*(s),\,\theta_W^*(s),
+\]
+and derived aggregate/payoff functions
+\[
+\{Y_i(s),d_i(s),\mathcal Q_i(s),\mathcal D_i(s),e_i(s)\}_{i\in\{US,W\}},
+\]
+such that the equilibrium path generated from $s_0$ satisfies the following conditions.
+
+\begin{enumerate}
+    \item \textbf{Production optimality and free entry.} For each state $s=(z,N_{US},N_W)\in\mathcal S$ and each country $i\in\{US,W\}$, firms maximize profits given prices, and the production-side optimality conditions and identities in Eqs.~\eqref{country_final_good}, \eqref{country_factor_prices}, \eqref{country_stock_aggregation}, \eqref{country_Q_from_wage}, \eqref{country_dividend_formula}, \eqref{country_labor_income}, \eqref{country_ipo_transfer}, and \eqref{country_output_income_identity} hold, together with the law-of-one-price condition in \Cref{ass_within_country_lop}. In particular,
+    \[
+    X_i(s)=\varphi_i(s)H_i,
+    \qquad
+    N_i^+(s)=N_i^+(s,\varphi_i(s)),
+    \]
+    \[
+    \green{0<\varphi}_\green{i}(\green{s})\green{\le1},
+    \qquad
+    a_iN_iq_i(s)\green{\le} w_{H,i}(s),
+    \qquad
+    (\green{1-\varphi}_\green{i}(\green{s}))
+    [\green{w}_{\green{H},\green{i}}(\green{s})\green{-a}_\green{iN}_\green{iq}_\green{i}(\green{s})]\green{=0},
+    \]
+    \[
+    d_i(s)=
+    \frac{1-\vartheta_i}{\vartheta_i}
+    w_{H,i}(s)\frac{X_i(s)}{N_i},
+    \qquad
+    \mathcal Q_i(s)=N_i^+(s)q_i(s),
+    \qquad
+    \mathcal D_i(s)=N_id_i(s).
+    \]
+    Thus $q_i(s)$ is an equilibrium price function subject to \green{free-entry complementarity}, and dividends and aggregate market capitalizations are payoff and accounting objects.  \green{When} $\green{\varphi}_\green{i}(\green{s})\green{<1}$, \green{free entry binds and Eq}.~\green{\eqref{country_dividend_yield} applies}.
+
+    \item \textbf{Household optimization.} Given the Markov transition matrix $\Pi$, current prices, and the induced next-period returns in Eq.~\eqref{recursive_returns}, US and RoW type-specific young agents solve the portfolio problems stated above. Their saving rules are Eqs.~\eqref{US_saving_rule_bond_cost} and \eqref{RoW_saving_rule_bond_cost}.  \green{The unconstrained bond} choices \green{satisfy} their \green{bond} first-order conditions.  \green{At a positive equity position the corresponding stock-value first-order condition holds as an equality}, \green{including} Eqs.~\green{\eqref{US_RUS_pricing}} and \eqref{US_AP_bond_cost} \green{for a positive US holding of US} stock.  At a constrained equity boundary \green{it} is replaced by its Kuhn--Tucker condition.
+
+    \item \textbf{Asset-market clearing.} Let
+    \[
+    A(s)=\beta e_{US}(s),
+    \qquad
+    A^*(s)=\frac{\beta+\chi}{1+\chi}\,e_W(s),
+    \]
+    \[
+    S(s)=(1-\theta(s))A(s),
+    \qquad
+    S^*(s)=(1-\theta_{US}^*(s)-\theta_W^*(s))A^*(s).
+    \]
+    Stock-market clearing holds in value form as in Eq.~\eqref{stock_weight_clear_mod}:
+    \[
+    \mathcal Q_{US}(s)=\omega(s)S(s)+\omega^*(s)S^*(s),
+    \qquad
+    \mathcal Q_W(s)=(1-\omega(s))S(s)+(1-\omega^*(s))S^*(s).
+    \]
+    Bond markets clear in present value:
+    \[
+    \theta(s)A(s)+\theta_{US}^*(s)A^*(s)=0,
+    \qquad
+    \theta_W^*(s)A^*(s)=0.
+    \]
+    Hence, along states with positive saving values,
+    \[
+    \theta_W^*(s)=0,
+    \qquad
+    \theta(s)=-\theta_{US}^*(s)\frac{A^*(s)}{A(s)}.
+    \]
+    The corresponding bond quantities satisfy Eq.~\eqref{bond_clear_mod_zerosupply}.
+
+    \item \textbf{Goods-market clearing.} For every history generated from the initial state $s_0$ and the transition matrix $\Pi$, the goods-market condition in Eq.~\eqref{goods_clear_mod} holds at every date.
+
+    \item \textbf{Law of motion and Markov consistency.} For each country, knowledge evolves according to Eq.~\eqref{country_knowledge_law}. The state transition is generated by $\Gamma$ in Eq.~\eqref{recursive_next_state}, and every equilibrium allocation, price, return, and derived payoff object is evaluated as a measurable function of the current state.
+\end{enumerate}
+\end{defi}
+
+\paragraph{Reduced state-by-state characterization.}
+The formal definition above treats prices, choices, and accounting objects separately. For computation and for the proofs below, it is useful to work with the reduced state-by-state characterization. Given a state $s=(z,N_{US},N_W)$, write
+\[
+x(s)=(\varphi_{US}(s),\varphi_W(s),\omega(s),\theta_{US}^*(s),\omega^*(s),R_f(s),R_f^W(s)).
+\]
+The first five coordinates are allocation and portfolio-choice variables. The last two coordinates are equilibrium bond returns, equivalently inverse bond prices. They are solved jointly with allocations because bond Euler equations and zero-net-supply bond clearing pin them down in general equilibrium. They are not policy variables. The eliminated bond shares are recovered state by state from zero-net-supply bond clearing:
+\[
+\theta_W^*(s)=0,
+\qquad
+\theta(s)=-\theta_{US}^*(s)\frac{A^*(s,x(s))}{A(s,x(s))}.
+\]
+
+\green{When} innovation \green{is active}, the \green{binding} free-entry condition can be used to substitute out per-variety equity prices in the reduced system. Given state $s=(z,N_{US},N_W)$ and labor allocation $\varphi_i\green{<1}$, define
+\[
+X_i(s,\varphi_i)=\varphi_iH_i,
+\]
+\[
+w_{H,i}(s,\varphi_i)
+=
+\vartheta_i
+F_{i,X}
+\bigl(A_{X,i}(s)X_i(s,\varphi_i),A_{L,i}(s)L_i\bigr)
+A_{X,i}(s),
+\]
+\[
+q_i(s,\varphi_i)=\frac{w_{H,i}(s,\varphi_i)}{a_iN_i},
+\qquad
+d_i(s,\varphi_i)
+=
+\frac{1-\vartheta_i}{\vartheta_i}
+w_{H,i}(s,\varphi_i)\frac{X_i(s,\varphi_i)}{N_i}.
+\]
+These derived objects preserve
+\[
+\frac{d_i(s,\varphi_i)}{q_i(s,\varphi_i)}
+=
+a_i\frac{1-\vartheta_i}{\vartheta_i}\varphi_iH_i.
+\]
+\green{At the no-R}\&\green{D boundary} $\green{\varphi}_\green{i=1}$, \green{the equilibrium price is instead determined jointly by asset-market clearing and the free-entry inequality} $\green{q}_\green{i}(\green{s})\green{\le w}_{\green{H},\green{i}}(\green{s})\green{/}(\green{a}_\green{iN}_\green{i})$.  Along a selected Markov competitive equilibrium, write $q_i(s)$ and $d_i(s)$ for \green{the resulting equilibrium price and dividend} functions, and evaluate the equity returns in Eq.~\eqref{recursive_returns} using those functions.
+
+For a current state $s=(z,N_{US},N_W)\in\mathcal S$, let
+\[
+x=(\varphi_{US},\varphi_W,\omega,\theta_{US}^*,\omega^*,R_f,R_f^W)
+\in(\green{0},\green{1}]^\green{2\times}[\green{0},\green{1}]\green{\times}\green{\mathbb R\times}[\green{0},\green{1}]\green{\times}\mathbb R^\green{2}
+\]
+denote a candidate current reduced equilibrium vector. Write
+\[
+E_s[\cdot]:=\sum_{z'\in\{u,b\}}\Pi(z,z')(\cdot)
+\]
+for the conditional expectation induced by the transition matrix $\Pi$ at state $s$. For notational convenience, define the current saving values implied by $x$ as
+\[
+A(s,x)=\beta e_{US}(s,\varphi_{US}),
+\qquad
+A^*(s,x)=\frac{\beta+\chi}{1+\chi}e_W(s,\varphi_W),
+\]
+\[
+\theta_W^*=0,
+\qquad
+\theta=-\theta_{US}^*\frac{A^*(s,x)}{A(s,x)},
+\]
+\[
+S(s,x)=(1-\theta)A(s,x),
+\qquad
+S^*(s,x)=(1-\theta_{US}^*)A^*(s,x),
+\]
+and the stock-market values generated by state-by-state value-form clearing as
+\begin{align}
+\widehat{\mathcal Q}_{US}(s,x)
+&:=\omega S(s,x)+\omega^*S^*(s,x),
+\label{intratemporal_QUS}\\
+\widehat{\mathcal Q}_{W}(s,x)
+&:=(1-\omega)S(s,x)+(1-\omega^*)S^*(s,x).
+\label{intratemporal_QW}
+\end{align}
+\green{Zero-net-supply} bond clearing reduces the full Markov equilibrium to \green{a state-by-state complementarity} system.  \green{Innovation satisfies}
+\begin{align}
+\green{0<\varphi}_{\green{US}}\green{\le1},\qquad
+&\widehat{\mathcal Q}_{US}(s,x)
+\green{\le}
+\green{N}_{\green{US}}^\green{+}(\green{s},\green{x})\frac{\green{w}_{\green{H},\green{US}}(\green{s},\green{\varphi}_{\green{US}})}{\green{a}_{\green{US}}\green{N}_{\green{US}}},\notag\\[-0.2em]
+&(\green{1-\varphi}_{\green{US}})
+\left[
+N_{US}^+(s,x)\frac{w_{H,US}(s,\varphi_{US})}{a_{US}N_{US}}
+\green{-\widehat{\mathcal Q}}_{\green{US}}(\green{s},\green{x})
+\right]=0,
+\label{intratemporal_phi_US}\\
+\green{0<\varphi}_\green{W\le1},\qquad
+&\widehat{\mathcal Q}_{W}(s,x)
+\green{\le}
+\green{N}_\green{W}^\green{+}(\green{s},\green{x})\frac{\green{w}_{\green{H},\green{W}}(\green{s},\green{\varphi}_\green{W})}{\green{a}_\green{WN}_\green{W}},\notag\\[-0.2em]
+&(\green{1-\varphi}_\green{W})
+\left[
+N_W^+(s,x)\frac{w_{H,W}(s,\varphi_W)}{a_WN_W}
+\green{-\widehat{\mathcal Q}}_{\green{W}}(\green{s},\green{x})
+\right]=0.
+\label{intratemporal_phi_W}
+\end{align}
+\green{When innovation is active these relations reduce to the former value-clearing equalities}.  \green{They are combined} with the five portfolio optimality conditions
+\green{Define the US and RoW equity-choice residuals by}
+\begin{align*}
+\green{G}_{\green{US}}(\green{s},\green{x})
+:\green{=}{}&
+\beta(1-\theta)
+E_s\!\left[\magenta{M}(s,z';x)
+\bigl(R_{US}(s,z')-R_W(s,z')\bigr)\right]
+-\kappa(\omega-\bar\omega),\\
+\green{G}_\green{W}(\green{s},\green{x})
+:\green{=}{}&
+\green{\beta}(\green{1-\theta}_{\green{US}}^*)
+\green{E}_\green{s}\!\left[\magenta{\green{\tilde M}^*}(\green{s},\green{z}';\green{x})
+\bigl(\green{R}_{\green{US}}(\green{s},\green{z}')\green{-R}_\green{W}(\green{s},\green{z}')\bigr)\right]
+\green{-\kappa}(\green{\omega}^*\green{-}\green{\bar\omega}^*).
+\end{align*}
+\begin{align}
+\green{G}_{\green{US}}(\green{s},\green{x})(\green{\widetilde\omega-\omega})&\green{\le0}
+\quad\text{\green{for every} }\green{\widetilde\omega\in}[0,\green{1}],
+\label{intratemporal_omega_US}\\
+\beta
+E_s\!\left[\magenta{M}(s,z';x)
+(R_f-R_p(s,z';x))\right]
+-\eta\Upsilon'(\theta)&=0,
+\label{intratemporal_theta_US}\\
+\green{G}_W(s,\green{x})(\widetilde\omega^*-\omega^*)&\green{\le0}
+\quad\text{\green{for every} }\green{\widetilde\omega}^*\green{\in}[0,\green{1}],
+\label{intratemporal_omega_W}\\
+\beta E_s\!\left[\magenta{\tilde M^*}(s,z';x)
+(R_f^W-R_p^*(s,z';x))\right]&=0,
+\label{intratemporal_thetaW}\\
+\beta E_s\!\left[\magenta{\tilde M^*}(s,z';x)
+(R_f-R_p^*(s,z';x))\right]
++\frac{\chi}{\theta_{US}^*}&=0,
+\label{intratemporal_thetaUS}
+\end{align}
+\green{Equivalently}, \green{the US residual satisfies}
+\[
+\green{G}_{\green{US}}(\green{s},\green{x})
+\begin{cases}
+\green{\le0}, & \green{\omega=0},\\
+\green{=0}, & \green{0<\omega<1},\\
+\green{\ge0}, & \green{\omega=1},
+\end{cases}
+\]
+\green{and} $\green{G}_\green{W}(\green{s},\green{x})$ \green{satisfies the analogous condition at} $\green{\omega}^*\green{=0}$, $\green{0<\omega}^*\green{<1}$, \green{and} $\green{\omega}^*\green{=1}$.
+where
+\[
+R_p(s,z';x)=\omega R_{US}(s,z')+(1-\omega)R_W(s,z'),
+\]
+\[
+R_p^*(s,z';x)=\omega^*R_{US}(s,z')+(1-\omega^*)R_W(s,z'),
+\]
+\[
+R_A(s,z';x)=(1-\theta)R_p(s,z';x)+\theta R_f,
+\]
+\[
+R_A^*(s,z';x)
+=(1-\theta_{US}^*)R_p^*(s,z';x)
++\theta_{US}^*R_f,
+\]
+\begin{align*}
+\magenta{M}(s,z';x)
+&:=
+\frac{R_A(s,z';x)^{-\gamma}}
+{E_s\!\left[R_A(s,\tilde z;x)^{1-\gamma}\right]},\\
+\magenta{M^*}(s,z';x)
+&:=
+\magenta{\frac{\beta}{\beta+\chi}}\,
+\frac{R_A^*(s,z';x)^{-\gamma}}
+{E_s\!\left[R_A^*(s,\tilde z;x)^{1-\gamma}\right]},\\
+\magenta{\tilde M^*}(s,z';x)
+&:=
+\frac{R_A^*(s,z';x)^{-\gamma}}
+{E_s\!\left[R_A^*(s,\tilde z;x)^{1-\gamma}\right]}
+=\magenta{\frac{\beta+\chi}{\beta}}\magenta{M^*}(s,z';x).
+\end{align*}
+Thus the current allocation variables, portfolio-choice variables, and bond-return unknowns are determined jointly by production, state-by-state value-form asset-market clearing, zero-net-supply bond clearing, and the type-level portfolio \green{Kuhn--Tucker} conditions aggregated within each country.
+
+If the reduced state-by-state system admits multiple Markov equilibrium selections, the results below apply to any selected Markov competitive equilibrium satisfying the stated primitive restrictions, \green{the relevant Kuhn--Tucker conditions}, \green{and the} absorbing-branch selection. No uniqueness of an intratemporal reduced-equilibrium selector is imposed.
+
+Along the unbalanced branch, the equilibrium is not a stationary fixed point in the original level variables. The state variable $N_{US,t}$ grows, the labor share $\varphi_{US,t}^u$ may converge to zero, and the US per-variety dividend yield may converge to zero. Therefore the bubble argument is formulated along a selected nonstationary Markov equilibrium path. Any stationary object associated with the unbalanced branch is an asymptotic normalized object, not a fixed point in levels.
+
+After \Cref{def_recursive_equilibrium}, we continue to write equilibrium objects in time notation, with the understanding that they are generated by evaluating the selected measurable Markov equilibrium at the realized state $s_t$.
+
+
+\subsection{Absorbing balanced-growth branch and integrated financial markets}
+
+The general equilibrium labor-allocation policies $\varphi_i(s)$ are endogenous. We therefore do not impose a constant path for $\varphi_i$ as a primitive. The distinction is especially important for the RoW block. RoW technology primitives may be regime-invariant, but RoW allocations and valuations are equilibrium objects in integrated financial markets. Thus
+\[
+\text{RoW technology primitives are regime-invariant} 
+\neq
+\text{RoW endogenou vairables are regime-invariant}.
+\]
+
+\begin{ass}[Primitive full-state-space productivity maps]\label{ass_absorbing_bg_technology_primitives}
+There exists an absorbing regime $b\in\{u,b\}$ such that $\Pi(b,b)=1$. There exist constants
+\[
+\bar A_{X,US,u},\bar A_{L,US,u},\bar A_{X,US,b},\bar A_{L,US,b},\bar A_{X,W},\bar A_{L,W}>0
+\]
+and exponents $\xi_u,\nu_u,\nu_b,\xi_W\ge0$ such that, for every $(N_{US},N_W)\in\mathbb R_{++}^2$,
+\begin{align}
+A_{X,US}(u,N_{US},N_W)&=\bar A_{X,US,u}N_{US}^{\xi_u},
+&
+A_{L,US}(u,N_{US},N_W)&=\bar A_{L,US,u}N_{US}^{\nu_u},
+\label{US_u_productivity_primitives}\\
+A_{X,US}(b,N_{US},N_W)&=\bar A_{X,US,b}N_{US}^{\nu_b},
+&
+A_{L,US}(b,N_{US},N_W)&=\bar A_{L,US,b}N_{US}^{\nu_b},
+\label{bg_us_primitives}\\
+A_{X,W}(z,N_{US},N_W)&=\bar A_{X,W}N_W^{\xi_W},
+&
+A_{L,W}(z,N_{US},N_W)&=\bar A_{L,W}N_W^{\xi_W},
+\qquad z\in\{u,b\}.
+\label{bg_w_primitives}
+\end{align}
+The primitive US unbalanced-growth restrictions are
+\begin{equation}\label{psi_US_def}
+\rho_{US}>1,
+\qquad
+\xi_u>\nu_u>\nu_b\ge0,
+\qquad
+\psi_{US}:=(\xi_u-\nu_u)(\rho_{US}-1)>0.
+\end{equation}
+The RoW equalities in Eq.~\eqref{bg_w_primitives} are restrictions only on technology. RoW technology may be regime-invariant while RoW equilibrium allocations, valuations, dividends, and portfolio positions remain branch-specific equilibrium objects.
+\end{ass}
+
+\begin{ass}[Equilibrium selection: absorbing stationary normalized world equilibrium]
+\label{ass_absorbing_stationary_equilibrium_selection}
+For every reachable switch state $s_\tau=(b,N_{US,\tau},N_{W,\tau})$, the normalized algebraic equilibrium system associated with \Cref{def_recursive_equilibrium} admits a selected stationary solution \green{satisfying the relevant equilibrium and Kuhn--Tucker conditions}.  The selected solution may depend on the inherited relative scale $N_{W,\tau}^{\xi_W}/N_{US,\tau}^{\nu_b}$.
+
+For \green{each} fixed absorbing continuation, \green{the selected US labor share satisfies}
+\[
+\green{0<}\bar\varphi_b\green{<1},
+\]
+and \green{US households hold a strictly positive amount of US equity}, \green{so the} US \green{stock-pricing equality applies}.  \green{All normalized prices and gross returns used below are finite and strictly positive}.
+
+Let $\green{\bar\varphi}_{W,b}$ \green{denote the selected RoW labor-share coordinate and define}
+\[
+G_{N,US,b}
+=
+1+a_{US}(1-\bar\varphi_b)H_{US},
+\qquad
+G_{N,W,b}
+=
+1+a_W(1-\bar\varphi_{W,b})H_W.
+\]
+The real balanced-growth rates are
+\[
+G_b=G_{N,US,b}^{\nu_b},
+\qquad
+G_W=G_{N,W,b}^{\xi_W},
+\]
+and each selected absorbing stationary solution satisfies the common-growth condition
+\[
+G_b=G_W.
+\]
+Thus common \green{real} growth is imposed continuation by continuation \green{solely as part of the stationary normalized absorbing-equilibrium selection}; \green{no} common portfolio vector across switch states is \green{imposed}.
+\end{ass}
+
+\begin{prop}[Absorbing-branch balanced growth \green{under the selected normalized continuation}]\label{prop_balanced_growth_primitives}
+Suppose \Cref{ass_country_technology,ass_within_country_lop,ass_entry_valuation,ass_absorbing_bg_technology_primitives,ass_absorbing_stationary_equilibrium_selection} hold, and fix a reachable switch state $s_\tau$.  Consider the selected Markov equilibrium generated by its absorbing stationary normalized solution in \Cref{ass_absorbing_stationary_equilibrium_selection}, suppressing the dependence of barred constants on $s_\tau$. If $z_\tau=b$, then for all $t\ge \tau$,
+\[
+\varphi_{US,t}=\bar\varphi_b,
+\qquad
+\varphi_{W,t}=\bar\varphi_{W,b}.
+\]
+Consequently, the post-switch continuation is a deterministic world balanced-growth path. For the US block,
+\begin{equation}\label{bg_us_knowledge_growth}
+N_{US,t+1}=G_{N,US,b}N_{US,t}
+\qquad\text{for all }t\ge \tau,
+\end{equation}
+and there exist positive constants
+$\bar Y_{US},\bar e_{US},\bar q_{US},\bar d_{US},\bar{\mathcal Q}_{US},\bar{\mathcal D}_{US}$
+such that, for all $t\ge\tau$,
+\begin{align}
+Y_{US,t}&=\bar Y_{US}N_{US,t}^{\nu_b},
+&
+e_{US,t}&=\bar e_{US}N_{US,t}^{\nu_b},
+&
+q_{US,t}&=\bar q_{US}N_{US,t}^{\nu_b-1},
+&
+d_{US,t}&=\bar d_{US}N_{US,t}^{\nu_b-1},
+\label{bg_us_per_variety_scaling}\\
+\mathcal Q_{US,t}&=\bar{\mathcal Q}_{US}N_{US,t}^{\nu_b},
+&
+\mathcal D_{US,t}&=\bar{\mathcal D}_{US}N_{US,t}^{\nu_b}.
+\label{bg_us_scaling}
+\end{align}
+The US per-variety dividend yield is constant:
+\begin{equation}\label{bg_us_dividend_yield}
+\frac{d_{US,t}}{q_{US,t}}
+=
+a_{US}\frac{1-\vartheta_{US}}{\vartheta_{US}}\bar\varphi_b H_{US}
+\qquad\text{for all }t\ge \tau.
+\end{equation}
+Hence
+\begin{equation}\label{bg_us_growth_rate}
+\frac{\mathcal Q_{US,t+1}}{\mathcal Q_{US,t}}
+=
+\frac{\mathcal D_{US,t+1}}{\mathcal D_{US,t}}
+=
+\frac{e_{US,t+1}}{e_{US,t}}
+=
+G_b
+\qquad\text{for all }t\ge \tau.
+\end{equation}
+
+For the RoW block,
+\begin{equation}\label{bg_w_knowledge_growth}
+N_{W,t+1}=G_{N,W,b}N_{W,t}
+\qquad\text{for all }t\ge\tau,
+\end{equation}
+and there exist positive constants
+$\bar Y_W,\bar e_W,\bar q_W,\bar d_W,\bar{\mathcal Q}_W,\bar{\mathcal D}_W$
+such that, for all $t\ge\tau$,
+\begin{align}
+Y_{W,t}&=\bar Y_W N_{W,t}^{\xi_W},
+&
+e_{W,t}&=\bar e_W N_{W,t}^{\xi_W},
+&
+q_{W,t}&=\bar q_W N_{W,t}^{\xi_W-1},
+&
+d_{W,t}&=\bar d_W N_{W,t}^{\xi_W-1},
+\label{bg_w_per_variety_scaling}\\
+\mathcal Q_{W,t}&=\bar{\mathcal Q}_W N_{W,t}^{\xi_W},
+&
+\mathcal D_{W,t}&=\bar{\mathcal D}_W N_{W,t}^{\xi_W}.
+\label{bg_w_scaling}
+\end{align}
+The RoW per-variety dividend yield is constant:
+\begin{equation}\label{bg_w_dividend_yield}
+\frac{d_{W,t}}{q_{W,t}}
+=
+\frac{\green{\bar d}_W}{\green{\bar q}_W}
+\green{=}:\green{\delta}_{W,b}\green{>0},
+\qquad t\ge\tau.
+\end{equation}
+Hence
+\begin{equation}\label{bg_w_growth_rate}
+\frac{\mathcal Q_{W,t+1}}{\mathcal Q_{W,t}}
+=
+\frac{\mathcal D_{W,t+1}}{\mathcal D_{W,t}}
+=
+\frac{e_{W,t+1}}{e_{W,t}}
+=
+G_W
+\qquad\text{for all }t\ge\tau.
+\end{equation}
+Along any fixed absorbing continuation, $e_{W,t}/e_{US,t}$ is bounded above and below whenever the common-growth condition holds and the switch-date knowledge stocks are finite and strictly positive.
+\end{prop}
+\begin{proof}
+Once $z_\tau=b$, \Cref{ass_absorbing_stationary_equilibrium_selection} selects the stationary normalized world equilibrium associated with the reachable switch state $s_\tau$. Therefore the labor-share coordinates of the equilibrium are $\bar\varphi_b$ for the US block and $\bar\varphi_{W,b}$ for the RoW block for every $t\ge\tau$. These are post-switch equilibrium implications, not primitive restrictions on the pre-switch path.
+
+Consider first the US block on the absorbing continuation. Equation~\eqref{bg_us_primitives} gives factor-augmenting productivities proportional to $N_{US,t}^{\nu_b}$, while the stationary labor share gives $X_{US,t}=\bar\varphi_bH_{US}$. Equation~\eqref{country_knowledge_law} then gives Eq.~\eqref{bg_us_knowledge_growth}. By homogeneity of $F_{US}$,
+\[
+Y_{US,t}
+=
+F_{US}(\bar A_{X,US,b}\bar\varphi_bH_{US}N_{US,t}^{\nu_b},\bar A_{L,US,b}L_{US}N_{US,t}^{\nu_b})
+\propto N_{US,t}^{\nu_b}.
+\]
+The partial derivatives of a degree-one homogeneous function are homogeneous of degree zero, so Eq.~\eqref{country_factor_prices} implies $w_{H,US,t},w_{L,US,t}\propto N_{US,t}^{\nu_b}$, and Eq.~\eqref{country_labor_income} implies $e_{US,t}\propto N_{US,t}^{\nu_b}$. The free-entry condition Eq.~\eqref{country_Q_from_wage} gives
+\[
+q_{US,t}=\frac{w_{H,US,t}}{a_{US}N_{US,t}}\propto N_{US,t}^{\nu_b-1}.
+\]
+Equation~\eqref{country_dividend_yield} gives the constant dividend yield in Eq.~\eqref{bg_us_dividend_yield}, hence $d_{US,t}\propto q_{US,t}$. Finally, Eq.~\eqref{country_stock_aggregation} gives $\mathcal Q_{US,t}=N_{US,t+1}q_{US,t}\propto N_{US,t}^{\nu_b}$ and $\mathcal D_{US,t}=N_{US,t}d_{US,t}\propto N_{US,t}^{\nu_b}$, proving the US scaling and growth-rate claims.
+
+\green{For} RoW, Eq.~\eqref{bg_w_primitives}, \green{homogeneity}, \green{and the stationary normalized labor allocation similarly imply} $\green{Y}_{\green{W},\green{t}},\green{e}_{\green{W},\green{t}}\green{\propto N}_{\green{W},\green{t}}^{\green{\xi}_\green{W}}$ \green{and} $\green{d}_{\green{W},\green{t}}\green{\propto N}_{\green{W},\green{t}}^{\green{\xi}_\green{W-1}}$.  \green{The selected stationary normalized equilibrium supplies a finite strictly positive normalized equity price}, \green{so} $\green{q}_{\green{W},\green{t}}\green{\propto N}_{\green{W},\green{t}}^{\green{\xi}_\green{W-1}}$.  \green{Equations}~\green{\eqref{country_stock_aggregation} and \eqref{country_dividend_formula} then imply the remaining RoW scaling relations and the constant positive yield in Eq}.~\green{\eqref{bg_w_dividend_yield}}.  \green{This argument uses the selected normalized equilibrium and its Kuhn}--\green{Tucker conditions}; \green{it does not require active RoW R}\&\green{D}.
+
+Finally, along any fixed absorbing continuation,
+\[
+\frac{e_{W,t}}{e_{US,t}}
+=
+\frac{\bar e_W}{\bar e_{US}}
+\frac{N_{W,\tau}^{\xi_W}}{N_{US,\tau}^{\nu_b}}
+\left(\frac{G_W}{G_b}\right)^{t-\tau}.
+\]
+The switch-date knowledge stocks are finite and strictly positive, and \Cref{ass_absorbing_stationary_equilibrium_selection} imposes $G_W=G_b$. Hence the ratio is finite and strictly positive along the fixed continuation.
+\end{proof}
+
+The proposition intentionally makes no claim that the RoW block follows a stationary normalized allocation before the switch. Along the temporary unbalanced branch, $\varphi_{W,t}^u$, $q_{W,t}^u$, and $\mathcal Q_{W,t}^u$ are determined jointly with US objects by \green{free-entry complementarity} and global stock-market clearing.  \green{The normalized-scale regularity imposed below nevertheless bounds RoW} capitalization \green{by} its own production scale.
+
+\section{Existence of bubbles}\label{sec:existence_of_bubbles}
+
+In this section we reserve \magenta{$M_{t,t+1}$} for the undistorted US SDF,
+\[
+\magenta{M}_{t,t+1}
+=
+\frac{R_{A,t+1}^{-\gamma}}{E_t\!\left[R_{A,t+1}^{1-\gamma}\right]},
+\]
+and we let $\mathcal M_{t,t+1}$ denote the \emph{effective} kernel that prices the per-variety US stock. By Eq.~\eqref{US_AP_bond_cost},
+\begin{equation}\label{effective_US_kernel}
+\mathcal M_{t,t+1}
+\equiv
+\frac{\magenta{M}_{t,t+1}}{\Psi_t},
+\qquad
+\Psi_t
+\equiv
+1-\lambda_t+\phi_t(1-\omega_t),
+\end{equation}
+where
+\[
+\phi_t=\frac{\kappa}{\beta(1-\theta_t)}(\omega_t-\bar\omega),
+\qquad
+\lambda_t=\frac{\eta\theta_t}{\beta}\Upsilon'(\theta_t).
+\]
+
+By Eq.~\eqref{US_saving_rule_bond_cost} and the identity $C_{o,t+1}=A_tR_{A,t+1}$, the undistorted intertemporal marginal rate of substitution equals
+\[
+\frac{\beta}{1-\beta}
+\frac{C_{y,t}C_{o,t+1}^{-\gamma}}{E_t\!\left[C_{o,t+1}^{1-\gamma}\right]}
+=
+\magenta{M}_{t,t+1}.
+\]
+Hence the only difference between the stock-pricing kernel $\mathcal M_{t,t+1}$ and the undistorted kernel \magenta{$M_{t,t+1}$} is the time-$t$ portfolio wedge $\Psi_t^{-1}$.
+\green{At every date at which US households hold a positive amount of US equity}, \green{Eq}.~\green{\eqref{US_RUS_pricing} gives} $\Psi_t\green{=E}_\green{t}[\green{M}_{\green{t},\green{t+1}}\green{R}_{\green{US},\green{t+1}}]>0$, \green{so this kernel is well-defined and strictly positive}.
+
+Also note that because the RoW utility includes $\chi\log(q^B_{US,t}B^*_{US,t+1})$, feasibility requires $B^*_{US,t+1}>0$. With zero net supply of US bonds, $B_{US,t+1}+B^*_{US,t+1}=0$ implies $B_{US,t+1}<0$, hence
+\begin{equation}\label{theta_nonpos}
+\theta_t=\frac{b_t}{A_t}<0
+\quad\Rightarrow\quad
+1-\theta_t>1.
+\end{equation}
+
+\subsection{Temporary unbalanced growth and stochastic bubbles}
+
+Following \citet{hirano2025technological}, let
+\[
+\mathcal M_{t,t+s}:=\prod_{j=0}^{s-1}\mathcal M_{t+j,t+j+1}.
+\]
+The per-variety US stock-pricing equation, Eq.~\eqref{US_AP_bond_cost}, implies
+\[
+q_{US,0}
+=
+E_0\!\left[\sum_{s=1}^{\infty}\mathcal M_{0,s}d_{US,s}\right]
++
+\lim_{t\to\infty}E_0\!\left[\mathcal M_{0,t}q_{US,t}\right],
+\]
+or, more generally,
+\[
+q_{US,t}
+=
+\underbrace{E_t\!\left[\sum_{s=1}^{\infty}\mathcal M_{t,t+s}d_{US,t+s}\right]}_{\text{fundamental value }v_{US,t}}
++
+\underbrace{\lim_{T\to\infty}E_t\!\left[\mathcal M_{t,T}q_{US,T}\right]}_{\text{per-variety bubble }B_{US,t}}.
+\]
+
+To describe temporary unbalanced technological growth, we specialize the regime process as follows.
+
+\begin{ass}[Primitive regime switching]\label{ass_regime_switch}
+There are two states of the US economy denoted by $u, b$. Letting $z_t\in\{u,b\}$ denote the state at time $t$, the transition probabilities are given by
+\[
+\mathrm{P}[z_{t+1}=u\mid z_t=u]=\pi\in(0,1),
+\qquad
+\mathrm{P}[z_{t+1}=b\mid z_t=b]=1.
+\]
+\end{ass}
+
+Let $\tau:=\min\{t:z_t=b\}$ denote the first date at which the US economy enters the absorbing regime.
+
+The absorbing continuation used below is generated by the full productivity maps in \Cref{ass_absorbing_bg_technology_primitives} and the stationary normalized equilibrium-selection condition in \Cref{ass_absorbing_stationary_equilibrium_selection}.
+
+\begin{prop}[\green{Selected} absorbing-branch continuation]\label{prop_absorbing_bg_primitives}
+Suppose \Cref{ass_regime_switch} holds and the conditions of \Cref{prop_balanced_growth_primitives} are satisfied. Consider a selected Markov competitive equilibrium as in \Cref{def_recursive_equilibrium}. Then, whenever $z_\tau=b$, the continuation equilibrium from date $\tau$ onward is deterministic. Along this continuation, the US block satisfies Eqs.~\eqref{bg_us_growth_rate} and \eqref{bg_us_dividend_yield}, while the RoW block satisfies Eqs.~\eqref{bg_w_growth_rate} and \eqref{bg_w_dividend_yield}.
+\end{prop}
+
+\begin{proof}
+By \Cref{ass_regime_switch}, state $b$ is absorbing, so $z_t=b$ for all $t\ge \tau$ once $z_\tau=b$. Then \Cref{prop_balanced_growth_primitives} implies that the US production block satisfies Eqs.~\eqref{bg_us_growth_rate} and \eqref{bg_us_dividend_yield} for all $t\ge \tau$, while the RoW block satisfies Eqs.~\eqref{bg_w_growth_rate} and \eqref{bg_w_dividend_yield} for all $t\ge \tau$. In particular, the laws of motion in Eq.~\eqref{recursive_next_state} are deterministic from date $\tau$ onward. Because \Cref{def_recursive_equilibrium} specifies all price, return, and portfolio objects as measurable functions of the current state, evaluating those functions along this deterministic state path yields a deterministic continuation equilibrium. This conclusion deliberately concerns only the absorbing continuation; it does not impose an independent RoW balanced-growth valuation along the pre-switch $u$ branch.
+\end{proof}
+
+Thus the balanced-growth continuation used in the bubble argument is an implication of the selected absorbing Markov equilibrium rather than a primitive labor-allocation path.  \green{Positive US holdings of US stock} are \green{included in \Cref{ass_absorbing_stationary_equilibrium_selection}}; the \green{direct stock-value first-order condition therefore gives} Eq.~\green{\eqref{US_AP_bond_cost} and a strictly positive effective} kernel along the absorbing continuation.
+
+\green{The common-growth condition on the selected absorbing continuation is used only to obtain a stationary normalized post-switch world equilibrium and the associated no-bubble/transversality result}.  \green{It is not used to control the one-period switch leakage along the all-}$\green{u}$ \green{branch}; \green{that leakage is controlled directly by the US bond first-order condition below}.
+
+\begin{prop}[No bubble on the absorbing branch]\label{prop_no_bubble_absorbing_branch}\label{prop1}
+Suppose \green{\Cref{ass_absorbing_stationary_equilibrium_selection,prop_absorbing_bg_primitives}} hold. Then, whenever $z_\tau=b$,
+\[
+\lim_{T\to\infty}\mathcal M_{t,T}q_{US,T}=0,
+\qquad
+t\ge \tau,
+\]
+and consequently
+\[
+q_{US,t}=v_{US,t},
+\qquad
+t\ge \tau.
+\]
+\end{prop}
+
+\begin{proof}
+Fix a history with $z_\tau=b$. By \Cref{prop_absorbing_bg_primitives}, the continuation from $\tau$ onward is deterministic, \green{while \Cref{ass_absorbing_stationary_equilibrium_selection} supplies positive US holdings of US equity} and \green{hence the stock-pricing equality}.  \green{Equation}~\eqref{bg_us_dividend_yield} gives the constant per-variety dividend yield
+\[
+\delta_b
+:=
+\frac{d_{US,t}}{q_{US,t}}
+=
+a_{US}\frac{1-\vartheta_{US}}{\vartheta_{US}}\bar\varphi_b H_{US}
+>0,
+\qquad
+t\ge \tau.
+\]
+Hence the per-variety US stock-pricing equation, Eq.~\eqref{US_AP_bond_cost}, becomes
+\[
+q_{US,t}
+=
+\mathcal M_{t,t+1}(q_{US,t+1}+d_{US,t+1})
+=
+\mathcal M_{t,t+1}(1+\delta_b)q_{US,t+1},
+\qquad
+t\ge \tau.
+\]
+Therefore
+\[
+\mathcal M_{t,t+1}q_{US,t+1}
+=
+\frac{q_{US,t}}{1+\delta_b},
+\]
+and iterating yields
+\[
+\mathcal M_{t,T}q_{US,T}
+=
+\frac{q_{US,t}}{(1+\delta_b)^{T-t}}
+\to 0
+\qquad\text{as }T\to\infty.
+\]
+Forward iteration of Eq.~\eqref{US_AP_bond_cost} then implies
+\[
+q_{US,t}
+=
+\sum_{s=1}^{\infty}\mathcal M_{t,t+s}d_{US,t+s}
+=
+E_t\!\left[\sum_{s=1}^{\infty}\mathcal M_{t,t+s}d_{US,t+s}\right]
+=
+v_{US,t},
+\qquad
+t\ge \tau.
+\]
+\end{proof}
+
+By \Cref{prop_no_bubble_absorbing_branch}, bubbles cannot survive once the switch to $b$ occurs. Hence we assume $z_0=u$ from now on. Under \Cref{ass_regime_switch}, the stopping time $\tau$ follows a geometric distribution,
+\[
+\mathrm{P}[\tau=j]=\pi^{j-1}(1-\pi),
+\qquad
+j=1,2,\ldots.
+\]
+
+\begin{prop}[No-bubble criterion from the unswitched branch]\label{prop_no_bubble_criterion}\label{prop2}
+Suppose \Cref{ass_regime_switch} and the conditions of \Cref{prop_balanced_growth_primitives} \green{hold}. Consider a selected Markov competitive equilibrium as in \Cref{def_recursive_equilibrium} \green{in which US households hold a positive amount of US stock at every finite all-}$\green{u}$ \green{date}, \green{so Eq}.~\green{\eqref{US_AP_bond_cost} applies}. If $z_0=u$, there is no bubble at date~0 if and only if
+\[
+\lim_{t\to\infty}\pi^t E_0\!\left[\mathcal M_{0,t}q_{US,t}\mid \tau>t\right]=0.
+\]
+\end{prop}
+
+\begin{proof}
+The date-0 per-variety bubble term is
+\[
+B_{US,0}
+=
+\lim_{t\to\infty}E_0\!\left[\mathcal M_{0,t}q_{US,t}\right].
+\]
+Conditioning on the stopping time $\tau$ gives
+\[
+E_0\!\left[\mathcal M_{0,t}q_{US,t}\right]
+=
+\sum_{j=1}^{t}\pi^{j-1}(1-\pi)E_0\!\left[\mathcal M_{0,t}q_{US,t}\mid \tau=j\right]
++
+\pi^t E_0\!\left[\mathcal M_{0,t}q_{US,t}\mid \tau>t\right].
+\]
+For every fixed $j$, \Cref{prop_no_bubble_absorbing_branch} implies that, conditional on $\tau=j$, the continuation bubble from date~$j$ onward is zero. To pass from fixed $j$ to the growing first sum, write the switched-history terminal component as
+\[
+E_0\!\left[\mathcal M_{0,t}q_{US,t}\mathbf 1_{\{\tau\le t\}}\right]
+=
+E_0\!\left[\mathcal M_{0,\tau}
+E_\tau\!\left[\mathcal M_{\tau,t}q_{US,t}\right]
+\mathbf 1_{\{\tau\le t\}}\right].
+\]
+After $\tau$, the absorbing-branch stock-pricing equation and nonnegative dividends imply
+$0\le E_\tau[\mathcal M_{\tau,t}q_{US,t}]\le q_{US,\tau}$, while \Cref{prop_no_bubble_absorbing_branch} gives pointwise convergence of this conditional expectation to zero. The nonnegative supermartingale property obtained by forward iteration of the stock-pricing equation gives
+$E_0[\mathcal M_{0,\tau}q_{US,\tau}\mathbf 1_{\{\tau<\infty\}}]\le q_{US,0}$, so dominated convergence implies that the switched-history terminal component vanishes. Hence the only possible nonzero contribution to $B_{US,0}$ comes from histories with $\tau>t$, which yields the stated criterion. This is the standard stopping-time decomposition of \citet{hirano2025technological}, with \Cref{prop_no_bubble_absorbing_branch} supplying the absorbing-branch transversality argument \green{under the selected normalized continuation}.
+\end{proof}
+
+The branch notation used in the bubble theorem is likewise implied by the Markov equilibrium structure. No standalone branch-dependence assumption is needed. The next lemma replaces that placeholder restriction by a direct consequence of \Cref{def_recursive_equilibrium} and Eq.~\eqref{recursive_next_state}.
+
+\begin{lem}[Branch reduction from the Markov state]\label{lem_branch_reduction}\label{ass_switch_dependence}
+Fix $t\ge 1$ and suppose $z_0=\cdots=z_{t-1}=u$. Let $s_{t-1}^u$ denote the common date-$(t-1)$ state along this history, and define the two date-$t$ successor states by
+\[
+s_t^z:=\Gamma(s_{t-1}^u,z),
+\qquad
+z\in\{u,b\}.
+\]
+Then every date-$t$ equilibrium object in \Cref{def_recursive_equilibrium} has branch values obtained by evaluating the corresponding state-contingent function at $s_t^z$. In particular,
+\[
+q_t^z:=q_{US}(s_t^z),
+\qquad
+d_t^z:=d_{US}(s_t^z),
+\qquad
+e_t^z:=e_{US}(s_t^z),
+\qquad
+z\in\{u,b\}.
+\]
+Moreover, the date-$(t-1)$ portfolio choices $\omega_{t-1}$ and $\theta_{t-1}$, and hence $\phi_{t-1}$, $\lambda_{t-1}$, and $\Psi_{t-1}$, are common across the two date-$t$ branches. Writing $R_{A,t}^z$, \magenta{$M_{t-1,t}^z$}, and $\mathcal M_{t-1,t}^z$ for the one-step total-saving return and the one-step undistorted and effective kernels induced by successor state $s_t^z$, branch-specific old-age consumption satisfies
+\[
+C_t^z:=A_{t-1}^uR_{A,t}^z,
+\qquad
+A_{t-1}^u=\beta e_{US,t-1}^u,
+\qquad
+z\in\{u,b\}.
+\]
+\end{lem}
+
+\begin{proof}
+Along the common history $z_0=\cdots=z_{t-1}=u$, the date-$(t-1)$ state is fixed. Equation~\eqref{recursive_next_state} shows that the only date-$t$ variation comes from the realization $z_t\in\{u,b\}$, which generates the two successor states $s_t^u$ and $s_t^b$. Because \Cref{def_recursive_equilibrium} specifies all equilibrium objects as measurable functions of the current state, the branch values are obtained by evaluating those functions at $s_t^z$. The date-$(t-1)$ portfolio policies are common because both branches emanate from the same state $s_{t-1}^u$. Finally, Eq.~\eqref{US_saving_rule_bond_cost} gives $A_{t-1}^u=\beta e_{US,t-1}^u$, and the definition of total-saving returns implies $C_t^z=A_{t-1}^uR_{A,t}^z$. Iterating the same argument along any fixed regime history yields the corresponding branch notation for finite-horizon objects such as \magenta{$M_{t-1,t}^z$}, $\mathcal M_{t-1,t}^z$, and their products.
+\end{proof}
+
+For later use, write
+\[
+\mathcal M_{0,t-1}^u:=\prod_{j=0}^{t-2}\mathcal M_{j,j+1}^u,
+\]
+for the product of effective one-period kernels along the all-$u$ history through date $t-1$. Likewise, \magenta{$M_{t-1,t}^z$} and $\mathcal M_{t-1,t}^z$ denote the one-step kernels on the two date-$t$ branches furnished by \Cref{lem_branch_reduction}.
+
+\begin{thm}[Bubble characterization along the temporary unbalanced-growth branch]\label{thm_bubble_characterization}\label{thm_1}
+Suppose \Cref{ass_regime_switch} and the conditions of \Cref{prop_balanced_growth_primitives} \green{hold}. Consider a selected Markov competitive equilibrium as in \Cref{def_recursive_equilibrium} \green{in which US households hold a positive amount of US stock at every finite all-}$\green{u}$ \green{date}, \green{so the direct stock-pricing equality applies}. If $z_0=u$, there is a bubble in the per-variety US stock at date~0 if and only if
+\begin{subequations}\label{thm_cond1}
+\begin{align}
+\sum_{t=1}^\infty \frac{d_t^u}{q_t^u}&<\infty, \label{thm_cond_1a}\\
+\sum_{t=1}^\infty
+\frac{\frac{q_t^b+d_t^b}{(C_t^b)^\gamma}}{\frac{q_t^u}{(C_t^u)^\gamma}}&<\infty. \label{thm_cond_1b}
+\end{align}
+\end{subequations}
+Equivalently, the second condition is
+\[
+\sum_{t=1}^\infty
+\frac{q_t^b+d_t^b}{q_t^u}
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+<\infty.
+\]
+\end{thm}
+
+\begin{proof}
+Let
+\[
+\mathcal B_t
+:=
+E_0\!\left[\mathcal M_{0,t}q_t^u\mathbf 1\{\tau>t\}\right].
+\]
+Because $\mathrm{P}(\tau>t)=\pi^t$, this is equivalent to
+\[
+\mathcal B_t
+=
+\pi^t E_0\!\left[\mathcal M_{0,t}q_t^u\mid \tau>t\right].
+\]
+By \Cref{prop_no_bubble_criterion}, there is a bubble at date~0 if and only if
+\[
+\lim_{t\to\infty}\mathcal B_t>0.
+\]
+
+On histories with $z_{t-1}=u$, the one-step per-variety US stock-pricing equation is
+\[
+q_{t-1}^u
+=
+E_{t-1}\!\left[\mathcal M_{t-1,t}
+\Bigl(
+(q_t^u+d_t^u)\mathbf 1_{\{z_t=u\}}
++
+(q_t^b+d_t^b)\mathbf 1_{\{z_t=b\}}
+\Bigr)\right].
+\]
+Multiply both sides by $\mathcal M_{0,t-1}\mathbf 1\{\tau>t-1\}$ and take $E_0$. Using $\mathcal M_{0,t}=\mathcal M_{0,t-1}\mathcal M_{t-1,t}$, we obtain
+\begin{equation}\label{recursion_bubble_1}
+E_0\!\left[\mathcal M_{0,t-1}q_{t-1}^u\mathbf 1\{\tau>t-1\}\right]
+=
+E_0\!\left[\mathcal M_{0,t}(q_t^u+d_t^u)\mathbf 1\{\tau>t\}\right]
++
+E_0\!\left[\mathcal M_{0,t}(q_t^b+d_t^b)\mathbf 1\{\tau=t\}\right].
+\end{equation}
+Since
+\[
+E_0\!\left[\mathcal M_{0,t}(q_t^u+d_t^u)\mathbf 1\{\tau>t\}\right]
+=
+\mathcal B_t
++
+E_0\!\left[\mathcal M_{0,t}d_t^u\mathbf 1\{\tau>t\}\right],
+\]
+Eq.~\eqref{recursion_bubble_1} becomes
+\begin{equation}\label{bubble_recursion_2}
+\mathcal B_{t-1}
+=
+\mathcal B_t
++
+\underbrace{E_0\!\left[\mathcal M_{0,t}d_t^u\mathbf 1\{\tau>t\}\right]}_{\text{dividend leakage term}}
++
+\underbrace{E_0\!\left[\mathcal M_{0,t}(q_t^b+d_t^b)\mathbf 1\{\tau=t\}\right]}_{\text{switch-date leakage term}}.
+\end{equation}
+Define
+\[
+a_t
+:=
+\frac{
+E_0\!\left[\mathcal M_{0,t}d_t^u\mathbf 1\{\tau>t\}\right]
++
+E_0\!\left[\mathcal M_{0,t}(q_t^b+d_t^b)\mathbf 1\{\tau=t\}\right]
+}{
+\mathcal B_t
+}.
+\]
+Then Eq.~\eqref{bubble_recursion_2} implies
+\[
+\mathcal B_{t-1}=(1+a_t)\mathcal B_t,
+\]
+so iterating yields
+\[
+\mathcal B_t
+=
+\mathcal B_0\prod_{s=1}^t\frac{1}{1+a_s},
+\qquad
+\mathcal B_0=q_0^u=q_{US,0}>0.
+\]
+Since $a_s\ge 0$,
+\[
+\mathcal B_0\left(1+\sum_{s=1}^t a_s\right)^{-1}
+\ge
+\mathcal B_t
+\ge
+\mathcal B_0\exp\!\left(-\sum_{s=1}^t a_s\right).
+\]
+Hence
+\[
+\lim_{t\to\infty}\mathcal B_t>0
+\quad\Longleftrightarrow\quad
+\sum_{t=1}^\infty a_t<\infty.
+\]
+
+It remains to express $a_t$ in terms of branch variables.
+Repeated application of \Cref{lem_branch_reduction} along the histories $u,\ldots,u$ and $u,\ldots,u,b$ pins down the corresponding branch values for all objects entering the recursion.
+
+On $\{\tau>t\}$, we have $z_1=\cdots=z_t=u$, so
+\[
+\frac{
+E_0\!\left[\mathcal M_{0,t}d_t^u\mathbf 1\{\tau>t\}\right]
+}{
+\mathcal B_t
+}
+=
+\frac{d_t^u}{q_t^u}.
+\]
+
+On $\{\tau=t\}$, we have $z_1=\cdots=z_{t-1}=u$ and $z_t=b$. Therefore
+\[
+E_0\!\left[\mathcal M_{0,t}(q_t^b+d_t^b)\mathbf 1\{\tau=t\}\right]
+=
+\pi^{t-1}(1-\pi)\mathcal M_{0,t-1}^u\mathcal M_{t-1,t}^b(q_t^b+d_t^b),
+\]
+while
+\[
+\mathcal B_t
+=
+\pi^t\mathcal M_{0,t-1}^u\mathcal M_{t-1,t}^u q_t^u.
+\]
+Therefore,
+\[
+\frac{
+E_0\!\left[\mathcal M_{0,t}(q_t^b+d_t^b)\mathbf 1\{\tau=t\}\right]
+}{
+\mathcal B_t
+}
+=
+\frac{1-\pi}{\pi}
+\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}
+\frac{q_t^b+d_t^b}{q_t^u}.
+\]
+
+Again by \Cref{lem_branch_reduction}, the date-$(t-1)$ portfolio choices are identical across the two date-$t$ branches. Hence the time-$(t-1)$ wedge
+\[
+\Psi_{t-1}=1-\lambda_{t-1}+\phi_{t-1}(1-\omega_{t-1})
+\]
+is common across $z_t=u$ and $z_t=b$, so it cancels:
+\[
+\frac{\mathcal M_{t-1,t}^b}{\mathcal M_{t-1,t}^u}
+=
+\frac{\magenta{M}_{t-1,t}^b}{\magenta{M}_{t-1,t}^u}.
+\]
+The denominator $E_{t-1}[R_{A,t}^{1-\gamma}]$ in \magenta{$M_{t-1,t}$} is also common because both branches emanate from the same date-$(t-1)$ state. Therefore,
+\[
+\frac{\magenta{M}_{t-1,t}^b}{\magenta{M}_{t-1,t}^u}
+=
+\left(\frac{R_{A,t}^b}{R_{A,t}^u}\right)^{-\gamma}.
+\]
+By \Cref{lem_branch_reduction}, $C_t^z=A_{t-1}^uR_{A,t}^z$ with the same $A_{t-1}^u$ on both branches, so
+\[
+\frac{\magenta{M}_{t-1,t}^b}{\magenta{M}_{t-1,t}^u}
+=
+\left(\frac{C_t^b}{C_t^u}\right)^{-\gamma}.
+\]
+Consequently,
+\[
+a_t
+=
+\frac{d_t^u}{q_t^u}
++
+\frac{1-\pi}{\pi}
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+\frac{q_t^b+d_t^b}{q_t^u}
+=
+\frac{d_t^u}{q_t^u}
++
+\frac{1-\pi}{\pi}
+\frac{\frac{q_t^b+d_t^b}{(C_t^b)^\gamma}}{\frac{q_t^u}{(C_t^u)^\gamma}}.
+\]
+Because $(1-\pi)/\pi>0$ is constant, $\sum_{t=1}^\infty a_t<\infty$ is equivalent to Eq.~\eqref{thm_cond1}. This proves the theorem.
+\end{proof}
+
+The economic content of \Cref{thm_bubble_characterization} is the same as in the one-country result of \citet{hirano2025technological}, but the stock object is now explicitly the HKT per-variety stock. The \green{branch reduction is implied by} the Markov equilibrium, \green{while} the absorbing balanced-growth continuation \green{is supplied by the continuation-specific equilibrium selection in \Cref{ass_absorbing_stationary_equilibrium_selection}}.
+
+\subsection{Asymptotic HKT reduction of the US-dominant tail}\label{subsec_hkt_tail_reduction}
+
+This subsection replaces the uniformly interior international-portfolio closure with a tail argument that is consistent with endogenous US dominance.  The result is a convergence statement for the normalized US production and stock-funding block, not for the complete two-country economy.  We first derive an exact funding-adjusted version of the HKT scalar equation, then identify a forward-invariant US-dominant cone, and finally separate the all-$u$ terminal reduction from the switch-payoff condition needed for bubble existence.
+
+\begin{ass}[Primitive \green{US} CES complementarity \green{and RoW normalized-scale regularity}]
+\label{ass_ces_two_country}
+\green{The} US \green{final-good technology is CES},
+\[
+F_{\green{US}}(X,L)
+=
+\left[
+\alpha_{\green{US}}\green{X}^{1-\rho_{\green{US}}}
++(1-\alpha_{\green{US}})L^{1-\rho_{\green{US}}}
+\right]^{1/(1-\rho_{\green{US}})},
+\qquad
+\alpha_{\green{US}}\in(0,1),\quad \rho_{\green{US}}>1.
+\]
+
+\green{For RoW}, \green{retain the general production function in \Cref{ass_country_technology} and the common-scale productivity maps in Eq}.~\green{\eqref{bg_w_primitives}}.  \green{Define the normalized RoW wages}
+\[
+\green{\widehat w}_{\green{H},\green{W}}(\green{\varphi})
+:\green{=}
+\green{\vartheta}_\green{W}
+\green{F}_{\green{W},\green{X}}(\green{\bar A}_{\green{X},\green{W}}\green{\varphi H}_\green{W},\green{\bar A}_{\green{L},\green{W}}\green{L}_\green{W})
+\green{\bar A}_{\green{X},\green{W}},
+\]
+\[
+\green{\widehat w}_{\green{L},\green{W}}(\green{\varphi})
+:\green{=}
+\green{F}_{\green{W},\green{L}}(\green{\bar A}_{\green{X},\green{W}}\green{\varphi H}_\green{W},\green{\bar A}_{\green{L},\green{W}}\green{L}_\green{W})
+\green{\bar A}_{\green{L},\green{W}},
+\]
+\green{and normalized young income}
+\[
+\green{\widehat e}_\green{W}(\green{\varphi})
+:\green{=}
+\green{H}_\green{W}\green{\widehat w}_{\green{H},\green{W}}(\green{\varphi})
+\green{+L}_\green{W}\green{\widehat w}_{\green{L},\green{W}}(\green{\varphi}).
+\]
+\green{Assume}
+\[
+\sup_{\green{\varphi\in}(\green{0},\green{1}]}
+\green{\widehat w}_{\green{H},\green{W}}(\green{\varphi})\green{<\infty},
+\qquad
+\sup_{\green{\varphi\in}(\green{0},\green{1}]}
+\green{\widehat e}_\green{W}(\green{\varphi})\green{<\infty}.
+\]
+\end{ass}
+
+Throughout the subsection, suppress the US subscript along the all-$u$ history and write
+\[
+N_t:=N_{US,t}^u,
+\qquad
+\varphi_t:=\varphi_{US,t}^u.
+\]
+Recall from Eq.~\eqref{psi_US_def} that
+\[
+\psi_{US}=(\xi_u-\nu_u)(\rho_{US}-1)>0.
+\]
+Define
+\begin{equation}\label{Ku_def}
+K_u
+:=
+\frac{1-\alpha_{US}}{\vartheta_{US}\alpha_{US}}
+\left(
+\frac{\bar A_{X,US,u}H_{US}}
+     {\bar A_{L,US,u}L_{US}}
+\right)^{\rho_{US}-1}>0,
+\end{equation}
+the US funding ratio
+\begin{equation}\label{zeta_US_def}
+\zeta_t
+:=
+\frac{\mathcal Q_{US,t}^u}{\beta e_{US,t}^u},
+\end{equation}
+and the relative real-scale ratio
+\begin{equation}\label{hkt_real_scale_ratio}
+r_t
+:=
+\frac{(N_{W,t}^u)^{\xi_W}}{N_t^{\nu_u}}.
+\end{equation}
+
+\subsubsection{Country-scale and funding bounds}
+
+\begin{lem}[Country-scale and funding bounds]\label{lem_relative_dividend_bounds}\label{lem_stock_value_bounds}
+Consider a selected Markov equilibrium satisfying \green{\Cref{ass_entry_valuation,ass_ces_two_country,ass_absorbing_bg_technology_primitives} and the free-entry complementarity conditions in Eq}.~\green{\eqref{country_Q_from_wage}}.  There are constants $c_U>0$ and $C_W,C_{\mathcal QW},C_{\mathcal DW},C_{\mathcal PW}<\infty$ such that, along the all-$u$ branch,
+\begin{align}
+e_{US,t}^u&\ge c_UN_t^{\nu_u},
+\label{US_income_primitive_lower}\\
+e_{W,t}^u&\le C_W(N_{W,t}^u)^{\xi_W},
+\label{W_income_primitive_upper}\\
+\mathcal Q_{W,t}^u&\le C_{\mathcal QW}(N_{W,t}^u)^{\xi_W},
+\qquad
+\mathcal D_{W,t}^u\le C_{\mathcal DW}(N_{W,t}^u)^{\xi_W}.
+\label{W_value_primitive_upper}
+\end{align}
+Moreover, date-$t$ knowledge is predetermined across the two successors, and their aggregate RoW equity payoffs obey the uniform bound
+\begin{equation}\label{W_successor_payoff_uniform_bound}
+N_{W,t}(q_{W,t}^z+d_{W,t}^z)
+\le
+C_{\mathcal PW}N_{W,t}^{\xi_W},
+\qquad z\in\{u,b\}.
+\end{equation}
+Consequently, there is $C_\zeta<\infty$ such that
+\begin{equation}\label{zeta_real_scale_bound}
+\boxed{
+|\zeta_t-1|
+\le
+C_\zeta r_t.
+}
+\end{equation}
+These bounds do not require a restriction on equilibrium portfolio weights.
+\end{lem}
+
+\begin{proof}
+We first prove Eq.~\eqref{US_income_primitive_lower}.  Let
+\[
+x_t
+:=
+\frac{A_{X,US,t}^u\varphi_tH_{US}}
+     {A_{L,US,t}^uL_{US}},
+\qquad
+B(x)
+:=
+\left[\alpha_{US}x^{1-\rho_{US}}+1-\alpha_{US}\right]^{1/(1-\rho_{US})}.
+\]
+Then
+\[
+Y_{US,t}^u=A_{L,US,t}^uL_{US}B(x_t),
+\]
+and the CES marginal products imply
+\begin{align*}
+w_{H,US,t}^u
+&=
+\vartheta_{US}\alpha_{US}A_{X,US,t}^uB(x_t)^{\rho_{US}}x_t^{-\rho_{US}},\\
+w_{L,US,t}^u
+&=
+(1-\alpha_{US})A_{L,US,t}^uB(x_t)^{\rho_{US}}.
+\end{align*}
+If $x_t\le1$, then
+\[
+B(x_t)^{\rho_{US}}x_t^{-\rho_{US}}
+=
+\left[\alpha_{US}+(1-\alpha_{US})x_t^{\rho_{US}-1}\right]^{-\rho_{US}/(\rho_{US}-1)}
+\ge1,
+\]
+so $e_{US,t}^u\ge H_{US}w_{H,US,t}^u\gtrsim N_t^{\xi_u}\gtrsim N_t^{\nu_u}$.  If $x_t\ge1$, then $B(x_t)\ge B(1)=1$, so
+\[
+e_{US,t}^u
+\ge L_{US}w_{L,US,t}^u
+\ge
+(1-\alpha_{US})L_{US}\bar A_{L,US,u}N_t^{\nu_u}.
+\]
+Because $N_t\ge N_0>0$ and $\xi_u>\nu_u$, the constants in the two cases can be chosen uniformly in $t$ and $\varphi_t\in(0,1]$.
+
+For RoW, the two factor augmentations in Eq.~\eqref{bg_w_primitives} have the common scale $(N_{W,t}^u)^{\xi_W}$.  \green{Homogeneity and \Cref{ass_ces_two_country} give}
+\[
+\green{w}_{\green{H},\green{W},\green{t}}^\green{u}
+\green{=}(\green{N}_{W,t}^\green{u})^{\green{\xi}_\green{W}}\green{\widehat w}_{\green{H},W}(\varphi_{W,t}^\green{u}),
+\qquad
+\green{e}_{\green{W},\green{t}}^\green{u}
+\green{=}(\green{N}_{\green{W},\green{t}}^\green{u})^{\green{\xi}_W}\green{\widehat e}_\green{W}(\green{\varphi}_{\green{W},\green{t}}^\green{u}),
+\]
+\green{so} the \green{normalized bounds in that assumption imply Eq}.~\green{\eqref{W_income_primitive_upper}}.  \green{The free-entry inequality} and the knowledge law give
+\[
+\mathcal Q_{W,t}^u
+\le
+\frac{1+a_WH_W}{a_W}\green{w}_{\green{H},\green{W},\green{t}}^\green{u}
+\green{\le C}_{\green{\mathcal QW}}(\green{N}_{W,t}^u)^{\green{\xi}_\green{W}},
+\]
+which proves the capitalization bound.  Equation~\eqref{country_dividend_formula} similarly gives
+\[
+\mathcal D_{W,t}^u
+\le
+\frac{1-\vartheta_W}{\vartheta_W}
+\green{H}_\green{Ww}_{\green{H},W,t}^u,
+\]
+and hence the aggregate-dividend bound.
+
+The same normalized wage bound applies uniformly to either successor because the RoW productivity maps are regime-invariant and $\varphi_{W,t}^z\in(0,1]$.  \green{The free-entry inequality} and Eq.~\eqref{country_variety_profit} give
+\[
+N_{W,t}(q_{W,t}^z+d_{W,t}^z)
+\green{\le}
+w_{H,W,t}^z
+\left[
+\frac{1}{a_W}
++
+\frac{1-\vartheta_W}{\vartheta_W}\varphi_{W,t}^zH_W
+\right]
+\le
+C_{\mathcal PW}N_{W,t}^{\xi_W},
+\]
+which proves Eq.~\eqref{W_successor_payoff_uniform_bound}.
+
+Finally, the world capitalization identity \eqref{Qsum_identity_mod_zerosupply} implies
+\[
+\zeta_t-1
+=
+\frac{
+\frac{\beta+\chi}{1+\chi}e_{W,t}^u-\mathcal Q_{W,t}^u
+}{\beta e_{US,t}^u}.
+\]
+Equations \eqref{US_income_primitive_lower}--\eqref{W_value_primitive_upper} therefore yield Eq.~\eqref{zeta_real_scale_bound}.
+\end{proof}
+
+\begin{lem}[\green{US innovation is active in the US-dominant region}]
+\label{lem_US_innovation_interior}
+\green{There exist} $\green{N}^\green{I<\infty}$ \green{and} $\green{\varepsilon}^\green{I>0}$, \green{depending only on primitive parameters}, \green{such that at any all-}$\green{u}$ \green{equilibrium state satisfying}
+\[
+\green{N}_\green{t\ge N}^\green{I},
+\qquad
+\green{r}_\green{t\le\varepsilon}^\green{I},
+\]
+\green{the US skilled-labor allocation obeys} $\green{\varphi}_\green{t<1}$.  \green{Hence free entry binds}:
+\begin{equation}\label{US_free_entry_in_cone}
+\green{a}_{\green{US}}\green{N}_\green{tq}_\green{t}^\green{u=w}_{\green{H},\green{US},\green{t}}^\green{u}.
+\end{equation}
+\end{lem}
+
+\begin{proof}
+\green{Choose} $\green{\varepsilon}^\green{I}$ \green{so that Eq}.~\green{\eqref{zeta_real_scale_bound} implies} $\green{\zeta}_\green{t\ge1/2}$ \green{whenever} $\green{r}_\green{t\le\varepsilon}^\green{I}$.  \green{Suppose instead that} $\green{\varphi}_\green{t=1}$.  \green{The US CES wage-bill ratio is then}
+\[
+\frac{\green{L}_{\green{US}}\green{w}_{\green{L},\green{US},\green{t}}^\green{u}}{\green{H}_{\green{US}}\green{w}_{\green{H},\green{US},\green{t}}^\green{u}}
+\green{=K}_\green{uN}_\green{t}^{\green{\psi}_{\green{US}}}.
+\]
+\green{Because} $\green{N}_{\green{t+1}}\green{=N}_\green{t}$ \green{at the no-R}\&\green{D boundary}, \green{the free-entry inequality gives}
+\[
+\green{\zeta}_\green{t}
+\green{=}\frac{\green{N}_\green{tq}_\green{t}^\green{u}}{\green{\beta e}_{\green{US},\green{t}}^\green{u}}
+\green{\le}
+\frac{\green{1}}{\green{\beta a}_{\green{US}}\green{H}_{\green{US}}
+[\green{1+K}_\green{uN}_\green{t}^{\green{\psi}_{\green{US}}}]}.
+\]
+\green{The right side is smaller than} $\green{1/2}$ \green{for all sufficiently large} $\green{N}_\green{t}$, \green{contradicting the lower bound for} $\green{\zeta}_\green{t}$.  \green{Thus} $\green{\varphi}_\green{t<1}$, \green{and complementarity in Eq}.~\green{\eqref{country_Q_from_wage} gives Eq}.~\green{\eqref{US_free_entry_in_cone}}.
+\end{proof}
+
+\begin{lem}[\green{Exact funding-adjusted HKT equation}]\label{lem_funding_adjusted_hkt}
+\green{Consider a selected Markov equilibrium satisfying \Cref{ass_entry_valuation,ass_ces_two_country,ass_absorbing_bg_technology_primitives}}.  \green{At every all-}$\green{u}$ \green{state in the US-dominant region of \Cref{lem_US_innovation_interior}},
+\begin{equation}\label{exact_ces_wage_bill_ratio}
+\frac{\green{L}_{\green{US}}\green{w}_{\green{L},\green{US},\green{t}}^\green{u}}{\green{H}_{\green{US}}\green{w}_{\green{H},\green{US},\green{t}}^\green{u}}
+\green{=}
+\green{K}_\green{uN}_\green{t}^{\green{\psi}_{\green{US}}}\green{\varphi}_\green{t}^{\green{\rho}_{\green{US}}},
+\end{equation}
+\green{and the equilibrium allocation satisfies the exact scalar equation}
+\begin{equation}\label{funding_adjusted_hkt_scalar}
+\boxed{
+\frac{\green{1}}{\green{a}_{\green{US}}\green{H}_{\green{US}}}\green{+1-\varphi}_\green{t}
+\green{=}
+\green{\beta\zeta}_\green{t}
+\left[
+\green{1+K}_\green{uN}_\green{t}^{\green{\psi}_{\green{US}}}\green{\varphi}_\green{t}^{\green{\rho}_{\green{US}}}
+\right].
+}
+\end{equation}
+\green{The single-country HKT equation is the special case} $\green{\zeta}_\green{t=1}$.
+\end{lem}
+
+\begin{proof}
+\green{For the CES aggregator}, \green{Eq}.~\green{\eqref{country_factor_prices} gives}
+\[
+\frac{\green{L}_{\green{US}}\green{w}_{\green{L},\green{US},\green{t}}^\green{u}}{\green{H}_{\green{US}}\green{w}_{\green{H},\green{US},\green{t}}^\green{u}}
+\green{=}
+\frac{\green{1-\alpha}_{\green{US}}}{\green{\vartheta}_{\green{US}}\green{\alpha}_{\green{US}}}
+\frac{\green{L}_{\green{US}}}{\green{H}_{\green{US}}}
+\frac{\green{A}_{\green{L},\green{US},\green{t}}^\green{u}}{\green{A}_{\green{X},\green{US},\green{t}}^\green{u}}
+\left(
+\frac{\green{A}_{\green{X},\green{US},\green{t}}^\green{u\varphi}_\green{tH}_{\green{US}}}
+     {\green{A}_{\green{L},\green{US},\green{t}}^\green{uL}_{\green{US}}}
+\right)^{\green{\rho}_{\green{US}}}.
+\]
+\green{Substituting Eq}.~\green{\eqref{US_u_productivity_primitives} yields Eq}.~\green{\eqref{exact_ces_wage_bill_ratio}}.
+
+\green{Let} $\green{G}_\green{t}:\green{=1+a}_{\green{US}}(\green{1-\varphi}_\green{t})\green{H}_{\green{US}}$.  \green{By \Cref{lem_US_innovation_interior}}, \green{free entry binds}, \green{so Eqs}.~\green{\eqref{country_knowledge_law}}, \green{\eqref{country_stock_aggregation}}, \green{and \eqref{US_free_entry_in_cone} imply}
+\[
+\green{\mathcal Q}_{\green{US},\green{t}}^\green{u}
+\green{=N}_{\green{t+1}}\green{q}_\green{t}^\green{u}
+\green{=}\frac{\green{G}_\green{t}}{\green{a}_{\green{US}}}\green{w}_{\green{H},\green{US},\green{t}}^\green{u}.
+\]
+\green{Moreover}, \green{Eqs}.~\green{\eqref{country_labor_income} and \eqref{exact_ces_wage_bill_ratio} give}
+\[
+\green{e}_{\green{US},\green{t}}^\green{u}
+\green{=H}_{\green{US}}\green{w}_{\green{H},\green{US},\green{t}}^\green{u}
+\left[\green{1+K}_\green{uN}_\green{t}^{\green{\psi}_{\green{US}}}\green{\varphi}_\green{t}^{\green{\rho}_{\green{US}}}\right].
+\]
+\green{Substituting these expressions into Eq}.~\green{\eqref{zeta_US_def} and rearranging proves Eq}.~\green{\eqref{funding_adjusted_hkt_scalar}}.
+\end{proof}
+
+\subsubsection{The \green{primitive US-dominant} cone}
+
+\begin{ass}[Primitive relative-growth dominance]\label{ass_hkt_growth_dominance}
+The maximal US all-$u$ real-scale growth factor strictly exceeds the maximal RoW real-scale growth factor:
+\begin{equation}\label{hkt_growth_dominance}
+\boxed{
+(1+a_{US}H_{US})^{\nu_u}
+>
+(1+a_WH_W)^{\xi_W}.
+}
+\end{equation}
+\end{ass}
+
+Under \Cref{ass_hkt_growth_dominance}, choose $\bar\varphi_H\in(0,1)$ sufficiently small that
+\begin{equation}\label{Gamma_H_def}
+\Gamma_H
+:=
+\frac{(1+a_WH_W)^{\xi_W}}
+{[1+a_{US}(1-\bar\varphi_H)H_{US}]^{\nu_u}}
+<1.
+\end{equation}
+
+\begin{prop}[Forward invariance of the US-dominant HKT cone]\label{prop_hkt_cone_invariance}
+Consider a selected Markov equilibrium satisfying \Cref{ass_entry_valuation,ass_ces_two_country,ass_absorbing_bg_technology_primitives,ass_hkt_growth_dominance} \green{and the free-entry complementarity conditions}.  There exist $\varepsilon_H>0$ and $N^\dagger<\infty$ such that the cone
+\begin{equation}\label{HKT_cone_def}
+\mathcal C_H
+:=
+\left\{
+(N,M)\in\mathbb R_{++}^2:
+N\ge N^\dagger,
+\quad
+\frac{M^{\xi_W}}{N^{\nu_u}}\le\varepsilon_H
+\right\}
+\end{equation}
+is forward invariant along the all-$u$ equilibrium branch.  More precisely, if $(N_T,N_{W,T}^u)\in\mathcal C_H$ at a finite date $T$, then, for every $t\ge T$,
+\begin{equation}\label{cone_phi_bound}
+\varphi_t\le\bar\varphi_H,
+\qquad
+r_{t+1}\le\Gamma_Hr_t,
+\end{equation}
+and consequently
+\begin{equation}\label{cone_tail_limits}
+r_t\to0,
+\qquad
+\frac{e_{W,t}^u}{e_{US,t}^u}\to0,
+\qquad
+\frac{\mathcal Q_{W,t}^u}{\mathcal Q_{US,t}^u}\to0,
+\qquad
+\zeta_t\to1.
+\end{equation}
+\end{prop}
+
+\begin{proof}
+Choose $\varepsilon_H\green{\le\varepsilon}^\green{I}$ so that $C_\zeta\varepsilon_H\le1/2$, \green{and choose} $\green{N}^\dagger\green{\ge N}^\green{I}$.  Whenever $(\green{N}_t,\green{N}_{\green{W},\green{t}}^\green{u})\green{\in}\green{\mathcal C}_H$, \green{\Cref{lem_US_innovation_interior} gives} $\green{\varphi}_\green{t<1}$, \green{and} Eq.~\eqref{zeta_real_scale_bound} gives
+\begin{equation}\label{zeta_cone_bounds}
+\frac12\le\zeta_t\le\frac32.
+\end{equation}
+The scalar equation \eqref{funding_adjusted_hkt_scalar} then implies
+\[
+\beta\zeta_tK_uN_t^{\psi_{US}}\varphi_t^{\rho_{US}}
+=
+\frac{1}{a_{US}H_{US}}+1-\varphi_t-\beta\zeta_t
+\le
+\frac{1}{a_{US}H_{US}}+1.
+\]
+Using the lower bound in Eq.~\eqref{zeta_cone_bounds},
+\begin{equation}\label{cone_phi_rate_bound}
+\varphi_t
+\le
+C_\varphi N_t^{-\psi_{US}/\rho_{US}},
+\qquad
+C_\varphi
+:=
+\left[
+\frac{2(\frac{1}{a_{US}H_{US}}+1)}{\beta K_u}
+\right]^{1/\rho_{US}}.
+\end{equation}
+\green{Increase} $N^\dagger$ \green{if necessary so} that
+$C_\varphi(N^\dagger)^{-\psi_{US}/\rho_{US}}\le\bar\varphi_H$.
+
+If $(N_T,N_{W,T}^u)\in\mathcal C_H$, Eqs.~\eqref{zeta_cone_bounds}--\eqref{cone_phi_rate_bound} imply $\varphi_T\le\bar\varphi_H$.  The two knowledge laws then give
+\[
+\frac{r_{T+1}}{r_T}
+=
+\frac{[1+a_W(1-\varphi_{W,T}^u)H_W]^{\xi_W}}
+{[1+a_{US}(1-\varphi_T)H_{US}]^{\nu_u}}
+\le\Gamma_H<1.
+\]
+Moreover $N_{T+1}>N_T\ge N^\dagger$.  The same reasoning therefore applies inductively, proving Eq.~\eqref{cone_phi_bound}.  Thus
+$r_t\le\Gamma_H^{t-T}r_T\to0$.  The remaining limits in Eq.~\eqref{cone_tail_limits} follow from \Cref{lem_stock_value_bounds}, Eq.~\eqref{zeta_US_def}, and Eq.~\eqref{zeta_real_scale_bound}.
+\end{proof}
+
+\begin{ass}[\green{Primitive initial condition}: \green{US-dominant starting state}]
+\label{ass_hkt_cone_entry}
+\green{The primitive initial knowledge stocks satisfy}
+\[
+\green{N}_{\green{US},\green{0}}\green{\ge} \green{\bar N},
+\qquad
+\frac{\green{N}_{\green{W},\green{0}}^{\green{\xi}_\green{W}}}{\green{N}_{\green{US},\green{0}}^{\green{\nu}_\green{u}}}\green{\le} \green{\bar r},
+\]
+\green{where} $\green{\bar N<\infty}$ \green{is sufficiently large and} $\green{\bar r>0}$ \green{sufficiently small}, \green{with both thresholds depending only on primitive parameters}.  \green{Equivalently}, \green{take} $\green{\bar N=N}^\dagger$ \green{and} $\green{\bar r=\varepsilon}_H$, \green{so the initial state lies in the forward-invariant} cone:
+\[
+(N_{\green{US},\green{0}},N_{W,\green{0}})\in\mathcal C_H.
+\]
+\end{ass}
+
+\begin{lem}[\green{Positive US pricing-holder position in the dominant} cone]
+\label{lem_US_equity_pricing_holder}
+\green{After reducing} $\varepsilon_H$ \green{if necessary}, \green{US households hold a strictly positive amount of US equity at every finite all}-$\green{u}$ \green{date in} $\mathcal C_H$.  \green{Consequently}, the \green{direct stock-value first-order condition}, \green{Eqs}.~\green{\eqref{US_RUS_pricing} and \eqref{US_AP_bond_cost}}, \green{applies at every such date}.
+\end{lem}
+
+\begin{proof}
+\green{Inside} $\green{\mathcal C}_\green{H}$, \green{Eqs}.~\green{\eqref{zeta_US_def}} and \green{\eqref{zeta_cone_bounds}} imply
+\[
+\mathcal Q_{US,t}^u
+\green{=\beta\zeta}_\green{te}_{US,t}^u
+\ge\frac{\beta}{\green{2}}e_{US,t}^u.
+\]
+\green{By \Cref{lem_stock_value_bounds}},
+\[
+\green{A}_t^{*,u}
+\green{=}\frac{\green{\beta+\chi}}{\green{1+\chi}}\green{e}_{\green{W},\green{t}}^\green{u}
+\green{\le C r}_\green{t e}_{\green{US},\green{t}}^\green{u}.
+\]
+\green{Choose} $\green{\varepsilon}_\green{H}$ \green{small enough that} $\green{C\varepsilon}_\green{H<\beta/2}$.  \green{Since RoW equity positions are nonnegative and its US-bond position is positive}, \green{the total value of RoW equity holdings is} $\green{S}_\green{t}^{*,\green{u}}\green{<A}_\green{t}^{*,\green{u}}$.  \green{Hence} $\green{\mathcal Q}_{\green{US},\green{t}}^\green{u>A}_\green{t}^{*,\green{u}}\green{>S}_\green{t}^{*,\green{u}}$, \green{so RoW cannot hold} the \green{entire US stock market}.  \green{Stock-market clearing then implies a strictly positive US holding of US equity}.
+\end{proof}
+
+\subsubsection{Asymptotic HKT reduction of the normalized US block}
+
+\begin{prop}[Asymptotic HKT reduction]\label{lem_prod_orders}\label{prop_hkt_tail_reduction}
+Suppose \Cref{ass_hkt_cone_entry} and the conditions of \Cref{prop_hkt_cone_invariance} hold.  Define
+\begin{equation}\label{Du_cphi_def}
+D_u
+:=
+\frac{1}{a_{US}H_{US}}+1-\beta>0,
+\qquad
+\bar c_\varphi
+:=
+\left(\frac{D_u}{\beta K_u}\right)^{1/\rho_{US}},
+\qquad
+G_u:=1+a_{US}H_{US}.
+\end{equation}
+Then, along the all-$u$ branch,
+\begin{align}
+N_t^{\psi_{US}/\rho_{US}}\varphi_t
+&\longrightarrow\bar c_\varphi,
+&
+\frac{N_{t+1}}{N_t}&\longrightarrow G_u,
+\label{hkt_phi_growth_limits}\\
+\frac{Y_{US,t}^u}{N_t^{\nu_u}}
+&\longrightarrow\bar Y_u,
+&
+\frac{e_{US,t}^u}{N_t^{\nu_u}}&\longrightarrow\bar e_u,
+\label{hkt_output_income_limits}\\
+\frac{\mathcal Q_{US,t}^u}{N_t^{\nu_u}}
+&\longrightarrow\beta\bar e_u,
+&
+\frac{q_t^u}{N_t^{\nu_u-1}}&\longrightarrow\bar q_u,
+\label{hkt_value_price_limits}\\
+N_t^{\psi_{US}/\rho_{US}}\frac{d_t^u}{q_t^u}
+&\longrightarrow\bar c_D.
+\label{hkt_dividend_yield_limit}
+\end{align}
+The positive constants are
+\begin{align}
+\bar Y_u
+&:=
+\bar A_{L,US,u}L_{US}(1-\alpha_{US})^{-1/(\rho_{US}-1)},
+&
+\bar e_u
+&:=
+\bar Y_u\left(1+\frac{\beta}{D_u}\right),
+\notag\\
+\bar q_u
+&:=
+\frac{\beta\bar e_u}{G_u},
+&
+\bar c_D
+&:=
+a_{US}\frac{1-\vartheta_{US}}{\vartheta_{US}}H_{US}\bar c_\varphi.
+\label{hkt_limit_constants}
+\end{align}
+In particular,
+\begin{equation}\label{hkt_dividend_summability}
+\sum_{t=\green{1}}^{\infty}\frac{d_t^u}{q_t^u}<\infty.
+\end{equation}
+\end{prop}
+
+\begin{proof}
+By \green{\Cref{ass_hkt_cone_entry,prop_hkt_cone_invariance}}, \green{the all-}$\green{u}$ \green{path begins in} $\green{\mathcal C}_\green{H}$ \green{and remains there}.  \green{Hence} $r_t\to0$, $\zeta_t\to1$, and Eq.~\eqref{cone_phi_rate_bound} holds \green{from date}~\green{0}.  The latter bound and the knowledge law imply that $N_t\to\infty$ geometrically and $\varphi_t\to0$.  Rearranging Eq.~\eqref{funding_adjusted_hkt_scalar} gives
+\[
+\beta\zeta_tK_uN_t^{\psi_{US}}\varphi_t^{\rho_{US}}
+=
+\frac{1}{a_{US}H_{US}}+1-\varphi_t-\beta\zeta_t.
+\]
+The right side converges to $D_u$, so
+\[
+N_t^{\psi_{US}/\rho_{US}}\varphi_t
+\longrightarrow
+\left(\frac{D_u}{\beta K_u}\right)^{1/\rho_{US}}
+=\bar c_\varphi.
+\]
+The knowledge law then gives the growth limit in Eq.~\eqref{hkt_phi_growth_limits}.
+
+Let
+\[
+x_t
+:=
+\frac{A_{X,US,t}^u\varphi_tH_{US}}
+     {A_{L,US,t}^uL_{US}}.
+\]
+The first limit in Eq.~\eqref{hkt_phi_growth_limits} implies
+\[
+x_t
+\sim
+\frac{\bar A_{X,US,u}H_{US}}
+     {\bar A_{L,US,u}L_{US}}
+\bar c_\varphi
+N_t^{(\xi_u-\nu_u)/\rho_{US}}
+\longrightarrow\infty.
+\]
+Therefore
+\[
+B(x_t)
+=
+\left[\alpha_{US}x_t^{1-\rho_{US}}+1-\alpha_{US}\right]^{1/(1-\rho_{US})}
+\longrightarrow
+(1-\alpha_{US})^{-1/(\rho_{US}-1)},
+\]
+which proves the output limit.  The CES unskilled wage bill satisfies
+\[
+\frac{L_{US}w_{L,US,t}^u}{N_t^{\nu_u}}
+\longrightarrow\bar Y_u.
+\]
+Moreover, Eqs.~\eqref{exact_ces_wage_bill_ratio} and \eqref{funding_adjusted_hkt_scalar} give
+\[
+\frac{L_{US}w_{L,US,t}^u}{H_{US}w_{H,US,t}^u}
+=K_uN_t^{\psi_{US}}\varphi_t^{\rho_{US}}
+\longrightarrow\frac{D_u}{\beta}.
+\]
+Thus
+\[
+\frac{H_{US}w_{H,US,t}^u}{N_t^{\nu_u}}
+\longrightarrow
+\frac{\beta}{D_u}\bar Y_u,
+\]
+and Eq.~\eqref{country_labor_income} proves the income limit in Eq.~\eqref{hkt_output_income_limits}.
+
+By definition, $\mathcal Q_{US,t}^u=\beta\zeta_te_{US,t}^u$, so the capitalization limit follows from $\zeta_t\to1$.  Since $\mathcal Q_{US,t}^u=N_{t+1}q_t^u$, the price limit follows by dividing by $N_{t+1}/N_t\to G_u$.  Finally, the exact dividend-yield identity \eqref{country_dividend_yield} proves Eq.~\eqref{hkt_dividend_yield_limit}.  Because $N_{t+1}/N_t\to G_u>1$, the tail is bounded by a geometric series, proving Eq.~\eqref{hkt_dividend_summability}.
+\end{proof}
+
+The convergence in \Cref{prop_hkt_tail_reduction} concerns
+\[
+\left(
+\zeta_t,
+N_t^{\psi_{US}/\rho_{US}}\varphi_t,
+\frac{N_{t+1}}{N_t},
+\frac{e_{US,t}^u}{N_t^{\nu_u}},
+\frac{q_t^u}{N_t^{\nu_u-1}},
+N_t^{\psi_{US}/\rho_{US}}\frac{d_t^u}{q_t^u}
+\right).
+\]
+RoW remains present, levels need not converge, and no conclusion about the complete international portfolio is embedded in this production-side statement.
+
+\subsubsection{Absorbing branch and the one-period switch price}
+
+\begin{lem}[US stock-price order on the one-period switch branch]\label{lem_switch_price_order}
+\green{Consider a selected Markov competitive equilibrium satisfying \Cref{ass_entry_valuation,ass_absorbing_bg_technology_primitives}}, \green{the US CES restriction in} \Cref{ass_ces_two_country}, and the \green{free-entry complementarity condition \eqref{country_Q_from_wage}}.  There is a constant $C_b<\infty$, independent of the switch date and inherited knowledge levels, such that every one-period $b$ successor generated from an all-$u$ history satisfies
+\begin{equation}\label{switch_price_exact_order}
+0<q_t^b+d_t^b
+\le
+C_bN_t^{\nu_b-1}.
+\end{equation}
+If the conditions of \Cref{prop_hkt_tail_reduction} also hold, then
+\begin{equation}\label{switch_to_continuation_price_ratio}
+\frac{q_t^b+d_t^b}{q_t^u}
+=O(N_t^{\nu_b-\nu_u}).
+\end{equation}
+\end{lem}
+
+\begin{proof}
+The date-$t$ knowledge stock is predetermined at date $t-1$ and is therefore common across the two date-$t$ successors.  In state $b$, both US factor augmentations in Eq.~\eqref{bg_us_primitives} have scale $N_t^{\nu_b}$.  For $\rho_{US}>1$, the normalized CES skilled-wage expression extends continuously to $\varphi_{US,t}^b=0$ and is bounded on $\varphi_{US,t}^b\in[0,1]$.  Consequently, there is a switch-date-independent constant $C_{w,b}$ such that
+\[
+0<w_{H,US,t}^b\le C_{w,b}N_t^{\nu_b}.
+\]
+\green{The free-entry inequality} and the \green{dividend formula} then give
+\[
+q_t^b
+\green{\le}\frac{w_{H,US,t}^b}{a_{US}N_t},
+\qquad
+d_t^b
+=
+\frac{1-\vartheta_{US}}{\vartheta_{US}}
+\green{w}_{\green{H},\green{US},\green{t}}^\green{b}\frac{\varphi_{US,t}^bH_{US}}{\green{N}_\green{t}}.
+\]
+This proves Eq.~\eqref{switch_price_exact_order}.  Dividing by the positive price limit in Eq.~\eqref{hkt_value_price_limits} proves Eq.~\eqref{switch_to_continuation_price_ratio}.
+\end{proof}
+
+This uniform \green{one-period} switch-price order \green{uses only} the \green{US} $\green{b}$\green{-regime technology}, \green{the entry valuation} and \green{dividend structure}, \green{and the free-entry inequality}.  It does not \green{use the selected absorbing} normalized \green{allocation} or \green{its common-growth condition}.
+
+\subsubsection{\green{Switch leakage and risky-return} control}
+
+For $z\in\{u,b\}$, define the branchwise US equity return and portfolio multiplier
+\begin{equation}\label{portfolio_multiplier_def}
+R_{US,t}^z
+:=
+\frac{q_t^z+d_t^z}{q_{t-1}^u},
+\qquad
+\Lambda_t^z
+:=
+\frac{R_{A,t}^z}{R_{US,t}^z}.
+\end{equation}
+
+\begin{lem}[Exact switch-leakage decomposition]\label{lem_switch_leakage_decomposition}
+For every one-period pair of successors generated from an all-$u$ history,
+\begin{equation}\label{switch_leakage_decomposition}
+\boxed{
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+\frac{q_t^b+d_t^b}{q_t^u}
+=
+\left(\frac{\Lambda_t^u}{\Lambda_t^b}\right)^\gamma
+\left(1+\frac{d_t^u}{q_t^u}\right)^\gamma
+\left(\frac{q_t^b+d_t^b}{q_t^u}\right)^{1-\gamma}.
+}
+\end{equation}
+\end{lem}
+
+\begin{proof}
+By \Cref{lem_branch_reduction}, $C_t^z=A_{t-1}^uR_{A,t}^z$ with the same $A_{t-1}^u$ on both branches.  Hence
+\[
+\frac{C_t^u}{C_t^b}
+=
+\frac{R_{A,t}^u}{R_{A,t}^b}
+=
+\frac{\Lambda_t^u}{\Lambda_t^b}
+\frac{R_{US,t}^u}{R_{US,t}^b}
+=
+\frac{\Lambda_t^u}{\Lambda_t^b}
+\frac{q_t^u+d_t^u}{q_t^b+d_t^b}.
+\]
+Substitution and rearrangement give Eq.~\eqref{switch_leakage_decomposition}.
+\end{proof}
+
+\begin{lem}[Equilibrium risky-return bounds in the HKT tail]\label{lem_risky_return_bounds}
+Suppose the conditions of \Cref{prop_hkt_tail_reduction,lem_switch_price_order} hold and equity positions are nonnegative.  Then
+\begin{equation}\label{omega_US_concentration}
+\omega_t^u\to1,
+\qquad
+\green{1-\omega}_\green{t}^\green{u=O}(\green{r}_\green{t}),
+\qquad
+|\theta_t^u|\green{=O}(\green{r}_\green{t}),
+\end{equation}
+\begin{equation}\label{continuation_return_reduction}
+R_{US,t}^u\longrightarrow G_u^{\nu_u-1}>0,
+\qquad
+\frac{R_{p,t}^u}{R_{US,t}^u}\longrightarrow1,
+\end{equation}
+and
+\begin{equation}\label{switch_risky_return_order}
+\boxed{
+\green{R}_{\green{p},\green{t}}^\green{b}
+\green{=}
+\green{O}\left(
+\green{N}_\green{t}^{\green{\nu}_\green{b-\nu}_\green{u}}\green{+r}_{\green{t-1}}
+\right).
+}
+\end{equation}
+\green{In particular}, the branchwise US risky-portfolio returns $R_{p,t}^u$ and $R_{p,t}^b$ are uniformly bounded above.
+\end{lem}
+
+\begin{proof}
+At date $t$, the US value invested in RoW equity cannot exceed total RoW capitalization.  Stock-market clearing, Eq.~\eqref{theta_nonpos}, and Eq.~\eqref{US_saving_rule_bond_cost} therefore imply
+\[
+1-\omega_t^u
+\le
+\frac{\mathcal Q_{W,t}^u}{S_t^u}
+\le
+\frac{\mathcal Q_{W,t}^u}{\beta e_{US,t}^u}
+\green{=O}(\green{r}_\green{t}),
+\]
+where the last limit is \Cref{prop_hkt_cone_invariance}.  This proves Eq.~\eqref{omega_US_concentration}.
+
+The RoW convenience term requires a strictly positive US-bond position.  Because RoW equity positions are nonnegative and the RoW bond is in zero net supply,
+\[
+0<b_{US,t}^{*,u}\le A_t^{*,u}
+=
+\frac{\beta+\chi}{1+\chi}e_{W,t}^u.
+\]
+US-bond clearing and Eq.~\eqref{US_saving_rule_bond_cost} therefore imply
+\[
+0<-\theta_t^u
+=
+\frac{b_{US,t}^{*,u}}{\beta e_{US,t}^u}
+\le
+\frac{\beta+\chi}{\beta(1+\chi)}
+\frac{e_{W,t}^u}{e_{US,t}^u}
+\green{=O}(\green{r}_\green{t}).
+\]
+This proves the \green{bond-share order} in Eq.~\eqref{omega_US_concentration}.
+
+Let $n_{W,t-1}^u$ denote US holdings of RoW equity purchased at date $t-1$.  For either $z\in\{u,b\}$,
+\begin{equation}\label{weighted_RoW_payoff_bound}
+(1-\omega_{t-1}^u)R_{W,t}^z
+=
+\frac{n_{W,t-1}^u(q_{W,t}^z+d_{W,t}^z)}{S_{t-1}^u}
+\le
+\frac{N_{W,t}(q_{W,t}^z+d_{W,t}^z)}{\beta e_{US,t-1}^u}.
+\end{equation}
+The uniform successor-payoff bound \eqref{W_successor_payoff_uniform_bound} applies to both $z=u$ and $z=b$.  Equations \eqref{hkt_output_income_limits} and \eqref{cone_tail_limits}, together with bounded one-period knowledge growth, therefore imply that the right side of Eq.~\eqref{weighted_RoW_payoff_bound} \green{is} $\green{O}(\green{r}_{\green{t-1}})$.
+
+The price and dividend-yield limits in \Cref{prop_hkt_tail_reduction} yield
+\[
+R_{US,t}^u
+=
+\frac{q_t^u+d_t^u}{q_{t-1}^u}
+\longrightarrow G_u^{\nu_u-1}>0.
+\]
+Combining this limit with Eq.~\eqref{omega_US_concentration} and the $z=u$ case of Eq.~\eqref{weighted_RoW_payoff_bound} proves the second limit in Eq.~\eqref{continuation_return_reduction}.  Finally,
+\[
+R_{p,t}^z
+=
+\omega_{t-1}^uR_{US,t}^z
++(1-\omega_{t-1}^u)R_{W,t}^z.
+\]
+\green{For} $\green{z=b}$, \green{\Cref{lem_switch_price_order,prop_hkt_tail_reduction} imply}
+\[
+\green{R}_{\green{US},\green{t}}^\green{b}
+\green{=}
+\frac{\green{q}_\green{t}^\green{b+d}_\green{t}^\green{b}}{\green{q}_{\green{t-1}}^\green{u}}
+\green{=O}(\green{N}_\green{t}^{\green{\nu}_\green{b-\nu}_\green{u}}),
+\]
+\green{where bounded one-period US knowledge growth absorbs the date shift}.  \green{Combining this} order \green{with} the $\green{z=b}$ \green{case of} Eq.~\eqref{weighted_RoW_payoff_bound} \green{proves Eq}.~\green{\eqref{switch_risky_return_order}}.  \green{For} $\green{z=u}$, \green{the first term converges to a finite} positive \green{constant} and the \green{weighted RoW term is} $\green{O}(\green{r}_{\green{t-1}})$.  This proves the \green{stated} uniform upper bounds.
+\end{proof}
+
+\begin{lem}[\green{Direct switch-leakage control} from \green{optimal bond issuance}]
+\label{lem_direct_switch_leakage}
+Suppose \green{\Cref{ass_issuance_costs} and the conditions of \Cref{lem_risky_return_bounds} hold}, the US \green{bond first-order condition} \eqref{US_theta_FOC_bond_cost} \green{applies}, \green{and} $\green{0<\gamma<1}$.  Then, \green{for all sufficiently large} $\green{t}$,
+\begin{equation}\label{direct_switch_leakage_bound}
+\boxed{
+\left(\frac{\green{C}_\green{t}^\green{u}}{\green{C}_t^b}\right)^\green{\gamma}
+\frac{\green{q}_\green{t}^\green{b+d}_\green{t}^\green{b}}{\green{q}_\green{t}^\green{u}}
+\green{\le}
+\green{C}\left[
+(R_{p,t}^b)^{\green{1-\gamma}}
+\green{+}|\green{\theta}_{\green{t-1}}^\green{u}|
+\right].
+}
+\end{equation}
+\green{Consequently},
+\begin{equation}\label{direct_switch_leakage_order}
+\left(\frac{\green{C}_\green{t}^\green{u}}{\green{C}_\green{t}^\green{b}}\right)^\green{\gamma}
+\frac{\green{q}_\green{t}^\green{b+d}_\green{t}^\green{b}}{\green{q}_\green{t}^\green{u}}
+\green{=}
+\green{O}\left(
+\green{N}_\green{t}^{\green{-}(\green{\nu}_\green{u-\nu}_\green{b})(\green{1-\gamma})}
+\green{+r}_{t-1}^{\green{1-\gamma}}
+\green{+r}_{\green{t-1}}
+\right).
+\end{equation}
+\end{lem}
+
+\begin{proof}
+Write
+\[
+\green{\epsilon}_t:=\green{-\theta}_{t-1}^\green{u>0},
+\qquad
+\green{P}_t^\green{z}:=R_{p,t}^\green{z},
+\qquad
+\green{F}_\green{t}:\green{=R}_{\green{f},\green{t-1}},
+\]
+\[
+\green{U}_\green{t}:\green{=R}_{\green{A},\green{t}}^\green{u},
+\qquad
+\green{B}_\green{t}:\green{=R}_{\green{A},t}^b.
+\]
+\green{Then}
+\[
+\green{U}_\green{t}=(1\green{+\epsilon}_t)\green{P}_\green{t}^\green{u-\epsilon}_\green{tF}_\green{t},
+\qquad
+\green{B}_t\green{=}(\green{1+\epsilon}_\green{t})\green{P}_\green{t}^b\green{-\epsilon}_\green{tF}_t.
+\]
+\green{Crucially},
+\[
+\green{U}_\green{t-B}_\green{t}
+\green{=}
+(\green{1+\epsilon}_\green{t})(\green{P}_\green{t}^\green{u-P}_\green{t}^\green{b}).
+\]
+\green{Strictly positive successor consumption implies} $\green{U}_\green{t},\green{B}_\green{t>0}$.  \green{Moreover}, $\green{P}_\green{t}^u$ \green{is bounded above and away from zero}, $\green{P}_\green{t}^\green{b}\to0$, \green{and} $\green{\epsilon}_\green{t\to0}$ \green{by \Cref{lem_risky_return_bounds}}.  \green{The identity above therefore implies}
+\[
+\green{U}_\green{t\le B}_\green{t+C}
+\]
+\green{for some finite} $\green{C}$, \green{and} it \green{also supplies} a \green{positive lower bound on} $\green{U}_\green{t}$ in the tail.
+
+\green{Define} the \green{switch leakage}
+\[
+\green{L}_\green{t}^\green{S}
+:\green{=}
+\left(\frac{\green{C}_\green{t}^\green{u}}{\green{C}_t^b}\right)^\green{\gamma}
+\frac{\green{q}_\green{t}^\green{b+d}_\green{t}^\green{b}}{\green{q}_\green{t}^\green{u}}.
+\]
+\green{The branch consumption relation is}
+\[
+\frac{\green{C}_\green{t}^\green{u}}{\green{C}_\green{t}^\green{b}}
+=
+\frac{\green{U}_t}{\green{B}_t}.
+\]
+\green{Because} $\green{\omega}_{\green{t-1}}^\green{u\to1}$, $\green{R}_{\green{US},t}^\green{u}$ is bounded away from zero, \green{and} $\green{d}_\green{t}^\green{u/q}_\green{t}^\green{u\to0}$,
+\[
+\frac{\green{q}_\green{t}^\green{b+d}_\green{t}^\green{b}}{\green{q}_\green{t}^\green{u}}
+\green{\le CP}_\green{t}^\green{b}.
+\]
+\green{It follows that}
+\begin{equation}\label{switch_leakage_intermediate}
+\green{L}_\green{t}^\green{S}
+\green{\le}
+\green{C}\left(\frac{\green{U}_\green{t}}{\green{B}_\green{t}}\right)^\green{\gamma P}_\green{t}^\green{b}
+\green{\le}
+\green{C}\left[\green{P}_\green{t}^\green{b+B}_\green{t}^{\green{-\gamma}}\green{P}_\green{t}^\green{b}\right]
+\green{\le}
+\green{C}\left[(\green{P}_\green{t}^\green{b})^{\green{1-\gamma}}\green{+B}_\green{t}^{\green{-\gamma}}\green{P}_\green{t}^\green{b}\right]
+\end{equation}
+\green{eventually}, \green{where} the \green{last inequality uses} $\green{P}_\green{t}^\green{b\to0}$ \green{and} $\green{0<\gamma<1}$.
+
+\green{If} $\green{F}_\green{t\le P}_\green{t}^b$, \green{then}
+\[
+\green{B}_\green{t}
+\green{=P}_\green{t}^\green{b+\epsilon}_\green{t}(\green{P}_\green{t}^\green{b-F}_\green{t})
+\green{\ge P}_\green{t}^\green{b},
+\]
+\green{and hence}
+\[
+\green{B}_\green{t}^{-\green{\gamma}}\green{P}_\green{t}^\green{b}
+\green{\le}(\green{P}_\green{t}^\green{b})^{\green{1-\gamma}}.
+\]
+
+\green{Now suppose} $\green{F}_\green{t>P}_\green{t}^\green{b}$.  \green{Then} $\green{F}_\green{t>0}$ \green{because} $\green{P}_\green{t}^\green{b>0}$, \green{and}
+\[
+\green{U}_\green{t}
+\green{=}(\green{1+\epsilon}_\green{t})\green{P}_\green{t}^\green{u-\epsilon}_\green{tF}_\green{t}
+\green{\le}
+(\green{1+\epsilon}_\green{t})\green{P}_\green{t}^\green{u}.
+\]
+\green{Thus} $\green{U}_t$ is bounded \green{above and} away from zero.  \green{In this case} $\green{0<B}_\green{t<P}_\green{t}^\green{b}$, so the \green{denominator in}
+\[
+\magenta{\green{M}}_{\green{t-1},\green{t}}^\green{b}
+\green{=}
+\frac{\green{B}_\green{t}^{\green{-\gamma}}}
+{\green{\pi U}_\green{t}^{\green{1-\gamma}}\green{+}(\green{1-\pi})\green{B}_\green{t}^{\green{1-\gamma}}}
+\]
+\green{is bounded above and away from zero}.  \green{The bond first-order condition is}
+\[
+\green{\beta}\left[
+\green{\pi} \magenta{\green{M}}_{\green{t-1},\green{t}}^\green{u}(\green{F}_\green{t-P}_\green{t}^\green{u})
+\green{+}(\green{1-\pi})\magenta{\green{M}}_{\green{t-1},\green{t}}^\green{b}(\green{F}_\green{t-P}_\green{t}^\green{b})
+\right]
+\green{=}
+\green{\eta}\Upsilon'(\green{\theta}_{\green{t-1}}^\green{u}).
+\]
+\green{The right side is bounded because} $\green{\theta}_{\green{t-1}}^\green{u\to0}$ \green{and} $\Upsilon'$ \green{is locally bounded}; \green{this includes} $\green{\eta=0}$.  \green{If} $\green{F}_\green{t\ge P}_\green{t}^\green{u}$, \green{the} $\green{u}$\green{-branch term is nonnegative}.  \green{If} $\green{F}_\green{t<P}_\green{t}^\green{u}$, \green{then} $\green{0<P}_\green{t}^\green{u-F}_\green{t\le P}_\green{t}^\green{u}$, \green{while} $\magenta{\green{M}}_{\green{t-1},\green{t}}^\green{u}$ \green{is bounded because} $\green{U}_\green{t}$ \green{and the common SDF denominator are bounded above and away from zero}.  \green{Thus in either case}
+\[
+\magenta{\green{M}}_{\green{t-1},\green{t}}^\green{b}(\green{F}_\green{t-P}_\green{t}^\green{b})\green{\le C}.
+\]
+\green{The upper} bound \green{on the SDF denominator therefore gives}
+\[
+\green{B}_\green{t}^{\green{-\gamma}}(\green{F}_\green{t-P}_\green{t}^\green{b})\green{\le C}.
+\]
+\green{Using}
+\[
+\green{P}_\green{t}^\green{b=B}_\green{t+\epsilon}_\green{t}(\green{F}_\green{t-P}_\green{t}^\green{b})
+\]
+\green{now gives}
+\[
+\green{B}_\green{t}^{\green{-\gamma}}\green{P}_\green{t}^\green{b}
+\green{=}
+\green{B}_\green{t}^{\green{1-\gamma}}
+\green{+\epsilon}_\green{tB}_\green{t}^{\green{-\gamma}}(\green{F}_\green{t-P}_\green{t}^\green{b})
+\green{\le}
+(\green{P}_\green{t}^\green{b})^{\green{1-\gamma}}\green{+C\epsilon}_\green{t}.
+\]
+\green{Together with Eq}.~\green{\eqref{switch_leakage_intermediate}}, \green{the two cases prove Eq}.~\green{\eqref{direct_switch_leakage_bound}}.
+
+\green{Finally}, \green{combine Eqs}.~\green{\eqref{switch_risky_return_order} and \eqref{omega_US_concentration}}.  \green{Since} $\green{0<1-\gamma<1}$, \green{subadditivity yields}
+\[
+(\green{R}_{\green{p},\green{t}}^\green{b})^{\green{1-\gamma}}
+\green{=}
+\green{O}\left(
+\green{N}_\green{t}^{\green{-}(\green{\nu}_\green{u-\nu}_\green{b})(\green{1-\gamma})}
+\green{+r}_{\green{t-1}}^{\green{1-\gamma}}
+\right),
+\]
+\green{which proves Eq}.~\green{\eqref{direct_switch_leakage_order}}.
+\end{proof}
+
+\green{The switch-leakage bound does not rely on a coercive debt penalty or on an exogenous bound for} the \green{risk-free} return.  \green{Since} $\green{\theta}_t^u\green{\to0}$, \green{only local boundedness of the marginal bond-cost wedge near zero is used}.  \green{The force preventing switch-state consumption} from \green{becoming too small} in the \green{relevant marginal condition is the endogenous state-price response generated by preferences and switch risk}.
+
+\subsubsection{Bubble existence}
+
+\begin{thm}[\green{Primitive} conditions for \green{the} US bubble \green{characterization}]\label{thm_prod_sufficient}
+Consider a selected Markov competitive equilibrium with $z_0=u$ \green{satisfying the equilibrium and Kuhn--Tucker conditions in \Cref{def_recursive_equilibrium}}.  Suppose the primitive \green{technology}, \green{regime}, \green{market-structure}, \green{initial-state}, and \green{bond-cost} conditions
+\[
+\green{\Cref{ass_regime_switch,ass_country_technology,ass_within_country_lop,ass_entry_valuation,ass_ces_two_country,ass_absorbing_bg_technology_primitives,ass_hkt_growth_dominance,ass_hkt_cone_entry,ass_issuance_costs}}
+\]
+hold, \green{and suppose} the \green{absorbing continuation is selected as in}
+\[
+\Cref{ass_absorbing_stationary_equilibrium_selection}.
+\]
+If $0<\gamma<1$, then \green{the exact necessary-and-sufficient characterization in \Cref{thm_bubble_characterization} applies}, both conditions \green{\eqref{thm_cond_1a} and \eqref{thm_cond_1b}} hold, and \green{therefore} the per-variety US stock contains a bubble at date~0.
+
+More precisely, with
+\begin{equation}\label{leakage_exponents}
+\kappa_D
+:=
+\frac{\psi_{US}}{\rho_{US}}>0,
+\qquad
+\kappa_S
+:=
+(\nu_u-\nu_b)(1-\gamma)>0,
+\end{equation}
+there are finite constants $C_D,C_S$ such that the one-period leakage term in the proof of \Cref{thm_bubble_characterization} satisfies, for all sufficiently large $t$,
+\begin{equation}\label{hkt_leakage_bound}
+\boxed{
+\begin{aligned}
+a_t
+\le{}&
+C_DN_t^{-\kappa_D}
+\\
+&+\frac{1-\pi}{\pi}C_\green{S}
+\left[
+\green{N}_t^{-\kappa_S}
+\green{+r}_{\green{t-1}}^{\green{1-\gamma}}
+\green{+r}_{\green{t-1}}
+\right].
+\end{aligned}
+}
+\end{equation}
+\end{thm}
+
+\begin{proof}
+\green{By \Cref{ass_hkt_cone_entry,prop_hkt_cone_invariance}}, \green{the all-}$\green{u}$ \green{path starts in and remains in the primitive US-dominant cone}.  \green{Lemma}~\green{\ref{lem_US_innovation_interior} derives active US R}\&\green{D there}, \green{so the funding-adjusted HKT equation is valid}; \green{\Cref{prop_hkt_tail_reduction} then gives the US HKT asymptotics}.  \green{Lemma}~\green{\ref{lem_US_equity_pricing_holder} derives positive US holdings of US stock at every finite all-}$\green{u}$ \green{date}.  \green{Together with the positive absorbing-branch pricing-holder position in \Cref{ass_absorbing_stationary_equilibrium_selection}}, \green{this verifies the stock-pricing premises of \Cref{thm_bubble_characterization}}; \green{\Cref{prop_no_bubble_absorbing_branch} supplies the post-switch transversality needed for its necessity direction}.
+
+Equation~\eqref{hkt_dividend_yield_limit} gives
+\[
+\frac{d_t^u}{q_t^u}=O(N_t^{-\kappa_D}).
+\]
+\green{Because} $\green{N}_\green{t}$ \green{grows geometrically}, \green{this proves Eq}.~\green{\eqref{thm_cond_1a}}.  \green{The direct bond-FOC estimate in \Cref{lem_direct_switch_leakage} gives}
+\[
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+\frac{q_t^b+d_t^b}{q_t^u}
+=
+O\left(
+N_t^{-\kappa_S}
+\green{+r}_{\green{t-1}}^{\green{1-\gamma}}
+\green{+r}_{\green{t-1}}
+\right).
+\]
+\green{By \Cref{prop_hkt_cone_invariance}}, $\green{r}_\green{t}$ \green{decays geometrically}.  \green{Hence all three terms are summable}, \green{proving Eq}.~\green{\eqref{thm_cond_1b}}.
+
+The exact recursion in the proof of \Cref{thm_bubble_characterization} is
+\[
+a_t
+=
+\frac{d_t^u}{q_t^u}
++\frac{1-\pi}{\pi}
+\left(\frac{C_t^u}{C_t^b}\right)^\gamma
+\frac{q_t^b+d_t^b}{q_t^u},
+\]
+which proves Eq.~\eqref{hkt_leakage_bound}.  Since $N_{t+1}/N_t\to G_u>1$ \green{and} $\green{r}_\green{t}$ \green{decays geometrically}, \green{every term} in Eq.~\eqref{hkt_leakage_bound} \green{is} geometrically summable.  Thus $\sum_ta_t<\infty$, and \green{the exact iff result in} \Cref{thm_bubble_characterization} implies a bubble at date~0.
+\end{proof}
+
+\subsubsection{HKT scalar terminal closure}
+
+\begin{coro}[Asymptotic validity of the HKT scalar terminal rule]\label{cor_hkt_terminal_closure}
+Suppose the conditions of \Cref{prop_hkt_tail_reduction} hold.  There exist $\epsilon_0\in(0,1)$ and $N_0^H<\infty$ such that Eq.~\eqref{two_country_scalar_root} has a unique interior solution whenever $N\ge N_0^H$ and $|\zeta-1|\le\epsilon_0$.  Denote this solution by $\varphi^{2C}(N,\zeta)$, where
+\begin{equation}\label{two_country_scalar_root}
+\frac{1}{a_{US}H_{US}}+1-\varphi
+=
+\beta\zeta
+\left[1+K_uN^{\psi_{US}}\varphi^{\rho_{US}}\right],
+\end{equation}
+and define the HKT scalar root by
+\[
+\varphi^{HKT}(N):=\varphi^{2C}(N,1).
+\]
+There is a finite constant $C_H$ such that, along the all-$u$ tail,
+\begin{equation}\label{hkt_terminal_log_gap}
+\left|
+\log\varphi^{2C}(N_t,\zeta_t)
+-\log\varphi^{HKT}(N_t)
+\right|
+\le
+C_H|\zeta_t-1|
+\le
+C_HC_\zeta r_t
+\longrightarrow0.
+\end{equation}
+Consequently,
+\begin{equation}\label{hkt_terminal_ratio}
+\frac{\varphi_t}{\varphi^{HKT}(N_t)}\longrightarrow1.
+\end{equation}
+This conclusion does not use any switch-state portfolio object.
+\end{coro}
+
+\begin{proof}
+\green{Define the scalar excess-demand function}
+\[
+F(\varphi;N,\zeta)
+:\green{=}
+\green{\beta\zeta}[\green{1+K}_\green{uN}^{\green{\psi}_{\green{US}}}\green{\varphi}^{\green{\rho}_{\green{US}}}]
+\green{-}\left[\frac{\green{1}}{\green{a}_{\green{US}}\green{H}_{\green{US}}}\green{+1-\varphi}\right].
+\]
+\green{It} is strictly increasing in $\varphi$.  Choose $\epsilon_0\in(0,1)$ sufficiently small that
+\[
+\beta(1+\epsilon_0)<\frac{1}{a_{US}H_{US}}+1.
+\]
+Uniformly over $|\zeta-1|\le\epsilon_0$, $F(0;N,\zeta)<0$, while $F(1;N,\zeta)>0$ for all sufficiently large $N$.  Hence an interior root exists and is unique on this domain.  Moreover, the scalar equation gives the uniform bound
+\begin{equation}\label{terminal_root_uniform_bound}
+\varphi^{2C}(N,\zeta)
+\le
+\left[
+\frac{\frac{1}{a_{US}H_{US}}+1}
+{\beta(1-\epsilon_0)K_u}
+\right]^{1/\rho_{US}}
+N^{-\psi_{US}/\rho_{US}}.
+\end{equation}
+Implicit differentiation of Eq.~\eqref{two_country_scalar_root} gives
+\begin{equation}\label{scalar_log_derivative}
+\frac{\partial\log\varphi^{2C}}{\partial\zeta}
+=
+-\frac{
+\beta[1+K_uN^{\psi_{US}}\varphi^{\rho_{US}}]
+}{
+\varphi+\beta\zeta\rho_{US}K_uN^{\psi_{US}}\varphi^{\rho_{US}}
+}.
+\end{equation}
+By \Cref{prop_hkt_cone_invariance}, $\zeta_t\to1$.  Thus, for all sufficiently large $t$, every $\zeta$ between $\zeta_t$ and $1$ lies in the domain above, and Eq.~\eqref{terminal_root_uniform_bound} makes the corresponding root converge uniformly to zero.  The scalar equation can be written as
+\[
+\beta\zeta K_uN_t^{\psi_{US}}\varphi^{\rho_{US}}
+=D_u+\beta(1-\zeta)-\varphi,
+\]
+so its left side converges uniformly to $D_u>0$ along that interval.  Hence the absolute value of Eq.~\eqref{scalar_log_derivative} is uniformly bounded there.  The mean-value theorem and Eq.~\eqref{zeta_real_scale_bound} prove Eq.~\eqref{hkt_terminal_log_gap}.  Finally, Eq.~\eqref{funding_adjusted_hkt_scalar} and uniqueness give $\varphi_t=\varphi^{2C}(N_t,\zeta_t)$; exponentiating the log gap proves Eq.~\eqref{hkt_terminal_ratio}.
+\end{proof}
+
+\noindent
+\textbf{Interpretation.}
+The \green{primitive initial state places the} all-$u$ \green{path in} a self-enforcing \green{US-dominant} region: RoW income and capitalization become negligible relative to US income, $\zeta_t\to1$, and the normalized US production and funding variables converge to their one-country HKT counterparts.  The absorbing stationary world equilibrium and common post-switch growth \green{are used for post-switch transversality}.  \green{The one-period switch leakage is instead controlled directly by} the \green{US bond first-order condition}, \green{while} the scalar terminal closure \green{remains independent of switch-state portfolio objects}.
+
+%========================================================
+% Appendix
+%========================================================
+
+\appendix
+
+\bibliography{references.bib}
+
+\end{document}
