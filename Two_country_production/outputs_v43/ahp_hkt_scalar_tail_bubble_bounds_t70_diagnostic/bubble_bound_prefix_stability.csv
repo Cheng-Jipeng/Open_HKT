@@ -1,0 +1,5 @@
+T_report,terminal_rule,cutoff_t,cutoff_model_t,reference_T_report,max_log_phi_US_gap,max_log_q_US_gap,max_leakage_gap,max_rebased_nfa_gap,stability_tolerance,prefix_stable
+30,local_loglinear,22,21,70,9.296252660717652e-7,1.7518302268260122e-6,4.941811757031012e-7,7.772835773460496e-7,0.0001,true
+45,local_loglinear,22,21,70,0.0,0.0,0.0,0.0,0.0001,true
+60,local_loglinear,22,21,70,0.0,0.0,0.0,0.0,0.0001,true
+70,local_loglinear,22,21,70,0.0,0.0,0.0,0.0,0.0001,true

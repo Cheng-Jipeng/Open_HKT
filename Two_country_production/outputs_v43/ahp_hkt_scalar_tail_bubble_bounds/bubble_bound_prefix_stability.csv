@@ -1,4 +1,5 @@
-T_report,terminal_rule,cutoff_t,cutoff_model_t,reference_T_report,max_log_phi_US_gap,max_log_q_US_gap,max_leakage_gap,max_rebased_nfa_gap,stability_tolerance,prefix_stable
-30,local_loglinear,22,21,60,9.29755757217432e-7,1.7522686686088917e-6,4.943851502070551e-7,7.772465064198597e-7,0.0001,true
-45,local_loglinear,22,21,60,0.0,0.0,0.0,0.0,0.0001,true
-60,local_loglinear,22,21,60,0.0,0.0,0.0,0.0,0.0001,true
+T_report,terminal_rule,cutoff_t,cutoff_model_t,comparison,reference_T_report,endpoint_guard,max_log_phi_US_gap,max_log_q_US_gap,max_leakage_gap,max_rebased_nfa_gap,prefix_product_log_gap,stability_tolerance,prefix_product_stable,prefix_paths_stable,prefix_stable
+110,local_loglinear,110,109,vs_selected,112,0,0.0006753016542092594,0.0013446609462346437,4.214926477586617e-5,0.0002810569191616097,0.00010554666019402248,0.0001,false,false,false
+111,local_loglinear,110,109,vs_selected,112,1,0.00026190561480277097,0.0005215078137470464,1.635330976571675e-5,0.00010896038515420536,4.0940287394874986e-5,0.0001,true,false,true
+112,local_loglinear,110,109,vs_selected,112,2,0.0,0.0,0.0,0.0,0.0,0.0001,true,true,true
+112,local_loglinear,110,109,vs_longest_other_horizon,111,2,0.00026190561480277097,0.0005215078137470464,1.635330976571675e-5,0.00010896038515420536,4.0940287394874986e-5,0.0001,true,false,true

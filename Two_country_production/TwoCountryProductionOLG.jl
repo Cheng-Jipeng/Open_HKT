@@ -633,6 +633,10 @@ function calibrate_common_growth(p::ProductionParams, N_US, N_W;
                                  x0_actual=nothing)
     p_cur = p
     bgp = solve_bgp_at(p_cur, N_US, N_W; x0_actual=x0_actual)
+    if !bgp.converged || !isfinite(bgp.residual_norm) || bgp.residual_norm >= 1e-6
+        verbose && @warn "Initial BGP is invalid; stopping common-growth calibration" residual=bgp.residual_norm
+        return (params=p_cur, bgp=bgp)
+    end
     for it in 1:max_iter
         Gus = G_N_US(p_cur, bgp.φ_US)
         Gw  = G_N_W(p_cur, bgp.φ_W)
@@ -650,6 +654,10 @@ function calibrate_common_growth(p::ProductionParams, N_US, N_W;
                                        bgp.R_f, bgp.R_f_W))
         verbose && @printf("  iter %2d: ν_b -> %.6f (Δ=%.2e), ‖F‖=%.2e\n",
                             it, ν_new, Δ, bgp.residual_norm)
+        if !bgp.converged || !isfinite(bgp.residual_norm) || bgp.residual_norm >= 1e-6
+            verbose && @warn "BGP became invalid; stopping common-growth calibration" iteration=it residual=bgp.residual_norm
+            break
+        end
         if Δ < tol && bgp.residual_norm < 1e-6
             break
         end
@@ -678,6 +686,29 @@ function solve_selected_bgp_at(p::ProductionParams, N_US, N_W; x0_actual=nothing
     else
         return solve_bgp_at(p, N_US, N_W; x0_actual=x0_actual, verbose=verbose)
     end
+end
+
+# The state-specific common-growth fixed point moves smoothly along a solved
+# path. Restarting every date from the global reference exponent can jump to a
+# remote boundary root, even when the adjacent-date solution is regular. Carry
+# the previous effective exponent as a numerical seed only; the current-date
+# common-growth equation is still solved from scratch.
+function _bgp_continuation_seed(p::ProductionParams, previous::BGPResult)
+    return p.common_world_growth ? ProductionParams(p; ν_b=previous.ν_b_eff) : p
+end
+
+function _usable_bgp_continuation(p::ProductionParams, result::BGPResult)
+    common_growth_ok = !p.common_world_growth ||
+        (isfinite(result.G_N_US) && result.G_N_US > 0 &&
+         isfinite(result.G_N_W) && result.G_N_W > 0 &&
+         isfinite(result.ν_b_eff) &&
+         abs(result.ν_b_eff * log(result.G_N_US) -
+             p.ξ_W * log(result.G_N_W)) <= 1e-7)
+    return result.converged && isfinite(result.residual_norm) &&
+           result.residual_norm < 1e-5 && common_growth_ok &&
+           all(isfinite, (result.φ_US, result.φ_W, result.ω,
+                          result.θ_US_star, result.ω_star,
+                          result.R_f, result.R_f_W, result.ν_b_eff))
 end
 
 
@@ -1115,7 +1146,12 @@ function solve_unbalanced_branch(p::ProductionParams,
     for t in 2:(T + 1)
         x0 = (bgp_seq[t-1].φ_US, bgp_seq[t-1].φ_W, bgp_seq[t-1].ω, bgp_seq[t-1].θ_US_star,
               bgp_seq[t-1].ω_star, bgp_seq[t-1].R_f, bgp_seq[t-1].R_f_W)
-        bgp_seq[t] = solve_selected_bgp_at(p, N_US_path[t], N_W_path[t]; x0_actual=x0)
+        p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
+        candidate = solve_selected_bgp_at(
+            p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
+        _usable_bgp_continuation(p, candidate) ||
+            error("Absorbing-BGP continuation failed during initialization at t=$(t).")
+        bgp_seq[t] = candidate
     end
 
     # u-path policy storage.
@@ -1147,14 +1183,37 @@ function solve_unbalanced_branch(p::ProductionParams,
         N_W_path  = knowledge_path_W(p, pol[2, 1:T])
 
         # ---- Step 2: re-solve BGP at each forward state ----
+        n_bgp_failed = 0
+        first_bgp_failed_t = 0
         for t in 2:(T + 1)
             x0 = (bgp_seq[t-1].φ_US, bgp_seq[t-1].φ_W, bgp_seq[t-1].ω, bgp_seq[t-1].θ_US_star,
                   bgp_seq[t-1].ω_star, bgp_seq[t-1].R_f, bgp_seq[t-1].R_f_W)
             try
-                bgp_seq[t] = solve_selected_bgp_at(p, N_US_path[t], N_W_path[t]; x0_actual=x0)
+                p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
+                candidate = solve_selected_bgp_at(
+                    p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
+                if _usable_bgp_continuation(p, candidate)
+                    bgp_seq[t] = candidate
+                else
+                    n_bgp_failed += 1
+                    first_bgp_failed_t == 0 && (first_bgp_failed_t = t)
+                end
             catch
-                # keep previous
+                n_bgp_failed += 1
+                first_bgp_failed_t == 0 && (first_bgp_failed_t = t)
+                # Abort this outer sweep after collecting the first bad date.
             end
+        end
+        # A cold iterate may temporarily leave the regular BGP domain and
+        # recover after the policy path moves. A warm continuation that fails
+        # exactly at its newly required terminal successor is different: using
+        # a stale BGP there would certify a horizon whose defining successor
+        # was never solved.
+        if initial_u_path !== nothing && first_bgp_failed_t == T + 1
+            error(
+                "Absorbing-BGP continuation failed during outer iteration " *
+                "$(outer_it) at the required terminal successor t=$(T + 1).",
+            )
         end
 
         # ---- Step 3: backward induction along u-branch ----
@@ -1248,13 +1307,15 @@ function solve_unbalanced_branch(p::ProductionParams,
         finite_norms = filter(isfinite, residual_norms[1:T_report])
         max_norm = isempty(finite_norms) ? Inf : maximum(finite_norms)
 
-        verbose && @printf("  outer %2d: Δφ_US=%.2e, Δφ_W=%.2e, max ‖F‖[1:T_rep]=%.2e, fails=%d/%d\n",
-                            outer_it, Δ_US, Δ_W, max_norm, n_failed, T)
+        verbose && @printf("  outer %2d: Δφ_US=%.2e, Δφ_W=%.2e, max ‖F‖[1:T_rep]=%.2e, u_fails=%d/%d, bgp_fails=%d/%d\n",
+                            outer_it, Δ_US, Δ_W, max_norm,
+                            n_failed, T, n_bgp_failed, T)
 
         φ_US_path = new_φ_US_path
         φ_W_path  = new_φ_W_path
 
-        if Δ < p.branch_tol && max_norm < 1e-5
+        if Δ < p.branch_tol && max_norm < 1e-5 &&
+           n_failed == 0 && n_bgp_failed == 0
             converged_flag = true
             verbose && println("  forward-backward converged at iter $outer_it")
             break
@@ -1281,12 +1342,22 @@ function solve_unbalanced_branch(p::ProductionParams,
     _extrapolate_terminal!(pol, T)
     N_US_path = knowledge_path_US(p, pol[1, 1:T])
     N_W_path  = knowledge_path_W(p, pol[2, 1:T])
+    final_bgp_valid = true
     for t in 2:(T + 1)
         x0 = (bgp_seq[t-1].φ_US, bgp_seq[t-1].φ_W, bgp_seq[t-1].ω, bgp_seq[t-1].θ_US_star,
               bgp_seq[t-1].ω_star, bgp_seq[t-1].R_f, bgp_seq[t-1].R_f_W)
         try
-            bgp_seq[t] = solve_selected_bgp_at(p, N_US_path[t], N_W_path[t]; x0_actual=x0)
-        catch; end
+            p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
+            candidate = solve_selected_bgp_at(
+                p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
+            if _usable_bgp_continuation(p, candidate)
+                bgp_seq[t] = candidate
+            else
+                final_bgp_valid = false
+            end
+        catch
+            final_bgp_valid = false
+        end
     end
 
     u_path = Vector{UPeriodState}(undef, T)
@@ -1315,7 +1386,7 @@ function solve_unbalanced_branch(p::ProductionParams,
     # The final residual rebuild on the reported region is the authoritative
     # convergence test: the outer-loop flag can lag (the moving-target terminal
     # extrapolation keeps Δφ above branch_tol even when residuals are tiny).
-    converged_flag = final_max_norm < 1e-5
+    converged_flag = final_max_norm < 1e-5 && final_bgp_valid
 
     return (u_path=u_path, bgp_seq=bgp_seq,
             u_path_extended=u_path_extended, bgp_seq_extended=bgp_seq_extended,

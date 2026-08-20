@@ -1,0 +1,3 @@
+T_report,start,branch_iters,elapsed_sec,branch_converged,max_u_residual,max_u_residual_t,max_bgp_residual,phi_US_end,residual_safe,max_log_phi_US_gap_vs_warm,max_log_q_US_gap_vs_warm
+70,cold,60,6.048044,true,1.579670900e-7,70,9.985141255e-10,0.7473979523,true,7.633206567e-10,1.485525036e-9
+70,warm_from_T60,60,1.338577,true,1.581986437e-7,70,9.985140423e-10,0.7473979527,true,0.0,0.0
