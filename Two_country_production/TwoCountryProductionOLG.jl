@@ -697,18 +697,53 @@ function _bgp_continuation_seed(p::ProductionParams, previous::BGPResult)
     return p.common_world_growth ? ProductionParams(p; ν_b=previous.ν_b_eff) : p
 end
 
-function _usable_bgp_continuation(p::ProductionParams, result::BGPResult)
+# Freshly solved BGPs land near 1e-13, so this bound is loose by eight orders
+# of magnitude and fires only on an object that does not belong to the state it
+# is being attached to.
+const BGP_STATE_RESIDUAL_TOL = 1e-5
+
+"""
+Residual of the reduced 7-equation BGP system when the stored allocations of
+`result` are re-evaluated at the state `(N_US, N_W)`.
+
+A `BGPResult` caches the allocations and growth factors of whatever state it
+was solved at, so the identity `ν_b_eff·log G_N_US == ξ_W·log G_N_W` holds for
+its own stored fields at *every* state, including states it was never solved
+for. Checking only those fields therefore accepts a stale continuation entry
+silently. This re-derives the residual at the date's own state instead.
+"""
+function _bgp_state_residual_norm(p::ProductionParams, result::BGPResult, N_US, N_W)
+    (isfinite(N_US) && isfinite(N_W) && N_US > 0 && N_W > 0) || return Inf
+    all(isfinite, (result.φ_US, result.φ_W, result.ω, result.θ_US_star,
+                   result.ω_star, result.R_f, result.R_f_W,
+                   result.ν_b_eff)) || return Inf
+    p_eff = p.common_world_growth ? ProductionParams(p; ν_b=result.ν_b_eff) : p
+    x_c = _bgp_pack(result.φ_US, result.φ_W, result.ω, result.θ_US_star,
+                    result.ω_star, result.R_f, result.R_f_W, p_eff.φ_floor)
+    F = zeros(7)
+    try
+        bgp_residual!(F, x_c, p_eff, N_US, N_W)
+    catch
+        return Inf
+    end
+    return all(isfinite, F) ? norm(F) : Inf
+end
+
+function _usable_bgp_continuation(p::ProductionParams, result::BGPResult, N_US, N_W)
     common_growth_ok = !p.common_world_growth ||
         (isfinite(result.G_N_US) && result.G_N_US > 0 &&
          isfinite(result.G_N_W) && result.G_N_W > 0 &&
          isfinite(result.ν_b_eff) &&
          abs(result.ν_b_eff * log(result.G_N_US) -
              p.ξ_W * log(result.G_N_W)) <= 1e-7)
-    return result.converged && isfinite(result.residual_norm) &&
+    stored_ok = result.converged && isfinite(result.residual_norm) &&
            result.residual_norm < 1e-5 && common_growth_ok &&
            all(isfinite, (result.φ_US, result.φ_W, result.ω,
                           result.θ_US_star, result.ω_star,
                           result.R_f, result.R_f_W, result.ν_b_eff))
+    stored_ok || return false
+    # The stored allocations must solve the system at THIS date's state.
+    return _bgp_state_residual_norm(p, result, N_US, N_W) < BGP_STATE_RESIDUAL_TOL
 end
 
 
@@ -1149,7 +1184,7 @@ function solve_unbalanced_branch(p::ProductionParams,
         p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
         candidate = solve_selected_bgp_at(
             p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
-        _usable_bgp_continuation(p, candidate) ||
+        _usable_bgp_continuation(p, candidate, N_US_path[t], N_W_path[t]) ||
             error("Absorbing-BGP continuation failed during initialization at t=$(t).")
         bgp_seq[t] = candidate
     end
@@ -1192,9 +1227,16 @@ function solve_unbalanced_branch(p::ProductionParams,
                 p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
                 candidate = solve_selected_bgp_at(
                     p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
-                if _usable_bgp_continuation(p, candidate)
-                    bgp_seq[t] = candidate
-                else
+                accepted = _usable_bgp_continuation(
+                    p, candidate, N_US_path[t], N_W_path[t])
+                accepted && (bgp_seq[t] = candidate)
+                # Whatever occupies date t now -- freshly solved or carried over
+                # from an earlier sweep -- must solve the BGP system at this
+                # date's own state. Without this, a rejected candidate silently
+                # leaves a stale successor in place and the path is certified
+                # against a state the model has already left.
+                if !accepted && !_usable_bgp_continuation(
+                        p, bgp_seq[t], N_US_path[t], N_W_path[t])
                     n_bgp_failed += 1
                     first_bgp_failed_t == 0 && (first_bgp_failed_t = t)
                 end
@@ -1350,9 +1392,11 @@ function solve_unbalanced_branch(p::ProductionParams,
             p_seed = _bgp_continuation_seed(p, bgp_seq[t-1])
             candidate = solve_selected_bgp_at(
                 p_seed, N_US_path[t], N_W_path[t]; x0_actual=x0)
-            if _usable_bgp_continuation(p, candidate)
-                bgp_seq[t] = candidate
-            else
+            accepted = _usable_bgp_continuation(
+                p, candidate, N_US_path[t], N_W_path[t])
+            accepted && (bgp_seq[t] = candidate)
+            if !accepted && !_usable_bgp_continuation(
+                    p, bgp_seq[t], N_US_path[t], N_W_path[t])
                 final_bgp_valid = false
             end
         catch

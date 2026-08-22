@@ -38,7 +38,7 @@ ahp_reference,n_buffer,0,0,-1,run_control,Notebook 17 effective ahp_reference ru
 ahp_reference,ftol,1.0e-9,1.0e-9,1.0e-9,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 ahp_reference,xtol,1.0e-10,1.0e-10,1.0e-10,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 ahp_reference,iterations,4000,4000,4000,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
-ahp_reference,branch_iters,60,60,30,run_control,Notebook 17 effective ahp_reference run control
+ahp_reference,branch_iters,500,500,30,run_control,Notebook 17 effective ahp_reference run control
 ahp_reference,branch_tol,1.0e-7,1.0e-7,1.0e-7,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 ahp_reference,do_global_polish,false,false,false,run_control,Notebook 17 effective ahp_reference run control
 ahp_reference,φ_floor,0.001,0.001,0.001,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
@@ -75,12 +75,12 @@ selected_downstream,ξ_W,1.0,1.0,0.1,notebook_16_override,Notebook 16 factory
 selected_downstream,N_US_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 selected_downstream,N_W_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 selected_downstream,common_world_growth,true,true,true,notebook_16_override,Notebook 16 factory
-selected_downstream,T_max,112,112,100,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,T_max,105,105,100,run_control,Notebook 17 effective selected_downstream run control
 selected_downstream,n_buffer,0,0,-1,run_control,Notebook 17 effective selected_downstream run control
 selected_downstream,ftol,1.0e-9,1.0e-9,1.0e-9,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 selected_downstream,xtol,1.0e-10,1.0e-10,1.0e-10,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 selected_downstream,iterations,4000,4000,4000,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
-selected_downstream,branch_iters,60,60,30,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,branch_iters,500,500,30,run_control,Notebook 17 effective selected_downstream run control
 selected_downstream,branch_tol,1.0e-7,1.0e-7,1.0e-7,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
 selected_downstream,do_global_polish,false,false,false,run_control,Notebook 17 effective selected_downstream run control
 selected_downstream,φ_floor,0.001,0.001,0.001,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
