@@ -1,0 +1,88 @@
+case_scope,parameter,configured,resolved,default_value,origin,source
+global,selected_label,pathwise_hi_exp_pi075,pathwise_hi_exp_pi075,,notebook_15_winner,Notebook 15 candidate_summary.csv
+ahp_reference,β,0.45,0.45,0.5,notebook_16_override,Notebook 16 factory
+ahp_reference,γ,0.25,0.25,0.5,notebook_16_override,Notebook 16 factory
+ahp_reference,κ,1.0,1.0,0.1,notebook_16_override,Notebook 16 factory
+ahp_reference,ω̄,0.5,0.5,0.8,notebook_16_override,Notebook 16 factory
+ahp_reference,ω̄_star,0.25,0.25,0.2,notebook_16_override,Notebook 16 factory
+ahp_reference,χ,0.0002,0.0002,0.005,notebook_16_override,Notebook 16 factory
+ahp_reference,η,0.01,0.01,0.01,notebook_16_override,Notebook 16 factory
+ahp_reference,π_persist,0.75,0.75,0.7,notebook_16_override,Notebook 16 factory
+ahp_reference,α_US,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ρ_US,2.0,2.0,2.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ϑ_US,0.85,0.85,0.5,notebook_16_override,Notebook 16 factory
+ahp_reference,a_US,0.2,0.2,0.2,notebook_16_override,Notebook 16 factory
+ahp_reference,H_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,L_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,α_W,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ρ_W,2.0,2.0,2.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ϑ_W,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,a_W,0.06,0.06,0.2,notebook_16_override,Notebook 16 factory
+ahp_reference,H_W,3.0,3.0,1.0,notebook_16_override,Notebook 16 factory
+ahp_reference,L_W,3.0,3.0,1.0,notebook_16_override,Notebook 16 factory
+ahp_reference,Abar_X_US,10.0,10.0,10.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,Abar_L_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ν_b,1.0,1.0,1.0,fixed_primitive_user_instruction,fixed primitive nu_b=1; no runtime recalibration
+ahp_reference,A_X_US_u,15.0,15.0,10.0,notebook_16_override,Notebook 16 factory
+ahp_reference,A_L_US_u,1.5,1.5,1.0,notebook_16_override,Notebook 16 factory
+ahp_reference,ξ_u,2.25,2.25,0.7,notebook_16_override,Notebook 16 factory
+ahp_reference,ν_u,1.75,1.75,0.2,notebook_16_override,Notebook 16 factory
+ahp_reference,Abar_X_W,10.0,10.0,10.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,Abar_L_W,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,ξ_W,1.0,1.0,1.0,notebook_16_override,Notebook 16 factory
+ahp_reference,N_US_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,N_W_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,common_world_growth,false,false,false,notebook_16_override,Notebook 16 factory
+ahp_reference,T_max,30,30,100,run_control,Notebook 17 effective ahp_reference run control
+ahp_reference,n_buffer,0,0,-1,run_control,Notebook 17 effective ahp_reference run control
+ahp_reference,ftol,1.0e-9,1.0e-9,1.0e-9,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,xtol,1.0e-10,1.0e-10,1.0e-10,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,iterations,4000,4000,4000,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,branch_iters,500,500,30,run_control,Notebook 17 effective ahp_reference run control
+ahp_reference,branch_tol,1.0e-7,1.0e-7,1.0e-7,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+ahp_reference,do_global_polish,false,false,false,run_control,Notebook 17 effective ahp_reference run control
+ahp_reference,φ_floor,0.001,0.001,0.001,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,β,0.45,0.45,0.5,notebook_16_override,Notebook 16 factory
+selected_downstream,γ,0.25,0.25,0.5,notebook_16_override,Notebook 16 factory
+selected_downstream,κ,1.0,1.0,0.1,notebook_16_override,Notebook 16 factory
+selected_downstream,ω̄,0.5,0.5,0.8,notebook_16_override,Notebook 16 factory
+selected_downstream,ω̄_star,0.25,0.25,0.2,notebook_16_override,Notebook 16 factory
+selected_downstream,χ,0.0002,0.0002,0.005,notebook_16_override,Notebook 16 factory
+selected_downstream,η,0.01,0.01,0.01,notebook_16_override,Notebook 16 factory
+selected_downstream,π_persist,0.75,0.75,0.7,notebook_16_override,Notebook 16 factory
+selected_downstream,α_US,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ρ_US,2.0,2.0,2.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ϑ_US,0.85,0.85,0.5,notebook_16_override,Notebook 16 factory
+selected_downstream,a_US,0.2,0.2,0.2,notebook_16_override,Notebook 16 factory
+selected_downstream,H_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,L_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,α_W,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ρ_W,2.0,2.0,2.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ϑ_W,0.5,0.5,0.5,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,a_W,0.06,0.06,0.2,notebook_16_override,Notebook 16 factory
+selected_downstream,H_W,3.0,3.0,1.0,notebook_16_override,Notebook 16 factory
+selected_downstream,L_W,3.0,3.0,1.0,notebook_16_override,Notebook 16 factory
+selected_downstream,Abar_X_US,10.0,10.0,10.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,Abar_L_US,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ν_b,1.0,1.0,1.0,fixed_primitive_user_instruction,fixed primitive nu_b=1; no runtime recalibration
+selected_downstream,A_X_US_u,15.0,15.0,10.0,notebook_16_override,Notebook 16 factory
+selected_downstream,A_L_US_u,1.5,1.5,1.0,notebook_16_override,Notebook 16 factory
+selected_downstream,ξ_u,2.25,2.25,0.7,notebook_16_override,Notebook 16 factory
+selected_downstream,ν_u,1.75,1.75,0.2,notebook_16_override,Notebook 16 factory
+selected_downstream,Abar_X_W,10.0,10.0,10.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,Abar_L_W,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,ξ_W,1.0,1.0,1.0,notebook_16_override,Notebook 16 factory
+selected_downstream,N_US_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,N_W_0,1.0,1.0,1.0,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,common_world_growth,false,false,false,notebook_16_override,Notebook 16 factory
+selected_downstream,T_max,137,137,100,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,n_buffer,0,0,-1,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,ftol,1.0e-9,1.0e-9,1.0e-9,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,xtol,1.0e-10,1.0e-10,1.0e-10,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,iterations,4000,4000,4000,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,branch_iters,500,500,30,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,branch_tol,1.0e-7,1.0e-7,1.0e-7,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+selected_downstream,do_global_polish,false,false,false,run_control,Notebook 17 effective selected_downstream run control
+selected_downstream,φ_floor,0.001,0.001,0.001,inherited_ProductionParams_default,TwoCountryProductionOLG.ProductionParams default
+fixed_counterfactual,nu_b_fixed,1.0,1.0,1.0,fixed_primitive_user_instruction,fixed-nu_b replication
+source_benchmark,nu_b_common_growth_reference,1.6606529874949896,1.6606529874949896,,source_notebook_15_calibrated_output,source Notebook 15 candidate_summary.csv

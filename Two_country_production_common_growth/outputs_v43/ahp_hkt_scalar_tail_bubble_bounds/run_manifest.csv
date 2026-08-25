@@ -1,9 +1,9 @@
 field,value
-run_started_utc,2026-08-21T12:15:42Z
+run_started_utc,2026-08-24T07:33:14Z
 artifact_scope,bounded_grid_right_censored_not_a_frontier
 run_mode,replication
 project_dir,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes
-output_dir,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/outputs_v43/ahp_hkt_scalar_tail_bubble_bounds
+output_dir,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production_common_growth/outputs_v43/ahp_hkt_scalar_tail_bubble_bounds
 julia_version,1.12.1
 machine,arm64-apple-darwin24.0.0
 horizon_candidates,"30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105"
@@ -78,12 +78,12 @@ omitted_tail_bound,1.542050972327273
 omitted_tail_numerical_estimate,1.1249315776474882
 envelope_slack_factor,1.3707953469953127
 future_envelope_certified,false
-model_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/TwoCountryProductionOLG.jl
-model_sha256,1d05809b7add33d48e7916d33be34e2ccc3a3da8e142a99ae3a86fe384f8a1fc
-notebook_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production/17_v9_ahp_hkt_scalar_tail_bubble_bounds.ipynb
-notebook_input_sha256,a569d330b17fff6fcab3c86889e05c151a171da4e199eb5ee1ec2baec1a31758
+model_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production_common_growth/TwoCountryProductionOLG.jl
+model_sha256,78cc05d541db0ac14e555901d6bb07f7f827fd5a2693b43e3fbb7cd056a2f85d
+notebook_file,/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Two_country_production_common_growth/17_v9_ahp_hkt_scalar_tail_bubble_bounds.ipynb
+notebook_input_sha256,a8efde65865340c25fae1ad44d1153e2927622a1c62b4ab74be5a917ed040353
 notebook_hash_semantics,input notebook before nbconvert writes execution outputs
-notebook_code_sha256,bb89b31bfaa354729585e89f4012ea668d879da305dca3d63fedf3888f1e725e
+notebook_code_sha256,ae2fb1ec3fd4f9282339adfcca016507004b90eb7ab235820874c6f552c1927e
 notebook_code_hash_semantics,nbconvert Julia script; invariant to execution counts and outputs
 notebook_15_source_sha256,c8c850776057fb6caa53778a248607876dda5b2b6f6f72465a3ba08e73cd5164
 notebook_16_source_sha256,3406a66f8696a5df37f6693c4df1b08d774cb2fe8d62a8c5b4b85a47df3878e5

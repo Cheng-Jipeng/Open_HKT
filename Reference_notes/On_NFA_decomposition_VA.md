@@ -64,6 +64,12 @@ $$
 \end{align}
 $$
 
+$$
+n_{W,t}q_{W,t}-n_{W,t-1}q_{W,t-1}
+$$
+
+
+
 ### Valuation effects $VA_t$
 
 The clean equity valuation effect is:

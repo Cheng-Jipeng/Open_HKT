@@ -1,0 +1,2 @@
+T_report,n_buffer,terminal_rule,reference_rule,T0,status,residual_safe,max_u_residual,max_bgp_residual,max_log_q_US_error,t_max_log_q_US_error,max_log_d_over_q_US_error,t_max_log_d_over_q_US_error,max_log_phi_US_error,t_max_log_phi_US_error,max_log_Q_US_error,t_max_log_Q_US_error,max_abs_rebased_NFA_error,t_max_abs_rebased_NFA_error,max_log_cond_1b_error,t_max_log_cond_1b_error,log_cond_1b_start_t,domain_status,domain_message
+137,0,local_loglinear,local_loglinear,137,ok,true,1.6331730215479142e-6,9.412400289866509e-10,0.0,1,0.0,1,0.0,1,0.0,1,0.0,1,0.0,2,2,ok,
