@@ -22,9 +22,27 @@ The specialization is structural, not just a parameter override:
 1. `01_v9_unbalanced_branch_zero_nu_b.ipynb`
 2. `02_v9_ahp_hkt_scalar_tail_bubble_bounds_zero_nu_b.ipynb`
 3. `03_v9_ahp_pattern_T110_replication_zero_nu_b.ipynb`
+4. `04_phi_spillover_funding_sweeps_zero_nu_b.ipynb`
 
 Notebook 03 includes three local Julia support scripts. Their filenames retain
 the source notebook names for traceability.
+
+Notebook 04 is a finite-horizon comparative-static diagnostic for the
+increasing `phi_US` all-`u` path. It lowers `nu_u` and raises `xi_u` one at a
+time, reports the exact funding-versus-production endpoint decomposition and
+the `kappa_D`/`kappa_S` trade-off, and plots all-`u` against switch-to-`b`
+`phi_US` and `phi_W`. It also compares the funding identity
+`zeta_t = 1 + A_t - B_t` over the joint sweep
+`nu_b = xi_W in {0, 0.25, 0.5, 0.75, 1}`, using the specialized zero solver
+at zero and the isolated fixed-exponent solver at each positive point. The
+equivalent relative-scale decomposition reports `m_t = e_W/e_US`,
+`mu_t = Q_W/e_W`,
+and `zeta_t = 1 + (m_t/beta)(s_W-mu_t)`, including an exact endpoint split
+between relative scale and the RoW capitalization wedge. For the same
+five-point exponent sweep, it also plots the all-`u` and switch-to-`b` paths
+of `phi`, `e`, `Q`, `q`, and `N` for both the U.S. and RoW (20 regime-country
+objects) and exports all underlying levels. Its generated files are written below
+`outputs_zero_nu_b/04_phi_spillover_funding_sweeps/`.
 
 ## Horizon provenance
 
