@@ -1,0 +1,5 @@
+T_report,terminal_rule,cutoff_t,cutoff_model_t,comparison,reference_T_report,endpoint_guard,max_log_phi_US_gap,max_log_q_US_gap,max_leakage_gap,max_rebased_nfa_gap,prefix_product_log_gap,stability_tolerance,prefix_product_stable,prefix_paths_stable,prefix_stable
+103,local_loglinear,103,102,vs_selected,105,0,0.000990299962259189,0.0019741871814091816,1.4904505140937371e-5,0.00044273640206349274,4.099028760862211e-5,0.0001,true,false,true
+104,local_loglinear,103,102,vs_selected,105,1,0.00039054960062889776,0.0007785719053590157,5.879896879369684e-6,0.00017450411532166088,1.616565648987489e-5,0.0001,true,false,true
+105,local_loglinear,103,102,vs_selected,105,2,0.0,0.0,0.0,0.0,0.0,0.0001,true,true,true
+105,local_loglinear,103,102,vs_longest_other_horizon,104,2,0.00039054960062889776,0.0007785719053590157,5.879896879369684e-6,0.00017450411532166088,1.616565648987489e-5,0.0001,true,false,true

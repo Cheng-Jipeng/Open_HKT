@@ -1,0 +1,2 @@
+scope,inner_nonlinear_iterations,branch_iteration_schedule,reason,T110_baseline_uses_model_default
+pi_gamma_robustness_sweeps_only,100,60,uncapped 4000-iteration inner solve exceeded 7200-second notebook cell timeout,true

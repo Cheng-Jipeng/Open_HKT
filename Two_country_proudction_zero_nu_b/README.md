@@ -23,6 +23,8 @@ The specialization is structural, not just a parameter override:
 2. `02_v9_ahp_hkt_scalar_tail_bubble_bounds_zero_nu_b.ipynb`
 3. `03_v9_ahp_pattern_T110_replication_zero_nu_b.ipynb`
 4. `04_phi_spillover_funding_sweeps_zero_nu_b.ipynb`
+5. `05_nu_u_funding_regime_sweeps_zero_nu_b.ipynb`
+6. `06_post2008_ahp_nfa_calibration_search_zero_nu_b.ipynb`
 
 Notebook 03 includes three local Julia support scripts. Their filenames retain
 the source notebook names for traceability.
@@ -43,6 +45,29 @@ five-point exponent sweep, it also plots the all-`u` and switch-to-`b` paths
 of `phi`, `e`, `Q`, `q`, and `N` for both the U.S. and RoW (20 regime-country
 objects) and exports all underlying levels. Its generated files are written below
 `outputs_zero_nu_b/04_phi_spillover_funding_sweeps/`.
+
+Notebook 05 applies the four-section calibration-sweep structure in
+`Reference_notes/On_Calibration_variablet_set.md` while holding
+`nu_b = xi_W = 0`, `xi_u = 2.25`, and sweeping
+`nu_u in {1.25, 1.00, 0.75}`. It reports case-specific residual-safe,
+no-buffer horizons up to `T=80`; plots the 20 all-`u` and realized
+switch-to-`b` growth objects with an explicit switch date; and adds the U.S.
+stock-funding, finite-prefix HKT, NFA VA/CA, and bubble-leakage diagnostics.
+Its outputs are written below
+`outputs_zero_nu_b/05_nu_u_funding_regime_sweeps/`.
+
+Notebook 06 loads the post-2008 AHP targets directly from `Empirical_Data` and
+runs a declared nested-continuation search over `pi`, `omega_bar`,
+`omega_bar_star`, and `eta`, holding `nu_b = xi_W = 0` and the production block
+fixed. Its preferred `T=16` point is a qualitative liability-valuation match,
+not a quantitative calibration: U.S. NFA deteriorates, U.S. equity appreciates,
+and the liability term accounts for most gross valuation effects, but the model
+gross positions and flow magnitudes remain far below the empirical targets.
+The default run records only the certified empirical prefix; set
+`NB06_RUN_LONG_HORIZON_AUDIT=true` for the opt-in horizon continuation and
+`NB06_RUN_DIRECT_COLD_CHECK=true` for the potentially slow direct-jump check.
+Outputs are written below
+`outputs_zero_nu_b/06_post2008_ahp_nfa_calibration_search/`.
 
 ## Horizon provenance
 
