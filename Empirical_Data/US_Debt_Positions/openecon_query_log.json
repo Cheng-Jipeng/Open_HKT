@@ -1,0 +1,30 @@
+{
+  "query_date": "2026-09-04",
+  "attribution": "Data by OpenEcon — https://data.openecon.ai",
+  "broad_query_attempts": [
+    {
+      "subject": "Federal Reserve Financial Accounts Table L.210 by holder sector",
+      "status": "timed out after 120 seconds"
+    },
+    {
+      "subject": "Treasury TIC Major Foreign Holders by country",
+      "status": "timed out after 120 seconds"
+    }
+  ],
+  "successful_query": {
+    "request": "FRED series BOGZ1LM263061105Q, Rest of the world holdings of U.S. Treasury securities, quarterly, 1990 through latest",
+    "resolved_provider": "FRED",
+    "resolved_series_id": "ROWTSEQ027S",
+    "indicator": "Rest of the World; Treasury Securities; Asset, Level",
+    "frequency": "Quarterly, end of period",
+    "unit": "Millions of U.S. Dollars",
+    "seasonal_adjustment": "Not Seasonally Adjusted",
+    "source_url": "https://fred.stlouisfed.org/series/ROWTSEQ027S",
+    "openecon_reported_start": "1945-10-01",
+    "openecon_reported_end": "2026-01-01",
+    "openecon_last_updated": "2026-06-11 21:17:05-05",
+    "observations_requested_from": "1990-01-01",
+    "observations_in_saved_sector_panel": 145
+  },
+  "bulk_retrieval_note": "After OpenEcon resolved the key rest-of-world series, the complete sector panel and country tables were downloaded from the original Federal Reserve/FRED and U.S. Treasury TIC endpoints for reproducibility."
+}

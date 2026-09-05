@@ -1,0 +1,19 @@
+{
+  "query_date": "2026-09-04",
+  "latest_ima_date": "2026-01-01",
+  "ima_us_equity_assets_abroad_usd_billions": 28105.958,
+  "ima_us_equity_liabilities_to_foreigners_usd_billions": 40231.802,
+  "ima_net_foreign_equity_position_usd_billions": -12125.844,
+  "latest_asset_survey_date": "2025-12-31",
+  "latest_asset_survey_status": "Preliminary; released 2026-08-31",
+  "portfolio_equity_assets_total_usd_billions": 15246.392,
+  "largest_asset_issuer_location": "Cayman Islands",
+  "largest_asset_issuer_value_usd_billions": 2507.022,
+  "latest_liability_survey_date": "2025-06-30",
+  "portfolio_equity_liabilities_total_usd_billions": 19859.814,
+  "largest_liability_holder_location": "Cayman Islands",
+  "largest_liability_holder_value_usd_billions": 2160.063,
+  "latest_private_us_holder_sector_date": "2025-06-30",
+  "largest_private_us_holder_sector": "Other financial corporations",
+  "largest_private_us_holder_sector_value_usd_billions": 9580.683
+}

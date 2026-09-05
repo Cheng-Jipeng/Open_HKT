@@ -1,0 +1,12 @@
+{
+  "query_date": "2026-09-04",
+  "attribution": "Data by OpenEcon — https://data.openecon.ai",
+  "request": "Retrieve exact quarterly FRED series BOGZ1LM883164105Q and BOGZ1LM263064105Q, 1990Q1-latest, without substitution.",
+  "conversation_id": "us-equity-capitalization-20260904",
+  "status": "OpenEcon returned both exact series with data through 2026Q1.",
+  "returned_series_ids": [
+    "BOGZ1LM883164105Q",
+    "BOGZ1LM263064105Q"
+  ],
+  "note": "OpenEcon also returned one duplicate copy of the foreign series because of semantic country parsing. The package keys observations by exact series ID and verifies them against the official FRED downloads; no duplicate enters the decomposition."
+}

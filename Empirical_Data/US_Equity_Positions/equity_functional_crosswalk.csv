@@ -1,0 +1,68 @@
+foreign_group,member_or_rule,treatment,applies_to
+Japan,Japan,Separately reported economy,Both portfolio assets and portfolio liabilities
+Mainland China,Mainland China,Hong Kong and Macau excluded,Both portfolio assets and portfolio liabilities
+United Kingdom,United Kingdom,Crown dependencies excluded when separately reported,Both portfolio assets and portfolio liabilities
+Other East Asian exporters,South Korea,Separately reported economy,Both portfolio assets and portfolio liabilities
+Other East Asian exporters,Taiwan,Separately reported economy,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Bahamas,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Belgium,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Bermuda,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,"Bonaire, Sint Eustatius and Saba",Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,British Virgin Islands,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Cayman Islands,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Curacao,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Guernsey,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Hong Kong,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Ireland,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Isle of Man,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Jersey,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Liechtenstein,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Luxembourg,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Netherlands,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Panama,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Singapore,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Sint Maarten,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Switzerland,Separately reported financial or offshore location,Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Belgium-Luxembourg,"Historical bridge used only when separately reported members are unavailable; otherwise sum: Belgium, Luxembourg",Both portfolio assets and portfolio liabilities
+Financial/offshore centres,British West Indies,"Historical bridge used only when separately reported members are unavailable; otherwise sum: Anguilla, British Virgin Islands, Cayman Islands, Montserrat, Turks and Caicos Islands",Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Channel Islands,"Historical bridge used only when separately reported members are unavailable; otherwise sum: Guernsey, Jersey",Both portfolio assets and portfolio liabilities
+Financial/offshore centres,Netherlands Antilles,"Historical bridge used only when separately reported members are unavailable; otherwise sum: Bonaire, Sint Eustatius and Saba, Curacao, Sint Maarten",Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Austria,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Bulgaria,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Croatia,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Cyprus,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Czech Republic,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Denmark,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Estonia,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Finland,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),France,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Germany,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Greece,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Hungary,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Italy,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Latvia,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Lithuania,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Malta,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Poland,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Portugal,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Romania,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Slovakia,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Slovenia,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Spain,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Core EU-27 (identifiable),Sweden,2026 EU-27 member outside designated financial-centre subset,Both portfolio assets and portfolio liabilities
+Commodity exporters,Bahrain,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Iran,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Iraq,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Kuwait,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Oman,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Qatar,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Saudi Arabia,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,United Arab Emirates,Separately reported Middle Eastern oil exporter,Both portfolio assets and portfolio liabilities
+Commodity exporters,Middle East Oil-Exporters,Historical aggregate bridge used when separately reported members are unavailable,Both portfolio assets and portfolio liabilities
+Commodity exporters,Middle Eastern Oil Exporters,Historical aggregate bridge used when separately reported members are unavailable,Both portfolio assets and portfolio liabilities
+Canada & other advanced,Australia,Separately reported advanced economy,Both portfolio assets and portfolio liabilities
+Canada & other advanced,Canada,Separately reported advanced economy,Both portfolio assets and portfolio liabilities
+Canada & other advanced,Israel,Separately reported advanced economy,Both portfolio assets and portfolio liabilities
+Canada & other advanced,New Zealand,Separately reported advanced economy,Both portfolio assets and portfolio liabilities
+Canada & other advanced,Norway,Separately reported advanced economy,Both portfolio assets and portfolio liabilities
+All other foreign,Residual,Official survey equity total less all named groups; preserves exact adding-up,Both portfolio assets and portfolio liabilities

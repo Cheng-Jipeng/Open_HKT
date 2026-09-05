@@ -1,0 +1,16 @@
+{
+  "query_date": "2026-09-04",
+  "latest_sector_date": "2026-01-01",
+  "largest_sector_holder": "Rest of world",
+  "largest_sector_value_usd_billions": 9317.224,
+  "largest_sector_share_of_reported_assets": 0.321307,
+  "largest_domestic_sector_holder": "Federal Reserve",
+  "largest_domestic_sector_value_usd_billions": 4000.42,
+  "latest_country_date": "2026-06-01",
+  "largest_foreign_country_holder": "Japan",
+  "largest_foreign_country_value_usd_billions": 1116.7,
+  "largest_foreign_country_share_of_foreign_total": 0.120088,
+  "foreign_total_usd_billions": 9299.0,
+  "foreign_official_usd_billions": 3778.1,
+  "foreign_official_share": 0.406291
+}

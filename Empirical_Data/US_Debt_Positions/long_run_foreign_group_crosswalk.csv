@@ -1,0 +1,47 @@
+foreign_group,component,treatment,coverage_note
+EU-27 (identifiable),Austria,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Belgium,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Bulgaria,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Croatia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Cyprus,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Czechia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Denmark,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Estonia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Finland,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),France,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Germany,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Greece,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Hungary,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Ireland,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Italy,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Latvia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Lithuania,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Luxembourg,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Malta,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Netherlands,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Poland,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Portugal,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Romania,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Slovakia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Slovenia,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Spain,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Sweden,2026 EU membership,Included when separately reported by TIC; otherwise remains in All other foreign
+EU-27 (identifiable),Belgium-Luxembourg,Historical bridge through 2001,Used instead of separate Belgium and Luxembourg when the joint row is reported
+Middle East (reported/bridge),Saudi Arabia,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),United Arab Emirates,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Kuwait,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Israel,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Turkey,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Iraq,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Oman,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Egypt,Named country,Included when separately reported by TIC; otherwise remains in All other foreign
+Middle East (reported/bridge),Oil Exporters,Historical bridge before 2012,Captures Saudi Arabia and most Gulf holders but also includes some non-Middle-Eastern oil exporters
+Four Asian dragons,Hong Kong,Exact named country/economy,Included whenever reported
+Four Asian dragons,Taiwan,Exact named country/economy,Included whenever reported
+Four Asian dragons,Singapore,Exact named country/economy,Included whenever reported
+Four Asian dragons,"Korea, South",Exact named country/economy,Included whenever reported
+Japan,Japan,Exact named country/economy,Included whenever reported
+Mainland China,"China, Mainland",Exact named country/economy,Included whenever reported
+United Kingdom,United Kingdom,Exact named country/economy,Included whenever reported
+Canada,Canada,Exact named country/economy,Included whenever reported
+All other foreign,Residual,Grand Total less all displayed groups,Includes nonreported countries and any EU or Middle-East members not separately identified

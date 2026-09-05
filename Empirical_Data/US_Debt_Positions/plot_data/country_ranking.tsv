@@ -1,0 +1,21 @@
+date	country_or_group	entity_type	value_usd_billions	source_file	source_url	query_date	frequency	units	foreign_total_usd_billions	share_of_foreign_total	rank
+2026-06-01	Japan	Country or economy	1116.7	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.12008818152489516	1
+2026-06-01	United Kingdom	Country or economy	939.9	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.10107538444994085	2
+2026-06-01	China, Mainland	Country or economy	633.4	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.06811485105925368	3
+2026-06-01	Belgium	Country or economy	482.5	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.0518872997096462	4
+2026-06-01	Canada	Country or economy	459.6	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.04942466931928165	5
+2026-06-01	Cayman Islands	Country or economy	453.1	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.04872566942682009	6
+2026-06-01	Luxembourg	Country or economy	434.2	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.046693192816431875	7
+2026-06-01	France	Country or economy	389.9	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.04192923970319389	8
+2026-06-01	Ireland	Country or economy	353.5	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.038014840305409185	9
+2026-06-01	Taiwan	Country or economy	302.5	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.03253037961071083	10
+2026-06-01	Switzerland	Country or economy	284.9	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.030637702978814924	11
+2026-06-01	Singapore	Country or economy	284.4	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.03058393375631788	12
+2026-06-01	Hong Kong	Country or economy	255.8	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.027508334229487043	13
+2026-06-01	Norway	Country or economy	203.2	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.02185181202279815	14
+2026-06-01	India	Country or economy	186.4	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.020045166146897518	15
+2026-06-01	Brazil	Country or economy	168.4	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.018109474137003978	16
+2026-06-01	Saudi Arabia	Country or economy	142.5	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.015324228411657167	17
+2026-06-01	Korea, South	Country or economy	134.7	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.0144854285407033	18
+2026-06-01	United Arab Emirates	Country or economy	114.8	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.012345413485321002	19
+2026-06-01	Israel	Country or economy	110.9	slt_table5.txt	https://ticdata.treasury.gov/Publish/slt_table5.html	2026-09-04	Monthly, end of period	Billions of U.S. dollars	9299.0	0.01192601354984407	20

@@ -1,0 +1,17 @@
+{
+  "query_date": "2026-09-04",
+  "attribution": "Data by OpenEcon — https://data.openecon.ai",
+  "query_attempts": [
+    {
+      "request": "FRED series ROWEISQ027S exact metadata and observations, 1990-latest",
+      "conversation_id": "34c149e4-5e60-4cc9-b589-8b647207e5bb",
+      "status": "No exact candidate returned; data field was null"
+    },
+    {
+      "request": "FRED series ROWEINQ027S exact metadata and observations, 1990-latest",
+      "conversation_id": "893dd37c-3eb1-462b-a1f5-3fc31f90a940",
+      "status": "No exact candidate returned; data field was null"
+    }
+  ],
+  "fallback": "Exact official FRED series and Treasury TIC/CPIS files were downloaded directly. OpenEcon failures were not treated as observations."
+}
