@@ -1,0 +1,191 @@
+\clearpage
+\section{Distribution weights and technology levels: M11, M13--M15 (Group B)}
+
+The authoritative V6 definitions are
+\[
+Y_i=\left[\alpha_i(A_{X,i}X_i)^{1-\rho_i}
+ +(1-\alpha_i)(A_{L,i}L_i)^{1-\rho_i}\right]^{1/(1-\rho_i)},
+\qquad X_i=\varphi_iH_i .
+\]
+M11 comprises $\alpha_{US},\alpha_W$. M13 comprises
+$A^u_{X,US}=\bar A_{X,US,u}N_{US}^{\xi_u}$ and
+$A^u_{L,US}=\bar A_{L,US,u}N_{US}^{\nu_u}$.
+M14 comprises $A^b_{X,US}=\bar A_{X,US,b}$ and
+$A^b_{L,US}=\bar A_{L,US,b}$ because $\nu_b=0$.
+M15 comprises $A_{X,W}=\bar A_{X,W}$ and $A_{L,W}=\bar A_{L,W}$ because $\xi_W=0$.
+These six barred coefficients are augmentation scales, not observed aggregate TFP.
+
+\begin{evidence}
+Caselli and Coleman (2006) \src{CC06}.
+Skill-specific augmentations $A_s,A_u$ in a labor CES inside a capital--labor technology;
+equations (2)--(3), pp.~499--502.
+&
+Baseline skill elasticity $\sigma=1.4$ and capital share $1/3$ are imposed.
+Augmentations are jointly recovered from output and the skill premium.
+There is no unit-free common level or range for V6's barred coefficients.
+&
+Cross-country development accounting: 52 countries; output/capital 1988 and
+schooling 1985. Baseline skill split is completed primary schooling.
+Static country comparison; PPP quantities and wage-premium inputs.
+&
+Transfer the inversion method, not the source capital share to V6 $\alpha$.
+Adjust for V6's intermediate markup, production-only skilled labor and omitted physical
+capital. Cross-country technology differences are not time-series elasticities in $N$.
+\\[5pt]
+Rossi (2022) \src{Rossi22}.
+Relative skill efficiency $(A_HQ_H)/(A_LQ_L)$; equations (4)--(8), Table~I
+in the July~2021 accepted manuscript, pp.~7--8,31.
+&
+At imposed $\sigma=1.5$, US relative efficiency is normalized to 1;
+Canada is $0.711$, India $0.041$. These are country inversions,
+not a confidence interval or V6 RoW scale range.
+&
+Comparable wage and hours microdata for 12 countries around 2000.
+Some tertiary education defines high skill.
+Separate migrant evidence distinguishes embodied human capital $Q$ from technology.
+Static CES, competitive labor pricing.
+&
+Useful for relative-productivity measurement. The reported object mixes
+technology and worker quality, and lacks V6's research-labor and markup adjustments.
+Re-invert the chosen aggregate; averaging these country numbers does not produce
+$(\bar A_{X,W},\bar A_{L,W})$.
+\\[5pt]
+Cantore and Levine (2012) \src{CL12};
+Klump, McAdam and Willman (2012) \src{KMW12}.
+CES distribution and scale normalization.
+&
+No independent empirical point estimate for V6 $\alpha$ or augmentation levels.
+Distribution coefficients depend on units and the normalization point.
+Normalized baseline income shares are different objects from an unrestricted raw CES weight.
+&
+Methodological macroeconomic analyses; RBC examples and a theory/empirics survey.
+Detailed checks use the 2011 Dynare and ECB working-paper versions,
+respectively. No common population or sample-based confidence interval.
+&
+For $\rho\ne1$, fix one convention and jointly recover the remaining scale
+coefficients. Varying $\rho$ while holding all raw scales fixed changes
+baseline shares as well as substitution. Re-normalize around declared production moments.
+\\[5pt]
+León-Ledesma, McAdam and Willman (2010) \src{LMW10}.
+Joint production/first-order-condition system with biased technical change.
+&
+Identification-method evidence, not a new portable value for V6 technology.
+Normalized system estimation can improve separation of substitution and factor bias
+relative to a single production equation.
+&
+Monte Carlo comparisons of CES estimators under specified data-generating processes.
+Published AER article; full-text method checked in ECB working paper~1001 (2009).
+&
+Supports joint treatment of $\rho$, shares and technology paths.
+Does not establish identification in V6, whose monopoly wedge and endogenous research
+allocation introduce additional conditions.
+\\[5pt]
+Hirano, Kishi and Toda (2025) \src{HKT25}, Figure~1 note.
+Same CES weight and factor-augmentation interpretation.
+&
+Illustration: $\alpha=0.5$, $\rho=2$, $A_XH=10$, $A_LL=1$, $n_0=1$.
+Thus $A_X=10/H$ and $A_L=1/L$ in those units, not universal scale values $10$ and $1$.
+&
+Closed-economy theoretical figure with a generational period;
+no fitted population or sampling uncertainty.
+Its post-switch exponents are positive, unlike the V6 zero-exponent case.
+&
+Useful numerical comparison only. The figure does not separately discipline
+US/RoW or the two constant V6 post-switch scales.
+Do not reinterpret this illustration as evidence for a narrow productivity range.
+\\[5pt]
+\end{evidence}
+
+\clearpage
+\subsection{Explicit V6 mapping and proposed assignment}
+
+\textbf{Our derivation from the V6 equations.}
+For each country and reference observation, suppress country subscripts and set
+$X_0=\varphi_0H$. Define the intermediate expenditure share, including its monopoly profits,
+\[
+s_{X,0}\equiv\frac{P_0X_0}{Y_0}
+=\frac{w_{H,0}\varphi_0H}{\vartheta Y_0},
+\qquad 1-s_{X,0}=\frac{w_{L,0}L}{Y_0}.
+\]
+The first share is \emph{not} total skilled payroll over output: research payroll is excluded,
+while profits on current intermediate production are included through $1/\vartheta$.
+Matched observations must satisfy these two shares adding to one under the maintained
+production accounting. If they fail, report the scope/measurement residual rather than
+treating inconsistent share estimates as independent exact restrictions.
+Given $0<s_{X,0}<1$, fixed $\alpha\in(0,1)$ and $\rho\ne1$,
+\begin{align}
+B_X(\alpha,\rho;s_{X,0},Y_0,X_0)
+&\equiv \frac{Y_0}{X_0}
+ \left(\frac{s_{X,0}}{\alpha}\right)^{1/(1-\rho)}
+= A_{X,0}, \label{eq:bx}\\
+B_L(\alpha,\rho;s_{X,0},Y_0,L)
+&\equiv \frac{Y_0}{L}
+ \left(\frac{1-s_{X,0}}{1-\alpha}\right)^{1/(1-\rho)}
+= A_{L,0}. \label{eq:bl}
+\end{align}
+These are conditional production inversions, not an independent demonstration that
+research free entry and the complete equilibrium support the chosen $\varphi_0$.
+
+\begin{evidence}
+M11: $\alpha_{US},\alpha_W$.
+&
+\textbf{Proposed convention:} $\alpha_i=0.5$ with joint rescaling of augmentations,
+when $\rho_i\ne1$. No empirical confidence interval is assigned.
+&
+Only $\alpha_iA_{X,i}^{1-\rho_i}$ and
+$(1-\alpha_i)A_{L,i}^{1-\rho_i}$ enter the raw CES.
+An alternative $\alpha_i'$ is equivalent only if both combinations are preserved.
+&
+This is a normalization, not a half-income-share finding.
+At $\rho=1$, $\alpha$ becomes the Cobb--Douglas share and cannot be varied
+as a pure scale convention. Near one, the inversion is ill-conditioned.
+\\[5pt]
+M13: $\bar A_{X,US,u}$ and $\bar A_{L,US,u}$.
+&
+\textbf{Proposed baseline:}
+$B_{X,US}/N_{US,0}^{\xi_u}$ and
+$B_{L,US}/N_{US,0}^{\nu_u}$.
+No portable numerical level is assigned before matching data.
+&
+Initial US output, production-skilled and unskilled inputs, matched wages,
+markup, and a declared $N_{US,0}$ normalization. These production moments
+become calibration targets if used here.
+&
+Propagate wage/share, research-allocation and $\rho$ uncertainty jointly.
+Changing units changes the bars. A range imported from a different normalization
+would create artificial precision.
+\\[5pt]
+M15: $\bar A_{X,W}$ and $\bar A_{L,W}$.
+&
+\textbf{Proposed baseline:} $B_{X,W}$ and $B_{L,W}$ for the declared RoW aggregate.
+No numerical full-RoW candidate is presently supported.
+&
+Matched country coverage, output units, skill definition and wage accounting.
+CC06/Rossi provide measurement designs, not a ready-made V6 aggregate.
+&
+Use alternative coverage and input definitions to construct joint ranges.
+Maintain the US--RoW relative scale under any common output-unit normalization.
+Covered-country estimates must retain their coverage label.
+\\[5pt]
+M14: $\bar A_{X,US,b}$ and $\bar A_{L,US,b}$.
+&
+\textbf{Proposed reference scenario:}
+$\bar A_{X,US,u}N_\dagger^{\xi_u}$ and
+$\bar A_{L,US,u}N_\dagger^{\nu_u}$ at a declared reference switch stock $N_\dagger$.
+&
+A continuity assumption at one reference state, not an estimated post-switch technology.
+Uninterrupted $u$ observations cannot identify these counterfactual levels.
+&
+Robustness: separate proportional level shocks $m_X,m_L$ around the reference.
+No empirical bounds verified. Optional $m_j\in\{0.8,1,1.2\}$ is an analyst stress grid only.
+Constant bars cannot impose continuity at every possible random switch date.
+\\[5pt]
+\end{evidence}
+
+\textbf{Interpretation of the post-switch scenario.}
+Reference continuity pertains to factor augmentations only. Output, wages and equity values
+may still jump when research allocation or expectations change.
+The $(m_X,m_L)$ grid is not a literature-derived plausible interval and is not recommended
+as a substitute for identifying the economic transition. Its role is to expose how conclusions
+depend on an unobserved technology level. Reassess the internally calibrated financial block
+for each maintained external scenario.

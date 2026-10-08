@@ -1,0 +1,86 @@
+{
+  "dataset": "crsp.msf",
+  "source": "https://wrds-api.wharton.upenn.edu/data/crsp.msf/",
+  "retrieved_at_utc": "2026-09-22T08:15:49.085428+00:00",
+  "filters": {
+    "permno": 14593,
+    "date__gte": "2024-01-01",
+    "date__lte": "2024-12-31"
+  },
+  "filter_expression": null,
+  "columns": [
+    "permno",
+    "date",
+    "prc",
+    "ret",
+    "retx",
+    "shrout",
+    "cfacpr",
+    "cfacshr"
+  ],
+  "column_projection": "local after download",
+  "api_matching_rows": 3,
+  "saved_rows": 12,
+  "start_offset": 0,
+  "next_offset": null,
+  "truncated": false,
+  "complete_matching_sample": true,
+  "stop_reason": "complete",
+  "pages": [
+    {
+      "offset": 0,
+      "requested_limit": 24,
+      "rows": 12,
+      "fetched_at_utc": "2026-09-22T08:15:49.085329+00:00"
+    }
+  ],
+  "field_metadata": {
+    "permno": {
+      "filter_field": true,
+      "type": "integer",
+      "position": 2
+    },
+    "date": {
+      "filter_field": true,
+      "type": "date",
+      "position": 7
+    },
+    "prc": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 10
+    },
+    "ret": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 12
+    },
+    "retx": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 21
+    },
+    "shrout": {
+      "filter_field": false,
+      "type": "float",
+      "position": 15
+    },
+    "cfacpr": {
+      "filter_field": false,
+      "type": "float",
+      "position": 16
+    },
+    "cfacshr": {
+      "filter_field": false,
+      "type": "float",
+      "position": 17
+    }
+  },
+  "numeric_representation": "WRDS decimal strings preserved; no automatic unit conversion",
+  "measurement_note": "API types/filter flags do not establish economic definitions, units, sample coverage or identification. Verify the source codebook before mapping.",
+  "pagination_note": "WRDS offset pagination; an immutable snapshot and stable ordering are not guaranteed by this API.",
+  "sha256": {
+    "data.jsonl": "bff2919522e0b20f9ec45cbcbf143738afe90873c923a20dcb2f0aba356c0d9d",
+    "data.csv": "0138a94989c2dfb6d5489387cdfde1930779c9dfe285bb5aa17fd15ef0a3e893"
+  }
+}

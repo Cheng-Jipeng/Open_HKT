@@ -1,0 +1,17 @@
+{
+  "grouped_rows": 35,
+  "tables": 6,
+  "pdf_pages": 6,
+  "code_fields": 42,
+  "economic_scalar_parameters": 30,
+  "initial_conditions": 2,
+  "numerical_or_compatibility_fields": 10,
+  "all_code_fields_accounted_for": true,
+  "no_source_columns": true,
+  "compile_warnings": 0,
+  "visual_review": "All six rendered pages inspected; equations, table boundaries, headings, and pagination checked.",
+  "original_artifacts_and_model_sources_unchanged": true,
+  "new_solver_execution": false,
+  "new_empirical_validation": false,
+  "pdf_sha256": "e06a6301475a1c89858f399282eef8a8b872ba3c832e8e75d4a0193ca8b07213"
+}

@@ -1,0 +1,7 @@
+file,year,value,unit,flag,country
+eurostat_education_labor.json,2021,12543.1,Thousand persons,b,DE
+eurostat_education_labor.json,2022,12708.1,Thousand persons,,DE
+eurostat_education_labor.json,2023,13052.0,Thousand persons,,DE
+eurostat_rd_investment.json,2021,105966.0,"Current prices, million units of national currency",,DE
+eurostat_rd_investment.json,2022,110894.0,"Current prices, million units of national currency",p,DE
+eurostat_rd_investment.json,2023,124513.0,"Current prices, million units of national currency",p,DE

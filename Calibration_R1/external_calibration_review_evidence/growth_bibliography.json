@@ -1,0 +1,112 @@
+{
+  "KR07": {
+    "authors": "James A. Kahn; Robert W. Rich",
+    "title": "Tracking the new economy: Using growth theory to detect changes in trend productivity",
+    "year": 2007,
+    "journal": "Journal of Monetary Economics54(6),1670–1701",
+    "doi": "10.1016/j.jmoneco.2006.07.008",
+    "url": "https://pages.stern.nyu.edu/~jkahn/Papers/kahnrich_jme.pdf",
+    "locators": [
+      "eqs7–9 and footnote11,p1677",
+      "Table2,p1683",
+      "sample and duration discussion,p1682",
+      "per-capita identification failure,p1687",
+      "December2005 vintage,p1693",
+      "approximate ML appendix,p1696"
+    ]
+  },
+  "Barro06": {
+    "authors": "Robert J. Barro",
+    "title": "Rare Disasters and Asset Markets in the Twentieth Century",
+    "year": 2006,
+    "venue": "Quarterly Journal of Economics 121(3), 823-866",
+    "doi": "10.1162/qjec.121.3.823",
+    "url": "https://dash.harvard.edu/bitstreams/7312037c-67b1-6bd4-e053-0100007fdf3b/download",
+    "locators": [
+      "p.825 disaster process",
+      "p.831 observed annual frequency",
+      "Table V, p.846"
+    ]
+  },
+  "BU08": {
+    "authors": "Robert J. Barro, José F. Ursúa",
+    "title": "Macroeconomic Crises since 1870",
+    "year": 2008,
+    "venue": "Brookings Papers on Economic Activity, Spring, 255-350 including discussion",
+    "doi": "10.1353/eca.0.0000",
+    "url": "https://www.brookings.edu/wp-content/uploads/2008/03/2008a_bpea_barro.pdf",
+    "locators": [
+      "pp.284-286 hazard definition and sample",
+      "Table 10, p.296",
+      "Table 11, p.297",
+      "footnote24, p.286"
+    ]
+  },
+  "HKT25": {
+    "authors": "Tomohiro Hirano, Keiichi Kishi, Alexis Akira Toda",
+    "title": "Technological Innovation and Bursting Bubbles",
+    "year": 2025,
+    "venue": "arXiv:2501.08215v2, preprint",
+    "doi": "10.48550/arXiv.2501.08215",
+    "url": "https://arxiv.org/html/2501.08215v2",
+    "locators": [
+      "Figure 1, p.24",
+      "Section 4.1 factor-augmentation specification",
+      "Section 3.1 R&D law"
+    ]
+  },
+  "BJRW20": {
+    "authors": "Nicholas Bloom, Charles I. Jones, John Van Reenen, Michael Webb",
+    "title": "Are Ideas Getting Harder to Find?",
+    "year": 2020,
+    "venue": "American Economic Review110(4),1104-1144",
+    "doi": "10.1257/aer.20180338",
+    "url": "https://web.stanford.edu/~chadj/IdeaPF.pdf",
+    "locators": [
+      "equations1-3,pp.1108-1110",
+      "Figure2,p.1111",
+      "Table7 and eq17,p.1134",
+      "TableA1,p.1140"
+    ]
+  },
+  "Jones95": {
+    "authors": "Charles I. Jones",
+    "title": "R & D-Based Models of Economic Growth",
+    "year": 1995,
+    "venue": "Journal of Political Economy103(4),759-784",
+    "doi": "10.1086/262002",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/262002",
+    "author_pdf": "https://web.stanford.edu/~chadj/JonesJPE95.pdf",
+    "locators": [
+      "publisher abstract; qualitative specification critique only"
+    ]
+  },
+  "BP07": {
+    "authors": "Laura Bottazzi; Giovanni Peri",
+    "title": "The International Dynamics of R&D and Innovation in the Long Run and in the Short Run",
+    "year": 2007,
+    "journal": "Economic Journal117(518),486–511",
+    "doi": "10.1111/j.1468-0297.2007.02027.x",
+    "url": "https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/bottazzi_et_al-2007-the_economic_journal.pdf",
+    "locators": [
+      "eq5,p492",
+      "eq6–7 and footnote12,p493",
+      "eq8–9,p494",
+      "sample,p495",
+      "Table4,p501",
+      "interpretation,p502"
+    ]
+  },
+  "KM92": {
+    "authors": "Lawrence F. Katz, Kevin M. Murphy",
+    "title": "Changes in Relative Wages,1963-1987: Supply and Demand Factors",
+    "year": 1992,
+    "venue": "Quarterly Journal of Economics107(1),35-78",
+    "doi": "10.2307/2118323",
+    "url": "https://cpi.stanford.edu/_media/pdf/Classic_Media/Katz_Murph_1992.pdf",
+    "locators": [
+      "equation19,p.69",
+      "sample description,p.37"
+    ]
+  }
+}

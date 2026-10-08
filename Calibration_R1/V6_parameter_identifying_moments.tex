@@ -1,0 +1,331 @@
+% !TEX program = pdflatex
+% Standalone companion. Definitions pinned to V6_parameter_calibration_groups.tex.
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,array,longtable,booktabs,ragged2e}
+\usepackage[margin=14mm,headheight=14pt,headsep=5mm,footskip=8mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{microtype,fancyhdr}
+\usepackage[hidelinks,bookmarksnumbered,hypertexnames=false]{hyperref}
+\definecolor{heading}{RGB}{28,53,73}
+\definecolor{tablehead}{RGB}{231,238,243}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{heading}Two-country HKT: primitive identifying moments}
+\fancyhead[R]{\small\sffamily 29 September 2026}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{5pt}\setlength{\LTpre}{5pt}\setlength{\LTpost}{5pt}
+\setlength{\emergencystretch}{3em}\renewcommand{\arraystretch}{1.1}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcommand{\E}{\mathbb E_t}
+\newcommand{\Q}{\mathcal Q}\newcommand{\I}{\mathcal I}\newcommand{\D}{\mathcal D}
+\newcommand{\dd}{\Delta\log}
+\newcommand{\direct}{\textbf{D}}
+\newcommand{\indirect}{\textbf{I}}
+\newcommand{\unavail}{\textbf{U}}
+\newcommand{\route}[1]{\par\textit{#1}}
+\newenvironment{momenttable}{%
+\fontsize{9.5}{11.2}\selectfont\setlength{\parskip}{3pt}
+\begin{longtable}{@{}P{\dimexpr .16\textwidth-6.67pt\relax}P{\dimexpr .49\textwidth-6.67pt\relax}P{\dimexpr .35\textwidth-6.66pt\relax}@{}}
+\toprule\rowcolor{tablehead}\textbf{Parameter / assignment} & \textbf{Primitive identifying moments and inversions} & \textbf{Measurability of the moments}\\\midrule
+\endfirsthead
+\toprule\rowcolor{tablehead}\textbf{Parameter / assignment} & \textbf{Primitive identifying moments and inversions} & \textbf{Measurability of the moments}\\\midrule
+\endhead
+\midrule\multicolumn{3}{r}{\footnotesize\itshape Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+}{\end{longtable}}
+\hypersetup{pdftitle={V6 parameter calibration: primitive identifying moments and measurability},pdfauthor={}}
+\begin{document}
+{\LARGE\sffamily\bfseries\color{heading}Parameter calibration: identifying moments}\par
+{\large\sffamily Parsimonious inversions, measurement requirements, and remaining non-identification}\par
+\textbf{Coverage.} All \textbf{17 parameter families / 30 scalars} in the authoritative parameter-group table. A/B/C retain their original meanings. Four labor endowments are data inputs and two exponents are imposed zeros; neither is an estimated structural coefficient. This is an identification and measurement audit, not a fitted calibration or a new literature search. The accompanying literature reviews inform the proposed assignment, not a claim that any parameter has been identified.
+
+\textbf{Reading column 3.} \direct: a direct observation or accurate accounting construction under an explicit perimeter. \indirect: an estimable or model-conditional construction whose assumptions and input mappings must hold. \unavail: an essential input has no defensible current counterpart. An \indirect\ route is a possibility, not a verified completed data panel. If its required mapping fails, that route is \unavail. Arithmetic alone does not downgrade a measured accounting moment. Conditional algebraic inversion is weaker than joint identification; rank, sampling variation and measurement error must also be assessed.
+
+\section{Shared production reductions: avoid measuring a latent variable unnecessarily}
+Suppress country/time indices. $X=\varphi H$ is skilled labor in production; $\Q_t=N_{t+1}q_t$ is \emph{post-entry} capitalization, $\D_t=N_td_t$ incumbent profits/dividends, and $\I_t=(1-\varphi_t)Hw_{H,t}$ entrant research funding. With independently fixed inverse markup $\vartheta$, production accounting gives
+\begin{equation}\label{eq:allocation}
+ X=\frac{\vartheta(Y-w_LL)}{w_H},\qquad
+ \varphi=\frac{\vartheta(Y-w_LL)}{w_HH},\qquad
+ \I=w_HH-\vartheta(Y-w_LL).
+ \tag{P1}
+\end{equation}
+With active research, free entry gives a second, independent restriction:
+\begin{equation}\label{eq:entry}
+ \Q-\I=Nq=\frac{w_H}{a},\qquad
+ a=\frac{w_H}{\Q-\I},\qquad
+ G_t\equiv\frac{N_{t+1}}{N_t}=\frac{\Q_t}{\Q_t-\I_t}.
+ \tag{P2}
+\end{equation}
+Thus $N$ need not be observed to infer $a$ or relative knowledge growth. Alternatively, independently observe research payroll $\I$, the research share $1-\varphi$, or incumbent $\D$ with $\I=w_HH+w_LL+\D-Y$. These are \emph{alternative input routes}; fitted quantities do not become extra observations. If neither $\vartheta$ nor research allocation is measured, their constancy across dates can identify $a,\vartheta$ jointly:
+\begin{equation}\label{eq:joint}
+ \frac{\Q_t}{w_{H,t}}-H
+ =\frac1a-\vartheta\frac{Y_t-w_{L,t}L}{w_{H,t}}.
+ \tag{P3}
+\end{equation}
+The regressor must vary (intercept/slope rank two). One date gives only a locus. All routes require matched claims, production and skill compensation, common units and model-period flows; $\Q$ must be an independent observed value. Require $0<\varphi<1$ and $0\leq\I<\Q$, rather than clipping inconsistent observations. At $\varphi=1$, entry is an inequality: $a\leq w_H/\Q$, not a point inversion. CES growth calculations below use consistently \emph{real} output and wages. AHP net cash flow may map to $\D-\I$; it cannot be substituted for $\D$ or $\I$ separately.
+
+\textbf{Alternative wage inputs.} If matched aggregate labor income $e$, the mean skill premium $s=w_H/w_L$ and $H,L$ are independently available, recover $w_L=e/(sH+L)$ and $w_H=sw_L$. This \indirect\ construction may substitute for missing direct wage levels, including in RoW. A median-wage premium, mismatched cohort or scaled corporate earnings does not give this exact bridge. The inferred wages are not additional independent moments alongside their source income and premium.
+
+\clearpage
+\section{Group A: external discipline, with conditional model-based alternatives}
+The literature review remains the preferred starting point for preference curvature and compatible markup/substitution evidence. Model moments below offer alternative estimation or validation routes; they do not override contradictory external evidence.
+\begin{momenttable}
+% ENTRY: M02; GROUP: A; SCALARS: 1
+\textbf{M02} $\gamma$\par Risk aversion\route{External preferred; optional joint return fit}
+& \textbf{Portfolio route:} all four return restrictions (F1)--(F4), p.~\pageref{sec:financial}, contain $\gamma$ through $R_A^{-\gamma}$ or $(R_A^*)^{-\gamma}$. Estimate jointly or hold $\beta$, frictions and the return distribution fixed. Different instruments can add information only if their gradients differ.\par
+\textbf{Independent preference route:} an old-age consumption lottery with certainty equivalent $c$ satisfies
+\(c^{1-\gamma}=p c_1^{1-\gamma}+(1-p)c_2^{1-\gamma}\), with the log limit at $\gamma=1$. Multiple stakes/risks can discipline curvature.
+& \indirect\ for a credible conditional return model or matched consumption-risk experiment; \unavail\ for a literal unobserved switch payoff inserted as data. Realized valuation is not an observed risk preference. Consumption versus wealth risk, cohort heterogeneity and aggregation matter. In deterministic $b$, $\gamma$ cancels from these normalized portfolio equations. $\E[MR_A]=1$ is an identity for every $\gamma$, not another identifying moment. Keep the literature's conflicting preference/asset-pricing branches; $\gamma<1$ is a sufficient-theorem restriction, not evidence.\\[5pt]
+% ENTRY: M08; GROUP: A; SCALARS: 4
+\textbf{M08} $H_i,L_i$\par Skilled/unskilled endowments\route{Data inputs; no literature value search}
+& Matched skill counts or hours in the modeled working cohort/production population. A skill ratio $H_i/L_i$ identifies only relative endowments; specify one absolute scale or normalization. Skilled production labor is $X_i=\varphi_iH_i$, not all of $H_i$.
+& \direct\ for a declared education/task classification and matched population; \indirect\ for efficiency-unit adjustments and imperfect sector/cohort coverage. Labor-unit normalization changes $a_i$ inversely; $a_iH_i$ is invariant. A headcount or hours convention must be retained throughout.\\[5pt]
+% ENTRY: M10; GROUP: A; SCALARS: 2
+\textbf{M10} $\vartheta_i$\par Inverse intermediate markup\route{External or conditional production fit}
+& \textbf{External:} $\vartheta_i=1/\mu_i$, or $1-1/\epsilon_i$ for the model's variety-demand elasticity.\par
+\textbf{Accounting:} independently measured research allocation gives
+\(\vartheta=w_H\varphi H/(Y-w_LL)\).
+Alternatively, matched incumbent profits give
+\(\vartheta=1-\D/(Y-w_LL)\).
+These are alternative coordinates of the same production restriction.\par
+\textbf{Without either allocation or profits:} jointly estimate the intercept and slope of (P3) with $a$.
+& External markup estimates are \indirect\ after marginal-cost and sector mapping. Wage/output ingredients can be \direct; research allocation or operating-profit bridges are usually \indirect. AHP cash flow is not automatically monopoly profit. (P3) is \indirect\ and requires time variation and stable parameters. An allocation inferred using $\vartheta$ in (P1) cannot then identify that same $\vartheta$ from the static share. The final-input elasticity $1/\rho$ is distinct from $\epsilon_i$.\\[5pt]
+% ENTRY: M12; GROUP: A; SCALARS: 2
+\textbf{M12} $\rho_i$\par CES curvature; $\sigma_i=1/\rho_i$\route{External preferred, or joint production estimation}
+& \textbf{Stable relative technology:}
+\(\dd(w_H/w_L)=-\rho\,\dd(X/L)\).
+This applies within $W$ or a justified $US,b$ episode, with stable markup.\par
+\textbf{US,$u$:} jointly fit the two growth equations (P5), p.~\pageref{sec:growth}, for $\rho,\xi_u,\nu_u$ when the stacked design has full rank.\par
+\textbf{Quantity-only alternative:} under constant augmentations, fit
+\(Y_t^{1-\rho}=C_X X_t^{1-\rho}+C_L L^{1-\rho}\)
+for $\rho,C_X,C_L$ using independent input/output variation. External substitution estimates offer a fourth data source for the same technological margin.
+& \indirect\ conditional on technology controls and exogenous/instrumented input variation; a fitted $X$ is not an independent quantity observation. A constant input ratio or collinear growth path gives no slope identification. Unrestricted augmentation paths absorb any $\rho$. Skill-input evidence is closer than a generic capital--labor elasticity, but neither maps automatically. The code's $\rho_{US}>1$ restriction must not select the empirical evidence. At $\rho=1$, use the Cobb--Douglas limit; level-scale recovery changes (p.~\pageref{sec:scales}).\\[3pt]
+\end{momenttable}
+
+\clearpage
+\section{Group B: saving, transition risk and innovation productivity}
+These coefficients have model-specific definitions. The proposed route is a calibration choice, not an assertion of point identification.
+\begin{momenttable}
+% ENTRY: M01; GROUP: B; SCALARS: 1
+\textbf{M01} $\beta$\par Young/old utility weight\route{Cohort-compatible external range; saving inversion if mapped}
+& \textbf{US saving:}
+\(\beta=A/e_{US}=1-C_y/e_{US}\), with the position-based counterpart
+\(A=\Q_{US}+NFA\).
+These are one saving restriction. Type-specific saving/consumption can separately test common preferences.\par
+\textbf{RoW saving:} $A^*/e_W=(\beta+\chi)/(1+\chi)$ adds a second restriction if $A^*,e_W$ are independently mapped.\par
+\textbf{Alternative world-data route:}
+\(\Q_{US,t}+\Q_{W,t}=\beta e_{US,t}+s_W e_{W,t}\),
+where $s_W=(\beta+\chi)/(1+\chi)$. Varying relative incomes can identify both coefficients, then $\chi=(s_W-\beta)/(1-s_W)$.\par
+\textbf{Return route:} (F1)--(F4) also contain $\beta$, jointly with frictions. Without an independent scale anchor they mainly discipline $\kappa/\beta,\eta/\beta,\chi/\beta$ conditional on return inputs.
+& Accounting $NFA$, valuation and compensation can be \direct; the stock/cohort/period bridge is \indirect\ and is currently unresolved for a literal two-period generation. All-age wealth/current annual income is not the model saving fraction. An implied $\beta>1$ diagnoses a mapping failure, not a valid estimate. Full RoW value and cohort income remain additional gaps.\par
+World-data rank requires non-proportional country incomes, not just growth in levels. It adds no equation after both country saving conditions have already been used.\par
+An annual discount factor is not $\beta$. For a compatible two-date utility with weights $1,\delta$, $\beta=\delta/(1+\delta)$; the model period/cohort still has to be defined.\\[7pt]
+% ENTRY: M07; GROUP: B; SCALARS: 1
+\textbf{M07} $\pi$\par $\Pr(z_{t+1}=u\mid z_t=u)$\route{Regime evidence if defensible; otherwise scenarios}
+& \textbf{Transition moment:}
+\(\mathbb E[\mathbf1\{z_{t+1}=u\}-\pi\mid z_t=u]=0\).
+Survival/duration statistics are equivalent representations of this transition law under constant hazard.\par
+\textbf{Financial alternative:} (F1)--(F4) use
+\(\E[h]=\pi h_u+(1-\pi)h_b\).
+Joint inference needs separately restricted switch severity, preferences and frictions. It is not four direct measurements of $\pi$.
+& \unavail\ for direct transition measurement until $u,b$ have an operational empirical definition. An observed crisis is not automatically the absorbing technology switch. Duration analogues are \indirect\ external scenarios. An all-$u$ spell is right-censored evidence and gives little information about a rare switch. Financial inference is \indirect\ only with a defensible conditional distribution or identified structural payoff system; unobserved $b$ payoffs are not data. For matched constant annual survival, $\pi_{\Delta}=\pi_{1}^{\Delta}$.\\[7pt]
+% ENTRY: M09; GROUP: B; SCALARS: 2
+\textbf{M09} $a_i$\par Innovation productivity\route{Conditional inversion preferred to a portable literature number}
+& \textbf{Entry/payroll:} use (P2), with independently mapped $\I$, research share, incumbent-profit accounting, or external markup via (P1).\par
+\textbf{Joint markup route:} use (P3) if neither research allocation nor $\vartheta$ is known.\par
+\textbf{Alternative yield inputs:} with $y=\D/\Q$ and independently observed $\varphi$,
+\[
+ aH=\frac{y}{[(1-\vartheta)/\vartheta]\varphi-y(1-\varphi)}.
+\]
+\textbf{Foreign-basket yield alternative:} for matched opening holdings, cash income $C^A_t$ and their revaluation $VA^A_t$,
+\(y_{\mathrm{cash}}=C^A_t/(E_{A,t-1}+VA^A_t)=d_{W,t}/q_{W,t}\).
+Then $a_WH_W=y_{\mathrm{cash}}\vartheta_W/[(1-\vartheta_W)\varphi_W]$; full $\Q_W$ is not required.\par
+\textbf{Direct technology route:} $a=(G-1)/[(1-\varphi)H]$ if independent knowledge-growth evidence is available. These input routes are not extra equations when their ingredients were generated from one another.
+& (P1)--(P3) are \indirect\, conditional on active entry and accurate valuation/output/wage mappings. Neither $N$ nor patent counts are necessary for the preferred route. Yield routes are \indirect; $\D/\Q$ is not $d/q$ because the stock uses $N_{t+1}$. The AHP opening-basket route requires the same incumbent claims for income and revaluation, compatible FDI/fund, FX and reinvestment coverage, and the homogeneous-variety interpretation. $VA^A$ excludes transactions and other-volume changes. Literal variety-growth measurement is \unavail; patents/R\&D indexes are qualified proxies.\par
+Report $aH$ before choosing labor units. At no research, obtain only the entry bound; near $\Q=\I$ the inversion is unstable. Research-spending growth or a literature innovation coefficient alone does not identify V6 $a$.\\[3pt]
+\end{momenttable}
+
+\clearpage
+\section{Group B: production weights and productivity levels}\label{sec:scales}
+For $\rho\ne1$, the primitive level information is two effective CES coefficients, conditional on $\rho,\vartheta,X$:
+\begin{equation}\label{eq:levels}
+ C_X\equiv\alpha A_X^{1-\rho}=\frac{w_H}{\vartheta}\left(\frac X Y\right)^\rho,
+ \qquad C_L\equiv(1-\alpha)A_L^{1-\rho}=w_L\left(\frac L Y\right)^\rho.
+ \tag{P4}
+\end{equation}
+Equivalently, $A_X=(C_X/\alpha)^{1/(1-\rho)}$ and $A_L=[C_L/(1-\alpha)]^{1/(1-\rho)}$. Output plus factor shares supplies the same information. Independent quantity-only production observations can instead fit $C_X,C_L$ when input variation supplies rank. These are alternative data routes, not three independent static restrictions.
+\begin{momenttable}
+% ENTRY: M11; GROUP: B; SCALARS: 2
+\textbf{M11} $\alpha_i$\par CES distribution weights\route{Normalization unless an augmentation restriction is independently supplied}
+& (P4) identifies $C_X,C_L$, not $\alpha,A_X,A_L$ separately. For any $\alpha'\in(0,1)$, the transformation
+\[
+ A_X'=A_X(\alpha/\alpha')^{1/(1-\rho)},\qquad
+ A_L'=A_L[(1-\alpha)/(1-\alpha')]^{1/(1-\rho)}
+\]
+preserves production and factor prices. Apply it in every regime.\par
+If $A_X/A_L$ is independently restricted, the wage/input ratio identifies $\alpha/(1-\alpha)$ through
+\(\frac{w_H}{\vartheta w_L}=\frac{\alpha}{1-\alpha}(A_X/A_L)^{1-\rho}(X/L)^{-\rho}\).
+& Observed factor shares may be \direct, but do \emph{not} remove this exact non-identification. The separate augmentation ratio is \unavail\ as a direct V6 quantity; fixing it is a normalization or maintained restriction.\par
+\textbf{Cobb--Douglas exception:} at $\rho=1$, $\alpha=1-w_LL/Y$ is a conditional share inversion (\indirect), but only $A_X^\alpha A_L^{1-\alpha}$ is identified. Do not use (P4)'s inverse powers at that boundary.\\[7pt]
+% ENTRY: M13; GROUP: B; SCALARS: 2
+\textbf{M13}\par $\bar A_{X,US,u}$, $\bar A_{L,US,u}$\route{Conditional production fit}
+& Use the two level moments (P4), fixing $\alpha_{US}$ and $\rho_{US}$ first. Set $N_{US,0}=1$ as a declared knowledge-unit normalization; the bars then equal the inferred initial augmentations. At later dates,
+\(\bar A_{X,u}=A_{X,t}/N_t^{\xi_u}\),
+\(\bar A_{L,u}=A_{L,t}/N_t^{\nu_u}\),
+with the \emph{relative} $N_t$ path built from (P2). Multiple dates test constant bars.
+& \indirect\ from matched real output, skill compensation and inputs. Absolute knowledge need not be measured after normalization. The two level moments are reused targets, not independent observations of technology. Recovering $\rho$, allocation, $\alpha$ and both levels simultaneously from one cross section is not identified. Near $\rho=1$, separate scale inversions are unstable.\\[7pt]
+% ENTRY: M14; GROUP: B; SCALARS: 2
+\textbf{M14}\par $\bar A_{X,US,b}$, $\bar A_{L,US,b}$\route{Counterfactual scenarios unless a regime mapping exists}
+& With actual, independently classified $b$ observations and $\nu_b=0$, apply (P4) to the constant augmentations.\par
+Without such observations, financial restrictions (F1)--(F4) and observed valuation can only discipline switch payoffs \emph{jointly} with $\pi,\gamma$ and frictions.\par
+Continuity at a specified $N^\dagger$ can impose
+\(\bar A_{X,b}=\bar A_{X,u}(N^\dagger)^{\xi_u}\),
+\(\bar A_{L,b}=\bar A_{L,u}(N^\dagger)^{\nu_u}\).
+& Direct post-switch production moments are currently \unavail. Analogues or a credible regime classifier could supply \indirect\ evidence. An all-$u$ sample does not reveal $b$ technology directly; simulated $b$ values cannot be called measured moments. Continuity is a scenario restriction, not an observation; equal bars implement it only at $N^\dagger=1$ (or special zero exponents). Joint asset-price identification requires a separate rank/profile assessment.\\[7pt]
+% ENTRY: M15; GROUP: B; SCALARS: 2
+\textbf{M15}\par $\bar A_{X,W}$, $\bar A_{L,W}$\route{Conditional production fit}
+& With $\xi_W=0$, use the two level moments (P4), conditional on $\alpha_W,\rho_W$ and the production allocation. Repeated dates should imply constant augmentations. At $\rho_W=1$, estimate only the combined Cobb--Douglas scale unless an additional allocation of that scale is normalized.
+& \indirect; full RoW skill compensation, output and labor must use the same geography, aggregation and units. A covered-country or listed-firm sample is not automatically full RoW. A country TFP index is not two separately measured factor augmentations. The normalization problem for $\alpha_W$ remains.\\[3pt]
+\end{momenttable}
+
+\clearpage
+\section{Group B: growth elasticities and imposed restrictions}\label{sec:growth}
+For consecutive observations within $US,u$, constant $\alpha,\vartheta,\rho$ and fixed labor endowments, log differences of (P4) yield the \emph{primitive growth restrictions}
+\begin{equation}\label{eq:growth}
+\begin{aligned}
+ \dd w_{H,t}-\rho\,\dd(Y_t/X_t)&=(1-\rho)\xi_u\log G_t,\\
+ \dd w_{L,t}-\rho\,\dd(Y_t/L)&=(1-\rho)\nu_u\log G_t,
+ \qquad G_t=\frac{\Q_t}{\Q_t-\I_t}.
+\end{aligned}\tag{P5}
+\end{equation}
+Here $\dd Z_t=\log Z_{t+1}-\log Z_t$, while $G_t=N_{t+1}/N_t$. Match this timing. Both equations use real wages and output in the final-good numeraire. Common inflation would contaminate the inferred common technology component.
+\begin{momenttable}
+% ENTRY: M16; GROUP: B; SCALARS: 2
+\textbf{M16} $\xi_u,\nu_u$\par Knowledge elasticities of the two augmentations\route{Conditional production-growth inversion; otherwise joint scenarios}
+& \textbf{Preferred reduced route:} (P5) gives, for externally fixed $\rho\ne1$ and $\log G_t\ne0$,
+\[
+ \xi_u=\frac{\dd w_H-\rho\dd(Y/X)}{(1-\rho)\log G},\qquad
+ \nu_u=\frac{\dd w_L-\rho\dd(Y/L)}{(1-\rho)\log G}.
+\]
+Obtain $\I,X$ from independently mapped research allocation/payroll, incumbent-profit accounting, or (P1). Absolute $N$, $\alpha$ and augmentation levels disappear.\par
+\textbf{Direct technology route:}
+\(\xi_u=\dd A_X/\dd N\),
+\(\nu_u=\dd A_L/\dd N\).
+These are equivalent structural equations with a different data requirement.\par
+If $\rho$ is also free, jointly fit (P5) as a common $\rho$ and two growth slopes. The difference of the two equations identifies only the relative spillover component; it is not a third independent moment.
+& The literal direct ratios are \unavail\ because exact V6 $N,A_X,A_L$ are unobserved.\par
+The reduced route is \indirect\ if capitalization, real wages/output, allocation and active-entry assumptions are credible. It becomes \unavail\ if those bridges cannot be supplied. Inferring $G$ from observed primitives is legitimate elimination; treating $N$ simulated with the candidate exponents as independent data would be circular.\par
+Require growth variation and full rank: collinearity of $\dd(Y/X)$, $\dd(Y/L)$ and $\log G$ may prevent joint identification with $\rho$. At $G=1$ the exponents have no growth leverage; near $G=1$ or $\rho=1$ recovery is weak. External innovation evidence provides scenarios, not a portable estimate of this pair.\\[9pt]
+% ENTRY: M17; GROUP: B; SCALARS: 2
+\textbf{M17} $\nu_b=0$, $\xi_W=0$\par Imposed common-growth exponents\route{Restrictions to assess; not estimated in this solver}
+& With independently justified $US,b$ or RoW observations, constant augmentations imply the two growth residuals
+\[
+ \dd w_H-\rho\dd(Y/X)=0,\qquad
+ \dd w_L-\rho\dd(Y/L)=0.
+\]
+If the common exponent were freed in a different solver, each residual would equal $(1-\rho)\nu_b\log G$ or $(1-\rho)\xi_W\log G$. These are the same two factor-price moments as (P5), not new parameter families.
+& \indirect\ as RoW specification checks with matched data; \unavail\ for a directly observed US $b$ episode until regime classification exists. If $G=1$, constant augmentations cannot distinguish a zero exponent from a nonzero exponent times zero growth. At $\rho=1$ separate factor-augmentation inference fails. Positive-exponent calibration requires changing the maintained solver specification, not silently reinterpreting these imposed zeros.\\[3pt]
+\end{momenttable}
+\textbf{Implication for the user's $\nu_u$ example.} The direct ratio $\dd A_L/\dd N$ is indeed unmeasurable with the current literal inputs. That does not prove that the parameter is unidentifiable from every observable implication. (P1), (P2) and (P5) eliminate those latent inputs under stronger, explicit structural assumptions. Both assessments therefore belong in the table. No patent stock, trend TFP series or model-generated knowledge path is being relabeled as a direct observation.
+
+\textbf{Joint-system discipline.} Fit shared primitive moments once. If $\vartheta$ is externally fixed, (P1) is an allocation construction and (P3) supplies the same $a$ restriction as (P2). If $a,\vartheta$ are instead fit jointly across dates, their uncertainty carries into $G,X$ and the exponent estimates. Algebraic solvability does not establish an econometrically reliable estimate with noisy, endogenous data.
+
+\clearpage
+\section{Shared financial moments: measured positions, four usable return restrictions}\label{sec:financial}
+Write $E_A=q_Wn_W$, $E_L=q_{US}n^*_{US}$ and $b=NFA-E_A+E_L$ (US net bond assets; negative under positive convenience demand). Consistent values in one currency, claim universe and date imply
+\[
+ S=\Q_{US}-E_L+E_A,\quad S^*=\Q_W-E_A+E_L,\quad
+ A=\Q_{US}+NFA,\quad A^*=\Q_W-NFA,
+\]
+\[
+ \omega=\frac{\Q_{US}-E_L}{S},\quad \omega^*=\frac{E_L}{S^*},\quad
+ \theta=\frac bA,\quad\theta^*\equiv\theta^*_{US}=\frac{-b}{A^*},\quad\theta_W^*=0.
+\]
+Require positive $S,S^*,A,A^*$. Accurate AHP/IMA $NFA,E_A,E_L$ constructions are \direct. The interpretation of their non-equity residual as V6's single safe bond is \indirect; full RoW capitalization and the young-cohort wealth/earnings bridge remain incomplete. These formulas require no share counts or $N$. They must use independent values, not wealth already set equal to $\beta e$.
+
+Let $\Delta R=R_{US,t+1}-R_{W,t+1}$, $R_p=\omega R_{US}+(1-\omega)R_W$, $R_p^*=\omega^*R_{US}+(1-\omega^*)R_W$, $r=R_A=(1-\theta)R_p+\theta R_f$ and $r^*=R_A^*=(1-\theta^*)R_p^*+\theta^*R_f$. At interior equity shares, the four behavioral restrictions usable without observing the RoW shadow rate are
+\begin{align}
+ \E\!\left[r^{-\gamma}\{\beta(1-\theta)\Delta R-\kappa(\omega-\bar\omega)r\}\right]&=0, \tag{F1}\label{eq:F1}\\
+ \E\!\left[r^{-\gamma}\{\beta(R_f-R_p)-\eta\Upsilon'(\theta)r\}\right]&=0,\qquad
+ \Upsilon'(\theta)=\frac1{1-\theta}+\theta, \tag{F2}\label{eq:F2}\\
+ \E\!\left[(r^*)^{-\gamma}\{\beta(1-\theta^*)\Delta R-\kappa(\omega^*-\bar\omega^*)r^*\}\right]&=0, \tag{F3}\label{eq:F3}\\
+ \E\!\left[(r^*)^{-\gamma}\{\beta(R_f-R_p^*)+(\chi/\theta^*)r^*\}\right]&=0. \tag{F4}\label{eq:F4}
+\end{align}
+These cross-multiplied moments equal the manuscript's normalized-kernel FOCs: $M=r^{-\gamma}/\E[r^{1-\gamma}]$, $\widetilde M^*=(r^*)^{-\gamma}/\E[(r^*)^{1-\gamma}]$. Code $M_u,M_b$ mean this \emph{normalized} RoW kernel. With positive gross wealth returns and valid date-$t$ instruments, $\mathbb E[Z_t\,\text{integrand}]=0$ can be estimated from realized returns without measuring a separate SDF. Distributional support, sampling and identification remain necessary. \textbf{$\pi$ does not appear in these integrands evaluated on observed returns: its direct sample-moment Jacobian column is zero.} Identifying $\pi$ requires transition evidence or an explicit parameter-dependent distribution/payoff model. The solver weights $u$ and counterfactual $b$ branches; a simulated survival path is not a sample of that mixture.
+
+The fifth FOC, $\E[(r^*)^{-\gamma}(R_f^W-R_p^*)]=0$, defines a shadow $R_f^W$ if that price is unobserved; it supplies no additional empirical restriction in that case. Foreign sovereign yields are not automatically this zero-supply bond's return. Likewise, a nominal bill deflated by realized inflation is not automatically an ex-ante riskless real payoff. Portfolio corners require inequalities rather than (F1)/(F3) as equalities.
+
+\textbf{AHP-compatible return construction.} The exact aggregate timing is
+\[
+ R_{i,t+1}=\frac{\Q_{i,t+1}-\I_{i,t+1}+\D_{i,t+1}}{\Q_{i,t}}
+ =\frac{\Q_{i,t+1}+\mathcal F_{i,t+1}}{\Q_{i,t}},\qquad \mathcal F=\D-\I=Y-e.
+\]
+Matched net cash flow can therefore construct returns without observing $N$ or separating $\D,\I$. It cannot separately identify research funding for (P2). Direct matched total-return data offer an alternative input route. Operating value, output, R\&D capitalization and payout conventions must agree; corporate GVA and equity market capitalization cannot be interchanged automatically with V6 quantities.
+
+\clearpage
+\section{Group C: internally disciplined international-finance parameters}
+Use independently mapped positions/incomes and the shared return restrictions; assess the joint Jacobian and weak directions conditional on A/B. Accurate international accounting does not, by itself, identify five constant preference/friction coefficients.
+\begin{momenttable}
+% ENTRY: M03; GROUP: C; SCALARS: 1
+\textbf{M03} $\kappa$\par Equity-allocation curvature\route{Internal joint fit}
+& Define $f_U=(1-\theta)\E[M\Delta R]$ and $f_W=(1-\theta^*)\E[\widetilde M^*\Delta R]$. (F1),(F3) imply
+\(f_U=(\kappa/\beta)(\omega-\bar\omega)\),
+\(f_W=(\kappa/\beta)(\omega^*-\bar\omega^*)\).
+With centers constant, within-country variation identifies the common slope: $\kappa=\beta\,\Delta f/\Delta\omega$. With known centers, a nonzero displacement permits a level inversion.
+& Holdings/share inputs are \direct/\indirect\ as qualified on p.~\pageref{sec:financial}; expected risk-adjusted returns are \indirect\ if estimable, otherwise \unavail. Need independent variation, external/identified $\beta,\gamma$ and the return distribution. One date in two countries gives two equations for three unknowns $\kappa,\bar\omega,\bar\omega^*$. If the displacement and wedge both vanish, that observation has no curvature information.\\[5pt]
+% ENTRY: M04; GROUP: C; SCALARS: 2
+\textbf{M04}\par $\bar\omega,\bar\omega^*$\par US-equity preference centers\route{Internal joint fit with $\kappa$}
+& From the same two primitive share/return moments,
+\(\bar\omega=\omega-\beta f_U/\kappa\),
+\(\bar\omega^*=\omega^*-\beta f_W/\kappa\).
+Joint slope/intercept estimation needs rank three in the stacked design with rows $(\omega,-1,0)$ and $(\omega^*,0,-1)$. Within-country share variation in at least one country, and observations from both, are necessary for this conditional design.
+& \indirect/\unavail\ under the same return and position mappings. Observed home bias measures actual weights, not preferred centers. The RoW denominator especially requires full equity-value coverage. Centers are unidentified at $\kappa=0$ and weak when curvature is near zero. Freeing risk/persistence in a structural distribution/payoff model can introduce further rank failures; fixed observed-return GMM has no direct $\pi$ column at all.\\[5pt]
+% ENTRY: M05; GROUP: C; SCALARS: 1
+\textbf{M05} $\chi$\par Convenience demand for US safe claims\route{Internal saving and return fit}
+& \textbf{Saving channel:}
+\(s_W=A^*/e_W\),
+\(\chi=(s_W-\beta)/(1-s_W)\).
+Use $A^*=\Q_W-NFA$ or a matched cohort acquisition measure. The world-value route in M01 is an alternative representation.\par
+\textbf{Risk-weighted demand:} (F4) gives
+\(\chi=\beta\theta^*\E[\widetilde M^*(R_p^*-R_f)]\).
+This is distinct from the saving restriction.\par
+\textbf{Alternative shadow-spread route:}
+\(j=(b^*/e_W)(1-R_f/R_f^W)\),
+\(\chi=j/(1-j)\), $b^*=-b$.
+It combines both RoW bond FOCs and saving; do not count it again after those equations.
+& Saving is \indirect\ conditional on the cohort and full RoW mappings; the return channel is \indirect\ if the distribution is credibly estimable, otherwise \unavail. A broad net-debt residual is not automatically a safe-claim position. The shadow-spread route is currently \unavail\ because $R_f^W$ has no verified counterpart. A spread alone never suffices: holdings/income is needed too. Require $\beta<s_W<1$ and $0<j<1$; near $s_W=1$ inversion is unstable. No risk-distribution assumption is needed for the saving channel.\\[5pt]
+% ENTRY: M06; GROUP: C; SCALARS: 1
+\textbf{M06} $\eta$\par US bond-share utility curvature\route{Internal conditional return fit}
+& The single primitive bond-share condition (F2) gives
+\[
+ \eta=\frac{\beta\E[M(R_f-R_p)]}{1/(1-\theta)+\theta}.
+\]
+Repeated borrowing/return observations can test a constant coefficient. Share response to returns is an informative instrument or variation source for this condition, not a second algebraic identity. Without anchoring $\beta$, only $\eta/\beta$ is disciplined conditional on the return kernel.
+& \indirect/\unavail\ depending on the safe-bond, share and return-distribution mappings. This is not an observed underwriting fee. At $\theta=(1-\sqrt5)/2$, $\Upsilon'(\theta)=0$ and this FOC has no information about $\eta$; near that point it is weak. NFA or borrowing alone does not separate $\eta$ from risk, convenience demand and the portfolio environment.\\[3pt]
+\end{momenttable}
+\textbf{Do not double count.} Saving versus equity clearing after position reconstruction; a yield versus its reciprocal; (P4) versus its output/share rearrangement; relative-wage growth versus the difference of (P5); or stock-pricing formulas derived from the same FOCs add no rank. $\Delta NFA=CA+VA$ with any stated reconciliation terms is an accounting relationship, not three independent behavioral restrictions. Independently measured gross returns, payouts, positions or additional instruments can still add information; only their redundant transformations should be removed.
+
+\clearpage
+\section{Calibration sequence and source audit}
+\textbf{Recommended assignment, separate from identification evidence.}
+\begin{enumerate}
+\item Fix the country/sector/cohort, labor units, model period, asset perimeter and final-good deflator. Construct observed primitives first. Retain alternative defensible AHP mappings rather than silently substituting an equity index, operating value or gross non-equity residual.
+\item Externally discipline $\gamma,\vartheta_i,\rho_i$ where the source definition is compatible; take $H_i,L_i$ from data. Keep conflicting external evidence and input-margin alternatives. Use a cohort-compatible $\beta$ range if the saving bridge cannot be defended. Use $\pi$ and post-switch scales as scenarios if their states are unmeasured. These are assignment decisions, not evidence of identification.
+\item With those choices, attempt the conditional production inversions for $a_i$, productivity levels and $\xi_u,\nu_u$. Fix the $\alpha$ and knowledge-level normalizations. Alternatively estimate $a_i,\vartheta_i$ jointly through (P3), or $\rho_{US},\xi_u,\nu_u$ through (P5), only when the corresponding empirical design has rank. Propagate uncertainty from these shared constructions.
+\item Fit the C block using saving, holdings and the four return restrictions with nonredundant instruments. Check local Jacobian singular values, profile objectives and parameter combinations, not merely the number of equations. If rank or measurement fails, report the unidentified combinations, impose an explicit restriction or retain scenarios. The current document does not claim that the available data already identify the full C block.
+\end{enumerate}
+\textbf{Why this matches the numerical solution.} In \texttt{u\_residual!}, the solver chooses seven unknowns: $\varphi_{US},\varphi_W,\omega,\theta^*_{US},\omega^*,R_f,R_f^W$. It substitutes saving, US bond clearing and production identities before solving two equity-value-clearing equations and five portfolio FOCs. This audit reverses those substitutions where independently measured values exist. The shadow $R_f^W$ and reconstructed accounting quantities do not automatically become extra empirical targets. The manuscript also permits no-entry and equity-portfolio boundaries; the implementation's interior restrictions do not authorize equality inversions at those boundaries.
+
+\textbf{Relationship to the two calibration reviews.} The source-verified LaTeX review is the evidence ledger; the supplied deep-research report contributes alternative recommendations, not an independent estimate of each V6 coefficient. They differ over the preferred risk-aversion branch, markup cost definitions and the substitution margin. No such disagreement is resolved here by choosing a value that satisfies a theorem or solver restriction. The new entry/accounting eliminations improve on a blanket ``latent knowledge implies unmeasurable innovation parameter'' judgment while preserving the unresolved empirical mappings. Production moments used to assign parameters are targeted moments; their exact reconstruction is not an out-of-sample validation.
+
+\textbf{Source crosswalk (current files checked on 29 September 2026).}
+\begin{itemize}
+\item \texttt{V6\_parameter\_calibration\_groups.tex}: authoritative M01--M17 definitions, grouping and 30-field coverage. Its economic parameters are preserved; no auxiliary shorthand is added as a parameter.
+\item \texttt{V6\_production.tex}: technology/entry and production accounting (approximately lines 393--514); saving, normalized kernels and FOCs (617--652, 829--888); clearing (894--951); reduced equilibrium (1105--1265); transition law (1340--1345). Equation meaning, rather than old code comments, governs the mappings.
+\item \texttt{TwoCountryProductionOLG.jl}: \texttt{compute\_production} (254--267), knowledge growth (280--281), deterministic residuals (466--515), and \texttt{u\_residual!} (882--963). The imposed bond-cost derivative is at 183--188. These line references refer to the source snapshot recorded with this audit.
+\item \texttt{V6\_external\_calibration\_literature\_review.tex} and \texttt{deep-reserach-report-External-Calibration Candidate Set for V6.md}: external-versus-conditional assignment, cohort/frequency and transferability qualifications. The earlier \texttt{V6\_calibration\_measurability.tex} supplies the AHP/accounting source and readiness conventions. No fresh data access, new estimate or new original-source verification is claimed here.
+\end{itemize}
+\textbf{Audit materials.} The companion \texttt{identification\_moments\_evidence/} folder contains equation derivations, source hashes, review reconciliation and numerical algebra checks. Checks validate the displayed eliminations on synthetic admissible inputs; they do not validate any empirical mapping. The model, solver and earlier tables were not changed.
+\end{document}

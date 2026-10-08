@@ -1,0 +1,139 @@
+{
+  "dataset": "comp.funda",
+  "source": "https://wrds-api.wharton.upenn.edu/data/comp.funda/",
+  "retrieved_at_utc": "2026-09-22T08:10:28.583425+00:00",
+  "filters": {
+    "fyear": 2024,
+    "gvkey": "001690"
+  },
+  "filter_expression": null,
+  "columns": [
+    "gvkey",
+    "fyear",
+    "datadate",
+    "conm",
+    "curcd",
+    "fic",
+    "consol",
+    "indfmt",
+    "datafmt",
+    "emp",
+    "xrd",
+    "sale",
+    "dvt",
+    "oancf",
+    "capx",
+    "prcc_f",
+    "csho"
+  ],
+  "column_projection": "local after download",
+  "api_matching_rows": 2,
+  "saved_rows": 2,
+  "start_offset": 0,
+  "next_offset": null,
+  "truncated": false,
+  "complete_matching_sample": true,
+  "stop_reason": "complete",
+  "pages": [
+    {
+      "offset": 0,
+      "requested_limit": 10,
+      "rows": 2,
+      "fetched_at_utc": "2026-09-22T08:10:28.583334+00:00"
+    }
+  ],
+  "field_metadata": {
+    "gvkey": {
+      "filter_field": true,
+      "type": "string",
+      "position": 1
+    },
+    "fyear": {
+      "filter_field": true,
+      "type": "integer",
+      "position": 3
+    },
+    "datadate": {
+      "filter_field": false,
+      "type": "date",
+      "position": 2
+    },
+    "conm": {
+      "filter_field": false,
+      "type": "string",
+      "position": 10
+    },
+    "curcd": {
+      "filter_field": false,
+      "type": "string",
+      "position": 19
+    },
+    "fic": {
+      "filter_field": false,
+      "type": "string",
+      "position": 925
+    },
+    "consol": {
+      "filter_field": false,
+      "type": "string",
+      "position": 5
+    },
+    "indfmt": {
+      "filter_field": false,
+      "type": "string",
+      "position": 4
+    },
+    "datafmt": {
+      "filter_field": false,
+      "type": "string",
+      "position": 7
+    },
+    "emp": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 279
+    },
+    "xrd": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 906
+    },
+    "sale": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 704
+    },
+    "dvt": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 269
+    },
+    "oancf": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 544
+    },
+    "capx": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 120
+    },
+    "prcc_f": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 940
+    },
+    "csho": {
+      "filter_field": false,
+      "type": "decimal",
+      "position": 176
+    }
+  },
+  "numeric_representation": "WRDS decimal strings preserved; no automatic unit conversion",
+  "measurement_note": "API types/filter flags do not establish economic definitions, units, sample coverage or identification. Verify the source codebook before mapping.",
+  "pagination_note": "WRDS offset pagination; an immutable snapshot and stable ordering are not guaranteed by this API.",
+  "sha256": {
+    "data.jsonl": "5a46bc745dc4538945a97a9292009cd6392ef1af59c82f12100d801f6867b27e",
+    "data.csv": "97e897456835d354e99b0018a6ecf5cc03cb3539ebd4556237de81e5f551e590"
+  }
+}

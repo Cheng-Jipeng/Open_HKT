@@ -1,0 +1,497 @@
+[
+  {
+    "entry_id": "M01",
+    "core_entry": 1,
+    "symbol": "$\\beta$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "No accurate direct mapping. BEA personal saving/disposable income is aggregate net saving; $\\beta=A/e_{US}$ concerns cohort asset acquisition/labor income, including purchases from the old. SCF wealth/income is not that flow either. Identify jointly after choosing the OLG period and the asset/income boundary.",
+    "source_ids": [
+      "S1"
+    ],
+    "source_note": "BEA NIPA saving; SCF assets, income and saving questions. Metadata verified; contextual evidence only."
+  },
+  {
+    "entry_id": "M02",
+    "core_entry": 2,
+    "symbol": "$\\gamma$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "Risk aversion in the specified continuation utility has no data column. Risk-attitude answers and realized returns can discipline a structural preference estimate, but neither equals this curvature. External estimates require a compatible utility specification and population.",
+    "source_ids": [
+      "S1",
+      "F2"
+    ],
+    "source_note": "SCF questionnaire; CRSP returns via WRDS. Survey metadata and live return sample."
+  },
+  {
+    "entry_id": "M03",
+    "core_entry": 3,
+    "symbol": "$\\kappa$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "Portfolio data discipline a return-wedge/target-deviation combination, not this preference curvature alone. A single equity share cannot separate $\\kappa$ from $\\bar\\omega$, risk preferences and expectations. Requires allocation responses or explicitly imposed restrictions.",
+    "source_ids": [
+      "F2",
+      "F3"
+    ],
+    "source_note": "CRSP returns; resident equity holdings. Neither source directly measures utility costs."
+  },
+  {
+    "entry_id": "M04",
+    "core_entry": 4,
+    "symbol": "$\\bar\\omega,\\ \\bar\\omega^*$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "These are preference centers, not realized home bias. Observed US-equity portfolio weights identify the actual allocation only. Setting the centers equal to observed weights is an additional restriction on risk-adjusted return wedges, not direct measurement.",
+    "source_ids": [
+      "F3"
+    ],
+    "source_note": "Fed international equity positions; domestic equity accounts needed for denominators. TIC/IMF PIP supplementary."
+  },
+  {
+    "entry_id": "M05",
+    "core_entry": 5,
+    "symbol": "$\\chi$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "A safe-asset spread or foreign Treasury share does not equal convenience utility. The model links $\\chi$ jointly to holdings, marginal valuation and the safe-rate wedge; it also changes RoW saving. Currency, credit and duration differences in observed bonds must be separated from convenience.",
+    "source_ids": [
+      "F6",
+      "S1"
+    ],
+    "source_note": "H.15/TB3MS and Treasury TIC holdings; household saving evidence. No exact $\\chi$ series."
+  },
+  {
+    "entry_id": "M06",
+    "core_entry": 6,
+    "symbol": "$\\eta$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "The coefficient scales a utility cost of the bond share, not observed underwriting fees or a resource cost. It needs joint identification from holdings and risk-adjusted return wedges. $\\Upsilon(\\theta)=-\\log(1-\\theta)+\\theta^2/2$ is imposed by the code.",
+    "source_ids": [
+      "F2",
+      "F6",
+      "M1"
+    ],
+    "source_note": "Equity returns, bond yields/positions; model first-order condition. Functional form is fixed."
+  },
+  {
+    "entry_id": "M07",
+    "core_entry": 7,
+    "symbol": "$\\pi$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Regime definition missing",
+    "mapping_and_judgment": "Persistence becomes estimable only after an operational definition of $u/b$ and a period length. A recession indicator or a chosen 2008 date is not the model technology regime. An all-$u$ episode gives censored duration evidence, not a directly observed interior transition probability.",
+    "source_ids": [
+      "M1",
+      "P5"
+    ],
+    "source_note": "No verified regime series. Productivity/investment histories are possible inputs to a future state rule."
+  },
+  {
+    "entry_id": "M08",
+    "core_entry": 8,
+    "symbol": "$H_i,\\ L_i$",
+    "economic_category": "Parameter",
+    "measurement_class": "D",
+    "mapping_readiness": "Conditional: scope and units",
+    "mapping_and_judgment": "Direct employment counts/hours exist for declared skill groups. Candidate: US CPS BA+ versus exhaustive non-BA; Eurostat tertiary versus non-tertiary, age 25--64. Adopt a common age, sector, headcount/FTE and country convention. Education as model skill is a maintained bridge; efficiency units remain I.",
+    "source_ids": [
+      "P1"
+    ],
+    "source_note": "CPS ORG: local micro mapping. Eurostat \\code{lfsa\\_egaed}: live DE sample, annual thousand persons."
+  },
+  {
+    "entry_id": "M09",
+    "core_entry": 9,
+    "symbol": "$a_i$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "$a_i=(N_{i,t+1}/N_{i,t}-1)/[(1-\\varphi_i)H_i]$ is conditional recovery, not direct measurement: neither knowledge varieties nor matched research labor is yet observed. Free-entry inversion uses the same valuation bridge. Separating $a_i$ from $a_iH_i$ needs the labor unit and model period.",
+    "source_ids": [
+      "P2",
+      "P3",
+      "P1"
+    ],
+    "source_note": "MSTI/BERD research inputs; R\\&D/patent stocks; labor quantities. Existing implied-$a$ series is a diagnostic."
+  },
+  {
+    "entry_id": "M10",
+    "core_entry": 10,
+    "symbol": "$\\vartheta_i$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "The inverse monopoly markup is not an accounting gross margin or dividend share. An inversion using $w_H\\varphi H$ and model profit $\\mathcal D$ requires the same production sector and treatment of physical capital, fixed costs, taxes and retention. Firm accounts supply ingredients, not the markup itself.",
+    "source_ids": [
+      "F1",
+      "P4",
+      "P1"
+    ],
+    "source_note": "Compustat expenses/sales; corporate accounts; wages. WRDS access confirmed; no direct markup field."
+  },
+  {
+    "entry_id": "M11",
+    "core_entry": 11,
+    "symbol": "$\\alpha_i$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Normalization and identification",
+    "mapping_and_judgment": "Not an observed labor-income share. CES levels depend on $\\alpha_i A_{X,i}^{1-\\rho_i}$ and $(1-\\alpha_i)A_{L,i}^{1-\\rho_i}$. Separating distribution weights from augmentation scales requires normalization and structural restrictions; downloading factor shares does not resolve this.",
+    "source_ids": [
+      "P1",
+      "P4"
+    ],
+    "source_note": "Employment, wages and corporate accounts are joint calibration evidence."
+  },
+  {
+    "entry_id": "M12",
+    "core_entry": 12,
+    "symbol": "$\\rho_i$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "The elasticity is $1/\\rho_i$. Identification needs relative-input/price variation and assumptions on markup and augmentation dynamics. A generic capital--labor elasticity is not automatically the intermediate-input/unskilled-labor elasticity used here. Both countries use CES in the solver.",
+    "source_ids": [
+      "P1",
+      "P4",
+      "M1"
+    ],
+    "source_note": "Labor quantities/prices; production accounts; compatible external structural estimates."
+  },
+  {
+    "entry_id": "M13",
+    "core_entry": 13,
+    "symbol": "$\\bar A_{X,US,u},\\ \\bar A_{L,US,u}$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "Factor-specific scale coefficients need a production inversion conditional on $\\alpha,\\rho,\\vartheta$, knowledge normalization and output/input units. R\\&D spending, sales per employee, and industry TFP do not measure these coefficients.",
+    "source_ids": [
+      "P1",
+      "P4",
+      "P5",
+      "F1"
+    ],
+    "source_note": "Labor/production accounts and firm R\\&D are ingredients. No verified direct augmentation series."
+  },
+  {
+    "entry_id": "M14",
+    "core_entry": 14,
+    "symbol": "$\\bar A_{X,US,b},\\ \\bar A_{L,US,b}$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Counterfactual restriction",
+    "mapping_and_judgment": "Require measured absorbing-regime production with a justified state rule, or a counterfactual calibration restriction. An all-$u$ sample does not reveal absorbing productivity. Labeling a historical crash as $b$ does not establish the technology correspondence.",
+    "source_ids": [
+      "P4",
+      "M1"
+    ],
+    "source_note": "Production histories plus an independently specified regime rule; currently no exact branch mapping."
+  },
+  {
+    "entry_id": "M15",
+    "core_entry": 15,
+    "symbol": "$\\bar A_{X,W},\\ \\bar A_{L,W}$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "RoW augmentation scales need harmonized quantities, wages and output under the solver CES. A sector productivity ratio or a weighted country average is not either augmentation. Covered G4/OECD-ex-US panels are not the entire residual world.",
+    "source_ids": [
+      "P1",
+      "P4",
+      "P5"
+    ],
+    "source_note": "Eurostat/OECD labor and institutional accounts. Matched RoW wage levels and scope remain gaps."
+  },
+  {
+    "entry_id": "M16",
+    "core_entry": 16,
+    "symbol": "$\\xi_u,\\ \\nu_u$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Structural identification",
+    "mapping_and_judgment": "Elasticities of separately inferred augmentations with respect to a separately mapped knowledge stock. Relative wages alone cannot identify both. Defining $A_X=N^{\\xi_u}$ and comparing that generated series to $N$ imposes the elasticity rather than measuring it.",
+    "source_ids": [
+      "P3",
+      "P1",
+      "P5"
+    ],
+    "source_note": "Knowledge proxies and production evidence; no directly measured elasticity pair."
+  },
+  {
+    "entry_id": "M17",
+    "core_entry": 17,
+    "symbol": "$\\nu_b=0,\\ \\xi_W=0$",
+    "economic_category": "Parameter",
+    "measurement_class": "L",
+    "mapping_readiness": "Imposed, not estimated",
+    "mapping_and_judgment": "Known by construction in the chosen solver; not measurements of zero elasticities. Retain as maintained restrictions and test implications. Positive R\\&D investment growth does not by itself reject zero factor augmentation. Reopening these coefficients changes the computational specification.",
+    "source_ids": [
+      "M1",
+      "P5"
+    ],
+    "source_note": "\\code{validate\\_params} and zero-exponent restriction. R\\&D investment is only contextual evidence."
+  },
+  {
+    "entry_id": "M18",
+    "core_entry": 18,
+    "symbol": "$N_{US,0},\\ N_{W,0}$",
+    "economic_category": "Exogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Normalization / proxy",
+    "mapping_and_judgment": "Setting initial knowledge to one is a normalization, not a measured level. A patent or R\\&D-capital proxy requires office/residence, timing, depreciation and initial-stock conventions. Rebase only after these are fixed; normalized units do not remove the proxy gap.",
+    "source_ids": [
+      "P3"
+    ],
+    "source_note": "Fed/BEA R\\&D stocks; USPTO/OECD/WIPO patent alternatives in the local package."
+  },
+  {
+    "entry_id": "M19",
+    "core_entry": 19,
+    "symbol": "$z_t\\in\\{u,b\\}$",
+    "economic_category": "Exogenous",
+    "measurement_class": "L",
+    "mapping_readiness": "Empirical state rule missing",
+    "mapping_and_judgment": "Exogenous in the model does not mean observed in data. A switch date $\\tau$ imposed in a simulation is a scenario. A documented empirical regime classifier would yield an inferred state (I); no accurate operational $u/b$ mapping is presently supplied.",
+    "source_ids": [
+      "M1"
+    ],
+    "source_note": "Code path available; no verified empirical state series."
+  },
+  {
+    "entry_id": "M20",
+    "core_entry": 20,
+    "symbol": "$N_{i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Model state / proxy",
+    "mapping_and_judgment": "The law of motion gives a model-implied path. R\\&D-cost stocks and perpetual-inventory patent stocks are observable constructions but do not count model varieties. Their growth depends on valuation, depreciation, office coverage and initialization; preserve distinct proxy families.",
+    "source_ids": [
+      "P3"
+    ],
+    "source_note": "Q4 R\\&D stocks \\code{FL105013465}, \\code{FL795013465}; patent stock alternatives. Local evidence."
+  },
+  {
+    "entry_id": "M21",
+    "core_entry": 21,
+    "symbol": "$\\varphi_{US,t},\\ \\varphi_{W,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Research/skill bridge missing",
+    "mapping_and_judgment": "Need $\\varphi=1-R/H$ with research hours/persons a subset of the same skilled population. NRC$\\cap H/H$ fixes the denominator but remains a task proxy: management/clinical work is not necessarily innovation. BERD/MSTI researcher or personnel FTE and headcount are different definitions.",
+    "source_ids": [
+      "P1",
+      "P2"
+    ],
+    "source_note": "CPS/NRC and BERD/MSTI. Live OpenEcon researcher response rejected for wrong measure; OECD HTTP 403 retained."
+  },
+  {
+    "entry_id": "M22",
+    "core_entry": 22,
+    "symbol": "$\\omega_t,\\ \\omega_t^*$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Portfolio-universe bridge",
+    "mapping_and_judgment": "Construct actual US-equity weights from residence-consistent domestic and foreign equity holdings; both denominators include all equity in the same portfolio. External positions alone are insufficient. A foreign ownership share of US capitalization is not $\\omega^*$. Match equity/FDI/fund coverage and consolidate intermediaries.",
+    "source_ids": [
+      "F3",
+      "F7"
+    ],
+    "source_note": "Fed cross-border equity plus domestic equity-supply accounts. Feasible accounting recovery is given on page~\\pageref{sec:bridges}."
+  },
+  {
+    "entry_id": "M23",
+    "core_entry": 23,
+    "symbol": "$\\theta_{US,t}^*$; recovered $\\theta_t,\\theta_{W,t}^*$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Safe claim and wealth gap",
+    "mapping_and_judgment": "Foreign US-safe-claim holdings need the corresponding investable-wealth denominator. Treasury holdings span maturities and private/official institutions. Neither debt/GDP nor all non-equity IIP is this share. $\\theta_W^*=0$ and $\\theta=-\\theta_{US}^*A^*/A$ are equilibrium reconstructions, not empirical observations.",
+    "source_ids": [
+      "F6",
+      "F4",
+      "M1"
+    ],
+    "source_note": "Treasury TIC; \\code{ROWTSEQ027S}; model saving/clearing relations."
+  },
+  {
+    "entry_id": "M24",
+    "core_entry": 24,
+    "symbol": "$R_{f,t},\\ R_{f,t}^W$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Period/numeraire bridge",
+    "mapping_and_judgment": "A named nominal bill yield is D, but TB3MS is a monthly average of annualized discount-basis quotes. Match the holding period and payoff convention. Ex-post inflation adjustment does not create an ex-ante safe real payoff. The zero-supply RoW bond has no uniquely observed world issuer/currency; its yield is model implied.",
+    "source_ids": [
+      "F6",
+      "M1"
+    ],
+    "source_note": "Fed H.15 \\code{TB3MS}: live through Aug 2026. RoW model shadow yield has no exact series."
+  },
+  {
+    "entry_id": "M25",
+    "core_entry": 25,
+    "symbol": "$A_{X,i,t},\\ A_{L,i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Conditional model inversion",
+    "mapping_and_judgment": "Can be inferred only conditional on CES parameters and matched production inputs/prices. That inversion is model implied and cannot independently validate the same parameters. Sector labor productivity, R\\&D GFCF and knowledge-cost deflators are not factor augmentations.",
+    "source_ids": [
+      "P1",
+      "P4",
+      "P5"
+    ],
+    "source_note": "Labor and accounts supply inversion inputs. Live R\\&D-investment observations establish expenditure, not augmentation."
+  },
+  {
+    "entry_id": "M26",
+    "core_entry": 26,
+    "symbol": "$Y_{i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "D",
+    "mapping_readiness": "Conditional: output definition",
+    "mapping_and_judgment": "Corporate GVA or a declared output aggregate is directly measured statistically. Choose its sector, real-price basis and country coverage; GDP and corporate GVA are not interchangeable. Reconcile national-accounts capitalization of R\\&D with model $Y=e+\\mathcal D-\\mathcal I$ before adopting GVA as model output.",
+    "source_ids": [
+      "P4",
+      "P5"
+    ],
+    "source_note": "US IMA corporate GVA; OECD $B1G[S11]+B1G[S12]$. Existing mapped panel and verified official definitions."
+  },
+  {
+    "entry_id": "M27",
+    "core_entry": 27,
+    "symbol": "$w_{H,i,t},\\ w_{L,i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "D",
+    "mapping_readiness": "Conditional; RoW levels gap",
+    "mapping_and_judgment": "US mean earnings per compatible labor unit and skill group are direct candidates. Earnings exclude benefits; median weekly wages are not mean hourly compensation. Corporate-compensation scaling is I. Current RoW relative-earnings panels do not supply matched wage levels, so that component remains I/gap.",
+    "source_ids": [
+      "P1",
+      "P4"
+    ],
+    "source_note": "US CPS ORG micro wages; BLS wage sensitivities. OECD EAG ratios and Eurostat labor quantities: local mappings."
+  },
+  {
+    "entry_id": "M28",
+    "core_entry": 28,
+    "symbol": "$e_{i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Income/coverage bridge",
+    "mapping_and_judgment": "Construct $w_HH+w_LL$ using matched workers, wages and time units. Aggregate corporate compensation is a candidate accounting bridge, not automatically young-cohort opportunity income. Forcing micro wages to reproduce compensation is an identity by construction, not independent validation. RoW wage ratios alone do not recover income levels.",
+    "source_ids": [
+      "P1",
+      "P4"
+    ],
+    "source_note": "US corporate compensation \\code{FU106025005}+\\code{FU796025005}; micro wage-bill alternative."
+  },
+  {
+    "entry_id": "M29",
+    "core_entry": 29,
+    "symbol": "$q_{i,t},d_{i,t}$; reconstructed $R_{i,t+1}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Variety-unit / price bridge",
+    "mapping_and_judgment": "Per-variety levels need $q_t=\\mathcal Q_t/N_{t+1}$ and $d_t=\\mathcal D_t/N_t$, hence the knowledge mapping. Named traded-security price/total returns are D candidates for growth moments only. Splits, issuance and changing composition prevent raw share prices or capitalization growth from directly measuring $q$.",
+    "source_ids": [
+      "F2",
+      "P3",
+      "F5"
+    ],
+    "source_note": "CRSP \\code{prc,ret,retx}; live 2024 sample. Earlier AHP revaluation-implied price chain requires coverage reconciliation."
+  },
+  {
+    "entry_id": "M30",
+    "core_entry": 30,
+    "symbol": "$\\mathcal Q_{i,t},\\ \\mathcal D_{i,t}$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Claim/cash-flow bridge",
+    "mapping_and_judgment": "Equity capitalization and consolidated distributions can be D for a specified universe. Current AHP enterprise-value/FCF candidates are I for V6: enterprise value is not shareholder equity, and FCF is not paid dividends or the model profit flow. Retention, repurchases, taxes, debt and intercorporate payouts require reconciliation.",
+    "source_ids": [
+      "F7",
+      "F1",
+      "P4"
+    ],
+    "source_note": "Fed EV and dividend alternatives; OECD F51 liabilities; Compustat accounts. Keep each mapping ID separate."
+  },
+  {
+    "entry_id": "M31",
+    "core_entry": 31,
+    "symbol": "$q_{W,t}n_{W,t}$, $q_{US,t}n_{US,t}^*$",
+    "economic_category": "Endogenous",
+    "measurement_class": "D",
+    "mapping_readiness": "Conditional: equity universe",
+    "mapping_and_judgment": "Residence-based market-value external equity positions are direct counterparts. Specify FDI, fund shares and international-organization equity; current asset/liability source universes differ in fund coverage. Match timing and currency. The underlying model claim counts $n$ remain I after choosing a price normalization.",
+    "source_ids": [
+      "F3"
+    ],
+    "source_note": "\\code{ROWEISQ027S}, \\code{ROWEINQ027S}; live exact series through2026Q2; Fed analyzer definitions checked."
+  },
+  {
+    "entry_id": "M32",
+    "core_entry": 32,
+    "symbol": "$b_t=\\theta_tA_t$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Safe-bond aggregation gap",
+    "mapping_and_judgment": "$NFA-E_A+E_L$ is a measurable non-equity residual, not automatically one safe bond. It includes loans, deposits, securities, derivatives and reserves in broad accounts. Foreign Treasury holdings are gross liabilities, whereas $b$ is a consolidated net present-value position. Specify the claim and netting rule.",
+    "source_ids": [
+      "F3",
+      "F4",
+      "F6"
+    ],
+    "source_note": "International total/equity accounts; TIC Treasury holdings. Broad residual is descriptive, not a direct safe-bond measure."
+  },
+  {
+    "entry_id": "M33",
+    "core_entry": 33,
+    "symbol": "$NFA_t$",
+    "economic_category": "Endogenous",
+    "measurement_class": "D",
+    "mapping_readiness": "Conditional: instrument scope",
+    "mapping_and_judgment": "Whole-economy NFA is directly measured by external assets minus liabilities; transparent subtraction does not make it latent. To match V6, choose a consistent instrument universe or reconcile omitted assets/claims in an explicit accounting bridge. Do not infer observed cohort wealth merely by imposing $A=NFA+\\mathcal Q_{US}$.",
+    "source_ids": [
+      "F4"
+    ],
+    "source_note": "\\code{ROWTLEQ027S}-\\code{ROWTASQ027S}=$-$\\code{ROWNETQ027S}. Exact identity in all 10 sampled quarters."
+  },
+  {
+    "entry_id": "M34",
+    "core_entry": 34,
+    "symbol": "$VA_t^{asset},\\ VA_t^{liability}$; $VA_t$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Price/valuation bridge",
+    "mapping_and_judgment": "Published revaluations are direct statistical inputs, but model $n_{t-1}\\Delta q_t$ requires matched holdings and pure price changes. Separate FX/other changes and preserve the negative US-liability sign. The legacy liability price chain pairs a broad stock with a narrower revaluation series; resolve that difference first.",
+    "source_ids": [
+      "F5",
+      "F3"
+    ],
+    "source_note": "Asset \\code{FR263181105}; liability \\code{FR263081005} versus \\code{FR263081115}. Live coverage/value discrepancy verified."
+  },
+  {
+    "entry_id": "M35",
+    "core_entry": 35,
+    "symbol": "$CA_t,\\ \\Delta NFA_t$",
+    "economic_category": "Endogenous",
+    "measurement_class": "I",
+    "mapping_readiness": "Transactions/closure bridge",
+    "mapping_and_judgment": "Observed $\\Delta NFA$ and reported CA are D statistical quantities. The current model mapping remains I because it assigns all $\\Delta b$ to transactions. Empirical bond valuation, capital-account/statistical discrepancies and other changes must remain separate; do not force $\\Delta NFA=CA+VA$ by deleting residuals.",
+    "source_ids": [
+      "F4",
+      "F5"
+    ],
+    "source_note": "Quarterly US CA candidate $-$\\code{RWLBACQ027S}/4; NFA levels and separate FU/FR accounts. Annualization verified."
+  }
+]

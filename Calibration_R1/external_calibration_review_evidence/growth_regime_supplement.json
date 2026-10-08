@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-27",
+  "role": "Supplement after Undermind discovery; prior review preserved.",
+  "sources": [
+    {
+      "id": "KR07",
+      "authors": "James A. Kahn; Robert W. Rich",
+      "title": "Tracking the new economy: Using growth theory to detect changes in trend productivity",
+      "year": 2007,
+      "journal": "Journal of Monetary Economics54(6),1670–1701",
+      "doi": "10.1016/j.jmoneco.2006.07.008",
+      "url": "https://pages.stern.nyu.edu/~jkahn/Papers/kahnrich_jme.pdf",
+      "original_definition": "q1=Pr(S1,t=0|S1,t-1=0), high permanent-growth regime; p1=Pr(S1,t=1|S1,t-1=1), low regime. Both recurring.",
+      "method": "Approximate maximum likelihood of Markov-switching dynamic factor/state-space system using Kim filter; growth-theory common permanent trend plus separate transitory component.",
+      "sample": "United States quarterly1947Q1–2002Q4, December2005 vintage. Output/hour and real compensation/hour shifted three quarters; consumption/hour and detrended hours included.",
+      "estimates": {
+        "q1_high_quarterly": 0.99,
+        "q1_se": 0.011,
+        "p1_low_quarterly": 0.983,
+        "p1_se": 0.015,
+        "high_expected_duration_quarters": 100,
+        "low_expected_duration_quarters": 59,
+        "q1_no_pluck": 0.991,
+        "q1_two_equation": 0.993
+      },
+      "locators": [
+        "eqs7–9 and footnote11,p1677",
+        "Table2,p1683",
+        "sample and duration discussion,p1682",
+        "per-capita identification failure,p1687",
+        "December2005 vintage,p1693",
+        "approximate ML appendix,p1696"
+      ],
+      "transformation": "For a first-exit/absorbing surrogate, pi_V6=q1^(4*Delta_years); annual .990^4=.96059601, 25year .990^100=.36603234. This is uninterrupted high-regime survival, not the original chain's high-state probability after a full period (which allows exit/reentry).",
+      "mapping_confidence": "Moderate as recurrent technology-growth duration analogue; low for V6 absorbing change in factor-spillover structure.",
+      "recommendation": "Prefer this as the central literature duration illustration over generic disaster hazards; label pi=.990^(4Delta) conditional scenario, not a V6 estimate. Original paper supports no clean portable credible range.",
+      "uncertainty": "q1±1.96SE crosses1, so Wald interval and inverse duration transform are unreliable near boundary. Few long spells and sensitivity to information set. Per-capita specification cannot identify transition probabilities when regimes collapse. Values across specifications are not a confidence interval.",
+      "version_warning": "2003 NYFed and October2003 SF conference drafts have different symbols, enddates and low-duration estimates; do not combine with published table."
+    },
+    {
+      "id": "BP07",
+      "authors": "Laura Bottazzi; Giovanni Peri",
+      "title": "The International Dynamics of R&D and Innovation in the Long Run and in the Short Run",
+      "year": 2007,
+      "journal": "Economic Journal117(518),486–511",
+      "doi": "10.1111/j.1468-0297.2007.02027.x",
+      "url": "https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/bottazzi_et_al-2007-the_economic_journal.pdf",
+      "original_definition": "Pat_i,t=iota_i*RD_i,t^lambda*A_i,t^phi*A_ROW,i,t^xi; A_i,t+1=Pat_i,t+(1-delta)A_i,t. Cointegrating elasticities ell=lambda/(1-phi), c=xi/(1-phi).",
+      "method": "Panel Dynamic OLS cointegration plus VECM. Country effects and alternative trends/year effects; US patent applications weighted by initial3year citations, R&D personnel in full-time equivalents.",
+      "sample": "15 OECD countries, annual1973–1999 per text; Table4 note says1972–1999; estimation390 observations after lags.",
+      "estimates": {
+        "ell_basic": 0.786,
+        "c_basic": 0.557,
+        "ell_country_trends": 0.304,
+        "c_country_trends": 0.168,
+        "ell_year_effects": 0.746,
+        "c_year_effects": 0.276,
+        "knowledge_depreciation_assumed": 0.1,
+        "depreciation_robustness": [
+          0.08,
+          0.15
+        ]
+      },
+      "locators": [
+        "eq5,p492",
+        "eq6–7 and footnote12,p493",
+        "eq8–9,p494",
+        "sample,p495",
+        "Table4,p501",
+        "interpretation,p502"
+      ],
+      "classification": "Estimated long-run elasticities; depreciation rates imposed choices. No estimated portable V6a level.",
+      "mapping": "V6 innovation law corresponds, at most under matching of patents with varieties and units, to lambda=1,phi=1,foreign exponent=0,delta=0,iota=a. BP ell is a ratio requiring phi!=1, so neither ell nor c nor source xi is V6a or V6 augmentationxi/nu.",
+      "recommendation": "Use as independent empirical evidence for international knowledge and decreasing-return specification review. Do not extract a_i or xi_u/nu_u numerical prior. Patent measurement, obsolescence, foreign spillovers and long-run ratios all differ."
+    }
+  ],
+  "no_final_parameter_selected": true
+}

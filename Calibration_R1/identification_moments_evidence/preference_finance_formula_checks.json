@@ -1,0 +1,25 @@
+{
+  "test_type": "synthetic_algebra_only_not_data_not_complete_equilibrium",
+  "passed": 11,
+  "failed": 0,
+  "max_tolerance": 1e-12,
+  "values": {
+    "chi_from_return_FOC": 0.008028596860050386,
+    "chi_from_price_spread": 0.008028596860050388,
+    "chi_from_saving": 0.008028596860050441,
+    "beta_from_positions": 0.5,
+    "beta_from_NFA": 0.5,
+    "beta_from_world_Q_given_chi": 0.5,
+    "assets_US": 62.440265110892746,
+    "assets_ROW": 50.39823259404837,
+    "US_assets_from_NFA": 62.440265110892746,
+    "ROW_assets_from_NFA": 50.39823259404837,
+    "equity_S_from_weights": 70.0,
+    "equity_S": 70.0,
+    "gamma_shadow": 0.5999999999999938,
+    "gamma_without_shadow": 0.5999999999999939,
+    "pi_recovered": 0.7000000000000004,
+    "theta_degeneracy": -0.6180339887498949,
+    "upsilon_prime_at_degeneracy": -1.1102230246251565e-16
+  }
+}

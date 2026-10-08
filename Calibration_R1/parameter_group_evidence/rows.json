@@ -1,0 +1,343 @@
+[
+  {
+    "entry_id": "M02",
+    "group": "A",
+    "code_fields": [
+      "γ"
+    ],
+    "symbol": "$\\gamma$",
+    "name": "Risk aversion",
+    "assignment_status": "External literature review",
+    "definition_and_reason": "Curvature of the old-age consumption certainty equivalent in V6 Epstein--Zin preferences, with unit intertemporal elasticity. The risk-aversion concept has an established empirical literature; transfer still requires compatible risks and population.",
+    "proposed_discipline": "Review \\lit{EZ}{EZ89} and \\lit{BJKS}{BJKS97}, then document a range and aggregation assumptions. V6 theory additionally needs $0<\\gamma<1$; retain contrary evidence rather than choosing only estimates that deliver bubbles. The solver accepts $\\gamma>0$, while the displayed utility excludes $\\gamma=1$.",
+    "v6_labels": [
+      "US_K_def"
+    ],
+    "references": [
+      "EZ",
+      "BJKS",
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M08",
+    "group": "A",
+    "code_fields": [
+      "H_US",
+      "L_US",
+      "H_W",
+      "L_W"
+    ],
+    "symbol": "$H_i,\\ L_i$",
+    "name": "Labor endowments",
+    "assignment_status": "External data and scale conventions",
+    "definition_and_reason": "Masses of skilled and unskilled young workers; production uses $\\varphi_iH_i$ and research uses $(1-\\varphi_i)H_i$. These are external inputs registered as parameters, with credible labor-data counterparts.",
+    "proposed_discipline": "Use the existing CPS/Eurostat mappings after fixing skill, age/cohort, sector and headcount/FTE definitions. Preserve relative country and skill sizes when choosing units. This is the data-based part of A; a search for a conventional literature number is unnecessary.",
+    "v6_labels": [
+      "country_knowledge_law",
+      "country_labor_income"
+    ],
+    "references": []
+  },
+  {
+    "entry_id": "M10",
+    "group": "A",
+    "code_fields": [
+      "ϑ_US",
+      "ϑ_W"
+    ],
+    "symbol": "$\\vartheta_i$",
+    "name": "Inverse markup",
+    "assignment_status": "External literature review",
+    "definition_and_reason": "Intermediate firms charge $p_i=w_{H,i}/\\vartheta_i$, so their price/marginal-cost markup is $\\mu_i=1/\\vartheta_i$. The demand elasticity across varieties is $1/(1-\\vartheta_i)$, distinct from the final-sector CES elasticity.",
+    "proposed_discipline": "Review markup evidence such as \\lit{DLEU}{DLEU20}; map a compatible gross markup by $\\vartheta_i=1/\\mu_i$. Distinguish markups from profit shares, overhead and taxes. A US listed-firm aggregate need not represent V6 intermediates or the RoW; retain sector/aggregation alternatives.",
+    "v6_labels": [
+      "country_factor_prices",
+      "country_dividend_formula"
+    ],
+    "references": [
+      "DLEU"
+    ]
+  },
+  {
+    "entry_id": "M12",
+    "group": "A",
+    "code_fields": [
+      "ρ_US",
+      "ρ_W"
+    ],
+    "symbol": "$\\rho_i$",
+    "name": "Final-sector CES curvature",
+    "assignment_status": "External literature review",
+    "definition_and_reason": "For $F=[\\alpha\\widetilde X^{1-\\rho}+(1-\\alpha)\\widetilde L^{1-\\rho}]^{1/(1-\\rho)}$, the substitution elasticity is $\\sigma_i=1/\\rho_i$. A clear transformation and substantial substitution literature make this a priority for external review.",
+    "proposed_discipline": "Use \\lit{KM}{KM92} and \\lit{CC}{CC06} as related skill/technology evidence. Match the intermediate-input/unskilled-labor margin, markup and technology controls before transfer. The implemented restriction $\\rho_{US}>1$ means $\\sigma_{US}<1$ (complementarity), not substitutability.",
+    "v6_labels": [
+      "country_final_good",
+      "psi_US_def"
+    ],
+    "references": [
+      "KM",
+      "CC",
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M01",
+    "group": "B",
+    "code_fields": [
+      "β"
+    ],
+    "symbol": "$\\beta$",
+    "name": "OLG utility / saving weight",
+    "assignment_status": "External range after cohort mapping",
+    "definition_and_reason": "V6 places weights $1-\\beta$ and $\\beta$ on young consumption and the old-age certainty equivalent, yielding $A_t=\\beta e_{US,t}$. A conventional annual infinite-horizon discount factor is a different object.",
+    "proposed_discipline": "Use compatible life-cycle/OLG saving and preference evidence; \\lit{HKT}{HKT25} is the closest specification. If a two-date utility instead uses weights $1,\\delta$, then $\\beta=\\delta/(1+\\delta)$. This algebra alone supplies no annual-to-generation conversion. Do not fit $\\beta$ to an incompatible aggregate wealth/income ratio.",
+    "v6_labels": [
+      "US_saving_rule_bond_cost"
+    ],
+    "references": [
+      "HKT",
+      "BJKS"
+    ]
+  },
+  {
+    "entry_id": "M07",
+    "group": "B",
+    "code_fields": [
+      "π_persist"
+    ],
+    "symbol": "$\\pi$",
+    "name": "Unbalanced-regime persistence",
+    "assignment_status": "External scenario / credible range",
+    "definition_and_reason": "$\\pi=\\Pr(z_{t+1}=u\\mid z_t=u)$ with absorbing $b$. Its empirical interpretation needs an operational technology-regime definition and a model-period length. It also affects financial valuation, but is not a portfolio friction.",
+    "proposed_discipline": "Use regime-duration or disaster literature (\\lit{BARRO}{Barro06}) as an analogy, not a direct crash-probability estimate. Under a matched constant annual event probability $h$, $\\pi=(1-h)^{\\Delta}$ for a $\\Delta$-year period. Without matched events, report scenarios and re-fit C across them; an all-$u$ sample alone is weak evidence.",
+    "v6_labels": [
+      "ass_regime_switch"
+    ],
+    "references": [
+      "BARRO",
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M09",
+    "group": "B",
+    "code_fields": [
+      "a_US",
+      "a_W"
+    ],
+    "symbol": "$a_i$",
+    "name": "Innovation productivity",
+    "assignment_status": "External range from a joint mapping",
+    "definition_and_reason": "$N_{i,t+1}/N_{i,t}-1=a_i(1-\\varphi_{i,t})H_i$. R\\&D productivity evidence is relevant, but V6 varieties and skilled research labor are not directly observed as a matched pair. The coefficient depends on labor units and period length.",
+    "proposed_discipline": "Use \\lit{BJRW}{BJRW20} and \\lit{HKT}{HKT25} to organize evidence and specification alternatives. Discipline $a_iH_i$ jointly with knowledge growth and the research share; recover $a_i$ only after fixing $H_i$. A research-spending growth rate or a patent count does not by itself deliver $a_i$.",
+    "v6_labels": [
+      "country_knowledge_law"
+    ],
+    "references": [
+      "BJRW",
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M11",
+    "group": "B",
+    "code_fields": [
+      "α_US",
+      "α_W"
+    ],
+    "symbol": "$\\alpha_i$",
+    "name": "CES distribution weights",
+    "assignment_status": "Normalization plus external production discipline",
+    "definition_and_reason": "Levels enter through $\\alpha_iA_{X,i}^{1-\\rho_i}$ and $(1-\\alpha_i)A_{L,i}^{1-\\rho_i}$. A labor share is informative conditional on technology, markup and inputs; it is not the CES weight itself.",
+    "proposed_discipline": "Fix units and a production normalization, then use matched income shares and relative wages, following the logic of \\lit{CC}{CC06}. Do not separately choose both augmentation scales and $\\alpha_i$ as if all three were independently identified. AHP cost shares use a different production model.",
+    "v6_labels": [
+      "country_final_good",
+      "country_factor_prices"
+    ],
+    "references": [
+      "CC",
+      "AHP"
+    ]
+  },
+  {
+    "entry_id": "M13",
+    "group": "B",
+    "code_fields": [
+      "A_X_US_u",
+      "A_L_US_u"
+    ],
+    "symbol": "$\\bar A_{X,US,u},\\ \\bar A_{L,US,u}$",
+    "name": "US productivity scales in u",
+    "assignment_status": "Conditional production fit",
+    "definition_and_reason": "$A^u_{X,US}=\\bar A_{X,US,u}N_{US}^{\\xi_u}$ and $A^u_{L,US}=\\bar A_{L,US,u}N_{US}^{\\nu_u}$. Code fields \\code{A\\_X\\_US\\_u}, \\code{A\\_L\\_US\\_u} are scale coefficients, not observed TFP levels.",
+    "proposed_discipline": "Use initial output, matched skill wages and labor quantities under a declared $N_0$ and $\\alpha$ normalization (\\lit{CC}{CC06}; \\lit{HKT}{HKT25}). Construct joint ranges for relative productivity and scale; record any production moments used to assign them as targeted moments.",
+    "v6_labels": [
+      "US_u_productivity_primitives"
+    ],
+    "references": [
+      "CC",
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M14",
+    "group": "B",
+    "code_fields": [
+      "Abar_X_US",
+      "Abar_L_US"
+    ],
+    "symbol": "$\\bar A_{X,US,b},\\ \\bar A_{L,US,b}$",
+    "name": "US absorbing-regime scales",
+    "assignment_status": "Counterfactual range",
+    "definition_and_reason": "These levels determine post-switch production and equity payoffs. With $\\nu_b=0$ they are constant augmentations. A history observed entirely in $u$ does not directly reveal the $b$ technology.",
+    "proposed_discipline": "Use defensible post-transition analogues, bounded productivity changes or explicit continuity restrictions, with \\lit{HKT}{HKT25} as a model comparison. Do not silently equate them to the $u$ scales. Re-fit C across these scenarios because switch severity trades off with $\\pi$ and $\\gamma$ in asset prices.",
+    "v6_labels": [
+      "bg_us_primitives"
+    ],
+    "references": [
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M15",
+    "group": "B",
+    "code_fields": [
+      "Abar_X_W",
+      "Abar_L_W"
+    ],
+    "symbol": "$\\bar A_{X,W},\\ \\bar A_{L,W}$",
+    "name": "RoW productivity scales",
+    "assignment_status": "Conditional production fit",
+    "definition_and_reason": "With $\\xi_W=0$, these are constant RoW factor augmentations, not country-average TFP. They set relative income and funding capacity and interact with $\\alpha_W$, labor units and the geographic definition of RoW.",
+    "proposed_discipline": "Use matched output and skill-wage evidence for the declared country aggregate; \\lit{CC}{CC06} guides interpretation and \\lit{AHP}{AHP25} the corporate-account scope. Keep full RoW and covered-country proxies distinct; a common scale normalization cannot determine all relative productivity levels.",
+    "v6_labels": [
+      "bg_w_primitives"
+    ],
+    "references": [
+      "CC",
+      "AHP"
+    ]
+  },
+  {
+    "entry_id": "M16",
+    "group": "B",
+    "code_fields": [
+      "ξ_u",
+      "ν_u"
+    ],
+    "symbol": "$\\xi_u,\\ \\nu_u$",
+    "name": "Knowledge-spillover elasticities",
+    "assignment_status": "External joint range / specification review",
+    "definition_and_reason": "These are elasticities of factor augmentations with respect to the knowledge stock: $\\partial\\log A_X/\\partial\\log N=\\xi_u$, $\\partial\\log A_L/\\partial\\log N=\\nu_u$. Broad innovation/growth estimates are related, but do not identify this pair directly.",
+    "proposed_discipline": "Combine \\lit{HKT}{HKT25}, \\lit{CC}{CC06} and \\lit{BJRW}{BJRW20} with knowledge and wage-growth mappings. Report a joint range. The solver requires $\\xi_u>\\nu_u\\ge0$; V6 theory additionally uses $\\nu_u>\\nu_b$. $\\psi_{US}=(\\xi_u-\\nu_u)(\\rho_{US}-1)$ is derived, not another free parameter.",
+    "v6_labels": [
+      "US_u_productivity_primitives",
+      "psi_US_def"
+    ],
+    "references": [
+      "HKT",
+      "CC",
+      "BJRW"
+    ]
+  },
+  {
+    "entry_id": "M17",
+    "group": "B",
+    "code_fields": [
+      "ν_b",
+      "ξ_W"
+    ],
+    "symbol": "$\\nu_b=0,\\ \\xi_W=0$",
+    "name": "Fixed growth specialization",
+    "assignment_status": "Imposed, not free parameters",
+    "definition_and_reason": "These technology coefficients are fixed at zero by this solver. B marks their model-specific family; the zeros are imposed restrictions, not estimates.",
+    "proposed_discipline": "Retain and assess these restrictions. Positive-exponent scenarios, including related \\lit{HKT}{HKT25} illustrations, require an alternative solver before any value search.",
+    "v6_labels": [
+      "bg_us_primitives",
+      "bg_w_primitives"
+    ],
+    "references": [
+      "HKT"
+    ]
+  },
+  {
+    "entry_id": "M03",
+    "group": "C",
+    "code_fields": [
+      "κ"
+    ],
+    "symbol": "$\\kappa$",
+    "name": "Equity-allocation friction",
+    "assignment_status": "Internal joint calibration candidate",
+    "definition_and_reason": "Curvature of $-\\kappa(\\omega-\\bar\\omega)^2/2$ and its RoW counterpart. It governs the response of portfolio shares to expected risk-adjusted relative equity returns. There is no portable standard home-bias cost for this utility normalization.",
+    "proposed_discipline": "Use share/return variation and gross equity exposures, conditional on A/B. \\lit{CR}{CR13} provides plausibility checks. A single observed share mainly restricts the combination $\\kappa(\\omega-\\bar\\omega)$; it does not separate $\\kappa$ from the center. Consider a restricted C block if informative variation is insufficient.",
+    "v6_labels": [
+      "US_omega_FOC_bond_cost",
+      "RoW_omega_FOC_mod"
+    ],
+    "references": [
+      "CR",
+      "AHP"
+    ]
+  },
+  {
+    "entry_id": "M04",
+    "group": "C",
+    "code_fields": [
+      "ω̄",
+      "ω̄_star"
+    ],
+    "symbol": "$\\bar\\omega,\\ \\bar\\omega^*$",
+    "name": "US-equity preference centers",
+    "assignment_status": "Internal joint calibration candidates",
+    "definition_and_reason": "Both are preferred US-equity weights within an investor equity portfolio, for US and RoW investors respectively. They are distinct from actual $\\omega,\\omega^*$ and from foreign ownership of the US issuer sector.",
+    "proposed_discipline": "Use AHP-style gross equity positions and conditional portfolio-weight mappings jointly with $\\kappa$ (\\lit{AHP}{AHP25}; \\lit{CR}{CR13}). Neither $E_L/V_{US}$ nor one observed home-bias index directly measures either center. Full RoW wealth/value coverage remains a constraint for $\\omega^*$.",
+    "v6_labels": [
+      "US_omega_FOC_bond_cost",
+      "RoW_omega_FOC_mod"
+    ],
+    "references": [
+      "AHP",
+      "CR"
+    ]
+  },
+  {
+    "entry_id": "M05",
+    "group": "C",
+    "code_fields": [
+      "χ"
+    ],
+    "symbol": "$\\chi$",
+    "name": "Foreign demand for US safe claims",
+    "assignment_status": "Internal joint calibration candidate",
+    "definition_and_reason": "Coefficient of RoW utility from US-bond holdings; it also changes RoW saving to $A^*=[(\\beta+\\chi)/(1+\\chi)]e_W$. Its value depends on the utility normalization and wealth/claim definitions.",
+    "proposed_discipline": "Combine foreign safe-claim holdings, matched wealth/saving evidence and suitable safe-asset spreads. \\lit{KVJ}{KVJ12} supports the convenience-yield mechanism, not a V6 coefficient value. AHP net non-equity positions are useful accounting targets but are not automatically pure safe debt.",
+    "v6_labels": [
+      "RoW_thetaUS_FOC_mod"
+    ],
+    "references": [
+      "KVJ",
+      "AHP"
+    ]
+  },
+  {
+    "entry_id": "M06",
+    "group": "C",
+    "code_fields": [
+      "η"
+    ],
+    "symbol": "$\\eta$",
+    "name": "US bond-share friction",
+    "assignment_status": "Internal joint calibration candidate",
+    "definition_and_reason": "Scales the utility term $-\\eta\\Upsilon(\\theta)$ with the code-imposed $\\Upsilon(\\theta)=-\\log(1-\\theta)+\\theta^2/2$. It is not an observed bond underwriting fee or a resource cost.",
+    "proposed_discipline": "Jointly use US net borrowing, its response to returns, and the safe-return wedge, conditional on $\\chi$, $\\beta$ and the chosen bond mapping. External financing-friction studies offer plausibility only. NFA, CA and valuation alone need not separately identify $\\eta$ and $\\chi$.",
+    "v6_labels": [
+      "US_theta_FOC_bond_cost"
+    ],
+    "references": [
+      "AHP",
+      "CR"
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-09-27T10:01:32.039713+00:00",
+  "coverage": {
+    "checked_at": "2026-09-27T10:00:07.914263+00:00",
+    "parameter_families": 17,
+    "scalar_fields": 30,
+    "families_by_group": {
+      "A": 4,
+      "B": 9,
+      "C": 4
+    },
+    "scalars_by_group": {
+      "A": 9,
+      "B": 16,
+      "C": 5
+    },
+    "all_code_fields_covered_once": true,
+    "all_v6_labels_exist": true,
+    "reviewed_baselines_unchanged": true,
+    "selected_parameter_values": false,
+    "classification_basis": "Proposed assignment strategy; not a structural identification result."
+  },
+  "pdf_pages": 4,
+  "tex_compilation": "success; MacTeX latexmk / pdfLaTeX",
+  "native_preview_compiler": "timed out downloading its first-run format; exported PDF compiled successfully with installed MacTeX",
+  "latex_warnings": [],
+  "all_parameter_rows_in_pdf": true,
+  "csv_json_consistent": true,
+  "literature_sources": 11,
+  "all_reference_anchors_and_external_links_present": true,
+  "visual_review": {
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "result": "pass; final Group-B notation wraps inside its column, with all nine rows on one page",
+    "render_directory": "build/parameter_groups/qa_final"
+  },
+  "baseline_hash_count": 10,
+  "artifact_sha256": {
+    "V6_parameter_calibration_groups.tex": "b6823c10864dcdaf6643aa76ce6bd1c22a75d31c6a36b1b93e412b6a3ce77572",
+    "V6_parameter_calibration_groups.pdf": "7de734b69210629e705fd8046f491ef499137add0470d012ed6f295341969381",
+    "V6_parameter_calibration_groups.csv": "192d82048974e4838f079ce2956c46184d7396e0930f6e956f989a1041066e3d",
+    "parameter_group_evidence/rows.json": "119e1f3a7707b7a01a323f4ac899cb836696aecdb96401b9c3e52776c2d4a8e3",
+    "parameter_group_evidence/sources.json": "ce1953332f695fb22eafc0d372eac9290aafa6f763eeef1cef75f1fc87b8ea51"
+  }
+}

@@ -1,0 +1,1086 @@
+% !TEX program = pdflatex
+% Standalone output assembled by external_calibration_review_evidence/build_review.py.
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=14mm,headheight=14pt,headsep=6mm,footskip=8mm]{geometry}
+\usepackage{array,longtable,booktabs,ragged2e,multicol}
+\usepackage[table]{xcolor}
+\usepackage{microtype,fancyhdr}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\definecolor{heading}{RGB}{28,53,73}
+\definecolor{tablehead}{RGB}{231,238,243}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{heading}Two-country HKT: external-calibration literature review}
+\fancyhead[R]{\small\sffamily 27 September 2026}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{5pt}\setlength{\LTpre}{5pt}\setlength{\LTpost}{7pt}
+\renewcommand{\arraystretch}{1.1}\setlength{\emergencystretch}{3em}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\src}[1]{\hyperlink{ref:#1}{\textsf{[#1]}}}
+\newcommand{\code}[1]{{\small\texttt{#1}}}
+\newenvironment{evidence}{%
+\fontsize{9.4}{10.9}\selectfont\setlength{\parskip}{2pt}
+\begin{longtable}{@{}P{\dimexpr .22\textwidth-7.5pt\relax}P{\dimexpr .24\textwidth-7.5pt\relax}P{\dimexpr .25\textwidth-7.5pt\relax}P{\dimexpr .29\textwidth-7.5pt\relax}@{}}
+\toprule\rowcolor{tablehead}\textbf{Source and original object} & \textbf{Reported values / evidence type} & \textbf{Method, population and frequency} & \textbf{V6 transformation and transferability}\\\midrule
+\endfirsthead
+\toprule\rowcolor{tablehead}\textbf{Source and original object} & \textbf{Reported values / evidence type} & \textbf{Method, population and frequency} & \textbf{V6 transformation and transferability}\\\midrule
+\endhead
+\midrule\multicolumn{4}{r}{\footnotesize\itshape Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+}{\end{longtable}}
+\newenvironment{recommendations}{%
+\fontsize{9.4}{10.9}\selectfont\setlength{\parskip}{2pt}
+\begin{longtable}{@{}P{\dimexpr .14\textwidth-8pt\relax}P{\dimexpr .25\textwidth-8pt\relax}P{\dimexpr .32\textwidth-8pt\relax}P{\dimexpr .15\textwidth-8pt\relax}P{\dimexpr .14\textwidth-8pt\relax}@{}}
+\toprule\rowcolor{tablehead}\textbf{Parameter} & \textbf{Proposed baseline candidate} & \textbf{Robustness range / scenario meaning} & \textbf{Mapping confidence} & \textbf{Best support}\\\midrule
+\endfirsthead
+\toprule\rowcolor{tablehead}\textbf{Parameter} & \textbf{Proposed baseline candidate} & \textbf{Robustness range / scenario meaning} & \textbf{Mapping confidence} & \textbf{Best support}\\\midrule
+\endhead
+\midrule\multicolumn{5}{r}{\footnotesize\itshape Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+}{\end{longtable}}
+\hypersetup{pdftitle={V6 external calibration: evidence, mappings and candidate ranges},pdfauthor={}}
+\begin{document}
+{\LARGE\sffamily\bfseries\color{heading}External calibration: evidence and candidate ranges}\par
+{\large\sffamily V6 preference, production and technology parameters}\par
+
+\textbf{Assessment.} The literature supplies useful conditional candidates for risk curvature,
+markups and substitution elasticities. It does not supply an empirically defensible single
+vector for all V6 parameters. Discounting requires a generation-length bridge; technology
+levels require joint normalization and production-data inversion; innovation coefficients
+and the absorbing technology regime require additional measurement or explicit scenarios.
+The recommendations at the end distinguish numeric candidates from
+quantities deliberately left data-dependent or unassigned.
+
+\textbf{Authority and coverage.}
+\code{V6\_parameter\_calibration\_groups.tex} defines the parameters reviewed here.
+Coverage is \textbf{11 families / 19 scalar parameters}: M01, M02, M07, M09--M16.
+M08 labor endowments are data inputs and receive no conventional-value search.
+Group C, M03--M06, is reserved for internal international-finance calibration.
+M17's $\nu_b=\xi_W=0$ are imposed restrictions, not free external parameters.
+The current manuscript supplies supporting equations; no model definition or solver has been changed.
+
+\begin{center}\small
+\begin{tabular}{@{}P{.20\textwidth}P{.73\textwidth}@{}}
+\toprule\rowcolor{tablehead}\textbf{Evidence label} & \textbf{Interpretation in this review}\\\midrule
+Estimated & Original econometric or experimental evidence, conditional on its sample and model. Standard errors, confidence intervals and population percentiles are identified separately.\\[3pt]
+Calibrated / illustrative & A value imposed by an author, including HKT's theoretical example; it is not an independent estimate.\\[3pt]
+Synthesis & A meta-analysis of original studies; useful for bias and heterogeneity, without treating pooled estimates as a consensus.\\[3pt]
+Proposed scenario & Our mapping or robustness choice; its endpoints are not a literature confidence interval. Unassigned means no portable numerical benchmark was verified.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Search and verification.}
+Consensus searches and fetched records, Scite searches/full text, and an
+\href{https://app.undermind.ai/projects/6513b93c-0aaf-4fd9-9554-e57b8db4a0cf?path=/External\%20calibration\%20of\%20V6\%20preferences\%20and\%20production}{Undermind deep search}
+were used for discovery, followed by original papers and dated author versions for numerical checks.
+The Undermind search completed with 175 ranked records; these are discovery results, not 175 verified studies.
+Wiley Scholar Gateway was attempted but repeatedly returned an internal error.
+Wiley-published originals accessible through other routes are identified normally.
+This is a targeted, source-verified review, not an exhaustive systematic review.
+Detailed evidence and connector logs accompany the source in
+\code{external\_calibration\_review\_evidence/}.
+
+\textbf{Period, population and restrictions.}
+Let $\Delta$ denote years per V6 young-to-old transition; this review does not choose it.
+Dimensionless risk curvature, markups and static substitution elasticities are not
+annualized. Discount probabilities and innovation coefficients need explicit time bridges.
+US listed firms, US households, selected foreign countries and the full RoW are distinct
+populations. In particular, the current $\rho_{US}>1$ implementation and the sufficient
+theorem's $\gamma<1$ must not determine which estimates enter the evidence set.
+Solver-excluded candidates such as $\rho_{US}\le1$ require an alternative validated
+implementation. The solver accepts positive $\gamma$; values above one instead lose
+the cited sufficient theorem and require separate equilibrium checks, without necessarily
+requiring a solver change.
+
+
+\clearpage
+\section[Preference weight: M01, beta (Group B)]{Preference weight: M01, $\beta$ (Group B)}
+
+In V6, $\beta$ is the old-age utility weight in
+\[
+ (1-\beta)\log c_t^y+
+ \frac{\beta}{1-\gamma}\log E_t[(c_{t+1}^o)^{1-\gamma}],
+ \qquad A_{US,t}=\beta e_{US,t}.
+\]
+It is a two-period saving weight. It is neither an annual discount factor nor the
+present-bias parameter sometimes also called $\beta$.
+For two consumption dates with unnormalized weights $1,d$, normalization gives
+$\beta=d/(1+d)$. Setting $d=\delta_a^\Delta$ additionally assumes that one V6
+transition represents $\Delta$ years and that endpoint utility appropriately
+represents both life stages. Aggregating annual utility within life stages can
+require a different bridge.
+
+\begin{evidence}
+Hirano, Kishi and Toda, pinned 2025 version \src{HKT25}.
+Same two-period utility-weight interpretation; Figure~1 note.
+&
+$\beta=0.5$: theoretical numerical illustration, not an estimate or empirical
+range.
+&
+Analytical overlapping-generations bubble model and numerical figure.
+A model period is a generation; the figure does not estimate its calendar length.
+&
+Strong definition match, absent empirical discipline. Useful for reproducing
+the original mechanism; do not label it a literature-estimated baseline.
+\\[5pt]
+Gourinchas and Parker (2002) \src{GP02}.
+Source $\delta$ discounts annual expected CRRA utility; Table~III, p.~71.
+&
+Estimated $\delta=0.9598$ (corrected SE $0.0179$); optimal-weight variant
+$0.9569$ (SE $0.0150$). These are distinct estimators, not interval endpoints.
+&
+Simulated-moments lifecycle consumption model with earnings risk, liquidity
+constraints and retirement. US CEX 1980--1993, with PSID income dynamics;
+annual periods.
+&
+Conditional endpoint bridge:
+$\beta=\delta^\Delta/(1+\delta^\Delta)$.
+For $\Delta=30$, these points imply $0.2260$ and $0.2105$ (our calculations).
+Different EIS, income timing and household budgets make numerical transfer weak.
+\\[5pt]
+Laibson et al.\ (2026) \src{LLMRT26}.
+Annual discount function; Table~3, frequency in footnote~25.
+&
+Exponential estimate $\delta=0.9601$ (SE $0.0053$).
+Present-biased model: continuation $\delta=0.9891$ (SE $0.0051$) and
+present-bias weight $b=0.5305$ (SE $0.1143$).
+&
+Simulated moments from US SCF 1995--2013; high-school households without
+college degrees, with credit cards. Annual lifecycle model; 16 moments for
+ages 21--60.
+&
+The exponential point yields conditional $\beta=0.2277$ at $\Delta=30$.
+The present-biased continuation factor is not a clean exponential alternative;
+$b\neq\beta_{\mathrm{V6}}$. Do not import either parameter directly.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Leave the empirical V6 baseline unassigned until life-stage duration and utility
+aggregation are specified. Retain $0.5$ solely as the HKT comparison case.
+With the explicitly assumed endpoint bridge and $\Delta=20$--$40$, the two
+exponential studies' $\delta=0.9569$--$0.9601$ imply approximately
+$\beta=0.1465$--$0.3070$. Adding the present-biased continuation factor as a
+separate, qualified scenario extends the upper endpoint to $0.4454$.
+These are calculated scenarios, not confidence intervals or evidence that V6
+must satisfy them. Mapping confidence: high conditional algebra, low empirical
+transferability.
+
+\clearpage
+\section[Risk curvature: M02, gamma (Group A)]{Risk curvature: M02, $\gamma$ (Group A)}
+
+V6's old-age certainty equivalent is
+$\{E_t[(c_{t+1}^o)^{1-\gamma}]\}^{1/(1-\gamma)}$.
+Thus $\gamma$ controls risk aversion, while the intertemporal elasticity of
+substitution (EIS) is fixed at one. Its numerical value is not annualized.
+The sufficient-theorem condition $\gamma<1$ is a model restriction, not a
+criterion for accepting evidence. Values above one remain relevant candidates;
+the displayed formula needs its limiting interpretation at $\gamma=1$.
+
+\begin{evidence}
+Gourinchas and Parker (2002) \src{GP02}.
+Source CRRA curvature; Tables~III and V, pp.~71,79.
+&
+Estimated curvature $0.5140$ (SE $0.1707$) or $1.3969$ (SE $0.1137$), depending
+on weighting. Specification variants span $0.1278$--$5.2823$; some imply
+implausible initial wealth.
+&
+Annual lifecycle simulated moments; US CEX 1980--1993 and PSID income risks.
+Risk curvature and annual discounting are jointly estimated.
+&
+Risk-curvature interpretation is comparable, but source EIS equals inverse
+CRRA, whereas V6 separates risk aversion and fixes EIS at one. Neither the
+specification span nor selected low estimates constitute a V6 confidence range.
+\\[5pt]
+Laibson et al.\ (2026) \src{LLMRT26}.
+Source consumption-utility CRRA curvature; Table~3.
+&
+Estimated $1.4663$ (SE $0.2256$) with exponential discounting;
+$1.9355$ (SE $0.4350$) with present bias.
+&
+Annual US lifecycle model; same SCF population and moments described above.
+Curvature is jointly fitted with discount parameters.
+&
+Supports a low-to-moderate alternative near two. No Epstein--Zin separation;
+liquidity constraints and present bias alter effective intertemporal responses.
+Do not identify effective EIS mechanically with inverse curvature in the
+present-biased model.
+\\[5pt]
+Barsky et al.\ (1997) \src{BJKS97}, Table~XI, p.~563;
+Kimball et al.\ (2008) \src{KSS08}, Table~4.
+CRRA over lifetime resources inferred from hypothetical income gambles.
+&
+BJKS: mean risk aversion $12.1193$, harmonic mean about $4.2$.
+KSS, correcting response error: mean $8.2$, median $6.3$, interquartile range
+$3.9$--$10.3$, 5th--95th percentiles $1.9$--$20.8$.
+&
+US Health and Retirement Study, older respondents and spouses.
+KSS uses repeated 1992--2002 questions, response-error and status-quo
+adjustments. This is lifetime-risk elicitation, not an annual asset-pricing model.
+&
+The ranges describe population heterogeneity, not estimation confidence.
+A representative V6 curvature requires an aggregation argument.
+The reciprocal of mean risk tolerance is a harmonic risk-aversion statistic,
+not the mean; do not silently use it as representative $\gamma$.
+\\[5pt]
+Holt and Laury (2002) \src{HL02}.
+CRRA utility of experimental cash payoffs; Table~3 and p.~1649.
+&
+Low-payoff behavior centers roughly around $0.3$--$0.5$; one
+choice-implied interval is $0.41$--$0.68$. Risk aversion increases when
+real stakes increase. These intervals are not confidence intervals.
+&
+Incentivized paired-lottery choices by students and faculty at three US
+universities; one-shot experiments rather than a calendar-frequency model.
+&
+Evidence supports retaining subunit-curvature scenarios. Transferability is
+weak: small cash-payoff risk, stakes dependence and a selected subject pool
+differ from V6 old-age consumption risk.
+\\[5pt]
+\end{evidence}
+
+\clearpage
+\subsection{Asset-pricing estimates, synthesis and proposed risk-curvature scenarios}
+\begin{evidence}
+Vissing-Jorgensen and Attanasio (2003) \src{VA03}.
+Epstein--Zin risk curvature; author-uploaded January~10 extended manuscript,
+Table~2A, case~4, p.~14.
+&
+All-stockholder estimates $8.1,6.3,5.5$ as assumed human-wealth share rises
+from $1/3$ to $2/3$ to $0.9$; richest-third estimates $28.4,19.9,16.5$.
+Middle all-stockholder case: 95\% interval $[0.3,13.9]$.
+&
+US CEX 1982--1996 stockholders; semiannual consumption growth with overlapping
+monthly observations, asset returns and VAR-based human-wealth adjustments.
+Structural asset-pricing estimation.
+&
+Conceptually closer because risk curvature and EIS are separated. Numerical
+mapping remains weak: EIS, wealth aggregation and human-capital assumptions
+differ. Numbers are verified in the dated extended manuscript, not asserted
+to be an identically numbered table in the shorter published article.
+\\[5pt]
+Chen, Favilukis and Ludvigson (2013) \src{CFL2013}.
+Source $\theta$ is risk aversion; $\rho^{-1}$ is EIS.
+Equations~(1)--(2), p.~44; Table~2, p.~62.
+&
+Stockholder $\theta=20,17$ with 95\% intervals $[0.25,40]$, $[1,43.3]$;
+aggregate $\theta=57.5,60$ with intervals $[27.5,129]$, $[42,144]$.
+EIS estimates exceed one.
+&
+Quarterly US data 1952Q1--2005Q1; consumption, Treasury bills and equity
+portfolios. Profile sieve minimum distance with second-step GMM.
+Stockholder consumption is a fitted mimicking factor.
+&
+Map $\gamma=\theta$ conceptually, without annualization. Infinite-horizon
+continuation-value risk and freely estimated EIS differ from V6.
+Wide bootstrap intervals and possible model misspecification limit transfer.
+The span $17$--$60$ is between specifications, not a confidence interval.
+\\[5pt]
+Elminejad, Havranek and Irsova (2025) \src{EHI25}.
+Relative-risk-aversion meta-analysis; Table~6 and main discussion.
+&
+Bias-adjusted summaries differ by context: roughly one in economics,
+two--seven in finance. US-context prediction $5.20$, 95\% interval
+$[2.28,8.11]$.
+&
+Synthesis of 1,021 estimates from 92 studies, with literature search ending
+May~2022. Studies differ in populations, frequencies and empirical designs.
+This is secondary synthesis, not a new original estimate.
+&
+Useful context for choosing a sensitivity grid; not a direct V6 measurement.
+Its discipline split cautions against pooling lifecycle and asset-pricing
+evidence into a single consensus number.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Use $\gamma=5$ as a provisional finance-oriented candidate, with $2$ as an
+explicit lifecycle-oriented alternative. A core sensitivity grid
+$\{0.5,2,5,6.3,10\}$ preserves low experimental and higher survey/finance
+evidence; add a separate high-risk family $\{17,20,60\}$ from recursive
+asset-pricing estimates. This grid is a research recommendation, not a pooled
+credible interval. Conceptual mapping confidence is medium; numerical
+confidence is low. The candidate $5$ violates the sufficient-theorem
+restriction $\gamma<1$; retain and report that conflict instead of choosing
+a low number solely to preserve the theorem.
+
+
+% Production-parameter chapter. Sources use P1--P12 from production_review.json.
+% Parent report supplies the evidence environment and \src macro.
+\clearpage
+\section[Inverse markups: competing empirical cost definitions]{Inverse markups: competing empirical cost definitions}
+\textbf{V6 definition (M10).} For $i\in\{US,W\}$,
+\[
+X_i=N_i^{1-1/\vartheta_i}\left(\int_0^{N_i}x_i(j)^{\vartheta_i}\,dj\right)^{1/\vartheta_i},
+\qquad p_i=\frac{w_{H,i}}{\vartheta_i},\qquad
+\mu_i=\frac{p_i}{MC_i}=\frac1{\vartheta_i},\qquad
+\epsilon_i=\frac1{1-\vartheta_i}=\frac{\mu_i}{\mu_i-1}.
+\]
+Each intermediate uses skilled labor one-for-one. Thus $\vartheta_i$ is inverse gross markup; $\epsilon_i$ is the variety demand elasticity, distinct from the final-sector elasticity $1/\rho_i$. These dimensionless quantities require no annual-to-cohort exponentiation.
+
+\begin{evidence}
+\src{DLEU20}\par De Loecker, Eeckhout and Unger (2020). Gross price/marginal-cost markup; sales-weighted across firms.
+& \textbf{Estimated:} $\mu=1.21$ (1980), $1.61$ (2016). Hence $\vartheta=0.826,\ 0.621$. Dated point estimates, not confidence bounds. Author manuscript, Section 3.1/Figure 1, pp.\ 9--10.
+& Annual U.S. Compustat, 1955--2016; sector/time-specific production-function elasticities divided by flexible-input revenue shares. Census comparisons address listed-firm selection. Within-year input flexibility is maintained.
+& Exact reciprocal conditional on the cost definition. Economic transfer is qualified: heterogeneous firms, overhead, selection and reallocation differ from V6's homogeneous intermediate sector. $1/\overline\mu\ne\overline{1/\mu}$. Do not also impose empirical net-profit shares without reconciling omitted costs.\\[4pt]
+
+\src{Traina18}\par Traina (2018), working paper. Markup treating operating expenses, including SG\&A, as variable inputs.
+& \textbf{Estimated:} approximately $\mu=1.15$ (1950), $1.10$ (1980), $1.15$ (sample end); $\vartheta=0.870,\ 0.909,\ 0.870$. Section ``Longer Time Horizons,'' Figure 5 discussion; original text verified.
+& U.S. Compustat, 1950--2016; industry-specific Cobb--Douglas production estimation. Utilities and financials excluded. Annual and three-year production windows produce similar paths.
+& Preserve this lower-markup alternative. The disputed variable-versus-fixed treatment of marketing/management costs explains much of the difference from the COGS approach. This is a separate measurement specification, not sampling uncertainty around the preceding estimates. V6's intermediate cost structure still differs.\\[4pt]
+
+\src{DE21}\par De Loecker and Eeckhout, \emph{Global Market Power}, February 2021 version. Regional sales-weighted markups.
+& \textbf{Estimated, 2016:} Europe $1.63$, Asia $1.45$, Africa $1.38$, Oceania $1.55$, South America $1.59$; inverse values $0.613,0.690,0.725,0.645,0.629$. U.S. $1.84\Rightarrow0.543$. Table 1, p.\ 13.
+& Annual 1980--2016; 67,491 firms in 134 countries. Global listed-firm accounts, with U.S.-based industry output elasticities. Sales-weighted aggregation; headquarter location need not equal production location.
+& Useful geographic alternatives, not a full-RoW coefficient. The U.S. estimate differs from the preceding paper under a different database/specification. The global aggregate includes the U.S. Define the RoW universe and aggregation weights before choosing $\vartheta_W$.\\[4pt]
+\end{evidence}
+
+\textbf{Methodological disagreement.} \src{BHKZ21} Bond et al.\ (2021) question substituting revenue elasticities for output elasticities and treating imperfectly flexible or demand-shifting inputs as flexible. \src{DL21} De Loecker (2021) emphasizes additional price/quantity data or structural assumptions as remedies. Neither gives a new numerical V6 coefficient; the debate lowers confidence in a mechanical aggregate-markup transfer.
+
+\textbf{Recommendation, separate from evidence.} For a modern U.S. listed-firm mapping, retain $\vartheta_{US}=0.621$ and $0.870$ as competing cost-definition candidates. Use $[0.621,0.909]$, extended to $0.543$, as a measurement-specification envelope, not a confidence interval. Defer a single RoW point; Europe $0.613$ and Asia $0.690$ are explicit geographic anchors. Algebraic mapping confidence is high; economic transfer is low to medium for the U.S. and low for RoW.
+
+\clearpage
+\section[Final-sector curvature: the skill-substitution evidence]{Final-sector curvature: the skill-substitution evidence}
+\textbf{V6 definition (M12).} With $\widetilde X_i=A_{X,i}X_i$ and $\widetilde L_i=A_{L,i}L_i$,
+\[
+F_i=\left[\alpha_i\widetilde X_i^{1-\rho_i}+(1-\alpha_i)\widetilde L_i^{1-\rho_i}\right]^{1/(1-\rho_i)},
+\qquad \sigma_i=\frac1{\rho_i},\qquad X_i=\varphi_i H_i.
+\]
+The relevant margin is skilled labor allocated to intermediate production versus unskilled labor. Total skilled labor includes R\&D. The current U.S. solver requires $\rho_{US}>1$, hence $\sigma_{US}<1$; retain evidence outside this restriction.
+
+\begin{evidence}
+\src{KM92}\par Katz and Murphy (1992). College/high-school-equivalent labor substitution.
+& \textbf{Estimated:} inverse-demand slope $-0.709$ (SE $0.150$); $\sigma\simeq1.41$. Equation (19), p.\ 69; discussion p.\ 72. Their plotted $\sigma=0.5,4$ alternatives are scenarios, not estimated bounds.
+& Annual U.S. CPS, 1963--1987; efficiency-unit labor aggregates. OLS relative wages on relative supplies and a linear technology trend, interpreted through competitive two-labor CES demand.
+& Conditional proxy $\rho=0.709$. Skill definitions, technology trends, V6 markups and the production/R\&D split require alignment. Trend-controlled OLS is not independent identification of the technology process. This candidate cannot run under the current $\rho_{US}>1$ restriction.\\[4pt]
+
+\src{CP05}\par Ciccone and Peri (2005). Long-run substitution between education groups.
+& \textbf{Estimated:} preferred $\sigma=1.50$ (SE $0.44$); IV variants $1.20$--$2.00$; fixed-effects OLS $2.85$--$3.44$. Table 4, p.\ 656. These estimator ranges are not confidence intervals.
+& Five decennial censuses, 1950--1990, 48 U.S. states. Schooling/child-labor-law instruments, state/year effects; preferred Fuller LIML. Wages: U.S.-born white full-time males aged 40--50; baseline supply: white males 21--59.
+& Preferred $\rho=0.667$; IV point-sensitivity $0.500$--$0.833$. Long-run education substitution is a qualified skill-input proxy, not an exact V6 or RoW estimate. Changing schooling aggregation and weak-instrument treatment matters.\\[4pt]
+
+\src{KORV00}\par Krusell, Ohanian, R\'{i}os-Rull and Violante (2000). Distinct nested-CES elasticities.
+& \textbf{Estimated:} outer unskilled-versus-equipment/skilled elasticity $1.67$; inner equipment-versus-skilled elasticity $0.67$. Table II, p.\ 1041. Alternative skill threshold gives outer elasticity $1.89$ (p.\ 1044).
+& Annual U.S. CPS and capital/quality-adjusted equipment-price data, 1963--1992. Two-step simulated pseudo-maximum likelihood; structures, equipment, two labor types and latent labor efficiencies.
+& Outer-nest analogy: $\rho=1/1.67=0.599$. Inverting the inner $0.67$ to obtain $1.493$ maps the \emph{wrong input pair}; it cannot validate V6 complementarity. The complete nested technology differs from V6.\\[4pt]
+
+\src{HILZ24}\par Havranek, Irsova, Laslopova and Zeynalova (2024 issue; online 2022). Negative inverse skill elasticity.
+& \textbf{Meta-estimated:} Table 5, p.\ 1197: all countries $-0.27$ (95\% credible interval $[-0.48,-0.05]$); U.S. $-0.16$ $[-0.38,0.06]$; developing $-0.47$ $[-0.70,-0.24]$. Implied $\sigma=3.7,6.3,2.1$.
+& 682 estimates/77 studies; publication- and attenuation-bias analysis, model averaging. Mixed populations/frequencies; preferred profile favors annual panels, multilevel CES, fixed effects and valid IV.
+& Skill-proxy $\rho=0.27,0.16,0.47$. U.S. mapped interval $[-0.06,0.38]$ crosses zero; do not report a finite positive elasticity interval. Bias-correction/IV assumptions matter. This newer evidence challenges a universal $\sigma=1.5$ benchmark.\\[4pt]
+\end{evidence}
+
+\textbf{Convention and version audit.} \src{CC06} Caselli--Coleman (2006, pp.\ 504--505) \emph{borrow} $\sigma=1.4$ and use $1.1,1.4,1.7,2$ for robustness; these are not independent estimates. Their CES exponent $s$ maps as $\rho_{V6}=1-s=1/\sigma$. The 2020/2021 ``Less Substitutable'' working-paper version of \src{HILZ24}, reporting $0.6$--$0.9$, is superseded by the final 2024 paper and must not count as independent evidence.
+
+\clearpage
+\section[Complementarity evidence and the unresolved V6 input mapping]{Complementarity evidence and the unresolved V6 input mapping}
+The following papers support complementarity of \emph{physical capital and labor}. They deserve consideration alongside skill-substitution evidence, but their input pairs differ. A theorem-compatible reciprocal is not sufficient evidence for the V6 coefficient.
+
+\begin{evidence}
+\src{OR21}\par Oberfield and Raval (2021). Aggregate physical capital--labor elasticity, including reallocation.
+& \textbf{Estimated:} aggregate manufacturing $\sigma=0.5$--$0.7$; plant-level $0.3$--$0.5$ (pp.\ 703, 705). Figure 4b, p.\ 719: $0.60\to0.54$ over 1972--2007 with micro elasticities fixed at 1997 values.
+& U.S. Census of Manufactures/Annual Survey of Manufactures. Local-wage IV identifies plant elasticities; amenities and shift-share instruments; heterogeneity determines aggregation. Annual/census observations, not a cohort parameter.
+& Reciprocal \emph{analogy}: $\rho=1.43$--$2.00$, with $1.67$ from $\sigma=0.60$. The source does not impose a stable aggregate CES. Physical $K$ versus total labor is not V6's $X=\varphi H$ versus $L$; transfer confidence is low.\\[4pt]
+
+\src{GHIK22}\par Gechert, Havranek, Irsova and Kolcunova (2022). Conditional meta-estimates of capital--labor substitution.
+& \textbf{Meta-estimated:} Table 9, p.\ 77: best practice $\sigma=0.30$, 95\% CI $[-0.01,0.60]$; country-data variant $0.50$ $[0.18,0.81]$; quarterly variant $0.42$ $[0.08,0.76]$.
+& 3,186 estimates/121 studies published before 2019. Nonlinear publication-bias corrections, Bayesian/frequentist model averaging, 71 study characteristics. Mixed countries, sectors and frequencies; methodological profile is consequential.
+& Point reciprocals $3.33,2.00,2.38$ are capital--labor analogies. The baseline interval crosses zero: it cannot become a bounded positive $\rho$ interval by inversion. Neither the synthetic-study mean nor its methodological choices directly identify the V6 input margin.\\[4pt]
+\end{evidence}
+
+\subsection{What must be held fixed in the empirical mapping}
+V6's factor prices and symmetry imply
+\[
+\log\frac{w_{H,i}}{w_{L,i}}
+=\log\frac{\vartheta_i\alpha_i}{1-\alpha_i}
++(1-\rho_i)\log\frac{A_{X,i}}{A_{L,i}}
+-\rho_i\log\frac{X_i}{L_i},\qquad X_i=\varphi_iH_i.
+\]
+Consequently, a regression on total $H_i/L_i$ need not recover $-\rho_i$ when R\&D allocation, knowledge-driven augmentations or markups move with relative labor supply. The two literatures also disagree about the relevant input pair and aggregation. Their results should remain separate empirical specifications; averaging them into one ``consensus'' curvature would discard the economic distinction.
+
+\subsection{Proposed candidates and sensitivity design}
+\textbf{Skill-input branch.} Retain $\rho=0.667$ (Ciccone--Peri) and $0.709$ (Katz--Murphy) as original-study candidates, alongside the newer meta-evidence candidates $0.27$ (all countries), $0.16$ (U.S.) and $0.47$ (developing countries). An initial \emph{analyst} scenario envelope is $[0.16,0.91]$, with $0.05$ as a high-substitution stress point suggested by the all-country meta interval. These are not a pooled estimate or V6 confidence interval. RoW application requires explicit geographic/skill pooling assumptions.
+
+\textbf{Capital--labor analogy branch.} Consider $\rho=2$ as a separate complementarity candidate, and $[1.43,3.33]$ as a broad scenario envelope drawn from the two studies above. The familiar HKT illustration at $\rho=2$ does not turn this analogy into an estimated V6 benchmark. Keep low mapping confidence visible.
+
+\textbf{Implementation implication.} The central skill-proxy candidates cannot run under the current $\rho_{US}>1$ restriction. Report this as a conflict between an empirical mapping and the implemented model class; do not discard the estimates or silently truncate them. Any operational choice of the complementarity branch remains conditional on defending its economic mapping. Elasticities stay dimensionless when changing the model period.
+
+
+\clearpage
+\section[Regime persistence: M07, pi (Group B)]{Regime persistence: M07, $\pi$ (Group B)}
+
+V6 defines $\pi=\Pr(z_{t+1}=u\mid z_t=u)$, with $b$ absorbing.
+An empirical transition therefore needs both an operational definition of the
+unbalanced-to-balanced technology switch and a model-period length $\Delta$ in
+years. A recurring productivity regime is the closest analogy reviewed below;
+neither a recession nor an equity-price fall defines the V6 event.
+
+\begin{evidence}
+Kahn and Rich (2007) \src{KR07}.
+Quarterly high-growth persistence $q_1=\Pr(S_{1t}=0\mid S_{1,t-1}=0)$;
+equations~(7)--(9), p.~1677; Table~2, p.~1683.
+&
+Estimated $q_1=0.990$ (SE $0.011$), implying a 100-quarter mean spell.
+Low-growth persistence is $0.983$ (SE $0.015$).
+Alternative specifications give high-growth persistence $0.991$ or $0.993$;
+these are not confidence bounds.
+&
+Approximate maximum-likelihood Markov dynamic-factor model; US quarterly
+1947Q1--2002Q4, December~2005 vintage. Output/hour, compensation/hour,
+consumption/hour and detrended hours identify common trend growth. Both
+growth regimes recur.
+&
+Conditional first-exit analogy: $\pi_\Delta=q_1^{4\Delta}$.
+This is uninterrupted survival, not the recurrent chain's endpoint high-state
+probability. Aggregate growth regimes differ from V6 factor-spillover regimes.
+Per-capita specification loses regime identification (p.~1687);
+few transitions limit precision.
+\\[5pt]
+Barro (2006) \src{Barro06}.
+Poisson intensity $p$ of downward output jumps; pp.~825,831 and Table~V, p.~846.
+&
+Data-based frequency calibration: $p=0.017$ per year, with reported
+frequency range $0.015$--$0.020$.
+The $0.025$ sensitivity case is calibrated, not an estimated upper bound.
+&
+60 cumulative per-capita GDP contractions of at least 15\%, 35 countries,
+approximately the twentieth century. Recurring rare disasters in a
+representative-agent asset-pricing economy.
+&
+The source's no-jump probability is $\exp(-p\Delta)$.
+Equating it to V6 $\pi$ additionally equates two different events.
+Useful disaster-risk sensitivity only; a global GDP-contraction frequency
+does not estimate an absorbing US technology transition.
+\\[5pt]
+Barro and Urs\'ua (2008) \src{BU08}.
+Annual normal-to-disaster transition probability $h$; Tables~10--11,
+pp.~296--297.
+&
+At a 10\% contraction threshold, $h=0.0363$ for consumption and $0.0369$
+for GDP. At 15\%, corresponding values are $0.0218$ and $0.0192$.
+These event-definition alternatives are not a confidence interval.
+&
+Historical annual series starting as early as 1870; 24 consumption and
+36 GDP countries. Events are peak-to-trough cumulative contractions;
+hazards use normal-state exposure years.
+&
+Under a matched constant annual hazard, $\pi=(1-h)^\Delta$.
+Events recur and recover. The source's symbol $\pi$ instead denotes
+disaster exit and must not be copied into V6. Published sample counts
+differ from the older working-paper abstract.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+No directly estimated V6 benchmark is available. Prefer the Kahn--Rich
+\emph{conditional duration scenario}, $\pi=0.990^{4\Delta}$, to a generic
+disaster center: it implies $0.9606$ for one year and $0.3660$ for 25 years
+(our calculations). A 10/25/50-year mean-duration stress design can use
+$q_D=1-1/(4D)$ and $\pi=q_D^{4\Delta}$; only the 25-year center is
+source-derived, while the endpoints are analyst choices. This is not a
+credible interval: the reported Wald interval for $q_1$ crosses one, making
+inverse-duration inference unreliable. Mapping confidence is low for the
+V6 event, despite exact conditional frequency conversion. Use the published
+2007 estimates; 2003 drafts differ in notation and sample endpoints.
+
+\clearpage
+\section[Innovation productivity: M09, a US ,a W (Group B)]{Innovation productivity: M09, $a_{US},a_W$ (Group B)}
+
+V6 imposes $N_{i,t+1}/N_{i,t}-1=a_i(1-\varphi_{i,t})H_i$.
+For matched gross knowledge growth $G_{N,i}$ and research share
+$s_{R,i}=1-\varphi_i$, conditional recovery and frequency conversion are
+\[
+ a_iH_i=\frac{G_{N,i}-1}{s_{R,i}}
+       =\frac{(1+g_{N,i})^\Delta-1}{s_{R,i}}.
+\]
+The second equality assumes constant annual knowledge growth $g_{N,i}$ and
+research share over $\Delta$ years; it matches endpoint knowledge growth,
+not the full temporally aggregated OLG equilibrium. Labor units matter:
+if $H_i'=cH_i$, then $a_i'=a_i/c$.
+Recovery requires $s_{R,i}>0$. A zero-research observation has $G_{N,i}=1$
+and cannot identify $a_i$; share uncertainty approaching zero can make
+an upper bound unbounded.
+
+\begin{evidence}
+Hirano, Kishi and Toda, arXiv v2 (2025) \src{HKT25}.
+Same expanding-variety research law; Figure~1, p.~24.
+&
+$aH=0.2$: numerical illustration without an estimated population or
+empirical range.
+&
+Closed-economy two-period OLG bubble model. The figure does not establish
+the calendar length of a model period or estimate a country-specific
+research coefficient.
+&
+Strong definition match for the product $aH$; no empirical level transfer.
+The value is not 0.2 annually and does not establish equal US and RoW
+productivity. Recover $a_i$ only after fixing labor units.
+\\[5pt]
+Bloom et al.\ (2020) \src{BJRW20}.
+Research productivity equals idea-output growth divided by effective
+researchers; equations~(1)--(3), pp.~1108--1110; Table~7, p.~1134.
+&
+Reported annual productivity growth: aggregate US $-5.1\%$;
+Moore's Law $-6.8\%$; cotton, version~2, $+1.3\%$.
+These are descriptive growth-accounting ratios, not estimated levels of $a_i$.
+&
+US aggregate 1930--2015: decadal TFP growth and intellectual-property
+investment deflated by skilled wages. Moore's Law: 1971--2014;
+cotton: 1969--2009. Input quality and output concepts vary by application.
+&
+Declining research productivity challenges constant V6 $a_i$, while cotton
+preserves a contrary case. TFP or chip performance does not directly count
+V6 varieties. Matched knowledge, labor units, quality and period are needed;
+never insert these growth rates as $a_i$.
+\\[5pt]
+Bottazzi and Peri (2007) \src{BP07}.
+Patent flow $Pat=\iota RD^\lambda A^\phi A_{ROW}^{\xi}$;
+equations~(5)--(9), pp.~492--494; Table~4, p.~501.
+&
+Estimated long-run elasticities
+$(\lambda/(1-\phi),\xi/(1-\phi))=(0.786,0.557)$;
+with country trends, $(0.304,0.168)$.
+Knowledge depreciation of 10\% is imposed, not estimated.
+&
+Dynamic-OLS panel cointegration; 15 OECD countries, annual research
+personnel and citation-weighted US patent applications.
+Text dates are 1973--1999; Table~4 says 1972--1999.
+Country effects and trends materially change estimates.
+&
+V6 instead imposes unit research and own-knowledge exponents, no foreign
+knowledge term and no depreciation. The finite cointegrating ratios do
+not identify its coefficient $a_i$; source $\xi$ is also not V6 $\xi_u$.
+Useful specification discipline, not a portable prior.
+\\[5pt]
+Jones (1995) \src{Jones95}.
+R\&D-based growth and scale effects; publisher abstract verified.
+&
+Qualitative evidence against standard scale effects; no numerical
+coefficient is borrowed from this source.
+&
+Industrial-economy time-series critique and semi-endogenous growth
+theory. Full-text coefficient and equation claims are not relied upon.
+&
+Motivates a diminishing-productivity specification check. It does not
+identify a V6 variety-growth coefficient or resolve its research-labor
+normalization.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Recover each country's $a_iH_i$ from matched knowledge growth and research
+share; leave empirical scalar baselines unset until that bridge exists.
+Use $0.2$ only as an HKT initialization, not a portable range.
+Propagate jointly credible growth/share bounds through the displayed
+formula, separately for US and the declared RoW aggregate; include
+knowledge-proxy and declining-productivity specifications. Empirical mapping
+confidence is low. \textbf{Source caution:} BJRW Table~7 reports $-5.1\%$
+and a 14-year half-life, while its preceding prose reports $-5.3\%$ and
+13 years; the table values are retained without resolving that discrepancy.
+
+\clearpage
+\section[Knowledge augmentation elasticities: M16, xi u,nu u (Group B)]{Knowledge augmentation elasticities: M16, $\xi_u,\nu_u$ (Group B)}
+
+The exact V6 definitions are
+\[
+ A_{X,US}=\bar A_{X,US,u}N_{US}^{\xi_u},\qquad
+ A_{L,US}=\bar A_{L,US,u}N_{US}^{\nu_u},\qquad
+ (\xi_u,\nu_u)=
+ \left(\frac{\partial\log A_X}{\partial\log N},
+       \frac{\partial\log A_L}{\partial\log N}\right).
+\]
+These are dimensionless factor-augmentation elasticities, not annual
+technology-growth rates, substitution elasticities, or exponents in an
+idea-production function. The same knowledge concept must enter both ratios.
+
+\begin{evidence}
+Hirano, Kishi and Toda, arXiv v2 (2025) \src{HKT25}.
+Factor-augmentation powers; Figure~1, p.~24.
+&
+$(\xi_u,\lambda_u)=(0.7,0.2)$ is an illustrative calibration;
+source $\lambda_u$ maps to V6 $\nu_u$. No estimated joint range is supplied.
+&
+Theoretical closed-economy OLG numerical example, with unspecified calendar
+date length. Its positive post-switch exponents differ from the imposed
+zero-exponent specialization in V6.
+&
+Same pre-switch definition permits mechanism comparison without
+annualization. It provides no empirical basis for a tight neighborhood
+around $(0.7,0.2)$ or for selecting only values admitted by the V6 solver.
+\\[5pt]
+Katz and Murphy (1992) \src{KM92}.
+Log college/high-school wage ratio regressed on relative supply and time;
+equation~(19), p.~69.
+&
+Estimated supply slope $-0.709$ (SE $0.150$); annual trend $0.033$
+(SE $0.007$). The trend is a conditional wage-demand shift, not
+$\xi_u-\nu_u$ or either individual augmentation elasticity.
+&
+OLS on annual US CPS wage and labor-supply data, 1963--1987;
+competitive two-skill CES interpretation. No separately measured
+V6 variety stock or research allocation enters this regression.
+&
+V6 uses an intermediate bundle, a markup and endogenous skilled-labor
+allocation between production and research. Its wage mapping below
+requires all three plus knowledge growth. In particular, the sign of
+the augmentation term changes with $1-\rho$.
+\\[5pt]
+Bloom et al.\ (2020) \src{BJRW20}, equation~(17) and Table~7, p.~1134;
+Bottazzi and Peri (2007) \src{BP07}, equations~(5)--(9).
+&
+BJRW's research-productivity equation is
+$\dot A/A=(\alpha A^{-\beta})S$:
+reported $\beta=3.1$ for aggregate output and $0.2$ for Moore's Law.
+BP estimates the distinct long-run ratios reported above.
+&
+BJRW uses aggregate and application-specific growth accounting;
+BP uses an annual international patent/R\&D panel. Neither estimates
+two final-production augmentations against a common variety stock.
+&
+BJRW $\beta$ governs diminishing research productivity, not V6 saving
+or augmentation. BP $\xi$ governs foreign knowledge in patent production.
+These numerical coefficients cannot supply values or ranges for
+V6 $\xi_u,\nu_u$ despite related terminology.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Exact conditional mapping derived from V6.}
+With fixed markup parameter $\vartheta$ and CES weight $\alpha$,
+\[
+ \frac{w_H}{w_L}=\vartheta\frac{\alpha}{1-\alpha}
+ \left(\frac{A_X}{A_L}\right)^{1-\rho}
+ \left(\frac{\varphi H}{L}\right)^{-\rho},\qquad
+ \Delta\log(w_H/w_L)+\rho\Delta\log(\varphi H/L)
+ =(1-\rho)(\xi_u-\nu_u)\Delta\log N.
+\]
+Thus relative wages can discipline a combination only conditionally;
+they do not identify both exponents. Separate augmentation-growth evidence
+is needed for $\xi_u=\Delta\log A_X/\Delta\log N$ and
+$\nu_u=\Delta\log A_L/\Delta\log N$.
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Retain $(0.7,0.2)$ solely as the HKT comparison case; leave the empirical
+baseline and joint range unassigned. Construct a joint growth-ratio region
+from matched augmentation and knowledge evidence, retaining zero, equal or
+reversed augmentation growth if supported, even when the current solver
+excludes it. Multiplying $N$ by a constant changes scales, not exponents;
+redefining knowledge by a power changes exponents. Confidence is high in
+the HKT definition match and low in empirical numerical transfer.
+
+
+\clearpage
+\section[Distribution weights and technology levels: M11, M13--M15 (Group B)]{Distribution weights and technology levels: M11, M13--M15 (Group B)}
+
+The authoritative V6 definitions are
+\[
+Y_i=\left[\alpha_i(A_{X,i}X_i)^{1-\rho_i}
+ +(1-\alpha_i)(A_{L,i}L_i)^{1-\rho_i}\right]^{1/(1-\rho_i)},
+\qquad X_i=\varphi_iH_i .
+\]
+M11 comprises $\alpha_{US},\alpha_W$. M13 comprises
+$A^u_{X,US}=\bar A_{X,US,u}N_{US}^{\xi_u}$ and
+$A^u_{L,US}=\bar A_{L,US,u}N_{US}^{\nu_u}$.
+M14 comprises $A^b_{X,US}=\bar A_{X,US,b}$ and
+$A^b_{L,US}=\bar A_{L,US,b}$ because $\nu_b=0$.
+M15 comprises $A_{X,W}=\bar A_{X,W}$ and $A_{L,W}=\bar A_{L,W}$ because $\xi_W=0$.
+These six barred coefficients are augmentation scales, not observed aggregate TFP.
+
+\begin{evidence}
+Caselli and Coleman (2006) \src{CC06}.
+Skill-specific augmentations $A_s,A_u$ in a labor CES inside a capital--labor technology;
+equations (2)--(3), pp.~499--502.
+&
+Baseline skill elasticity $\sigma=1.4$ and capital share $1/3$ are imposed.
+Augmentations are jointly recovered from output and the skill premium.
+There is no unit-free common level or range for V6's barred coefficients.
+&
+Cross-country development accounting: 52 countries; output/capital 1988 and
+schooling 1985. Baseline skill split is completed primary schooling.
+Static country comparison; PPP quantities and wage-premium inputs.
+&
+Transfer the inversion method, not the source capital share to V6 $\alpha$.
+Adjust for V6's intermediate markup, production-only skilled labor and omitted physical
+capital. Cross-country technology differences are not time-series elasticities in $N$.
+\\[5pt]
+Rossi (2022) \src{Rossi22}.
+Relative skill efficiency $(A_HQ_H)/(A_LQ_L)$; equations (4)--(8), Table~I
+in the July~2021 accepted manuscript, pp.~7--8,31.
+&
+At imposed $\sigma=1.5$, US relative efficiency is normalized to 1;
+Canada is $0.711$, India $0.041$. These are country inversions,
+not a confidence interval or V6 RoW scale range.
+&
+Comparable wage and hours microdata for 12 countries around 2000.
+Some tertiary education defines high skill.
+Separate migrant evidence distinguishes embodied human capital $Q$ from technology.
+Static CES, competitive labor pricing.
+&
+Useful for relative-productivity measurement. The reported object mixes
+technology and worker quality, and lacks V6's research-labor and markup adjustments.
+Re-invert the chosen aggregate; averaging these country numbers does not produce
+$(\bar A_{X,W},\bar A_{L,W})$.
+\\[5pt]
+Cantore and Levine (2012) \src{CL12};
+Klump, McAdam and Willman (2012) \src{KMW12}.
+CES distribution and scale normalization.
+&
+No independent empirical point estimate for V6 $\alpha$ or augmentation levels.
+Distribution coefficients depend on units and the normalization point.
+Normalized baseline income shares are different objects from an unrestricted raw CES weight.
+&
+Methodological macroeconomic analyses; RBC examples and a theory/empirics survey.
+Detailed checks use the 2011 Dynare and ECB working-paper versions,
+respectively. No common population or sample-based confidence interval.
+&
+For $\rho\ne1$, fix one convention and jointly recover the remaining scale
+coefficients. Varying $\rho$ while holding all raw scales fixed changes
+baseline shares as well as substitution. Re-normalize around declared production moments.
+\\[5pt]
+León-Ledesma, McAdam and Willman (2010) \src{LMW10}.
+Joint production/first-order-condition system with biased technical change.
+&
+Identification-method evidence, not a new portable value for V6 technology.
+Normalized system estimation can improve separation of substitution and factor bias
+relative to a single production equation.
+&
+Monte Carlo comparisons of CES estimators under specified data-generating processes.
+Published AER article; full-text method checked in ECB working paper~1001 (2009).
+&
+Supports joint treatment of $\rho$, shares and technology paths.
+Does not establish identification in V6, whose monopoly wedge and endogenous research
+allocation introduce additional conditions.
+\\[5pt]
+Hirano, Kishi and Toda (2025) \src{HKT25}, Figure~1 note.
+Same CES weight and factor-augmentation interpretation.
+&
+Illustration: $\alpha=0.5$, $\rho=2$, $A_XH=10$, $A_LL=1$, $n_0=1$.
+Thus $A_X=10/H$ and $A_L=1/L$ in those units, not universal scale values $10$ and $1$.
+&
+Closed-economy theoretical figure with a generational period;
+no fitted population or sampling uncertainty.
+Its post-switch exponents are positive, unlike the V6 zero-exponent case.
+&
+Useful numerical comparison only. The figure does not separately discipline
+US/RoW or the two constant V6 post-switch scales.
+Do not reinterpret this illustration as evidence for a narrow productivity range.
+\\[5pt]
+\end{evidence}
+
+\clearpage
+\subsection{Explicit V6 mapping and proposed assignment}
+
+\textbf{Our derivation from the V6 equations.}
+For each country and reference observation, suppress country subscripts and set
+$X_0=\varphi_0H$. Define the intermediate expenditure share, including its monopoly profits,
+\[
+s_{X,0}\equiv\frac{P_0X_0}{Y_0}
+=\frac{w_{H,0}\varphi_0H}{\vartheta Y_0},
+\qquad 1-s_{X,0}=\frac{w_{L,0}L}{Y_0}.
+\]
+The first share is \emph{not} total skilled payroll over output: research payroll is excluded,
+while profits on current intermediate production are included through $1/\vartheta$.
+Matched observations must satisfy these two shares adding to one under the maintained
+production accounting. If they fail, report the scope/measurement residual rather than
+treating inconsistent share estimates as independent exact restrictions.
+Given $0<s_{X,0}<1$, fixed $\alpha\in(0,1)$ and $\rho\ne1$,
+\begin{align}
+B_X(\alpha,\rho;s_{X,0},Y_0,X_0)
+&\equiv \frac{Y_0}{X_0}
+ \left(\frac{s_{X,0}}{\alpha}\right)^{1/(1-\rho)}
+= A_{X,0}, \label{eq:bx}\\
+B_L(\alpha,\rho;s_{X,0},Y_0,L)
+&\equiv \frac{Y_0}{L}
+ \left(\frac{1-s_{X,0}}{1-\alpha}\right)^{1/(1-\rho)}
+= A_{L,0}. \label{eq:bl}
+\end{align}
+These are conditional production inversions, not an independent demonstration that
+research free entry and the complete equilibrium support the chosen $\varphi_0$.
+
+\begin{evidence}
+M11: $\alpha_{US},\alpha_W$.
+&
+\textbf{Proposed convention:} $\alpha_i=0.5$ with joint rescaling of augmentations,
+when $\rho_i\ne1$. No empirical confidence interval is assigned.
+&
+Only $\alpha_iA_{X,i}^{1-\rho_i}$ and
+$(1-\alpha_i)A_{L,i}^{1-\rho_i}$ enter the raw CES.
+An alternative $\alpha_i'$ is equivalent only if both combinations are preserved.
+&
+This is a normalization, not a half-income-share finding.
+At $\rho=1$, $\alpha$ becomes the Cobb--Douglas share and cannot be varied
+as a pure scale convention. Near one, the inversion is ill-conditioned.
+\\[5pt]
+M13: $\bar A_{X,US,u}$ and $\bar A_{L,US,u}$.
+&
+\textbf{Proposed baseline:}
+$B_{X,US}/N_{US,0}^{\xi_u}$ and
+$B_{L,US}/N_{US,0}^{\nu_u}$.
+No portable numerical level is assigned before matching data.
+&
+Initial US output, production-skilled and unskilled inputs, matched wages,
+markup, and a declared $N_{US,0}$ normalization. These production moments
+become calibration targets if used here.
+&
+Propagate wage/share, research-allocation and $\rho$ uncertainty jointly.
+Changing units changes the bars. A range imported from a different normalization
+would create artificial precision.
+\\[5pt]
+M15: $\bar A_{X,W}$ and $\bar A_{L,W}$.
+&
+\textbf{Proposed baseline:} $B_{X,W}$ and $B_{L,W}$ for the declared RoW aggregate.
+No numerical full-RoW candidate is presently supported.
+&
+Matched country coverage, output units, skill definition and wage accounting.
+CC06/Rossi provide measurement designs, not a ready-made V6 aggregate.
+&
+Use alternative coverage and input definitions to construct joint ranges.
+Maintain the US--RoW relative scale under any common output-unit normalization.
+Covered-country estimates must retain their coverage label.
+\\[5pt]
+M14: $\bar A_{X,US,b}$ and $\bar A_{L,US,b}$.
+&
+\textbf{Proposed reference scenario:}
+$\bar A_{X,US,u}N_\dagger^{\xi_u}$ and
+$\bar A_{L,US,u}N_\dagger^{\nu_u}$ at a declared reference switch stock $N_\dagger$.
+&
+A continuity assumption at one reference state, not an estimated post-switch technology.
+Uninterrupted $u$ observations cannot identify these counterfactual levels.
+&
+Robustness: separate proportional level shocks $m_X,m_L$ around the reference.
+No empirical bounds verified. Optional $m_j\in\{0.8,1,1.2\}$ is an analyst stress grid only.
+Constant bars cannot impose continuity at every possible random switch date.
+\\[5pt]
+\end{evidence}
+
+\textbf{Interpretation of the post-switch scenario.}
+Reference continuity pertains to factor augmentations only. Output, wages and equity values
+may still jump when research allocation or expectations change.
+The $(m_X,m_L)$ grid is not a literature-derived plausible interval and is not recommended
+as a substitute for identifying the economic transition. Its role is to expose how conclusions
+depend on an unobserved technology level. Reassess the internally calibrated financial block
+for each maintained external scenario.
+
+
+\clearpage
+\section[Proposed candidate set: recommendations, not additional estimates]{Proposed candidate set: recommendations, not additional estimates}
+
+All 19 included scalars appear once below. These are conditional starting choices for
+research, not an operational joint calibration vector. A robustness envelope joins
+measurement/specification alternatives only where stated; it is not a pooled statistical
+interval. Source-specific uncertainty remains in the preceding evidence tables.
+Confidence concerns \emph{economic numerical transfer}, unless algebra is separately mentioned.
+
+\begin{recommendations}
+% SCALAR: beta
+M01 $\beta$
+& Empirical point unassigned. Conditional endpoint bridge
+$\delta_a^\Delta/(1+\delta_a^\Delta)$; HKT $0.5$ for comparison.
+& Exponential sources and assumed $\Delta=20$--$40$: $0.1465$--$0.3070$.
+Separate present-bias continuation scenario extends to $0.4454$.
+No V6 confidence interval.
+& Low; exact algebra after life-stage assumptions.
+& \src{GP02} \src{LLMRT26} \src{HKT25}\\[5pt]
+% SCALAR: gamma
+M02 $\gamma$
+& $5$ finance-oriented; $2$ explicit lifecycle alternative.
+& Core $\{0.5,2,5,6.3,10\}$; separate recursive-utility stress
+$\{17,20,60\}$. Evidence-motivated scenario grid; retain wide source intervals.
+& Medium concept; low number.
+& \src{VA03} \src{KSS08} \src{CFL2013} \src{EHI25}\\[5pt]
+% SCALAR: pi
+M07 $\pi$
+& Conditional productivity-duration scenario $0.990^{4\Delta}$;
+no direct V6 estimate.
+& Mean spells $D=10,25,50$ years:
+$[1-1/(4D)]^{4\Delta}$.
+Only 25-year center source-derived; disaster events are separate alternatives.
+& Low event mapping; exact survival conversion.
+& \src{KR07} \src{Barro06} \src{BU08}\\[5pt]
+% SCALAR: vartheta_US
+M10 $\vartheta_{US}$
+& $0.621$ (COGS-based, 2016); competing cost-definition candidate $0.870$.
+& $0.621$--$0.909$ measurement-specification envelope;
+$0.543$ global-database US alternative.
+Not a sampling confidence range.
+& Low--medium; reciprocal exact.
+& \src{DLEU20} \src{Traina18} \src{DE21}\\[5pt]
+% SCALAR: vartheta_W
+M10 $\vartheta_W$
+& Full-RoW point unassigned. Europe $0.613$ and Asia $0.690$ are geographic anchors.
+& Regional proxies $0.613$--$0.725$;
+coverage and markup-method sensitivity required before aggregation.
+This is not a RoW interval.
+& Low; aggregate not matched.
+& \src{DE21}\\[5pt]
+% SCALAR: rho_US
+M12 $\rho_{US}$
+& Skill proxy $0.667$; retain meta candidates $0.16$ (US), $0.27$ (pooled).
+& Skill branch $0.16$--$0.91$, stress $0.05$.
+Separate capital--labor analogy: $2$, range $1.43$--$3.33$.
+No pooling across input pairs.
+& Qualified skill proxy; low exact V6.
+& \src{KM92} \src{CP05} \src{HILZ24} \src{OR21} \src{GHIK22}\\[5pt]
+% SCALAR: rho_W
+M12 $\rho_W$
+& $0.667$ only under explicit US-skill pooling;
+pooled/developing meta alternatives $0.27/0.47$.
+& Same broad skill branch conditional on coverage.
+Complementarity branch $2$ with $1.43$--$3.33$ is an analogy, not a RoW estimate.
+& Low geographic and input mapping.
+& \src{CP05} \src{CC06} \src{HILZ24} \src{OR21} \src{GHIK22}\\[5pt]
+% SCALAR: a_US
+M09 $a_{US}$
+& $(G_{N,US}-1)/(s_{R,US}H_{US})$ after matched measurement, $s_{R,US}>0$.
+& No portable numerical range. Propagate joint growth/research-share bounds.
+HKT $aH=0.2$ is illustration only.
+& Low empirical; conditional identity exact.
+& \src{HKT25} \src{BJRW20} \src{BP07}\\[5pt]
+% SCALAR: a_W
+M09 $a_W$
+& $(G_{N,W}-1)/(s_{R,W}H_W)$ for declared RoW, $s_{R,W}>0$.
+& Country coverage, knowledge proxy and research-share scenarios;
+no evidence for imposing the US level.
+& Low; RoW aggregation unresolved.
+& \src{BP07} \src{BJRW20}\\[5pt]
+\end{recommendations}
+
+\textbf{Why these numeric candidates.}
+The choice $\gamma=5$ gives a provisional finance-oriented point while preserving both
+lower lifecycle and much higher recursive-utility evidence. The skill candidate
+$\rho=2/3$ prioritizes an original instrumental-variable study; newer bias-corrected
+meta-estimates receive explicit alternatives rather than being averaged away.
+The two markup candidates reflect incompatible cost definitions.
+These judgments do not establish identification or override V6's restrictions.
+
+\clearpage
+\subsection{Remaining Group B scalars: normalization, data inversion and scenarios}
+
+Here $B_X,B_L$ are the explicit V6 inversions in equations~(\ref{eq:bx})--(\ref{eq:bl});
+$N_\dagger$ is a declared reference switch stock.
+An unassigned empirical value is a substantive finding, not permission to replace it
+with a convenient number. Suggested normalizations and stress grids are marked accordingly.
+
+\begin{recommendations}
+% SCALAR: alpha_US
+M11 $\alpha_{US}$
+& $0.5$ as a normalization, jointly recovering US scales, for $\rho_{US}\ne1$.
+& Reparameterization checks preserving both CES composites;
+no independently meaningful raw-weight range.
+At $\rho=1$, use the Cobb--Douglas share.
+& High equivalence; no empirical point claim.
+& \src{CL12} \src{KMW12} \src{CC06}\\[5pt]
+% SCALAR: alpha_W
+M11 $\alpha_W$
+& $0.5$ under the same normalization logic, for $\rho_W\ne1$.
+& Jointly adjust both RoW augmentations.
+Near $\rho=1$, inversion sensitivity needs explicit treatment.
+& High equivalence; units conditional.
+& \src{CL12} \src{KMW12}\\[5pt]
+% SCALAR: A_X_US_u
+M13 $\bar A_{X,US,u}$
+& $B_{X,US}/N_{US,0}^{\xi_u}$; numerical value awaits matched data.
+& Joint output/share, $\varphi$, markup, $\rho$ and knowledge-normalization uncertainty.
+No portable scale interval.
+& Conditional algebra high; empirical low.
+& \src{CC06} \src{Rossi22} \src{LMW10}\\[5pt]
+% SCALAR: A_L_US_u
+M13 $\bar A_{L,US,u}$
+& $B_{L,US}/N_{US,0}^{\nu_u}$; numerical value awaits matched data.
+& Joint production-data region, coupled to the preceding coefficient.
+HKT's $A_LL=1$ is a units-dependent illustration.
+& Conditional algebra high; empirical low.
+& \src{CC06} \src{HKT25} \src{LMW10}\\[5pt]
+% SCALAR: Abar_X_US
+M14 $\bar A_{X,US,b}$
+& $\bar A_{X,US,u}N_\dagger^{\xi_u}$: reference-state augmentation continuity scenario.
+& Multiply by $m_X$; $\{0.8,1,1.2\}$ optional analyst stress grid.
+No empirical bound verified.
+& Low; counterfactual assumption.
+& V6 equations; \src{HKT25} comparison only\\[5pt]
+% SCALAR: Abar_L_US
+M14 $\bar A_{L,US,b}$
+& $\bar A_{L,US,u}N_\dagger^{\nu_u}$: reference-state augmentation continuity scenario.
+& Multiply by $m_L$ jointly with $m_X$.
+Grid is not a credible interval; cannot ensure continuity at all switch dates.
+& Low; counterfactual assumption.
+& V6 equations; \src{HKT25} comparison only\\[5pt]
+% SCALAR: Abar_X_W
+M15 $\bar A_{X,W}$
+& $B_{X,W}$ for matched RoW production observations.
+& Country coverage and productivity/input measurement region,
+preserving relative US--RoW units.
+& Low empirical; conditional inversion exact.
+& \src{CC06} \src{Rossi22}\\[5pt]
+% SCALAR: Abar_L_W
+M15 $\bar A_{L,W}$
+& $B_{L,W}$ for the same matched RoW observations.
+& Joint with $\bar A_{X,W}$; no independent country-average TFP range.
+& Low empirical; conditional inversion exact.
+& \src{CC06} \src{Rossi22}\\[5pt]
+% SCALAR: xi_u
+M16 $\xi_u$
+& Empirical point unassigned; HKT $0.7$ for comparison.
+& Joint augmentation/knowledge-growth region.
+No verified transferable numeric bounds; annual demand trends are not this elasticity.
+& High HKT definition match; low empirical.
+& \src{HKT25} \src{KM92} \src{BJRW20}\\[5pt]
+% SCALAR: nu_u
+M16 $\nu_u$
+& Empirical point unassigned; HKT $0.2$ for comparison.
+& Joint with $\xi_u$; preserve data-supported zero/equal/reversed growth
+even outside the current theorem/solver class.
+& High HKT definition match; low empirical.
+& \src{HKT25} \src{KM92} \src{BP07}\\[5pt]
+\end{recommendations}
+
+\textbf{Use in subsequent calibration.}
+First declare the period and labor/knowledge/output units, then choose and defend the
+production-input mapping. Assign technology levels jointly with the matched production
+moments, recording those moments as targeted. For each retained external specification,
+re-fit Group C to the chosen international-finance moments and assess sensitivity and
+identification. Data/model disagreement is evidence about the mapping or specification;
+it must not be concealed by selecting only externally convenient parameters.
+
+
+\clearpage
+\section{References and verified versions}
+Links in each entry lead to the DOI and the paper/version used for the checks. Page and table locators refer to that version where specified. Working papers, illustrative calibrations and meta-analyses retain their distinct status.
+\begin{multicols}{2}\fontsize{9.2}{10.8}\selectfont\setlength{\parskip}{7pt}
+\begin{minipage}{\linewidth}\hypertarget{ref:HKT25}{}\textbf{HKT25}. Tomohiro Hirano, Keiichi Kishi, Alexis Akira Toda (2025). Technological Innovation and Bursting Bubbles. \emph{arXiv:2501.08215v2, preprint}. \href{https://doi.org/10.48550/arXiv.2501.08215}{DOI}. \href{https://arxiv.org/html/2501.08215v2}{Verified source/version}. Pinned arXiv v2 and matching local original TeX; Figure 1, p. 24. Numerical illustration, not an estimate.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:GP02}{}\textbf{GP02}. Gourinchas, Pierre-Olivier and Parker, Jonathan A. (2002). Consumption Over the Life Cycle. \emph{Econometrica 70(1), 47-89}. \href{https://doi.org/10.1111/1468-0262.00269}{DOI}. \href{https://jggarita.github.io/MacroIntermedia/materials/Readings/GourinchasParker2002.pdf}{Verified source/version}. Table III p.71; Table V p.79\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:LLMRT26}{}\textbf{LLMRT26}. Laibson, David and Lee, Sean Chanwook and Maxted, Peter and Repetto, Andrea and Tobacman, Jeremy (2026). Estimating Discount Functions with Consumption Choices over the Lifecycle. \emph{Review of Financial Studies 39(6), 1580-1610; online 2024, issue 2026}. \href{https://doi.org/10.1093/rfs/hhae035}{DOI}. \href{https://academic.oup.com/rfs/article/39/6/1580/7703274?rss=1}{Verified source/version}. Table 3; footnotes 25 and 39\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:BJKS97}{}\textbf{BJKS97}. Barsky, Robert and Juster, F. Thomas and Kimball, Miles and Shapiro, M. (1997). Preference Parameters and Behavioral Heterogeneity: An Experimental Approach in the Health and Retirement Study. \emph{Quarterly Journal of Economics 112(2), 537-579}. \href{https://doi.org/10.1162/003355397555280}{DOI}. \href{https://websites.umich.edu/~mkimball/keio/5.\%20papers/qje-bjks-risk-aversion.pdf}{Verified source/version}. Table XI p.563\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:KSS08}{}\textbf{KSS08}. Kimball, Miles and Sahm, Claudia and Shapiro, Matthew (2008). Imputing Risk Tolerance From Survey Responses. \emph{Journal of the American Statistical Association 103(483), 1028-1038}. \href{https://doi.org/10.1198/016214508000000139}{DOI}. \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC2856097/}{Verified source/version}. Equations 1--2; Table 4\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:HL02}{}\textbf{HL02}. Holt, Charles A. and Laury, Susan K. (2002). Risk Aversion and Incentive Effects. \emph{American Economic Review 92(5), 1644-1655}. \href{https://doi.org/10.1257/000282802762024700}{DOI}. \href{https://lorko.sk/wp-content/uploads/2023/10/HoltLaury2002.pdf}{Verified source/version}. Table 3 and discussion p.1649\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:VA03}{}\textbf{VA03}. Vissing-Jørgensen, Annette and Attanasio, Orazio (2003). Stock-Market Participation, Intertemporal Substitution, and Risk-Aversion. \emph{American Economic Review Papers and Proceedings 93(2), 383-391}. \href{https://doi.org/10.1257/000282803321947399}{DOI}. \href{https://www.researchgate.net/publication/4981014_Stock-Market_Participation_Intertemporal_Substitution_and_Risk-Aversion}{Verified source/version}. Numeric evidence: author-uploaded extended manuscript dated 10 January 2003, Table 2A, case 4, p. 14; journal article is shorter.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:CFL2013}{}\textbf{CFL2013}. Xiaohong Chen, Jack Favilukis, Sydney C. Ludvigson (2013). An estimation of economic models with recursive preferences. \emph{Quantitative Economics 4(1), 39-83}. \href{https://doi.org/10.3982/QE97}{DOI}. \href{https://www.econstor.eu/bitstream/10419/150343/1/v4-i1-p039-083-QE97.pdf}{Verified source/version}. Equations (1)-(2), p. 44; Table 2, p. 62; methods and interpretation, pp. 56-58, 64-65.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:EHI25}{}\textbf{EHI25}. Elminejad, Ali and Havranek, Tomas and Irsova, Zuzana (2025). Relative Risk Aversion: A Meta-Analysis. \emph{Journal of Economic Surveys 39(5), 2315-2333}. \href{https://doi.org/10.1111/joes.12689}{DOI}. \href{https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12689}{Verified source/version}. Sections 1/5 and Table 6\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:DLEU20}{}\textbf{DLEU20}. Jan De Loecker, Jan Eeckhout and Gabriel Unger (2020). The Rise of Market Power and the Macroeconomic Implications. \emph{Quarterly Journal of Economics 135(2), 561--644}. \href{https://doi.org/10.1093/qje/qjz041}{DOI}. \href{https://www.janeeckhout.com/wp-content/uploads/RMP.pdf}{Verified source/version}. Author manuscript, 15 November 2019: equation (7), section 3.1 and Figure 1, pp. 9-10.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:Traina18}{}\textbf{Traina18}. James Traina (2018). Is Aggregate Market Power Increasing? Production Trends Using Financial Statements. \emph{Working paper, February2018}. \href{https://doi.org/10.2139/ssrn.3120849}{DOI}. \href{https://doi.org/10.2139/ssrn.3120849}{Verified source/version}. Longer Time Horizons subsection and Figure 5; numerical passage verified in original full text via Scite.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:DE21}{}\textbf{DE21}. Jan De Loecker and Jan Eeckhout (2021). Global Market Power. \emph{Working paper, 10 February 2021 version; NBER Working Paper 24768 first issued 2018}. \href{https://doi.org/10.3386/w24768}{DOI}. \href{https://crei.cat/wp-content/uploads/2021/04/GLOBAL.pdf}{Verified source/version}. Data: section 2; regional estimates: Table 1, manuscript p. 13.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:BHKZ21}{}\textbf{BHKZ21}. Steve Bond, Arshia Hashemi, Greg Kaplan and Piotr Zoch (2021). Some Unpleasant Markup Arithmetic: Production Function Elasticities and Their Estimation from Production Data. \emph{Journal of Monetary Economics 121, 1-14}. \href{https://doi.org/10.1016/j.jmoneco.2021.05.004}{DOI}. \href{https://arshiahashemi.com/publication/jme-2021-bhkz/JME-2021-BHKZ.pdf}{Verified source/version}. Abstract verified; published-PDF direct fetch timed out\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:DL21}{}\textbf{DL21}. Jan De Loecker (2021). Comment on (Un)pleasant ... By Bond Et Al (2020). \emph{Journal of Monetary Economics 121, 15-18}. \href{https://doi.org/10.1016/j.jmoneco.2021.04.009}{DOI}. \href{https://doi.org/10.1016/j.jmoneco.2021.04.009}{Verified source/version}. Introduction, Scite fulltext\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:KM92}{}\textbf{KM92}. Lawrence F. Katz and Kevin M. Murphy (1992). Changes in Relative Wages, 1963--1987: Supply and Demand Factors. \emph{Quarterly Journal of Economics 107(1), 35--78}. \href{https://doi.org/10.2307/2118323}{DOI}. \href{https://lkatz.scholars.harvard.edu/sites/g/files/omnuum5961/files/lkatz/files/changes_in_relative_wages_1963-1987_supply_and_demand_factors.pdf}{Verified source/version}. Equation (19), p.69; elasticity discussion p.72\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:CP05}{}\textbf{CP05}. Antonio Ciccone and Giovanni Peri (2005). Long-Run Substitutability Between More and Less Educated Workers: Evidence from U.S. States, 1950--1990. \emph{Review of Economics and Statistics 87(4), 652--663}. \href{https://doi.org/10.1162/003465305775098233}{DOI}. \href{https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/ciccone_peri_long_run_substitutability_\%40005.pdf}{Verified source/version}. Table 4, p.656, panel B(iv), column 1; full panels A--C for estimator sensitivity\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:KORV00}{}\textbf{KORV00}. Per Krusell, Lee E. Ohanian, Jose-Victor Rios-Rull and Giovanni L. Violante (2000). Capital-Skill Complementarity and Inequality: A Macroeconomic Analysis. \emph{Econometrica 68(5), 1029--1053}. \href{https://doi.org/10.1111/1468-0262.00150}{DOI}. \href{https://www.jonathanheathcote.com/KORV.pdf}{Verified source/version}. Table II, p. 1041; alternative skill threshold: footnote 16, p. 1044.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:HILZ24}{}\textbf{HILZ24}. Tomas Havranek, Zuzana Irsova, Lubica Laslopova and Olesia Zeynalova (2024). Publication and Attenuation Biases in Measuring Skill Substitution. \emph{Review of Economics and Statistics 106(5), 1187-1200; online 2022}. \href{https://doi.org/10.1162/rest_a_01227}{DOI}. \href{https://meta-analysis.cz/skill/skill2.pdf}{Verified source/version}. Final published Table 5, p. 1197; supersedes 2020/2021 low-elasticity working paper.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:CC06}{}\textbf{CC06}. Francesco Caselli and Wilbur John Coleman II (2006). The World Technology Frontier. \emph{American Economic Review 96(3), 499--522}. \href{https://doi.org/10.1257/aer.96.3.499}{DOI}. \href{https://personal.lse.ac.uk/casellif/papers/wtf.pdf}{Verified source/version}. Equations (2)-(3), pp. 499-502; section I.B and Table 2, pp. 504-505.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:OR21}{}\textbf{OR21}. Ezra Oberfield and Devesh Raval (2021). Micro Data and Macro Technology. \emph{Econometrica 89(2), 703-732}. \href{https://doi.org/10.3982/ECTA12807}{DOI}. \href{https://ezraoberfield.github.io/CESAggregation.pdf}{Verified source/version}. Abstract, p. 703; introduction, p. 705; Figure 4b, p. 719.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:GHIK22}{}\textbf{GHIK22}. Sebastian Gechert, Tomas Havranek, Zuzana Irsova and Dominika Kolcunova (2022). Measuring Capital-Labor Substitution: The Importance of Method Choices and Publication Bias. \emph{Review of Economic Dynamics 45, 55-82}. \href{https://doi.org/10.1016/j.red.2021.05.003}{DOI}. \href{https://meta-analysis.cz/sigma/sigma2.pdf}{Verified source/version}. Table 9, p. 77; method: section 5.4; conclusion, p. 78.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:KR07}{}\textbf{KR07}. James A. Kahn and Robert W. Rich (2007). Tracking the new economy: Using growth theory to detect changes in trend productivity. \emph{Journal of Monetary Economics 54(6), 1670-1701}. \href{https://doi.org/10.1016/j.jmoneco.2006.07.008}{DOI}. \href{https://pages.stern.nyu.edu/~jkahn/Papers/kahnrich_jme.pdf}{Verified source/version}. Equations (7)-(9), p. 1677; Table 2, p. 1683; sample/durations, p. 1682; identification, p. 1687.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:Barro06}{}\textbf{Barro06}. Robert J. Barro (2006). Rare Disasters and Asset Markets in the Twentieth Century. \emph{Quarterly Journal of Economics 121(3), 823-866}. \href{https://doi.org/10.1162/qjec.121.3.823}{DOI}. \href{https://dash.harvard.edu/bitstreams/7312037c-67b1-6bd4-e053-0100007fdf3b/download}{Verified source/version}. p.825 disaster process; p.831 observed annual frequency; Table V, p.846\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:BU08}{}\textbf{BU08}. Robert J. Barro, Jose F. Ursua (2008). Macroeconomic Crises since 1870. \emph{Brookings Papers on Economic Activity, Spring, 255-350 including discussion}. \href{https://doi.org/10.1353/eca.0.0000}{DOI}. \href{https://www.brookings.edu/wp-content/uploads/2008/03/2008a_bpea_barro.pdf}{Verified source/version}. pp.284-286 hazard definition and sample; Table 10, p.296; Table 11, p.297; footnote24, p.286\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:BJRW20}{}\textbf{BJRW20}. Nicholas Bloom, Charles I. Jones, John Van Reenen, Michael Webb (2020). Are Ideas Getting Harder to Find?. \emph{American Economic Review 110(4), 1104-1144}. \href{https://doi.org/10.1257/aer.20180338}{DOI}. \href{https://web.stanford.edu/~chadj/IdeaPF.pdf}{Verified source/version}. Equations (1)-(3), pp. 1108-1110; Table 7 and equation (17), p. 1134; Table A1, p. 1140.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:BP07}{}\textbf{BP07}. Laura Bottazzi and Giovanni Peri (2007). The International Dynamics of R\&D and Innovation in the Long Run and in the Short Run. \emph{Economic Journal 117(518), 486-511}. \href{https://doi.org/10.1111/j.1468-0297.2007.02027.x}{DOI}. \href{https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/bottazzi_et_al-2007-the_economic_journal.pdf}{Verified source/version}. Equations (5)-(9), pp. 492-494; sample, p. 495; Table 4, p. 501; interpretation, p. 502.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:Jones95}{}\textbf{Jones95}. Charles I. Jones (1995). R \& D-Based Models of Economic Growth. \emph{Journal of Political Economy 103(4), 759-784}. \href{https://doi.org/10.1086/262002}{DOI}. \href{https://www.journals.uchicago.edu/doi/10.1086/262002}{Verified source/version}. publisher abstract; qualitative specification critique only\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:Rossi22}{}\textbf{Rossi22}. Federico Rossi (2022). The Relative Efficiency of Skilled Labor across Countries: Measurement and Interpretation. \emph{American Economic Review 112(1), 235-266}. \href{https://doi.org/10.1257/aer.20191852}{DOI}. \href{https://wrap.warwick.ac.uk/id/eprint/159013/1/WRAP-Relative-efficiency-skilled-labor-across-countries-measurement-interpretation-2021.pdf}{Verified source/version}. July 2021 accepted manuscript, equations (4)-(8), pp. 7-8; Table I, p. 31 (PDF page 32). Publication metadata checked against AEA.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:CL12}{}\textbf{CL12}. Cristiano Cantore and Paul Levine (2012). Getting Normalization Right: Dealing with Dimensional Constants in Macroeconomics. \emph{Journal of Economic Dynamics and Control 36(12), 1931-1949}. \href{https://doi.org/10.1016/j.jedc.2012.05.009}{DOI}. \href{https://archives.dynare.org/wp-repo/dynarewp009.pdf}{Verified source/version}. Detailed method: Dynare Working Paper 9 (July 2011), sections 2.1-2.5.\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:KMW12}{}\textbf{KMW12}. Rainer Klump, Peter McAdam and Alpo Willman (2012). The Normalized CES Production Function: Theory and Empirics. \emph{Journal of Economic Surveys 26(5), 769-799}. \href{https://doi.org/10.1111/j.1467-6419.2012.00730.x}{DOI}. \href{https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1294.pdf}{Verified source/version}. Detailed method: ECB Working Paper 1294 (2011), equations (10), (15)-(16).\end{minipage}\par
+\begin{minipage}{\linewidth}\hypertarget{ref:LMW10}{}\textbf{LMW10}. Miguel A. Leon-Ledesma, Peter McAdam and Alpo Willman (2010). Identifying the Elasticity of Substitution with Biased Technical Change. \emph{American Economic Review 100(4), 1330-1357}. \href{https://doi.org/10.1257/aer.100.4.1330}{DOI}. \href{https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1001.pdf}{Verified source/version}. Method verified in ECB Working Paper 1001 (January 2009); published metadata checked at AEA.\end{minipage}\par
+\end{multicols}
+\end{document}

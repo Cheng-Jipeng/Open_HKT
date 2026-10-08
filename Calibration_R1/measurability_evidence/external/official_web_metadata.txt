@@ -1,0 +1,295 @@
+Rest of the World; Total Equity; Liability (IMA), Level (ROWEISQ027S) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/ROWEISQ027S)
+citeturn1view0 [wordlim: 200] Crawled: 5 days ago; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/ROWEISQ027S","lineno":null}); Total lines: 111
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (ROWEISQ027S)
+L12: #
+L13: 
+L14: Rest of the World; Total Equity; Liability (IMA), Level (ROWEISQ027S)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: Q2 2026: 28,057,583 | Millions of U.S. Dollars, Not Seasonally Adjusted | Quarterly,
+L21: End of Period
+L22: 
+L23: Updated: Sep 11, 2026 11:56 AM CDT
+L24: 
+L25: cite7†Next Release Date: Dec 10, 2026 L26: 
+L27: Observations
+L28: 
+L29: Q2 2026: 28,057,583
+L30: 
+L31: Updated: Sep 11, 2026 11:56 AM CDT
+L32: 
+L33: cite7†Next Release Date: Dec 10, 2026 L34: Q2 2026:   | 28,057,583  |
+L35: Q1 2026:   | 25,455,319  |
+L36: Q4 2025:   | 25,609,011  |
+L37: Q3 2025:   | 24,520,083  |
+L38: Q2 2025:   | 23,028,113  |
+L39: 
+L40: Units:
+L41: 
+L42: Millions of U.S. Dollars,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: 
+L48: Quarterly,
+L49: 
+L50: End of Period
+L51: 
+L52: [Input] [Input] [Input] [Input]
+L53: 
+L54: Fullscreen
+L55: 
+L56: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L57:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L58:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L59:   * ## Notes
+L60: 
+L61: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L62: 
+L63: Release: cite12†Z.1 Financial Accounts of the United States†www.federalreserve.gov L64: 
+L65: Units:  Millions of U.S. Dollars, Not Seasonally Adjusted
+L66: 
+L67: Frequency:  Quarterly, End of Period
+L68: #### Notes:
+L69: For more information about the Flow of Funds tables, see the cite13†Financial Accounts Guide†www.federalreserve.gov .
+L70: With each quarterly release, the source may make major data and structural revisions to the series and tables. These changes are available in the cite14†Release Highlights†www.federalreserve.gov .
+L71: In the Financial Accounts, the source identifies each series by a string of patterned letters and numbers. For a detailed description, including how this series is constructed, see the cite15†series analyzer†www.federalreserve.gov provided by the source. To easily map the Board series IDs to FRED series IDs, see the cite16†DDP-FRED crosswalk†www.federalreserve.gov .
+L72: #### Suggested Citation:
+L73: 
+L74: Board of Governors of the Federal Reserve System (US), Rest of the World; Total Equity; Liability (IMA), Level [ROWEISQ027S], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/ROWEISQ027S, .
+L75: 
+L76: ## Release Tables
+L77: 
+L78: Z.1 Financial Accounts of the United States
+L79: 
+L80:   * cite17†Quarterly Tables: S2.i.q Rest of the world L81: 
+L82: ## Related Data and Content
+L83: 
+L84: ### Data Suggestions Based On Your Search
+L85: 
+L86: cite18†See More... L87: 
+L88: * * *
+L89: 
+L90: ### Content Suggestions
+L91: ### Other Formats
+L92: 
+L93: cite19†Annual, Not Seasonally Adjusted L94: 
+L95: ### Related Categories
+L96: 
+L97: ### Releases
+L98: 
+L99: ### Tags
+L100: 
+L101: cite20†Mutual Funds cite21†Money Market Mutual Fund cite22†Integrated Macroeconomic Accounts cite23†Equity cite24†World cite25†Liabilities cite26†Investment cite27†Z.1 US Financial Accounts cite28†Transnational cite29†Board of Governors cite30†Quarterly cite31†Public Domain: Citation Requested cite32†Not Seasonally Adjusted L102: ##### Permalink/Embed
+L103: 
+L104: modal open, choose link customization options
+L105: 
+L106: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L107: 
+L108: cite33†See FRED Help for usage instructions†fredhelp.stlouisfed.org L109: 
+L110: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+Rest of the World; Equity and Investment Fund Shares Excluding Mutual Fund Shares and Money Market Fund Shares; Liability (IMA), Revaluation (BOGZ1FR263181105Q) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/BOGZ1FR263181105Q)
+citeturn1view1 [wordlim: 200] Crawled: 4 weeks ago; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/BOGZ1FR263181105Q","lineno":null}); Total lines: 111
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (BOGZ1FR263181105Q)
+L12: #
+L13: 
+L14: Rest of the World; Equity and Investment Fund Shares Excluding Mutual Fund Shares and Money Market Fund Shares; Liability (IMA), Revaluation (BOGZ1FR263181105Q)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: Q1 2026: 233,397 | Millions of U.S. Dollars, Not Seasonally Adjusted | Quarterly,
+L21: End of Period
+L22: 
+L23: Updated: Jun 11, 2026 7:57 PM CDT
+L24: 
+L25: cite7†Next Release Date: Sep 10, 2026 L26: 
+L27: Observations
+L28: 
+L29: Q1 2026: 233,397
+L30: 
+L31: Updated: Jun 11, 2026 7:57 PM CDT
+L32: 
+L33: cite7†Next Release Date: Sep 10, 2026 L34: Q1 2026:   | 233,397  |
+L35: Q4 2025:   | 943,558  |
+L36: Q3 2025:   | 1,351,882  |
+L37: Q2 2025:   | 2,173,541  |
+L38: Q1 2025:   | 683,206  |
+L39: 
+L40: Units:
+L41: 
+L42: Millions of U.S. Dollars,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: 
+L48: Quarterly,
+L49: 
+L50: End of Period
+L51: 
+L52: [Input] [Input] [Input] [Input]
+L53: 
+L54: Fullscreen
+L55: 
+L56: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L57:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L58:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L59:   * ## Notes
+L60: 
+L61: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L62: 
+L63: Release: cite12†Z.1 Financial Accounts of the United States†www.federalreserve.gov L64: 
+L65: Units:  Millions of U.S. Dollars, Not Seasonally Adjusted
+L66: 
+L67: Frequency:  Quarterly, End of Period
+L68: #### Notes:
+L69: For more information about the Flow of Funds tables, see the cite13†Financial Accounts Guide†www.federalreserve.gov .
+L70: With each quarterly release, the source may make major data and structural revisions to the series and tables. These changes are available in the cite14†Release Highlights†www.federalreserve.gov .
+L71: In the Financial Accounts, the source identifies each series by a string of patterned letters and numbers. For a detailed description, including how this series is constructed, see the cite15†series analyzer†www.federalreserve.gov provided by the source.
+L72: #### Suggested Citation:
+L73: 
+L74: Board of Governors of the Federal Reserve System (US), Rest of the World; Equity and Investment Fund Shares Excluding Mutual Fund Shares and Money Market Fund Shares; Liability (IMA), Revaluation [BOGZ1FR263181105Q], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/BOGZ1FR263181105Q, .
+L75: 
+L76: ## Release Tables
+L77: 
+L78: Z.1 Financial Accounts of the United States
+L79: 
+L80:   * cite16†Quarterly Tables: S2.i.q Rest of the world L81: 
+L82: ## Related Data and Content
+L83: ### Data Suggestions Based On Your Search
+L84: 
+L85: cite17†See More... L86: 
+L87: * * *
+L88: 
+L89: ### Content Suggestions
+L90: 
+L91: ### Other Formats
+L92: 
+L93: cite18†Annual, Not Seasonally Adjusted L94: 
+L95: ### Related Categories
+L96: 
+L97: ### Releases
+L98: 
+L99: ### Tags
+L100: 
+L101: cite19†Mutual Funds cite20†Money Market Mutual Fund cite21†Revaluation cite22†Integrated Macroeconomic Accounts cite23†Equity cite24†Liabilities cite25†Investment cite26†Z.1 US Financial Accounts cite27†Transnational cite28†Board of Governors cite29†Quarterly cite30†Public Domain: Citation Requested cite31†Not Seasonally Adjusted L102: ##### Permalink/Embed
+L103: 
+L104: modal open, choose link customization options
+L105: 
+L106: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L107: 
+L108: cite32†See FRED Help for usage instructions†fredhelp.stlouisfed.org L109: 
+L110: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+3-Month Treasury Bill Secondary Market Rate, Discount Basis (TB3MS) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/TB3MS)
+citeturn1view2 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/TB3MS","lineno":null}); Total lines: 112
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (TB3MS)
+L12: #
+L13: 
+L14: 3-Month Treasury Bill Secondary Market Rate, Discount Basis (TB3MS)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: Aug 2026: 3.72 | Percent, Not Seasonally Adjusted | Monthly
+L21: 
+L22: Updated: Sep 1, 2026 3:16 PM CDT
+L23: 
+L24: cite7†Next Release Date: Sep 22, 2026 L25: 
+L26: Observations
+L27: 
+L28: Aug 2026: 3.72
+L29: 
+L30: Updated: Sep 1, 2026 3:16 PM CDT
+L31: 
+L32: cite7†Next Release Date: Sep 22, 2026 L33: 
+L34: Aug 2026:   | 3.72  |
+L35: Jul 2026:   | 3.73  |
+L36: Jun 2026:   | 3.66  |
+L37: May 2026:   | 3.60  |
+L38: Apr 2026:   | 3.61  |
+L39: 
+L40: Units:
+L41: 
+L42: Percent,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: Monthly
+L48: 
+L49: [Input] [Input] [Input] [Input]
+L50: 
+L51: Fullscreen
+L52: 
+L53: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L54: 
+L55:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L56:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L57:   * ## Notes
+L58: 
+L59: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L60: 
+L61: Release: cite12†H.15 Selected Interest Rates†www.federalreserve.gov L62: 
+L63: Units:  Percent, Not Seasonally Adjusted
+L64: Frequency:  Monthly
+L65: #### Notes:
+L66: 
+L67: Averages of Business Days, Discount Basis
+L68: For questions on the data, please contact the cite13†data source†www.federalreserve.gov . For questions on FRED functionality, please contact us cite14†here .
+L69: 
+L70: #### Suggested Citation:
+L71: 
+L72: Board of Governors of the Federal Reserve System (US), 3-Month Treasury Bill Secondary Market Rate, Discount Basis [TB3MS], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/TB3MS, .
+L73: ## Release Tables
+L74: 
+L75: H.15 Selected Interest Rates
+L76: 
+L77:   * cite15†Selected Interest Rates Instruments, Yields in percent per annum: Monthly L78: 
+L79: ## Related Data and Content
+L80: 
+L81: ### Data Suggestions Based On Your Search
+L82: 
+L83: cite16†See More... L84: 
+L85: * * *
+L86: 
+L87: ### Content Suggestions
+L88: 
+L89: cite17†See More... L90: 
+L91: * * *
+L92: 
+L93: ### Other Formats
+L94: 
+L95: cite18†Annual, Not Seasonally Adjusted cite19†Daily, Not Seasonally Adjusted cite20†Weekly, Not Seasonally Adjusted L96: 
+L97: ### Related Categories
+L98: 
+L99: ### Releases
+L100: ### Tags
+L101: 
+L102: cite21†Secondary Market cite22†Bills cite23†3-Month cite24†H.15 Selected Interest Rates cite25†Treasury cite26†Interest Rate cite27†Interest cite28†Board of Governors cite29†Rate cite30†Monthly cite31†Nation cite32†Public Domain: Citation Requested cite33†United States of America cite34†Not Seasonally Adjusted L103: ##### Permalink/Embed
+L104: 
+L105: modal open, choose link customization options
+L106: 
+L107: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L108: 
+L109: cite35†See FRED Help for usage instructions†fredhelp.stlouisfed.org L110: 
+L111: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn1view3 [wordlim: 200] Source: open({"ref_id":"https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=LM263181105&t=","lineno":null}); Total lines: 1
+L0: URL https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=LM263181105&t= is not accessible via this tool.
+

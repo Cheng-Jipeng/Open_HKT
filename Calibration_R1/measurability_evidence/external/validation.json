@@ -1,0 +1,19 @@
+{
+  "verified_exact_series": 19,
+  "failed_probes": [
+    "BOGZ1FV263081005Q",
+    "BOGZ1FV263181105Q"
+  ],
+  "samples_start": "2024-01-01",
+  "quarterly_series_count": 16,
+  "monthly_series_count": 1,
+  "annual_series_count": 2,
+  "all_verified_series_have_unique_sorted_dates": true,
+  "nfa_identity_max_abs_residual_musd": 0.0,
+  "latest_liability_revaluation_scope_difference_musd": 202800.0,
+  "openecon_requested": "ROWEISQ027S",
+  "openecon_returned": "BOGZ1FL263164100Q",
+  "openecon_exact_match_accepted": false,
+  "latest_correct_ROWEIS_minus_substitute_musd": 11305117.0,
+  "limitation": "Read-only feasibility probes from 2024 onward; no full historical panel refresh or model calibration. FRED web-index excerpts can lag live graph CSV vintages."
+}

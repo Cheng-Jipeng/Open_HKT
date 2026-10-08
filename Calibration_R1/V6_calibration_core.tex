@@ -1,0 +1,213 @@
+% !TEX program = pdflatex
+% Standalone calibration register, prepared 2026-09-22.
+% The comprehensive inventory and model sources are preserved.
+% Manuscript SHA256: 5b972aefffff66d48d7f913d093d53f1fdf245bf3a8e53c9ecaa65780c57feb9
+% Model SHA256: 7969cb993828847c33aa828ae25129f3b18152a28ded46f528a8dd48edf5167c
+% Scope: V6_production.tex; zero-nu-b TwoCountryProductionOLG.jl;
+% notebooks 01--06, especially 04/05 mechanism diagnostics and 06 accounting/search.
+% Implementation anchors: ProductionParams, productivity_US/productivity_W,
+% compute_production, bgp_residual!, u_residual!, nb06_accounting, nb06_metrics.
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=14mm,headheight=14pt,headsep=6mm,footskip=8mm]{geometry}
+\usepackage{array,longtable,booktabs,ragged2e}
+\usepackage[table]{xcolor}
+\usepackage{microtype,fancyhdr}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\definecolor{heading}{RGB}{28,53,73}
+\definecolor{tablehead}{RGB}{231,238,243}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{heading}Two-country HKT: calibration core}
+\fancyhead[R]{\small\sffamily V6 manuscript and zero-exponent computation}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{5pt}
+\setlength{\LTpre}{5pt}
+\setlength{\LTpost}{8pt}
+\renewcommand{\arraystretch}{1.18}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\setlength{\emergencystretch}{3em}
+\newcommand{\Q}{\mathcal Q}
+\newcommand{\D}{\mathcal D}
+\newcommand{\I}{\mathcal I}
+\newcommand{\code}[1]{{\footnotesize\texttt{#1}}}
+\newenvironment{coretable}{%
+\begin{longtable}{@{}P{\dimexpr .19\textwidth-3.8pt\relax}P{\dimexpr .35\textwidth-7pt\relax}P{\dimexpr .46\textwidth-9.2pt\relax}@{}}
+\toprule
+\rowcolor{tablehead}\textbf{Quantity} & \textbf{Role and defining relationship} & \textbf{Why retain it; what measurement must establish}\\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{tablehead}\textbf{Quantity} & \textbf{Role and defining relationship} & \textbf{Why retain it; what measurement must establish}\\
+\midrule
+\endhead
+\midrule\multicolumn{3}{r}{\footnotesize\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+}{\end{longtable}}
+\hypersetup{pdftitle={Two-country HKT: parsimonious calibration register},pdfauthor={}}
+\begin{document}
+{\LARGE\sffamily\bfseries\color{heading}A parsimonious register for calibration}\par
+{\large\sffamily Parameters, exogenous inputs, and essential endogenous quantities}\par
+
+This register keeps \textbf{35 grouped entries}: inputs required by the implemented equilibrium, its principal unknowns, and outputs needed to discipline the production and international-accounting mechanisms. It covers all \textbf{30 economic scalar fields} in \code{ProductionParams}, including two fixed exponents, and both initial knowledge stocks. Country variants are grouped; $i\in\{US,W\}$ and a star denotes RoW investors. Dates and regimes are suppressed when unambiguous.
+
+\textbf{Retention does not imply independent observability.} A primitive needs an empirical estimate, a joint calibration argument, or an explicit normalization/restriction. An endogenous quantity needs a defensible data counterpart only if selected as a target or validation moment. Algebraically linked objects do not supply independent identifying information merely because each can be reported.
+
+\section{Parameters: saving, portfolios, and regime risk}
+\begin{coretable}
+% FIELDS: β
+$\beta$\par Old-age utility weight & Determines US saving $A=\beta e_{US}$ and enters all portfolio first-order conditions. & Fixes the amount of saving available to fund equity and net bond positions. Check the saving concept, population coverage, and model-period length; an aggregate saving rate is not automatically this cohort propensity.\\[4pt]
+% FIELDS: γ
+$\gamma$\par Risk aversion & Governs marginal valuation of successor-state portfolio returns. & Needed to price continuation versus switch risk and determine portfolios. Latent: discipline jointly using risk/return evidence or state an external restriction; not inferred from price growth alone.\\[4pt]
+% FIELDS: κ
+$\kappa$\par Equity-preference strength & Multiplies $-(\omega-\bar\omega)^2/2$ and its RoW counterpart in utility. & Controls responsiveness of equity allocation to return differences. Portfolio levels alone generally cannot separate this curvature from the target weights and risk preferences.\\[4pt]
+% FIELDS: ω̄, ω̄_star
+$\bar\omega,\ \bar\omega^*$\par Target US equity weights & Preference centers for US and RoW investors. Both weights refer to \emph{US equity within the investor's equity portfolio}. & Anchor domestic bias and foreign demand for US equity. Distinguish latent preference centers from observed equilibrium weights $\omega,\omega^*$; joint calibration is required.\\[4pt]
+% FIELDS: χ
+$\chi$\par US-bond convenience & RoW convenience utility; also changes RoW saving to $A^*=[(\beta+\chi)/(1+\chi)]e_W$. & Links foreign demand for US safe claims, relative saving, and bond returns. Requires a mapped safe-asset position/spread and saving evidence; no single observed spread equals $\chi$.\\[4pt]
+% FIELDS: η
+$\eta$\par US bond-cost strength & Scales $\Upsilon(\theta)$, fixed in the code as $-\log(1-\theta)+\theta^2/2$. & Disciplines US borrowing and the equilibrium safe return. Estimate/calibrate the coefficient jointly with $\chi$; the functional form is a maintained restriction, not another measurable scalar.\\[4pt]
+% FIELDS: π_persist
+$\pi$\par Regime persistence\par$\pi$\code{\_persist} & $\Pr(z_{t+1}=u\mid z_t=u)=\pi$; $b$ is absorbing. The transition matrix is derived from $\pi$. & Switch risk affects valuation even on an all-$u$ realized path. Establish what the regimes mean and the period length before using durations, hazards, or scenario restrictions.\\[4pt]
+\end{coretable}
+
+\clearpage
+\section{Parameters: production and knowledge accumulation}
+Both countries use CES production in the code, although V6 leaves the RoW aggregator general. With the Cobb--Douglas limit understood at $\rho_i=1$,
+\[
+Y_i=F_i(A_{X,i}\varphi_iH_i,A_{L,i}L_i),\qquad
+F_i(\widetilde X,\widetilde L)=
+\big[\alpha_i\widetilde X^{1-\rho_i}+(1-\alpha_i)\widetilde L^{1-\rho_i}\big]^{1/(1-\rho_i)}.
+\]
+\begin{coretable}
+% FIELDS: H_US, L_US, H_W, L_W
+$H_i,\ L_i$\par Labor endowments & Skilled and unskilled young labor supplies. Production uses $\varphi_iH_i$; R\&D uses $(1-\varphi_i)H_i$. & Set country scale, relative labor scarcity, and R\&D capacity. Define skills, cohort/labor coverage, and units; only ratios or normalized levels may be defensible.\\[4pt]
+% FIELDS: a_US, a_W
+$a_i$\par R\&D productivity & $N_{i,t+1}/N_{i,t}=1+a_i(1-\varphi_{i,t})H_i$. & Translates research labor into new varieties. Knowledge growth and the research share discipline $a_iH_i$; recovering $a_i$ separately requires the unit of $H_i$.\\[4pt]
+% FIELDS: ϑ_US, ϑ_W
+$\vartheta_i$\par Inverse markup & Intermediate price/wage markup is $1/\vartheta_i$; profits and skilled wages depend on it. & Determines the labor/profit split and dividends supporting equity. Requires a markup or profit-share mapping consistent with the modeled sector and gross/net accounting.\\[4pt]
+% FIELDS: α_US, α_W
+$\alpha_i$\par CES distribution weight & Weight on the augmented intermediate input in $F_i$. & Helps determine factor payments and output composition. Jointly discipline with productivity scales and factor quantities; $\alpha_i$ is not the observed skilled-labor income share.\\[4pt]
+% FIELDS: ρ_US, ρ_W
+$\rho_i$\par CES curvature & Elasticity of substitution is $1/\rho_i$. The solver requires $\rho_{US}>1$; RoW CES curvature is also an input. & Controls wage and production responses to relative inputs/productivity. A single level share cannot identify it; use variation or an external elasticity restriction.\\[4pt]
+% FIELDS: A_X_US_u, A_L_US_u
+$\bar A_{X,US,u},\ \bar A_{L,US,u}$\par US scales in $u$ & $A^u_{X,US}=\bar A_{X,US,u}N_{US}^{\xi_u}$; $A^u_{L,US}=\bar A_{L,US,u}N_{US}^{\nu_u}$.\par Code: \code{A\_X\_US\_u}, \code{A\_L\_US\_u}. & Set the initial level and relative productivity of the unbalanced branch. These code fields are scale coefficients, not the realized augmentations; measurement depends on knowledge and labor normalization.\\[4pt]
+% FIELDS: Abar_X_US, Abar_L_US
+$\bar A_{X,US,b},\ \bar A_{L,US,b}$\par US scales in $b$ & $A^b_{X,US}=\bar A_{X,US,b}$ and $A^b_{L,US}=\bar A_{L,US,b}$ in the zero-exponent solver.\par Code: \code{Abar\_X\_US}, \code{Abar\_L\_US}. & Determine the absorbing equilibrium and the switch payoff entering current asset demand. They remain necessary even if the calibration window has no realized switch; absent switch data, restrictions must be stated.\\[4pt]
+% FIELDS: Abar_X_W, Abar_L_W
+$\bar A_{X,W},\ \bar A_{L,W}$\par RoW scales & $A_{X,W}=\bar A_{X,W}$ and $A_{L,W}=\bar A_{L,W}$ under $\xi_W=0$. & Set RoW production, income, and equity supply, hence foreign funding capacity. Define the geographic/sectoral RoW aggregate and relative output scale consistently.\\[4pt]
+% FIELDS: ξ_u, ν_u
+$\xi_u,\ \nu_u$\par US knowledge elasticities & Elasticities of the two US augmentations with respect to knowledge in $u$; the code requires $\xi_u>\nu_u\ge0$. & Their difference drives relative productivity; their levels also affect growth and switch risk. Need a knowledge bridge and factor-productivity information; relative wages alone do not identify both.\\[4pt]
+% FIELDS: ν_b, ξ_W
+$\nu_b=0,\ \xi_W=0$\par Fixed specialization & Absorbing-US and RoW productivity have zero knowledge elasticities in this solver. & Record as imposed restrictions, not free parameters awaiting estimates. Notebook 04's positive-exponent extension calls the separate fixed-exponent solver; reopening these exponents changes the calibration specification.\\[4pt]
+\end{coretable}
+
+\clearpage
+\section{Exogenous variables and initial conditions}
+\begin{coretable}
+% FIELDS: N_US_0, N_W_0
+$N_{US,0},\ N_{W,0}$\par Initial knowledge & Positive initial variety/knowledge stocks supplied to the forward law of motion. Both default to one in the code. & Needed to initialize a path. Specify a scale normalization or a justified initial-stock proxy; raw patent or firm counts do not automatically measure a model variety. Absolute per-variety prices inherit this unit choice.\\[4pt]
+$z_t\in\{u,b\}$\par Regime path & Given realization/scenario under the law governed by $\pi$. An imposed switch date $\tau$ specifies a scenario, not a new structural parameter. & Determines which productivity map applies. Establish the empirical episode/regime mapping; an all-$u$ path and a realized switch path must not be pooled as equivalent observations.\\[4pt]
+\end{coretable}
+
+\section{Endogenous variables: states and equilibrium choices}
+At each predetermined state the solver uses \textbf{seven unknowns}:
+$\big(\varphi_{US},\varphi_W,\omega,\theta_{US}^*,\omega^*,R_f,R_f^W\big)$.
+Knowledge then evolves with the chosen allocations. V6 permits complementary-slackness boundaries; this code implements the interior, active-R\&D branch with $q_i=w_{H,i}/(a_iN_i)$.
+
+\begin{coretable}
+$N_{i,t}$\par Knowledge state & $N_{i,t+1}=\big[1+a_i(1-\varphi_{i,t})H_i\big]N_{i,t}$. Predetermined today; endogenous after initialization. & Connects research to productivity and per-variety valuation. Assess whether growth/normalized stocks have a defensible proxy; an independent level target is unnecessary after a chosen normalization.\\[4pt]
+$\varphi_{US,t},\ \varphi_{W,t}$\par Skilled production shares & Allocate skilled labor between intermediate production and R\&D. Research share is $1-\varphi_{i,t}$. & Central innovation/production margin, entering wages, prices, and knowledge growth. A counterpart must use \emph{skilled labor} as denominator; a share of total employment is a different object.\\[4pt]
+$\omega_t,\ \omega_t^*$\par Actual equity weights & US-equity value divided by total equity value, separately for US and RoW investors. & Determine who owns the appreciating asset and fund both stock markets. Measure portfolio composition by investor residence; these are not the foreign ownership fraction of US market capitalization.\\[4pt]
+$\theta_{US,t}^*$\par Foreign US-bond share\par$\theta_t,\ \theta_{W,t}^*$ recovered & $A=\beta e_{US}$, $A^*=[(\beta+\chi)/(1+\chi)]e_W$; bond clearing gives $\theta=-\theta_{US}^*A^*/A$ and $\theta_W^*=0$. & Controls safe-asset absorption and US borrowing. Requires a position divided by the matching investable wealth; US net borrowing has $\theta<0$. Only $\theta_{US}^*$ is independently solved.\\[4pt]
+$R_{f,t},\ R_{f,t}^W$\par Gross safe returns & Determined by the portfolio conditions. Bond prices are $1/R_f$ and $1/R_f^W$. & Discipline convenience and issuance costs jointly with holdings. Match maturity, period length, and real numeraire. The RoW bond has zero equilibrium supply, so its model yield requires a careful empirical counterpart.\\[4pt]
+\end{coretable}
+
+\clearpage
+\section{Endogenous variables: production and equity valuation}
+These outputs are reconstructed from the states, policies, and primitives. They are retained because they connect the solution to wages, output, cash flows, prices, and saving capacity; they are \textbf{not additional solver unknowns or free inputs}.
+
+\begin{coretable}
+$A_{X,i,t},\ A_{L,i,t}$\par Realized productivity & Evaluate the regime-specific maps on page 2 at $N_{i,t}$. Their ratio is derived. & Needed to interpret the production mechanism and discipline the augmentation parameters. Neither an arbitrary TFP series nor an R\&D spending ratio is automatically $A_X/A_L$; specify the bridge or treat it as latent.\\[5pt]
+$Y_{i,t}$\par Final output & $Y_i=F_i(A_{X,i}\varphi_iH_i,A_{L,i}L_i)$. & Provides country scale and the denominator for model positions/flows. The empirical corporate-GVA denominator used in Notebook 06 needs an explicit sectoral mapping to this model output.\\[5pt]
+$w_{H,i,t},\ w_{L,i,t}$\par Wages & $w_H=\vartheta_iF_{i,X}A_X$, $w_L=F_{i,L}A_L$, evaluated at the augmented inputs above. & Determine labor income and innovation value; relative wages discipline production parameters. Define skill groups and wage/compensation units consistently. Notebook 05 recomputes these from the production block.\\[5pt]
+$e_{i,t}$\par Young-cohort labor income & $e_i=w_{H,i}H_i+w_{L,i}L_i$.\par Saving is $A=\beta e_{US}$ and $A^*=[(\beta+\chi)/(1+\chi)]e_W$. & Supplies the funding used in equity and bond clearing. Distinguish cohort labor income from GDP, corporate value added, and total disposable income; these are not interchangeable denominators.\\[5pt]
+$q_{i,t},\ d_{i,t}$\par Per-variety price/dividend\par$R_{i,t+1}$ reconstructed & $q_i=w_{H,i}/(a_iN_i)$,\par\vspace{2pt}
+$d_i=\dfrac{1-\vartheta_i}{\vartheta_i}\,w_{H,i}\dfrac{\varphi_iH_i}{N_i}$,\par\vspace{3pt}
+$R_{i,t+1}=\dfrac{q_{i,t+1}+d_{i,t+1}}{q_{i,t}}$. & Enter successor-state portfolio returns and the price-change component of external valuation. Distinguish an ex-dividend price index from a total-return index. Raw price/dividend levels require a unit of variety; capitalization growth also contains issuance.\\[5pt]
+$\Q_{i,t},\ \D_{i,t}$\par Aggregate equity value/cash flow & $\boxed{\Q_{i,t}=N_{i,t+1}q_{i,t}}$,\par\vspace{3pt}
+$\D_{i,t}=N_{i,t}d_{i,t}$.\par Code: \code{Q\_US}, \code{Q\_W}; aggregate dividends are reconstructed. & Equity value clears against saving; dividends govern income yields. Check the universe of corporate equity and the cash-flow definition. Preserve timing: current price values post-issuance supply, while current dividends use existing varieties.\\[5pt]
+\end{coretable}
+
+\textbf{Useful identities, without extra register entries.} The production input is $X_i=\varphi_iH_i$ and the IPO transfer is $\I_i=(1-\varphi_i)H_iw_{H,i}$, so $Y_i=e_i+\D_i-\I_i$. Equity funding satisfies
+\[
+\Q_{US}=\omega(1-\theta)A+\omega^*(1-\theta_{US}^*)A^*,\qquad
+\Q_W=(1-\omega)(1-\theta)A+(1-\omega^*)(1-\theta_{US}^*)A^*.
+\]
+The ratio $\D_i/\Q_i$ and the relative-wage identity
+\[
+\frac{w_{L,i}}{w_{H,i}}
+=\frac{1-\alpha_i}{\vartheta_i\alpha_i}
+\left(\frac{H_i}{L_i}\right)^{\rho_i}
+\left(\frac{A_{X,i}}{A_{L,i}}\right)^{\rho_i-1}\varphi_i^{\rho_i}
+\]
+are potentially informative moments calculated from the retained quantities, not additional primitives.
+
+\clearpage
+\section{Endogenous variables: external positions, valuation, and flows}
+These accounting quantities are used directly in the notebooks' calibration diagnostics. Positions are US external assets minus liabilities, in the common consumption-good numeraire. $n_{W,t}$ and $n_{US,t}^*$ denote end-of-date-$t$ equity holdings, as in V6; $\Delta x_t=x_t-x_{t-1}$.
+
+\begin{coretable}
+$q_{W,t}n_{W,t}$,\par$q_{US,t}n_{US,t}^*$\par Gross equity asset/liability & $n_W=(1-\omega)(1-\theta)A/q_W$,\par\vspace{3pt}
+$n_{US}^*=\omega^*(1-\theta_{US}^*)A^*/q_{US}$.\par Code: \code{asset}, \code{liability}; the two claim counts are recovered. & Gross exposure times the price change determines each valuation channel. Net NFA alone conceals offsetting positions. Measure by investor residence, with consistent coverage of portfolio equity/FDI and the chosen output denominator.\\[6pt]
+$b_t=\theta_t A_t$\par US net bond position & Present-value bond position; RoW holds $-b_t$. Code: \code{bond}. & Separates net borrowing from equity exposure and enters flow accounting. Match market value and issuer/holder coverage; it is not gross public debt or an arbitrary total-debt series.\\[6pt]
+$NFA_t$\par Net foreign assets & $NFA_t=q_{W,t}n_{W,t}+b_t$\par\hfill$-q_{US,t}n_{US,t}^*$;\par\vspace{3pt}
+equivalently $NFA_t=A_t-\Q_{US,t}$. & Central external-balance outcome and independent accounting check on the implementation. Define the financial-asset universe; whole-economy NFA may contain instruments absent from the model.\\[6pt]
+$VA_t^{\rm asset},\ VA_t^{\rm liability}$\par Equity valuation changes\par$VA_t$ is their sum & $VA_t^{\rm asset}=n_{W,t-1}\Delta q_{W,t}$,\par\vspace{3pt}
+$VA_t^{\rm liability}=-n_{US,t-1}^*\Delta q_{US,t}$. & Distinguish a US liability-price loss from a gain on foreign assets. Use lagged quantities and compatible valuation components. A rising US price gives negative liability VA; model VA excludes bond-price, exchange-rate, and other valuation channels.\\[6pt]
+$CA_t,\ \Delta NFA_t$\par Transactions/position change & $CA_t=q_{W,t}\Delta n_{W,t}$\par\hfill$-q_{US,t}\Delta n_{US,t}^*+\Delta b_t$,\par\vspace{3pt}
+$\Delta NFA_t=CA_t+VA_t$. & Separates accumulation from revaluation. The code puts the entire change in its bond position into CA; audit this convention against empirical transactions. The identity makes these three net measures linearly dependent.\\[6pt]
+\end{coretable}
+
+\textbf{Preserve the normalization actually used by the calibration code.}
+For a window $t=1,\ldots,T$, Notebook 06 compares
+\[
+\frac{NFA_T-NFA_1}{Y_{US,T}},\qquad
+\frac{\sum_{t=2}^T VA_t^{\rm asset}}{Y_{US,T}},\quad
+\frac{\sum_{t=2}^T VA_t^{\rm liability}}{Y_{US,T}},\quad
+\frac{\sum_{t=2}^T CA_t}{Y_{US,T}},\qquad
+\frac{q_{i,T}}{q_{i,1}},\qquad
+\frac{q_{W,T}n_{W,T}}{Y_{US,T}},\quad
+\frac{q_{US,T}n_{US,T}^*}{Y_{US,T}}.
+\]
+The empirical counterparts use end-window corporate GVA. A change in the NFA level divided by end-window output is \emph{not} a change in the NFA/output ratio; cumulative flow divided by end-window output is \emph{not} the sum of date-specific flow/output ratios. Relative price growth and liability shares of absolute VA are derived diagnostics of the entries above.
+
+\clearpage
+\section{How to use this register for the measurability review}
+
+\textbf{First establish the economic units.} Choose the model-period length, the US/RoW geographic and sectoral boundaries, the definition of skilled labor, and the real numeraire. Notebook 06 currently treats time as an episode index; this does not establish an annual or quarterly mapping. Normalize initial knowledge and any labor scale explicitly. The two CES coefficients $\alpha_iA_{X,i}^{1-\rho_i}$ and $(1-\alpha_i)A_{L,i}^{1-\rho_i}$ show why distribution weights and productivity scales cannot generally be recovered separately from one cross-section of factor shares.
+
+\textbf{Then assign an empirical role to each retained entry.} For primitives, distinguish externally measured/fixed inputs from latent parameters to be fitted and maintained restrictions such as $\nu_b=\xi_W=0$. For endogenous quantities, choose between targeted moments, untargeted validation, and latent/model-implied quantities. A defensible review should record the candidate data definition, coverage, units/frequency, transformation, and identification limitation. Failure to observe a primitive directly calls for an identification or normalization argument; it does not mean inventing a direct proxy.
+
+\textbf{Keep the current search distinct from a full calibration design.} Notebook 06 searches $\pi,\bar\omega,\bar\omega^*,\eta$ with other primitives held fixed; Notebook 05 varies $\nu_u$ in mechanism exercises. Fixed values are not thereby empirically identified. Notebook 06 scores NFA/CA/equity-VA quantities, price growth, gross liability exposure, and the liability share of absolute VA; gross asset exposure is also reported. Several of these moments are mechanically linked. Their joint use may emphasize economically important discrepancies, but does not create independent identifying restrictions. Gross levels matter alongside signs and shares: the saved search itself labels its candidate a qualitative mechanism match with a scale miss.
+
+\textbf{Check the measurement boundary before using the external accounts.} The model has two equities and its specified bonds, with no exchange-rate valuation block. The empirical accounting file also has valuation components and a residual beyond the model's equity VA. Align instrument coverage and separate these terms before treating a total empirical valuation or current-account series as an exact model counterpart. Likewise, a price index must represent the relevant ex-dividend claim; firm entry/issuance and index composition prevent automatic equivalence with total market capitalization.
+
+\subsection*{What has deliberately been omitted}
+
+\textbf{Derived shorthands.} Saving pools $A,A^*$ and equity pools $S,S^*$ are reconstructed where needed above. Funding ratios, wage ratios, dividend yields, growth factors, transition-matrix entries, and CES/proof exponent combinations receive no separate rows. They add no independent input or measurable degree of freedom. Consumption by age/type is recovered after the equilibrium and is not part of the current portfolio/production solve or selected accounting diagnostics.
+
+\textbf{Pricing and proof machinery.} Marginal-utility kernels, effective discount factors and wedges, residual vectors, value/policy-function labels, proof constants, envelopes, and tail bounds are not separate empirical variables to calibrate. Fundamental values and bubble shares are model-implied diagnostics that depend on the pricing kernel and continuation/terminal assumptions; the direct NFA accounting above needs neither. If bubble valuation becomes a separate research objective, assess its identification and sensitivity in that exercise.
+
+\textbf{Numerical settings and compatibility fields.} The ten remaining fields in \code{ProductionParams} are \code{common\_world\_growth}, \code{T\_max}, \code{n\_buffer}, \code{ftol}, \code{xtol}, \code{iterations}, \code{branch\_iters}, \code{branch\_tol}, \code{do\_global\_polish}, and $\varphi_{\rm floor}$. They require numerical validation or scenario documentation, not empirical measurement. In particular, the common-growth flag is inert under zero exponents. Interior floors and terminal closures matter for solution accuracy and branch coverage, even though they are not economic calibration parameters.
+
+\vfill
+{\footnotesize\color{heading}\textbf{Basis and scope.} Prepared on 2026-09-22 by checking \code{AI\_drafting/V6\_production.tex}, \code{TwoCountryProductionOLG.jl}, and the zero-exponent notebooks/scripts, especially 04--06. The seven-equation residuals, production reconstruction, and the \code{nb06\_accounting}/\code{nb06\_metrics} definitions determine the selection. This is a separate register: the comprehensive inventory, manuscript, and computational baselines are unchanged. No new equilibrium estimation, solver execution, or empirical-data validation was performed for this document.}
+\end{document}

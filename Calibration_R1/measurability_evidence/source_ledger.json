@@ -1,0 +1,269 @@
+[
+  {
+    "id": "AHP",
+    "title": "Atkeson, Heathcote and Perri (2025)",
+    "status": "User-supplied published-paper transcription reviewed, 23 September 2026",
+    "description": "\\emph{The End of Privilege}, AER 115(7), 2151--2206. Sec. I and Eqs. (1)--(3): measured external accounts. Sec. III, pp. 2174--2176: data construction followed by model identification. App. A1--A5, pp. 2192--2200: exact measurement conventions. Local reference: \\code{Codes/Reference/Atkeson\\_2025\\_End\\_of\\_Privilege.tex}. Journal page numbers, not recompiled pages, are used here. Separate Supplemental Appendix and author workbook were not obtained; present data retain their own vintages.",
+    "links": [
+      [
+        "Published article",
+        "https://doi.org/10.1257/aer.20230732"
+      ],
+      [
+        "Author data repository",
+        "https://doi.org/10.3886/E209797V1"
+      ]
+    ]
+  },
+  {
+    "id": "S1",
+    "title": "Household saving and preferences",
+    "status": "Official metadata checked; no new SCF microdata",
+    "description": "BEA defines personal saving relative to disposable personal income; SCF collects family assets, debts, income and attitudes. These observations do not directly identify the model utility coefficients.",
+    "links": [
+      [
+        "BEA saving definition",
+        "https://www.bea.gov/news/pio-release-additional-information"
+      ],
+      [
+        "SCF public data",
+        "https://www.federalreserve.gov/econres/scfindex.htm"
+      ],
+      [
+        "SCF questionnaire",
+        "https://www.federalreserve.gov/econres/files/scfoutline.2022.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P1",
+    "title": "Skill labor and wages",
+    "status": "Local CPS/EAG panels; live Eurostat sample and metadata",
+    "description": "US CPS ORG local baseline: private-for-profit employees, 1994--2024, BA+ versus exhaustive non-BA, headcount or matched-hours FTE. Eurostat \\code{lfsa\\_egaed}: annual thousand persons, sex T, age Y25-64, ED5-8/ED0-2/ED3\\_4. Local RoW earnings ratios do not establish wage levels.",
+    "links": [
+      [
+        "BLS definitions",
+        "https://www.bls.gov/cps/definitions.htm"
+      ],
+      [
+        "LFS metadata",
+        "https://ec.europa.eu/eurostat/cache/metadata/en/lfsa_esms.htm"
+      ],
+      [
+        "Exact DE API sample",
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_egaed?lang=en&freq=A&unit=THS_PER&sex=T&age=Y25-64&isced11=ED5-8&geo=DE&sinceTimePeriod=2021&untilTimePeriod=2023"
+      ]
+    ]
+  },
+  {
+    "id": "P2",
+    "title": "Research labor",
+    "status": "Local official data/primary metadata; live OECD route 403",
+    "description": "OECD MSTI v1.3: business researchers B\\_RS or total personnel B\\_TT, FTE versus persons. NCSES BERD2023 Tables 50/52 cover domestic business employment/research personnel; current local R\\&D FTE panel is 2015--2023. Survey scope and numerator membership in H must match.",
+    "links": [
+      [
+        "OECD MSTI",
+        "https://www.oecd.org/en/data/datasets/main-science-and-technology-indicators.html"
+      ],
+      [
+        "BERD Table 52",
+        "https://ncses.nsf.gov/pubs/nsf25354/assets/data-tables/tables/nsf25354-tab052.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P3",
+    "title": "Knowledge proxies",
+    "status": "Existing frozen mappings; no exact-variety observation",
+    "description": "Fed/BEA Q4 R\\&D net stocks FL105013465+FL795013465; investment-price deflator Y006RG3Q086SBEA is a sensitivity, not an official stock-volume index. USPTO grants, OECD triadic and WIPO applicant-residence stocks have distinct coverage, initialization and depreciation.",
+    "links": [
+      [
+        "NFC R&D stock",
+        "https://fred.stlouisfed.org/series/BOGZ1FL105013465Q"
+      ],
+      [
+        "Financial R&D stock",
+        "https://fred.stlouisfed.org/series/BOGZ1FL795013465Q"
+      ]
+    ]
+  },
+  {
+    "id": "P4",
+    "title": "Corporate output, labor income and equity",
+    "status": "Existing 2026-09 mapping vintage; producer definitions checked",
+    "description": "US GVA: FU106902501Q+FU796902505Q; compensation: FU106025005Q+FU796025005Q. OECD institutional accounts: B1G and D1 for S11+S12; F51 liabilities are a distinct equity alternative. Native currencies, market FX/PPP and end-period/flow timing are separate choices.",
+    "links": [
+      [
+        "US corporate GVA component",
+        "https://fred.stlouisfed.org/series/BOGZ1FU106902501Q"
+      ],
+      [
+        "OECD accounts",
+        "https://www.oecd.org/en/publications/national-accounts-of-oecd-countries_2221433x.html"
+      ]
+    ]
+  },
+  {
+    "id": "P5",
+    "title": "R&D investment and accounting",
+    "status": "Live Eurostat data; BEA primary definitions",
+    "description": "Eurostat \\code{nama\\_10\\_a64\\_p5}: N1171G asset, P51G transaction, TOTAL industry; CP\\_MNAC is current-price million national currency. BEA capitalizes R\\&D; expenditure and GDP contributions are not innovation success or factor augmentation.",
+    "links": [
+      [
+        "Exact DE R&D API sample",
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a64_p5?geo=DE&freq=A&nace_r2=TOTAL&asset10=N1171G&na_item=P51G&unit=CP_MNAC&sinceTimePeriod=2021&untilTimePeriod=2023"
+      ],
+      [
+        "BEA capitalization",
+        "https://www.bea.gov/help/faq/1028"
+      ]
+    ]
+  },
+  {
+    "id": "F1",
+    "title": "WRDS / Compustat firm accounts",
+    "status": "Live OPTIONS and data, 2026-09-22",
+    "description": "\\code{comp.funda}: gvkey001690/fyear 2024, 2 raw format variants, 1 C/INDL/STD row after local selection. \\code{comp.g\\_funda}: intentionally capped3-row 2024 pilot, not a complete or representative sample. Employee/R\\&D/accounting fields do not give research/skill hours or model markups. API types alone do not certify units.",
+    "links": [
+      [
+        "NA API",
+        "https://wrds-api.wharton.upenn.edu/data/comp.funda/"
+      ],
+      [
+        "Global API",
+        "https://wrds-api.wharton.upenn.edu/data/comp.g_funda/"
+      ],
+      [
+        "Producer/access overview",
+        "https://wrds-www.wharton.upenn.edu/pages/grid-items/introduction-compustat-part-1/"
+      ]
+    ]
+  },
+  {
+    "id": "F2",
+    "title": "WRDS / CRSP security prices and returns",
+    "status": "Live 12-month 2024 sample; metadata discrepancy retained",
+    "description": "\\code{crsp.msf}, PERMNO14593: prc,ret,retx,shrout,cfacpr,cfacshr. All 12 unique 2024 months returned. Source count said 3 despite12 records; completeness was checked against the requested calendar. Security returns are observable, but do not identify a model variety or a national investor portfolio.",
+    "links": [
+      [
+        "Monthly stock API",
+        "https://wrds-api.wharton.upenn.edu/data/crsp.msf/"
+      ],
+      [
+        "CRSP product description",
+        "https://www.crsp.org/research__trashed/crsp-us-stock-databases/"
+      ]
+    ]
+  },
+  {
+    "id": "F3",
+    "title": "International equity positions",
+    "status": "Live exact FRED samples and Fed component definitions",
+    "description": "US external equity assets: ROWEISQ027S/FL263181105; US equity liabilities: ROWEINQ027S/FL263081005. Quarterly end-period million USD. Current fund/FDI/international-organization coverage must be read from the component trees, not inferred from an old shorthand label.",
+    "links": [
+      [
+        "Asset component tree",
+        "https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FL263181105&t="
+      ],
+      [
+        "Liability component tree",
+        "https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FL263081005&t="
+      ]
+    ]
+  },
+  {
+    "id": "F4",
+    "title": "NFA, transactions and current account",
+    "status": "Live samples2024Q1--2026Q2",
+    "description": "US NFA=ROWTLEQ027S-ROWTASQ027S=-ROWNETQ027S, million USD. AHP App. A1 defines CA as negative ROW net lending/borrowing: -RWLBACQ027S/4. Retain this declared accounting convention and distinguish a separately selected balance-of-payments CA series. RWNEOWQ027S is ROW net-worth revaluation (US total VA is its negative); equity FU components are transactions. AHP retains statistical discrepancies and other-volume changes.",
+    "links": [
+      [
+        "ROW net worth",
+        "https://fred.stlouisfed.org/series/ROWNETQ027S"
+      ],
+      [
+        "ROW net lending",
+        "https://fred.stlouisfed.org/series/RWLBACQ027S"
+      ]
+    ]
+  },
+  {
+    "id": "F5",
+    "title": "Equity revaluation and price/FX separation",
+    "status": "Live scope discrepancy; current bridge unresolved",
+    "description": "BOGZ1FR263181105Q, BOGZ1FR263081005Q and BOGZ1FR263081115Q are quarterly revaluations in million USD, not annualized transaction flows. BEA Concepts and Methods separates transactions, price/FX revaluation and other changes. Matching FR/FU/stock universes is required.",
+    "links": [
+      [
+        "Broad liability FR",
+        "https://fred.stlouisfed.org/series/BOGZ1FR263081005Q"
+      ],
+      [
+        "Legacy liability FR",
+        "https://fred.stlouisfed.org/series/BOGZ1FR263081115Q"
+      ],
+      [
+        "BEA 2026 methods, chs. 8/24",
+        "https://www.bea.gov/sites/default/files/2026-06/BEA-International-Economic-Accounts-Concepts-and-Methods.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "F6",
+    "title": "Safe yields and Treasury holdings",
+    "status": "Live series; Treasury coverage notes checked",
+    "description": "TB3MS: monthly average 3-month bill rate, percent at an annual discount-basis quote; saved through Aug 2026. ROWTSEQ027S: quarterly foreign Treasury holdings. TIC Table 5 includes multiple maturities and custody-based country attribution; it is not a model wealth denominator.",
+    "links": [
+      [
+        "TB3MS",
+        "https://fred.stlouisfed.org/series/TB3MS"
+      ],
+      [
+        "TIC Table 5",
+        "https://ticdata.treasury.gov/Publish/slt_table5.html"
+      ]
+    ]
+  },
+  {
+    "id": "F7",
+    "title": "Capitalization, operating-asset value and distributions",
+    "status": "Live Fed alternatives; local AHP construction retained",
+    "description": "AHP operating-asset values: LM102010405Q+LM792010405Q. FCF: (FU106402101+FU796402101)-(FU106220001+FU796220001)-(FU105050985+FU795015085), with BOGZ1 prefix and Q suffix. These FU inputs are quarterly million-USD flows, not SAAR. Gross-dividend alternatives FU106121001A+FU796121001A need consolidation. AHP justifies EV/FCF using financing neutrality; V6 additionally needs an entry/issuance cash-flow bridge.",
+    "links": [
+      [
+        "Operating-asset value",
+        "https://fred.stlouisfed.org/series/BOGZ1LM102010405Q"
+      ],
+      [
+        "NFC dividends",
+        "https://fred.stlouisfed.org/series/BOGZ1FU106121001A"
+      ]
+    ]
+  },
+  {
+    "id": "F8",
+    "title": "Dividends received on foreign equity",
+    "status": "Exact official CSV probe, 23 September 2026 local time",
+    "description": "BEA NIPA Table 4.1 line 11; account B3375C; FRED B3375C1Q027SBEA. Quarterly billions of USD at SAAR: multiply by 1000/4 for a quarterly million-USD payout. The sample, ROWEISQ027S and FR263181105 yield 10 observations, 2024Q1--2026Q2. Excludes separately reported reinvested earnings. AHP App. A4 uses the monetary-payout yield; tax-repatriation spikes and instrument/currency coverage need explicit treatment. OpenEcon timed out; exact-source CSV succeeded.",
+    "links": [
+      [
+        "Exact dividend series",
+        "https://fred.stlouisfed.org/series/B3375C1Q027SBEA"
+      ],
+      [
+        "NIPA Table 4.1",
+        "https://fred.stlouisfed.org/release/tables?eid=5405&rid=53"
+      ],
+      [
+        "BEA dividend concepts",
+        "https://www.bea.gov/help/faq/200"
+      ]
+    ]
+  },
+  {
+    "id": "M1",
+    "title": "Model, prior crosswalk and workflow",
+    "status": "Local source review; no baseline changes or new estimation",
+    "description": "\\code{V6\\_calibration\\_core.tex}; V6 manuscript; \\code{TwoCountryProductionOLG.jl}; annual empirical mapping registry and method notes; FinAI \\code{AGENTS.md}, SMU\\_RESEARCH and SMU\\_PROVIDERS. Source authority, access success and economic mapping are separate assessments.",
+    "links": []
+  }
+]

@@ -1,0 +1,287 @@
+{
+  "scope": [
+    "M07 pi",
+    "M09 a_US, a_W",
+    "M16 xi_u, nu_u"
+  ],
+  "date": "2026-09-27",
+  "authoritative_definition": "Codes/Calibration_R1/V6_parameter_calibration_groups.tex",
+  "connector_status": {
+    "Wiley": "Two requested full-text searches returned Internal error; no Wiley evidence claimed.",
+    "Scite": "Metadata and BJRW fulltext passages obtained; Barro fulltext endpoint returned no text. Original publisher/author PDFs used for numeric verification.",
+    "Consensus": "BJRW2020 discovered and fetch fd1960d82e435ec1bd512e7b54a16e03 completed.",
+    "Undermind": "Handled by parent."
+  },
+  "sources": [
+    {
+      "id": "HKT25v2",
+      "authors": "Tomohiro Hirano, Keiichi Kishi, Alexis Akira Toda",
+      "title": "Technological Innovation and Bursting Bubbles",
+      "year": 2025,
+      "venue": "arXiv:2501.08215v2, preprint",
+      "doi": "10.48550/arXiv.2501.08215",
+      "url": "https://arxiv.org/html/2501.08215v2",
+      "locators": [
+        "Figure 1, p.24",
+        "Section 4.1 factor-augmentation specification",
+        "Section 3.1 R&D law"
+      ],
+      "method": "Theoretical two-period OLG numerical illustration; no estimated population/sample; date length not annualized.",
+      "verified_numbers": {
+        "xi_u": 0.7,
+        "lambda_u_maps_to_V6_nu_u": 0.2,
+        "aH": 0.2
+      },
+      "classification": "calibrated illustration, not empirical estimate",
+      "mismatches": "Closed economy; post-switch exponents positive in illustration whereas V6 zero-exponent specialization fixes its b and W exponents. Same u technological definitions permit scenario comparison only."
+    },
+    {
+      "id": "Barro06",
+      "authors": "Robert J. Barro",
+      "title": "Rare Disasters and Asset Markets in the Twentieth Century",
+      "year": 2006,
+      "venue": "Quarterly Journal of Economics 121(3), 823-866",
+      "doi": "10.1162/qjec.121.3.823",
+      "url": "https://dash.harvard.edu/bitstreams/7312037c-67b1-6bd4-e053-0100007fdf3b/download",
+      "locators": [
+        "p.825 disaster process",
+        "p.831 observed annual frequency",
+        "Table V, p.846"
+      ],
+      "method": "Historical frequency calibration from 60 large contractions in 35 countries over roughly the twentieth century, using cumulative real per-capita GDP falls of at least 15%; representative-agent Lucas-tree economy with recurring jump disasters.",
+      "verified_numbers": {
+        "p_per_year": 0.017,
+        "reported_frequency_range": [
+          0.015,
+          0.02
+        ],
+        "calibrated_robustness_p": 0.025
+      },
+      "classification": "data-based frequency calibration; p=.025 is model robustness, not confidence bound",
+      "mapping": "Source model uses Poisson jump intensity p; pi_V6=exp(-p*Delta) is survival over Delta years only if event definitions are equated.",
+      "mismatches": "Repeated macro disasters, GDP threshold and global historical population are not a one-time absorbing end of a US innovation regime."
+    },
+    {
+      "id": "BU08",
+      "authors": "Robert J. Barro, José F. Ursúa",
+      "title": "Macroeconomic Crises since 1870",
+      "year": 2008,
+      "venue": "Brookings Papers on Economic Activity, Spring, 255-350 including discussion",
+      "doi": "10.1353/eca.0.0000",
+      "url": "https://www.brookings.edu/wp-content/uploads/2008/03/2008a_bpea_barro.pdf",
+      "locators": [
+        "pp.284-286 hazard definition and sample",
+        "Table 10, p.296",
+        "Table 11, p.297",
+        "footnote24, p.286"
+      ],
+      "method": "Peak-to-trough cumulative declines >=10%; annual series starting as early as1870, 24 consumption countries,36 GDP countries; disasters divided by normal-state years.",
+      "verified_numbers": {
+        "consumption_h": 0.0363,
+        "GDP_h": 0.0369,
+        "consumption_15pct_h": 0.0218,
+        "GDP_15pct_h": 0.0192,
+        "consumption_OECD_h": 0.0286,
+        "consumption_nonwar_h": 0.024
+      },
+      "classification": "empirical conditional transition frequencies; cross-definition values not sampling confidence interval",
+      "mapping": "pi_V6=(1-h)^Delta under constant annual conditional hazard and a matched absorbing event. Source pi=.277/.287 is disaster EXIT probability and must NOT be copied to V6 pi.",
+      "mismatches": "Events recur and end; sample mixes war and other contractions; their transition p applies only while normal. New financial regime/technology definitions need distinct data."
+    },
+    {
+      "id": "BJRW20",
+      "authors": "Nicholas Bloom, Charles I. Jones, John Van Reenen, Michael Webb",
+      "title": "Are Ideas Getting Harder to Find?",
+      "year": 2020,
+      "venue": "American Economic Review110(4),1104-1144",
+      "doi": "10.1257/aer.20180338",
+      "url": "https://web.stanford.edu/~chadj/IdeaPF.pdf",
+      "locators": [
+        "equations1-3,pp.1108-1110",
+        "Figure2,p.1111",
+        "Table7 and eq17,p.1134",
+        "TableA1,p.1140"
+      ],
+      "method": "Growth-accounting ratios, not causal marginal-product estimates: idea-output growth divided by effective researchers; aggregate input IPP spending deflated by skilled wages, decadal TFP output; industry/product/firm cases.",
+      "verified_numbers": {
+        "aggregate_1930_2015_research_productivity_growth": -0.051,
+        "MooresLaw_1971_2014": -0.068,
+        "cotton_version2_1969_2009": 0.013,
+        "aggregate_dynamic_diminishing_returns_beta": 3.1,
+        "MooresLaw_dynamic_beta": 0.2,
+        "appendix_lambda_assumed": 0.75,
+        "appendix_aggregate_growth": -0.04
+      },
+      "classification": "descriptive accounting evidence; lambda=.75 robustness is imposed",
+      "mapping": "Their a_t=(dot A/A)/S resembles V6 a only after identifying A with N and matching research units; their beta in dot A/A=alpha*A^(-beta)*S is a research-productivity elasticity, not V6 saving beta or augmentation exponents xi/nu.",
+      "mismatches": "Knowledge proxies need not be varieties; research scale/period/quality differ; falling productivity challenges a time-constant V6 a. Table7 cotton version2 rises, so preserve heterogeneous exceptions.",
+      "source_discrepancy": "Table7 and p1110 show −5.1% and14-year half-life; immediately preceding prose on p1134 says −5.3% and13years. Use labeled Table7 numbers, note internal inconsistency; Scite faithfully surfaced prose."
+    },
+    {
+      "id": "Jones95",
+      "authors": "Charles I. Jones",
+      "title": "R & D-Based Models of Economic Growth",
+      "year": 1995,
+      "venue": "Journal of Political Economy103(4),759-784",
+      "doi": "10.1086/262002",
+      "url": "https://www.journals.uchicago.edu/doi/10.1086/262002",
+      "author_pdf": "https://web.stanford.edu/~chadj/JonesJPE95.pdf",
+      "locators": [
+        "publisher abstract; qualitative specification critique only"
+      ],
+      "method": "Time-series critique of scale effects and semi-endogenous growth model.",
+      "verified_numbers": {},
+      "classification": "specification evidence; no scalar borrowed",
+      "mapping": "Supports considering diminishing research productivity; does not estimate V6 a_i or factor-augmentation-to-variety elasticities.",
+      "access_note": "Publisher abstract verified; author PDF available but browser extraction returned no text, Scite denied fulltext. Do not attribute unverified equation locators or coefficient estimates."
+    },
+    {
+      "id": "KM92",
+      "authors": "Lawrence F. Katz, Kevin M. Murphy",
+      "title": "Changes in Relative Wages,1963-1987: Supply and Demand Factors",
+      "year": 1992,
+      "venue": "Quarterly Journal of Economics107(1),35-78",
+      "doi": "10.2307/2118323",
+      "url": "https://cpi.stanford.edu/_media/pdf/Classic_Media/Katz_Murph_1992.pdf",
+      "locators": [
+        "equation19,p.69",
+        "sample description,p.37"
+      ],
+      "method": "OLS annual aggregate college/high-school log wage premium on relative labor supply and linear time trend; US CPS earnings years1963-1987; competitive two-labor CES.",
+      "verified_numbers": {
+        "relative_supply_slope": -0.709,
+        "relative_supply_SE": 0.15,
+        "annual_time_coefficient": 0.033,
+        "time_SE": 0.007
+      },
+      "classification": "estimated reduced-form demand trend conditional on CES model; not knowledge elasticity",
+      "mapping": "V6 implies Delta log(w_H/w_L)+rho*Delta log(phi H/L)=(1-rho)*(xi-nu)*Delta logN with fixed alpha/markup. Their trend cannot directly identify either V6 exponent.",
+      "mismatches": "College labor not V6 intermediate bundle; rho>1 reverses sign of augmentation effect relative to substitutable-skill CES. Endogenous research allocation and knowledge growth must be accounted for."
+    }
+  ],
+  "rows": [
+    {
+      "id": "M07",
+      "parameter": "pi",
+      "definition": "Pr(z_(t+1)=u|z_t=u); b absorbing",
+      "source_candidates": [
+        {
+          "source": "Barro06",
+          "value": "Poisson p=.017/year (reported frequency range .015-.020); robustness .025"
+        },
+        {
+          "source": "BU08",
+          "value": "annual h=.0363 consumption, .0369 GDP; for >=15% thresholds .0218,.0192"
+        }
+      ],
+      "baseline_recommendation": "No evidence-backed V6 point. If an exploratory center is operationally necessary, use h=.02/year as analyst-chosen scenario only, pi=(.98)^Delta; never label it an estimated technology hazard.",
+      "robustness_recommendation": "Hazard scenarios h=.01,.02,.04/year -> pi=(1-h)^Delta, labeled analyst grid informed by scale of macro-disaster evidence, not credible confidence interval; add event-specific bounds when technology dates exist.",
+      "mapping_confidence": "Low; numerical transformation high-confidence conditional on matched hazard, event match unestablished.",
+      "period_examples": {
+        "Delta1": [
+          0.99,
+          0.98,
+          0.96
+        ],
+        "Delta25": [
+          0.7778213593991467,
+          0.6034647297788966,
+          0.360396716858018
+        ]
+      },
+      "best_sources": [
+        "Barro06",
+        "BU08",
+        "HKT25v2"
+      ]
+    },
+    {
+      "id": "M09_US",
+      "parameter": "a_US",
+      "definition": "N_(t+1)/N_t-1=a_US*(1-phi_US,t)*H_US",
+      "source_candidates": [
+        {
+          "source": "HKT25v2",
+          "value": "aH=.2 per unspecified model period; numerical illustration"
+        },
+        {
+          "source": "BJRW20",
+          "value": "research productivity growth is mostly negative; no portable level for a"
+        }
+      ],
+      "mapping": "a=(G_N-1)/[(1-phi)H]. Annual knowledge growth g_N and constant share s_R over Delta years -> aH=[(1+g_N)^Delta-1]/s_R. If H'=cH, a'=a/c.",
+      "baseline_recommendation": "Recover from matched N-growth and researcher share at chosen period; pending that mapping, HKT aH=.2 may be retained solely as an illustrative initialization, not an external estimate.",
+      "robustness_recommendation": "Use conditional aH bounds [((1+g_N,lo)^Delta-1)/s_R,hi, ((1+g_N,hi)^Delta-1)/s_R,lo]. No literature-validated scalar interval exists; study declining-productivity alternative outside current constant-a solver.",
+      "mapping_confidence": "Low empirically; exact conditional accounting transformation.",
+      "best_sources": [
+        "HKT25v2",
+        "BJRW20",
+        "Jones95"
+      ]
+    },
+    {
+      "id": "M09_W",
+      "parameter": "a_W",
+      "definition": "N_W,(t+1)/N_W,t-1=a_W*(1-phi_W,t)*H_W",
+      "source_candidates": [
+        {
+          "source": "HKT25v2",
+          "value": "single-country aH=.2 does not establish RoW level"
+        }
+      ],
+      "mapping": "Same as US, using geography-consistent RoW innovation and research labor; pooling country levels does not produce a portable mean a.",
+      "baseline_recommendation": "Separate conditional data recovery; no literature point recommendation. Equal aH across countries is an imposed scenario, not evidence.",
+      "robustness_recommendation": "Country-coverage, research-quality and knowledge-output proxy bounds, propagated through the same exact formula.",
+      "mapping_confidence": "Low, additionally weakened by RoW aggregation.",
+      "best_sources": [
+        "BJRW20",
+        "Jones95",
+        "HKT25v2"
+      ]
+    },
+    {
+      "id": "M16_xi",
+      "parameter": "xi_u",
+      "definition": "partial log A_X,US(u,N)/partial log N=xi_u; A_X=barA_X*N^xi_u",
+      "source_candidates": [
+        {
+          "source": "HKT25v2",
+          "value": 0.7,
+          "evidence_type": "illustrative calibration"
+        }
+      ],
+      "mapping": "For constant scales, xi_u=Delta log A_X / Delta log N. A common multiplicative normalization of N does not change xi; changing the knowledge concept by a power does.",
+      "baseline_recommendation": "HKT .7 only as transparent illustrative initialization, jointly with nu=.2. Empirical baseline remains unset pending factor-augmentation/knowledge-growth mapping.",
+      "robustness_recommendation": "Joint intervals obtained by propagating plausible A_X,A_L,N growth estimates; report equal or reverse growth scenarios if data support them, even though current solver excludes xi<=nu. No literature-backed box bound.",
+      "mapping_confidence": "Definition high for HKT comparison, numerical empirical transfer low.",
+      "best_sources": [
+        "HKT25v2",
+        "KM92",
+        "BJRW20"
+      ]
+    },
+    {
+      "id": "M16_nu",
+      "parameter": "nu_u",
+      "definition": "partial log A_L,US(u,N)/partial log N=nu_u; A_L=barA_L*N^nu_u",
+      "source_candidates": [
+        {
+          "source": "HKT25v2",
+          "value": 0.2,
+          "evidence_type": "illustrative calibration, source lambda_u"
+        }
+      ],
+      "mapping": "nu_u=Delta log A_L / Delta log N, jointly with xi_u and the same N proxy. Not BJRW diminishing-returns beta or annual technology growth.",
+      "baseline_recommendation": "HKT .2 as illustrative initialization only; empirical baseline unset.",
+      "robustness_recommendation": "Joint growth-ratio confidence/scenario region. Do not infer range from xi>nu>0 theorem; preserve zero/reversed evidence separately from solver admissibility.",
+      "mapping_confidence": "Definition high for HKT comparison, numerical empirical transfer low.",
+      "best_sources": [
+        "HKT25v2",
+        "KM92",
+        "BJRW20"
+      ]
+    }
+  ],
+  "independent_derivation": "V6 w_H/w_L=theta*alpha/(1-alpha)*(A_X/A_L)^(1-rho)*(phi H/L)^(-rho). Constant theta and alpha imply the wage-growth residual mapping used above.",
+  "no_parameter_values_selected": true
+}

@@ -1,0 +1,67 @@
+{
+  "source_id": "CFL2013",
+  "title": "An estimation of economic models with recursive preferences",
+  "authors": [
+    "Xiaohong Chen",
+    "Jack Favilukis",
+    "Sydney C. Ludvigson"
+  ],
+  "publication": "Quantitative Economics 4(1),39–83 (2013)",
+  "doi": "10.3982/QE97",
+  "url": "https://www.econstor.eu/bitstream/10419/150343/1/v4-i1-p039-083-QE97.pdf",
+  "locator": "Eqs.(1)–(2),p44; Table2,p62 (PDF page25/46 including cover); pp56–58,64–65",
+  "source_definition": "theta=relative risk aversion; rho=inverse EIS; beta=quarterly recursive discount factor",
+  "method": "Profile sieve minimum distance, second-step GMM; 100 block-bootstrap draws for reported95%CIs",
+  "sample": "US1952Q1–2005Q1 quarterly; aggregate nondurables/services versus CEX stockholder consumption-mimicking factor; Treasury bill and six equity portfolios",
+  "estimates": [
+    {
+      "consumption": "aggregate",
+      "weight": "I",
+      "theta": 57.5,
+      "theta_ci95": [
+        27.5,
+        129
+      ],
+      "rho": 0.6,
+      "beta": 0.99
+    },
+    {
+      "consumption": "aggregate",
+      "weight": "G^-1",
+      "theta": 60,
+      "theta_ci95": [
+        42,
+        144
+      ],
+      "rho": 0.5,
+      "beta": 0.999
+    },
+    {
+      "consumption": "stockholder",
+      "weight": "I",
+      "theta": 20,
+      "theta_ci95": [
+        0.25,
+        40
+      ],
+      "rho": 0.9,
+      "beta": 0.994
+    },
+    {
+      "consumption": "stockholder",
+      "weight": "G^-1",
+      "theta": 17,
+      "theta_ci95": [
+        1,
+        43.3
+      ],
+      "rho": 0.68,
+      "beta": 0.998
+    }
+  ],
+  "mapping": "gamma_V6=theta conceptually; no annualization. beta_source is not beta_V6.",
+  "mismatch": "Infinite-horizon continuation-value risk; freely estimated EIS>1, versus V6 two-period terminal consumption and EIS=1. Stockholder measure is fitted, not observed long series. Wide CIs; potentially pseudo-true under misspecification.",
+  "recommendation": "Add high-risk scenarios17,20,60;17–60 is a cross-specification point-estimate span, not a confidence or recommended central range. Retain low-risk evidence separately.",
+  "access_notes": "Published PDF text verified. Screenshot and Appendix retrieval failed; no claim to have verified unit-EIS appendix numbers. Fre2020 not verified in this supplement.",
+  "key": "CFL2013"
+}

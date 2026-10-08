@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "pages": 16,
+  "unique_scalars": 19,
+  "unique_sources": 31,
+  "tex_warnings_or_overflows": [],
+  "pdf_out_of_page_characters": [],
+  "citations_resolve": true,
+  "standalone_tex": true,
+  "authoritative_model_files_unchanged": true,
+  "numeric_transformations": {
+    "beta_GP_delta09598_D30": 0.22602210898624783,
+    "beta_GP_delta09569_D30": 0.21053699533570744,
+    "beta_LLM_delta09601_D30": 0.22766643219221883,
+    "beta_exp_envelope_min": 0.14650808586354505,
+    "beta_exp_envelope_max": 0.30696289450292863,
+    "beta_present_bias_continuation_scenario_max": 0.4454191622296375,
+    "pi_KR_annual": 0.96059601,
+    "pi_KR_25years": 0.3660323412732292,
+    "vartheta_DLEU2016": 0.6211180124223602,
+    "vartheta_Traina_sample_end": 0.8695652173913044,
+    "rho_CP05": 0.6666666666666666
+  },
+  "ces_roundtrip_max_abs_error": 8.881784197001252e-16,
+  "pdf_sha256": "0c65423a99234e3dff6c8d2cc58d54f38991eab84e023bb8a5b472e063c07a85",
+  "tex_sha256": "656e57ca35555268041feaed2898d8ee3276a888dc3d4e2da9a0e14680e926c6",
+  "compiler": "Existing local MacTeX latexmk/pdflatex; success",
+  "native_compiler": "Attempted but returned no result; waiting terminated. Native preview compilation unverified.",
+  "visual_qa": "Pages 1-8 and 9-16 independently inspected at 1600px; all pass. Parent separately inspected formula/summary pages. Final bibliography spacing polished and pages15-16 re-rendered for final inspection.",
+  "scope": "Literature review and proposed candidates only; no model calibration or equilibrium run performed."
+}

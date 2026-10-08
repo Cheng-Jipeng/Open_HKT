@@ -1,0 +1,12 @@
+{
+  "query": "Exact FRED B3375C1Q027SBEA, BEA NIPA Table 4.1 line 11 dividends received from rest of world, 2024Q1 to 2026Q2",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `openecon-data/query_data`\n\nCaused by:\n    timed out awaiting tools/call after 120s"
+      }
+    ],
+    "isError": true
+  }
+}

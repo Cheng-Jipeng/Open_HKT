@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-09-22T16:39:56.372423+00:00",
+  "ahp_observations": 145,
+  "external_max_errors_musd": {
+    "nfa_source": 0.0,
+    "asset_va_source": 0.0,
+    "liability_gain_source": 0.0,
+    "ca_source": 0.0,
+    "equity_va_sum": 0.0,
+    "ca_closing_flow": 0.0,
+    "closure_by_construction": 0.0
+  },
+  "corporate_checks": {
+    "Y_US_AHP_TOTAL_CORP_GVA": {
+      "years": 36,
+      "max_error_musd": 0.0
+    },
+    "COMP_US_AHP_TOTAL_CORP": {
+      "years": 36,
+      "max_error_musd": 0.0
+    },
+    "D_US_AHP_FCF_TOTAL_CORP": {
+      "years": 36,
+      "max_error_musd": 0.0
+    },
+    "Q_US_AHP_ENTERPRISE_VALUE_TOTAL_CORP": {
+      "years": 36,
+      "max_error_musd": 0.0
+    }
+  },
+  "dividend_probe": {
+    "rows": 10,
+    "first": "2024-01-01",
+    "last": "2026-04-01",
+    "last_saar_cash_yield": 0.024865633229278906,
+    "status": "AHP monetary-yield construction; instrument, currency and payout correspondence remain explicit conditions. Not a pure-price or total-return estimate."
+  },
+  "caveats": [
+    "Residual closure is algebraic, not independent model validation.",
+    "Saved AHP_NFA and corporate mappings retain separate existing vintages.",
+    "Historical paper table numbers and present series labels need vintage checks."
+  ]
+}

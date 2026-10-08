@@ -1,0 +1,115 @@
+{
+  "validated_at": "2026-09-22T16:55:31.317630+00:00",
+  "core_group_count": 35,
+  "final_entry_count": 35,
+  "classification_counts": {
+    "L": 17,
+    "D": 7,
+    "I": 6,
+    "D/I": 5
+  },
+  "classification_changes": [
+    {
+      "entry_id": "M22",
+      "old": "I",
+      "new": "D/I"
+    },
+    {
+      "entry_id": "M27",
+      "old": "D",
+      "new": "D/I"
+    },
+    {
+      "entry_id": "M28",
+      "old": "I",
+      "new": "D"
+    },
+    {
+      "entry_id": "M29",
+      "old": "I",
+      "new": "D/I"
+    },
+    {
+      "entry_id": "M30",
+      "old": "I",
+      "new": "D/I"
+    },
+    {
+      "entry_id": "M32",
+      "old": "I",
+      "new": "D/I"
+    },
+    {
+      "entry_id": "M34",
+      "old": "I",
+      "new": "D"
+    },
+    {
+      "entry_id": "M35",
+      "old": "I",
+      "new": "D"
+    }
+  ],
+  "source_groups": 16,
+  "all_source_anchors_and_external_links_present": true,
+  "external_source_link_count": 35,
+  "pdf_pages": 11,
+  "compile_warnings": [],
+  "all_entry_ids_in_pdf": true,
+  "csv_json_consistency": true,
+  "direct_class_qualification": "Transparent accounting constructions are D. Five grouped rows explicitly split measured targets from unresolved coordinates or country components. Source coverage and model correspondence are documented separately.",
+  "visual_qa": "All eleven pages rendered and visually inspected. Pages 1 and 5 rechecked after the final wage-component classification adjustment. No clipping, overlap, split source blocks or missing symbols observed.",
+  "qa_images": [
+    "build/measurability/qa/page-01.png",
+    "build/measurability/qa/page-02.png",
+    "build/measurability/qa/page-03.png",
+    "build/measurability/qa/page-04.png",
+    "build/measurability/qa/page-05.png",
+    "build/measurability/qa/page-06.png",
+    "build/measurability/qa/page-07.png",
+    "build/measurability/qa/page-08.png",
+    "build/measurability/qa/page-09.png",
+    "build/measurability/qa/page-10.png",
+    "build/measurability/qa/page-11.png"
+  ],
+  "baseline_preservation_checks": {
+    "Codes/Reference/Atkeson_2025_End_of_Privilege.tex": true,
+    "AI_drafting/V6_production.tex": true,
+    "Codes/Two_country_proudction_zero_nu_b/TwoCountryProductionOLG.jl": true,
+    "Codes/Two_country_proudction_zero_nu_b/06_post2008_ahp_nfa_calibration_search_zero_nu_b.ipynb": true,
+    "Codes/Two_country_proudction_zero_nu_b/06_post2008_ahp_nfa_calibration_search_zero_nu_b.jl": true,
+    "Codes/Calibration_R1/V6_calibration_core.tex": true,
+    "Codes/Calibration_R1/V6_calibration_core.pdf": true,
+    "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_decomposition_latest.csv": true,
+    "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_decomposition_1990q1_2023q3.csv": true,
+    "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_period_summary.csv": true,
+    "Codes/Empirical_Data/AHP_NFA/fred_ahp_nfa_raw.csv": true,
+    "Codes/Empirical_Data/AHP_NFA/fred_ahp_nfa_series_metadata.csv": true,
+    "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_openecon_replication.ipynb": true
+  },
+  "ahp_revision_numerical_validation": "measurability_evidence/ahp_revision_2026-09-23/validation.json",
+  "new_official_csv_sha256_verified": {
+    "B3375C1Q027SBEA": true,
+    "ROWEISQ027S": true,
+    "BOGZ1FR263181105Q": true
+  },
+  "new_official_probe_rows": {
+    "B3375C1Q027SBEA": 11,
+    "ROWEISQ027S": 11,
+    "BOGZ1FR263181105Q": 11
+  },
+  "earlier_api_audit_validation": "measurability_evidence/archive/2026-09-22/validation.json",
+  "limitations": [
+    "Measurement review, not a model solve or parameter estimation.",
+    "Existing saved data and the new bounded probe retain distinct source vintages.",
+    "AHP author workbook and separate Supplemental Appendix were not obtained.",
+    "Full-RoW denominators, V6 issuance/payout correspondence and series-scope conditions remain explicit."
+  ],
+  "artifact_sha256": {
+    "V6_calibration_measurability.pdf": "356d8d3d87ec8505f4d0aebedb3c099290b961ce60641446583eb9bf956ede9b",
+    "V6_calibration_measurability.tex": "a39e7341b4c9bed60c6be4b1ecba6167d63ccf28f7d4d497240b37957f36e1e3",
+    "V6_calibration_measurability.csv": "3f47ba09b86723f869be684b0fdfe6ba903e815b76dcfc2420927cc5d3953f9c",
+    "measurability_evidence/measurability_rows.json": "ba7b3d9492837e79b8b3f12ff93753dc24aa79e14e359f1725b5fc291f770bc7",
+    "measurability_evidence/source_ledger.json": "dc40f8567a6344c043586200c386f964cbfc67a6f1ed7885207433a5f57a7ed8"
+  }
+}

@@ -1,0 +1,1 @@
+Initial direct FRED CSV probe under the sandbox failed with curl error 6: Could not resolve host: fred.stlouisfed.org. A narrow read-only network retry was requested.

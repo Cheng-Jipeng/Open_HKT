@@ -1,0 +1,154 @@
+[
+  {
+    "core_entry": 8,
+    "symbol": "H_i, L_i",
+    "status": "I",
+    "measurement": "US: CPS ORG BA+ and exhaustive non-BA headcount or matched usual-hours FTE. RoW: Eurostat lfsa_egaed, tertiary ED5-8 versus ED0-2+ED3_4, age 25-64, both sexes. Ratios can be data inputs after the skill/population convention is fixed.",
+    "limitation": "Survey employment is directly observed for its stated population, but education is a skill bridge; US private for-profit is not exactly corporate, US age16+ differs from RoW25-64, and model efficiency/cohort units are not observed. Countries must be fixed before aggregation; G4/OECD-ex-US are not all RoW.",
+    "sources": "CPS;LFS"
+  },
+  {
+    "core_entry": 9,
+    "symbol": "a_i",
+    "status": "L",
+    "measurement": "Conditional growth recovery: a_i=(N_{i,t+1}/N_{i,t}-1)/[(1-phi_i)H_i]. Active-entry alternative a_i=w_H/(N_i q_i).",
+    "limitation": "Both use proxy knowledge and research inputs; a separately needs a labor unit and model period. The existing US free-entry-implied a_t is an I diagnostic, not an independent estimate of constant technology. RoW lacks matched wage levels.",
+    "sources": "MSTI;NCSES;KNOWLEDGE"
+  },
+  {
+    "core_entry": 10,
+    "symbol": "vartheta_i",
+    "status": "L",
+    "measurement": "Inverse markup; potentially estimate sector markup or invert vartheta=w_H phi H/(w_H phi H+D) under the exact model accounting.",
+    "limitation": "Accounting gross margins, profit shares and markups differ once physical capital, fixed costs, taxes and retained earnings enter. No directly observed markup series identifies this parameter; conditional inversion requires matched structural sector.",
+    "sources": "CORPORATE;CPS"
+  },
+  {
+    "core_entry": 11,
+    "symbol": "alpha_i",
+    "status": "L",
+    "measurement": "Joint CES calibration with factor quantities, factor prices and augmentation scales.",
+    "limitation": "alpha is not an observed skilled-labor income share. Only alpha A_X^(1-rho) and (1-alpha) A_L^(1-rho) enter the level CES; normalization is indispensable.",
+    "sources": "CPS;LFS;CORPORATE"
+  },
+  {
+    "core_entry": 12,
+    "symbol": "rho_i",
+    "status": "L",
+    "measurement": "Elasticity is 1/rho_i; estimate from variation in relative production inputs and prices, conditional on augmentation/markup dynamics, or use an external structural restriction.",
+    "limitation": "One factor share or wage premium cannot identify curvature; generic capital-labor elasticity is not this intermediate-input/unskilled-labor elasticity. Both countries are CES in the actual solver.",
+    "sources": "CPS;LFS"
+  },
+  {
+    "core_entry": 13,
+    "symbol": "Abar_X_US_u, Abar_L_US_u",
+    "status": "L",
+    "measurement": "Unbalanced-US augmentation scale coefficients can be recovered only conditional on a CES inversion, knowledge scale, alpha,rho,vartheta and real-output/input units.",
+    "limitation": "Neither R&D spending, R&D growth contribution, industry productivity nor sales/employee measures these two factor-specific scales.",
+    "sources": "CPS;CORPORATE;RDINPUT"
+  },
+  {
+    "core_entry": 14,
+    "symbol": "Abar_X_US_b, Abar_L_US_b",
+    "status": "L",
+    "measurement": "Absorbing-branch coefficients require observed branch data and a structural production inversion or an explicit counterfactual restriction.",
+    "limitation": "An all-u observed episode supplies no direct realization of the absorbing technology. Pre/post event comparisons require an independently justified regime mapping.",
+    "sources": "CPS;CORPORATE"
+  },
+  {
+    "core_entry": 15,
+    "symbol": "Abar_X_W, Abar_L_W",
+    "status": "L",
+    "measurement": "RoW augmentation levels jointly calibrated against harmonized labor, wages and output under the solver CES.",
+    "limitation": "A weighted average of industry productivity is not a national factor-augmentation level. Currency/PPP, country membership, input quantities, wages and output universe must agree.",
+    "sources": "LFS;CORPORATE;RDINPUT"
+  },
+  {
+    "core_entry": 16,
+    "symbol": "xi_u, nu_u",
+    "status": "L",
+    "measurement": "Elasticities of separately inferred augmentation with respect to a separately mapped knowledge index.",
+    "limitation": "N and A are not directly observed; relative wage movements do not identify two elasticities. Setting A_X=N^xi and plotting that path imposes the mechanism rather than measuring it.",
+    "sources": "KNOWLEDGE;CPS;RDINPUT"
+  },
+  {
+    "core_entry": 17,
+    "symbol": "nu_b=0, xi_W=0",
+    "status": "L",
+    "measurement": "Maintained zero-exponent restrictions, not estimated or directly measured values.",
+    "limitation": "Class L with fixed-restriction annotation; do not treat imposed zeros as measurement successes. Existing RoW R&D investment growth does not by itself falsify zero factor augmentation.",
+    "sources": "MODEL"
+  },
+  {
+    "core_entry": 18,
+    "symbol": "N_US_0, N_W_0",
+    "status": "I",
+    "measurement": "Normalize N_i0=1 or adopt an explicitly documented stock proxy and rebase.",
+    "limitation": "A normalized state has no empirical level target. Patent stocks require office/residence/timing/depreciation/initial-stock conventions; R&D capital is a cost stock, not variety units.",
+    "sources": "KNOWLEDGE"
+  },
+  {
+    "core_entry": 20,
+    "symbol": "N_i,t",
+    "status": "I",
+    "measurement": "Model law of motion yields a normalized state. Existing alternatives: Fed/BEA real-cost R&D stock sensitivity, depreciated USPTO/triadic stocks, or citation-adjusted patent index.",
+    "limitation": "Patent grants/families are not varieties; R&D capital depreciates and includes valuation effects while the model stock does not. None measures the level exactly; proxy growth also depends on initialization and depreciation.",
+    "sources": "KNOWLEDGE"
+  },
+  {
+    "core_entry": 21,
+    "symbol": "phi_US,t, phi_W,t",
+    "status": "I",
+    "measurement": "phi=1-R/H. US matched education-occupation CPS cell R=NRC intersection H is reproducible; formal business researcher/personnel FTE is a separate sensitivity.",
+    "limitation": "NRC includes clinical/managerial/teaching work beyond innovation. NRC/total employment has wrong denominator. BERD full-population FTE divided by partial observed-hours CPS FTE is not fully matched. RoW task/skill cells require harmonization.",
+    "sources": "CPS;NRC;MSTI;NCSES"
+  },
+  {
+    "core_entry": 25,
+    "symbol": "A_X,i,t, A_L,i,t",
+    "status": "I",
+    "measurement": "Conditional CES inversion: A_X=[vartheta alpha Y^rho/(w_H X^rho)]^[1/(rho-1)], A_L=[(1-alpha)Y^rho/(w_L L^rho)]^[1/(rho-1)], X=phi H.",
+    "limitation": "Model-implied after parameters and empirical bridges, not an independent technology observation. Require Euler check w_H X/vartheta+w_L L=Y and do not renormalize incompatible shares. Singular at rho=1; highly sensitive nearby. Sector LP/TFP and R&D expenditure are different concepts.",
+    "sources": "CPS;LFS;CORPORATE;RDINPUT"
+  },
+  {
+    "core_entry": 26,
+    "symbol": "Y_i,t",
+    "status": "I",
+    "measurement": "Directly published candidate: resident corporate GVA from US IMA/BEA and OECD S11+S12 B1G. Deflate and use chosen geography/scope consistently.",
+    "limitation": "Current model-to-data bridge remains I: corporate GVA includes own-account capitalized R&D whereas model production obeys Y=e+D-I. Sector/tax/capital accounting must be reconciled. D is appropriate for the specified corporate-GVA statistic itself, not automatic equality to model Y.",
+    "sources": "CORPORATE;RDINPUT"
+  },
+  {
+    "core_entry": 27,
+    "symbol": "w_H,i,t, w_L,i,t",
+    "status": "I",
+    "measurement": "US: CPS matched skill hourly-earnings means/ratios; annual FTE compensation levels additionally use corporate compensation scaling. RoW OECD education earnings ratios are available irregularly.",
+    "limitation": "Cash earnings and total compensation differ; mean hourly wage is not median weekly earnings. Whole-skilled-group wage is an opportunity-wage approximation to production workers. RoW ratios do not supply matched levels, hours or total wage bills.",
+    "sources": "CPS;LFS"
+  },
+  {
+    "core_entry": 28,
+    "symbol": "e_i,t",
+    "status": "I",
+    "measurement": "Construct e=w_H H+w_L L from a matched employment, wage and time-unit universe; aggregate corporate compensation is an alternative scoped bridge.",
+    "limitation": "Do not replace young-cohort labor income by GDP, disposable income or GVA. The existing US scaling forces the wage bill to compensation; it is not an independent test. RoW earnings-ratio data alone cannot recover e.",
+    "sources": "CPS;LFS;CORPORATE"
+  },
+  {
+    "core_entry": 29,
+    "symbol": "q_i,t, d_i,t (and reconstructed R_i,t+1)",
+    "status": "I",
+    "measurement": "q_t=Q_t/N_t+1 and d_t=D_t/N_t; stock timing must be explicit. Distribution-excluding market price returns and dividend/total-return data supply observable indices/yields.",
+    "limitation": "An arbitrary index level is not a price per model variety. Market-cap growth includes entry/issuance; dividend levels inherit the unknown variety unit. Price-return growth can be a D counterpart for a specified security universe, with composition and timing differences documented.",
+    "sources": "KNOWLEDGE;MARKET"
+  },
+  {
+    "core_entry": 30,
+    "symbol": "Q_i,t, D_i,t",
+    "status": "I",
+    "measurement": "Equity capitalization and paid cash dividends are observable for a specified universe; potential D subcomponents. Model Q=N_next q, D=N d; keep end-period stock and within-period flow distinct.",
+    "limitation": "The earlier AHP enterprise-value and free-cash-flow mappings are NOT automatically equity capitalization and cash dividends. Model has no physical capital/debt/taxes/retention at firm level; shareholder equity vs enterprise value, profits vs distributions and IPO timing must be reconciled.",
+    "sources": "CORPORATE;MARKET"
+  }
+]

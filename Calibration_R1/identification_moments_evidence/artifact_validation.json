@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "families": 17,
+  "scalars": 30,
+  "groups": {
+    "A": 4,
+    "B": 9,
+    "C": 4
+  },
+  "columns_in_main_tables": 3,
+  "source_files_unchanged": {
+    "AI_drafting/V6_production.tex": true,
+    "Codes/Two_country_proudction_zero_nu_b/TwoCountryProductionOLG.jl": true,
+    "Codes/Calibration_R1/V6_parameter_calibration_groups.tex": true,
+    "Codes/Calibration_R1/V6_external_calibration_literature_review.tex": true,
+    "Codes/Calibration_R1/deep-reserach-report-External-Calibration Candidate Set for V6.md": true
+  },
+  "compile_errors_or_overfull_boxes": [],
+  "harmless_underfull_box_warnings": 2,
+  "pages": [
+    {
+      "page": 1,
+      "characters": 2694,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 2,
+      "characters": 3491,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 3,
+      "characters": 3595,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 4,
+      "characters": 3093,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 5,
+      "characters": 3297,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 6,
+      "characters": 2454,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 7,
+      "characters": 3631,
+      "outside_page_bounds": 0
+    },
+    {
+      "page": 8,
+      "characters": 3977,
+      "outside_page_bounds": 0
+    }
+  ],
+  "outline_entries": 8,
+  "tex_sha256": "7374b0b746053cdb6f805bc638e703421bc24ecc53a6d8f9f4dc04d0ce42b804",
+  "pdf_sha256": "ea5b1c6df3f0a59295a365e1e5cf3690fad2a26a2f3ddfa370a53dd4973efbbf",
+  "scope": "Artifact validation only; no empirical identification or data-readiness claim."
+}

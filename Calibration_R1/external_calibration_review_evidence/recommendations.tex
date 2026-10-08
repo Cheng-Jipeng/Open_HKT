@@ -1,0 +1,179 @@
+\clearpage
+\section{Proposed candidate set: recommendations, not additional estimates}
+
+All 19 included scalars appear once below. These are conditional starting choices for
+research, not an operational joint calibration vector. A robustness envelope joins
+measurement/specification alternatives only where stated; it is not a pooled statistical
+interval. Source-specific uncertainty remains in the preceding evidence tables.
+Confidence concerns \emph{economic numerical transfer}, unless algebra is separately mentioned.
+
+\begin{recommendations}
+% SCALAR: beta
+M01 $\beta$
+& Empirical point unassigned. Conditional endpoint bridge
+$\delta_a^\Delta/(1+\delta_a^\Delta)$; HKT $0.5$ for comparison.
+& Exponential sources and assumed $\Delta=20$--$40$: $0.1465$--$0.3070$.
+Separate present-bias continuation scenario extends to $0.4454$.
+No V6 confidence interval.
+& Low; exact algebra after life-stage assumptions.
+& \src{GP02} \src{LLMRT26} \src{HKT25}\\[5pt]
+% SCALAR: gamma
+M02 $\gamma$
+& $5$ finance-oriented; $2$ explicit lifecycle alternative.
+& Core $\{0.5,2,5,6.3,10\}$; separate recursive-utility stress
+$\{17,20,60\}$. Evidence-motivated scenario grid; retain wide source intervals.
+& Medium concept; low number.
+& \src{VA03} \src{KSS08} \src{CFL2013} \src{EHI25}\\[5pt]
+% SCALAR: pi
+M07 $\pi$
+& Conditional productivity-duration scenario $0.990^{4\Delta}$;
+no direct V6 estimate.
+& Mean spells $D=10,25,50$ years:
+$[1-1/(4D)]^{4\Delta}$.
+Only 25-year center source-derived; disaster events are separate alternatives.
+& Low event mapping; exact survival conversion.
+& \src{KR07} \src{Barro06} \src{BU08}\\[5pt]
+% SCALAR: vartheta_US
+M10 $\vartheta_{US}$
+& $0.621$ (COGS-based, 2016); competing cost-definition candidate $0.870$.
+& $0.621$--$0.909$ measurement-specification envelope;
+$0.543$ global-database US alternative.
+Not a sampling confidence range.
+& Low--medium; reciprocal exact.
+& \src{P5} \src{P6} \src{P7}\\[5pt]
+% SCALAR: vartheta_W
+M10 $\vartheta_W$
+& Full-RoW point unassigned. Europe $0.613$ and Asia $0.690$ are geographic anchors.
+& Regional proxies $0.613$--$0.725$;
+coverage and markup-method sensitivity required before aggregation.
+This is not a RoW interval.
+& Low; aggregate not matched.
+& \src{P7}\\[5pt]
+% SCALAR: rho_US
+M12 $\rho_{US}$
+& Skill proxy $0.667$; retain meta candidates $0.16$ (US), $0.27$ (pooled).
+& Skill branch $0.16$--$0.91$, stress $0.05$.
+Separate capital--labor analogy: $2$, range $1.43$--$3.33$.
+No pooling across input pairs.
+& Qualified skill proxy; low exact V6.
+& \src{P1} \src{P2} \src{P12} \src{P10} \src{P11}\\[5pt]
+% SCALAR: rho_W
+M12 $\rho_W$
+& $0.667$ only under explicit US-skill pooling;
+pooled/developing meta alternatives $0.27/0.47$.
+& Same broad skill branch conditional on coverage.
+Complementarity branch $2$ with $1.43$--$3.33$ is an analogy, not a RoW estimate.
+& Low geographic and input mapping.
+& \src{P2} \src{P3} \src{P12} \src{P10} \src{P11}\\[5pt]
+% SCALAR: a_US
+M09 $a_{US}$
+& $(G_{N,US}-1)/(s_{R,US}H_{US})$ after matched measurement, $s_{R,US}>0$.
+& No portable numerical range. Propagate joint growth/research-share bounds.
+HKT $aH=0.2$ is illustration only.
+& Low empirical; conditional identity exact.
+& \src{HKT25} \src{BJRW20} \src{BP07}\\[5pt]
+% SCALAR: a_W
+M09 $a_W$
+& $(G_{N,W}-1)/(s_{R,W}H_W)$ for declared RoW, $s_{R,W}>0$.
+& Country coverage, knowledge proxy and research-share scenarios;
+no evidence for imposing the US level.
+& Low; RoW aggregation unresolved.
+& \src{BP07} \src{BJRW20}\\[5pt]
+\end{recommendations}
+
+\textbf{Why these numeric candidates.}
+The choice $\gamma=5$ gives a provisional finance-oriented point while preserving both
+lower lifecycle and much higher recursive-utility evidence. The skill candidate
+$\rho=2/3$ prioritizes an original instrumental-variable study; newer bias-corrected
+meta-estimates receive explicit alternatives rather than being averaged away.
+The two markup candidates reflect incompatible cost definitions.
+These judgments do not establish identification or override V6's restrictions.
+
+\clearpage
+\subsection{Remaining Group B scalars: normalization, data inversion and scenarios}
+
+Here $B_X,B_L$ are the explicit V6 inversions in equations~(\ref{eq:bx})--(\ref{eq:bl});
+$N_\dagger$ is a declared reference switch stock.
+An unassigned empirical value is a substantive finding, not permission to replace it
+with a convenient number. Suggested normalizations and stress grids are marked accordingly.
+
+\begin{recommendations}
+% SCALAR: alpha_US
+M11 $\alpha_{US}$
+& $0.5$ as a normalization, jointly recovering US scales, for $\rho_{US}\ne1$.
+& Reparameterization checks preserving both CES composites;
+no independently meaningful raw-weight range.
+At $\rho=1$, use the Cobb--Douglas share.
+& High equivalence; no empirical point claim.
+& \src{CL12} \src{KMW12} \src{CC06}\\[5pt]
+% SCALAR: alpha_W
+M11 $\alpha_W$
+& $0.5$ under the same normalization logic, for $\rho_W\ne1$.
+& Jointly adjust both RoW augmentations.
+Near $\rho=1$, inversion sensitivity needs explicit treatment.
+& High equivalence; units conditional.
+& \src{CL12} \src{KMW12}\\[5pt]
+% SCALAR: A_X_US_u
+M13 $\bar A_{X,US,u}$
+& $B_{X,US}/N_{US,0}^{\xi_u}$; numerical value awaits matched data.
+& Joint output/share, $\varphi$, markup, $\rho$ and knowledge-normalization uncertainty.
+No portable scale interval.
+& Conditional algebra high; empirical low.
+& \src{CC06} \src{Rossi22} \src{LMW10}\\[5pt]
+% SCALAR: A_L_US_u
+M13 $\bar A_{L,US,u}$
+& $B_{L,US}/N_{US,0}^{\nu_u}$; numerical value awaits matched data.
+& Joint production-data region, coupled to the preceding coefficient.
+HKT's $A_LL=1$ is a units-dependent illustration.
+& Conditional algebra high; empirical low.
+& \src{CC06} \src{HKT25} \src{LMW10}\\[5pt]
+% SCALAR: Abar_X_US
+M14 $\bar A_{X,US,b}$
+& $\bar A_{X,US,u}N_\dagger^{\xi_u}$: reference-state augmentation continuity scenario.
+& Multiply by $m_X$; $\{0.8,1,1.2\}$ optional analyst stress grid.
+No empirical bound verified.
+& Low; counterfactual assumption.
+& V6 equations; \src{HKT25} comparison only\\[5pt]
+% SCALAR: Abar_L_US
+M14 $\bar A_{L,US,b}$
+& $\bar A_{L,US,u}N_\dagger^{\nu_u}$: reference-state augmentation continuity scenario.
+& Multiply by $m_L$ jointly with $m_X$.
+Grid is not a credible interval; cannot ensure continuity at all switch dates.
+& Low; counterfactual assumption.
+& V6 equations; \src{HKT25} comparison only\\[5pt]
+% SCALAR: Abar_X_W
+M15 $\bar A_{X,W}$
+& $B_{X,W}$ for matched RoW production observations.
+& Country coverage and productivity/input measurement region,
+preserving relative US--RoW units.
+& Low empirical; conditional inversion exact.
+& \src{CC06} \src{Rossi22}\\[5pt]
+% SCALAR: Abar_L_W
+M15 $\bar A_{L,W}$
+& $B_{L,W}$ for the same matched RoW observations.
+& Joint with $\bar A_{X,W}$; no independent country-average TFP range.
+& Low empirical; conditional inversion exact.
+& \src{CC06} \src{Rossi22}\\[5pt]
+% SCALAR: xi_u
+M16 $\xi_u$
+& Empirical point unassigned; HKT $0.7$ for comparison.
+& Joint augmentation/knowledge-growth region.
+No verified transferable numeric bounds; annual demand trends are not this elasticity.
+& High HKT definition match; low empirical.
+& \src{HKT25} \src{KM92} \src{BJRW20}\\[5pt]
+% SCALAR: nu_u
+M16 $\nu_u$
+& Empirical point unassigned; HKT $0.2$ for comparison.
+& Joint with $\xi_u$; preserve data-supported zero/equal/reversed growth
+even outside the current theorem/solver class.
+& High HKT definition match; low empirical.
+& \src{HKT25} \src{KM92} \src{BP07}\\[5pt]
+\end{recommendations}
+
+\textbf{Use in subsequent calibration.}
+First declare the period and labor/knowledge/output units, then choose and defend the
+production-input mapping. Assign technology levels jointly with the matched production
+moments, recording those moments as targeted. For each retained external specification,
+re-fit Group C to the chosen international-finance moments and assess sensitivity and
+identification. Data/model disagreement is evidence about the mapping or specification;
+it must not be concealed by selecting only externally convenient parameters.

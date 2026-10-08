@@ -1,0 +1,173 @@
+[
+  {
+    "parameter_latex": "M01 $\\beta$",
+    "baseline_candidate_latex": "Empirical point unassigned. Conditional endpoint bridge $\\delta_a^\\Delta/(1+\\delta_a^\\Delta)$; HKT $0.5$ for comparison.",
+    "robustness_latex": "Exponential sources and assumed $\\Delta=20$--$40$: $0.1465$--$0.3070$. Separate present-bias continuation scenario extends to $0.4454$. No V6 confidence interval.",
+    "mapping_confidence": "Low; exact algebra after life-stage assumptions.",
+    "sources_latex": "\\src{GP02} \\src{LLMRT26} \\src{HKT25}",
+    "scalar": "beta",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M02 $\\gamma$",
+    "baseline_candidate_latex": "$5$ finance-oriented; $2$ explicit lifecycle alternative.",
+    "robustness_latex": "Core $\\{0.5,2,5,6.3,10\\}$; separate recursive-utility stress $\\{17,20,60\\}$. Evidence-motivated scenario grid; retain wide source intervals.",
+    "mapping_confidence": "Medium concept; low number.",
+    "sources_latex": "\\src{VA03} \\src{KSS08} \\src{CFL2013} \\src{EHI25}",
+    "scalar": "gamma",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M07 $\\pi$",
+    "baseline_candidate_latex": "Conditional productivity-duration scenario $0.990^{4\\Delta}$; no direct V6 estimate.",
+    "robustness_latex": "Mean spells $D=10,25,50$ years: $[1-1/(4D)]^{4\\Delta}$. Only 25-year center source-derived; disaster events are separate alternatives.",
+    "mapping_confidence": "Low event mapping; exact survival conversion.",
+    "sources_latex": "\\src{KR07} \\src{Barro06} \\src{BU08}",
+    "scalar": "pi",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M10 $\\vartheta_{US}$",
+    "baseline_candidate_latex": "$0.621$ (COGS-based, 2016); competing cost-definition candidate $0.870$.",
+    "robustness_latex": "$0.621$--$0.909$ measurement-specification envelope; $0.543$ global-database US alternative. Not a sampling confidence range.",
+    "mapping_confidence": "Low--medium; reciprocal exact.",
+    "sources_latex": "\\src{DLEU20} \\src{Traina18} \\src{DE21}",
+    "scalar": "vartheta_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M10 $\\vartheta_W$",
+    "baseline_candidate_latex": "Full-RoW point unassigned. Europe $0.613$ and Asia $0.690$ are geographic anchors.",
+    "robustness_latex": "Regional proxies $0.613$--$0.725$; coverage and markup-method sensitivity required before aggregation. This is not a RoW interval.",
+    "mapping_confidence": "Low; aggregate not matched.",
+    "sources_latex": "\\src{DE21}",
+    "scalar": "vartheta_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M12 $\\rho_{US}$",
+    "baseline_candidate_latex": "Skill proxy $0.667$; retain meta candidates $0.16$ (US), $0.27$ (pooled).",
+    "robustness_latex": "Skill branch $0.16$--$0.91$, stress $0.05$. Separate capital--labor analogy: $2$, range $1.43$--$3.33$. No pooling across input pairs.",
+    "mapping_confidence": "Qualified skill proxy; low exact V6.",
+    "sources_latex": "\\src{KM92} \\src{CP05} \\src{HILZ24} \\src{OR21} \\src{GHIK22}",
+    "scalar": "rho_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M12 $\\rho_W$",
+    "baseline_candidate_latex": "$0.667$ only under explicit US-skill pooling; pooled/developing meta alternatives $0.27/0.47$.",
+    "robustness_latex": "Same broad skill branch conditional on coverage. Complementarity branch $2$ with $1.43$--$3.33$ is an analogy, not a RoW estimate.",
+    "mapping_confidence": "Low geographic and input mapping.",
+    "sources_latex": "\\src{CP05} \\src{CC06} \\src{HILZ24} \\src{OR21} \\src{GHIK22}",
+    "scalar": "rho_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M09 $a_{US}$",
+    "baseline_candidate_latex": "$(G_{N,US}-1)/(s_{R,US}H_{US})$ after matched measurement, $s_{R,US}>0$.",
+    "robustness_latex": "No portable numerical range. Propagate joint growth/research-share bounds. HKT $aH=0.2$ is illustration only.",
+    "mapping_confidence": "Low empirical; conditional identity exact.",
+    "sources_latex": "\\src{HKT25} \\src{BJRW20} \\src{BP07}",
+    "scalar": "a_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M09 $a_W$",
+    "baseline_candidate_latex": "$(G_{N,W}-1)/(s_{R,W}H_W)$ for declared RoW, $s_{R,W}>0$.",
+    "robustness_latex": "Country coverage, knowledge proxy and research-share scenarios; no evidence for imposing the US level.",
+    "mapping_confidence": "Low; RoW aggregation unresolved.",
+    "sources_latex": "\\src{BP07} \\src{BJRW20}",
+    "scalar": "a_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M11 $\\alpha_{US}$",
+    "baseline_candidate_latex": "$0.5$ as a normalization, jointly recovering US scales, for $\\rho_{US}\\ne1$.",
+    "robustness_latex": "Reparameterization checks preserving both CES composites; no independently meaningful raw-weight range. At $\\rho=1$, use the Cobb--Douglas share.",
+    "mapping_confidence": "High equivalence; no empirical point claim.",
+    "sources_latex": "\\src{CL12} \\src{KMW12} \\src{CC06}",
+    "scalar": "alpha_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M11 $\\alpha_W$",
+    "baseline_candidate_latex": "$0.5$ under the same normalization logic, for $\\rho_W\\ne1$.",
+    "robustness_latex": "Jointly adjust both RoW augmentations. Near $\\rho=1$, inversion sensitivity needs explicit treatment.",
+    "mapping_confidence": "High equivalence; units conditional.",
+    "sources_latex": "\\src{CL12} \\src{KMW12}",
+    "scalar": "alpha_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M13 $\\bar A_{X,US,u}$",
+    "baseline_candidate_latex": "$B_{X,US}/N_{US,0}^{\\xi_u}$; numerical value awaits matched data.",
+    "robustness_latex": "Joint output/share, $\\varphi$, markup, $\\rho$ and knowledge-normalization uncertainty. No portable scale interval.",
+    "mapping_confidence": "Conditional algebra high; empirical low.",
+    "sources_latex": "\\src{CC06} \\src{Rossi22} \\src{LMW10}",
+    "scalar": "A_X_US_u",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M13 $\\bar A_{L,US,u}$",
+    "baseline_candidate_latex": "$B_{L,US}/N_{US,0}^{\\nu_u}$; numerical value awaits matched data.",
+    "robustness_latex": "Joint production-data region, coupled to the preceding coefficient. HKT's $A_LL=1$ is a units-dependent illustration.",
+    "mapping_confidence": "Conditional algebra high; empirical low.",
+    "sources_latex": "\\src{CC06} \\src{HKT25} \\src{LMW10}",
+    "scalar": "A_L_US_u",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M14 $\\bar A_{X,US,b}$",
+    "baseline_candidate_latex": "$\\bar A_{X,US,u}N_\\dagger^{\\xi_u}$: reference-state augmentation continuity scenario.",
+    "robustness_latex": "Multiply by $m_X$; $\\{0.8,1,1.2\\}$ optional analyst stress grid. No empirical bound verified.",
+    "mapping_confidence": "Low; counterfactual assumption.",
+    "sources_latex": "V6 equations; \\src{HKT25} comparison only",
+    "scalar": "Abar_X_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M14 $\\bar A_{L,US,b}$",
+    "baseline_candidate_latex": "$\\bar A_{L,US,u}N_\\dagger^{\\nu_u}$: reference-state augmentation continuity scenario.",
+    "robustness_latex": "Multiply by $m_L$ jointly with $m_X$. Grid is not a credible interval; cannot ensure continuity at all switch dates.",
+    "mapping_confidence": "Low; counterfactual assumption.",
+    "sources_latex": "V6 equations; \\src{HKT25} comparison only",
+    "scalar": "Abar_L_US",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M15 $\\bar A_{X,W}$",
+    "baseline_candidate_latex": "$B_{X,W}$ for matched RoW production observations.",
+    "robustness_latex": "Country coverage and productivity/input measurement region, preserving relative US--RoW units.",
+    "mapping_confidence": "Low empirical; conditional inversion exact.",
+    "sources_latex": "\\src{CC06} \\src{Rossi22}",
+    "scalar": "Abar_X_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M15 $\\bar A_{L,W}$",
+    "baseline_candidate_latex": "$B_{L,W}$ for the same matched RoW observations.",
+    "robustness_latex": "Joint with $\\bar A_{X,W}$; no independent country-average TFP range.",
+    "mapping_confidence": "Low empirical; conditional inversion exact.",
+    "sources_latex": "\\src{CC06} \\src{Rossi22}",
+    "scalar": "Abar_L_W",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M16 $\\xi_u$",
+    "baseline_candidate_latex": "Empirical point unassigned; HKT $0.7$ for comparison.",
+    "robustness_latex": "Joint augmentation/knowledge-growth region. No verified transferable numeric bounds; annual demand trends are not this elasticity.",
+    "mapping_confidence": "High HKT definition match; low empirical.",
+    "sources_latex": "\\src{HKT25} \\src{KM92} \\src{BJRW20}",
+    "scalar": "xi_u",
+    "evidence_role": "recommendation, not an additional estimate"
+  },
+  {
+    "parameter_latex": "M16 $\\nu_u$",
+    "baseline_candidate_latex": "Empirical point unassigned; HKT $0.2$ for comparison.",
+    "robustness_latex": "Joint with $\\xi_u$; preserve data-supported zero/equal/reversed growth even outside the current theorem/solver class.",
+    "mapping_confidence": "High HKT definition match; low empirical.",
+    "sources_latex": "\\src{HKT25} \\src{KM92} \\src{BP07}",
+    "scalar": "nu_u",
+    "evidence_role": "recommendation, not an additional estimate"
+  }
+]

@@ -1,0 +1,98 @@
+% !TEX program = pdflatex
+% Standalone output assembled by external_calibration_review_evidence/build_review.py.
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=14mm,headheight=14pt,headsep=6mm,footskip=8mm]{geometry}
+\usepackage{array,longtable,booktabs,ragged2e,multicol}
+\usepackage[table]{xcolor}
+\usepackage{microtype,fancyhdr}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\definecolor{heading}{RGB}{28,53,73}
+\definecolor{tablehead}{RGB}{231,238,243}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{heading}Two-country HKT: external-calibration literature review}
+\fancyhead[R]{\small\sffamily 27 September 2026}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{5pt}\setlength{\LTpre}{5pt}\setlength{\LTpost}{7pt}
+\renewcommand{\arraystretch}{1.1}\setlength{\emergencystretch}{3em}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\src}[1]{\hyperlink{ref:#1}{\textsf{[#1]}}}
+\newcommand{\code}[1]{{\small\texttt{#1}}}
+\newenvironment{evidence}{%
+\fontsize{9.4}{10.9}\selectfont\setlength{\parskip}{2pt}
+\begin{longtable}{@{}P{\dimexpr .22\textwidth-7.5pt\relax}P{\dimexpr .24\textwidth-7.5pt\relax}P{\dimexpr .25\textwidth-7.5pt\relax}P{\dimexpr .29\textwidth-7.5pt\relax}@{}}
+\toprule\rowcolor{tablehead}\textbf{Source and original object} & \textbf{Reported values / evidence type} & \textbf{Method, population and frequency} & \textbf{V6 transformation and transferability}\\\midrule
+\endfirsthead
+\toprule\rowcolor{tablehead}\textbf{Source and original object} & \textbf{Reported values / evidence type} & \textbf{Method, population and frequency} & \textbf{V6 transformation and transferability}\\\midrule
+\endhead
+\midrule\multicolumn{4}{r}{\footnotesize\itshape Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+}{\end{longtable}}
+\newenvironment{recommendations}{%
+\fontsize{9.4}{10.9}\selectfont\setlength{\parskip}{2pt}
+\begin{longtable}{@{}P{\dimexpr .14\textwidth-8pt\relax}P{\dimexpr .25\textwidth-8pt\relax}P{\dimexpr .32\textwidth-8pt\relax}P{\dimexpr .15\textwidth-8pt\relax}P{\dimexpr .14\textwidth-8pt\relax}@{}}
+\toprule\rowcolor{tablehead}\textbf{Parameter} & \textbf{Proposed baseline candidate} & \textbf{Robustness range / scenario meaning} & \textbf{Mapping confidence} & \textbf{Best support}\\\midrule
+\endfirsthead
+\toprule\rowcolor{tablehead}\textbf{Parameter} & \textbf{Proposed baseline candidate} & \textbf{Robustness range / scenario meaning} & \textbf{Mapping confidence} & \textbf{Best support}\\\midrule
+\endhead
+\midrule\multicolumn{5}{r}{\footnotesize\itshape Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+}{\end{longtable}}
+\hypersetup{pdftitle={V6 external calibration: evidence, mappings and candidate ranges},pdfauthor={}}
+\begin{document}
+{\LARGE\sffamily\bfseries\color{heading}External calibration: evidence and candidate ranges}\par
+{\large\sffamily V6 preference, production and technology parameters}\par
+
+\textbf{Assessment.} The literature supplies useful conditional candidates for risk curvature,
+markups and substitution elasticities. It does not supply an empirically defensible single
+vector for all V6 parameters. Discounting requires a generation-length bridge; technology
+levels require joint normalization and production-data inversion; innovation coefficients
+and the absorbing technology regime require additional measurement or explicit scenarios.
+The recommendations at the end distinguish numeric candidates from
+quantities deliberately left data-dependent or unassigned.
+
+\textbf{Authority and coverage.}
+\code{V6\_parameter\_calibration\_groups.tex} defines the parameters reviewed here.
+Coverage is \textbf{11 families / 19 scalar parameters}: M01, M02, M07, M09--M16.
+M08 labor endowments are data inputs and receive no conventional-value search.
+Group C, M03--M06, is reserved for internal international-finance calibration.
+M17's $\nu_b=\xi_W=0$ are imposed restrictions, not free external parameters.
+The current manuscript supplies supporting equations; no model definition or solver has been changed.
+
+\begin{center}\small
+\begin{tabular}{@{}P{.20\textwidth}P{.73\textwidth}@{}}
+\toprule\rowcolor{tablehead}\textbf{Evidence label} & \textbf{Interpretation in this review}\\\midrule
+Estimated & Original econometric or experimental evidence, conditional on its sample and model. Standard errors, confidence intervals and population percentiles are identified separately.\\[3pt]
+Calibrated / illustrative & A value imposed by an author, including HKT's theoretical example; it is not an independent estimate.\\[3pt]
+Synthesis & A meta-analysis of original studies; useful for bias and heterogeneity, without treating pooled estimates as a consensus.\\[3pt]
+Proposed scenario & Our mapping or robustness choice; its endpoints are not a literature confidence interval. Unassigned means no portable numerical benchmark was verified.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Search and verification.}
+Consensus searches and fetched records, Scite searches/full text, and an
+\href{https://app.undermind.ai/projects/6513b93c-0aaf-4fd9-9554-e57b8db4a0cf?path=/External\%20calibration\%20of\%20V6\%20preferences\%20and\%20production}{Undermind deep search}
+were used for discovery, followed by original papers and dated author versions for numerical checks.
+The Undermind search completed with 175 ranked records; these are discovery results, not 175 verified studies.
+Wiley Scholar Gateway was attempted but repeatedly returned an internal error.
+Wiley-published originals accessible through other routes are identified normally.
+This is a targeted, source-verified review, not an exhaustive systematic review.
+Detailed evidence and connector logs accompany the source in
+\code{external\_calibration\_review\_evidence/}.
+
+\textbf{Period, population and restrictions.}
+Let $\Delta$ denote years per V6 young-to-old transition; this review does not choose it.
+Dimensionless risk curvature, markups and static substitution elasticities are not
+annualized. Discount probabilities and innovation coefficients need explicit time bridges.
+US listed firms, US households, selected foreign countries and the full RoW are distinct
+populations. In particular, the current $\rho_{US}>1$ implementation and the sufficient
+theorem's $\gamma<1$ must not determine which estimates enter the evidence set.
+Solver-excluded candidates such as $\rho_{US}\le1$ require an alternative validated
+implementation. The solver accepts positive $\gamma$; values above one instead lose
+the cited sufficient theorem and require separate equilibrium checks, without necessarily
+requiring a solver change.

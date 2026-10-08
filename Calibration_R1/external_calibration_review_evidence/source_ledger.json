@@ -1,0 +1,964 @@
+[
+  {
+    "authors": "Tomohiro Hirano, Keiichi Kishi, Alexis Akira Toda",
+    "title": "Technological Innovation and Bursting Bubbles",
+    "year": 2025,
+    "venue": "arXiv:2501.08215v2, preprint",
+    "doi": "10.48550/arXiv.2501.08215",
+    "url": "https://arxiv.org/html/2501.08215v2",
+    "locators": [
+      "Figure 1, p.24",
+      "Section 4.1 factor-augmentation specification",
+      "Section 3.1 R&D law"
+    ],
+    "key": "HKT25",
+    "locator": "Pinned arXiv v2 and matching local original TeX; Figure 1, p. 24. Numerical illustration, not an estimate."
+  },
+  {
+    "key": "GP02",
+    "title": "Consumption Over the Life Cycle",
+    "authors": "Gourinchas, Pierre‐Olivier and Parker, Jonathan A.",
+    "year": 2002,
+    "doi": "10.1111/1468-0262.00269",
+    "url": "https://jggarita.github.io/MacroIntermedia/materials/Readings/GourinchasParker2002.pdf",
+    "type": "structural estimate",
+    "locator": "Table III p.71; Table V p.79",
+    "numbers": {
+      "annual_discount": [
+        0.9598,
+        0.9569
+      ],
+      "gamma_crra": [
+        0.514,
+        1.3969
+      ],
+      "gamma_specification_extremes": [
+        0.1278,
+        5.2823
+      ]
+    },
+    "transfer": "Source CRRA implies inverse EIS; V6 fixes EIS=1. Beta needs cohort bridge.",
+    "venue": "Econometrica 70(1), 47-89"
+  },
+  {
+    "key": "LLMRT26",
+    "title": "Estimating Discount Functions with Consumption Choices over the Lifecycle",
+    "authors": "Laibson, David and Lee, Sean Chanwook and Maxted, Peter and Repetto, Andrea and Tobacman, Jeremy",
+    "year": 2026,
+    "doi": "10.1093/rfs/hhae035",
+    "url": "https://academic.oup.com/rfs/article/39/6/1580/7703274?rss=1",
+    "type": "structural estimate",
+    "locator": "Table 3; footnotes 25 and 39",
+    "numbers": {
+      "annual_discount_exponential": 0.9601,
+      "annual_discount_present_biased": 0.9891,
+      "present_bias": 0.5305,
+      "crra_exponential": 1.4663,
+      "crra_present_biased": 1.9355
+    },
+    "transfer": "Present-bias b is not V6 beta; no EZ risk/EIS separation.",
+    "venue": "Review of Financial Studies 39(6), 1580-1610; online 2024, issue 2026"
+  },
+  {
+    "key": "BJKS97",
+    "title": "Preference Parameters and Behavioral Heterogeneity: An Experimental Approach in the Health and Retirement Study",
+    "authors": "Barsky, Robert and Juster, F. Thomas and Kimball, Miles and Shapiro, M.",
+    "year": 1997,
+    "doi": "10.1162/003355397555280",
+    "url": "https://websites.umich.edu/~mkimball/keio/5.%20papers/qje-bjks-risk-aversion.pdf",
+    "type": "survey estimate",
+    "locator": "Table XI p.563",
+    "numbers": {
+      "mean_rra": 12.1193,
+      "mean_tolerance": 0.2391,
+      "harmonic_rra_rounded": 4.2
+    },
+    "transfer": "Heterogeneous lifetime-income preferences; do not invert mean tolerance unqualified.",
+    "venue": "Quarterly Journal of Economics 112(2), 537-579"
+  },
+  {
+    "key": "KSS08",
+    "title": "Imputing Risk Tolerance From Survey Responses",
+    "authors": "Kimball, Miles and Sahm, Claudia and Shapiro, Matthew",
+    "year": 2008,
+    "doi": "10.1198/016214508000000139",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2856097/",
+    "type": "survey estimate corrected for response error",
+    "locator": "Equations 1–2; Table 4",
+    "numbers": {
+      "mean_rra": 8.2,
+      "median_rra": 6.3,
+      "rra_iqr": [
+        3.9,
+        10.3
+      ],
+      "rra_p5_p95": [
+        1.9,
+        20.8
+      ]
+    },
+    "range_type": "population heterogeneity, not confidence interval",
+    "venue": "Journal of the American Statistical Association 103(483), 1028-1038"
+  },
+  {
+    "key": "HL02",
+    "title": "Risk Aversion and Incentive Effects",
+    "authors": "Holt, Charles A. and Laury, Susan K.",
+    "year": 2002,
+    "doi": "10.1257/000282802762024700",
+    "url": "https://lorko.sk/wp-content/uploads/2023/10/HoltLaury2002.pdf",
+    "type": "incentivized laboratory choices",
+    "locator": "Table 3 and discussion p.1649",
+    "numbers": {
+      "low_payoff_center": [
+        0.3,
+        0.5
+      ],
+      "example_choice_bin": [
+        0.41,
+        0.68
+      ]
+    },
+    "range_type": "choice-implied bin; not confidence interval",
+    "transfer": "Cash-payoff utility; RRA changes with stakes.",
+    "venue": "American Economic Review 92(5), 1644-1655"
+  },
+  {
+    "key": "VA03",
+    "title": "Stock-Market Participation, Intertemporal Substitution, and Risk-Aversion",
+    "authors": "Vissing‐Jørgensen, Annette and Attanasio, Orazio",
+    "year": 2003,
+    "doi": "10.1257/000282803321947399",
+    "url": "https://www.researchgate.net/publication/4981014_Stock-Market_Participation_Intertemporal_Substitution_and_Risk-Aversion",
+    "type": "structural asset-pricing estimate",
+    "version": "Numeric evidence from author-uploaded January 10, 2003 extended manuscript",
+    "locator": "Numeric evidence: author-uploaded extended manuscript dated 10 January 2003, Table 2A, case 4, p. 14; journal article is shorter.",
+    "numbers": {
+      "all_stockholders": [
+        8.1,
+        6.3,
+        5.5
+      ],
+      "richest_third": [
+        28.4,
+        19.9,
+        16.5
+      ],
+      "middle_case_all_stockholders_ci95": [
+        0.3,
+        13.9
+      ]
+    },
+    "transfer": "EZ curvature comparable, EIS and human capital assumptions differ.",
+    "venue": "American Economic Review Papers and Proceedings 93(2), 383-391"
+  },
+  {
+    "source_id": "CFL2013",
+    "title": "An estimation of economic models with recursive preferences",
+    "authors": [
+      "Xiaohong Chen",
+      "Jack Favilukis",
+      "Sydney C. Ludvigson"
+    ],
+    "publication": "Quantitative Economics 4(1),39–83 (2013)",
+    "doi": "10.3982/QE97",
+    "url": "https://www.econstor.eu/bitstream/10419/150343/1/v4-i1-p039-083-QE97.pdf",
+    "locator": "Equations (1)-(2), p. 44; Table 2, p. 62; methods and interpretation, pp. 56-58, 64-65.",
+    "source_definition": "theta=relative risk aversion; rho=inverse EIS; beta=quarterly recursive discount factor",
+    "method": "Profile sieve minimum distance, second-step GMM; 100 block-bootstrap draws for reported95%CIs",
+    "sample": "US1952Q1–2005Q1 quarterly; aggregate nondurables/services versus CEX stockholder consumption-mimicking factor; Treasury bill and six equity portfolios",
+    "estimates": [
+      {
+        "consumption": "aggregate",
+        "weight": "I",
+        "theta": 57.5,
+        "theta_ci95": [
+          27.5,
+          129
+        ],
+        "rho": 0.6,
+        "beta": 0.99
+      },
+      {
+        "consumption": "aggregate",
+        "weight": "G^-1",
+        "theta": 60,
+        "theta_ci95": [
+          42,
+          144
+        ],
+        "rho": 0.5,
+        "beta": 0.999
+      },
+      {
+        "consumption": "stockholder",
+        "weight": "I",
+        "theta": 20,
+        "theta_ci95": [
+          0.25,
+          40
+        ],
+        "rho": 0.9,
+        "beta": 0.994
+      },
+      {
+        "consumption": "stockholder",
+        "weight": "G^-1",
+        "theta": 17,
+        "theta_ci95": [
+          1,
+          43.3
+        ],
+        "rho": 0.68,
+        "beta": 0.998
+      }
+    ],
+    "mapping": "gamma_V6=theta conceptually; no annualization. beta_source is not beta_V6.",
+    "mismatch": "Infinite-horizon continuation-value risk; freely estimated EIS>1, versus V6 two-period terminal consumption and EIS=1. Stockholder measure is fitted, not observed long series. Wide CIs; potentially pseudo-true under misspecification.",
+    "recommendation": "Add high-risk scenarios17,20,60;17–60 is a cross-specification point-estimate span, not a confidence or recommended central range. Retain low-risk evidence separately.",
+    "access_notes": "Published PDF text verified. Screenshot and Appendix retrieval failed; no claim to have verified unit-EIS appendix numbers. Fre2020 not verified in this supplement.",
+    "key": "CFL2013",
+    "year": 2013,
+    "venue": "Quantitative Economics 4(1), 39-83"
+  },
+  {
+    "key": "EHI25",
+    "title": "Relative Risk Aversion: A Meta-Analysis",
+    "authors": "Elminejad, Ali and Havránek, Tomáš and Iršová, Zuzana",
+    "year": 2025,
+    "doi": "10.1111/joes.12689",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12689",
+    "type": "meta-analysis; use as synthesis",
+    "locator": "Sections 1/5 and Table 6",
+    "numbers": {
+      "bias_adjusted_finance": [
+        2,
+        7
+      ],
+      "bias_adjusted_economics_approx": 1,
+      "us_context": 5.2,
+      "us_context_ci95": [
+        2.28,
+        8.11
+      ]
+    },
+    "transfer": "Context-dependent synthesis; not a new V6 estimate.",
+    "venue": "Journal of Economic Surveys 39(5), 2315-2333"
+  },
+  {
+    "id": "P5",
+    "authors": "Jan De Loecker, Jan Eeckhout and Gabriel Unger",
+    "year": 2020,
+    "title": "The Rise of Market Power and the Macroeconomic Implications",
+    "venue": "Quarterly Journal of Economics 135(2), 561–644",
+    "doi": "10.1093/qje/qjz041",
+    "url": "https://www.janeeckhout.com/wp-content/uploads/RMP.pdf",
+    "locus": "Author manuscript15Nov2019, abstract, equation7, Section3.1/Figure1 pp9–10",
+    "evidence_type": "estimated",
+    "source_parameter": "Gross price/marginal-cost markup, then sales-weighted aggregate across firms",
+    "method": "Flexible-input output elasticity divided by input revenue share; sector/time production-function estimation",
+    "population": "U.S. listed Compustat firms, additional Census checks",
+    "frequency": "Annual1955–2016; inputs assumed flexible within year",
+    "source_values": [
+      {
+        "name": "mu_1980",
+        "value": 1.21
+      },
+      {
+        "name": "mu_2016",
+        "value": 1.61
+      }
+    ],
+    "v6_values": [
+      {
+        "vartheta": 0.8264462809917356,
+        "date": 1980
+      },
+      {
+        "vartheta": 0.6211180124223602,
+        "date": 2016
+      }
+    ],
+    "transferability": "Exact reciprocal conditional on same marginal-cost object; low-to-medium economic transfer due to heterogeneity, aggregation, overhead, public-firm selection and time-varying empirical markups.",
+    "key": "DLEU20",
+    "original_evidence_id": "P5",
+    "locator": "Author manuscript, 15 November 2019: equation (7), section 3.1 and Figure 1, pp. 9-10."
+  },
+  {
+    "id": "P6",
+    "authors": "James Traina",
+    "year": 2018,
+    "title": "Is Aggregate Market Power Increasing? Production Trends Using Financial Statements",
+    "venue": "Working paper, February2018",
+    "doi": "10.2139/ssrn.3120849",
+    "url": "https://doi.org/10.2139/ssrn.3120849",
+    "locus": "Longer Time Horizons subsection/Figure5; Scite actual fulltext offset16000 contains numeric passage",
+    "evidence_type": "estimated_working_paper",
+    "source_parameter": "Gross price/marginal-cost markup based on operating expenses including SG&A as variable input",
+    "method": "Industry-specific Cobb–Douglas, two-stage production estimation; annual and three-year window checks",
+    "population": "U.S. Compustat domestic firms excluding utilities/financials",
+    "frequency": "Annual1950–2016; three-year production-window sensitivity",
+    "source_values": [
+      {
+        "name": "mu_1950",
+        "value": 1.15
+      },
+      {
+        "name": "mu_1980",
+        "value": 1.1
+      },
+      {
+        "name": "mu_sample_end",
+        "value": 1.15
+      }
+    ],
+    "v6_values": [
+      {
+        "vartheta": 0.8695652173913044
+      },
+      {
+        "vartheta": 0.9090909090909091
+      }
+    ],
+    "transferability": "Distinct cost-definition alternative to P5, not its sampling uncertainty; SG&A flexibility disputed, homogeneous V6 cost structure differs.",
+    "key": "Traina18",
+    "original_evidence_id": "P6",
+    "locator": "Longer Time Horizons subsection and Figure 5; numerical passage verified in original full text via Scite."
+  },
+  {
+    "id": "P7",
+    "authors": "Jan De Loecker and Jan Eeckhout",
+    "year": 2021,
+    "title": "Global Market Power",
+    "venue": "Working paper, 10 February 2021 version; NBER Working Paper 24768 first issued 2018",
+    "doi": "10.3386/w24768",
+    "url": "https://crei.cat/wp-content/uploads/2021/04/GLOBAL.pdf",
+    "locus": "Section2 data; Table1 manuscriptp13",
+    "evidence_type": "estimated_working_paper",
+    "source_parameter": "Sales-weighted firm gross markups in declared regions/countries",
+    "method": "Production method with U.S.-based output elasticities applied to global listed-firm accounts",
+    "population": "67,491 firms in134countries;745,958firm-years",
+    "frequency": "Annual1980–2016",
+    "source_values": [
+      {
+        "name": "mu_2016_Europe",
+        "value": 1.63
+      },
+      {
+        "name": "mu_2016_Asia",
+        "value": 1.45
+      },
+      {
+        "name": "mu_2016_Africa",
+        "value": 1.38
+      },
+      {
+        "name": "mu_2016_Oceania",
+        "value": 1.55
+      },
+      {
+        "name": "mu_2016_SouthAmerica",
+        "value": 1.59
+      },
+      {
+        "name": "mu_2016_US",
+        "value": 1.84
+      }
+    ],
+    "v6_values": [
+      {
+        "name": "theta_Europe",
+        "value": 0.6134969325153374
+      },
+      {
+        "name": "theta_Asia",
+        "value": 0.6896551724137931
+      },
+      {
+        "name": "theta_Africa",
+        "value": 0.7246376811594204
+      },
+      {
+        "name": "theta_Oceania",
+        "value": 0.6451612903225806
+      },
+      {
+        "name": "theta_SouthAmerica",
+        "value": 0.6289308176100629
+      },
+      {
+        "name": "theta_US_alternative_database",
+        "value": 0.5434782608695652
+      }
+    ],
+    "transferability": "No direct RoW-ex-US aggregate. Headquarters is not production residence; selection/cost/technology caveats. Different US estimate from P5 remains separate.",
+    "key": "DE21",
+    "original_evidence_id": "P7",
+    "locator": "Data: section 2; regional estimates: Table 1, manuscript p. 13."
+  },
+  {
+    "id": "P8",
+    "authors": "Steve Bond, Arshia Hashemi, Greg Kaplan and Piotr Zoch",
+    "year": 2021,
+    "title": "Some Unpleasant Markup Arithmetic: Production Function Elasticities and Their Estimation from Production Data",
+    "venue": "Journal of Monetary Economics 121, 1-14",
+    "doi": "10.1016/j.jmoneco.2021.05.004",
+    "url": "https://arshiahashemi.com/publication/jme-2021-bhkz/JME-2021-BHKZ.pdf",
+    "locus": "Abstract verified; published-PDF direct fetch timed out",
+    "evidence_type": "methodological_qualification_no_numeric_candidate",
+    "source_parameter": "Ratio estimator using output elasticity, not revenue elasticity",
+    "method": "Identification and estimation analysis",
+    "population": "General firm-production setting",
+    "frequency": "Not a frequency-specific parameter estimate",
+    "source_values": [],
+    "v6_values": [],
+    "transferability": "Raises reasons not to treat production-based markups as directly observed parameters; does not itself give a V6 value.",
+    "access": "Scite abstract-only; publisher/author metadata verified",
+    "key": "BHKZ21",
+    "original_evidence_id": "P8"
+  },
+  {
+    "id": "P9",
+    "authors": "Jan De Loecker",
+    "year": 2021,
+    "title": "Comment on (Un)pleasant ... By Bond Et Al (2020)",
+    "venue": "Journal of Monetary Economics 121, 15-18",
+    "doi": "10.1016/j.jmoneco.2021.04.009",
+    "url": "https://doi.org/10.1016/j.jmoneco.2021.04.009",
+    "locus": "Introduction, Scite fulltext",
+    "evidence_type": "methodological_reply_no_numeric_candidate",
+    "source_parameter": "Output-elasticity markup ratio, with additional data/structure to address unobserved prices",
+    "method": "Methodological response",
+    "population": "General firm-production setting",
+    "frequency": "Not a frequency-specific parameter estimate",
+    "source_values": [],
+    "v6_values": [],
+    "transferability": "Retains disagreement around implementation; does not mean all true markups equal one.",
+    "access": "Scite actual fulltext",
+    "key": "DL21",
+    "original_evidence_id": "P9"
+  },
+  {
+    "id": "P1",
+    "authors": "Lawrence F. Katz and Kevin M. Murphy",
+    "year": 1992,
+    "title": "Changes in Relative Wages, 1963–1987: Supply and Demand Factors",
+    "venue": "Quarterly Journal of Economics 107(1), 35–78",
+    "doi": "10.2307/2118323",
+    "url": "https://lkatz.scholars.harvard.edu/sites/g/files/omnuum5961/files/lkatz/files/changes_in_relative_wages_1963-1987_supply_and_demand_factors.pdf",
+    "locus": "Equation (19), p.69; elasticity discussion p.72",
+    "evidence_type": "estimated",
+    "source_parameter": "Elasticity of substitution between college- and high-school-equivalent labor in a two-labor CES; inverse-demand slope equals minus its reciprocal.",
+    "method": "OLS log relative wage on log relative efficiency-unit labor supply and linear technology trend",
+    "population": "U.S. CPS, college versus high-school equivalents",
+    "frequency": "Annual observations 1963–1987; static conditional factor-demand elasticity",
+    "source_values": [
+      {
+        "name": "relative_supply_slope",
+        "value": -0.709,
+        "se": 0.15
+      },
+      {
+        "name": "sigma",
+        "value": 1.41
+      },
+      {
+        "name": "sigma_scenario_not_estimate",
+        "values": [
+          0.5,
+          1.41,
+          4
+        ]
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 0.709,
+        "transformation": "Negate estimated slope; inverse of rounded sigma=1.41 gives .7092199"
+      }
+    ],
+    "transferability": "Qualified skill-input proxy; V6 X=phi H excludes R&D labor and has varying augmentations and a markup wedge. Conflicts with current rho_US>1 restriction.",
+    "key": "KM92",
+    "original_evidence_id": "P1"
+  },
+  {
+    "id": "P2",
+    "authors": "Antonio Ciccone and Giovanni Peri",
+    "year": 2005,
+    "title": "Long-Run Substitutability Between More and Less Educated Workers: Evidence from U.S. States, 1950–1990",
+    "venue": "Review of Economics and Statistics 87(4), 652–663",
+    "doi": "10.1162/003465305775098233",
+    "url": "https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/ciccone_peri_long_run_substitutability_%40005.pdf",
+    "locus": "Table 4, p.656, panel B(iv), column 1; full panels A–C for estimator sensitivity",
+    "evidence_type": "estimated",
+    "source_parameter": "CES long-run relative labor-demand elasticity between more- and less-educated efficiency units; schooling-law instruments mostly move the high-school-completion margin.",
+    "method": "2SLS, LIML and Fuller LIML with state and year effects, schooling/child-labor-law instruments; preferred Fuller F=4",
+    "population": "48 contiguous U.S. states, 240 observations; wages U.S.-born white full-time males40–50; supply white males21–59",
+    "frequency": "Five decennial censuses 1950–1990, ten-year changes",
+    "source_values": [
+      {
+        "name": "sigma_preferred",
+        "value": 1.5,
+        "se": 0.44
+      },
+      {
+        "name": "IV_point_sensitivity_not_CI",
+        "range": [
+          1.2,
+          2
+        ]
+      },
+      {
+        "name": "FE_OLS_different_assumptions",
+        "range": [
+          2.85,
+          3.44
+        ]
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 0.6666666666666666,
+        "transformation": "rho=1/sigma"
+      },
+      {
+        "rho_range": [
+          0.5,
+          0.8333333333333334
+        ],
+        "range_type": "range of IV point estimates, not CI"
+      },
+      {
+        "rho_range": [
+          0.29069767441860467,
+          0.3508771929824561
+        ],
+        "range_type": "FE-OLS alternatives"
+      }
+    ],
+    "transferability": "Qualified U.S. skill proxy; different schooling groups, long-run horizon, possible weak instruments, V6 R&D/markup/technology distinctions; not RoW evidence.",
+    "key": "CP05",
+    "original_evidence_id": "P2"
+  },
+  {
+    "id": "P4",
+    "authors": "Per Krusell, Lee E. Ohanian, José-Víctor Ríos-Rull and Giovanni L. Violante",
+    "year": 2000,
+    "title": "Capital-Skill Complementarity and Inequality: A Macroeconomic Analysis",
+    "venue": "Econometrica 68(5), 1029–1053",
+    "doi": "10.1111/1468-0262.00150",
+    "url": "https://www.jonathanheathcote.com/KORV.pdf",
+    "locus": "TableII p1041; footnote16 p1044",
+    "evidence_type": "structurally_estimated",
+    "source_parameter": "Nested-CES outer unskilled-vs-equipment/skilled labor elasticity, distinct from inner equipment-vs-skilled elasticity",
+    "method": "Two-step simulated pseudo-maximum likelihood, latent labor efficiencies",
+    "population": "U.S. CPS labor wages/quantities plus physical capital and quality-adjusted equipment prices",
+    "frequency": "Annual 1963–1992",
+    "source_values": [
+      {
+        "name": "outer_sigma",
+        "value": 1.67
+      },
+      {
+        "name": "inner_equipment_skilled_sigma_NOT_V6_MARGIN",
+        "value": 0.67
+      },
+      {
+        "name": "outer_sigma_skill_threshold_sensitivity",
+        "value": 1.89
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 0.5988023952095809,
+        "transformation": "Reciprocal of outer-nest elasticity only as analogy"
+      }
+    ],
+    "transferability": "Outer-nest skill proxy is qualified; inverse of .67 would map the wrong input pair and must not be used to justify V6 complementarity.",
+    "key": "KORV00",
+    "original_evidence_id": "P4",
+    "locator": "Table II, p. 1041; alternative skill threshold: footnote 16, p. 1044."
+  },
+  {
+    "id": "P12",
+    "authors": "Tomas Havranek, Zuzana Irsova, Lubica Laslopova and Olesia Zeynalova",
+    "year": 2024,
+    "online_year": 2022,
+    "title": "Publication and Attenuation Biases in Measuring Skill Substitution",
+    "venue": "Review of Economics and Statistics 106(5), 1187-1200; online 2022",
+    "doi": "10.1162/rest_a_01227",
+    "url": "https://meta-analysis.cz/skill/skill2.pdf",
+    "locus": "Table5p1197;discussionp1198",
+    "evidence_type": "bias_corrected_skill_meta_estimate",
+    "source_parameter": "Negative inverse skill substitution elasticity from wage-premium on relative-supply regressions",
+    "method": "Nonlinear publication-bias correction;attenuation/endogeneity comparison by estimator;Bayesian/frequentist model averaging;subjective best-practice estimates",
+    "population": "682estimates from77studies;all-country,US,developing profiles",
+    "frequency": "Mixed source frequencies;bestpractice favorsannualdisaggregatedpanel,multilevelCES,fixed effects and valid IV",
+    "source_values": [
+      {
+        "name": "all_country_negative_inverse",
+        "value": -0.27,
+        "credible95": [
+          -0.48,
+          -0.05
+        ],
+        "implied_sigma": 3.7
+      },
+      {
+        "name": "US_negative_inverse",
+        "value": -0.16,
+        "credible95": [
+          -0.38,
+          0.06
+        ],
+        "implied_sigma": 6.3
+      },
+      {
+        "name": "developing_negative_inverse",
+        "value": -0.47,
+        "credible95": [
+          -0.7,
+          -0.24
+        ],
+        "implied_sigma": 2.1
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 0.27,
+        "credible95_conditional_mapping": [
+          0.05,
+          0.48
+        ]
+      },
+      {
+        "rho": 0.16,
+        "credible95_conditional_mapping": [
+          -0.06,
+          0.38
+        ],
+        "note": "Crosseszero;do not label as finitepositiveelasticityCI"
+      },
+      {
+        "rho": 0.47,
+        "credible95_conditional_mapping": [
+          0.24,
+          0.7
+        ]
+      }
+    ],
+    "transferability": "Qualifiedskillproxy;IVvalidity,biascorrection,skillgroupsandV6R&D/markup/technology distinctions remain;strongalternative to1.5convention.",
+    "version_caution": "2020/2021LessSubstitutableworkingpaper0.6–0.9issupersededandNOTindependentcontradictoryevidence.",
+    "key": "HILZ24",
+    "original_evidence_id": "P12",
+    "locator": "Final published Table 5, p. 1197; supersedes 2020/2021 low-elasticity working paper."
+  },
+  {
+    "id": "P3",
+    "authors": "Francesco Caselli and Wilbur John Coleman II",
+    "year": 2006,
+    "title": "The World Technology Frontier",
+    "venue": "American Economic Review 96(3), 499–522",
+    "doi": "10.1257/aer.96.3.499",
+    "url": "https://personal.lse.ac.uk/casellif/papers/wtf.pdf",
+    "locus": "Section I.B and Table2, pp504–505",
+    "evidence_type": "calibrated_from_KM_not_independent_estimate",
+    "source_parameter": "Skill/unskilled elasticity 1/(1-s), where s is the within-labor CES exponent in a production function with physical capital.",
+    "method": "Development-accounting inversion of skill-specific efficiencies, conditional on borrowed elasticity and capital share",
+    "population": "52 countries, several schooling thresholds",
+    "frequency": "Static cross-country levels, not an intertemporal parameter",
+    "source_values": [
+      {
+        "name": "sigma_calibration",
+        "value": 1.4
+      },
+      {
+        "name": "sigma_calibration_robustness",
+        "values": [
+          1.1,
+          1.4,
+          1.7,
+          2
+        ]
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 0.7142857142857143,
+        "transformation": "rho_V6=1-s=1/sigma_source"
+      },
+      {
+        "rho_values": [
+          0.9090909090909091,
+          0.7142857142857143,
+          0.5882352941176471,
+          0.5
+        ]
+      }
+    ],
+    "transferability": "Useful normalization/conditional-calibration approach, no independent elasticity estimate and no direct V6 intermediate-input match.",
+    "key": "CC06",
+    "original_evidence_id": "P3",
+    "locator": "Equations (2)-(3), pp. 499-502; section I.B and Table 2, pp. 504-505."
+  },
+  {
+    "id": "P10",
+    "authors": "Ezra Oberfield and Devesh Raval",
+    "year": 2021,
+    "title": "Micro Data and Macro Technology",
+    "venue": "Econometrica 89(2), 703-732",
+    "doi": "10.3982/ECTA12807",
+    "url": "https://ezraoberfield.github.io/CESAggregation.pdf",
+    "locus": "Abstractp703,introp705;Figure4bp719",
+    "evidence_type": "estimated_KL_analogy",
+    "source_parameter": "Aggregate physical capital-labor elasticity dln(K/L)/dln(w/r), including within-plant substitution and reallocation; no imposed stable aggregate CES",
+    "method": "Local-wage IV plant elasticities plus heterogeneity and aggregation; amenities/shift-share instruments",
+    "population": "U.S.manufacturing plants,Census ofManufactures andAnnualSurveyofManufactures",
+    "frequency": "Annual/census cross-sections,1972–2007aggregatepaths",
+    "source_values": [
+      {
+        "name": "aggregate_sigma_range",
+        "range": [
+          0.5,
+          0.7
+        ]
+      },
+      {
+        "name": "plant_sigma_range",
+        "range": [
+          0.3,
+          0.5
+        ]
+      },
+      {
+        "name": "aggregate_sigma_fixed1997micro_1972",
+        "value": 0.6
+      },
+      {
+        "name": "aggregate_sigma_fixed1997micro_2007",
+        "value": 0.54
+      }
+    ],
+    "v6_values": [
+      {
+        "rho_range": [
+          1.4285714285714286,
+          2
+        ],
+        "range_type": "KL analogy, not V6 estimate"
+      },
+      {
+        "rho": 1.6666666666666667
+      }
+    ],
+    "transferability": "Low: physical K vs total labor differs from V6 X=phiH vs unskilled L. Preserve complementary evidence separately from skill estimates.",
+    "key": "OR21",
+    "original_evidence_id": "P10",
+    "locator": "Abstract, p. 703; introduction, p. 705; Figure 4b, p. 719."
+  },
+  {
+    "id": "P11",
+    "authors": "Sebastian Gechert, Tomas Havranek, Zuzana Irsova and Dominika Kolcunova",
+    "year": 2022,
+    "title": "Measuring Capital-Labor Substitution: The Importance of Method Choices and Publication Bias",
+    "venue": "Review of Economic Dynamics 45, 55-82",
+    "doi": "10.1016/j.red.2021.05.003",
+    "url": "https://meta-analysis.cz/sigma/sigma2.pdf",
+    "locus": "Table9p77,methodSection5.4,conclusionp78",
+    "evidence_type": "bias_corrected_meta_estimate_KL_analogy",
+    "source_parameter": "Physical capital-labor elasticity, conditional on chosen synthetic-study methodological profile",
+    "method": "3,186estimates from121studies;nonlinearpublicationbiascorrection;Bayesian/frequentistmodelaveraging;71studyfeatures",
+    "population": "Mixed economies,sectors,environments;studiespublishedbefore2019",
+    "frequency": "Mixed;quarterly sensitivity reported separately",
+    "source_values": [
+      {
+        "name": "sigma_bestpractice",
+        "value": 0.3,
+        "ci95": [
+          -0.01,
+          0.6
+        ]
+      },
+      {
+        "name": "sigma_country_data_variant",
+        "value": 0.5,
+        "ci95": [
+          0.18,
+          0.81
+        ]
+      },
+      {
+        "name": "sigma_quarterly_data_variant",
+        "value": 0.42,
+        "ci95": [
+          0.08,
+          0.76
+        ]
+      }
+    ],
+    "v6_values": [
+      {
+        "rho": 3.3333333333333335,
+        "transformation": "Point reciprocal only"
+      },
+      {
+        "rho": 2
+      },
+      {
+        "rho": 2.380952380952381
+      }
+    ],
+    "transferability": "Low for V6 input margin. Baseline CI crosses zero and cannot yield bounded positive rho confidence interval by inversion; point3.33 only scenario analogy.",
+    "key": "GHIK22",
+    "original_evidence_id": "P11",
+    "locator": "Table 9, p. 77; method: section 5.4; conclusion, p. 78."
+  },
+  {
+    "authors": "James A. Kahn; Robert W. Rich",
+    "title": "Tracking the new economy: Using growth theory to detect changes in trend productivity",
+    "year": 2007,
+    "journal": "Journal of Monetary Economics54(6),1670–1701",
+    "doi": "10.1016/j.jmoneco.2006.07.008",
+    "url": "https://pages.stern.nyu.edu/~jkahn/Papers/kahnrich_jme.pdf",
+    "locators": [
+      "eqs7–9 and footnote11,p1677",
+      "Table2,p1683",
+      "sample and duration discussion,p1682",
+      "per-capita identification failure,p1687",
+      "December2005 vintage,p1693",
+      "approximate ML appendix,p1696"
+    ],
+    "key": "KR07",
+    "venue": "Journal of Monetary Economics 54(6), 1670-1701",
+    "locator": "Equations (7)-(9), p. 1677; Table 2, p. 1683; sample/durations, p. 1682; identification, p. 1687."
+  },
+  {
+    "authors": "Robert J. Barro",
+    "title": "Rare Disasters and Asset Markets in the Twentieth Century",
+    "year": 2006,
+    "venue": "Quarterly Journal of Economics 121(3), 823-866",
+    "doi": "10.1162/qjec.121.3.823",
+    "url": "https://dash.harvard.edu/bitstreams/7312037c-67b1-6bd4-e053-0100007fdf3b/download",
+    "locators": [
+      "p.825 disaster process",
+      "p.831 observed annual frequency",
+      "Table V, p.846"
+    ],
+    "key": "Barro06"
+  },
+  {
+    "authors": "Robert J. Barro, José F. Ursúa",
+    "title": "Macroeconomic Crises since 1870",
+    "year": 2008,
+    "venue": "Brookings Papers on Economic Activity, Spring, 255-350 including discussion",
+    "doi": "10.1353/eca.0.0000",
+    "url": "https://www.brookings.edu/wp-content/uploads/2008/03/2008a_bpea_barro.pdf",
+    "locators": [
+      "pp.284-286 hazard definition and sample",
+      "Table 10, p.296",
+      "Table 11, p.297",
+      "footnote24, p.286"
+    ],
+    "key": "BU08"
+  },
+  {
+    "authors": "Nicholas Bloom, Charles I. Jones, John Van Reenen, Michael Webb",
+    "title": "Are Ideas Getting Harder to Find?",
+    "year": 2020,
+    "venue": "American Economic Review 110(4), 1104-1144",
+    "doi": "10.1257/aer.20180338",
+    "url": "https://web.stanford.edu/~chadj/IdeaPF.pdf",
+    "locators": [
+      "equations1-3,pp.1108-1110",
+      "Figure2,p.1111",
+      "Table7 and eq17,p.1134",
+      "TableA1,p.1140"
+    ],
+    "key": "BJRW20",
+    "locator": "Equations (1)-(3), pp. 1108-1110; Table 7 and equation (17), p. 1134; Table A1, p. 1140."
+  },
+  {
+    "authors": "Laura Bottazzi; Giovanni Peri",
+    "title": "The International Dynamics of R&D and Innovation in the Long Run and in the Short Run",
+    "year": 2007,
+    "journal": "Economic Journal117(518),486–511",
+    "doi": "10.1111/j.1468-0297.2007.02027.x",
+    "url": "https://giovanniperi.ucdavis.edu/uploads/5/6/8/2/56826033/bottazzi_et_al-2007-the_economic_journal.pdf",
+    "locators": [
+      "eq5,p492",
+      "eq6–7 and footnote12,p493",
+      "eq8–9,p494",
+      "sample,p495",
+      "Table4,p501",
+      "interpretation,p502"
+    ],
+    "key": "BP07",
+    "venue": "Economic Journal 117(518), 486-511",
+    "locator": "Equations (5)-(9), pp. 492-494; sample, p. 495; Table 4, p. 501; interpretation, p. 502."
+  },
+  {
+    "authors": "Charles I. Jones",
+    "title": "R & D-Based Models of Economic Growth",
+    "year": 1995,
+    "venue": "Journal of Political Economy 103(4), 759-784",
+    "doi": "10.1086/262002",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/262002",
+    "author_pdf": "https://web.stanford.edu/~chadj/JonesJPE95.pdf",
+    "locators": [
+      "publisher abstract; qualitative specification critique only"
+    ],
+    "key": "Jones95"
+  },
+  {
+    "key": "Rossi22",
+    "authors": "Federico Rossi",
+    "year": 2022,
+    "title": "The Relative Efficiency of Skilled Labor across Countries: Measurement and Interpretation",
+    "venue": "American Economic Review 112(1), 235-266",
+    "doi": "10.1257/aer.20191852",
+    "url": "https://wrap.warwick.ac.uk/id/eprint/159013/1/WRAP-Relative-efficiency-skilled-labor-across-countries-measurement-interpretation-2021.pdf",
+    "locator": "July 2021 accepted manuscript, equations (4)-(8), pp. 7-8; Table I, p. 31 (PDF page 32). Publication metadata checked against AEA.",
+    "source_definition": "(A_H Q_H)/(A_L Q_L), relative efficiency including embodied worker quality; US normalized to one",
+    "verified_numbers": {
+      "sigma_imposed": 1.5,
+      "US": 1,
+      "Canada": 0.711,
+      "India": 0.041
+    },
+    "method": "Static skill CES inversion from comparable wages and hours; 12 countries circa 2000",
+    "mapping": "Re-invert V6 with production research split and intermediate markup; country values are not V6 RoW scales"
+  },
+  {
+    "key": "CL12",
+    "authors": "Cristiano Cantore and Paul Levine",
+    "year": 2012,
+    "title": "Getting Normalization Right: Dealing with Dimensional Constants in Macroeconomics",
+    "venue": "Journal of Economic Dynamics and Control 36(12), 1931-1949",
+    "doi": "10.1016/j.jedc.2012.05.009",
+    "url": "https://archives.dynare.org/wp-repo/dynarewp009.pdf",
+    "locator": "Detailed method: Dynare Working Paper 9 (July 2011), sections 2.1-2.5.",
+    "method": "Dimensional analysis and equivalent CES reparameterization; not empirical estimates"
+  },
+  {
+    "key": "KMW12",
+    "authors": "Rainer Klump, Peter McAdam and Alpo Willman",
+    "year": 2012,
+    "title": "The Normalized CES Production Function: Theory and Empirics",
+    "venue": "Journal of Economic Surveys 26(5), 769-799",
+    "doi": "10.1111/j.1467-6419.2012.00730.x",
+    "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1294.pdf",
+    "locator": "Detailed method: ECB Working Paper 1294 (2011), equations (10), (15)-(16).",
+    "method": "Methodological survey of CES normalization; no transferable numeric raw distribution coefficient"
+  },
+  {
+    "key": "LMW10",
+    "authors": "Miguel A. Leon-Ledesma, Peter McAdam and Alpo Willman",
+    "year": 2010,
+    "title": "Identifying the Elasticity of Substitution with Biased Technical Change",
+    "venue": "American Economic Review 100(4), 1330-1357",
+    "doi": "10.1257/aer.100.4.1330",
+    "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1001.pdf",
+    "locator": "Method verified in ECB Working Paper 1001 (January 2009); published metadata checked at AEA.",
+    "method": "Monte Carlo normalized CES system identification; not a new empirical V6 point estimate"
+  }
+]

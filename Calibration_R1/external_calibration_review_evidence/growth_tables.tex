@@ -1,0 +1,260 @@
+\clearpage
+\section{Regime persistence: M07, $\pi$ (Group B)}
+
+V6 defines $\pi=\Pr(z_{t+1}=u\mid z_t=u)$, with $b$ absorbing.
+An empirical transition therefore needs both an operational definition of the
+unbalanced-to-balanced technology switch and a model-period length $\Delta$ in
+years. A recurring productivity regime is the closest analogy reviewed below;
+neither a recession nor an equity-price fall defines the V6 event.
+
+\begin{evidence}
+Kahn and Rich (2007) \src{KR07}.
+Quarterly high-growth persistence $q_1=\Pr(S_{1t}=0\mid S_{1,t-1}=0)$;
+equations~(7)--(9), p.~1677; Table~2, p.~1683.
+&
+Estimated $q_1=0.990$ (SE $0.011$), implying a 100-quarter mean spell.
+Low-growth persistence is $0.983$ (SE $0.015$).
+Alternative specifications give high-growth persistence $0.991$ or $0.993$;
+these are not confidence bounds.
+&
+Approximate maximum-likelihood Markov dynamic-factor model; US quarterly
+1947Q1--2002Q4, December~2005 vintage. Output/hour, compensation/hour,
+consumption/hour and detrended hours identify common trend growth. Both
+growth regimes recur.
+&
+Conditional first-exit analogy: $\pi_\Delta=q_1^{4\Delta}$.
+This is uninterrupted survival, not the recurrent chain's endpoint high-state
+probability. Aggregate growth regimes differ from V6 factor-spillover regimes.
+Per-capita specification loses regime identification (p.~1687);
+few transitions limit precision.
+\\[5pt]
+Barro (2006) \src{Barro06}.
+Poisson intensity $p$ of downward output jumps; pp.~825,831 and Table~V, p.~846.
+&
+Data-based frequency calibration: $p=0.017$ per year, with reported
+frequency range $0.015$--$0.020$.
+The $0.025$ sensitivity case is calibrated, not an estimated upper bound.
+&
+60 cumulative per-capita GDP contractions of at least 15\%, 35 countries,
+approximately the twentieth century. Recurring rare disasters in a
+representative-agent asset-pricing economy.
+&
+The source's no-jump probability is $\exp(-p\Delta)$.
+Equating it to V6 $\pi$ additionally equates two different events.
+Useful disaster-risk sensitivity only; a global GDP-contraction frequency
+does not estimate an absorbing US technology transition.
+\\[5pt]
+Barro and Urs\'ua (2008) \src{BU08}.
+Annual normal-to-disaster transition probability $h$; Tables~10--11,
+pp.~296--297.
+&
+At a 10\% contraction threshold, $h=0.0363$ for consumption and $0.0369$
+for GDP. At 15\%, corresponding values are $0.0218$ and $0.0192$.
+These event-definition alternatives are not a confidence interval.
+&
+Historical annual series starting as early as 1870; 24 consumption and
+36 GDP countries. Events are peak-to-trough cumulative contractions;
+hazards use normal-state exposure years.
+&
+Under a matched constant annual hazard, $\pi=(1-h)^\Delta$.
+Events recur and recover. The source's symbol $\pi$ instead denotes
+disaster exit and must not be copied into V6. Published sample counts
+differ from the older working-paper abstract.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+No directly estimated V6 benchmark is available. Prefer the Kahn--Rich
+\emph{conditional duration scenario}, $\pi=0.990^{4\Delta}$, to a generic
+disaster center: it implies $0.9606$ for one year and $0.3660$ for 25 years
+(our calculations). A 10/25/50-year mean-duration stress design can use
+$q_D=1-1/(4D)$ and $\pi=q_D^{4\Delta}$; only the 25-year center is
+source-derived, while the endpoints are analyst choices. This is not a
+credible interval: the reported Wald interval for $q_1$ crosses one, making
+inverse-duration inference unreliable. Mapping confidence is low for the
+V6 event, despite exact conditional frequency conversion. Use the published
+2007 estimates; 2003 drafts differ in notation and sample endpoints.
+
+\clearpage
+\section{Innovation productivity: M09, $a_{US},a_W$ (Group B)}
+
+V6 imposes $N_{i,t+1}/N_{i,t}-1=a_i(1-\varphi_{i,t})H_i$.
+For matched gross knowledge growth $G_{N,i}$ and research share
+$s_{R,i}=1-\varphi_i$, conditional recovery and frequency conversion are
+\[
+ a_iH_i=\frac{G_{N,i}-1}{s_{R,i}}
+       =\frac{(1+g_{N,i})^\Delta-1}{s_{R,i}}.
+\]
+The second equality assumes constant annual knowledge growth $g_{N,i}$ and
+research share over $\Delta$ years; it matches endpoint knowledge growth,
+not the full temporally aggregated OLG equilibrium. Labor units matter:
+if $H_i'=cH_i$, then $a_i'=a_i/c$.
+Recovery requires $s_{R,i}>0$. A zero-research observation has $G_{N,i}=1$
+and cannot identify $a_i$; share uncertainty approaching zero can make
+an upper bound unbounded.
+
+\begin{evidence}
+Hirano, Kishi and Toda, arXiv v2 (2025) \src{HKT25}.
+Same expanding-variety research law; Figure~1, p.~24.
+&
+$aH=0.2$: numerical illustration without an estimated population or
+empirical range.
+&
+Closed-economy two-period OLG bubble model. The figure does not establish
+the calendar length of a model period or estimate a country-specific
+research coefficient.
+&
+Strong definition match for the product $aH$; no empirical level transfer.
+The value is not 0.2 annually and does not establish equal US and RoW
+productivity. Recover $a_i$ only after fixing labor units.
+\\[5pt]
+Bloom et al.\ (2020) \src{BJRW20}.
+Research productivity equals idea-output growth divided by effective
+researchers; equations~(1)--(3), pp.~1108--1110; Table~7, p.~1134.
+&
+Reported annual productivity growth: aggregate US $-5.1\%$;
+Moore's Law $-6.8\%$; cotton, version~2, $+1.3\%$.
+These are descriptive growth-accounting ratios, not estimated levels of $a_i$.
+&
+US aggregate 1930--2015: decadal TFP growth and intellectual-property
+investment deflated by skilled wages. Moore's Law: 1971--2014;
+cotton: 1969--2009. Input quality and output concepts vary by application.
+&
+Declining research productivity challenges constant V6 $a_i$, while cotton
+preserves a contrary case. TFP or chip performance does not directly count
+V6 varieties. Matched knowledge, labor units, quality and period are needed;
+never insert these growth rates as $a_i$.
+\\[5pt]
+Bottazzi and Peri (2007) \src{BP07}.
+Patent flow $Pat=\iota RD^\lambda A^\phi A_{ROW}^{\xi}$;
+equations~(5)--(9), pp.~492--494; Table~4, p.~501.
+&
+Estimated long-run elasticities
+$(\lambda/(1-\phi),\xi/(1-\phi))=(0.786,0.557)$;
+with country trends, $(0.304,0.168)$.
+Knowledge depreciation of 10\% is imposed, not estimated.
+&
+Dynamic-OLS panel cointegration; 15 OECD countries, annual research
+personnel and citation-weighted US patent applications.
+Text dates are 1973--1999; Table~4 says 1972--1999.
+Country effects and trends materially change estimates.
+&
+V6 instead imposes unit research and own-knowledge exponents, no foreign
+knowledge term and no depreciation. The finite cointegrating ratios do
+not identify its coefficient $a_i$; source $\xi$ is also not V6 $\xi_u$.
+Useful specification discipline, not a portable prior.
+\\[5pt]
+Jones (1995) \src{Jones95}.
+R\&D-based growth and scale effects; publisher abstract verified.
+&
+Qualitative evidence against standard scale effects; no numerical
+coefficient is borrowed from this source.
+&
+Industrial-economy time-series critique and semi-endogenous growth
+theory. Full-text coefficient and equation claims are not relied upon.
+&
+Motivates a diminishing-productivity specification check. It does not
+identify a V6 variety-growth coefficient or resolve its research-labor
+normalization.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Recover each country's $a_iH_i$ from matched knowledge growth and research
+share; leave empirical scalar baselines unset until that bridge exists.
+Use $0.2$ only as an HKT initialization, not a portable range.
+Propagate jointly credible growth/share bounds through the displayed
+formula, separately for US and the declared RoW aggregate; include
+knowledge-proxy and declining-productivity specifications. Empirical mapping
+confidence is low. \textbf{Source caution:} BJRW Table~7 reports $-5.1\%$
+and a 14-year half-life, while its preceding prose reports $-5.3\%$ and
+13 years; the table values are retained without resolving that discrepancy.
+
+\clearpage
+\section{Knowledge augmentation elasticities: M16, $\xi_u,\nu_u$ (Group B)}
+
+The exact V6 definitions are
+\[
+ A_{X,US}=\bar A_{X,US,u}N_{US}^{\xi_u},\qquad
+ A_{L,US}=\bar A_{L,US,u}N_{US}^{\nu_u},\qquad
+ (\xi_u,\nu_u)=
+ \left(\frac{\partial\log A_X}{\partial\log N},
+       \frac{\partial\log A_L}{\partial\log N}\right).
+\]
+These are dimensionless factor-augmentation elasticities, not annual
+technology-growth rates, substitution elasticities, or exponents in an
+idea-production function. The same knowledge concept must enter both ratios.
+
+\begin{evidence}
+Hirano, Kishi and Toda, arXiv v2 (2025) \src{HKT25}.
+Factor-augmentation powers; Figure~1, p.~24.
+&
+$(\xi_u,\lambda_u)=(0.7,0.2)$ is an illustrative calibration;
+source $\lambda_u$ maps to V6 $\nu_u$. No estimated joint range is supplied.
+&
+Theoretical closed-economy OLG numerical example, with unspecified calendar
+date length. Its positive post-switch exponents differ from the imposed
+zero-exponent specialization in V6.
+&
+Same pre-switch definition permits mechanism comparison without
+annualization. It provides no empirical basis for a tight neighborhood
+around $(0.7,0.2)$ or for selecting only values admitted by the V6 solver.
+\\[5pt]
+Katz and Murphy (1992) \src{KM92}.
+Log college/high-school wage ratio regressed on relative supply and time;
+equation~(19), p.~69.
+&
+Estimated supply slope $-0.709$ (SE $0.150$); annual trend $0.033$
+(SE $0.007$). The trend is a conditional wage-demand shift, not
+$\xi_u-\nu_u$ or either individual augmentation elasticity.
+&
+OLS on annual US CPS wage and labor-supply data, 1963--1987;
+competitive two-skill CES interpretation. No separately measured
+V6 variety stock or research allocation enters this regression.
+&
+V6 uses an intermediate bundle, a markup and endogenous skilled-labor
+allocation between production and research. Its wage mapping below
+requires all three plus knowledge growth. In particular, the sign of
+the augmentation term changes with $1-\rho$.
+\\[5pt]
+Bloom et al.\ (2020) \src{BJRW20}, equation~(17) and Table~7, p.~1134;
+Bottazzi and Peri (2007) \src{BP07}, equations~(5)--(9).
+&
+BJRW's research-productivity equation is
+$\dot A/A=(\alpha A^{-\beta})S$:
+reported $\beta=3.1$ for aggregate output and $0.2$ for Moore's Law.
+BP estimates the distinct long-run ratios reported above.
+&
+BJRW uses aggregate and application-specific growth accounting;
+BP uses an annual international patent/R\&D panel. Neither estimates
+two final-production augmentations against a common variety stock.
+&
+BJRW $\beta$ governs diminishing research productivity, not V6 saving
+or augmentation. BP $\xi$ governs foreign knowledge in patent production.
+These numerical coefficients cannot supply values or ranges for
+V6 $\xi_u,\nu_u$ despite related terminology.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Exact conditional mapping derived from V6.}
+With fixed markup parameter $\vartheta$ and CES weight $\alpha$,
+\[
+ \frac{w_H}{w_L}=\vartheta\frac{\alpha}{1-\alpha}
+ \left(\frac{A_X}{A_L}\right)^{1-\rho}
+ \left(\frac{\varphi H}{L}\right)^{-\rho},\qquad
+ \Delta\log(w_H/w_L)+\rho\Delta\log(\varphi H/L)
+ =(1-\rho)(\xi_u-\nu_u)\Delta\log N.
+\]
+Thus relative wages can discipline a combination only conditionally;
+they do not identify both exponents. Separate augmentation-growth evidence
+is needed for $\xi_u=\Delta\log A_X/\Delta\log N$ and
+$\nu_u=\Delta\log A_L/\Delta\log N$.
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Retain $(0.7,0.2)$ solely as the HKT comparison case; leave the empirical
+baseline and joint range unassigned. Construct a joint growth-ratio region
+from matched augmentation and knowledge evidence, retaining zero, equal or
+reversed augmentation growth if supported, even when the current solver
+excludes it. Multiplying $N$ by a constant changes scales, not exponents;
+redefining knowledge by a power changes exponents. Confidence is high in
+the HKT definition match and low in empirical numerical transfer.

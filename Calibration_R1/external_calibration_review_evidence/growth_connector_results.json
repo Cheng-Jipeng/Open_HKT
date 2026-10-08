@@ -1,0 +1,486 @@
+{
+  "wiley_g": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/wiley_scholar_gateway.search_wiley_fulltext`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+      }
+    ],
+    "isError": true
+  },
+  "wiley_g_retry": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/wiley_scholar_gateway.search_wiley_fulltext`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+      }
+    ],
+    "isError": true
+  },
+  "scite_g": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 2,\n  \"count\": 2,\n  \"query\": \"\",\n  \"limit\": 4,\n  \"offset\": 0,\n  \"hits\": [\n    {\n      \"doi\": \"10.1162/qjec.121.3.823\",\n      \"title\": \"Rare Disasters and Asset Markets in the Twentieth Century*\",\n      \"authors\": [\n        {\n          \"authorName\": \"Robert J. Barro\"\n        }\n      ],\n      \"journal\": \"the quarterly journal of economics\",\n      \"publisher\": \"Oxford University Press (OUP)\",\n      \"year\": 2006,\n      \"date\": \"2006-08-01\",\n      \"volume\": \"121\",\n      \"issue\": \"3\",\n      \"page\": \"823-866\",\n      \"tally\": {\n        \"total\": 1967,\n        \"supporting\": 84,\n        \"contrasting\": 4,\n        \"mentioning\": 1871,\n        \"citingPublications\": 2445\n      },\n      \"citations\": [\n        {\n          \"sourceDoi\": \"10.1162/qjec.121.3.823\",\n          \"targetDoi\": \"10.1111/j.1540-6261.1990.tb05086.x\",\n          \"snippet\": \"My view is that this restriction may be satisfactory for studying asset pricing and economic growth. Kocherlakota [1990] uses the framework of Epstein and Zin [1989] to explore an asset-pricing model in which the two forces can be distinguished. Table V, column (1), shows the model's rates of return and growth rates for the Mehra and Prescott [1985] case, where the 23.\",\n          \"section\": \"replication of mehra and prescott\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1162/qjec.121.3.823\",\n          \"targetDoi\": \"10.3386/w6326\",\n          \"snippet\": \"The bottom panel adjusts for trend growth at 0.0252 per year. , 1943-1945Ϫ33.9 Ϫ52.6 Japan, 1939-1945Ϫ2.3 Ϫ8.7 Norway, 1939-1945 1.7* Ϫ4.5 Post-WWII Depressions Argentina, 1998-2001Ϫ3.6 9.0 Chile, 1981-1982Ϫ37.0* 14.0 Indonesia, 1997-1998Ϫ44.5 9.6 Philippines, 1982-1984Ϫ24.3 Ϫ5.0 Thailand, 1996-1997** Ϫ48.9 6.0 Venezuela, 1976-1984 Ϫ8.6* -Real rates of return on stocks and bills are for periods corresponding to the economic contractions in Table I. For the Great Depression and post-World War II depressions, the periods are from the start of the depression to the year before the rebound in the economy.\",\n          \"section\": \"rare disasters and asset markets\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1162/qjec.121.3.823\",\n          \"targetDoi\": \"10.1111/j.1540-6261.1990.tb05086.x\",\n          \"snippet\": \"For 1954For -2004, the means are similar, but the standard deviations are smaller: the growth rate of real per capita consumer expenditure has a mean of 0.024 and a standard 18. Equation (16) is valid if ⌽ Ͻ 1, which guarantees that expected utility is finite (see Kocherlakota [1990]). When ϭ p ϭ 0, ⌽ Ͻ 1 corresponds to the familiar transversality condition, ϩ ␥ Ͼ ␥-the real interest rate exceeds the growth rate.\",\n          \"section\": \"if calibration of other parameters\",\n          \"type\": \"mentioning\"\n        }\n      ],\n      \"isOa\": true,\n      \"contentDenied\": false,\n      \"access\": {\n        \"url\": \"https://libkey.io/libraries/646/articles/28240802/full-text-file?utm_source=api_3210&allow_speedbump=true\",\n        \"source\": \"libkey\",\n        \"accessType\": \"institutional\",\n        \"contentType\": \"redirect\",\n        \"description\": \"Download PDF\"\n      },\n      \"url\": \"https://libkey.io/libraries/646/articles/28240802/full-text-file?utm_source=api_3210&allow_speedbump=true\"\n    },\n    {\n      \"doi\": \"10.1257/aer.20180338\",\n      \"title\": \"Are Ideas Getting Harder to Find?\",\n      \"authors\": [\n        {\n          \"authorName\": \"Nicholas Bloom\"\n        },\n        {\n          \"authorName\": \"Charles I. Jones\"\n        },\n        {\n          \"authorName\": \"John Van Reenen\"\n        }\n      ],\n      \"journal\": \"american economic review\",\n      \"publisher\": \"American Economic Association\",\n      \"abstract\": \"Long-run growth in many models is the product of two terms: the effective number of researchers and their research productivity. We present evidence from various industries, products, and firms showing that research effort is rising substantially while research productivity is declining sharply. A g...\",\n      \"year\": 2020,\n      \"date\": \"2020-04-01\",\n      \"volume\": \"110\",\n      \"issue\": \"4\",\n      \"page\": \"1104-1144\",\n      \"tally\": {\n        \"total\": 273,\n        \"supporting\": 14,\n        \"contrasting\": 0,\n        \"mentioning\": 252,\n        \"citingPublications\": 1051\n      },\n      \"citations\": [\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1007/s00199-006-0124-4\",\n          \"snippet\": \"Alternatively, there are other possible explanations for declining research productivity. Incumbent firms may be shifting to \\\"defensive\\\" R&amp;D to protect their market position, and this could cause research productivity to decline; Dinopoulos and Syropoulos (2007) provide a model along these lines. Or perhaps declines in basic research spending (potentially related to the U.S. decline in publicly-funded research as a share of GDP) have negatively impacted overall research productivity.\",\n          \"section\": \"results\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1016/b978-0-7506-7009-8.50019-7\",\n          \"snippet\": \"Others have also provided evidence suggesting that ideas may be getting harder to find over time. Griliches (1994) provides a summary of the earlier literature exploring the decline in patents per dollar of research spending. Gordon (2016) reports extensive new historical evidence from throughout the 19th and 20th centuries.\",\n          \"section\": \"introduction\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1016/j.red.2009.12.002\",\n          \"snippet\": \"Finally, this analysis can be applied across different firms, goods, or industries, following the insights of Ngai and Samaniego (2011), who develop a semi-endogenous growth model with heterogeneity in the dynamic spillover parameters of the idea production functions. Some goods, like semiconductors, can have rapid productivity growth because their β is small, while other goods like the speed of airplanes or perhaps the education industry itself could have slow rates of innovation because their β is large.\",\n          \"section\": \"discussion\",\n          \"type\": \"mentioning\"\n        }\n      ],\n      \"isOa\": true,\n      \"contentDenied\": false,\n      \"access\": {\n        \"url\": \"https://libkey.io/libraries/646/articles/378430155/full-text-file?utm_source=api_3210&allow_speedbump=true\",\n        \"source\": \"libkey\",\n        \"accessType\": \"institutional\",\n        \"contentType\": \"redirect\",\n        \"description\": \"Download PDF\"\n      },\n      \"url\": \"https://libkey.io/libraries/646/articles/378430155/full-text-file?utm_source=api_3210&allow_speedbump=true\"\n    }\n  ],\n  \"hint\": \"To get full details for a paper, call this tool again with its DOI in the `dois` parameter. Use `term` to search within the paper.\"\n}"
+      }
+    ],
+    "isError": false
+  },
+  "barro_scite0": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"doi\": \"10.1162/qjec.121.3.823\",\n  \"title\": \"Rare Disasters and Asset Markets in the Twentieth Century*\",\n  \"text\": \"\",\n  \"offset\": 0,\n  \"returnedChars\": 0,\n  \"totalChars\": 0,\n  \"hasMore\": false,\n  \"contentDenied\": true,\n  \"link\": \"https://doi.org/10.1162/qjec.121.3.823\",\n  \"message\": \"No readable text is available for this paper. `link` goes to where the user can read it.\"\n}"
+      }
+    ],
+    "isError": false
+  },
+  "bloom_scite": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 1,\n  \"count\": 1,\n  \"query\": \"\\\"5.3\\\" OR \\\"18\\\" OR \\\"beta\\\" OR \\\"research productivity\\\"\",\n  \"limit\": 1,\n  \"offset\": 0,\n  \"hits\": [\n    {\n      \"doi\": \"10.1257/aer.20180338\",\n      \"title\": \"Are Ideas Getting Harder to Find?\",\n      \"authors\": [\n        {\n          \"authorName\": \"Nicholas Bloom\"\n        },\n        {\n          \"authorName\": \"Charles I. Jones\"\n        },\n        {\n          \"authorName\": \"John Van Reenen\"\n        }\n      ],\n      \"journal\": \"american economic review\",\n      \"publisher\": \"American Economic Association\",\n      \"abstract\": \"Long-run growth in many models is the product of two terms: the effective number of researchers and their research productivity. We present evidence from various industries, products, and firms showing that research effort is rising substantially while research productivity is declining sharply. A g...\",\n      \"year\": 2020,\n      \"date\": \"2020-04-01\",\n      \"volume\": \"110\",\n      \"issue\": \"4\",\n      \"page\": \"1104-1144\",\n      \"tally\": {\n        \"total\": 273,\n        \"supporting\": 14,\n        \"contrasting\": 0,\n        \"mentioning\": 252,\n        \"citingPublications\": 1051\n      },\n      \"citations\": [\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1007/s00199-006-0124-4\",\n          \"snippet\": \"Alternatively, there are other possible explanations for declining research productivity. Incumbent firms may be shifting to \\\"defensive\\\" R&amp;D to protect their market position, and this could cause research productivity to decline; Dinopoulos and Syropoulos (2007) provide a model along these lines. Or perhaps declines in basic research spending (potentially related to the U.S. decline in publicly-funded research as a share of GDP) have negatively impacted overall research productivity.\",\n          \"section\": \"results\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1016/b978-0-7506-7009-8.50019-7\",\n          \"snippet\": \"Others have also provided evidence suggesting that ideas may be getting harder to find over time. Griliches (1994) provides a summary of the earlier literature exploring the decline in patents per dollar of research spending. Gordon (2016) reports extensive new historical evidence from throughout the 19th and 20th centuries.\",\n          \"section\": \"introduction\",\n          \"type\": \"mentioning\"\n        },\n        {\n          \"sourceDoi\": \"10.1257/aer.20180338\",\n          \"targetDoi\": \"10.1016/j.red.2009.12.002\",\n          \"snippet\": \"Finally, this analysis can be applied across different firms, goods, or industries, following the insights of Ngai and Samaniego (2011), who develop a semi-endogenous growth model with heterogeneity in the dynamic spillover parameters of the idea production functions. Some goods, like semiconductors, can have rapid productivity growth because their β is small, while other goods like the speed of airplanes or perhaps the education industry itself could have slow rates of innovation because their β is large.\",\n          \"section\": \"discussion\",\n          \"type\": \"mentioning\"\n        }\n      ],\n      \"isOa\": true,\n      \"fulltextExcerpts\": [\n        \"Assuming a constant growth rate for Moore's Law, the implication is that research productivity has fallen by this same factor of 18, an average rate of 6.8 percent per year.\\n\\nIf the null hypothesis of constant research productivity were correct, the growth rate underlying Moore's Law should have increased by a factor of 18 as well. Instead, it was remarkably stable.\",\n        \"Put differently, because of declining research productivity, it is around 18 times harder today to generate the exponential growth behind Moore's Law than it was in 1971. 1970 1975 1980 1985 1990 1995 2000 2005 falls by a factor of 8 between 1971 and 2014.\\n\\nThe null hypothesis at the heart of many endogenous growth models -the constancy of research productivity -is resoundingly rejected in the case of Moore's Law.\",\n        \"Taking the aggregate economy number as a representative example, research productivity declines at an average rate of 5.3 percent per year, meaning that it takes around 13 years for research productivity to fall by half. Or put another way, the economy has to double its research efforts every 13 years just to maintain the same overall rate of economic growth.\\n\\nA natural question is whether or not these empirical patterns can be reproduced in a general equilibrium model of growth.\"\n      ],\n      \"contentDenied\": false,\n      \"access\": {\n        \"url\": \"https://libkey.io/libraries/646/articles/378430155/full-text-file?utm_source=api_3210&allow_speedbump=true\",\n        \"source\": \"libkey\",\n        \"accessType\": \"institutional\",\n        \"contentType\": \"redirect\",\n        \"description\": \"Download PDF\"\n      },\n      \"url\": \"https://libkey.io/libraries/646/articles/378430155/full-text-file?utm_source=api_3210&allow_speedbump=true\"\n    }\n  ],\n  \"hint\": \"To get full details for a paper, call this tool again with its DOI in the `dois` parameter. Use `term` to search within the paper.\"\n}"
+      }
+    ],
+    "isError": false
+  },
+  "jones_scite": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 1,\n  \"count\": 1,\n  \"query\": \"\\\"phi\\\" OR \\\"research\\\" OR \\\"elasticity\\\"\",\n  \"limit\": 1,\n  \"offset\": 0,\n  \"hits\": [\n    {\n      \"doi\": \"10.1086/262002\",\n      \"title\": \"R &amp; D-Based Models of Economic Growth\",\n      \"authors\": [\n        {\n          \"authorName\": \"Charles I. Jones\"\n        }\n      ],\n      \"journal\": \"journal of political economy\",\n      \"publisher\": \"University of Chicago Press\",\n      \"year\": 1995,\n      \"date\": \"1995-08-01\",\n      \"volume\": \"103\",\n      \"issue\": \"4\",\n      \"page\": \"759-784\",\n      \"tally\": {\n        \"total\": 2157,\n        \"supporting\": 65,\n        \"contrasting\": 6,\n        \"mentioning\": 2017,\n        \"citingPublications\": 2763\n      },\n      \"isOa\": false,\n      \"contentDenied\": true,\n      \"access\": {\n        \"url\": \"https://search.library.smu.edu.sg/openurl/65SMU_INST/65SMU_INST:SMU_NDE?genre=article&aulast=Jones&issn=0022-3808&title=Journal%20of%20Political%20Economy&atitle=R%20%26%20D-Based%20Models%20of%20Economic%20Growth&volume=103&issue=4&spage=759&epage=784&date=1995-08-01&rft_id=info:doi/10.1086%2F262002&rft_id=info:pmid/&sid=LibKey\",\n        \"source\": \"libkey\",\n        \"accessType\": \"institutional\",\n        \"contentType\": \"redirect\",\n        \"description\": \"Access Options\"\n      },\n      \"url\": \"https://search.library.smu.edu.sg/openurl/65SMU_INST/65SMU_INST:SMU_NDE?genre=article&aulast=Jones&issn=0022-3808&title=Journal%20of%20Political%20Economy&atitle=R%20%26%20D-Based%20Models%20of%20Economic%20Growth&volume=103&issue=4&spage=759&epage=784&date=1995-08-01&rft_id=info:doi/10.1086%2F262002&rft_id=info:pmid/&sid=LibKey\"\n    }\n  ],\n  \"hint\": \"To get full details for a paper, call this tool again with its DOI in the `dois` parameter. Use `term` to search within the paper.\"\n}"
+      }
+    ],
+    "isError": false
+  },
+  "consensus_g": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"results\": [{\"id\": \"fd1960d82e435ec1bd512e7b54a16e03\", \"title\": \"Are Ideas Getting Harder to Find?\", \"text\": \"Long-run growth in many models is the product of two terms: the effective number of researchers and their research productivity. We present evidence from various industries, products, and firms showin...\", \"url\": \"https://consensus.app/papers/details/fd1960d82e435ec1bd512e7b54a16e03/?utm_source=chatgpt\"}, {\"id\": \"a4c2c860250855808a13fb68322f943e\", \"title\": \"Stagnation and Scientific Incentives\", \"text\": \"New ideas no longer fuel economic growth the way they once did. A popular explanation for stagnation is that good ideas are harder to find, rendering slowdown inevitable. We present a simple model of ...\", \"url\": \"https://consensus.app/papers/details/a4c2c860250855808a13fb68322f943e/?utm_source=chatgpt\"}, {\"id\": \"3b772901cd09580bb201e1a4aeb691e0\", \"title\": \"Remote collaboration fuses fewer breakthrough ideas\", \"text\": \"Theories of innovation emphasize the role of social networks and teams as facilitators of breakthrough discoveries1-4. Around the world, scientists and inventors are more plentiful and interconnected ...\", \"url\": \"https://consensus.app/papers/details/3b772901cd09580bb201e1a4aeb691e0/?utm_source=chatgpt\"}, {\"id\": \"1e6f1237886556f0a6acc3ed12c415f5\", \"title\": \"Slowed canonical progress in large fields of science\", \"text\": \"In many academic fields, the number of papers published each year has increased significantly over time. Policy measures aim to increase the quantity of scientists, research funding, and scientific ou...\", \"url\": \"https://consensus.app/papers/details/1e6f1237886556f0a6acc3ed12c415f5/?utm_source=chatgpt\"}, {\"id\": \"1961020f9b245dd594fe82c5363662d5\", \"title\": \"Business and entrepreneurship is declining as scholarly field: Empirical evidence\", \"text\": \"This paper presents evidence from 68,792 papers published between 1961 and 2020 that progress in the scholarly field of business and entrepreneurship is declining. It is found that the annual number o...\", \"url\": \"https://consensus.app/papers/details/1961020f9b245dd594fe82c5363662d5/?utm_source=chatgpt\"}, {\"id\": \"74449cd07b825b429da48248d21b8aed\", \"title\": \"A burden of knowledge creation in academic research: evidence from publication data\", \"text\": \"ABSTRACT Academic research is vital for innovation and industrial growth. However, a potential burden of processing ever more knowledge could be affecting research output and researchers’ careers. We ...\", \"url\": \"https://consensus.app/papers/details/74449cd07b825b429da48248d21b8aed/?utm_source=chatgpt\"}, {\"id\": \"512381391afc5feba608206998da2c22\", \"title\": \"The decline of disruptive science and technology\", \"text\": \"Theories of scientific and technological change view discovery and invention as endogenous processes, wherein prior accumulated knowledge enables future progress by allowing researchers to, in Newton'...\", \"url\": \"https://consensus.app/papers/details/512381391afc5feba608206998da2c22/?utm_source=chatgpt\"}, {\"id\": \"10bcd2d581765e89a9f699a2215c59f6\", \"title\": \"Productivity Slowdown, Exhausted Opportunities and the Power of Human Ingenuity—Schumpeter Meets Georgescu-Roegen\", \"text\": \"Western economies nowadays are confronted with a predicted productivity slowdown resulting in diminishing rates of economic growth. While some scholars see these developments as an indication of the a...\", \"url\": \"https://consensus.app/papers/details/10bcd2d581765e89a9f699a2215c59f6/?utm_source=chatgpt\"}, {\"id\": \"9377a2f19687527290fdf4a7b1b964d8\", \"title\": \"Idea engines: Unifying innovation & obsolescence from markets & genetic evolution to science\", \"text\": \"Innovation and obsolescence describe dynamics of ever-churning and adapting social and biological systems, concepts that encompass field-specific formulations. We formalize the connection with a reduc...\", \"url\": \"https://consensus.app/papers/details/9377a2f19687527290fdf4a7b1b964d8/?utm_source=chatgpt\"}, {\"id\": \"30b520695b775e2bba3e9e1b486c771e\", \"title\": \"The narrowing of literature use and the restricted mobility of papers in the sciences\", \"text\": \"It is a matter of debate whether a shrinking proportion of scholarly literature is getting most of the citations over time. It is also less well understood how a narrowing use of literature would affe...\", \"url\": \"https://consensus.app/papers/details/30b520695b775e2bba3e9e1b486c771e/?utm_source=chatgpt\"}, {\"id\": \"0c8beec3276c5b5eab03313d0cd2e876\", \"title\": \"Technological change in the production of new scientific knowledge: a second look\", \"text\": \"ABSTRACT This paper presents and explains an approach for measuring technological change in the production of new scientific knowledge. The paper expands our previous work on this topic. Our approach ...\", \"url\": \"https://consensus.app/papers/details/0c8beec3276c5b5eab03313d0cd2e876/?utm_source=chatgpt\"}, {\"id\": \"89af291c4e13579b8fe19e8260e25b61\", \"title\": \"The Past and Future of Economic Growth: A Semi-Endogenous Perspective\", \"text\": \"The nonrivalry of ideas gives rise to increasing returns, a fact celebrated in Paul Romer's recent Nobel Prize. An implication is that the long-run rate of economic growth is the product of the degree...\", \"url\": \"https://consensus.app/papers/details/89af291c4e13579b8fe19e8260e25b61/?utm_source=chatgpt\"}, {\"id\": \"4bac4800ab0e5e5ea02a0575a0e975cb\", \"title\": \"Paul Romer: Ideas, Nonrivalry, and Endogenous Growth\", \"text\": \"In 2018, Paul Romer and William Nordhaus shared the Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel. Romer was recognized “for integrating technological innovations into long‐ru...\", \"url\": \"https://consensus.app/papers/details/4bac4800ab0e5e5ea02a0575a0e975cb/?utm_source=chatgpt\"}, {\"id\": \"804683742b155bfeb3c1c285e5c442b4\", \"title\": \"Innovation by Displacement\", \"text\": \"New ideas are often thought to arise from recombining existing knowledge. Yet despite rapid publication growth - and expanding opportunities for recombination - scientific breakthroughs remain rare. T...\", \"url\": \"https://consensus.app/papers/details/804683742b155bfeb3c1c285e5c442b4/?utm_source=chatgpt\"}, {\"id\": \"b80b93e3ef9c59758256466639a220e6\", \"title\": \"Is Innovation Becoming Less Disruptive? An Inventory of the Literature\", \"text\": \"A growing literature has examined whether innovation is becoming less disruptive, spanning diverse domains and data sources and using a range of methodologies. This paper provides an inventory of 105 ...\", \"url\": \"https://consensus.app/papers/details/b80b93e3ef9c59758256466639a220e6/?utm_source=chatgpt\"}, {\"id\": \"35488c869ef15eb8bb419300ea78b42c\", \"title\": \"Beyond Citations: Measuring Novel Scientific Ideas and their Impact in Publication Text\", \"text\": \"New scientific ideas drive progress, yet measuring scientific novelty remains challenging. We use natural language processing to detect the origin and impact of new ideas in scientific publications. T...\", \"url\": \"https://consensus.app/papers/details/35488c869ef15eb8bb419300ea78b42c/?utm_source=chatgpt\"}, {\"id\": \"421be44a2c795431a5861368ba7f03d9\", \"title\": \"Initial Burst of Disruptive Efforts Ensuring Scientific Career Viability\", \"text\": \"Despite persistent efforts to understand the dynamics of creativity of scientists over careers in terms of productivity, impact, and prize, little is known about the dynamics of scientists' disruptive...\", \"url\": \"https://consensus.app/papers/details/421be44a2c795431a5861368ba7f03d9/?utm_source=chatgpt\"}, {\"id\": \"678bfbc70d3d5939a3e4642fc98392a0\", \"title\": \"The survival of scientific stylization\", \"text\": \"This study elaborates a text-based metric to quantify the unique position of stylized scientific research, characterized by its innovative integration of diverse knowledge components and potential to ...\", \"url\": \"https://consensus.app/papers/details/678bfbc70d3d5939a3e4642fc98392a0/?utm_source=chatgpt\"}, {\"id\": \"dbe14d0f4657533fbdc743d62dab59ee\", \"title\": \"Finding Needles in Haystacks: Artificial Intelligence and Recombinant Growth\", \"text\": \"Innovation is often predicated on discovering useful new combinations of existing knowledge in highly complex knowledge spaces. These needle-in-a-haystack type problems are pervasive in fields like ge...\", \"url\": \"https://consensus.app/papers/details/dbe14d0f4657533fbdc743d62dab59ee/?utm_source=chatgpt\"}, {\"id\": \"f547493f9aaa5e2e90c417293e8376d1\", \"title\": \"The End of Economic Growth? Unintended Consequences of a Declining Population\", \"text\": \"In many models, economic growth is driven by people discovering new ideas. These models typically assume either a constant or growing population. However, in high income countries today, fertility is ...\", \"url\": \"https://consensus.app/papers/details/f547493f9aaa5e2e90c417293e8376d1/?utm_source=chatgpt\"}]}"
+      }
+    ],
+    "structuredContent": {
+      "query": "\"Are Ideas Getting Harder to Find\" research productivity declining criticism replication growth knowledge elasticity",
+      "total_results": 20,
+      "returned_results": 20,
+      "top_papers": [
+        {
+          "title": "Are Ideas Getting Harder to Find?",
+          "authors": [
+            "N. Bloom",
+            "Chad Jones",
+            "J. V. Van Reenen",
+            "Michael Webb"
+          ],
+          "year": 2020,
+          "citation_count": 1017,
+          "journal": "American Economic Review",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/fd1960d82e435ec1bd512e7b54a16e03/?utm_source=chatgpt",
+          "abstract": "Long-run growth in many models is the product of two terms: the effective number of researchers and their research productivity. We present evidence from various industries, products, and firms showing that research effort is rising substantially while research productivity is declining sharply. A good example is Moore’s Law. The number of researchers required today to achieve the famous doubling of computer chip density is more than 18 times larger than the number required in the early 1970s. More generally, everywhere we look we find that ideas, and the exponential growth they imply, are getting harder to find. (JEL D24, E23, O31, O47)",
+          "study_type": "other",
+          "takeaway": "Research effort is rising but research productivity is declining, making ideas and their exponential growth harder to find in various industries and firms.",
+          "doi": "10.1257/aer.20180338"
+        },
+        {
+          "title": "Stagnation and Scientific Incentives",
+          "authors": [
+            "Jay Bhattacharya",
+            "Mikko Packalen"
+          ],
+          "year": 2020,
+          "citation_count": 53,
+          "journal": "National Bureau of Economic Research",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/a4c2c860250855808a13fb68322f943e/?utm_source=chatgpt",
+          "abstract": "New ideas no longer fuel economic growth the way they once did. A popular explanation for stagnation is that good ideas are harder to find, rendering slowdown inevitable. We present a simple model of the lifecycle of scientific ideas that points to changes in scientist incentives as the cause of scientific stagnation. Over the last five decades, citations have become the dominant way to evaluate scientific contributions and scientists. This emphasis on citations in the measurement of scientific productivity shifted scientist rewards and behavior on the margin toward incremental science and away from exploratory projects that are more likely to fail, but which are the fuel for future breakthroughs. As attention given to new ideas decreased, science stagnated. We also explore ways to broaden how scientific productivity is measured and rewarded, involving both academic search engines such as Google Scholar measuring which contributions explore newer ideas and university administrators and funding agencies utilizing these new metrics in research evaluation. We demonstrate empirically that measures of novelty are correlated with but distinct from measures of scientific impact, which suggests that if also novelty metrics were utilized in scientist evaluation, scientists might pursue more innovative, riskier, projects.",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "Scientific stagnation is caused by a shift in scientist incentives towards incremental science, reducing attention to new ideas and reducing the fuel for future breakthroughs.",
+          "doi": "10.3386/w26752"
+        },
+        {
+          "title": "Remote collaboration fuses fewer breakthrough ideas",
+          "authors": [
+            "Yi-Ling Lin",
+            "C. Frey",
+            "Lingfei Wu"
+          ],
+          "year": 2022,
+          "citation_count": 166,
+          "journal": "Nature",
+          "volume": "623",
+          "pages": "987-991",
+          "url": "https://consensus.app/papers/details/3b772901cd09580bb201e1a4aeb691e0/?utm_source=chatgpt",
+          "abstract": "Theories of innovation emphasize the role of social networks and teams as facilitators of breakthrough discoveries1-4. Around the world, scientists and inventors are more plentiful and interconnected today than ever before4. However, although there are more people making discoveries, and more ideas that can be reconfigured in new ways, research suggests that new ideas are getting harder to find5,6-contradicting recombinant growth theory7,8. Here we shed light on this apparent puzzle. Analysing 20 million research articles and 4 million patent applications from across the globe over the past half-century, we begin by documenting the rise of remote collaboration across cities, underlining the growing interconnectedness of scientists and inventors globally. We further show that across all fields, periods and team sizes, researchers in these remote teams are consistently less likely to make breakthrough discoveries relative to their on-site counterparts. Creating a dataset that allows us to explore the division of labour in knowledge production within teams and across space, we find that among distributed team members, collaboration centres on late-stage, technical tasks involving more codified knowledge. Yet they are less likely to join forces in conceptual tasks-such as conceiving new ideas and designing research-when knowledge is tacit9. We conclude that despite striking improvements in digital technology in recent years, remote teams are less likely to integrate the knowledge of their members to produce new, disruptive ideas.\n\n© 2023. The Author(s), under exclusive licence to Springer Nature Limited.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "Remote collaboration among scientists and inventors is less likely to produce breakthrough discoveries compared to on-site collaboration.",
+          "doi": "10.1038/s41586-023-06767-1"
+        }
+      ],
+      "papers": [
+        {
+          "title": "Are Ideas Getting Harder to Find?",
+          "authors": [
+            "N. Bloom",
+            "Chad Jones",
+            "J. V. Van Reenen",
+            "Michael Webb"
+          ],
+          "year": 2020,
+          "citation_count": 1017,
+          "journal": "American Economic Review",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/fd1960d82e435ec1bd512e7b54a16e03/?utm_source=chatgpt",
+          "abstract": "Long-run growth in many models is the product of two terms: the effective number of researchers and their research productivity. We present evidence from various industries, products, and firms showing that research effort is rising substantially while research productivity is declining sharply. A good example is Moore’s Law. The number of researchers required today to achieve the famous doubling of computer chip density is more than 18 times larger than the number required in the early 1970s. More generally, everywhere we look we find that ideas, and the exponential growth they imply, are getting harder to find. (JEL D24, E23, O31, O47)",
+          "study_type": "other",
+          "takeaway": "Research effort is rising but research productivity is declining, making ideas and their exponential growth harder to find in various industries and firms.",
+          "doi": "10.1257/aer.20180338"
+        },
+        {
+          "title": "Stagnation and Scientific Incentives",
+          "authors": [
+            "Jay Bhattacharya",
+            "Mikko Packalen"
+          ],
+          "year": 2020,
+          "citation_count": 53,
+          "journal": "National Bureau of Economic Research",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/a4c2c860250855808a13fb68322f943e/?utm_source=chatgpt",
+          "abstract": "New ideas no longer fuel economic growth the way they once did. A popular explanation for stagnation is that good ideas are harder to find, rendering slowdown inevitable. We present a simple model of the lifecycle of scientific ideas that points to changes in scientist incentives as the cause of scientific stagnation. Over the last five decades, citations have become the dominant way to evaluate scientific contributions and scientists. This emphasis on citations in the measurement of scientific productivity shifted scientist rewards and behavior on the margin toward incremental science and away from exploratory projects that are more likely to fail, but which are the fuel for future breakthroughs. As attention given to new ideas decreased, science stagnated. We also explore ways to broaden how scientific productivity is measured and rewarded, involving both academic search engines such as Google Scholar measuring which contributions explore newer ideas and university administrators and funding agencies utilizing these new metrics in research evaluation. We demonstrate empirically that measures of novelty are correlated with but distinct from measures of scientific impact, which suggests that if also novelty metrics were utilized in scientist evaluation, scientists might pursue more innovative, riskier, projects.",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "Scientific stagnation is caused by a shift in scientist incentives towards incremental science, reducing attention to new ideas and reducing the fuel for future breakthroughs.",
+          "doi": "10.3386/w26752"
+        },
+        {
+          "title": "Remote collaboration fuses fewer breakthrough ideas",
+          "authors": [
+            "Yi-Ling Lin",
+            "C. Frey",
+            "Lingfei Wu"
+          ],
+          "year": 2022,
+          "citation_count": 166,
+          "journal": "Nature",
+          "volume": "623",
+          "pages": "987-991",
+          "url": "https://consensus.app/papers/details/3b772901cd09580bb201e1a4aeb691e0/?utm_source=chatgpt",
+          "abstract": "Theories of innovation emphasize the role of social networks and teams as facilitators of breakthrough discoveries1-4. Around the world, scientists and inventors are more plentiful and interconnected today than ever before4. However, although there are more people making discoveries, and more ideas that can be reconfigured in new ways, research suggests that new ideas are getting harder to find5,6-contradicting recombinant growth theory7,8. Here we shed light on this apparent puzzle. Analysing 20 million research articles and 4 million patent applications from across the globe over the past half-century, we begin by documenting the rise of remote collaboration across cities, underlining the growing interconnectedness of scientists and inventors globally. We further show that across all fields, periods and team sizes, researchers in these remote teams are consistently less likely to make breakthrough discoveries relative to their on-site counterparts. Creating a dataset that allows us to explore the division of labour in knowledge production within teams and across space, we find that among distributed team members, collaboration centres on late-stage, technical tasks involving more codified knowledge. Yet they are less likely to join forces in conceptual tasks-such as conceiving new ideas and designing research-when knowledge is tacit9. We conclude that despite striking improvements in digital technology in recent years, remote teams are less likely to integrate the knowledge of their members to produce new, disruptive ideas.\n\n© 2023. The Author(s), under exclusive licence to Springer Nature Limited.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "Remote collaboration among scientists and inventors is less likely to produce breakthrough discoveries compared to on-site collaboration.",
+          "doi": "10.1038/s41586-023-06767-1"
+        },
+        {
+          "title": "Slowed canonical progress in large fields of science",
+          "authors": [
+            "Johan S. G. Chu",
+            "James A. Evans"
+          ],
+          "year": 2021,
+          "citation_count": 314,
+          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+          "volume": "118",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/1e6f1237886556f0a6acc3ed12c415f5/?utm_source=chatgpt",
+          "abstract": "In many academic fields, the number of papers published each year has increased significantly over time. Policy measures aim to increase the quantity of scientists, research funding, and scientific output, which is measured by the number of papers produced. These quantitative metrics determine the career trajectories of scholars and evaluations of academic departments, institutions, and nations. Whether and how these increases in the numbers of scientists and papers translate into advances in knowledge is unclear, however. Here, we first lay out a theoretical argument for why too many papers published each year in a field can lead to stagnation rather than advance. The deluge of new papers may deprive reviewers and readers the cognitive slack required to fully recognize and understand novel ideas. Competition among many new ideas may prevent the gradual accumulation of focused attention on a promising new idea. Then, we show data supporting the predictions of this theory. When the number of papers published per year in a scientific field grows large, citations flow disproportionately to already well-cited papers; the list of most-cited papers ossifies; new papers are unlikely to ever become highly cited, and when they do, it is not through a gradual, cumulative process of attention gathering; and newly published papers become unlikely to disrupt existing work. These findings suggest that the progress of large scientific fields may be slowed, trapped in existing canon. Policy measures shifting how scientific work is produced, disseminated, consumed, and rewarded may be called for to push fields into new, more fertile areas of study.\n\nCopyright © 2021 the Author(s). Published by PNAS.",
+          "study_type": null,
+          "takeaway": "Too many papers published per year in scientific fields can lead to stagnation and hinder progress, suggesting policy measures to shift production, dissemination, and rewards may be needed to advance knowledge.",
+          "doi": "10.1073/pnas.2021636118"
+        },
+        {
+          "title": "Business and entrepreneurship is declining as scholarly field: Empirical evidence",
+          "authors": [
+            "Wim Naudé"
+          ],
+          "year": 2025,
+          "citation_count": 5,
+          "journal": "PLOS One",
+          "volume": "20",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/1961020f9b245dd594fe82c5363662d5/?utm_source=chatgpt",
+          "abstract": "This paper presents evidence from 68,792 papers published between 1961 and 2020 that progress in the scholarly field of business and entrepreneurship is declining. It is found that the annual number of papers published in the field has increased exponentially since the Second World War, growing on average by 17% annually since 1961; the average disruption score of papers have declined by a factor of 36 between the 1960s and the 2010s; and that the average team size per paper has increased from 1,6 between 1960-1980-2,4 between 2000 and 2020. Estimates from an ideas production function suggest that the field is getting fished out and that researchers may be stepping on one another's toes. A Wald-test indicates that a structural break in the disruptiveness of business and entrepreneurship and papers occurred around 1999. These results could reflect pathologies in how research in the field is organized and/or that the field has matured.\n\nCopyright: © 2025 Wim Naudé. This is an open access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "Business and entrepreneurship research progress is declining, with the average disruption score declining by 36 between the 1960s and 2010s, and the average team size per paper increasing from 1.6 to 2.4 between 2000 and 2020.",
+          "doi": "10.1371/journal.pone.0323297"
+        },
+        {
+          "title": "A burden of knowledge creation in academic research: evidence from publication data",
+          "authors": [
+            "Sascha Schweitzer",
+            "Jan Brendel"
+          ],
+          "year": 2020,
+          "citation_count": 16,
+          "journal": "Industry and Innovation",
+          "volume": "28",
+          "pages": "283 - 306",
+          "url": "https://consensus.app/papers/details/74449cd07b825b429da48248d21b8aed/?utm_source=chatgpt",
+          "abstract": "ABSTRACT Academic research is vital for innovation and industrial growth. However, a potential burden of processing ever more knowledge could be affecting research output and researchers’ careers. We look at a dataset of researchers who have published in journals in the field of economics during a period of 45 years. For a subset of these researchers, we amass data from journals listed in the EconLit database, supplemented with years of birth from public sources. Our results show an increase in the age of researchers at their first publication, in the number of articles referenced in debut articles, and in the number of co-authors. Simultaneously, we observe a decline in the probability of researchers changing research fields. Our findings extend earlier findings on patents and hint at a burden of knowledge pervading different areas of human progress. Moreover, our results indicate that researchers develop strategies of specialisation to deal with this challenge.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "Academic research faces a growing burden of knowledge creation, leading to increased age at first publication, more references, and fewer field changes, with researchers developing specialization strategies to cope.",
+          "doi": "10.1080/13662716.2020.1716693"
+        },
+        {
+          "title": "The decline of disruptive science and technology",
+          "authors": [
+            "Michael Park",
+            "E. Leahey",
+            "Russell J. Funk"
+          ],
+          "year": 2021,
+          "citation_count": 7,
+          "journal": "Unknown Journal",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/512381391afc5feba608206998da2c22/?utm_source=chatgpt",
+          "abstract": "Theories of scientific and technological change view discovery and invention as endogenous processes, wherein prior accumulated knowledge enables future progress by allowing researchers to, in Newton's words,\"stand on the shoulders of giants\". Recent decades have witnessed exponential growth in the volume of new scientific and technological knowledge, thereby creating conditions that should be ripe for major advances. Yet contrary to this view, studies suggest that progress is slowing in several major fields of science and technology. Here, we analyze these claims at scale across 6 decades, using data on 45 million papers and 3.5 million patents from 6 large-scale datasets. We find that papers and patents are increasingly less likely to break with the past in ways that push science and technology in new directions, a pattern that holds universally across fields. Subsequently, we link this decline in disruptiveness to a narrowing in the use of prior knowledge, allowing us to reconcile the patterns we observe with the\"shoulders of giants\"view. We find that the observed declines are unlikely to be driven by changes in the quality of published science, citation practices, or field-specific factors. Overall, our results suggest that slowing rates of disruption may reflect a fundamental shift in the nature of science and technology.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "The decline in disruptiveness in science and technology is linked to a narrowing in the use of prior knowledge, suggesting a fundamental shift in the nature of science and technology.",
+          "doi": "10.48550/arxiv.2106.11184"
+        },
+        {
+          "title": "Productivity Slowdown, Exhausted Opportunities and the Power of Human Ingenuity—Schumpeter Meets Georgescu-Roegen",
+          "authors": [
+            "A. Pyka",
+            "K. Bogner",
+            "Sophie Urmetzer"
+          ],
+          "year": 2019,
+          "citation_count": 35,
+          "journal": "Journal of Open Innovation: Technology, Market, and Complexity",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/10bcd2d581765e89a9f699a2215c59f6/?utm_source=chatgpt",
+          "abstract": "Western economies nowadays are confronted with a predicted productivity slowdown resulting in diminishing rates of economic growth. While some scholars see these developments as an indication of the approaching end of growth due to fully exploited technological opportunities, this article contends that the possibilities for radical, paradigm changing innovations are far from being exploited. Building on contributions from Schumpeter and Georgescu-Roegen, we argue that the human capacity to expand technological and intellectual frontiers must not be underestimated. In a selective retrospect, our narrative identifies and describes four historical incidents reflecting different perceptions of the power of the human mind. It synthesizes the mentioned economists’ viewpoints with the effects of these incidents to reproduce the intellectual roots of the recently developed concept of Dedicated Innovation Systems (DIS). We conclude that traditional macro-level indicators are not suitable to capture transformation processes, which is why we propose to interpret growth indicators and the alleged productivity slowdown quite differently. We argue that human ingenuity and transformation processes dedicated to sustainability will open up new opportunity spaces, thereby combining an increase in economic welfare and social justice with a reduction of negative environmental impact.",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "Human ingenuity and transformation processes dedicated to sustainability can open new opportunity spaces, increasing economic welfare, social justice, and reducing negative environmental impact.",
+          "doi": "10.3390/joitmc5030039"
+        },
+        {
+          "title": "Idea engines: Unifying innovation & obsolescence from markets & genetic evolution to science",
+          "authors": [
+            "Edward D. Lee",
+            "Christopher P. Kempes",
+            "G. West"
+          ],
+          "year": 2022,
+          "citation_count": 12,
+          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+          "volume": "121",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/9377a2f19687527290fdf4a7b1b964d8/?utm_source=chatgpt",
+          "abstract": "Innovation and obsolescence describe dynamics of ever-churning and adapting social and biological systems, concepts that encompass field-specific formulations. We formalize the connection with a reduced model of the dynamics of the \"space of the possible\" (e.g., technologies, mutations, theories) to which agents (e.g., firms, organisms, scientists) couple as they grow, die, and replicate. We predict three regimes: The space is finite, ever growing, or a Schumpeterian dystopia in which obsolescence drives the system to collapse. We reveal a critical boundary at which the space of the possible fluctuates dramatically in size, displaying recurrent periods of minimal and of veritable diversity. When the space is finite, corresponding to physically realizable systems, we find surprising structure. This structure predicts a taxonomy for the density of agents near and away from the innovative frontier that we compare with distributions of firm productivity, COVID diversity, and citation rates for scientific publications. Our minimal model derived from first principles aligns with empirical examples, implying a follow-the-leader dynamic in firm cost efficiency and biological evolution, whereas scientific progress reflects consensus that waits on old ideas to go obsolete. Our theory introduces a fresh and empirically testable framework for unifying innovation and obsolescence across fields.",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "Our model unifies innovation and obsolescence across fields, revealing a follow-the-leader dynamic in firm cost efficiency and biological evolution, and scientific progress reflects consensus waiting on old ideas to go obsolete.",
+          "doi": "10.1073/pnas.2312468120"
+        },
+        {
+          "title": "The narrowing of literature use and the restricted mobility of papers in the sciences",
+          "authors": [
+            "A. Varga"
+          ],
+          "year": 2022,
+          "citation_count": 9,
+          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+          "volume": "119",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/30b520695b775e2bba3e9e1b486c771e/?utm_source=chatgpt",
+          "abstract": "It is a matter of debate whether a shrinking proportion of scholarly literature is getting most of the citations over time. It is also less well understood how a narrowing use of literature would affect the circulation of ideas in the sciences. Here, I show that the utilization of scientific literature follows dual tendencies over time: while a larger proportion of literature is cited at least a few times, citations are also concentrated more at the top of the citation distribution. Parallel to the latter trend, a paper’s future importance increasingly depends on its past citation performance. A random network model shows that the citation concentration is directly related to the greater stability of citation performance. The presented evidence suggests that the growing heterogeneity of citation impact restricts the mobility of research articles that do not gain attention early on. While concentration grows from the beginning of the studied period in 1970, citation dispersion manifests itself significantly only from the mid-1990s, when the popularity of freshly published papers also increased. Most likely, advanced information technologies to disseminate papers are behind both of these latter trends.",
+          "study_type": null,
+          "takeaway": "Citation concentration in scientific literature has increased, limiting the mobility of research articles not gaining attention early on, likely due to advanced information technologies.",
+          "doi": "10.1073/pnas.2117488119"
+        },
+        {
+          "title": "Technological change in the production of new scientific knowledge: a second look",
+          "authors": [
+            "A. Link",
+            "J. T. Scott"
+          ],
+          "year": 2019,
+          "citation_count": 16,
+          "journal": "Economics of Innovation and New Technology",
+          "volume": "30",
+          "pages": "371 - 381",
+          "url": "https://consensus.app/papers/details/0c8beec3276c5b5eab03313d0cd2e876/?utm_source=chatgpt",
+          "abstract": "ABSTRACT This paper presents and explains an approach for measuring technological change in the production of new scientific knowledge. The paper expands our previous work on this topic. Our approach is illustrated by using as an example new scientific journal publications from the U.S. National Institute of Standards and Technology. The empirical findings are consistent with the expectation that resource constraints will cause a breakdown in the process of creating new scientific knowledge and with the evidence that scientific research has been less productive in recent decades.",
+          "study_type": "other",
+          "takeaway": "Technological change has led to a breakdown in the process of creating new scientific knowledge, with scientific research being less productive in recent decades.",
+          "doi": "10.1080/10438599.2019.1705004"
+        },
+        {
+          "title": "The Past and Future of Economic Growth: A Semi-Endogenous Perspective",
+          "authors": [
+            "Charles I. Jones"
+          ],
+          "year": 2021,
+          "citation_count": 84,
+          "journal": "SSRN Electronic Journal",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/89af291c4e13579b8fe19e8260e25b61/?utm_source=chatgpt",
+          "abstract": "The nonrivalry of ideas gives rise to increasing returns, a fact celebrated in Paul Romer's recent Nobel Prize. An implication is that the long-run rate of economic growth is the product of the degree of increasing returns and the growth rate of research effort; this is the essence of semi-endogenous growth theory. This review interprets past and future growth from a semi-endogenous perspective. For 50+ years, US growth has substantially exceeded its long-run rate because of rising educational attainment, declining misallocation, and rising (global) research intensity, implying that frontier growth could slow markedly in the future. Other forces push in the opposite direction. First is the prospect of “finding new Einsteins”: How many talented researchers have we missed historically because of the underdevelopment of China and India and because of barriers that discouraged women inventors? Second is the longer-term prospect that artificial intelligence could augment or even replace people as researchers. Throughout, the review highlights many opportunities for further research. Expected final online publication date for the Annual Review of Economics, Volume 14 is August 2022. Please see http://www.annualreviews.org/page/journal/pubdates for revised estimates.",
+          "study_type": null,
+          "takeaway": "US economic growth has exceeded its long-run rate due to rising educational attainment, declining misallocation, and rising research intensity, but frontier growth could slow in the future due to factors like artificial intelligence and underdeveloped countries.",
+          "doi": "10.3386/w29126"
+        },
+        {
+          "title": "Paul Romer: Ideas, Nonrivalry, and Endogenous Growth",
+          "authors": [
+            "Charles I. Jones"
+          ],
+          "year": 2019,
+          "citation_count": 102,
+          "journal": "The Scandinavian Journal of Economics",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/4bac4800ab0e5e5ea02a0575a0e975cb/?utm_source=chatgpt",
+          "abstract": "In 2018, Paul Romer and William Nordhaus shared the Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel. Romer was recognized “for integrating technological innovations into long‐run macroeconomic analysis”. This article reviews his prize‐winning contributions. Romer, together with others, rejuvenated the field of economic growth. He developed the theory of endogenous technological change, in which the search for new ideas by profit‐maximizing entrepreneurs and researchers is at the heart of economic growth. Underlying this theory, he pinpointed that the nonrivalry of ideas is ultimately responsible for the rise in living standards over time.",
+          "study_type": "other",
+          "takeaway": "Paul Romer's theory of endogenous technological change argues that the nonrivalry of ideas is responsible for the rise in living standards over time, with entrepreneurs and researchers seeking new ideas to boost economic growth.",
+          "doi": "10.1111/sjoe.12370"
+        },
+        {
+          "title": "Innovation by Displacement",
+          "authors": [
+            "Lin-Zhuo Li",
+            "Yi-Ling Lin",
+            "Lingfei Wu"
+          ],
+          "year": 2025,
+          "citation_count": 2,
+          "journal": "ArXiv",
+          "volume": "abs/2512.03723",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/804683742b155bfeb3c1c285e5c442b4/?utm_source=chatgpt",
+          "abstract": "New ideas are often thought to arise from recombining existing knowledge. Yet despite rapid publication growth - and expanding opportunities for recombination - scientific breakthroughs remain rare. This gap between productivity and progress challenges recombinant growth theory as the prevailing account of innovation. We argue that the limitation of this theory lies in treating ideas solely as complements, overlooking that breakthroughs often arise when ideas act as substitutes. To test this, we integrate scientist interviews, bibliometric validation, and machine learning analysis of 41 million papers (1965 - 2024). Interviews reveal that breakthroughs are marked not by novelty (Atypicality) alone but by their ability to displace dominant ideas (Disruption). Large-scale analysis confirms that novelty and disruption represent distinct innovation mechanisms: they are negatively correlated across domains, periods, team sizes, and paper versions. Novel papers extend dominant ideas across topics and attract immediate attention; disruptive papers displace them within the same topic and generate lasting influence. Hence, progress slows not from lack of effort but because most research extends rather than overturns ideas. Applying this perspective reveals distinct roles of theories and methods in scientific change: methods more often drive breakthroughs, whereas theories tend to be novel but rarely disruptive, reinforcing the dominance of established ideas.",
+          "study_type": "other",
+          "takeaway": "Disruptive papers, rather than just extending dominant ideas, drive scientific breakthroughs by displacement, highlighting the distinct roles of theories and methods in scientific change.",
+          "doi": "10.48550/arxiv.2512.03723"
+        },
+        {
+          "title": "Is Innovation Becoming Less Disruptive? An Inventory of the Literature",
+          "authors": [
+            "Xiangting Wu",
+            "Linhui Wu",
+            "Michael Park",
+            "E. Leahey",
+            "Russell J. Funk"
+          ],
+          "year": 2026,
+          "citation_count": 1,
+          "journal": "Unknown Journal",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/b80b93e3ef9c59758256466639a220e6/?utm_source=chatgpt",
+          "abstract": "A growing literature has examined whether innovation is becoming less disruptive, spanning diverse domains and data sources and using a range of methodologies. This paper provides an inventory of 105 studies exploring this question. The evidence is largely consistent in direction. Studies spanning scientific papers, patents, products, legal cases, music, and visual art consistently report evidence of a decline. This pattern holds not only for citation-based measures, but also for text-based approaches, firm displacement rates, product similarity networks, and audio and visual embeddings. The literature has also identified notable exceptions, including rebounds in specific domains and predictable variation across field lifecycles. We catalog each study's data, methods, and findings to provide a resource for researchers and policymakers seeking to understand the current state of the evidence.",
+          "study_type": "literature review",
+          "takeaway": "Innovation is becoming less disruptive across diverse domains and methodologies, with notable exceptions like rebounds in specific domains and predictable variation across field lifecycles.",
+          "doi": "10.48550/arxiv.2602.05140"
+        },
+        {
+          "title": "Beyond Citations: Measuring Novel Scientific Ideas and their Impact in Publication Text",
+          "authors": [
+            "Sam Arts",
+            "Nicola Melluso",
+            "R. Veugelers"
+          ],
+          "year": 2023,
+          "citation_count": 35,
+          "journal": "Review of Economics and Statistics",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/35488c869ef15eb8bb419300ea78b42c/?utm_source=chatgpt",
+          "abstract": "\n New scientific ideas drive progress, yet measuring scientific novelty remains challenging. We use natural language processing to detect the origin and impact of new ideas in scientific publications. To validate our methods, we analyze No-bel Prize-winning papers, which likely pioneered impactful new ideas, and lit-erature review papers, which typically consolidate existing knowledge. We also show that novel papers have more intellectual neighbors published after them, indicating they are ahead of their intellectual peers. Finally, papers introducing new ideas, particularly those with greater follow-on reuse, attract more citations.",
+          "study_type": null,
+          "takeaway": "Natural language processing can detect and measure novel scientific ideas in publications, with novel papers having more intellectual neighbors and attracting more citations.",
+          "doi": "10.1162/rest_a_01561"
+        },
+        {
+          "title": "Initial Burst of Disruptive Efforts Ensuring Scientific Career Viability",
+          "authors": [
+            "Shuang Zhang",
+            "Feifan Liu",
+            "Haoxiang Xia"
+          ],
+          "year": 2024,
+          "citation_count": 1,
+          "journal": "Unknown Journal",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/421be44a2c795431a5861368ba7f03d9/?utm_source=chatgpt",
+          "abstract": "Despite persistent efforts to understand the dynamics of creativity of scientists over careers in terms of productivity, impact, and prize, little is known about the dynamics of scientists' disruptive efforts that affect individual academic careers and drive scientific advance. Drawing on millions of data over six decades and across nineteen disciplines, associating the publication records of individual scientists with the disruption index, we systematically quantify the temporal pattern of disruptive ideas over individual scientific careers, providing a detailed understanding of the macro phenomenon of scientific stagnation from the individual perspective. We start by checking the relationship between disruption-based and citation-based publication profiles. Next, we observe the finite inequality in the disruptive productivity of scientists, diminishing gradually as the level of disruption increases. We then identify the initial burst phenomenon in disruption dynamics. It is further revealed that while early engagement in high disruption frictions away initial productivity, compared to initial advantage in productivity or impact, initial high disruption ensures more subsequent academic viability evidenced by a longer career span and relatively final higher productivity, but does not necessarily guarantee academic success throughout careers. Further analysis shows that increasing disruptive work is uncorrelated to overall productivity but negatively correlated with the overall impact. However, increasing disruptive work in the early career is associated with higher overall productivity, yet lower overall productivity in the later career. Our research underscores the urgent need for a policy shift that encourages a balance between the pursuit of disruptive efforts and the achievement of impactful outcomes.",
+          "study_type": "longitudinal / panel data study",
+          "takeaway": "Initial high disruption in scientific careers ensures longer career span and higher productivity, but does not necessarily guarantee academic success throughout careers.",
+          "doi": "10.48550/arxiv.2405.14543"
+        },
+        {
+          "title": "The survival of scientific stylization",
+          "authors": [
+            "Yuanyuan Shu",
+            "Tianxing Pan"
+          ],
+          "year": 2023,
+          "citation_count": 1,
+          "journal": "ArXiv",
+          "volume": "abs/2312.05927",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/678bfbc70d3d5939a3e4642fc98392a0/?utm_source=chatgpt",
+          "abstract": "This study elaborates a text-based metric to quantify the unique position of stylized scientific research, characterized by its innovative integration of diverse knowledge components and potential to pivot established scientific paradigms. Our analysis reveals a concerning decline in stylized research, highlighted by its comparative undervaluation in terms of citation counts and protracted peer-review duration. Despite facing these challenges, the disruptive potential of stylized research remains robust, consistently introducing groundbreaking questions and theories. This paper posits that substantive reforms are necessary to incentivize and recognize the value of stylized research, including optimizations to the peer-review process and the criteria for evaluating scientific impact. Embracing these changes may be imperative to halt the downturn in stylized research and ensure enduring scholarly exploration in endless frontiers.",
+          "study_type": null,
+          "takeaway": "Stylized scientific research has the potential to revolutionize science, but its current undervaluation and long peer-review process require reforms to recognize its value and ensure enduring scholarly exploration.",
+          "doi": "10.48550/arxiv.2312.05927"
+        },
+        {
+          "title": "Finding Needles in Haystacks: Artificial Intelligence and Recombinant Growth",
+          "authors": [
+            "Ajay K. Agrawal",
+            "J. McHale"
+          ],
+          "year": 2018,
+          "citation_count": 96,
+          "journal": "National Bureau of Economic Research",
+          "volume": "",
+          "pages": "149-174",
+          "url": "https://consensus.app/papers/details/dbe14d0f4657533fbdc743d62dab59ee/?utm_source=chatgpt",
+          "abstract": "Innovation is often predicated on discovering useful new combinations of existing knowledge in highly complex knowledge spaces. These needle-in-a-haystack type problems are pervasive in fields like genomics, drug discovery, materials science, and particle physics. We develop a combinatorial-based knowledge production function and embed it in the classic Jones growth model (1995) to explore how breakthroughs in artificial intelligence (AI) that dramatically improve prediction accuracy about which combinations have the highest potential could enhance discovery rates and consequently economic growth. This production function is a generalization (and reinterpretation) of the Romer/Jones knowledge production function. Separate parameters control the extent of individual-researcher knowledge access, the effects of fishing out/complexity, and the ease of forming research teams.",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "AI breakthroughs that improve prediction accuracy in complex knowledge spaces could enhance discovery rates and economic growth in fields like genomics, drug discovery, materials science, and particle physics.",
+          "doi": "10.3386/w24541"
+        },
+        {
+          "title": "The End of Economic Growth? Unintended Consequences of a Declining Population",
+          "authors": [
+            "Charles I. Jones"
+          ],
+          "year": 2020,
+          "citation_count": 197,
+          "journal": "American Economic Review",
+          "volume": "",
+          "pages": "",
+          "url": "https://consensus.app/papers/details/f547493f9aaa5e2e90c417293e8376d1/?utm_source=chatgpt",
+          "abstract": "In many models, economic growth is driven by people discovering new ideas. These models typically assume either a constant or growing population. However, in high income countries today, fertility is already below its replacement rate: women are having fewer than two children on average. It is a distinct possibility that global population will decline rather than stabilize in the long run. In standard models, this has profound implications: rather than continued exponential growth, living standards stagnate for a population that vanishes. Moreover, even the optimal allocation can get trapped in this outcome if there are delays in implementing optimal policy. (JEL I12, J11, J13, O41)",
+          "study_type": "theoretical, modeling, or simulation study",
+          "takeaway": "A declining global population could lead to stagnating living standards, potentially affecting optimal policy implementation.",
+          "doi": "10.3386/w26651"
+        }
+      ],
+      "tier": "enterprise",
+      "utm_source": "chatgpt_widget",
+      "page": 0,
+      "is_end": true,
+      "next_page": null,
+      "usage": {
+        "searches_used": null,
+        "searches_limit": null,
+        "papers_per_search": 20
+      },
+      "instructions": "IMPORTANT: When presenting these results, you MUST: 1. Cite papers inline using numbered references [1], [2], etc. Example: 'Caffeine improves endurance performance [1] and reduces perceived exertion [3].' 2. Hyperlink paper titles to their URLs: [Paper Title](url). 3. Include the authors, year, journal, and citation count for each paper. If a paper has a `doi` field, surface it (e.g. 'DOI: 10.1038/...') so the user can cite it formally. 4. Use the exact paper URLs — do not modify or shorten them. 5. Include the sign-up/upgrade message at the END word-for-word."
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "page": 1,
+    "chars": 3381,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | External calibration: evidence and candidate ranges | V6 preference, production and technology par",
+    "last": "d | sufficient theorem and require separate equilibrium checks, without necessarily requiring a solver change. | 1",
+    "links": 1
+  },
+  {
+    "page": 2,
+    "chars": 3067,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 1 Preference weight: M01,\u03b2(Group B) | In V6,\u03b2is the old-age utility weight in | (1\u2212\u03b2) logcy | t + \u03b2 | 1\u2212",
+    "last": "ence that V6 must satisfy them. Mapping confidence: high conditional algebra, low empirical transferability. | 2",
+    "links": 3
+  },
+  {
+    "page": 3,
+    "chars": 4830,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 2 Risk curvature: M02,\u03b3(Group A) | V6\u2019s old-age certainty equivalent is{Et[(co | t+1)1\u2212\u03b3]}1/(1\u2212\u03b3). T",
+    "last": "on limit | transfer. The span17\u201360is between specifications, | not a confidence interval. | Continued on next page | 3",
+    "links": 7
+  },
+  {
+    "page": 4,
+    "chars": 1498,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | Source and original object Reported values / evidence type Method, population and frequency V6 t",
+    "last": "iction\u03b3 <1; retain and report that conflict instead of choosing a low number solely to preserve the theorem. | 4",
+    "links": 1
+  },
+  {
+    "page": 5,
+    "chars": 3786,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 3 Inverse markups: competing empirical cost definitions | V6 definition (M10).Fori\u2208{US,W}, | Xi =N 1",
+    "last": "hors. | Algebraic mapping confidence is high; economic transfer is low to medium for the U.S. and low for RoW. | 5",
+    "links": 5
+  },
+  {
+    "page": 6,
+    "chars": 3763,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 4 Final-sector curvature: the skill-substitution evidence | V6 definition (M12).With \u02dcXi =A X,iXi ",
+    "last": "HILZ24], reporting0.6\u20130.9, is superseded by the final 2024 paper and | must not count as independent evidence. | 6",
+    "links": 6
+  },
+  {
+    "page": 7,
+    "chars": 3770,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 5 Complementarity evidence and the unresolved V6 input mapping | The following papers support comp",
+    "last": "nditional on defending | its economic mapping. Elasticities stay dimensionless when changing the model period. | 7",
+    "links": 2
+  },
+  {
+    "page": 8,
+    "chars": 3582,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 6 Regime persistence: M07,\u03c0(Group B) | V6 defines\u03c0= Pr(zt+1 =u|zt =u), withb absorbing. An empiric",
+    "last": "frequency conversion. Use the published 2007 estimates; 2003 drafts differ in notation | and sample endpoints. | 8",
+    "links": 3
+  },
+  {
+    "page": 9,
+    "chars": 4103,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 7 Innovation productivity: M09,a US,aW (Group B) | V6 imposesNi,t+1/Ni,t\u22121 =ai(1\u2212\u03c6i,t)Hi. For matc",
+    "last": " preceding prose reports\u22125.3%and 13 years; the table values are retained without resolving that discrepancy. | 9",
+    "links": 4
+  },
+  {
+    "page": 10,
+    "chars": 3563,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 8 Knowledge augmentation elasticities: M16,\u03beu,\u03bdu (Group B) | The exact V6 definitions are | AX,US = ",
+    "last": " changes exponents. Confidence is high in the HKT definition match and | low in empirical numerical transfer. | 10",
+    "links": 4
+  },
+  {
+    "page": 11,
+    "chars": 4392,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 9 Distribution weights and technology levels: M11, M13\u2013M15 (Group B) | The authoritative V6 defini",
+    "last": "nt V6 post-switch scales. Do not reinterpret | this illustration as evidence for a narrow | productivity range. | 11",
+    "links": 6
+  },
+  {
+    "page": 12,
+    "chars": 3717,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 9.1 Explicit V6 mapping and proposed assignment | Our derivation from the V6 equations.For each co",
+    "last": "technology level. Reassess the internally calibrated financial block for each maintained external scenario. | 12",
+    "links": 0
+  },
+  {
+    "page": 13,
+    "chars": 3492,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 10 Proposed candidate set: recommendations, not additional estimates | All 19 included scalars app",
+    "last": "compatible cost definitions. These judgments do not establish identification or override V6\u2019s restrictions. | 13",
+    "links": 29
+  },
+  {
+    "page": 14,
+    "chars": 3399,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 10.1 Remaining Group B scalars: normalization, data inversion and scenarios | Here BX,BL are the e",
+    "last": " the mapping or specification; it must not be concealed by selecting only externally | convenient parameters. | 14",
+    "links": 25
+  },
+  {
+    "page": 15,
+    "chars": 5622,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | 11 References and verified versions | Links in each entry lead to the DOI and the paper/version us",
+    "last": "a and Dominika Kolcunova | (2022). Measuring Capital-Labor Substitution: The Importance of Method Choices and | 15",
+    "links": 42
+  },
+  {
+    "page": 16,
+    "chars": 3082,
+    "head": "Two-country HKT: external-calibration literature review 27 September 2026 | Publication Bias.Review of Economic Dynamics 45, 55-82. DOI. Verified source/version. | Table9p77,",
+    "last": "ource/version. Method verified in ECB Working Paper | 1001 (January 2009); published metadata checked at AEA. | 16",
+    "links": 24
+  }
+]

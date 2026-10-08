@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-09-27T10:00:07.914263+00:00",
+  "parameter_families": 17,
+  "scalar_fields": 30,
+  "families_by_group": {
+    "A": 4,
+    "B": 9,
+    "C": 4
+  },
+  "scalars_by_group": {
+    "A": 9,
+    "B": 16,
+    "C": 5
+  },
+  "all_code_fields_covered_once": true,
+  "all_v6_labels_exist": true,
+  "reviewed_baselines_unchanged": true,
+  "selected_parameter_values": false,
+  "classification_basis": "Proposed assignment strategy; not a structural identification result."
+}

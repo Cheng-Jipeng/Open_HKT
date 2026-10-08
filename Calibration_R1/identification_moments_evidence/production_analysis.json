@@ -1,0 +1,305 @@
+{
+  "date": "2026-09-29",
+  "source_files": {
+    "Codes/Calibration_R1/V6_parameter_calibration_groups.tex": {
+      "sha256": "b6823c10864dcdaf6643aa76ce6bd1c22a75d31c6a36b1b93e412b6a3ce77572"
+    },
+    "AI_drafting/V6_production.tex": {
+      "sha256": "5b972aefffff66d48d7f913d093d53f1fdf245bf3a8e53c9ecaa65780c57feb9"
+    },
+    "Codes/Two_country_proudction_zero_nu_b/TwoCountryProductionOLG.jl": {
+      "sha256": "7969cb993828847c33aa828ae25129f3b18152a28ded46f528a8dd48edf5167c"
+    }
+  },
+  "source_line_refs": {
+    "manuscript": {
+      "labor_knowledge": "387-409",
+      "Q_D_timing": "425-450",
+      "free_entry_boundary": "459-485",
+      "resources_IPO_output": "496-513",
+      "technology_maps": "1506-1535",
+      "CES_scope": "1744-1758",
+      "funding_identity": "1977-2048"
+    },
+    "julia": {
+      "restrictions": "143-158",
+      "CES": "198-223",
+      "technology_maps": "231-244",
+      "production": "254-282",
+      "capitalization": "480-484",
+      "N_invariance": "578-603"
+    },
+    "authoritative_parameters": "58-63,75-88"
+  },
+  "routes": [
+    {
+      "id": "M08",
+      "parameters": [
+        "H_US",
+        "L_US",
+        "H_W",
+        "L_W"
+      ],
+      "primitive_moments": [
+        "matched skill counts or hours"
+      ],
+      "measurement": "D; efficiency-unit transformations I",
+      "identification": "Direct inputs after units/population convention. Ratios do not identify scale."
+    },
+    {
+      "id": "M09",
+      "parameters": [
+        "a_US",
+        "a_W"
+      ],
+      "routes": [
+        {
+          "name": "research labor",
+          "primitive_moments": [
+            "Q/(w_H H)",
+            "research share r"
+          ],
+          "inversion": "aH=1/[Q/(w_H H)-r]",
+          "measurement": "D/I ingredients; I inversion"
+        },
+        {
+          "name": "entry funding",
+          "primitive_moments": [
+            "Q",
+            "w_H",
+            "I"
+          ],
+          "inversion": "a=w_H/(Q-I); G=Q/(Q-I)",
+          "measurement": "I bridge unless matched I is direct"
+        },
+        {
+          "name": "incumbent dividend accounting",
+          "primitive_moments": [
+            "Q",
+            "Y",
+            "D",
+            "B_H",
+            "B_L",
+            "H"
+          ],
+          "inversion": "I=B_H+B_L+D-Y; a=w_H/(Q-I)",
+          "measurement": "D/I; D must not be net FCF"
+        },
+        {
+          "name": "external markup production",
+          "primitive_moments": [
+            "Q",
+            "Y",
+            "w_H",
+            "w_L",
+            "H",
+            "L"
+          ],
+          "conditional_on": [
+            "theta"
+          ],
+          "inversion": "I=B_H-theta*(Y-B_L); phi=theta*(Y-B_L)/B_H; a=w_H/(Q-I)",
+          "measurement": "I; all empirical inputs potentially D"
+        },
+        {
+          "name": "joint a and theta across time",
+          "primitive_moments": [
+            "Q_t/w_H,t-H",
+            "(Y_t-B_L,t)/w_H,t"
+          ],
+          "inversion": "y_t=1/a-theta*x_t",
+          "measurement": "I",
+          "rank": "[1,x_t] rank 2; at least two informative observations, constant a/theta, active entry"
+        }
+      ],
+      "boundary": "phi=1 gives a<=w_H/Q only; Q>I necessary for interior equality inversion",
+      "avoid_duplicates": [
+        "Q/e or funding-adjusted HKT equation from same wage bills",
+        "G from same inferred I and knowledge law"
+      ]
+    },
+    {
+      "id": "M10",
+      "parameters": [
+        "theta_US",
+        "theta_W"
+      ],
+      "routes": [
+        "1/gross markup",
+        "1-1/variety demand elasticity",
+        "w_H X/(w_H X+D)",
+        "1-D/(Y-B_L)",
+        "phi B_H/(Y-B_L) with independently observed phi",
+        "joint a/theta time-series route M09"
+      ],
+      "measurement": "micro structural estimates I; accounting ingredients D/I, structural recovery I",
+      "rank": "No static recovery with neither independent phi/D nor external theta; cross-date constancy may identify jointly."
+    },
+    {
+      "id": "M11",
+      "parameters": [
+        "alpha_US",
+        "alpha_W"
+      ],
+      "primitive_moments": [
+        "CES effective coefficients C_X and C_L conditional rho"
+      ],
+      "measurement": "I effective-coefficient inversion; alpha needs normalization or external restriction",
+      "rank": "For rho!=1, alpha and two augmentation scales have rank at most 2. Exact alpha-scale invariance persists across dates and US regimes. At rho=1 alpha is matched input revenue share but only composite augmentation identified."
+    },
+    {
+      "id": "M12",
+      "parameters": [
+        "rho_US",
+        "rho_W"
+      ],
+      "routes": [
+        {
+          "name": "stable relative technology",
+          "equation": "Delta log(w_H/w_L)=-rho Delta log(X/L)",
+          "rank": "Nonzero independent input-ratio variation; constant theta and A_X/A_L"
+        },
+        {
+          "name": "US u relative technology control",
+          "equation": "log(w_H/w_L)=c+(1-rho)(xi-nu)k-rho log(X/L)",
+          "rank": "[1,k,log(X/L)] rank 3"
+        },
+        {
+          "name": "stacked wage growth",
+          "equation": "Delta log w_H=rho Delta log(Y/X)+b_X log G; Delta log w_L=rho Delta log(Y/L)+b_L log G",
+          "rank": "3 slope columns full rank; both output/input growth series cannot be proportional to log G"
+        },
+        {
+          "name": "quantity-only CES curve",
+          "equation": "Y^(1-rho)=C_X X^(1-rho)+C_L L^(1-rho)",
+          "rank": "Joint nonlinear Jacobian full rank; fixed technology or correctly specified knowledge slopes"
+        },
+        {
+          "name": "external elasticity",
+          "measurement": "I after input-pair mapping"
+        }
+      ],
+      "measurement": "I; unrestricted time-varying augmentations leave rho unidentified",
+      "duplicate": "Share odds and relative wages from same components are equivalent equations."
+    },
+    {
+      "id": "M13",
+      "parameters": [
+        "Abar_X_US_u",
+        "Abar_L_US_u"
+      ],
+      "primitive_moments": [
+        "Y,X,L,s_X,s_L at reference date"
+      ],
+      "inversion": "A_X=(Y/X)(s_X/alpha)^(1/(1-rho)); A_L=(Y/L)(s_L/(1-alpha))^(1/(1-rho)); normalize N_ref=1",
+      "measurement": "I conditional on alpha/rho, scales and knowledge normalization",
+      "rank": "Two effective scales identified; alpha not separately. Near rho=1 individual scales ill-conditioned."
+    },
+    {
+      "id": "M14",
+      "parameters": [
+        "Abar_X_US_b",
+        "Abar_L_US_b"
+      ],
+      "primitive_moments": [
+        "credible observed b-regime output, wages and inputs"
+      ],
+      "inversion": "Same conditional CES inversion; nu_b=0 gives bars directly",
+      "measurement": "U if no credible b observations; I conditional on observed/classified regime and fixed alpha/rho",
+      "identification": "All-u financial prices may discipline b jointly through a separate full-equilibrium exercise; not direct observation."
+    },
+    {
+      "id": "M15",
+      "parameters": [
+        "Abar_X_W",
+        "Abar_L_W"
+      ],
+      "primitive_moments": [
+        "matched RoW Y,X,L,s_X,s_L"
+      ],
+      "inversion": "Same CES inversion; xi_W=0",
+      "measurement": "I; full-world compensation/perimeter gap remains",
+      "rank": "Two effective scales, conditional alpha/rho; constancy across observations testable."
+    },
+    {
+      "id": "M16",
+      "parameters": [
+        "xi_u",
+        "nu_u"
+      ],
+      "primitive_moments": [
+        "Delta log w_H",
+        "Delta log w_L",
+        "Delta log(Y/X)",
+        "Delta log(Y/L)",
+        "log G reconstructed from M09"
+      ],
+      "inversion": "xi=[Delta log w_H-rho Delta log(Y/X)]/[(1-rho)log G]; nu=[Delta log w_L-rho Delta log(Y/L)]/[(1-rho)log G]",
+      "measurement": "I after elimination; no observed N, alpha, augmentation level or theta level in growth formula",
+      "conditional": "rho fixed; constant theta; adjacent u dates; G!=1; rho!=1",
+      "rank": "For joint rho/xi/nu need rank 3 stacked growth regressors. Relative wages alone only xi-nu. At rho=1 only alpha*xi+(1-alpha)*nu."
+    },
+    {
+      "id": "M17",
+      "parameters": [
+        "nu_b=0",
+        "xi_W=0"
+      ],
+      "primitive_moments": [
+        "within-branch Delta log C_X",
+        "within-branch Delta log C_L"
+      ],
+      "measurement": "I specification tests; imposed zeros are not measurements",
+      "identification": "No free parameter in current code. Common growth is 1=1. Unadjusted output growth is not technology growth when phi varies."
+    }
+  ],
+  "numerical_verification": {
+    "method": "Independent Python scalar evaluation of the source CES, factor-price, knowledge and capitalization equations; not a Julia equilibrium solve and not empirical data",
+    "parameters": {
+      "a": 0.16,
+      "H": 1.3,
+      "L": 2.1,
+      "theta": 0.63,
+      "alpha": 0.43,
+      "rho": 2.2,
+      "AX0": 0.9,
+      "AL0": 1.3,
+      "xi": 0.8,
+      "nu": 0.2
+    },
+    "number_observations": 5,
+    "max_absolute_errors": {
+      "a_from_Q_I": 2.7755575615628914e-17,
+      "G_from_Q_I": 0,
+      "I_accounting": 4.440892098500626e-16,
+      "theta_from_Y_BL_D": 1.1102230246251565e-16,
+      "phi_external_theta": 1.1102230246251565e-16,
+      "a_external_theta": 2.7755575615628914e-17,
+      "AX_conditional_inversion": 6.661338147750939e-16,
+      "AL_conditional_inversion": 2.220446049250313e-16,
+      "alpha_invariance_Y": 4.440892098500626e-16,
+      "alpha_invariance_wH": 4.440892098500626e-16,
+      "alpha_invariance_wL": 1.6653345369377348e-16,
+      "xi_N_free": 4.3298697960381105e-15,
+      "nu_N_free": 2.1649348980190553e-15,
+      "joint_theta_from_two_dates": 5.440092820663267e-15,
+      "joint_a_from_two_dates": 1.942890293094024e-16
+    },
+    "max_absolute_error": 5.440092820663267e-15,
+    "joint_a_theta_x_values": [
+      1.4650793650793648,
+      1.2793650793650793,
+      1.1761904761904762,
+      0.9904761904761903,
+      0.8873015873015874
+    ],
+    "joint_a_theta_estimates": {
+      "a": 0.1599999999999998,
+      "theta": 0.6300000000000054
+    },
+    "passed": true
+  },
+  "critical_cashflow_warning": "AHP FCF may map F=D-I=Y-e. It cannot be inserted as D to infer I; Y,e,F then supply an accounting duplicate.",
+  "code_scope_warning": "Current Julia uses CES in both countries; current manuscript theorem permits generic RoW technology. Julia line 68 says substitutes incorrectly; rho>1 means complements. No edits made.",
+  "numeraire_warning": "Same-date valuation ratios may use matched nominal values, but CES levels and absolute wage/output growth require consistent real final-good units. Common inflation otherwise mimics common augmentation growth in xi and nu."
+}

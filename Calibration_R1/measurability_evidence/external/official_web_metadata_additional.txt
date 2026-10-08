@@ -1,0 +1,283 @@
+Rest of the World; Equity and Investment Fund Shares; Asset (IMA), Revaluation (BOGZ1FR263081005Q) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/BOGZ1FR263081005Q)
+citeturn11view0 [wordlim: 200] Crawled: last month; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/BOGZ1FR263081005Q","lineno":null}); Total lines: 110
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (BOGZ1FR263081005Q)
+L12: #
+L13: 
+L14: Rest of the World; Equity and Investment Fund Shares; Asset (IMA), Revaluation (BOGZ1FR263081005Q)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: Q1 2026: -651,817 | Millions of U.S. Dollars, Not Seasonally Adjusted | Quarterly,
+L21: End of Period
+L22: 
+L23: Updated: Jun 11, 2026 7:58 PM CDT
+L24: 
+L25: cite7†Next Release Date: Sep 10, 2026 L26: 
+L27: Observations
+L28: 
+L29: Q1 2026: -651,817
+L30: 
+L31: Updated: Jun 11, 2026 7:58 PM CDT
+L32: 
+L33: cite7†Next Release Date: Sep 10, 2026 L34: Q1 2026:   | -651,817  |
+L35: Q4 2025:   | 687,105  |
+L36: Q3 2025:   | 2,591,859  |
+L37: Q2 2025:   | 3,254,247  |
+L38: Q1 2025:   | -1,546,192  |
+L39: 
+L40: Units:
+L41: 
+L42: Millions of U.S. Dollars,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: 
+L48: Quarterly,
+L49: 
+L50: End of Period
+L51: 
+L52: [Input] [Input] [Input] [Input]
+L53: 
+L54: Fullscreen
+L55: 
+L56: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L57:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L58:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L59:   * ## Notes
+L60: 
+L61: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L62: 
+L63: Release: cite12†Z.1 Financial Accounts of the United States†www.federalreserve.gov L64: 
+L65: Units:  Millions of U.S. Dollars, Not Seasonally Adjusted
+L66: 
+L67: Frequency:  Quarterly, End of Period
+L68: #### Notes:
+L69: For more information about the Flow of Funds tables, see the cite13†Financial Accounts Guide†www.federalreserve.gov .##With each quarterly release, the source may make major data and structural revisions to the series and tables. These changes are available in the cite14†Release Highlights†www.federalreserve.gov .##In the Financial Accounts, the source identifies each series by a string of patterned letters and numbers.
+L70: For a detailed description, including how this series is constructed, see the cite15†series analyzer†www.federalreserve.gov provided by the source.
+L71: #### Suggested Citation:
+L72: 
+L73: Board of Governors of the Federal Reserve System (US), Rest of the World; Equity and Investment Fund Shares; Asset (IMA), Revaluation [BOGZ1FR263081005Q], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/BOGZ1FR263081005Q, .
+L74: 
+L75: ## Release Tables
+L76: 
+L77: Z.1 Financial Accounts of the United States
+L78: 
+L79:   * cite16†Quarterly Tables: S2.i.q Rest of the world L80: 
+L81: ## Related Data and Content
+L82: 
+L83: ### Data Suggestions Based On Your Search
+L84: 
+L85: cite17†See More... L86: 
+L87: * * *
+L88: ### Content Suggestions
+L89: 
+L90: ### Other Formats
+L91: 
+L92: cite18†Annual, Not Seasonally Adjusted L93: 
+L94: ### Related Categories
+L95: 
+L96: ### Releases
+L97: 
+L98: ### Tags
+L99: 
+L100: cite19†Revaluation cite20†Integrated Macroeconomic Accounts cite21†Equity cite22†Investment cite23†Assets cite24†Z.1 US Financial Accounts cite25†Transnational cite26†Board of Governors cite27†Quarterly cite28†Public Domain: Citation Requested cite29†Not Seasonally Adjusted L101: ##### Permalink/Embed
+L102: 
+L103: modal open, choose link customization options
+L104: 
+L105: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L106: 
+L107: cite30†See FRED Help for usage instructions†fredhelp.stlouisfed.org L108: 
+L109: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+Nonfinancial Corporate Business; Market Value Estimate of Nonfinancial Assets, Market Value Levels (BOGZ1LM102010405Q) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/BOGZ1LM102010405Q)
+citeturn11view1 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/BOGZ1LM102010405Q","lineno":null}); Total lines: 104
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (BOGZ1LM102010405Q)
+L12: #
+L13: 
+L14: Nonfinancial Corporate Business; Market Value Estimate of Nonfinancial Assets, Market Value Levels (BOGZ1LM102010405Q)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: Q1 2026: 80,141,983 | Millions of U.S. Dollars, Not Seasonally Adjusted | Quarterly,
+L21: End of Period
+L22: 
+L23: Updated: Jun 11, 2026 9:17 PM CDT
+L24: 
+L25: cite7†Next Release Date: Sep 10, 2026 L26: 
+L27: Observations
+L28: 
+L29: Q1 2026: 80,141,983
+L30: 
+L31: Updated: Jun 11, 2026 9:17 PM CDT
+L32: 
+L33: cite7†Next Release Date: Sep 10, 2026 L34: Q1 2026:   | 80,141,983  |
+L35: Q4 2025:   | 82,483,740  |
+L36: Q3 2025:   | 81,308,854  |
+L37: Q2 2025:   | 75,866,699  |
+L38: Q1 2025:   | 69,857,613  |
+L39: 
+L40: Units:
+L41: 
+L42: Millions of U.S. Dollars,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: 
+L48: Quarterly,
+L49: 
+L50: End of Period
+L51: 
+L52: [Input] [Input] [Input] [Input]
+L53: 
+L54: Fullscreen
+L55: 
+L56: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L57:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L58:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L59:   * ## Notes
+L60: 
+L61: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L62: 
+L63: Release: cite12†Z.1 Financial Accounts of the United States†www.federalreserve.gov L64: 
+L65: Units:  Millions of U.S. Dollars, Not Seasonally Adjusted
+L66: 
+L67: Frequency:  Quarterly, End of Period
+L68: #### Notes:
+L69: For more information about the Flow of Funds tables, see the cite13†Financial Accounts Guide†www.federalreserve.gov .##With each quarterly release, the source may make major data and structural revisions to the series and tables. These changes are available in the cite14†Release Highlights†www.federalreserve.gov .##In the Financial Accounts, the source identifies each series by a string of patterned letters and numbers.
+L70: For a detailed description, including how this series is constructed, see the cite15†series analyzer†www.federalreserve.gov provided by the source.
+L71: #### Suggested Citation:
+L72: 
+L73: Board of Governors of the Federal Reserve System (US), Nonfinancial Corporate Business; Market Value Estimate of Nonfinancial Assets, Market Value Levels [BOGZ1LM102010405Q], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/BOGZ1LM102010405Q, .
+L74: 
+L75: ## Related Data and Content
+L76: 
+L77: ### Data Suggestions Based On Your Search
+L78: 
+L79: cite16†See More... L80: 
+L81: * * *
+L82: 
+L83: ### Content Suggestions
+L84: 
+L85: ### Other Formats
+L86: 
+L87: cite17†Annual, Not Seasonally Adjusted L88: ### Related Categories
+L89: 
+L90: ### Releases
+L91: 
+L92: ### Tags
+L93: 
+L94: cite18†Market Value cite19†Nonfinancial cite20†Estimate cite21†Corporate cite22†Business cite23†Assets cite24†Z.1 US Financial Accounts cite25†Board of Governors cite26†Quarterly cite27†Nation cite28†Public Domain: Citation Requested cite29†United States of America cite30†Not Seasonally Adjusted L95: ##### Permalink/Embed
+L96: 
+L97: modal open, choose link customization options
+L98: 
+L99: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L100: 
+L101: cite31†See FRED Help for usage instructions†fredhelp.stlouisfed.org L102: 
+L103: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+Nonfinancial Corporate Business; Dividends Paid, Transactions (BOGZ1FU106121001A) | FRED | St. Louis Fed (https://fred.stlouisfed.org/series/BOGZ1FU106121001A)
+citeturn11view2 [wordlim: 200] Crawled: last month; Content type: text/html; Source: open({"ref_id":"https://fred.stlouisfed.org/series/BOGZ1FU106121001A","lineno":null}); Total lines: 105
+L0: cite0†iframe†www.googletagmanager.com cite1†Skip to main content L1: 
+L2:   * cite2†Release Calendar L3:   * Tools
+L4:   * cite3†News†news.research.stlouisfed.org L5:   * cite4†Blog†fredblog.stlouisfed.org L6:   * About
+L7:   * cite5†My Account†fredaccount.stlouisfed.org L8:   * Explore Our Apps
+L9:   * cite6†STL Fed Home Page†www.stlouisfed.org L10: 
+L11:  (BOGZ1FU106121001A)
+L12: #
+L13: 
+L14: Nonfinancial Corporate Business; Dividends Paid, Transactions (BOGZ1FU106121001A)
+L15: 
+L16: [Input]
+L17: 
+L18: Observations
+L19: 
+L20: 2024: 1,585,723 | Millions of U.S. Dollars, Not Seasonally Adjusted | Annual,
+L21: End of Period
+L22: 
+L23: Updated: Jan 9, 2026 12:19 PM CST
+L24: 
+L25: cite7†Next Release Date: Sep 10, 2026 L26: 
+L27: Observations
+L28: 
+L29: 2024: 1,585,723
+L30: 
+L31: Updated: Jan 9, 2026 12:19 PM CST
+L32: 
+L33: cite7†Next Release Date: Sep 10, 2026 L34: 
+L35: 2024:   | 1,585,723  |
+L36: 2023:   | 1,432,383  |
+L37: 2022:   | 1,352,585  |
+L38: 2021:   | 1,251,436  |
+L39: 2020:   | 1,025,345  |
+L40: 
+L41: Units:
+L42: Millions of U.S. Dollars,
+L43: 
+L44: Not Seasonally Adjusted
+L45: 
+L46: Frequency:
+L47: 
+L48: Annual,
+L49: 
+L50: End of Period
+L51: 
+L52: [Input] [Input] [Input] [Input]
+L53: 
+L54: Fullscreen
+L55: 
+L56: Data in this graph are copyrighted. Please review the copyright information in the cite8†series notes before sharing.
+L57: 
+L58:   *   *   * cite9†Add to Data List†fredaccount.stlouisfed.org L59:   * cite10†Get Email Notification†fredaccount.stlouisfed.org L60:   * ## Notes
+L61: 
+L62: Source: cite11†Board of Governors of the Federal Reserve System (US)†www.federalreserve.gov L63: Release: cite12†Z.1 Financial Accounts of the United States†www.federalreserve.gov L64: 
+L65: Units:  Millions of U.S. Dollars, Not Seasonally Adjusted
+L66: 
+L67: Frequency:  Annual, End of Period
+L68: #### Notes:
+L69: For more information about the Flow of Funds tables, see the cite13†Financial Accounts Guide†www.federalreserve.gov .
+L70: With each quarterly release, the source may make major data and structural revisions to the series and tables. These changes are available in the cite14†Release Highlights†www.federalreserve.gov .
+L71: In the Financial Accounts, the source identifies each series by a string of patterned letters and numbers. For a detailed description, including how this series is constructed, see the cite15†series analyzer†www.federalreserve.gov provided by the source.
+L72: #### Suggested Citation:
+L73: 
+L74: Board of Governors of the Federal Reserve System (US), Nonfinancial Corporate Business; Dividends Paid, Transactions [BOGZ1FU106121001A], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/BOGZ1FU106121001A, .
+L75: 
+L76: ## Related Data and Content
+L77: 
+L78: ### Data Suggestions Based On Your Search
+L79: 
+L80: cite16†See More... L81: 
+L82: * * *
+L83: 
+L84: ### Content Suggestions
+L85: 
+L86: ### Other Formats
+L87: 
+L88: cite17†Annual, Seasonally Adjusted Annual Rate L89: 
+L90: ### Related Categories
+L91: 
+L92: ### Releases
+L93: ### Tags
+L94: 
+L95: cite18†Dividends cite19†Paid cite20†Nonfinancial cite21†Transactions cite22†Business cite23†Z.1 US Financial Accounts cite24†Board of Governors cite25†Annual cite26†Nation cite27†Public Domain: Citation Requested cite28†United States of America cite29†Not Seasonally Adjusted L96: ##### Permalink/Embed
+L97: 
+L98: modal open, choose link customization options
+L99: 
+L100: Select automatic updates to the data or a static time frame. All data are subject to revision.
+L101: 
+L102: cite30†See FRED Help for usage instructions†fredhelp.stlouisfed.org L103: 
+L104: [Button: Copy Share Link]
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn11view3 [wordlim: 200] Source: open({"ref_id":"https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FR263081005&t=","lineno":null}); Total lines: 1
+L0: Failed to fetch https://www.federalreserve.gov/apps/fof/SeriesAnalyzer.aspx?s=FR263081005&t=: Cache miss
+

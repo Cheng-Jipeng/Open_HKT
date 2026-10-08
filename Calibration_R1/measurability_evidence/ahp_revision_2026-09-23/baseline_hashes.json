@@ -1,0 +1,15 @@
+{
+  "Codes/Reference/Atkeson_2025_End_of_Privilege.tex": "e1bf6d936ba041d498ae0aecd5164d36a34b79ba983113300bd27dfc4645f5cd",
+  "AI_drafting/V6_production.tex": "5b972aefffff66d48d7f913d093d53f1fdf245bf3a8e53c9ecaa65780c57feb9",
+  "Codes/Two_country_proudction_zero_nu_b/TwoCountryProductionOLG.jl": "7969cb993828847c33aa828ae25129f3b18152a28ded46f528a8dd48edf5167c",
+  "Codes/Two_country_proudction_zero_nu_b/06_post2008_ahp_nfa_calibration_search_zero_nu_b.ipynb": "faf02c7033f8820606616d70193d8ed93a08b986b42207eddd1f8f5af1ba289c",
+  "Codes/Two_country_proudction_zero_nu_b/06_post2008_ahp_nfa_calibration_search_zero_nu_b.jl": "14674cd48e2e14d0adac11659b00c6f36c71602d1964ac0231289b8051ced5e5",
+  "Codes/Calibration_R1/V6_calibration_core.tex": "f53183749968dd73885bf350a1fb10307777bc42c7e23486bef798e7397a4921",
+  "Codes/Calibration_R1/V6_calibration_core.pdf": "e06a6301475a1c89858f399282eef8a8b872ba3c832e8e75d4a0193ca8b07213",
+  "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_decomposition_latest.csv": "88f80984e18bfc811fe02b3c0590336fdd2e59a9dc9983604b5427b7c0f50e25",
+  "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_decomposition_1990q1_2023q3.csv": "60ba4f102e5f70b2fa0f5de0838c1dbe495efad9446c6c5781b52878d7e3c6cc",
+  "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_period_summary.csv": "94144cfbf403da2618f2f37a04cbd72c1b95c514b793505182182e146c4f3dba",
+  "Codes/Empirical_Data/AHP_NFA/fred_ahp_nfa_raw.csv": "1569527dec1627f882514efd291d5717f1bb3fde67ab78343371a50da205b129",
+  "Codes/Empirical_Data/AHP_NFA/fred_ahp_nfa_series_metadata.csv": "5ea3bb8a3e27984d3c9f44aebcb339bfff008bc30f3adad2f659a162bf1582da",
+  "Codes/Empirical_Data/AHP_NFA/ahp_us_nfa_openecon_replication.ipynb": "7fee0596739e0fb40cadf21fff47e6e8d77757bb7b74122c89bcc584b449d64c"
+}

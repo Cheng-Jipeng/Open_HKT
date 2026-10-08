@@ -1,0 +1,12 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"doi\": \"10.1016/j.jedc.2012.05.009\",\n  \"title\": \"Getting normalization right: Dealing with ‘dimensional constants’ in macroeconomics\",\n  \"source\": \"abstract\",\n  \"text\": \"AbstractWe contribute to a recent literature on the normalization, calibration and estimation of CES production functions. The problem arises because CES 'share' parameters are not in fact shares, but depend on underlying dimensions -they are 'dimensional constants' in other words. It follows that such parameters cannot be calibrated, nor estimated unless the choice of units is made explicit. We use an RBC model to demonstrate two equivalent solutions. The standard one expresses the production function in deviation form about some reference point, usually the steady state of the model. Our alternative, 're-parametrization', expresses dimensional constants in terms of a new dimensionless (share) parameter and all remaining dimensionless ones. We show that our 're-parametrization' method is equivalent and arguably more straightforward than the standard normalization in deviation form. We then examine a similar problem of dimensional constants for CES utility functions in a two-sector model and in a small open economy model; then re-parametrization is the only solution to the problem, showing that our approach is in fact more general. JEL Classification: E23, E32, E37\",\n  \"offset\": 0,\n  \"returnedChars\": 1183,\n  \"totalChars\": 1183,\n  \"hasMore\": false,\n  \"contentDenied\": true,\n  \"link\": \"https://doi.org/10.1016/j.jedc.2012.05.009\",\n  \"message\": \"Full text is access-restricted for this paper; showing the abstract instead. `link` is where the user reads the paper itself — don't treat this abstract as the paper.\"\n}"
+      }
+    ],
+    "isError": false
+  }
+}

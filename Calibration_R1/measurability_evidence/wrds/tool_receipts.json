@@ -1,0 +1,4885 @@
+{
+  "audit_date": "2026-09-22",
+  "tool": "WRDS MCP",
+  "scope": "Read-only discovery, OPTIONS metadata and bounded availability probes; not a calibrated panel.",
+  "initial": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"connected\",\n  \"authentication\": \"macOS Keychain\",\n  \"transport\": \"HTTPS\",\n  \"accessible_endpoint_count\": 9756,\n  \"checked_at_utc\": \"2026-09-22T08:06:23.496492+00:00\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"queried_at_utc\": \"2026-09-22T08:06:30.620318+00:00\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/\",\n  \"accessible_endpoint_count\": 9756,\n  \"match_count\": 8,\n  \"datasets\": [\n    {\n      \"dataset\": \"comp.bank_funda\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.bank_funda/\"\n    },\n    {\n      \"dataset\": \"comp.bank_funda_fncd\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.bank_funda_fncd/\"\n    },\n    {\n      \"dataset\": \"comp.funda\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.funda/\"\n    },\n    {\n      \"dataset\": \"comp.funda_fncd\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.funda_fncd/\"\n    },\n    {\n      \"dataset\": \"comp.g_funda\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.g_funda/\"\n    },\n    {\n      \"dataset\": \"comp.g_funda_fncd\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/comp.g_funda_fncd/\"\n    },\n    {\n      \"dataset\": \"compsamp.funda\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/compsamp.funda/\"\n    },\n    {\n      \"dataset\": \"compsamp.funda_fncd\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/compsamp.funda_fncd/\"\n    }\n  ],\n  \"truncated\": false,\n  \"search_scope\": \"Exact endpoint names, including aliases; not a count of unique underlying datasets or a full-text economic concept search. Try library/table keywords.\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"queried_at_utc\": \"2026-09-22T08:06:26.141673+00:00\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/\",\n  \"accessible_endpoint_count\": 9756,\n  \"match_count\": 1233,\n  \"datasets\": [\n    {\n      \"dataset\": \"bank.wrds_bank_crsp_link\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/bank.wrds_bank_crsp_link/\"\n    },\n    {\n      \"dataset\": \"crsp.acti\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.acti/\"\n    },\n    {\n      \"dataset\": \"crsp.asia\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.asia/\"\n    },\n    {\n      \"dataset\": \"crsp.asib\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.asib/\"\n    },\n    {\n      \"dataset\": \"crsp.asic\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.asic/\"\n    },\n    {\n      \"dataset\": \"crsp.asio\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.asio/\"\n    },\n    {\n      \"dataset\": \"crsp.asix\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.asix/\"\n    },\n    {\n      \"dataset\": \"crsp.bmdebt\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bmdebt/\"\n    },\n    {\n      \"dataset\": \"crsp.bmheader\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bmheader/\"\n    },\n    {\n      \"dataset\": \"crsp.bmpaymts\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bmpaymts/\"\n    },\n    {\n      \"dataset\": \"crsp.bmquotes\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bmquotes/\"\n    },\n    {\n      \"dataset\": \"crsp.bmyield\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bmyield/\"\n    },\n    {\n      \"dataset\": \"crsp.bndprt06\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bndprt06/\"\n    },\n    {\n      \"dataset\": \"crsp.bndprt12\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bndprt12/\"\n    },\n    {\n      \"dataset\": \"crsp.bxcalind\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.bxcalind/\"\n    }\n  ],\n  \"truncated\": true,\n  \"search_scope\": \"Exact endpoint names, including aliases; not a count of unique underlying datasets or a full-text economic concept search. Try library/table keywords.\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "metadata": {
+    "comp_funda": {
+      "status": "ok",
+      "dataset": "comp.funda",
+      "source": "https://wrds-api.wharton.upenn.edu/data/comp.funda/",
+      "queried_at_utc": "2026-09-22T08:08:04.556143+00:00",
+      "description": "",
+      "field_count": 949,
+      "fields": {
+        "acchg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 37
+        },
+        "acco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 38
+        },
+        "accrt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 39
+        },
+        "acctchg": {
+          "filter_field": false,
+          "type": "string",
+          "position": 11
+        },
+        "acctstd": {
+          "filter_field": false,
+          "type": "string",
+          "position": 12
+        },
+        "acdo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 40
+        },
+        "aco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 41
+        },
+        "acodo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 42
+        },
+        "acominc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 43
+        },
+        "acox": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 44
+        },
+        "acoxar": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 45
+        },
+        "acqao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 46
+        },
+        "acqcshi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 47
+        },
+        "acqgdwl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 48
+        },
+        "acqic": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 49
+        },
+        "acqintan": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 50
+        },
+        "acqinvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 51
+        },
+        "acqlntal": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 52
+        },
+        "acqmeth": {
+          "filter_field": false,
+          "type": "string",
+          "position": 13
+        },
+        "acqniintc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 53
+        },
+        "acqppe": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 54
+        },
+        "acqsc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 55
+        },
+        "act": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 56
+        },
+        "adjex_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 935
+        },
+        "adjex_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 943
+        },
+        "adpac": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 57
+        },
+        "adrr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 14
+        },
+        "aedi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 58
+        },
+        "afudcc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 59
+        },
+        "afudci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 60
+        },
+        "ajex": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 15
+        },
+        "ajp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 16
+        },
+        "aldo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 61
+        },
+        "am": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 62
+        },
+        "amc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 63
+        },
+        "amdc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 64
+        },
+        "amgw": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 65
+        },
+        "ano": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 66
+        },
+        "ao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 67
+        },
+        "aocidergl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 68
+        },
+        "aociother": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 69
+        },
+        "aocipen": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 70
+        },
+        "aocisecgl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 71
+        },
+        "aodo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 72
+        },
+        "aol2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 73
+        },
+        "aoloch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 74
+        },
+        "aox": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 75
+        },
+        "ap": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 76
+        },
+        "apalch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 77
+        },
+        "apb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 78
+        },
+        "apc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 79
+        },
+        "apdedate": {
+          "filter_field": false,
+          "type": "date",
+          "position": 34
+        },
+        "apofs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 80
+        },
+        "aqa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 81
+        },
+        "aqc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 82
+        },
+        "aqd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 83
+        },
+        "aqeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 84
+        },
+        "aqi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 85
+        },
+        "aqp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 86
+        },
+        "aqpl1": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 87
+        },
+        "aqs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 88
+        },
+        "arb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 89
+        },
+        "arc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 90
+        },
+        "arce": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 91
+        },
+        "arced": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 92
+        },
+        "arceeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 93
+        },
+        "artfs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 94
+        },
+        "at": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 95
+        },
+        "au": {
+          "filter_field": false,
+          "type": "string",
+          "position": 945
+        },
+        "aul3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 96
+        },
+        "auop": {
+          "filter_field": false,
+          "type": "string",
+          "position": 946
+        },
+        "auopic": {
+          "filter_field": false,
+          "type": "string",
+          "position": 947
+        },
+        "autxr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 97
+        },
+        "balr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 98
+        },
+        "banlr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 99
+        },
+        "bast": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 100
+        },
+        "bastr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 101
+        },
+        "batr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 102
+        },
+        "bcef": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 103
+        },
+        "bclr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 104
+        },
+        "bcltbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 105
+        },
+        "bcnlr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 106
+        },
+        "bcrbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 107
+        },
+        "bct": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 108
+        },
+        "bctbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 109
+        },
+        "bctr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 110
+        },
+        "billexce": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 111
+        },
+        "bkvlps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 112
+        },
+        "bltbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 113
+        },
+        "bspr": {
+          "filter_field": false,
+          "type": "string",
+          "position": 17
+        },
+        "ca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 114
+        },
+        "capr1": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 115
+        },
+        "capr2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 116
+        },
+        "capr3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 117
+        },
+        "caps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 118
+        },
+        "capsft": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 119
+        },
+        "capx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 120
+        },
+        "capxv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 121
+        },
+        "cb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 122
+        },
+        "cbi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 123
+        },
+        "cdpac": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 124
+        },
+        "cdvc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 125
+        },
+        "ceiexbill": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 126
+        },
+        "ceoso": {
+          "filter_field": false,
+          "type": "string",
+          "position": 948
+        },
+        "ceq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 127
+        },
+        "ceql": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 128
+        },
+        "ceqt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 129
+        },
+        "cfbd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 130
+        },
+        "cfere": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 131
+        },
+        "cfo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 132
+        },
+        "cfoso": {
+          "filter_field": false,
+          "type": "string",
+          "position": 949
+        },
+        "cfpdo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 133
+        },
+        "cga": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 134
+        },
+        "cgri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 135
+        },
+        "cgti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 136
+        },
+        "cgui": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 137
+        },
+        "ch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 138
+        },
+        "che": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 139
+        },
+        "chech": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 140
+        },
+        "chs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 141
+        },
+        "ci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 142
+        },
+        "cibegni": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 143
+        },
+        "cicurr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 144
+        },
+        "cidergl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 145
+        },
+        "cik": {
+          "filter_field": false,
+          "type": "string",
+          "position": 923
+        },
+        "cimii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 146
+        },
+        "ciother": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 147
+        },
+        "cipen": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 148
+        },
+        "cisecgl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 149
+        },
+        "citotal": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 150
+        },
+        "cld2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 151
+        },
+        "cld3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 152
+        },
+        "cld4": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 153
+        },
+        "cld5": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 154
+        },
+        "clfc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 155
+        },
+        "clfx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 156
+        },
+        "clg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 157
+        },
+        "clis": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 158
+        },
+        "cll": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 159
+        },
+        "cllc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 160
+        },
+        "clo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 161
+        },
+        "clrll": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 162
+        },
+        "clt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 163
+        },
+        "cmp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 164
+        },
+        "cnltbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 165
+        },
+        "cogs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 166
+        },
+        "compst": {
+          "filter_field": false,
+          "type": "string",
+          "position": 18
+        },
+        "conm": {
+          "filter_field": false,
+          "type": "string",
+          "position": 10
+        },
+        "consol": {
+          "filter_field": false,
+          "type": "string",
+          "position": 5
+        },
+        "costat": {
+          "filter_field": false,
+          "type": "string",
+          "position": 924
+        },
+        "cpcbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 167
+        },
+        "cpdoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 168
+        },
+        "cpnli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 169
+        },
+        "cppbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 170
+        },
+        "cprei": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 171
+        },
+        "crv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 172
+        },
+        "crvnli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 173
+        },
+        "cshfd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 174
+        },
+        "cshi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 175
+        },
+        "csho": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 176
+        },
+        "cshpri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 177
+        },
+        "cshr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 178
+        },
+        "cshrc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 179
+        },
+        "cshrp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 180
+        },
+        "cshrso": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 181
+        },
+        "cshrt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 182
+        },
+        "cshrw": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 183
+        },
+        "cshtr_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 929
+        },
+        "cshtr_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 936
+        },
+        "cstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 184
+        },
+        "cstkcv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 185
+        },
+        "cstke": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 186
+        },
+        "curcd": {
+          "filter_field": false,
+          "type": "string",
+          "position": 19
+        },
+        "curncd": {
+          "filter_field": false,
+          "type": "string",
+          "position": 20
+        },
+        "currtr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 21
+        },
+        "curuscn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 22
+        },
+        "cusip": {
+          "filter_field": true,
+          "type": "string",
+          "position": 9
+        },
+        "datadate": {
+          "filter_field": false,
+          "type": "date",
+          "position": 2
+        },
+        "datafmt": {
+          "filter_field": false,
+          "type": "string",
+          "position": 7
+        },
+        "dbi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 187
+        },
+        "dc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 188
+        },
+        "dclo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 189
+        },
+        "dcom": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 190
+        },
+        "dcpstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 191
+        },
+        "dcs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 192
+        },
+        "dcvsr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 193
+        },
+        "dcvsub": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 194
+        },
+        "dcvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 195
+        },
+        "dd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 196
+        },
+        "dd1": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 197
+        },
+        "dd2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 198
+        },
+        "dd3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 199
+        },
+        "dd4": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 200
+        },
+        "dd5": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 201
+        },
+        "depc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 202
+        },
+        "derac": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 203
+        },
+        "deralt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 204
+        },
+        "derhedgl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 205
+        },
+        "derlc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 206
+        },
+        "derllt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 207
+        },
+        "dfpac": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 208
+        },
+        "dfs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 209
+        },
+        "dfxa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 210
+        },
+        "diladj": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 211
+        },
+        "dilavx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 212
+        },
+        "dlc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 213
+        },
+        "dlcch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 214
+        },
+        "dltis": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 215
+        },
+        "dlto": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 216
+        },
+        "dltp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 217
+        },
+        "dltr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 218
+        },
+        "dltsub": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 219
+        },
+        "dltt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 220
+        },
+        "dm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 221
+        },
+        "dn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 222
+        },
+        "do": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 223
+        },
+        "donr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 224
+        },
+        "dp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 225
+        },
+        "dpacb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 226
+        },
+        "dpacc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 227
+        },
+        "dpacli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 228
+        },
+        "dpacls": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 229
+        },
+        "dpacme": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 230
+        },
+        "dpacnr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 231
+        },
+        "dpaco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 232
+        },
+        "dpacre": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 233
+        },
+        "dpact": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 234
+        },
+        "dpc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 235
+        },
+        "dpdc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 236
+        },
+        "dpltb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 237
+        },
+        "dpret": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 238
+        },
+        "dpsc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 239
+        },
+        "dpstb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 240
+        },
+        "dptb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 241
+        },
+        "dptc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 242
+        },
+        "dptic": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 243
+        },
+        "dpvieb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 244
+        },
+        "dpvio": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 245
+        },
+        "dpvir": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 246
+        },
+        "drc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 247
+        },
+        "drci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 248
+        },
+        "drlt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 249
+        },
+        "ds": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 250
+        },
+        "dt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 251
+        },
+        "dtea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 252
+        },
+        "dted": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 253
+        },
+        "dteeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 254
+        },
+        "dtep": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 255
+        },
+        "dudd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 256
+        },
+        "dv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 257
+        },
+        "dvc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 258
+        },
+        "dvdnp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 259
+        },
+        "dvintf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 260
+        },
+        "dvp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 261
+        },
+        "dvpa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 262
+        },
+        "dvpd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 263
+        },
+        "dvpdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 264
+        },
+        "dvpibb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 265
+        },
+        "dvpsp_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 930
+        },
+        "dvpsp_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 937
+        },
+        "dvpsx_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 931
+        },
+        "dvpsx_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 938
+        },
+        "dvrpiv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 266
+        },
+        "dvrre": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 267
+        },
+        "dvsco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 268
+        },
+        "dvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 269
+        },
+        "dxd2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 270
+        },
+        "dxd3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 271
+        },
+        "dxd4": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 272
+        },
+        "dxd5": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 273
+        },
+        "ea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 274
+        },
+        "ebit": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 275
+        },
+        "ebitda": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 276
+        },
+        "eiea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 277
+        },
+        "emol": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 278
+        },
+        "emp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 279
+        },
+        "epsfi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 280
+        },
+        "epsfx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 281
+        },
+        "epspi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 282
+        },
+        "epspx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 283
+        },
+        "esopct": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 284
+        },
+        "esopdlt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 285
+        },
+        "esopnr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 286
+        },
+        "esopr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 287
+        },
+        "esopt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 288
+        },
+        "esub": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 289
+        },
+        "esubc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 290
+        },
+        "excadj": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 291
+        },
+        "exchg": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 922
+        },
+        "exre": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 292
+        },
+        "fatb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 293
+        },
+        "fatc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 294
+        },
+        "fatd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 295
+        },
+        "fate": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 296
+        },
+        "fatl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 297
+        },
+        "fatn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 298
+        },
+        "fato": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 299
+        },
+        "fatp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 300
+        },
+        "fca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 301
+        },
+        "fdate": {
+          "filter_field": false,
+          "type": "date",
+          "position": 35
+        },
+        "fdfr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 302
+        },
+        "fea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 303
+        },
+        "fel": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 304
+        },
+        "ffo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 305
+        },
+        "ffs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 306
+        },
+        "fiao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 307
+        },
+        "fic": {
+          "filter_field": false,
+          "type": "string",
+          "position": 925
+        },
+        "finaco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 308
+        },
+        "final": {
+          "filter_field": false,
+          "type": "string",
+          "position": 23
+        },
+        "finao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 309
+        },
+        "fincf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 310
+        },
+        "finch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 311
+        },
+        "findlc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 312
+        },
+        "findlt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 313
+        },
+        "finivst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 314
+        },
+        "finlco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 315
+        },
+        "finlto": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 316
+        },
+        "finnp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 317
+        },
+        "finrecc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 318
+        },
+        "finreclt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 319
+        },
+        "finrev": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 320
+        },
+        "finxint": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 321
+        },
+        "finxopr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 322
+        },
+        "fopo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 323
+        },
+        "fopox": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 324
+        },
+        "fopt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 325
+        },
+        "fsrco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 326
+        },
+        "fsrct": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 327
+        },
+        "fuseo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 328
+        },
+        "fuset": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 329
+        },
+        "fyear": {
+          "filter_field": true,
+          "type": "integer",
+          "position": 3
+        },
+        "fyr": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 24
+        },
+        "gbbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 330
+        },
+        "gdwl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 331
+        },
+        "gdwlam": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 332
+        },
+        "gdwlia": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 333
+        },
+        "gdwlid": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 334
+        },
+        "gdwlieps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 335
+        },
+        "gdwlip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 336
+        },
+        "geqrv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 337
+        },
+        "gla": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 338
+        },
+        "glcea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 339
+        },
+        "glced": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 340
+        },
+        "glceeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 341
+        },
+        "glcep": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 342
+        },
+        "gld": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 343
+        },
+        "gleps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 344
+        },
+        "gliv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 345
+        },
+        "glp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 346
+        },
+        "govgr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 347
+        },
+        "govtown": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 348
+        },
+        "gp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 349
+        },
+        "gphbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 350
+        },
+        "gplbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 351
+        },
+        "gpobl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 352
+        },
+        "gprbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 353
+        },
+        "gptbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 354
+        },
+        "gvkey": {
+          "filter_field": true,
+          "type": "string",
+          "position": 1
+        },
+        "gwo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 355
+        },
+        "hedgegl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 356
+        },
+        "hiid": {
+          "filter_field": false,
+          "type": "string",
+          "position": 928
+        },
+        "iaeq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 357
+        },
+        "iaeqci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 358
+        },
+        "iaeqmi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 359
+        },
+        "iafici": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 360
+        },
+        "iafxi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 361
+        },
+        "iafxmi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 362
+        },
+        "iali": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 363
+        },
+        "ialoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 364
+        },
+        "ialti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 365
+        },
+        "iamli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 366
+        },
+        "iaoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 367
+        },
+        "iapli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 368
+        },
+        "iarei": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 369
+        },
+        "iasci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 370
+        },
+        "iasmi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 371
+        },
+        "iassi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 372
+        },
+        "iasti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 373
+        },
+        "iatci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 374
+        },
+        "iati": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 375
+        },
+        "iatmi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 376
+        },
+        "iaui": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 377
+        },
+        "ib": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 378
+        },
+        "ibadj": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 379
+        },
+        "ibbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 380
+        },
+        "ibc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 381
+        },
+        "ibcom": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 382
+        },
+        "ibki": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 383
+        },
+        "ibmii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 384
+        },
+        "icapt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 385
+        },
+        "idiis": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 386
+        },
+        "idilb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 387
+        },
+        "idilc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 388
+        },
+        "idis": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 389
+        },
+        "idist": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 390
+        },
+        "idit": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 391
+        },
+        "idits": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 392
+        },
+        "iid": {
+          "filter_field": false,
+          "type": "string",
+          "position": 921
+        },
+        "iire": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 393
+        },
+        "indfmt": {
+          "filter_field": false,
+          "type": "string",
+          "position": 4
+        },
+        "initb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 394
+        },
+        "intan": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 395
+        },
+        "intano": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 396
+        },
+        "intc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 397
+        },
+        "intpn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 398
+        },
+        "invch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 399
+        },
+        "invfg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 400
+        },
+        "invo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 401
+        },
+        "invofs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 402
+        },
+        "invreh": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 403
+        },
+        "invrei": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 404
+        },
+        "invres": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 405
+        },
+        "invrm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 406
+        },
+        "invt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 407
+        },
+        "invwip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 408
+        },
+        "iobd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 409
+        },
+        "ioi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 410
+        },
+        "iore": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 411
+        },
+        "ip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 412
+        },
+        "ipabl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 413
+        },
+        "ipc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 414
+        },
+        "iphbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 415
+        },
+        "iplbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 416
+        },
+        "ipobl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 417
+        },
+        "iptbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 418
+        },
+        "ipti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 419
+        },
+        "ipv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 420
+        },
+        "irei": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 421
+        },
+        "irent": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 422
+        },
+        "irii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 423
+        },
+        "irli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 424
+        },
+        "irnli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 425
+        },
+        "irsi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 426
+        },
+        "iseq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 427
+        },
+        "iseqc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 428
+        },
+        "iseqm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 429
+        },
+        "isfi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 430
+        },
+        "isfxc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 431
+        },
+        "isfxm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 432
+        },
+        "isgr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 433
+        },
+        "isgt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 434
+        },
+        "isgu": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 435
+        },
+        "islg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 436
+        },
+        "islgc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 437
+        },
+        "islgm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 438
+        },
+        "islt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 439
+        },
+        "ismod": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 25
+        },
+        "isng": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 440
+        },
+        "isngc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 441
+        },
+        "isngm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 442
+        },
+        "isotc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 443
+        },
+        "isoth": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 444
+        },
+        "isotm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 445
+        },
+        "issc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 446
+        },
+        "issm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 447
+        },
+        "issu": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 448
+        },
+        "ist": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 449
+        },
+        "istc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 450
+        },
+        "istm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 451
+        },
+        "isut": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 452
+        },
+        "itcb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 453
+        },
+        "itcc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 454
+        },
+        "itci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 455
+        },
+        "ivaco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 456
+        },
+        "ivaeq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 457
+        },
+        "ivao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 458
+        },
+        "ivch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 459
+        },
+        "ivgod": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 460
+        },
+        "ivi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 461
+        },
+        "ivncf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 462
+        },
+        "ivpt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 463
+        },
+        "ivst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 464
+        },
+        "ivstch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 465
+        },
+        "lcabg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 466
+        },
+        "lcacl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 467
+        },
+        "lcacr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 468
+        },
+        "lcag": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 469
+        },
+        "lcal": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 470
+        },
+        "lcalt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 471
+        },
+        "lcam": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 472
+        },
+        "lcao": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 473
+        },
+        "lcast": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 474
+        },
+        "lcat": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 475
+        },
+        "lco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 476
+        },
+        "lcox": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 477
+        },
+        "lcoxar": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 478
+        },
+        "lcoxdr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 479
+        },
+        "lct": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 480
+        },
+        "lcuacu": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 481
+        },
+        "li": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 482
+        },
+        "lif": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 483
+        },
+        "lifr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 484
+        },
+        "lifrp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 485
+        },
+        "lloml": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 486
+        },
+        "lloo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 487
+        },
+        "llot": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 488
+        },
+        "llrci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 489
+        },
+        "llrcr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 490
+        },
+        "llwoci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 491
+        },
+        "llwocr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 492
+        },
+        "lno": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 493
+        },
+        "lo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 494
+        },
+        "lol2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 495
+        },
+        "loxdr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 496
+        },
+        "lqpl1": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 497
+        },
+        "lrv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 498
+        },
+        "ls": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 499
+        },
+        "lse": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 500
+        },
+        "lst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 501
+        },
+        "lt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 502
+        },
+        "ltcm": {
+          "filter_field": false,
+          "type": "string",
+          "position": 26
+        },
+        "lul3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 503
+        },
+        "mib": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 504
+        },
+        "mibn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 505
+        },
+        "mibt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 506
+        },
+        "mii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 507
+        },
+        "mkvalt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 939
+        },
+        "mrc1": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 508
+        },
+        "mrc2": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 509
+        },
+        "mrc3": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 510
+        },
+        "mrc4": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 511
+        },
+        "mrc5": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 512
+        },
+        "mrct": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 513
+        },
+        "mrcta": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 514
+        },
+        "msa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 515
+        },
+        "msvrv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 516
+        },
+        "mtl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 517
+        },
+        "naicsh": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 926
+        },
+        "nat": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 518
+        },
+        "nco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 519
+        },
+        "nfsr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 520
+        },
+        "ni": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 521
+        },
+        "niadj": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 522
+        },
+        "nieci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 523
+        },
+        "niint": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 524
+        },
+        "niintpfc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 525
+        },
+        "niintpfp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 526
+        },
+        "niit": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 527
+        },
+        "nim": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 528
+        },
+        "nio": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 529
+        },
+        "nipfc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 530
+        },
+        "nipfp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 531
+        },
+        "nit": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 532
+        },
+        "nits": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 533
+        },
+        "nopi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 534
+        },
+        "nopio": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 535
+        },
+        "np": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 536
+        },
+        "npanl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 537
+        },
+        "npaore": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 538
+        },
+        "nparl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 539
+        },
+        "npat": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 540
+        },
+        "nrtxt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 541
+        },
+        "nrtxtd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 542
+        },
+        "nrtxteps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 543
+        },
+        "oancf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 544
+        },
+        "ob": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 545
+        },
+        "ogm": {
+          "filter_field": false,
+          "type": "string",
+          "position": 27
+        },
+        "oiadp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 546
+        },
+        "oibdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 547
+        },
+        "opeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 548
+        },
+        "opili": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 549
+        },
+        "opincar": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 550
+        },
+        "opini": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 551
+        },
+        "opioi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 552
+        },
+        "opiri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 553
+        },
+        "opiti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 554
+        },
+        "oprepsx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 555
+        },
+        "optca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 556
+        },
+        "optdr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 557
+        },
+        "optex": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 558
+        },
+        "optexd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 559
+        },
+        "optfvgr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 560
+        },
+        "optgr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 561
+        },
+        "optlife": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 562
+        },
+        "optosby": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 563
+        },
+        "optosey": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 564
+        },
+        "optprcby": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 565
+        },
+        "optprcca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 566
+        },
+        "optprcex": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 567
+        },
+        "optprcey": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 568
+        },
+        "optprcgr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 569
+        },
+        "optprcwa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 570
+        },
+        "optrfr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 571
+        },
+        "optvol": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 572
+        },
+        "palr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 573
+        },
+        "panlr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 574
+        },
+        "patr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 575
+        },
+        "pcl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 576
+        },
+        "pclr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 577
+        },
+        "pcnlr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 578
+        },
+        "pctr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 579
+        },
+        "pdate": {
+          "filter_field": false,
+          "type": "date",
+          "position": 36
+        },
+        "pddur": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 28
+        },
+        "pdvc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 580
+        },
+        "pi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 581
+        },
+        "pidom": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 582
+        },
+        "pifo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 583
+        },
+        "pll": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 584
+        },
+        "pltbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 585
+        },
+        "pnca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 586
+        },
+        "pncad": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 587
+        },
+        "pncaeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 588
+        },
+        "pncia": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 589
+        },
+        "pncid": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 590
+        },
+        "pncieps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 591
+        },
+        "pncip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 592
+        },
+        "pncwia": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 593
+        },
+        "pncwid": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 594
+        },
+        "pncwieps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 595
+        },
+        "pncwip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 596
+        },
+        "pnlbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 597
+        },
+        "pnli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 598
+        },
+        "pnrsho": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 599
+        },
+        "pobl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 600
+        },
+        "popsrc": {
+          "filter_field": false,
+          "type": "string",
+          "position": 6
+        },
+        "ppcbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 601
+        },
+        "ppegt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 602
+        },
+        "ppenb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 603
+        },
+        "ppenc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 604
+        },
+        "ppenli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 605
+        },
+        "ppenls": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 606
+        },
+        "ppenme": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 607
+        },
+        "ppennr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 608
+        },
+        "ppeno": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 609
+        },
+        "ppent": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 610
+        },
+        "ppevbb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 611
+        },
+        "ppeveb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 612
+        },
+        "ppevo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 613
+        },
+        "ppevr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 614
+        },
+        "pppabl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 615
+        },
+        "ppphbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 616
+        },
+        "pppobl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 617
+        },
+        "ppptbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 618
+        },
+        "prc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 619
+        },
+        "prca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 620
+        },
+        "prcad": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 621
+        },
+        "prcaeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 622
+        },
+        "prcc_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 932
+        },
+        "prcc_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 940
+        },
+        "prch_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 933
+        },
+        "prch_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 941
+        },
+        "prcl_c": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 934
+        },
+        "prcl_f": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 942
+        },
+        "prebl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 623
+        },
+        "pri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 624
+        },
+        "prodv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 625
+        },
+        "prsho": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 626
+        },
+        "prstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 627
+        },
+        "prstkcc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 628
+        },
+        "prstkpc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 629
+        },
+        "prvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 630
+        },
+        "pstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 631
+        },
+        "pstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 632
+        },
+        "pstkl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 633
+        },
+        "pstkn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 634
+        },
+        "pstkr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 635
+        },
+        "pstkrv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 636
+        },
+        "ptbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 637
+        },
+        "ptran": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 638
+        },
+        "pvcl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 639
+        },
+        "pvo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 640
+        },
+        "pvon": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 641
+        },
+        "pvpl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 642
+        },
+        "pvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 643
+        },
+        "pwoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 644
+        },
+        "radp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 645
+        },
+        "ragr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 646
+        },
+        "rank": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 944
+        },
+        "rari": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 647
+        },
+        "rati": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 648
+        },
+        "rca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 649
+        },
+        "rcd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 650
+        },
+        "rceps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 651
+        },
+        "rcl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 652
+        },
+        "rcp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 653
+        },
+        "rdip": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 654
+        },
+        "rdipa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 655
+        },
+        "rdipd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 656
+        },
+        "rdipeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 657
+        },
+        "rdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 658
+        },
+        "re": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 659
+        },
+        "rea": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 660
+        },
+        "reajo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 661
+        },
+        "recch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 662
+        },
+        "recco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 663
+        },
+        "recd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 664
+        },
+        "rect": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 665
+        },
+        "recta": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 666
+        },
+        "rectr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 667
+        },
+        "recub": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 668
+        },
+        "ret": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 669
+        },
+        "reuna": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 670
+        },
+        "reunr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 671
+        },
+        "revt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 672
+        },
+        "ris": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 673
+        },
+        "rll": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 674
+        },
+        "rlo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 675
+        },
+        "rlp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 676
+        },
+        "rlri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 677
+        },
+        "rlt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 678
+        },
+        "rmum": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 679
+        },
+        "rpag": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 680
+        },
+        "rra": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 681
+        },
+        "rrd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 682
+        },
+        "rreps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 683
+        },
+        "rrp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 684
+        },
+        "rstche": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 685
+        },
+        "rstchelt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 686
+        },
+        "rvbci": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 687
+        },
+        "rvbpi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 688
+        },
+        "rvbti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 689
+        },
+        "rvdo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 690
+        },
+        "rvdt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 691
+        },
+        "rveqt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 692
+        },
+        "rvlrv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 693
+        },
+        "rvno": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 694
+        },
+        "rvnt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 695
+        },
+        "rvri": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 696
+        },
+        "rvsi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 697
+        },
+        "rvti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 698
+        },
+        "rvtxr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 699
+        },
+        "rvupi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 700
+        },
+        "rvutx": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 701
+        },
+        "saa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 702
+        },
+        "sal": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 703
+        },
+        "sale": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 704
+        },
+        "salepfc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 705
+        },
+        "salepfp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 706
+        },
+        "sbdc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 707
+        },
+        "sc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 708
+        },
+        "scf": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 29
+        },
+        "sco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 709
+        },
+        "scstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 710
+        },
+        "secu": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 711
+        },
+        "seq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 712
+        },
+        "seqo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 713
+        },
+        "seta": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 714
+        },
+        "setd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 715
+        },
+        "seteps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 716
+        },
+        "setp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 717
+        },
+        "sich": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 927
+        },
+        "siv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 718
+        },
+        "spce": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 719
+        },
+        "spced": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 720
+        },
+        "spceeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 721
+        },
+        "spi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 722
+        },
+        "spid": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 723
+        },
+        "spieps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 724
+        },
+        "spioa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 725
+        },
+        "spiop": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 726
+        },
+        "sppe": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 727
+        },
+        "sppiv": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 728
+        },
+        "spstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 729
+        },
+        "src": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 30
+        },
+        "sret": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 730
+        },
+        "srt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 731
+        },
+        "ssnp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 732
+        },
+        "sstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 733
+        },
+        "stalt": {
+          "filter_field": false,
+          "type": "string",
+          "position": 31
+        },
+        "stbo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 734
+        },
+        "stio": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 735
+        },
+        "stkco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 736
+        },
+        "stkcpa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 737
+        },
+        "tdc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 738
+        },
+        "tdscd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 739
+        },
+        "tdsce": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 740
+        },
+        "tdsg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 741
+        },
+        "tdslg": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 742
+        },
+        "tdsmm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 743
+        },
+        "tdsng": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 744
+        },
+        "tdso": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 745
+        },
+        "tdss": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 746
+        },
+        "tdst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 747
+        },
+        "teq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 748
+        },
+        "tf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 749
+        },
+        "tfva": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 750
+        },
+        "tfvce": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 751
+        },
+        "tfvl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 752
+        },
+        "tic": {
+          "filter_field": true,
+          "type": "string",
+          "position": 8
+        },
+        "tie": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 753
+        },
+        "tii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 754
+        },
+        "tlcf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 755
+        },
+        "transa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 756
+        },
+        "tsa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 757
+        },
+        "tsafc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 758
+        },
+        "tso": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 759
+        },
+        "tstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 760
+        },
+        "tstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 761
+        },
+        "tstkme": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 762
+        },
+        "tstkn": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 763
+        },
+        "tstkp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 764
+        },
+        "txach": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 765
+        },
+        "txbco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 766
+        },
+        "txbcof": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 767
+        },
+        "txc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 768
+        },
+        "txdb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 769
+        },
+        "txdba": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 770
+        },
+        "txdbca": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 771
+        },
+        "txdbcl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 772
+        },
+        "txdc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 773
+        },
+        "txdfed": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 774
+        },
+        "txdfo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 775
+        },
+        "txdi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 776
+        },
+        "txditc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 777
+        },
+        "txds": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 778
+        },
+        "txeqa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 779
+        },
+        "txeqii": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 780
+        },
+        "txfed": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 781
+        },
+        "txfo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 782
+        },
+        "txndb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 783
+        },
+        "txndba": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 784
+        },
+        "txndbl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 785
+        },
+        "txndbr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 786
+        },
+        "txo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 787
+        },
+        "txp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 788
+        },
+        "txpd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 789
+        },
+        "txr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 790
+        },
+        "txs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 791
+        },
+        "txt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 792
+        },
+        "txtubadjust": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 793
+        },
+        "txtubbegin": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 794
+        },
+        "txtubend": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 795
+        },
+        "txtubmax": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 796
+        },
+        "txtubmin": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 797
+        },
+        "txtubposdec": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 798
+        },
+        "txtubposinc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 799
+        },
+        "txtubpospdec": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 800
+        },
+        "txtubpospinc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 801
+        },
+        "txtubsettle": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 802
+        },
+        "txtubsoflimit": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 803
+        },
+        "txtubtxtr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 804
+        },
+        "txtubxintbs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 805
+        },
+        "txtubxintis": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 806
+        },
+        "txva": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 807
+        },
+        "txw": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 808
+        },
+        "uaoloch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 809
+        },
+        "uaox": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 810
+        },
+        "uapt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 811
+        },
+        "ucaps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 812
+        },
+        "uccons": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 813
+        },
+        "uceq": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 814
+        },
+        "ucustad": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 815
+        },
+        "udcopres": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 816
+        },
+        "udd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 817
+        },
+        "udfcc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 818
+        },
+        "udmb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 819
+        },
+        "udolt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 820
+        },
+        "udpco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 821
+        },
+        "udpfa": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 822
+        },
+        "udpl": {
+          "filter_field": false,
+          "type": "string",
+          "position": 32
+        },
+        "udvp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 823
+        },
+        "ufretsd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 824
+        },
+        "ugi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 825
+        },
+        "ui": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 826
+        },
+        "uinvt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 827
+        },
+        "ulcm": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 828
+        },
+        "ulco": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 829
+        },
+        "uniami": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 830
+        },
+        "unl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 831
+        },
+        "unnp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 832
+        },
+        "unnpl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 833
+        },
+        "unopinc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 834
+        },
+        "unwcc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 835
+        },
+        "uois": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 836
+        },
+        "uopi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 837
+        },
+        "uopres": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 838
+        },
+        "upd": {
+          "filter_field": false,
+          "type": "integer",
+          "position": 33
+        },
+        "updvp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 839
+        },
+        "upmcstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 840
+        },
+        "upmpf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 841
+        },
+        "upmpfs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 842
+        },
+        "upmsubp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 843
+        },
+        "upstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 844
+        },
+        "upstkc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 845
+        },
+        "upstksf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 846
+        },
+        "urect": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 847
+        },
+        "urectr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 848
+        },
+        "urevub": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 849
+        },
+        "uspi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 850
+        },
+        "ustdnc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 851
+        },
+        "usubdvp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 852
+        },
+        "usubpstk": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 853
+        },
+        "utfdoc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 854
+        },
+        "utfosc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 855
+        },
+        "utme": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 856
+        },
+        "utxfed": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 857
+        },
+        "uwkcapc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 858
+        },
+        "uxinst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 859
+        },
+        "uxintd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 860
+        },
+        "vpac": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 861
+        },
+        "vpo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 862
+        },
+        "wcap": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 863
+        },
+        "wcapc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 864
+        },
+        "wcapch": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 865
+        },
+        "wda": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 866
+        },
+        "wdd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 867
+        },
+        "wdeps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 868
+        },
+        "wdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 869
+        },
+        "xacc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 870
+        },
+        "xad": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 871
+        },
+        "xago": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 872
+        },
+        "xagt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 873
+        },
+        "xcom": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 874
+        },
+        "xcomi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 875
+        },
+        "xdepl": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 876
+        },
+        "xdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 877
+        },
+        "xdvre": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 878
+        },
+        "xeqo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 879
+        },
+        "xi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 880
+        },
+        "xido": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 881
+        },
+        "xidoc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 882
+        },
+        "xindb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 883
+        },
+        "xindc": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 884
+        },
+        "xins": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 885
+        },
+        "xinst": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 886
+        },
+        "xint": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 887
+        },
+        "xintd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 888
+        },
+        "xintopt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 889
+        },
+        "xivi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 890
+        },
+        "xivre": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 891
+        },
+        "xlr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 892
+        },
+        "xnbi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 893
+        },
+        "xnf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 894
+        },
+        "xnins": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 895
+        },
+        "xnitb": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 896
+        },
+        "xobd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 897
+        },
+        "xoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 898
+        },
+        "xopr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 899
+        },
+        "xoprar": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 900
+        },
+        "xoptd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 901
+        },
+        "xopteps": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 902
+        },
+        "xore": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 903
+        },
+        "xpp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 904
+        },
+        "xpr": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 905
+        },
+        "xrd": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 906
+        },
+        "xrdp": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 907
+        },
+        "xrent": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 908
+        },
+        "xs": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 909
+        },
+        "xsga": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 910
+        },
+        "xstf": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 911
+        },
+        "xstfo": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 912
+        },
+        "xstfws": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 913
+        },
+        "xt": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 914
+        },
+        "xuw": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 915
+        },
+        "xuwli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 916
+        },
+        "xuwnli": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 917
+        },
+        "xuwoi": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 918
+        },
+        "xuwrei": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 919
+        },
+        "xuwti": {
+          "filter_field": false,
+          "type": "decimal",
+          "position": 920
+        }
+      },
+      "filter_operators": [
+        "contains",
+        "endswith",
+        "exact",
+        "gt",
+        "gte",
+        "lt",
+        "lte",
+        "startswith"
+      ],
+      "measurement_note": "API types/filter flags do not establish economic definitions, units, sample coverage or identification. Verify the source codebook before mapping."
+    },
+    "comp_g_funda": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"dataset\": \"comp.g_funda\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/comp.g_funda/\",\n  \"queried_at_utc\": \"2026-09-22T08:10:13.739537+00:00\",\n  \"description\": \"\",\n  \"field_count\": 444,\n  \"fields\": {\n    \"accli\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 23\n    },\n    \"acco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 24\n    },\n    \"acctstd\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 6\n    },\n    \"aco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 25\n    },\n    \"acofs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 26\n    },\n    \"acox\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 27\n    },\n    \"acoxfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 28\n    },\n    \"acqdisn\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 29\n    },\n    \"acqdiso\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 30\n    },\n    \"acqmeth\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 7\n    },\n    \"act\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 31\n    },\n    \"adpac\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 32\n    },\n    \"ajexi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 422\n    },\n    \"am\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 33\n    },\n    \"amdc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 34\n    },\n    \"ao\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 35\n    },\n    \"aoloch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 36\n    },\n    \"aox\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 37\n    },\n    \"ap\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 38\n    },\n    \"apalch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 39\n    },\n    \"apch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 40\n    },\n    \"apdpfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 41\n    },\n    \"apfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 42\n    },\n    \"apo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 43\n    },\n    \"apofs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 44\n    },\n    \"aqc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 45\n    },\n    \"artfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 46\n    },\n    \"asdis\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 47\n    },\n    \"asinv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 48\n    },\n    \"at\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 49\n    },\n    \"atoch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 50\n    },\n    \"au\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 442\n    },\n    \"auop\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 443\n    },\n    \"autxr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 51\n    },\n    \"bcef\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 52\n    },\n    \"bct\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 53\n    },\n    \"bspr\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 8\n    },\n    \"ca\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 54\n    },\n    \"capcst\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 55\n    },\n    \"capfl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 56\n    },\n    \"capr1\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 57\n    },\n    \"capr2\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 58\n    },\n    \"capr3\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 59\n    },\n    \"caprt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 60\n    },\n    \"caps\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 61\n    },\n    \"capx\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 62\n    },\n    \"capxfi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 63\n    },\n    \"ceq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 64\n    },\n    \"cfbd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 65\n    },\n    \"cfere\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 66\n    },\n    \"cflaoth\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 67\n    },\n    \"cfo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 68\n    },\n    \"cfpdo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 69\n    },\n    \"cga\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 70\n    },\n    \"ch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 71\n    },\n    \"che\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 72\n    },\n    \"cheb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 73\n    },\n    \"chech\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 74\n    },\n    \"chee\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 75\n    },\n    \"chefs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 76\n    },\n    \"chenfd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 77\n    },\n    \"chfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 78\n    },\n    \"chs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 79\n    },\n    \"cmp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 80\n    },\n    \"cogs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 81\n    },\n    \"compst\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 9\n    },\n    \"conm\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 435\n    },\n    \"consol\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 4\n    },\n    \"costat\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 436\n    },\n    \"crvnli\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 82\n    },\n    \"cshoi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 424\n    },\n    \"cshpria\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 425\n    },\n    \"cshr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 83\n    },\n    \"cstk\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 84\n    },\n    \"curcd\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 10\n    },\n    \"curcdi\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 423\n    },\n    \"custadv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 85\n    },\n    \"datadate\": {\n      \"filter_field\": false,\n      \"type\": \"date\",\n      \"position\": 20\n    },\n    \"datafmt\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 3\n    },\n    \"dbtb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 86\n    },\n    \"dbte\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 87\n    },\n    \"dc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 88\n    },\n    \"dcsfd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 89\n    },\n    \"dcufd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 90\n    },\n    \"dd1\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 91\n    },\n    \"dd1fs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 92\n    },\n    \"dfpac\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 93\n    },\n    \"dfxa\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 94\n    },\n    \"dispoch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 95\n    },\n    \"dlc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 96\n    },\n    \"dlcch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 97\n    },\n    \"dlcfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 98\n    },\n    \"dltis\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 99\n    },\n    \"dltr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 100\n    },\n    \"dltt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 101\n    },\n    \"do\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 102\n    },\n    \"doc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 103\n    },\n    \"dp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 104\n    },\n    \"dpact\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 105\n    },\n    \"dpc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 106\n    },\n    \"dpdc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 107\n    },\n    \"dpltb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 108\n    },\n    \"dpsc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 109\n    },\n    \"dpstb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 110\n    },\n    \"dptb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 111\n    },\n    \"dptc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 112\n    },\n    \"dptic\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 113\n    },\n    \"dv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 114\n    },\n    \"dvc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 115\n    },\n    \"dvp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 116\n    },\n    \"dvpdp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 117\n    },\n    \"dvrec\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 118\n    },\n    \"dvrre\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 119\n    },\n    \"dvsco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 120\n    },\n    \"dvt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 121\n    },\n    \"ea\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 122\n    },\n    \"ebit\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 123\n    },\n    \"ebitda\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 124\n    },\n    \"eiea\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 125\n    },\n    \"eieac\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 126\n    },\n    \"emp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 127\n    },\n    \"epsexcon\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 426\n    },\n    \"epsexnc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 427\n    },\n    \"epsincon\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 428\n    },\n    \"epsinnc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 429\n    },\n    \"eqdivp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 128\n    },\n    \"ero\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 129\n    },\n    \"exchg\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 419\n    },\n    \"exre\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 130\n    },\n    \"exres\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 131\n    },\n    \"exreu\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 132\n    },\n    \"fatb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 133\n    },\n    \"fate\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 134\n    },\n    \"fatl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 135\n    },\n    \"fatp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 136\n    },\n    \"fca\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 137\n    },\n    \"fdate\": {\n      \"filter_field\": false,\n      \"type\": \"date\",\n      \"position\": 21\n    },\n    \"fdfr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 138\n    },\n    \"fea\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 139\n    },\n    \"fel\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 140\n    },\n    \"ffs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 141\n    },\n    \"fiao\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 142\n    },\n    \"fic\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 437\n    },\n    \"final\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 11\n    },\n    \"fincf\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 143\n    },\n    \"fininc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 144\n    },\n    \"finle\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 145\n    },\n    \"finre\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 146\n    },\n    \"finvao\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 147\n    },\n    \"fopo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 148\n    },\n    \"fsrco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 149\n    },\n    \"fsrcopo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 150\n    },\n    \"fsrcopt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 151\n    },\n    \"fsrct\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 152\n    },\n    \"fuseo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 153\n    },\n    \"fuset\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 154\n    },\n    \"fyear\": {\n      \"filter_field\": true,\n      \"type\": \"integer\",\n      \"position\": 12\n    },\n    \"fyr\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 13\n    },\n    \"gdwl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 155\n    },\n    \"gvkey\": {\n      \"filter_field\": true,\n      \"type\": \"string\",\n      \"position\": 1\n    },\n    \"hiid\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 444\n    },\n    \"iaeq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 156\n    },\n    \"iafxi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 157\n    },\n    \"ialoi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 158\n    },\n    \"ialti\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 159\n    },\n    \"iamli\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 160\n    },\n    \"iaoi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 161\n    },\n    \"iapli\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 162\n    },\n    \"iarei\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 163\n    },\n    \"iassi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 164\n    },\n    \"iasti\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 165\n    },\n    \"iati\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 166\n    },\n    \"ib\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 167\n    },\n    \"ibc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 168\n    },\n    \"ibki\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 169\n    },\n    \"ibmii\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 170\n    },\n    \"icapi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 430\n    },\n    \"icapt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 171\n    },\n    \"idiis\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 172\n    },\n    \"idilb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 173\n    },\n    \"idilc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 174\n    },\n    \"idis\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 175\n    },\n    \"idist\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 176\n    },\n    \"idit\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 177\n    },\n    \"idits\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 178\n    },\n    \"iid\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 418\n    },\n    \"iire\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 179\n    },\n    \"indfmt\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 2\n    },\n    \"initb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 180\n    },\n    \"intan\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 181\n    },\n    \"intand\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 182\n    },\n    \"intanp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 183\n    },\n    \"intc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 184\n    },\n    \"intfact\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 185\n    },\n    \"intfl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 186\n    },\n    \"intiact\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 187\n    },\n    \"intoact\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 188\n    },\n    \"intpd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 189\n    },\n    \"intpn\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 190\n    },\n    \"intrc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 191\n    },\n    \"invch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 192\n    },\n    \"invdsp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 193\n    },\n    \"invfg\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 194\n    },\n    \"invo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 195\n    },\n    \"invrm\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 196\n    },\n    \"invsvc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 197\n    },\n    \"invt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 198\n    },\n    \"invtfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 199\n    },\n    \"invwip\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 200\n    },\n    \"iobd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 201\n    },\n    \"ioi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 202\n    },\n    \"iore\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 203\n    },\n    \"ip\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 204\n    },\n    \"ipti\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 205\n    },\n    \"isgr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 206\n    },\n    \"isgt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 207\n    },\n    \"isgu\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 208\n    },\n    \"isin\": {\n      \"filter_field\": true,\n      \"type\": \"string\",\n      \"position\": 420\n    },\n    \"ismod\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 14\n    },\n    \"isoth\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 209\n    },\n    \"ist\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 210\n    },\n    \"ivaco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 211\n    },\n    \"ivaeq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 212\n    },\n    \"ivao\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 213\n    },\n    \"ivch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 214\n    },\n    \"ivgod\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 215\n    },\n    \"ivi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 216\n    },\n    \"ivncf\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 217\n    },\n    \"ivpt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 218\n    },\n    \"ivst\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 219\n    },\n    \"ivstch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 220\n    },\n    \"ivstfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 221\n    },\n    \"lcabg\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 222\n    },\n    \"lcacl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 223\n    },\n    \"lcacr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 224\n    },\n    \"lcag\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 225\n    },\n    \"lcal\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 226\n    },\n    \"lcalt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 227\n    },\n    \"lcam\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 228\n    },\n    \"lcao\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 229\n    },\n    \"lcast\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 230\n    },\n    \"lcat\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 231\n    },\n    \"lco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 232\n    },\n    \"lcofs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 233\n    },\n    \"lcox\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 234\n    },\n    \"lct\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 235\n    },\n    \"lctfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 236\n    },\n    \"lcuacu\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 237\n    },\n    \"liqresn\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 238\n    },\n    \"liqreso\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 239\n    },\n    \"lndep\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 240\n    },\n    \"lninc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 241\n    },\n    \"lnmd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 242\n    },\n    \"lnrep\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 243\n    },\n    \"lo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 244\n    },\n    \"loc\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 438\n    },\n    \"lse\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 245\n    },\n    \"lt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 246\n    },\n    \"ltdch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 247\n    },\n    \"ltdlch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 248\n    },\n    \"ltlo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 249\n    },\n    \"mib\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 250\n    },\n    \"mibn\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 251\n    },\n    \"mibt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 252\n    },\n    \"mic\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 253\n    },\n    \"mii\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 254\n    },\n    \"miseq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 255\n    },\n    \"mtl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 256\n    },\n    \"naicsh\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 439\n    },\n    \"ncfliq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 257\n    },\n    \"neqmi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 258\n    },\n    \"nicon\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 431\n    },\n    \"ninc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 432\n    },\n    \"nio\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 259\n    },\n    \"nit\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 260\n    },\n    \"noasub\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 261\n    },\n    \"nopi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 262\n    },\n    \"np\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 263\n    },\n    \"npanl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 264\n    },\n    \"npaore\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 265\n    },\n    \"nparl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 266\n    },\n    \"npat\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 267\n    },\n    \"npfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 268\n    },\n    \"oancf\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 269\n    },\n    \"oancfc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 270\n    },\n    \"oancfd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 271\n    },\n    \"oiadp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 272\n    },\n    \"oibdp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 273\n    },\n    \"onbalb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 274\n    },\n    \"onbale\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 275\n    },\n    \"opprft\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 276\n    },\n    \"pacqp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 277\n    },\n    \"pcl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 278\n    },\n    \"pdate\": {\n      \"filter_field\": false,\n      \"type\": \"date\",\n      \"position\": 22\n    },\n    \"pddur\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 15\n    },\n    \"pi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 279\n    },\n    \"pliach\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 280\n    },\n    \"popsrc\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 5\n    },\n    \"ppegt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 281\n    },\n    \"ppent\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 282\n    },\n    \"prc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 283\n    },\n    \"prodv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 284\n    },\n    \"prosai\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 285\n    },\n    \"prstkc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 286\n    },\n    \"prv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 287\n    },\n    \"psfix\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 288\n    },\n    \"pstk\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 289\n    },\n    \"pstkn\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 290\n    },\n    \"pstkr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 291\n    },\n    \"ptran\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 292\n    },\n    \"purtshr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 293\n    },\n    \"pv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 433\n    },\n    \"pvon\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 294\n    },\n    \"pvt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 295\n    },\n    \"radp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 296\n    },\n    \"ragr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 297\n    },\n    \"rank\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 441\n    },\n    \"rari\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 298\n    },\n    \"rati\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 299\n    },\n    \"rawmsm\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 300\n    },\n    \"rcl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 301\n    },\n    \"re\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 302\n    },\n    \"recch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 303\n    },\n    \"recco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 304\n    },\n    \"reccofs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 305\n    },\n    \"rect\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 306\n    },\n    \"rectfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 307\n    },\n    \"rectr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 308\n    },\n    \"rectrfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 309\n    },\n    \"revt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 310\n    },\n    \"ris\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 311\n    },\n    \"rlri\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 312\n    },\n    \"rlt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 313\n    },\n    \"rpag\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 314\n    },\n    \"rv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 315\n    },\n    \"rvbci\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 316\n    },\n    \"rvbpi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 317\n    },\n    \"rvbti\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 318\n    },\n    \"rveqt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 319\n    },\n    \"rvlrv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 320\n    },\n    \"rvri\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 321\n    },\n    \"rvsi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 322\n    },\n    \"rvti\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 323\n    },\n    \"rvupi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 324\n    },\n    \"rvutx\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 325\n    },\n    \"saa\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 326\n    },\n    \"sal\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 327\n    },\n    \"sale\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 328\n    },\n    \"sbdc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 329\n    },\n    \"sc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 330\n    },\n    \"scf\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 16\n    },\n    \"sco\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 331\n    },\n    \"sedol\": {\n      \"filter_field\": true,\n      \"type\": \"string\",\n      \"position\": 421\n    },\n    \"seq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 332\n    },\n    \"shrcap\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 333\n    },\n    \"sich\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 440\n    },\n    \"siv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 334\n    },\n    \"spi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 335\n    },\n    \"sppch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 336\n    },\n    \"sppiv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 337\n    },\n    \"src\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 17\n    },\n    \"ssnp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 338\n    },\n    \"sstk\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 339\n    },\n    \"stalt\": {\n      \"filter_field\": false,\n      \"type\": \"string\",\n      \"position\": 18\n    },\n    \"stbo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 340\n    },\n    \"stfixa\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 341\n    },\n    \"stinv\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 342\n    },\n    \"stio\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 343\n    },\n    \"stkch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 344\n    },\n    \"subdis\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 345\n    },\n    \"subpur\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 346\n    },\n    \"tdsg\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 347\n    },\n    \"tdst\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 348\n    },\n    \"teq\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 349\n    },\n    \"transa\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 350\n    },\n    \"tsca\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 351\n    },\n    \"tstk\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 352\n    },\n    \"tstkni\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 434\n    },\n    \"tstlta\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 353\n    },\n    \"tx\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 354\n    },\n    \"txc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 355\n    },\n    \"txdb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 356\n    },\n    \"txdc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 357\n    },\n    \"txdi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 358\n    },\n    \"txditc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 359\n    },\n    \"txo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 360\n    },\n    \"txop\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 361\n    },\n    \"txp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 362\n    },\n    \"txpd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 363\n    },\n    \"txpfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 364\n    },\n    \"txt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 365\n    },\n    \"txw\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 366\n    },\n    \"ui\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 367\n    },\n    \"unl\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 368\n    },\n    \"unnp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 369\n    },\n    \"upd\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 19\n    },\n    \"vpac\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 370\n    },\n    \"vpo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 371\n    },\n    \"wcap\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 372\n    },\n    \"wcapch\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 373\n    },\n    \"wcapchc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 374\n    },\n    \"wcapopc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 375\n    },\n    \"wcaps\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 376\n    },\n    \"wcapsa\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 377\n    },\n    \"wcapsu\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 378\n    },\n    \"wcapt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 379\n    },\n    \"wcapu\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 380\n    },\n    \"xacc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 381\n    },\n    \"xaccfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 382\n    },\n    \"xago\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 383\n    },\n    \"xagt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 384\n    },\n    \"xcom\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 385\n    },\n    \"xcomi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 386\n    },\n    \"xdvre\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 387\n    },\n    \"xeqo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 388\n    },\n    \"xi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 389\n    },\n    \"xido\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 390\n    },\n    \"xidoc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 391\n    },\n    \"xindb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 392\n    },\n    \"xindc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 393\n    },\n    \"xins\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 394\n    },\n    \"xinst\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 395\n    },\n    \"xint\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 396\n    },\n    \"xintd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 397\n    },\n    \"xivi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 398\n    },\n    \"xivre\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 399\n    },\n    \"xlr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 400\n    },\n    \"xnitb\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 401\n    },\n    \"xobd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 402\n    },\n    \"xoi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 403\n    },\n    \"xopr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 404\n    },\n    \"xopro\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 405\n    },\n    \"xore\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 406\n    },\n    \"xpp\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 407\n    },\n    \"xppfs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 408\n    },\n    \"xpr\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 409\n    },\n    \"xrd\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 410\n    },\n    \"xrent\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 411\n    },\n    \"xs\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 412\n    },\n    \"xsga\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 413\n    },\n    \"xstf\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 414\n    },\n    \"xstfo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 415\n    },\n    \"xstfws\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 416\n    },\n    \"xt\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 417\n    }\n  },\n  \"filter_operators\": [\n    \"contains\",\n    \"endswith\",\n    \"exact\",\n    \"gt\",\n    \"gte\",\n    \"lt\",\n    \"lte\",\n    \"startswith\"\n  ],\n  \"measurement_note\": \"API types/filter flags do not establish economic definitions, units, sample coverage or identification. Verify the source codebook before mapping.\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    "crsp_msf": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"dataset\": \"crsp.msf\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf/\",\n  \"queried_at_utc\": \"2026-09-22T08:13:44.524895+00:00\",\n  \"description\": \"\",\n  \"field_count\": 21,\n  \"fields\": {\n    \"altprc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 18\n    },\n    \"altprcdt\": {\n      \"filter_field\": false,\n      \"type\": \"date\",\n      \"position\": 20\n    },\n    \"ask\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 14\n    },\n    \"askhi\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 9\n    },\n    \"bid\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 13\n    },\n    \"bidlo\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 8\n    },\n    \"cfacpr\": {\n      \"filter_field\": false,\n      \"type\": \"float\",\n      \"position\": 16\n    },\n    \"cfacshr\": {\n      \"filter_field\": false,\n      \"type\": \"float\",\n      \"position\": 17\n    },\n    \"cusip\": {\n      \"filter_field\": true,\n      \"type\": \"string\",\n      \"position\": 1\n    },\n    \"date\": {\n      \"filter_field\": true,\n      \"type\": \"date\",\n      \"position\": 7\n    },\n    \"hexcd\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 5\n    },\n    \"hsiccd\": {\n      \"filter_field\": true,\n      \"type\": \"integer\",\n      \"position\": 6\n    },\n    \"issuno\": {\n      \"filter_field\": false,\n      \"type\": \"integer\",\n      \"position\": 4\n    },\n    \"permco\": {\n      \"filter_field\": true,\n      \"type\": \"integer\",\n      \"position\": 3\n    },\n    \"permno\": {\n      \"filter_field\": true,\n      \"type\": \"integer\",\n      \"position\": 2\n    },\n    \"prc\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 10\n    },\n    \"ret\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 12\n    },\n    \"retx\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 21\n    },\n    \"shrout\": {\n      \"filter_field\": false,\n      \"type\": \"float\",\n      \"position\": 15\n    },\n    \"spread\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 19\n    },\n    \"vol\": {\n      \"filter_field\": false,\n      \"type\": \"decimal\",\n      \"position\": 11\n    }\n  },\n  \"filter_operators\": [\n    \"contains\",\n    \"endswith\",\n    \"exact\",\n    \"gt\",\n    \"gte\",\n    \"lt\",\n    \"lte\",\n    \"startswith\"\n  ],\n  \"measurement_note\": \"API types/filter flags do not establish economic definitions, units, sample coverage or identification. Verify the source codebook before mapping.\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  "search_crsp": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"ok\",\n  \"queried_at_utc\": \"2026-09-22T08:10:12.500622+00:00\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/\",\n  \"accessible_endpoint_count\": 9756,\n  \"match_count\": 28,\n  \"datasets\": [\n    {\n      \"dataset\": \"crsp.msf\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf/\"\n    },\n    {\n      \"dataset\": \"crsp.msf62\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf62/\"\n    },\n    {\n      \"dataset\": \"crsp.msf62_v2\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf62_v2/\"\n    },\n    {\n      \"dataset\": \"crsp.msf_v2\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf_v2/\"\n    },\n    {\n      \"dataset\": \"crsp.msfhdr\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msfhdr/\"\n    },\n    {\n      \"dataset\": \"crsp.msfhdr62\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msfhdr62/\"\n    },\n    {\n      \"dataset\": \"crsp.wrds_msf62v2_query\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.wrds_msf62v2_query/\"\n    },\n    {\n      \"dataset\": \"crsp.wrds_msfv2_query\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crsp.wrds_msfv2_query/\"\n    },\n    {\n      \"dataset\": \"crspm.msf\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crspm.msf/\"\n    },\n    {\n      \"dataset\": \"crspm.msf62\",\n      \"url\": \"https://wrds-api.wharton.upenn.edu/data/crspm.msf62/\"\n    }\n  ],\n  \"truncated\": true,\n  \"search_scope\": \"Exact endpoint names, including aliases; not a count of unique underlying datasets or a full-text economic concept search. Try library/table keywords.\"\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "queries": {
+    "comp_funda": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"dataset\": \"comp.funda\",\n  \"matching_rows\": 2,\n  \"saved_rows\": 2,\n  \"truncated\": false,\n  \"complete_matching_sample\": true,\n  \"stop_reason\": \"complete\",\n  \"next_offset\": null,\n  \"export_directory\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/na_sample/20260922T081028Z_comp.funda_414382e4\",\n  \"files\": {\n    \"data.jsonl\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/na_sample/20260922T081028Z_comp.funda_414382e4/data.jsonl\",\n    \"data.csv\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/na_sample/20260922T081028Z_comp.funda_414382e4/data.csv\",\n    \"README.md\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/na_sample/20260922T081028Z_comp.funda_414382e4/README.md\",\n    \"manifest.json\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/na_sample/20260922T081028Z_comp.funda_414382e4/manifest.json\"\n  },\n  \"preview\": [],\n  \"preview_rows\": 0,\n  \"column_projection\": \"local\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/comp.funda/\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    "comp_g_funda": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"dataset\": \"comp.g_funda\",\n  \"matching_rows\": 42376,\n  \"saved_rows\": 3,\n  \"truncated\": true,\n  \"complete_matching_sample\": false,\n  \"stop_reason\": \"row_limit\",\n  \"next_offset\": 3,\n  \"export_directory\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/global_pilot/20260922T081355Z_comp.g_funda_3c64e04a\",\n  \"files\": {\n    \"data.jsonl\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/global_pilot/20260922T081355Z_comp.g_funda_3c64e04a/data.jsonl\",\n    \"data.csv\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/global_pilot/20260922T081355Z_comp.g_funda_3c64e04a/data.csv\",\n    \"README.md\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/global_pilot/20260922T081355Z_comp.g_funda_3c64e04a/README.md\",\n    \"manifest.json\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/global_pilot/20260922T081355Z_comp.g_funda_3c64e04a/manifest.json\"\n  },\n  \"preview\": [],\n  \"preview_rows\": 0,\n  \"column_projection\": \"local\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/comp.g_funda/\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    "crsp_msf": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"dataset\": \"crsp.msf\",\n  \"matching_rows\": 3,\n  \"saved_rows\": 12,\n  \"truncated\": false,\n  \"complete_matching_sample\": true,\n  \"stop_reason\": \"complete\",\n  \"next_offset\": null,\n  \"export_directory\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/crsp_sample/20260922T081549Z_crsp.msf_69990b9f\",\n  \"files\": {\n    \"data.jsonl\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/crsp_sample/20260922T081549Z_crsp.msf_69990b9f/data.jsonl\",\n    \"data.csv\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/crsp_sample/20260922T081549Z_crsp.msf_69990b9f/data.csv\",\n    \"README.md\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/crsp_sample/20260922T081549Z_crsp.msf_69990b9f/README.md\",\n    \"manifest.json\": \"/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/【Research】/Two_country_HKT/Codes/Calibration_R1/measurability_evidence/wrds/crsp_sample/20260922T081549Z_crsp.msf_69990b9f/manifest.json\"\n  },\n  \"preview\": [],\n  \"preview_rows\": 0,\n  \"column_projection\": \"local\",\n  \"source\": \"https://wrds-api.wharton.upenn.edu/data/crsp.msf/\"\n}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  }
+}

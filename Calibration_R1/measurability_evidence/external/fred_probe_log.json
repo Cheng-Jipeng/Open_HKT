@@ -1,0 +1,128 @@
+[
+  {
+    "series_id": "ROWEISQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWEISQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:08:49.508551+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "ROWEINQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWEINQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:08:49.509015+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "ROWTLEQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWTLEQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:08:49.509162+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "ROWTASQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWTASQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:08:49.509267+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "ROWNETQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWNETQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:09:29.679593+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "RWLBACQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RWLBACQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:09:29.681192+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "RWNEOWQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RWNEOWQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:09:29.692513+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FR263181105Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FR263181105Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:09:29.696582+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FR263081115Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FR263081115Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:09:47.908175+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FU263181105Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FU263181105Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:04.070554+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FU263081005Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FU263081005Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:07.603188+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "ROWTSEQ027S",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ROWTSEQ027S&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:07.606942+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "TB3MS",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=TB3MS&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:18.371536+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1LM102010405Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1LM102010405Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:43.507399+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "BOGZ1LM792010405Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1LM792010405Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:47.724317+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FU106121075Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FU106121075Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:47.725844+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FU796121075Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FU796121075Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:10:56.231809+00:00",
+    "status": "failed",
+    "error": "TimeoutError: [Errno 60] Operation timed out"
+  },
+  {
+    "series_id": "BOGZ1FL263164100Q",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOGZ1FL263164100Q&cosd=2024-01-01",
+    "retrieved_at": "2026-09-22T08:11:06.110362+00:00",
+    "status": "failed",
+    "error": "timeout: The read operation timed out"
+  }
+]

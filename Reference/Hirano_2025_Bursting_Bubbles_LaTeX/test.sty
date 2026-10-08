@@ -1,0 +1,254 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{test}
+\RequirePackage{amsmath,amsthm,amssymb,mathtools,xspace}
+
+% bibliography
+\newcommand{\noopsort}[2]{#2}
+
+% author footnote
+\newcommand\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+
+% two- and three- dimensional vectors
+\newcommand{\twovec}[2]{\begin{bmatrix}#1\\ #2\end{bmatrix}}
+\newcommand{\threevec}[3]{\begin{bmatrix}#1\\ #2\\ #3\end{bmatrix}}
+
+% modes of convergence
+\newcommand{\pto}{\xrightarrow{\mathrm{p}}}
+\newcommand{\dto}{\xrightarrow{\mathrm{d}}}
+\newcommand{\asto}{\xrightarrow{\mathrm{a.s.}}}
+\newcommand{\msto}{\xrightarrow{\mathrm{m.s.}}}
+\newcommand{\lpto}[1]{\xrightarrow{L^{#1}}} % L^p convergence
+
+%% Theorem-type environment
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{asmp}{Assumption}
+\newtheorem*{asmp*}{Assumption}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{exmp}{Example}
+\newtheorem*{exmp*}{Example}
+\newtheorem{prob}{}
+\newtheorem{subprob}{}[section]
+\renewcommand{\thesubprob}{(\alph{subprob})}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem*{algorithm*}{Algorithm}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newtheorem*{rem*}{Remark}
+
+% Cases and steps, to be used in proofs.
+% If used in text, put ``\setcounter{case}{0}" before.
+\newtheoremstyle{case}{}{}{}{}{\bfseries\boldmath}{.}{.5em}
+{\thmname{#1} \thmnumber{#2}: \thmnote{#3}}
+\theoremstyle{case}
+\newtheorem{case}{Case}[thm]
+\renewcommand{\thecase}{\arabic{case}}
+\newtheorem{subcase}{Case}[case]
+
+\newtheoremstyle{step}{}{}{\itshape}{}{\itshape}{.}{.5em}{\thmname{#1} \thmnumber{#2}}
+\theoremstyle{step}
+\newtheorem{step}{Step}[thm]
+\renewcommand{\thestep}{\arabic{step}}
+
+% one-shot theorem-like environment such as ``Zorn's Lemma"
+\newtheoremstyle{oneshot}{}{}{}{}{\bfseries\boldmath}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{oneshot}
+\newtheorem*{oneshot}{}
+
+% ----------------------------------------------------------------------
+%  Common abbreviations and words with accents
+% ----------------------------------------------------------------------
+
+% ---- Latin ----
+\newcommand{\etal}{\emph{et~al.}\xspace}
+\newcommand{\ie}{\textrm{i.e.}}
+\newcommand{\eg}{\textrm{e.g.}}
+\newcommand{\cf}{\textrm{c.f.}}
+
+% --- French ----
+\newcommand{\Levy}{L\'evy\xspace}
+\newcommand{\cadlag}{c\`adl\`ag\xspace}
+
+% Other
+\newcommand{\Cplusplus}{C\raisebox{0.5ex}{\tiny\bf++}}
+\newcommand{\iid}{\textsc{iid}\xspace}
+\newcommand{\maximize}{\operatornamewithlimits{maximize}}
+\newcommand{\minimize}{\operatornamewithlimits{minimize}}
+\newcommand{\st}{\operatorname{subject~to}}
+
+% ----------------------------------------------------------------------
+%  Simple math stuff
+% ----------------------------------------------------------------------
+
+% ---- SYMBOLS ----
+\newcommand{\e}{\mathrm{e}} % exponential
+\newcommand{\diff}{\mathop{}\!\mathrm{d}} % differential
+\newcommand{\ubar}[1]{\text{\b{$#1$}}} % underbar
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\N}{\mathbb{N}} % natural numbers
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\Q}{\mathbb{Q}} % rational numbers
+\newcommand{\R}{\mathbb{R}} % real numbers
+\newcommand{\C}{\mathbb{C}} % complex numbers
+
+% ---- OPERATORS (requires amsmath) ----
+\newcommand\argmax{\operatornamewithlimits{arg\,max}}
+\newcommand\argmin{\operatornamewithlimits{arg\,min}}
+\newcommand\card{\operatorname{card}}	% cardinality,
+\newcommand\cl{\operatorname{cl}}		% closure
+\newcommand\co{\operatorname{co}}		% convex hull
+\newcommand\conv{\operatorname{conv}}	% convex hull
+\newcommand\E{\operatorname{E}}			% expectation
+\newcommand\epi{\operatorname{epi}}		% epigraph
+\newcommand\id{\operatorname{id}}		% identity
+\newcommand\im{\operatorname{im}}		% image
+\newcommand\rank{\operatorname{rank}}	% rank
+\newcommand\rel{\operatorname{rel\,}}	% relative (interior, boundary, etc.)
+\newcommand\sgn{\operatorname{sgn}}		% sign
+\newcommand\vol{\operatorname{vol}}		% volume
+\newcommand\diag{\operatorname{diag}}	% diagonal matrix
+\newcommand\interior{\operatorname{int}}% interior
+\newcommand\ri{\operatorname{ri}}		% relative interior
+\newcommand\var{\operatorname{Var}}		% variance
+\newcommand\cov{\operatorname{Cov}}		% covariance
+\newcommand\dom{\operatorname{dom}}		% domain
+\newcommand\plim{\operatornamewithlimits{plim}}% limit in probability
+\newcommand\supp{\operatorname{supp}}	% support
+\newcommand\ess{\operatorname{ess}}		% essential (supremum, etc)
+\newcommand\range{\operatorname{range}}	% range
+\newcommand\cone{\operatorname{cone}}	% cone
+\newcommand\dist{\operatorname{dist}}	% distance
+\newcommand\erf{\operatorname{erf}}		% error function
+\newcommand\erfc{\operatorname{erfc}}	% complementary error function
+\newcommand\tr{\operatorname{tr}}          % trace
+
+% --- Self-scaling delmiter pairs ---
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\seq}[1]{\left\langle #1 \right\rangle}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+% first is copied from braket.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\def\braket#1{\mathinner{\langle{#1}\rangle}}
+\def\Bra#1{\left\langle#1\right|}
+\def\Ket#1{\left|#1\right\rangle}
+%
+\let\protect\relax
+%
+{\catcode`\|=\active
+  \xdef\Braket{\protect\expandafter\noexpand\csname Braket \endcsname}
+  \expandafter\gdef\csname Braket \endcsname#1{\begingroup
+     \ifx\SavedDoubleVert\relax
+       \let\SavedDoubleVert\|\let\|\BraDoubleVert
+     \fi
+     \mathcode`\|32768\let|\BraVert
+     \left\langle{#1}\right\rangle\endgroup}
+}
+\def\BraVert{\@ifnextchar|{\|\@gobble}% turn || into \|
+     {\egroup\,\mid@vertical\,\bgroup}}
+\def\BraDoubleVert{\egroup\,\mid@dblvertical\,\bgroup}
+\let\SavedDoubleVert\relax
+
+% The \mid@vertical is \vrule with ordinary TeX but \middle| in eTeX.
+% We always avoid a \mathchoice in making the inner vertical lines.
+% Note that \right\rangle is used now due to a failing in fourier.sty.
+%
+% \def\ketbra#1#2{\ket{#1}\bra{#2}}
+% \def\Ketbra#1#2{\left|{#1}\vphantom{#2}\right\rangle\left\langle{#2}\vphantom{#1}\right|}
+
+% \set{...|...}, \CE{...|...}, etc. Only the first | is treated specially.
+{\catcode`\|=\active
+  \xdef\set{\protect\expandafter\noexpand\csname set \endcsname}
+  \expandafter\gdef\csname set \endcsname#1{\left\{%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     {\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\right\}}
+  \xdef\CE{\protect\expandafter\noexpand\csname CE \endcsname}
+  \expandafter\gdef\csname CE \endcsname#1{\E\left[%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     {\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\right]}
+  \xdef\Ccov{\protect\expandafter\noexpand\csname Ccov \endcsname}
+  \expandafter\gdef\csname Ccov \endcsname#1{\cov\left[%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     {\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\right]}
+  \xdef\Cvar{\protect\expandafter\noexpand\csname Cvar \endcsname}
+  \expandafter\gdef\csname Cvar \endcsname#1{\var\left[%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     {\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\right]}
+}
+\def\midvert{\egroup\mid\bgroup}
+\def\SetVert{\@ifnextchar|{\|\@gobble}% turn || into \|
+    {\egroup\,\mid@vertical\,\bgroup}}
+\def\SetDoubleVert{\egroup\,\mid@dblvertical\,\bgroup}
+
+% If the user is using e-TeX with its \middle primitive, use that for
+% verticals instead of \vrule.
+%
+\begingroup
+ \edef\@tempa{\meaning\middle}
+ \edef\@tempb{\string\middle}
+\expandafter \endgroup \ifx\@tempa\@tempb
+ \def\mid@vertical{\middle|}
+ \def\mid@dblvertical{\middle\SavedDoubleVert}
+\else
+ \def\mid@vertical{\mskip1mu\vrule\mskip1mu}
+ \def\mid@dblvertical{\mskip1mu\vrule\mskip2.5mu\vrule\mskip1mu}
+\fi
+
+% May 2005: Double verticals; tweak spacing.
+% June 2005: Make robust
+% Sept 2006: fourier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------
+%  \now  -- Current time in h:mm AM/PM format
+%  \mdyy -- Today's date in m/d/yy format.  Forget Y2K; this is for humans!
+% ----------------------------------------------------------------------
+\newcount\timehh\timehh=\time
+\divide\timehh by 60
+\newcount\timemm\timemm=\time
+\count255=\timehh
+\multiply\count255 by -60
+\advance\timemm by \count255
+\newif\iftimePM
+\ifnum\timehh>11 \timePMtrue\else\timePMfalse\fi
+\ifnum\timehh<1 \advance\timehh by 12\fi
+\ifnum\timehh>12 \advance\timehh by -12\fi
+\def\now{\number\timehh:\ifnum\timemm<10 0\fi\number\timemm
+         \iftimePM pm\else am\fi}
+\newcount\mdYY\mdYY=\year
+\count255=\year
+\divide\count255 by 100
+\multiply\count255 by 100
+\advance\mdYY by -\count255
+\def\mdyy{\number\month/\number\day/\ifnum\mdYY<10 0\fi\number\mdYY}
+
+\endinput
+%%
+%% End of file `test.sty'.

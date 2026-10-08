@@ -1,0 +1,58 @@
+{
+  "validated_at": "2026-09-22T08:45:04.202883+00:00",
+  "core_group_count": 35,
+  "final_entry_count": 35,
+  "classification_counts": {
+    "L": 17,
+    "D": 5,
+    "I": 13
+  },
+  "direct_class_qualification": "All five families are conditional statistical candidates, not completed model mappings.",
+  "source_groups": 14,
+  "all_source_anchors_and_external_links_present": true,
+  "pdf_pages": 10,
+  "compile_warnings": [],
+  "all_entry_ids_in_pdf": true,
+  "visual_qa": "All ten pages rendered and visually inspected; affected pages rechecked after final spacing corrections. No clipping, overlap, split source blocks or missing symbols observed.",
+  "qa_images": [
+    "build/measurability/qa/page-01.png",
+    "build/measurability/qa/page-02.png",
+    "build/measurability/qa/page-03.png",
+    "build/measurability/qa/page-04.png",
+    "build/measurability/qa/page-05.png",
+    "build/measurability/qa/page-06.png",
+    "build/measurability/qa/page-07.png",
+    "build/measurability/qa/page-08.png",
+    "build/measurability/qa/page-09.png",
+    "build/measurability/qa/page-10.png"
+  ],
+  "baseline_preservation_checks": {
+    "AI_drafting/V6_production.tex": true,
+    "Codes/Two_country_proudction_zero_nu_b/TwoCountryProductionOLG.jl": true,
+    "Codes/Calibration_R1/V6_variable_parameter_classification.tex": true,
+    "Codes/Calibration_R1/V6_variable_parameter_classification.pdf": true,
+    "Codes/Calibration_R1/V6_variable_parameter_classification.md": true,
+    "Codes/Calibration_R1/V6_calibration_core.pdf": true
+  },
+  "bounded_wrds_probe_rows": {
+    "na_sample": 2,
+    "global_pilot": 3,
+    "crsp_sample": 12
+  },
+  "wrds_sample_hashes_verified": true,
+  "exact_fred_series": 19,
+  "exact_eurostat_observations": 6,
+  "open_econ_substitutions_rejected": 2,
+  "limitations": [
+    "Feasibility audit, not a full historical refresh or calibration.",
+    "Compustat Global intentionally capped; CRSP advertised count mismatch retained.",
+    "All model-to-data conditions and mixed-component qualifications remain explicit."
+  ],
+  "artifact_sha256": {
+    "V6_calibration_measurability.pdf": "d69bc1cd5b846cc7cb9665489c3c22138f01ca64c28b2614fc50cedd7f8ab0b2",
+    "V6_calibration_measurability.tex": "4fc3359dfab308372b28c489796f45f3ea77e8d4107111e9e2cc60d2ac578a64",
+    "V6_calibration_measurability.csv": "e2ee31fbfe7caf54fef0b45107c6428de772b37294b9c1c079c3894ca98004c5",
+    "measurability_evidence/measurability_rows.json": "9ed052d0efcb8aa9a77b4c4c1baeb1cc36e5b5b8032a2c8ce0c4250969d70dfb",
+    "measurability_evidence/source_ledger.json": "d5a30ef37b0b9250f21b161e7d2a4f5543927645c24a22b9527ea01109b9d479"
+  }
+}

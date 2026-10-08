@@ -1,0 +1,99 @@
+% Production-parameter chapter. Sources use P1--P12 from production_review.json.
+% Parent report supplies the evidence environment and \src macro.
+\clearpage
+\section{Inverse markups: competing empirical cost definitions}
+\textbf{V6 definition (M10).} For $i\in\{US,W\}$,
+\[
+X_i=N_i^{1-1/\vartheta_i}\left(\int_0^{N_i}x_i(j)^{\vartheta_i}\,dj\right)^{1/\vartheta_i},
+\qquad p_i=\frac{w_{H,i}}{\vartheta_i},\qquad
+\mu_i=\frac{p_i}{MC_i}=\frac1{\vartheta_i},\qquad
+\epsilon_i=\frac1{1-\vartheta_i}=\frac{\mu_i}{\mu_i-1}.
+\]
+Each intermediate uses skilled labor one-for-one. Thus $\vartheta_i$ is inverse gross markup; $\epsilon_i$ is the variety demand elasticity, distinct from the final-sector elasticity $1/\rho_i$. These dimensionless quantities require no annual-to-cohort exponentiation.
+
+\begin{evidence}
+\src{P5}\par De Loecker, Eeckhout and Unger (2020). Gross price/marginal-cost markup; sales-weighted across firms.
+& \textbf{Estimated:} $\mu=1.21$ (1980), $1.61$ (2016). Hence $\vartheta=0.826,\ 0.621$. Dated point estimates, not confidence bounds. Author manuscript, Section 3.1/Figure 1, pp.\ 9--10.
+& Annual U.S. Compustat, 1955--2016; sector/time-specific production-function elasticities divided by flexible-input revenue shares. Census comparisons address listed-firm selection. Within-year input flexibility is maintained.
+& Exact reciprocal conditional on the cost definition. Economic transfer is qualified: heterogeneous firms, overhead, selection and reallocation differ from V6's homogeneous intermediate sector. $1/\overline\mu\ne\overline{1/\mu}$. Do not also impose empirical net-profit shares without reconciling omitted costs.\\[4pt]
+
+\src{P6}\par Traina (2018), working paper. Markup treating operating expenses, including SG\&A, as variable inputs.
+& \textbf{Estimated:} approximately $\mu=1.15$ (1950), $1.10$ (1980), $1.15$ (sample end); $\vartheta=0.870,\ 0.909,\ 0.870$. Section ``Longer Time Horizons,'' Figure 5 discussion; original text verified.
+& U.S. Compustat, 1950--2016; industry-specific Cobb--Douglas production estimation. Utilities and financials excluded. Annual and three-year production windows produce similar paths.
+& Preserve this lower-markup alternative. The disputed variable-versus-fixed treatment of marketing/management costs explains much of the difference from the COGS approach. This is a separate measurement specification, not sampling uncertainty around the preceding estimates. V6's intermediate cost structure still differs.\\[4pt]
+
+\src{P7}\par De Loecker and Eeckhout, \emph{Global Market Power}, February 2021 version. Regional sales-weighted markups.
+& \textbf{Estimated, 2016:} Europe $1.63$, Asia $1.45$, Africa $1.38$, Oceania $1.55$, South America $1.59$; inverse values $0.613,0.690,0.725,0.645,0.629$. U.S. $1.84\Rightarrow0.543$. Table 1, p.\ 13.
+& Annual 1980--2016; 67,491 firms in 134 countries. Global listed-firm accounts, with U.S.-based industry output elasticities. Sales-weighted aggregation; headquarter location need not equal production location.
+& Useful geographic alternatives, not a full-RoW coefficient. The U.S. estimate differs from the preceding paper under a different database/specification. The global aggregate includes the U.S. Define the RoW universe and aggregation weights before choosing $\vartheta_W$.\\[4pt]
+\end{evidence}
+
+\textbf{Methodological disagreement.} \src{P8} Bond et al.\ (2021) question substituting revenue elasticities for output elasticities and treating imperfectly flexible or demand-shifting inputs as flexible. \src{P9} De Loecker (2021) emphasizes additional price/quantity data or structural assumptions as remedies. Neither gives a new numerical V6 coefficient; the debate lowers confidence in a mechanical aggregate-markup transfer.
+
+\textbf{Recommendation, separate from evidence.} For a modern U.S. listed-firm mapping, retain $\vartheta_{US}=0.621$ and $0.870$ as competing cost-definition candidates. Use $[0.621,0.909]$, extended to $0.543$, as a measurement-specification envelope, not a confidence interval. Defer a single RoW point; Europe $0.613$ and Asia $0.690$ are explicit geographic anchors. Algebraic mapping confidence is high; economic transfer is low to medium for the U.S. and low for RoW.
+
+\clearpage
+\section{Final-sector curvature: the skill-substitution evidence}
+\textbf{V6 definition (M12).} With $\widetilde X_i=A_{X,i}X_i$ and $\widetilde L_i=A_{L,i}L_i$,
+\[
+F_i=\left[\alpha_i\widetilde X_i^{1-\rho_i}+(1-\alpha_i)\widetilde L_i^{1-\rho_i}\right]^{1/(1-\rho_i)},
+\qquad \sigma_i=\frac1{\rho_i},\qquad X_i=\varphi_i H_i.
+\]
+The relevant margin is skilled labor allocated to intermediate production versus unskilled labor. Total skilled labor includes R\&D. The current U.S. solver requires $\rho_{US}>1$, hence $\sigma_{US}<1$; retain evidence outside this restriction.
+
+\begin{evidence}
+\src{P1}\par Katz and Murphy (1992). College/high-school-equivalent labor substitution.
+& \textbf{Estimated:} inverse-demand slope $-0.709$ (SE $0.150$); $\sigma\simeq1.41$. Equation (19), p.\ 69; discussion p.\ 72. Their plotted $\sigma=0.5,4$ alternatives are scenarios, not estimated bounds.
+& Annual U.S. CPS, 1963--1987; efficiency-unit labor aggregates. OLS relative wages on relative supplies and a linear technology trend, interpreted through competitive two-labor CES demand.
+& Conditional proxy $\rho=0.709$. Skill definitions, technology trends, V6 markups and the production/R\&D split require alignment. Trend-controlled OLS is not independent identification of the technology process. This candidate cannot run under the current $\rho_{US}>1$ restriction.\\[4pt]
+
+\src{P2}\par Ciccone and Peri (2005). Long-run substitution between education groups.
+& \textbf{Estimated:} preferred $\sigma=1.50$ (SE $0.44$); IV variants $1.20$--$2.00$; fixed-effects OLS $2.85$--$3.44$. Table 4, p.\ 656. These estimator ranges are not confidence intervals.
+& Five decennial censuses, 1950--1990, 48 U.S. states. Schooling/child-labor-law instruments, state/year effects; preferred Fuller LIML. Wages: U.S.-born white full-time males aged 40--50; baseline supply: white males 21--59.
+& Preferred $\rho=0.667$; IV point-sensitivity $0.500$--$0.833$. Long-run education substitution is a qualified skill-input proxy, not an exact V6 or RoW estimate. Changing schooling aggregation and weak-instrument treatment matters.\\[4pt]
+
+\src{P4}\par Krusell, Ohanian, R\'{i}os-Rull and Violante (2000). Distinct nested-CES elasticities.
+& \textbf{Estimated:} outer unskilled-versus-equipment/skilled elasticity $1.67$; inner equipment-versus-skilled elasticity $0.67$. Table II, p.\ 1041. Alternative skill threshold gives outer elasticity $1.89$ (p.\ 1044).
+& Annual U.S. CPS and capital/quality-adjusted equipment-price data, 1963--1992. Two-step simulated pseudo-maximum likelihood; structures, equipment, two labor types and latent labor efficiencies.
+& Outer-nest analogy: $\rho=1/1.67=0.599$. Inverting the inner $0.67$ to obtain $1.493$ maps the \emph{wrong input pair}; it cannot validate V6 complementarity. The complete nested technology differs from V6.\\[4pt]
+
+\src{P12}\par Havranek, Irsova, Laslopova and Zeynalova (2024 issue; online 2022). Negative inverse skill elasticity.
+& \textbf{Meta-estimated:} Table 5, p.\ 1197: all countries $-0.27$ (95\% credible interval $[-0.48,-0.05]$); U.S. $-0.16$ $[-0.38,0.06]$; developing $-0.47$ $[-0.70,-0.24]$. Implied $\sigma=3.7,6.3,2.1$.
+& 682 estimates/77 studies; publication- and attenuation-bias analysis, model averaging. Mixed populations/frequencies; preferred profile favors annual panels, multilevel CES, fixed effects and valid IV.
+& Skill-proxy $\rho=0.27,0.16,0.47$. U.S. mapped interval $[-0.06,0.38]$ crosses zero; do not report a finite positive elasticity interval. Bias-correction/IV assumptions matter. This newer evidence challenges a universal $\sigma=1.5$ benchmark.\\[4pt]
+\end{evidence}
+
+\textbf{Convention and version audit.} \src{P3} Caselli--Coleman (2006, pp.\ 504--505) \emph{borrow} $\sigma=1.4$ and use $1.1,1.4,1.7,2$ for robustness; these are not independent estimates. Their CES exponent $s$ maps as $\rho_{V6}=1-s=1/\sigma$. The 2020/2021 ``Less Substitutable'' working-paper version of \src{P12}, reporting $0.6$--$0.9$, is superseded by the final 2024 paper and must not count as independent evidence.
+
+\clearpage
+\section{Complementarity evidence and the unresolved V6 input mapping}
+The following papers support complementarity of \emph{physical capital and labor}. They deserve consideration alongside skill-substitution evidence, but their input pairs differ. A theorem-compatible reciprocal is not sufficient evidence for the V6 coefficient.
+
+\begin{evidence}
+\src{P10}\par Oberfield and Raval (2021). Aggregate physical capital--labor elasticity, including reallocation.
+& \textbf{Estimated:} aggregate manufacturing $\sigma=0.5$--$0.7$; plant-level $0.3$--$0.5$ (pp.\ 703, 705). Figure 4b, p.\ 719: $0.60\to0.54$ over 1972--2007 with micro elasticities fixed at 1997 values.
+& U.S. Census of Manufactures/Annual Survey of Manufactures. Local-wage IV identifies plant elasticities; amenities and shift-share instruments; heterogeneity determines aggregation. Annual/census observations, not a cohort parameter.
+& Reciprocal \emph{analogy}: $\rho=1.43$--$2.00$, with $1.67$ from $\sigma=0.60$. The source does not impose a stable aggregate CES. Physical $K$ versus total labor is not V6's $X=\varphi H$ versus $L$; transfer confidence is low.\\[4pt]
+
+\src{P11}\par Gechert, Havranek, Irsova and Kolcunova (2022). Conditional meta-estimates of capital--labor substitution.
+& \textbf{Meta-estimated:} Table 9, p.\ 77: best practice $\sigma=0.30$, 95\% CI $[-0.01,0.60]$; country-data variant $0.50$ $[0.18,0.81]$; quarterly variant $0.42$ $[0.08,0.76]$.
+& 3,186 estimates/121 studies published before 2019. Nonlinear publication-bias corrections, Bayesian/frequentist model averaging, 71 study characteristics. Mixed countries, sectors and frequencies; methodological profile is consequential.
+& Point reciprocals $3.33,2.00,2.38$ are capital--labor analogies. The baseline interval crosses zero: it cannot become a bounded positive $\rho$ interval by inversion. Neither the synthetic-study mean nor its methodological choices directly identify the V6 input margin.\\[4pt]
+\end{evidence}
+
+\subsection{What must be held fixed in the empirical mapping}
+V6's factor prices and symmetry imply
+\[
+\log\frac{w_{H,i}}{w_{L,i}}
+=\log\frac{\vartheta_i\alpha_i}{1-\alpha_i}
++(1-\rho_i)\log\frac{A_{X,i}}{A_{L,i}}
+-\rho_i\log\frac{X_i}{L_i},\qquad X_i=\varphi_iH_i.
+\]
+Consequently, a regression on total $H_i/L_i$ need not recover $-\rho_i$ when R\&D allocation, knowledge-driven augmentations or markups move with relative labor supply. The two literatures also disagree about the relevant input pair and aggregation. Their results should remain separate empirical specifications; averaging them into one ``consensus'' curvature would discard the economic distinction.
+
+\subsection{Proposed candidates and sensitivity design}
+\textbf{Skill-input branch.} Retain $\rho=0.667$ (Ciccone--Peri) and $0.709$ (Katz--Murphy) as original-study candidates, alongside the newer meta-evidence candidates $0.27$ (all countries), $0.16$ (U.S.) and $0.47$ (developing countries). An initial \emph{analyst} scenario envelope is $[0.16,0.91]$, with $0.05$ as a high-substitution stress point suggested by the all-country meta interval. These are not a pooled estimate or V6 confidence interval. RoW application requires explicit geographic/skill pooling assumptions.
+
+\textbf{Capital--labor analogy branch.} Consider $\rho=2$ as a separate complementarity candidate, and $[1.43,3.33]$ as a broad scenario envelope drawn from the two studies above. The familiar HKT illustration at $\rho=2$ does not turn this analogy into an estimated V6 benchmark. Keep low mapping confidence visible.
+
+\textbf{Implementation implication.} The central skill-proxy candidates cannot run under the current $\rho_{US}>1$ restriction. Report this as a conflict between an empirical mapping and the implemented model class; do not discard the estimates or silently truncate them. Any operational choice of the complementarity branch remains conditional on defending its economic mapping. Elasticities stay dimensionless when changing the model period.

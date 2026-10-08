@@ -1,0 +1,246 @@
+{
+  "review_date": "2026-09-27",
+  "authoritative_file": "Codes/Calibration_R1/V6_parameter_calibration_groups.tex",
+  "scope": [
+    "M01",
+    "M02"
+  ],
+  "excluded": [
+    "H_i",
+    "L_i",
+    "Group C"
+  ],
+  "literature": [
+    {
+      "key": "HKT25",
+      "title": "Technological Innovation and Bursting Bubbles",
+      "authors": "Hirano; Kishi; Toda",
+      "year": 2025,
+      "version": "arXiv:2501.08215v2",
+      "url": "https://arxiv.org/abs/2501.08215v2",
+      "type": "theoretical numerical illustration",
+      "locator": "Figure 1 note; local TeX line 602",
+      "numbers": {
+        "beta": 0.5
+      },
+      "numeric_verification": "local original TeX",
+      "transfer": "Same weight definition; no empirical discipline."
+    },
+    {
+      "key": "GP02",
+      "title": "Consumption Over the Life Cycle",
+      "authors": "Gourinchas; Parker",
+      "year": 2002,
+      "doi": "10.1111/1468-0262.00269",
+      "url": "https://jggarita.github.io/MacroIntermedia/materials/Readings/GourinchasParker2002.pdf",
+      "type": "structural estimate",
+      "locator": "Table III p.71; Table V p.79",
+      "numbers": {
+        "annual_discount": [
+          0.9598,
+          0.9569
+        ],
+        "gamma_crra": [
+          0.514,
+          1.3969
+        ],
+        "gamma_specification_extremes": [
+          0.1278,
+          5.2823
+        ]
+      },
+      "transfer": "Source CRRA implies inverse EIS; V6 fixes EIS=1. Beta needs cohort bridge."
+    },
+    {
+      "key": "LLMRT26",
+      "title": "Estimating Discount Functions with Consumption Choices over the Lifecycle",
+      "authors": "Laibson; Lee; Maxted; Repetto; Tobacman",
+      "year": 2026,
+      "doi": "10.1093/rfs/hhae035",
+      "url": "https://academic.oup.com/rfs/article/39/6/1580/7703274?rss=1",
+      "type": "structural estimate",
+      "locator": "Table 3; footnotes 25 and 39",
+      "numbers": {
+        "annual_discount_exponential": 0.9601,
+        "annual_discount_present_biased": 0.9891,
+        "present_bias": 0.5305,
+        "crra_exponential": 1.4663,
+        "crra_present_biased": 1.9355
+      },
+      "transfer": "Present-bias b is not V6 beta; no EZ risk/EIS separation."
+    },
+    {
+      "key": "BJKS97",
+      "title": "Preference Parameters and Behavioral Heterogeneity: An Experimental Approach in the Health and Retirement Study",
+      "authors": "Barsky; Juster; Kimball; Shapiro",
+      "year": 1997,
+      "doi": "10.1162/003355397555280",
+      "url": "https://websites.umich.edu/~mkimball/keio/5.%20papers/qje-bjks-risk-aversion.pdf",
+      "type": "survey estimate",
+      "locator": "Table XI p.563",
+      "numbers": {
+        "mean_rra": 12.1193,
+        "mean_tolerance": 0.2391,
+        "harmonic_rra_rounded": 4.2
+      },
+      "transfer": "Heterogeneous lifetime-income preferences; do not invert mean tolerance unqualified."
+    },
+    {
+      "key": "KSS08",
+      "title": "Imputing Risk Tolerance From Survey Responses",
+      "authors": "Kimball; Sahm; Shapiro",
+      "year": 2008,
+      "doi": "10.1198/016214508000000139",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2856097/",
+      "type": "survey estimate corrected for response error",
+      "locator": "Equations 1–2; Table 4",
+      "numbers": {
+        "mean_rra": 8.2,
+        "median_rra": 6.3,
+        "rra_iqr": [
+          3.9,
+          10.3
+        ],
+        "rra_p5_p95": [
+          1.9,
+          20.8
+        ]
+      },
+      "range_type": "population heterogeneity, not confidence interval"
+    },
+    {
+      "key": "HL02",
+      "title": "Risk Aversion and Incentive Effects",
+      "authors": "Holt; Laury",
+      "year": 2002,
+      "doi": "10.1257/000282802762024700",
+      "url": "https://lorko.sk/wp-content/uploads/2023/10/HoltLaury2002.pdf",
+      "type": "incentivized laboratory choices",
+      "locator": "Table 3 and discussion p.1649",
+      "numbers": {
+        "low_payoff_center": [
+          0.3,
+          0.5
+        ],
+        "example_choice_bin": [
+          0.41,
+          0.68
+        ]
+      },
+      "range_type": "choice-implied bin; not confidence interval",
+      "transfer": "Cash-payoff utility; RRA changes with stakes."
+    },
+    {
+      "key": "VA03",
+      "title": "Stock-Market Participation, Intertemporal Substitution, and Risk-Aversion",
+      "authors": "Vissing-Jorgensen; Attanasio",
+      "year": 2003,
+      "doi": "10.1257/000282803321947399",
+      "url": "https://www.researchgate.net/publication/4981014_Stock-Market_Participation_Intertemporal_Substitution_and_Risk-Aversion",
+      "type": "structural asset-pricing estimate",
+      "version": "Numeric evidence from author-uploaded January 10, 2003 extended manuscript",
+      "locator": "Table 2A Case 4 p.14",
+      "numbers": {
+        "all_stockholders": [
+          8.1,
+          6.3,
+          5.5
+        ],
+        "richest_third": [
+          28.4,
+          19.9,
+          16.5
+        ],
+        "middle_case_all_stockholders_ci95": [
+          0.3,
+          13.9
+        ]
+      },
+      "transfer": "EZ curvature comparable, EIS and human capital assumptions differ."
+    },
+    {
+      "key": "EHI25",
+      "title": "Relative Risk Aversion: A Meta-Analysis",
+      "authors": "Elminejad; Havranek; Irsova",
+      "year": 2025,
+      "doi": "10.1111/joes.12689",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12689",
+      "type": "meta-analysis; use as synthesis",
+      "locator": "Sections 1/5 and Table 6",
+      "numbers": {
+        "bias_adjusted_finance": [
+          2,
+          7
+        ],
+        "bias_adjusted_economics_approx": 1,
+        "us_context": 5.2,
+        "us_context_ci95": [
+          2.28,
+          8.11
+        ]
+      },
+      "transfer": "Context-dependent synthesis; not a new V6 estimate."
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "M01",
+      "symbol": "beta",
+      "baseline_candidate": null,
+      "comparison_illustration": 0.5,
+      "mapping_confidence": "low numerical; high conditional algebra",
+      "status": "No empirical V6 point before cohort mapping",
+      "conditional_formula": "delta_annual^Delta/(1+delta_annual^Delta)",
+      "assumed_Delta_years": [
+        20,
+        40
+      ],
+      "source_delta_scenarios": [
+        0.9569,
+        0.9891
+      ],
+      "calculated_beta_envelope": [
+        0.1465,
+        0.4454
+      ],
+      "range_type": "conditional scenario, not credible interval",
+      "support": [
+        "HKT25",
+        "GP02",
+        "LLMRT26"
+      ]
+    },
+    {
+      "id": "M02",
+      "symbol": "gamma",
+      "baseline_candidate": 5,
+      "alternative_candidate": 2,
+      "core_scenarios": [
+        0.5,
+        2,
+        5,
+        6.3,
+        10
+      ],
+      "tail_scenario": 20,
+      "range_type": "recommended sensitivity envelope, not pooled confidence interval",
+      "mapping_confidence": "medium conceptual; low numerical",
+      "support": [
+        "VA03",
+        "KSS08",
+        "EHI25",
+        "GP02",
+        "HL02"
+      ],
+      "restriction_conflict": "Baseline 5 violates sufficient-theorem gamma<1; preserve and report this conflict."
+    }
+  ],
+  "access_audit": {
+    "Consensus": "Search plus three required fetches succeeded",
+    "Scite": "Search and targeted DOI checks succeeded",
+    "Wiley_Scholar_Gateway": "Two reframed calls failed with internal error",
+    "Undermind": "Handled by parent agent",
+    "original_full_text": "All numeric evidence checked in source originals; VA numbers explicitly from extended draft",
+    "raw_plugin_evidence": "preferences_raw/plugin_evidence.json"
+  }
+}

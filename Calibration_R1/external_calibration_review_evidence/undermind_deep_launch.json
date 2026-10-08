@@ -1,0 +1,12 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Launched deep search 'External calibration of V6 preferences and production'. Call display_deep_search_results(search='/External calibration of V6 preferences and production') now so the user can follow its progress and see its results when it finishes (unless you're launching many deep searches as a batch).\n\nWhen mentioning this deep search to the user, include its web-app link: https://app.undermind.ai/projects/6513b93c-0aaf-4fd9-9554-e57b8db4a0cf?path=/External%20calibration%20of%20V6%20preferences%20and%20production"
+    }
+  ],
+  "structuredContent": {
+    "result": "Launched deep search 'External calibration of V6 preferences and production'. Call display_deep_search_results(search='/External calibration of V6 preferences and production') now so the user can follow its progress and see its results when it finishes (unless you're launching many deep searches as a batch).\n\nWhen mentioning this deep search to the user, include its web-app link: https://app.undermind.ai/projects/6513b93c-0aaf-4fd9-9554-e57b8db4a0cf?path=/External%20calibration%20of%20V6%20preferences%20and%20production"
+  },
+  "isError": false
+}

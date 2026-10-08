@@ -1,0 +1,123 @@
+[
+  {
+    "id": "EZ",
+    "label": "EZ89",
+    "authors": "Epstein, Larry G., and Stanley E. Zin",
+    "year": 1989,
+    "title": "Substitution, Risk Aversion, and the Temporal Behavior of Consumption and Asset Returns: A Theoretical Framework",
+    "venue": "Econometrica 57(4), 937--969",
+    "url": "https://doi.org/10.2307/1913778",
+    "checked_url": "https://people.bu.edu/lepstein/files-research/EZ1989.pdf",
+    "use": "Preference definitions and separation of risk aversion from intertemporal substitution; not a V6 parameter estimate."
+  },
+  {
+    "id": "BJKS",
+    "label": "BJKS97",
+    "authors": "Barsky, Robert B., F. Thomas Juster, Miles S. Kimball, and Matthew D. Shapiro",
+    "year": 1997,
+    "title": "Preference Parameters and Behavioral Heterogeneity: An Experimental Approach in the Health and Retirement Study",
+    "venue": "Quarterly Journal of Economics 112(2), 537--579",
+    "url": "https://doi.org/10.1162/003355397555280",
+    "checked_url": "https://websites.umich.edu/~shapiro/papers/qje1997-jstor.pdf",
+    "use": "Survey preference evidence; population, risk definition and aggregation require a transfer audit."
+  },
+  {
+    "id": "KM",
+    "label": "KM92",
+    "authors": "Katz, Lawrence F., and Kevin M. Murphy",
+    "year": 1992,
+    "title": "Changes in Relative Wages, 1963--1987: Supply and Demand Factors",
+    "venue": "Quarterly Journal of Economics 107(1), 35--78",
+    "url": "https://doi.org/10.2307/2118323",
+    "checked_url": "https://academic.oup.com/qje/article-abstract/107/1/35/1925833",
+    "use": "Skill demand/supply evidence; its labor margin is not automatically the V6 intermediate-input margin."
+  },
+  {
+    "id": "CC",
+    "label": "CC06",
+    "authors": "Caselli, Francesco, and Wilbur John Coleman II",
+    "year": 2006,
+    "title": "The World Technology Frontier",
+    "venue": "American Economic Review 96(3), 499--522",
+    "url": "https://doi.org/10.1257/aer.96.3.499",
+    "checked_url": "https://pubs.aeaweb.org/doi/abs/10.1257/aer.96.3.499",
+    "use": "Skill-specific efficiency and production comparisons; supports conditional mapping, not independent V6 scale identification."
+  },
+  {
+    "id": "DLEU",
+    "label": "DLEU20",
+    "authors": "De Loecker, Jan, Jan Eeckhout, and Gabriel Unger",
+    "year": 2020,
+    "title": "The Rise of Market Power and the Macroeconomic Implications",
+    "venue": "Quarterly Journal of Economics 135(2), 561--644",
+    "url": "https://doi.org/10.1093/qje/qjz041",
+    "checked_url": "https://crei.cat/wp-content/uploads/2020/10/the-rise-1.pdf",
+    "use": "Firm-markup evidence; requires marginal-cost, sector and aggregation alignment."
+  },
+  {
+    "id": "BJRW",
+    "label": "BJRW20",
+    "authors": "Bloom, Nicholas, Charles I. Jones, John Van Reenen, and Michael Webb",
+    "year": 2020,
+    "title": "Are Ideas Getting Harder to Find?",
+    "venue": "American Economic Review 110(4), 1104--1144",
+    "url": "https://doi.org/10.1257/aer.20180338",
+    "checked_url": "https://www.aeaweb.org/articles?id=10.1257/aer.20180338",
+    "use": "Research-effort/productivity evidence; neither an estimate of V6 varieties nor a direct spillover coefficient."
+  },
+  {
+    "id": "BARRO",
+    "label": "Barro06",
+    "authors": "Barro, Robert J.",
+    "year": 2006,
+    "title": "Rare Disasters and Asset Markets in the Twentieth Century",
+    "venue": "Quarterly Journal of Economics 121(3), 823--866",
+    "url": "https://doi.org/10.1162/qjec.121.3.823",
+    "checked_url": "https://dash.harvard.edu/entities/publication/73120378-850d-6bd4-e053-0100007fdf3b",
+    "use": "Disaster-probability discipline as an analogy; recurrent macro disasters differ from an absorbing technology switch."
+  },
+  {
+    "id": "CR",
+    "label": "CR13",
+    "authors": "Coeurdacier, Nicolas, and Hélène Rey",
+    "year": 2013,
+    "title": "Home Bias in Open Economy Financial Macroeconomics",
+    "venue": "Journal of Economic Literature 51(1), 63--115",
+    "url": "https://doi.org/10.1257/jel.51.1.63",
+    "checked_url": "https://www.aeaweb.org/articles?id=10.1257/jel.51.1.63",
+    "use": "Alternative portfolio mechanisms and useful evidence; no transferable V6 preference-center or utility-cost value."
+  },
+  {
+    "id": "KVJ",
+    "label": "KVJ12",
+    "authors": "Krishnamurthy, Arvind, and Annette Vissing-Jorgensen",
+    "year": 2012,
+    "title": "The Aggregate Demand for Treasury Debt",
+    "venue": "Journal of Political Economy 120(2), 233--267",
+    "url": "https://doi.org/10.1086/666526",
+    "checked_url": "https://www.journals.uchicago.edu/doi/pdf/10.1086/666526",
+    "use": "Safety/liquidity demand and yield spreads; a spread is not the V6 utility coefficient."
+  },
+  {
+    "id": "HKT",
+    "label": "HKT25",
+    "authors": "Hirano, Tomohiro, Keiichi Kishi, and Alexis Akira Toda",
+    "year": 2025,
+    "title": "Technological Innovation and Bursting Bubbles",
+    "venue": "Working paper, arXiv:2501.08215v2",
+    "url": "https://arxiv.org/abs/2501.08215v2",
+    "checked_url": "https://arxiv.org/abs/2501.08215v2",
+    "use": "Version underlying the local V6 comparison. Numerical illustrations are not empirical estimates; a later version exists."
+  },
+  {
+    "id": "AHP",
+    "label": "AHP25",
+    "authors": "Atkeson, Andrew, Jonathan Heathcote, and Fabrizio Perri",
+    "year": 2025,
+    "title": "The End of Privilege: A Reexamination of the Net Foreign Asset Position of the United States",
+    "venue": "American Economic Review 115(7), 2151--2206",
+    "url": "https://doi.org/10.1257/aer.20230732",
+    "checked_url": "https://www.aeaweb.org/articles?id=10.1257/aer.20230732",
+    "use": "Section III separates accounting construction from model inversion. Its parameter paths and identification do not transfer to V6."
+  }
+]

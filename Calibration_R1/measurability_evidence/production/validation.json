@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-09-22T08:11:22.954350+00:00",
+  "entry_count": 19,
+  "unique_core_entries": true,
+  "live_numeric_observations": 6,
+  "each_response_matches_requested_dimensions": true,
+  "notes": [
+    "LFS ED5-8 Y25-64 both-sex thousand-person cells; annual reference, not FTE.",
+    "R&D P51G N1171G all industries current million national currency; not knowledge stock or augmentation.",
+    "OpenEcon MSTI result rejected for wrong measure G+T_RS instead of B_RS.",
+    "OECD direct endpoint returned HTTP403; not evidence of data absence."
+  ]
+}

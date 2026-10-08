@@ -1,0 +1,210 @@
+\clearpage
+\section{Preference weight: M01, $\beta$ (Group B)}
+
+In V6, $\beta$ is the old-age utility weight in
+\[
+ (1-\beta)\log c_t^y+
+ \frac{\beta}{1-\gamma}\log E_t[(c_{t+1}^o)^{1-\gamma}],
+ \qquad A_{US,t}=\beta e_{US,t}.
+\]
+It is a two-period saving weight. It is neither an annual discount factor nor the
+present-bias parameter sometimes also called $\beta$.
+For two consumption dates with unnormalized weights $1,d$, normalization gives
+$\beta=d/(1+d)$. Setting $d=\delta_a^\Delta$ additionally assumes that one V6
+transition represents $\Delta$ years and that endpoint utility appropriately
+represents both life stages. Aggregating annual utility within life stages can
+require a different bridge.
+
+\begin{evidence}
+Hirano, Kishi and Toda, pinned 2025 version \src{HKT25}.
+Same two-period utility-weight interpretation; Figure~1 note.
+&
+$\beta=0.5$: theoretical numerical illustration, not an estimate or empirical
+range.
+&
+Analytical overlapping-generations bubble model and numerical figure.
+A model period is a generation; the figure does not estimate its calendar length.
+&
+Strong definition match, absent empirical discipline. Useful for reproducing
+the original mechanism; do not label it a literature-estimated baseline.
+\\[5pt]
+Gourinchas and Parker (2002) \src{GP02}.
+Source $\delta$ discounts annual expected CRRA utility; Table~III, p.~71.
+&
+Estimated $\delta=0.9598$ (corrected SE $0.0179$); optimal-weight variant
+$0.9569$ (SE $0.0150$). These are distinct estimators, not interval endpoints.
+&
+Simulated-moments lifecycle consumption model with earnings risk, liquidity
+constraints and retirement. US CEX 1980--1993, with PSID income dynamics;
+annual periods.
+&
+Conditional endpoint bridge:
+$\beta=\delta^\Delta/(1+\delta^\Delta)$.
+For $\Delta=30$, these points imply $0.2260$ and $0.2105$ (our calculations).
+Different EIS, income timing and household budgets make numerical transfer weak.
+\\[5pt]
+Laibson et al.\ (2026) \src{LLMRT26}.
+Annual discount function; Table~3, frequency in footnote~25.
+&
+Exponential estimate $\delta=0.9601$ (SE $0.0053$).
+Present-biased model: continuation $\delta=0.9891$ (SE $0.0051$) and
+present-bias weight $b=0.5305$ (SE $0.1143$).
+&
+Simulated moments from US SCF 1995--2013; high-school households without
+college degrees, with credit cards. Annual lifecycle model; 16 moments for
+ages 21--60.
+&
+The exponential point yields conditional $\beta=0.2277$ at $\Delta=30$.
+The present-biased continuation factor is not a clean exponential alternative;
+$b\neq\beta_{\mathrm{V6}}$. Do not import either parameter directly.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Leave the empirical V6 baseline unassigned until life-stage duration and utility
+aggregation are specified. Retain $0.5$ solely as the HKT comparison case.
+With the explicitly assumed endpoint bridge and $\Delta=20$--$40$, the two
+exponential studies' $\delta=0.9569$--$0.9601$ imply approximately
+$\beta=0.1465$--$0.3070$. Adding the present-biased continuation factor as a
+separate, qualified scenario extends the upper endpoint to $0.4454$.
+These are calculated scenarios, not confidence intervals or evidence that V6
+must satisfy them. Mapping confidence: high conditional algebra, low empirical
+transferability.
+
+\clearpage
+\section{Risk curvature: M02, $\gamma$ (Group A)}
+
+V6's old-age certainty equivalent is
+$\{E_t[(c_{t+1}^o)^{1-\gamma}]\}^{1/(1-\gamma)}$.
+Thus $\gamma$ controls risk aversion, while the intertemporal elasticity of
+substitution (EIS) is fixed at one. Its numerical value is not annualized.
+The sufficient-theorem condition $\gamma<1$ is a model restriction, not a
+criterion for accepting evidence. Values above one remain relevant candidates;
+the displayed formula needs its limiting interpretation at $\gamma=1$.
+
+\begin{evidence}
+Gourinchas and Parker (2002) \src{GP02}.
+Source CRRA curvature; Tables~III and V, pp.~71,79.
+&
+Estimated curvature $0.5140$ (SE $0.1707$) or $1.3969$ (SE $0.1137$), depending
+on weighting. Specification variants span $0.1278$--$5.2823$; some imply
+implausible initial wealth.
+&
+Annual lifecycle simulated moments; US CEX 1980--1993 and PSID income risks.
+Risk curvature and annual discounting are jointly estimated.
+&
+Risk-curvature interpretation is comparable, but source EIS equals inverse
+CRRA, whereas V6 separates risk aversion and fixes EIS at one. Neither the
+specification span nor selected low estimates constitute a V6 confidence range.
+\\[5pt]
+Laibson et al.\ (2026) \src{LLMRT26}.
+Source consumption-utility CRRA curvature; Table~3.
+&
+Estimated $1.4663$ (SE $0.2256$) with exponential discounting;
+$1.9355$ (SE $0.4350$) with present bias.
+&
+Annual US lifecycle model; same SCF population and moments described above.
+Curvature is jointly fitted with discount parameters.
+&
+Supports a low-to-moderate alternative near two. No Epstein--Zin separation;
+liquidity constraints and present bias alter effective intertemporal responses.
+Do not identify effective EIS mechanically with inverse curvature in the
+present-biased model.
+\\[5pt]
+Barsky et al.\ (1997) \src{BJKS97}, Table~XI, p.~563;
+Kimball et al.\ (2008) \src{KSS08}, Table~4.
+CRRA over lifetime resources inferred from hypothetical income gambles.
+&
+BJKS: mean risk aversion $12.1193$, harmonic mean about $4.2$.
+KSS, correcting response error: mean $8.2$, median $6.3$, interquartile range
+$3.9$--$10.3$, 5th--95th percentiles $1.9$--$20.8$.
+&
+US Health and Retirement Study, older respondents and spouses.
+KSS uses repeated 1992--2002 questions, response-error and status-quo
+adjustments. This is lifetime-risk elicitation, not an annual asset-pricing model.
+&
+The ranges describe population heterogeneity, not estimation confidence.
+A representative V6 curvature requires an aggregation argument.
+The reciprocal of mean risk tolerance is a harmonic risk-aversion statistic,
+not the mean; do not silently use it as representative $\gamma$.
+\\[5pt]
+Holt and Laury (2002) \src{HL02}.
+CRRA utility of experimental cash payoffs; Table~3 and p.~1649.
+&
+Low-payoff behavior centers roughly around $0.3$--$0.5$; one
+choice-implied interval is $0.41$--$0.68$. Risk aversion increases when
+real stakes increase. These intervals are not confidence intervals.
+&
+Incentivized paired-lottery choices by students and faculty at three US
+universities; one-shot experiments rather than a calendar-frequency model.
+&
+Evidence supports retaining subunit-curvature scenarios. Transferability is
+weak: small cash-payoff risk, stakes dependence and a selected subject pool
+differ from V6 old-age consumption risk.
+\\[5pt]
+\end{evidence}
+
+\clearpage
+\subsection{Asset-pricing estimates, synthesis and proposed risk-curvature scenarios}
+\begin{evidence}
+Vissing-Jorgensen and Attanasio (2003) \src{VA03}.
+Epstein--Zin risk curvature; author-uploaded January~10 extended manuscript,
+Table~2A, case~4, p.~14.
+&
+All-stockholder estimates $8.1,6.3,5.5$ as assumed human-wealth share rises
+from $1/3$ to $2/3$ to $0.9$; richest-third estimates $28.4,19.9,16.5$.
+Middle all-stockholder case: 95\% interval $[0.3,13.9]$.
+&
+US CEX 1982--1996 stockholders; semiannual consumption growth with overlapping
+monthly observations, asset returns and VAR-based human-wealth adjustments.
+Structural asset-pricing estimation.
+&
+Conceptually closer because risk curvature and EIS are separated. Numerical
+mapping remains weak: EIS, wealth aggregation and human-capital assumptions
+differ. Numbers are verified in the dated extended manuscript, not asserted
+to be an identically numbered table in the shorter published article.
+\\[5pt]
+Chen, Favilukis and Ludvigson (2013) \src{CFL2013}.
+Source $\theta$ is risk aversion; $\rho^{-1}$ is EIS.
+Equations~(1)--(2), p.~44; Table~2, p.~62.
+&
+Stockholder $\theta=20,17$ with 95\% intervals $[0.25,40]$, $[1,43.3]$;
+aggregate $\theta=57.5,60$ with intervals $[27.5,129]$, $[42,144]$.
+EIS estimates exceed one.
+&
+Quarterly US data 1952Q1--2005Q1; consumption, Treasury bills and equity
+portfolios. Profile sieve minimum distance with second-step GMM.
+Stockholder consumption is a fitted mimicking factor.
+&
+Map $\gamma=\theta$ conceptually, without annualization. Infinite-horizon
+continuation-value risk and freely estimated EIS differ from V6.
+Wide bootstrap intervals and possible model misspecification limit transfer.
+The span $17$--$60$ is between specifications, not a confidence interval.
+\\[5pt]
+Elminejad, Havranek and Irsova (2025) \src{EHI25}.
+Relative-risk-aversion meta-analysis; Table~6 and main discussion.
+&
+Bias-adjusted summaries differ by context: roughly one in economics,
+two--seven in finance. US-context prediction $5.20$, 95\% interval
+$[2.28,8.11]$.
+&
+Synthesis of 1,021 estimates from 92 studies, with literature search ending
+May~2022. Studies differ in populations, frequencies and empirical designs.
+This is secondary synthesis, not a new original estimate.
+&
+Useful context for choosing a sensitivity grid; not a direct V6 measurement.
+Its discipline split cautions against pooling lifecycle and asset-pricing
+evidence into a single consensus number.
+\\[5pt]
+\end{evidence}
+
+\noindent\textbf{Recommendation, distinct from evidence.}
+Use $\gamma=5$ as a provisional finance-oriented candidate, with $2$ as an
+explicit lifecycle-oriented alternative. A core sensitivity grid
+$\{0.5,2,5,6.3,10\}$ preserves low experimental and higher survey/finance
+evidence; add a separate high-risk family $\{17,20,60\}$ from recursive
+asset-pricing estimates. This grid is a research recommendation, not a pooled
+credible interval. Conceptual mapping confidence is medium; numerical
+confidence is low. The candidate $5$ violates the sufficient-theorem
+restriction $\gamma<1$; retain and report that conflict instead of choosing
+a low number solely to preserve the theorem.
