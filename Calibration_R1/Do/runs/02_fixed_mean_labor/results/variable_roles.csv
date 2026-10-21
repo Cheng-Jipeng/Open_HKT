@@ -1,0 +1,14 @@
+object,role,treatment,constant,value
+H,exogenous labor endowment,unweighted 2009-2024 mean,True,32.8280902482625
+L,exogenous labor endowment,unweighted 2009-2024 mean,True,71.18055332391874
+baseline_markup,external parameter or normalization,single scalar throughout the sample,True,1.61
+baseline_rho,external parameter or normalization,single scalar throughout the sample,True,2.0
+alpha,external parameter or normalization,single scalar throughout the sample,True,0.5
+N0,external parameter or normalization,single scalar throughout the sample,True,1.0
+period_years,external parameter or normalization,single scalar throughout the sample,True,1
+z,exogenous regime,u at every fitting date; no transition estimation,True,u
+"a, xi, nu, AXbar, ALbar",internally calibrated primitives,one scalar per parameter per scenario,True,see conditional_parameters.csv
+"Y, Q, COMP, premium, wH, wL",empirical counterparts of endogenous outcomes,"retain annual observations; rebridge wages with constant H,L",False,observed targets
+"N, X, phi, I, AX, AL","endogenous states, allocations or technology paths",inferred or fitted annually under fixed primitives,False,conditional_paths.csv
+GDPDEF,"measurement conversion, not a model primitive",retain annual deflator to express every monetary target in 2017 USD,False,preserved transformation
+"RoW, finance, regime-b and transition parameters",outside this production calibration,not assigned or estimated in this run,,not calibrated

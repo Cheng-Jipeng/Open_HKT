@@ -1,0 +1,50 @@
+{
+  "status": "REJECTED_P1",
+  "baseline_diagnostics": {
+    "markup": 1.61,
+    "theta": 0.6211180124223602,
+    "n_years": 16,
+    "n_P1_valid": 0,
+    "n_P2_valid": 0,
+    "phi_min": 1.5314652222120482,
+    "phi_max": 1.6961931346288996,
+    "I_min": -2.304970653881708,
+    "I_max": -1.3468145716448063,
+    "markup_floor_exclusive": 2.7308709467525283,
+    "binding_year": 2022,
+    "status": "rejected_P1_or_P2"
+  },
+  "sample": {
+    "sample_start": 2009,
+    "sample_end": 2024,
+    "n_years": 16,
+    "holdout_years": [],
+    "data_vintage": "preserved September 2026 snapshot",
+    "averaging_rule": "unweighted arithmetic mean of each of H and L over the same 16 annual fitting rows, before wage bridging",
+    "labor_constants": {
+      "H": 32.8280902482625,
+      "L": 71.18055332391874
+    }
+  },
+  "scope": "US annual conditional production block with constant exogenous labor endowments; no RoW, finance, regime-b or GE calibration",
+  "accepted_baseline_parameters": null,
+  "GE_solved": false,
+  "central_diagnostic_primitive_screen": false,
+  "central_diagnostic_parameters": {
+    "a": 0.0028906689154811187,
+    "xi": 1.0669198453478705,
+    "nu": 1.1814104989446084,
+    "AX": 0.2698495562410115,
+    "AL": 0.20455822604001264,
+    "objective": 0.06336499023586858,
+    "free_entry_relative_rmse": 0.24789196555438495,
+    "log_CX_rmse": 0.021458517995834574,
+    "log_CL_rmse": 0.03813260619043307,
+    "optimizer_at_search_boundary": false,
+    "jacobian_rank": 5,
+    "jacobian_condition": 10.625865606152193,
+    "column_scaled_jacobian_condition": 3.745343758272789,
+    "xi_gt_nu_ge_zero": false
+  },
+  "reason": "Baseline fails active-research allocation; higher-markup fits are diagnostic, not adopted parameters"
+}

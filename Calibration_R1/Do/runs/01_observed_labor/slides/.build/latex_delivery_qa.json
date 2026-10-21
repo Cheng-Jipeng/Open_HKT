@@ -1,0 +1,31 @@
+{
+  "pages": 16,
+  "native_pgfplots": 28,
+  "changed_pages": [
+    7
+  ],
+  "native_page_7_panels": [
+    "X/Y",
+    "L/Y",
+    "C_X and C_L",
+    "A_X and A_L"
+  ],
+  "new_ratio_observations_verified": 32,
+  "all_prior_chart_data_unchanged": true,
+  "other_15_frame_sources_unchanged": true,
+  "visual_review": "Page 7 four-panel layout visually inspected; labels, equations and legends fit.",
+  "typesetting_warnings": 0,
+  "desktop_editor_compile": "success",
+  "texlive_compile": "success",
+  "calibration_refitted": false,
+  "files": {
+    "calibration_steps_2009_2024_latex.pdf": {
+      "sha256": "13eece41e92df4db4f1f8950bbbd2e35a5dd26779bf9bc3bd1f51416928c1b8e",
+      "bytes": 313417
+    },
+    "calibration_steps_2009_2024.tex": {
+      "sha256": "5e4988c0d3a8ea9a1e815231a6383362fb2f6598c8445fd0945086b13058a225",
+      "bytes": 133347
+    }
+  }
+}

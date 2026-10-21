@@ -1,0 +1,18 @@
+{
+  "US_only": true,
+  "primary_years_consecutive": true,
+  "primary_n_years": 29,
+  "compensation_bridge_max_abs_error": 1.7763568394002505e-15,
+  "no_clipping_all_primary_dates_preserved": true,
+  "baseline_rejected_all_dates": true,
+  "all_external_candidates_rejected": true,
+  "all_conditional_optimizers_interior": true,
+  "all_conditional_outputs_finite": true,
+  "verified_small_raw_hashes_match_registry": true,
+  "large_CPS_microdata_hashes": "upstream registry retained, not rehashed or reaggregated in this run",
+  "Python": "3.8.8",
+  "NumPy": "1.24.4",
+  "pandas": "2.0.3",
+  "empirical_acceptance_status": "REJECTED_P1",
+  "GE_solved": false
+}

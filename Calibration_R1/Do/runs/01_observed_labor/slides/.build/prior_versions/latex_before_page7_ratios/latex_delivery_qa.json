@@ -1,0 +1,23 @@
+{
+  "pages": 16,
+  "native_pgfplots": 26,
+  "chart_series_matched_to_prior_deck": 55,
+  "source_hashes_verified": 17,
+  "raster_images": 0,
+  "typesetting_warnings": 0,
+  "visual_review": "All 16 pages inspected; pages 7, 12 and 15 rechecked after spacing adjustments.",
+  "desktop_editor_compile": "success",
+  "texlive_compile": "success",
+  "standalone_source": true,
+  "calibration_refitted": false,
+  "files": {
+    "calibration_steps_2009_2024_latex.pdf": {
+      "sha256": "ca14a304ae61678541e9e744da0fae3d92bffac8c767f2245096ddd863603fb3",
+      "bytes": 312340
+    },
+    "calibration_steps_2009_2024.tex": {
+      "sha256": "edbde9a11c64227006d11d036aa91e013f3101012a30a4187c13c8bf4f066c24",
+      "bytes": 130960
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "sample": "2009-2024",
+  "rho": 2.0,
+  "archive_files_verified": 50,
+  "baseline_inputs_and_P1_unchanged_on_overlapping_years": true,
+  "core_calibration_equations_unchanged": true,
+  "all_scenarios_use_requested_sample_and_rho": true,
+  "knowledge_clock_verified": true,
+  "no_holdout_claims": true,
+  "run_input_hashes_verified": true,
+  "figure_dimensions": [
+    2880,
+    2700
+  ],
+  "figure_series_match": true,
+  "figure_formats": [
+    "PNG",
+    "SVG",
+    "PDF"
+  ],
+  "visual_QA": "PNG inspected; no clipping or overlapping labels",
+  "NumPy": "2.3.5",
+  "pandas": "2.2.3",
+  "matplotlib": "3.11.2"
+}

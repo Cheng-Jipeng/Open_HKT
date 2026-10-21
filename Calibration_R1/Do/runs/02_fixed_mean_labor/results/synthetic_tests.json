@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "synthetic_relative_parameter_errors": {
+    "0.6666666666666666": {
+      "a": 2.220001960040463e-12,
+      "xi": 2.1467272404152027e-12,
+      "nu": 2.145061905878265e-12,
+      "AX": 2.4424906541753444e-15,
+      "AL": 1.1102230246251565e-15
+    },
+    "2.0": {
+      "a": 2.220001960040463e-12,
+      "xi": 2.145950084297965e-12,
+      "nu": 2.1458390619955026e-12,
+      "AX": 2.7755575615628914e-15,
+      "AL": 8.881784197001252e-16
+    },
+    "rho2_fixed_labor": {
+      "a": 2.220001960040463e-12,
+      "xi": 2.1544988015875788e-12,
+      "nu": 2.1541657346801912e-12,
+      "AX": 6.661338147750939e-16,
+      "AL": 3.3306690738754696e-16
+    }
+  },
+  "preserved_run1_files_verified": 195,
+  "tests": [
+    "known_parameter_sequential_and_joint_recovery_with_fixed_and_variable_labor",
+    "labor_and_money_unit_invariance",
+    "post_entry_knowledge_timing",
+    "infeasible_observation_rejects_complete_fit",
+    "rank_deficient_P3_rejected",
+    "separate_fitting_window_means_only",
+    "compensation_and_premium_preserved",
+    "endogenous_targets_remain_time_varying",
+    "optional_cashflow_missingness_preserved",
+    "missing_or_duplicate_calendar_year_rejected",
+    "nonconstant_exogenous_rule_rejected",
+    "model_incompatible_rho_and_nonscalar_primitive_rejected",
+    "run1_central_estimates_reproduced",
+    "run1_artifacts_byte_identical"
+  ],
+  "meaning": "Numerical implementation and preservation checks, not empirical model validation"
+}

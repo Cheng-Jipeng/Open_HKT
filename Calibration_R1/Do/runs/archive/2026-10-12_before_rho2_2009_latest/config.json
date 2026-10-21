@@ -1,0 +1,22 @@
+{
+  "country": "US",
+  "sample_start": 1994,
+  "sample_end": 2022,
+  "holdout_end": 2024,
+  "period_years": 1,
+  "alpha": 0.5,
+  "N0": 1.0,
+  "baseline_markup": 1.61,
+  "baseline_rho": 0.6666666666666666,
+  "external_markups": [1.10, 1.15, 1.21, 1.61, 1.84],
+  "external_rhos": [0.16, 0.5, 0.6666666666666666, 0.709, 0.8333333333333334, 0.9090909090909091],
+  "diagnostic_markups_outside_candidate_set": [3.25, 3.5, 4.0],
+  "joint_residual_weights": [1.0, 1.0, 1.0],
+  "baseline_pair": "COLLEGE_NONCOLLEGE_HEADCOUNT",
+  "baseline_scope": "TOTAL",
+  "baseline_labor_treatment": "observed_annual_endowments",
+  "money_unit": "trillion 2017 USD, all nominal values divided by calendar-year mean GDPDEF/100",
+  "labor_unit": "million persons (FTE alternatives explicitly labelled)",
+  "regime": "all sample dates treated as u as a maintained hypothesis, not an observed regime classification",
+  "scope": "US annual conditional production block only; no RoW, finance, post-switch or GE calibration"
+}

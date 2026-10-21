@@ -1,0 +1,25 @@
+{
+  "H_constant": true,
+  "L_constant": true,
+  "H_equals_sample_mean": true,
+  "L_equals_sample_mean": true,
+  "compensation_bridge_max_abs_error": 8.881784197001252e-16,
+  "every_fit_year_retained": true,
+  "unchanged_targets": {
+    "Y": true,
+    "Q": true,
+    "COMP": true,
+    "premium": true,
+    "D": true,
+    "deflator": true
+  },
+  "all_fitted_parameters_finite": true,
+  "all_fitted_HL_constant": true,
+  "all_fitted_optimizers_interior": true,
+  "state_variable_N_not_frozen": true,
+  "baseline_status": "REJECTED_P1",
+  "python": "3.12.13",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "GE_solved": false
+}

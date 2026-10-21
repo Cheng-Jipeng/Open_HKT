@@ -1,0 +1,23 @@
+{
+  "years": [
+    1994,
+    2022
+  ],
+  "all_29_original_P1_values_match_saved_calibration": true,
+  "original_P1_max_absolute_difference": 3.552713678800501e-15,
+  "input_manifest_hashes_match": true,
+  "source_observations_unique": true,
+  "annual_decomposition_rows": 29,
+  "rd_payroll_years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "figure_visual_review": "Passed: both panels and annotations legible; no clipping; diagnostic status displayed",
+  "scope": "US-only diagnostic; original calibration, model and parameters unchanged"
+}

@@ -1,0 +1,37 @@
+{
+  "status": "REJECTED_P1",
+  "scope": "US annual conditional production block only; no RoW, finance, post-switch or GE calibration",
+  "parameters": {
+    "a_US": null,
+    "xi_u": null,
+    "nu_u": null,
+    "A_X_US_u": null,
+    "A_L_US_u": null
+  },
+  "fixed_external": {
+    "theta_US": 0.6211180124223602,
+    "rho_US": 0.6666666666666666,
+    "alpha_US": 0.5
+  },
+  "baseline_diagnostics": {
+    "theta": 0.6211180124223602,
+    "markup": 1.61,
+    "sample_start": 1994,
+    "sample_end": 2022,
+    "n_years": 29,
+    "n_P1_valid": 0,
+    "n_P2_valid": 0,
+    "phi_min": 1.4587097525254433,
+    "phi_max": 1.915072507667018,
+    "I_min": -2.190351374839602,
+    "I_max": -1.0614237458688447,
+    "theta_lower_exclusive": 0.0,
+    "theta_upper_exclusive": 0.3243313294591751,
+    "markup_floor_exclusive": 3.083266737343899,
+    "binding_year": 1996,
+    "status": "rejected_P1_or_P2"
+  },
+  "reason": "Every primary observation implies negative research under P1",
+  "conditional_experiments": "Not accepted estimates; markups outside supplied external candidate set",
+  "GE_solved": false
+}

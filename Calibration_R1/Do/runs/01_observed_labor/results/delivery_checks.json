@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "sample": "2009-2024",
+  "rho": 2.0,
+  "archive_files_verified": 50,
+  "baseline_inputs_and_P1_unchanged_on_overlapping_years": true,
+  "core_calibration_equations_unchanged": true,
+  "all_scenarios_use_requested_sample_and_rho": true,
+  "knowledge_clock_verified": true,
+  "no_holdout_claims": true,
+  "run_input_hashes_verified": true,
+  "figure_dimensions": [
+    3780,
+    2700
+  ],
+  "figure_series_match": true,
+  "figure_formats": [
+    "PNG",
+    "SVG",
+    "PDF"
+  ],
+  "visual_QA": "Expanded PNG inspected; sidebar and all 12 panels readable with no clipping",
+  "NumPy": "2.3.5",
+  "pandas": "2.2.3",
+  "matplotlib": "3.11.2",
+  "spillover_diagnosis": {
+    "status": "PASS_IMPLEMENTATION_AND_DELIVERY_CHECKS",
+    "economic_restriction_status": "FAIL_RETAINED_AS_DIAGNOSTIC",
+    "archives_verified": {
+      "2026-10-12_before_rho2_2009_latest": 50,
+      "before_spillover_diagnosis": 41
+    },
+    "verified_manifest_entries": {
+      "results/input_manifest.csv": 27,
+      "Spillover_Diagnosis/results/input_manifest.csv": 12
+    },
+    "core_equations_and_config_unchanged": true,
+    "baseline_inputs_allocations_conditional_estimates_fit_metrics_and_figure_series_unchanged": true,
+    "native_Julia_recovery_max_relative_errors": {
+      "0.6666666666666666": 2.220001960040463e-12,
+      "2.0": 2.220001960040463e-12
+    },
+    "figure_parameter_labels_verified_in_SVG": true,
+    "figure_sha256": {
+      "png": "9ff01998348996c071d24b76805c24db41d95f455e5704bd7f7778da47e9e476",
+      "pdf": "9af8e1eb649e17a6feb1e3b87023688891752ad4e71766747c1872b0ac652617",
+      "svg": "3460a8425b9463d6bebac534e9104f8076c7bb350d7daadc1bf719643ce6cbff"
+    }
+  }
+}

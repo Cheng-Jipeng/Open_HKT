@@ -1,0 +1,29 @@
+{
+  "source_vintage": "preserved September 2026 snapshot; no revised numerical series downloaded",
+  "sample": "1994-2022",
+  "markup": 1.61,
+  "rows": 29,
+  "original_phi_range": [
+    1.4587097525254458,
+    1.9150725076670205
+  ],
+  "net_factor_cost_phi_range": [
+    1.0016051273471307,
+    1.2121033738887645
+  ],
+  "original_gap_shareY_mean": 0.2616512203065984,
+  "cfc_plus_taxes_shareY_mean": 0.22451723048810654,
+  "share_of_total_real_accounting_gap_covered_by_cfc_tax": 0.8606608145045852,
+  "remaining_gap_shareY_mean": 0.03713398981849183,
+  "compensation_multiplier_range": [
+    1.2828484609692106,
+    1.4070311601079728
+  ],
+  "years_infeasible_even_all_pay_to_skilled": 23,
+  "RD_proxy_years": 8,
+  "RD_proxy_phi_range": [
+    0.8964287278357055,
+    0.916998629263484
+  ],
+  "note": "Accounting diagnosis only. CFC+tax removal and material-markup conversion are not accepted model recalibrations."
+}

@@ -1,0 +1,17 @@
+{
+  "a": 0.003084659874194383,
+  "xi": 0.7735051109376956,
+  "nu": 0.7735051109376956,
+  "AX": 0.2920350094010925,
+  "AL": 0.22371187272194631,
+  "objective": 0.12150927052135696,
+  "free_entry_relative_rmse": 0.31298551533653696,
+  "log_CX_rmse": 0.10791735390658205,
+  "log_CL_rmse": 0.10910170684586411,
+  "constraint": "xi >= nu >= 0; closure of the strict restriction",
+  "at_equal_spillover_boundary": true,
+  "at_a_search_boundary": false,
+  "meaning": "Lower-bound fit cost; equality is not an admissible unbalanced-growth calibration",
+  "unrestricted_objective": 0.09918959418310912,
+  "objective_ratio": 1.2250203413177048
+}

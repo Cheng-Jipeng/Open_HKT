@@ -1,0 +1,22 @@
+{
+  "US_only": true,
+  "primary_years_consecutive": true,
+  "primary_n_years": 16,
+  "all_available_years_used_for_fit": true,
+  "no_holdout_in_current_run": true,
+  "all_executed_rhos_above_one": true,
+  "compensation_bridge_max_abs_error": 1.7763568394002505e-15,
+  "all_primary_dates_preserved": true,
+  "baseline_rejected_all_dates": true,
+  "all_external_candidates_rejected": true,
+  "all_conditional_optimizers_interior": true,
+  "all_conditional_outputs_finite": true,
+  "verified_small_raw_hashes_match_registry": true,
+  "large_CPS_microdata_hashes": "upstream registry retained; not rehashed or reaggregated",
+  "Python": "3.12.14",
+  "NumPy": "2.3.5",
+  "pandas": "2.2.3",
+  "python_executable": "/Users/jipengcheng/.cache/uv/builds-v0/.tmpWaIT5C/bin/python",
+  "empirical_acceptance_status": "REJECTED_P1",
+  "GE_solved": false
+}

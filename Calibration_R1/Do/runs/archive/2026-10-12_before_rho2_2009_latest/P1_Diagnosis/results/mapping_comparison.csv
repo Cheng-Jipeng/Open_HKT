@@ -1,0 +1,6 @@
+scenario,column,phi_min,phi_max,n_interior,n_years
+"Original gross GVA, mu=1.61",phi_gross,1.4587097525254458,1.9150725076670205,0,29
+"Remove CFC and production taxes, mu=1.61",phi_net_factor_cost,1.0016051273471307,1.2121033738887645,0,29
+"Remove CFC and production taxes, mu=1.84",phi_net_factor_mu1_84,0.8764044864287394,1.060590452152669,22,29
+"Gross GVA, raw hourly premium, headcounts",phi_raw_premium_headcount,1.4706972051002605,1.8959639205689764,0,29
+"Gross GVA, raw hourly premium, observed-hours FTE",phi_raw_premium_observed_FTE,1.4342432456997507,1.7961753494499662,0,29

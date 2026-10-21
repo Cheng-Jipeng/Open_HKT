@@ -1,0 +1,8 @@
+parameter,component,contribution
+xi,real skilled wage,0.43587531079009456
+xi,unskilled output share,-0.5721748019309236
+nu,real output,2.124635627650462
+nu,real unskilled wage,-0.3610865030234363
+nu,unskilled quantity,-0.08024096859949538
+xi_minus_nu,skill premium,-0.07478880776665714
+xi_minus_nu,relative production input,-1.7448188394017063

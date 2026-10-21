@@ -1,0 +1,39 @@
+{
+  "deliverables": {
+    "calibration_steps_2009_2024_v3.pptx": {
+      "sha256": "967c80297c630de9cdadc7ff27543b78e19121e7e7c4b0ca7c058607106f63be",
+      "bytes": 193191
+    },
+    "calibration_steps_2009_2024_v3.pdf": {
+      "sha256": "2b1a8a1069bb385796dd9eab85a7e2eab41c37f63cf94fd6f6725a9ec81d5d56",
+      "bytes": 422754
+    }
+  },
+  "pdf_pages": 16,
+  "visually_inspected_pdf_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "native_charts": 26,
+  "embedded_workbooks": 26,
+  "native_tables": 3,
+  "speaker_notes": 16,
+  "source_hashes_verified": 17,
+  "source_calibration_refitted": false,
+  "visual_findings": "All 16 final native-rendered pages inspected individually; text, equations, legends and table cells readable. Annual chart segments are straight and the P3 observations appear as separate points.",
+  "layout_warning_resolution": "Estimated table text overflow warnings on slides 3 and 13 were checked against the final PDF; no actual clipping or overlap."
+}

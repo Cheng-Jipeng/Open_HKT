@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "synthetic_relative_parameter_errors_by_rho": {
+    "0.6666666666666666": {
+      "a": 2.220001960040463e-12,
+      "xi": 2.1467272404152027e-12,
+      "nu": 2.145061905878265e-12,
+      "AX": 2.4424906541753444e-15,
+      "AL": 1.1102230246251565e-15
+    },
+    "2.0": {
+      "a": 2.220001960040463e-12,
+      "xi": 2.145950084297965e-12,
+      "nu": 2.1458390619955026e-12,
+      "AX": 2.7755575615628914e-15,
+      "AL": 8.881784197001252e-16
+    }
+  },
+  "tests": [
+    "known_parameter_sequential_and_joint_recovery",
+    "labor_and_money_unit_invariance",
+    "post_entry_knowledge_timing",
+    "infeasible_observation_rejects_complete_fit",
+    "rank_deficient_P3_rejected",
+    "latest_common_year_and_optional_cashflow",
+    "missing_calendar_year_rejected",
+    "explicit_sample_end_honored",
+    "model_incompatible_rho_rejected"
+  ],
+  "meaning": "Numerical implementation checks, not empirical model validation"
+}

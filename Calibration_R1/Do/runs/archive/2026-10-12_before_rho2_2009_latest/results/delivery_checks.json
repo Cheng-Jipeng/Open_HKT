@@ -1,0 +1,12 @@
+{
+  "all_saved_JSON_and_CSV_parse": true,
+  "verified_input_hashes_rechecked": 23,
+  "synthetic_tests": "PASS",
+  "pipeline_exit_code": 0,
+  "figures_visually_reviewed": [
+    "01_feasibility.png",
+    "02_conditional_diagnostic.png"
+  ],
+  "accepted_calibration": false,
+  "actual_source_validation_rows": 40
+}

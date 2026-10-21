@@ -1,0 +1,10 @@
+checked_date,source,url,role,outcome
+2026-10-12,Federal Reserve Integrated Accounts,https://www.federalreserve.gov/Releases/Z1/current/html/S11_1_i_a.htm,GVA compensation CFC production taxes NOS definitions,Successful read; current numerical values not substituted for saved vintage
+2026-10-12,BEA corporate profit definition,https://www.bea.gov/help/glossary/corporate-profits-inventory-valuation-and-capital-consumption-adjustments,Distinguish labor capital taxes and operating profits,Successful read
+2026-10-12,Basu 2019 AEA article,https://swlb2.aeaweb.org/articles?id=10.1257/jep.33.3.3,Markup evidence and conceptual definitions,Article abstract accessible; direct article PDF failed
+2026-10-12,Basu 2019 published full issue,https://topcat.aeaweb.org/full_issue.php?doi=10.1257/jep.33.3,Printed page17 gross-output versus value-added markup discussion,Publisher full issue and indexed passage accessible; subsequent text find/open requests timed out or returned no match
+2026-10-12,Basu 2019 NBER copy,https://www.nber.org/system/files/working_papers/w26057/w26057.pdf,Same article alternative retrieval,Open returned403; indexed text available; publisher used as final reference
+2026-10-12,De Loecker Eeckhout Unger author manuscript,https://www.janeeckhout.com/wp-content/uploads/RMP.pdf,Original source of1.61 candidate,Timeout; exact candidate traced to preserved Plan audit rather than claimed fresh full-text check
+2026-10-12,BEA R&D satellite account technical document,https://www.bea.gov/system/files/2025-09/research-and-development-satellite-account-technical-document.pdf,Research compensation and value-added measurement,Successful read of sections5.1.1-5.1.3
+2026-10-12,NCSES business R&D labor costs,https://ncses.nsf.gov/pubs/nsf23322?org=NSF,Payroll versus temporary staffing and other costs,Successful official page and indexed text
+2026-10-12,Baqaee Farhi Productivity and Misallocation,https://www.nber.org/system/files/working_papers/w24007/revisions/w24007.rev10.pdf,Additional caution about aggregate markup and input-output weights,Primary working-paper indexed passage checked

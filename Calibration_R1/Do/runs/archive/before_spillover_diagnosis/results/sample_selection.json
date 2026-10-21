@@ -1,0 +1,9 @@
+{
+  "requested_start": 2009,
+  "requested_end": null,
+  "resolved_end": 2024,
+  "n_years": 16,
+  "holdout_years": [],
+  "end_rule": "latest common complete year in the preserved input package",
+  "data_vintage": "preserved September 2026 snapshot"
+}

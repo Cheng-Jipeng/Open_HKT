@@ -1,0 +1,15 @@
+{
+  "pdf_pages": 17,
+  "native_pgfplots": 29,
+  "raster_images": 0,
+  "plot_ranges_cover_all_values": true,
+  "P4_ratio_points_verified": 32,
+  "slide_sources_match_saved_results": true,
+  "preserved_run1_files": 195,
+  "navigation_links_resolve": true,
+  "latex_log_layout_warnings": 0,
+  "pdf_sha256": "b76d543fc8736532d4c25aec2f8862089d5ee17eb0b129f70335a9447e23dee0",
+  "tex_sha256": "0a34d303758d61cd627c547bd38d38bc3821037aea2700b7626321a11447484f",
+  "desktop_compiler": "success",
+  "visual_review": "17 rendered slides inspected; page 1 equation spacing revised and re-rendered"
+}

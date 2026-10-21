@@ -1,0 +1,47 @@
+{
+  "status": "COMPLETED_DIAGNOSIS_NOT_RECALIBRATION",
+  "sample": [
+    2009,
+    2024
+  ],
+  "diagnostic_markup": 3.5,
+  "rho": 2.0,
+  "central_parameters": {
+    "a": 0.0030846630205632703,
+    "xi": -0.13629949114083023,
+    "nu": 1.683308156027532,
+    "AX": 0.33786412748860156,
+    "AL": 0.19336678121963402
+  },
+  "xi_minus_nu": -1.8196076471683633,
+  "relative_input_gap_contribution": -1.7448188394017063,
+  "premium_gap_contribution": -0.07478880776665714,
+  "relative_input_fraction_of_gap": 0.9588983878568318,
+  "mapping_variants": 10,
+  "mapping_variants_passing": 0,
+  "all_clock_gap_negative": true,
+  "all_rho_above_one_gap_negative": true,
+  "native_recovery_max_relative_errors": {
+    "0.6666666666666666": 2.220001960040463e-12,
+    "2.0": 2.220001960040463e-12
+  },
+  "static_CES_max_relative_error": 2.220446049250313e-16,
+  "constrained": {
+    "a": 0.003084659874194383,
+    "xi": 0.7735051109376956,
+    "nu": 0.7735051109376956,
+    "AX": 0.2920350094010925,
+    "AL": 0.22371187272194631,
+    "objective": 0.12150927052135696,
+    "free_entry_relative_rmse": 0.31298551533653696,
+    "log_CX_rmse": 0.10791735390658205,
+    "log_CL_rmse": 0.10910170684586411,
+    "constraint": "xi >= nu >= 0; closure of the strict restriction",
+    "at_equal_spillover_boundary": true,
+    "at_a_search_boundary": false,
+    "meaning": "Lower-bound fit cost; equality is not an admissible unbalanced-growth calibration",
+    "unrestricted_objective": 0.09918959418310912,
+    "objective_ratio": 1.2250203413177048
+  },
+  "conclusion": "No sign/timing/inversion error found. Current rho>1 and mapped factor trends conflict with the required spillover ordering; mapping versus structural misspecification is not uniquely identified."
+}

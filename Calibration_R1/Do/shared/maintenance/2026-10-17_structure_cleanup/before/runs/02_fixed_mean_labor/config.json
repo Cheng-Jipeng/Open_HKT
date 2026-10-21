@@ -1,0 +1,52 @@
+{
+  "country": "US",
+  "sample_start": 2009,
+  "sample_end": 2024,
+  "sample_end_rule": "fixed common fitting window 2009-2024; identical to run 1",
+  "period_years": 1,
+  "alpha": 0.5,
+  "N0": 1.0,
+  "baseline_markup": 1.61,
+  "baseline_rho": 2.0,
+  "require_rho_above_one": true,
+  "rho_selection": "sigma=0.5, rho=1/sigma=2; model-compatible capital-labor complementarity analogy, not a direct V6 skill-input estimate; see ../../references/rho_selection.md",
+  "external_markups": [
+    1.1,
+    1.15,
+    1.21,
+    1.61,
+    1.84
+  ],
+  "external_rhos": [
+    2.0
+  ],
+  "diagnostic_markups_outside_candidate_set": [
+    3.25,
+    3.5,
+    4.0
+  ],
+  "central_diagnostic_markup": 3.5,
+  "entry_weight_sensitivities": [
+    0.1,
+    10.0
+  ],
+  "joint_residual_weights": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "baseline_pair": "COLLEGE_NONCOLLEGE_HEADCOUNT",
+  "baseline_scope": "TOTAL",
+  "baseline_labor_treatment": "sample_mean_2009_2024",
+  "money_unit": "trillion 2017 USD, all nominal values divided by calendar-year mean GDPDEF/100",
+  "labor_unit": "million persons; fixed sample-mean levels in every executed scenario",
+  "regime": "all sample dates treated as u as a maintained hypothesis, not an observed regime classification",
+  "scope": "US annual conditional production block with constant exogenous labor endowments; no RoW, finance, regime-b or GE calibration",
+  "run_name": "02_fixed_mean_labor",
+  "run_title": "Run 2: fixed sample-mean labor",
+  "constant_exogenous": true,
+  "labor_mean_rule": "unweighted arithmetic mean of each of H and L over the same 16 annual fitting rows, before wage bridging",
+  "comparison_run": "../01_observed_labor",
+  "input_panel": "inputs/observed_panel.csv",
+  "central_run_id": "mu3.5_rho2_sample_mean"
+}

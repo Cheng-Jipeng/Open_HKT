@@ -1,0 +1,136 @@
+{
+  "slides": [
+    {
+      "number": 1,
+      "title": "Corporate output, compensation and valuation",
+      "phase": "Input phase 1",
+      "context": "2009–2024. 16 complete annual observations from the preserved September 2026 package",
+      "takeaway": "2024 is the latest common year in this data package. Every displayed year enters the fit."
+    },
+    {
+      "number": 2,
+      "title": "Labor quantities and the wage bridge",
+      "phase": "Input phase 2",
+      "context": "2009–2024. BA+ skilled labor and non-BA unskilled labor in CPS private-for-profit employment",
+      "takeaway": "The bridge exactly allocates total compensation, but the skill-specific annual bills remain inferred."
+    },
+    {
+      "number": 3,
+      "title": "External parameters and normalizations",
+      "phase": "Specification phase",
+      "context": "2009–2024. The external benchmark and the higher-markup diagnostic have different roles",
+      "takeaway": "ρ = 2 respects complementarity. Its capital–labor literature basis is an analogy for the V6 input margin."
+    },
+    {
+      "number": 4,
+      "title": "P1: production and research allocation",
+      "phase": "Step 1",
+      "context": "2009–2024. Baseline μ = 1.61 and diagnostic μ = 3.5 use the same measured panel",
+      "takeaway": "The baseline fails in all 16 years. Later steps proceed only in the explicitly labelled diagnostic case."
+    },
+    {
+      "number": 5,
+      "title": "P2: a constant innovation productivity",
+      "phase": "Step 2",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The sequential estimate is a = 0.003085. Relative valuation RMSE is 31.30%."
+    },
+    {
+      "number": 6,
+      "title": "P2: knowledge growth and accumulation",
+      "phase": "Step 3",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The joint estimator uses the innovation-law path N(a). The valuation-implied path remains a diagnostic."
+    },
+    {
+      "number": 7,
+      "title": "P4: effective CES coefficients",
+      "phase": "Step 4",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The two coefficients identify datewise augmentation only after fixing α. They reuse the wage and output data."
+    },
+    {
+      "number": 8,
+      "title": "P5: sequential spillover estimates",
+      "phase": "Step 5",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2. Fifteen transitions from 2009–2010 through 2023–2024",
+      "takeaway": "The sequential estimates already fail the ordering: ξ = -0.2536 and ν = 2.3285."
+    },
+    {
+      "number": 9,
+      "title": "Productivity scales over the sequential path",
+      "phase": "Step 6",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2. Sequential NQ, ξ and ν enter this phase",
+      "takeaway": "Full-sample log intercepts use all dates. The initial-date inversions remain a useful comparison."
+    },
+    {
+      "number": 10,
+      "title": "Joint production fit",
+      "phase": "Joint estimation phase",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The joint fit uses each structural restriction once. It profiles a and fits both technology regressions."
+    },
+    {
+      "number": 11,
+      "title": "Targeted fit and an untargeted cash-flow check",
+      "phase": "Fit assessment phase",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "Good production fit coexists with large valuation and cash-flow errors. No holdout or GE validation is available."
+    },
+    {
+      "number": 12,
+      "title": "The relative-wage restriction reverses the ordering",
+      "phase": "Restriction diagnosis phase",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The relative-input term contributes 95.9% of the negative fitted gap. This is an algebraic decomposition."
+    },
+    {
+      "number": 13,
+      "title": "Mapping changes alter levels but preserve ξ < ν",
+      "phase": "Mapping sensitivity phase",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "Fixing labor stocks makes ξ positive. None of the ten tested mappings or counterfactuals restores the ordering."
+    },
+    {
+      "number": 14,
+      "title": "The restricted fit reaches equal spillovers",
+      "phase": "Constrained diagnostic phase",
+      "context": "2009–2024. Conditional diagnostic: μ = 3.5, θ = 0.2857, ρ = 2",
+      "takeaway": "The best closed-cone fit reaches ξ = ν. Equality still violates the strict unbalanced-growth primitive."
+    },
+    {
+      "number": 15,
+      "title": "P3: an alternative joint markup route",
+      "phase": "Alternative identification phase",
+      "context": "2009–2024. This exercise frees θ and a and does not replace the external benchmark",
+      "takeaway": "The fitted positive slope implies a negative inverse markup. P3 also fails economic admissibility."
+    },
+    {
+      "number": 16,
+      "title": "Parameter ledger and current calibration status",
+      "phase": "Run assessment phase",
+      "context": "2009–2024. US conditional production block. Full two-country equilibrium remains outside this run",
+      "takeaway": "No admissible baseline vector emerges. The next empirical step is matched factor quantities and compensation."
+    }
+  ],
+  "chartOwners": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15
+  ],
+  "tableOwners": [
+    3,
+    13,
+    16
+  ]
+}

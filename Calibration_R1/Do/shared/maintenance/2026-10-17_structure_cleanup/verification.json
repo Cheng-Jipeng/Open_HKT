@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "top_level": [
+    "README.md",
+    "runs/",
+    "shared/"
+  ],
+  "calibration_rerun": false,
+  "recorded_original_files": 353,
+  "byte_identical_files": 346,
+  "changed_path_or_documentation_files": [
+    {
+      "original": "runs/02_fixed_mean_labor/config.json",
+      "current": "runs/02_fixed_mean_labor/config.json",
+      "before_sha256": "99e18739de118346c3522a3773e7399c52b7dc188827419bb1f345c01adcafde",
+      "after_sha256": "93b3d841eecc2d70a4e86e8afbbed3ef553e8c7273347479d35cf6eafd193a1b"
+    },
+    {
+      "original": "runs/02_fixed_mean_labor/README.md",
+      "current": "runs/02_fixed_mean_labor/README.md",
+      "before_sha256": "b794f2569cb80fdd4d379a393e1664fde0e5e9897ee79e58d132eb41f84ce813",
+      "after_sha256": "3b024ea7fe105ef9e463b0e68d39b78b413a4f9369bb0a9ae5108b122c64bfa0"
+    },
+    {
+      "original": "runs/02_fixed_mean_labor/slides/.build/slide_data.json",
+      "current": "runs/02_fixed_mean_labor/slides/.build/slide_data.json",
+      "before_sha256": "bbc15fb29acba6d9a8bc9ff5c850e84d542de01802c6566359f6f6afedcd8014",
+      "after_sha256": "db859de3797418771ed8ffffa7325b7f050bfe453a2ec1028b3f375e6da66287"
+    },
+    {
+      "original": "runs/02_fixed_mean_labor/slides/.build/latex_chart_manifest.json",
+      "current": "runs/02_fixed_mean_labor/slides/.build/latex_chart_manifest.json",
+      "before_sha256": "8ea14e933ccf3443d5b58a4c0893f4666edc8de4be431cbe212d22b3f6ac2369",
+      "after_sha256": "60c10c16e5c1ee59f605551caa85e957843a7391a610ef3022c5ee49f374d577"
+    },
+    {
+      "original": "runs/02_fixed_mean_labor/results/input_manifest.csv",
+      "current": "runs/02_fixed_mean_labor/results/input_manifest.csv",
+      "before_sha256": "1e254730e7f3b630ff6153fbb64ffa21158ef3c3265f2a43c337bec9247f5c81",
+      "after_sha256": "229f6bf87cc9af9f0189ae3a567dfff954e57d7bf9adcd3d3ec89dbf1367ab14"
+    },
+    {
+      "original": "P1_Diagnosis/investigate_p1.py",
+      "current": "runs/archive/P1_Diagnosis_1994_2022/investigate_p1.py",
+      "before_sha256": "64ea69787da4ab5f8e2cf8350c32291d40d166a070de832ad9b8da6986ab8a16",
+      "after_sha256": "84626eca8af99bc2e8f13695bc097de62c55195c5cfeaef5f17a1eecce446509"
+    },
+    {
+      "original": "P1_Diagnosis/README.md",
+      "current": "runs/archive/P1_Diagnosis_1994_2022/README.md",
+      "before_sha256": "0d8b94d9eb7b582309953173a9af660dfbf85c07be12559682be41e2941993ea",
+      "after_sha256": "8a56f454ac8540bf7b2479c3ba99ddedbfe09ab61c531812e409b2c38907e9be"
+    }
+  ],
+  "run1_preservation_checks": 195,
+  "run2_empirical_inputs_and_numerical_outputs_unchanged": true,
+  "all_slides_and_figures_unchanged": true,
+  "presentation_series_and_chart_coordinates_identical": true,
+  "source_hashes_valid": true,
+  "current_navigation_links_valid": true,
+  "historical_diagnosis_input_path_valid": true,
+  "remaining_internal_shortcuts": [
+    "runs/01_observed_labor/Spillover_Diagnosis",
+    "runs/01_observed_labor/rho_selection.md"
+  ]
+}

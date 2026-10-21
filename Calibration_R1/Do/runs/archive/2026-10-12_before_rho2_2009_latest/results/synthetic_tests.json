@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "synthetic_relative_parameter_errors": {
+    "a": 2.220001960040463e-12,
+    "xi": 2.1462831512053526e-12,
+    "nu": 2.1456170173905775e-12,
+    "AX": 2.4424906541753444e-15,
+    "AL": 9.992007221626409e-16
+  },
+  "tests": [
+    "known_parameter_sequential_and_joint_recovery",
+    "labor_and_money_unit_invariance",
+    "post_entry_knowledge_timing",
+    "infeasible_observation_rejects_complete_fit",
+    "rank_deficient_P3_rejected"
+  ],
+  "meaning": "Numerical implementation checks, not empirical model validation"
+}

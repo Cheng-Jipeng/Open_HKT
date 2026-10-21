@@ -1,0 +1,46 @@
+{
+  "status": "REJECTED_P1",
+  "scope": "US annual conditional production block only; no RoW, finance, post-switch or GE calibration",
+  "parameters": {
+    "a_US": null,
+    "xi_u": null,
+    "nu_u": null,
+    "A_X_US_u": null,
+    "A_L_US_u": null
+  },
+  "fixed_external": {
+    "theta_US": 0.6211180124223602,
+    "rho_US": 2.0,
+    "alpha_US": 0.5
+  },
+  "sample": {
+    "requested_start": 2009,
+    "requested_end": null,
+    "resolved_end": 2024,
+    "n_years": 16,
+    "holdout_years": [],
+    "end_rule": "latest common complete year in the preserved input package",
+    "data_vintage": "preserved September 2026 snapshot"
+  },
+  "baseline_diagnostics": {
+    "theta": 0.6211180124223602,
+    "markup": 1.61,
+    "sample_start": 2009,
+    "sample_end": 2024,
+    "n_years": 16,
+    "n_P1_valid": 0,
+    "n_P2_valid": 0,
+    "phi_min": 1.4587097525254433,
+    "phi_max": 1.7483205551087566,
+    "I_min": -2.190351374839602,
+    "I_max": -1.466537303690156,
+    "theta_lower_exclusive": 0.0,
+    "theta_upper_exclusive": 0.35526552073496764,
+    "markup_floor_exclusive": 2.8147960937250986,
+    "binding_year": 2010,
+    "status": "rejected_P1_or_P2"
+  },
+  "reason": "16/16 fitting observations fail the active-research allocation restriction",
+  "conditional_experiments": "Higher-markup diagnostics are not accepted estimates",
+  "GE_solved": false
+}
