@@ -1,0 +1,229 @@
+{
+  "parameters": {
+    "alpha": 0.5,
+    "beta": 0.5,
+    "sigma": 2.0,
+    "rho": 0.5,
+    "a": 0.2,
+    "H": 1.0,
+    "L": 1.0,
+    "AX": 0.01,
+    "AL": 1.0,
+    "xi": 0.2,
+    "lam": 0.7,
+    "b": 0.1,
+    "pi": 0.95,
+    "gamma": 0.5,
+    "n0": 1.0
+  },
+  "constants": {
+    "K": 10.0,
+    "c": 5.5,
+    "kappa": 0.24999999999999997,
+    "r": 0.49999999999999994,
+    "Cphi": 0.30250000000000005,
+    "CY": 0.25,
+    "CH": 0.022727272727272728,
+    "CL": 0.25,
+    "CQ": 0.11363636363636363,
+    "CD": 0.006875000000000001,
+    "Gu": 1.2
+  },
+  "checks": [
+    {
+      "name": "stock market clears with n_(t+1), not n_t",
+      "absolute_error": 1.4210854715202105e-14,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "dividend yield from independent CES wage/dividend formulas",
+      "absolute_error": 1.4210854715202105e-14,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "exact skill premium identity",
+      "absolute_error": 1.9539925233402948e-14,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "final-output factor payments plus monopoly profits",
+      "absolute_error": 7.105427357601027e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "implicit labor-share derivative vs central difference",
+      "absolute_error": 1.420669137885966e-11,
+      "tolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "production employment falls strictly",
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "passed": true
+    },
+    {
+      "name": "skill premium falls strictly",
+      "absolute_error": 0.0,
+      "tolerance": 0.0,
+      "passed": true
+    },
+    {
+      "name": "phi asymptotic coefficient",
+      "absolute_error": 4.884981308350689e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Y asymptotic coefficient",
+      "absolute_error": 3.774758283725532e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "wH asymptotic coefficient",
+      "absolute_error": 1.3322676295501878e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "wL asymptotic coefficient",
+      "absolute_error": 3.774758283725532e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Q asymptotic coefficient",
+      "absolute_error": 1.1546319456101628e-14,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "D asymptotic coefficient",
+      "absolute_error": 2.042810365310288e-14,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "incumbent capitalization/output limit",
+      "absolute_error": 7.993605777301127e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "analytic upper bound on omitted infinite-product log tail",
+      "absolute_error": 1.2166694505933296e-19,
+      "tolerance": 1e-16,
+      "passed": true
+    },
+    {
+      "name": "bubble-product factors vs direct stochastic discount factors",
+      "absolute_error": 1.061650767297806e-15,
+      "tolerance": 1e-12,
+      "passed": true
+    },
+    {
+      "name": "b no-innovation corner uses market-clearing stock price",
+      "absolute_error": 0.0,
+      "tolerance": 1e-12,
+      "passed": true
+    },
+    {
+      "name": "CES and stock-clearing identities across 30 parameter/state cases",
+      "absolute_error": 8.881784197001256e-16,
+      "tolerance": 1e-11,
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "bubble_tail": {
+    "T": 800,
+    "omitted_log_tail_upper_bound": 1.2166694505933296e-19,
+    "bound": "For t <= T: Bupper_t * exp(-tail_bound) <= B_t/Q_t <= Bupper_t. The date-T upper value is 1 by truncation."
+  },
+  "selected_conditional_path": [
+    {
+      "t": 0,
+      "n": 1.0,
+      "phi": 0.2731949140636961,
+      "price_dividend": 18.301951253873764,
+      "Q_relative": 1.0,
+      "D_relative": 1.0,
+      "skill_premium": 0.0956607318963058,
+      "bubble_fraction_truncated_upper": 0.16757102651331318
+    },
+    {
+      "t": 10,
+      "n": 4.357252160210255,
+      "phi": 0.13774884194536807,
+      "price_dividend": 36.29794580765352,
+      "Q_relative": 0.6109624209570849,
+      "D_relative": 0.3080561226676237,
+      "skill_premium": 0.09324442016278008,
+      "bubble_fraction_truncated_upper": 0.37224409724687696
+    },
+    {
+      "t": 20,
+      "n": 22.829279966383357,
+      "phi": 0.061894094704435236,
+      "price_dividend": 80.78315102396526,
+      "Q_relative": 0.3614345156084146,
+      "D_relative": 0.08188535359521043,
+      "skill_premium": 0.09194377761439068,
+      "bubble_fraction_truncated_upper": 0.5853144913442606
+    },
+    {
+      "t": 40,
+      "n": 789.6431941987871,
+      "phi": 0.01072296407056409,
+      "price_dividend": 466.2889819546851,
+      "Q_relative": 0.12252170786895829,
+      "D_relative": 0.004809005598972004,
+      "skill_premium": 0.09108667621023814,
+      "bubble_fraction_truncated_upper": 0.8525898212624108
+    },
+    {
+      "t": 80,
+      "n": 1137479.2114997276,
+      "phi": 0.00028360171698234125,
+      "price_dividend": 17630.35870587252,
+      "Q_relative": 0.01377237944777058,
+      "D_relative": 1.4297010146423781e-05,
+      "skill_premium": 0.090913778782502,
+      "bubble_fraction_truncated_upper": 0.9841093914630534
+    },
+    {
+      "t": 160,
+      "n": 2455882958306.6665,
+      "phi": 1.9302853551986513e-07,
+      "price_dividend": 25902905.943590045,
+      "Q_relative": 0.0001732546748806813,
+      "D_relative": 1.224147831551176e-10,
+      "skill_premium": 0.09090909409964536,
+      "bubble_fraction_truncated_upper": 0.9998055389502668
+    },
+    {
+      "t": 800,
+      "n": 1.1646755960707052e+63,
+      "phi": 8.863860065213228e-33,
+      "price_dividend": 5.640883275699293e+32,
+      "Q_relative": 1.086139825739772e-19,
+      "D_relative": 3.524000971836419e-51,
+      "skill_premium": 0.09090909090909138,
+      "bubble_fraction_truncated_upper": 1.0
+    }
+  ],
+  "grid_cases": 30,
+  "source": {
+    "path": "/Users/jipengcheng/Library/Mobile Documents/com~apple~CloudDocs/\u3010Research\u3011/Two_country_HKT/Codes/Reference/Hirano et al. - General-Purpose Technologies and Stock Market Bubbles.pdf",
+    "sha256": "5310438390e2c04695c6c22d0c9b246cd0a298f11823514aaa31b11ebfcb2845",
+    "paper_date": "2026-08-16",
+    "local_pdf_pages": 60,
+    "analysis_date": "2026-11-17",
+    "status": "Illustrative checks, not empirical or calibrated results"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "status": "REJECTED_P1",
+  "baseline_diagnostics": {
+    "markup": 1.61,
+    "theta": 0.6211180124223602,
+    "n_years": 16,
+    "n_P1_valid": 0,
+    "n_P2_valid": 0,
+    "phi_min": 1.4587097525254433,
+    "phi_max": 1.7483205551087564,
+    "I_min": -2.1903513748396026,
+    "I_max": -1.466537303690156,
+    "markup_floor_exclusive": 2.8147960937250978,
+    "binding_year": 2010,
+    "status": "rejected_P1_or_P2"
+  },
+  "sample": {
+    "sample_start": 2009,
+    "sample_end": 2024,
+    "n_years": 16,
+    "holdout_years": [],
+    "data_vintage": "preserved September 2026 snapshot",
+    "averaging_rule": "no averaging: H_t=1 and L_t=L_t^obs/H_t^obs for each of the 16 annual fitting rows, before wage bridging",
+    "labor_constants": {
+      "H": 1.0,
+      "L": 2.217584734989052
+    }
+  },
+  "scope": "US annual conditional production block with H normalized to one and L equal to the observed annual L/H ratio; no RoW, finance, regime-b or GE calibration",
+  "accepted_baseline_parameters": null,
+  "GE_solved": false,
+  "central_diagnostic_primitive_screen": false,
+  "central_diagnostic_parameters": {
+    "a": 0.08941433515418958,
+    "xi": 1.3377468455510877,
+    "nu": 3.411007103764964,
+    "AX": 8.731462502617527,
+    "AL": 4.86436004007056,
+    "objective": 0.031130381139640975,
+    "free_entry_relative_rmse": 0.17218324928869785,
+    "log_CX_rmse": 0.027973497659041873,
+    "log_CL_rmse": 0.026472499556080498,
+    "optimizer_at_search_boundary": false,
+    "jacobian_rank": 5,
+    "jacobian_condition": 14.206890845173506,
+    "column_scaled_jacobian_condition": 3.7841851879537383,
+    "xi_gt_nu_ge_zero": false
+  },
+  "reason": "Baseline fails active-research allocation; higher-markup fits are diagnostic, not adopted parameters"
+}

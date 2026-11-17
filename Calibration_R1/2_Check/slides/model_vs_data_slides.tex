@@ -1,0 +1,658 @@
+% !TEX program = pdflatex
+% Model-versus-data check for the V6 two-country production model.
+% Figures are native PGFPlots and read data/*.csv, which build_slide_data.py rebuilds from saved outputs.
+% Color rule on every chart: blue = data, orange = model. Rebuild: see README.md.
+\documentclass[aspectratio=169,11pt]{beamer}
+\geometry{paperwidth=32cm,paperheight=18cm}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,array}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\hypersetup{pdftitle={Where the V6 model misses the data},pdfauthor={},colorlinks=true,urlcolor=black,linkcolor=black}
+
+% ---- tokens (validated with the dataviz palette checker on a white surface)
+\definecolor{ink}{HTML}{0B0B0B}
+\definecolor{inksec}{HTML}{52514E}
+\definecolor{muted}{HTML}{898781}
+\definecolor{gridc}{HTML}{E1E0D9}
+\definecolor{axisc}{HTML}{C3C2B7}
+\definecolor{washc}{HTML}{F0EFEC}
+\definecolor{dataL}{HTML}{86B6EF}
+\definecolor{dataM}{HTML}{5598E7}
+\definecolor{dataC}{HTML}{2A78D6}
+\definecolor{dataD}{HTML}{104281}
+\definecolor{modelL}{HTML}{F2A07C}
+\definecolor{modelC}{HTML}{EB6834}
+\definecolor{modelD}{HTML}{A93F14}
+\definecolor{thirdC}{HTML}{1BAF7A}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+
+% ---- type sizes
+\newcommand{\ftick}{\fontsize{12.5}{15}\selectfont}
+\newcommand{\flab}{\fontsize{12.5}{15}\selectfont}
+\newcommand{\fsmall}{\fontsize{11.5}{14}\selectfont}
+\newcommand{\fpanel}{\fontsize{14.5}{17.5}\selectfont\bfseries}
+\newcommand{\fbody}{\fontsize{15.5}{20}\selectfont}
+
+% ---- slide furniture (coordinates in cm from the page's top-left corner)
+\newcommand{\slidehead}[3]{%
+ \node[anchor=north west,inner sep=0,outer sep=0,text width=29.6cm,align=left,text=muted,font=\fontsize{12}{14}\selectfont\bfseries] at (1.2cm,-0.62cm) {#1};
+ \node[anchor=north west,inner sep=0,outer sep=0,text width=29.6cm,align=left,text=ink,font=\fontsize{25}{30}\selectfont\bfseries] at (1.2cm,-1.2cm) {#2};
+ \node[anchor=north west,inner sep=0,outer sep=0,text width=29.6cm,align=left,text=inksec,font=\fontsize{14.5}{18}\selectfont] at (1.2cm,-2.45cm) {#3};}
+\newcommand{\slidefoot}[2]{%
+ \draw[gridc,line width=.6pt] (1.2cm,-15.1cm) -- (30.8cm,-15.1cm);
+ \node[anchor=north west,inner sep=0,outer sep=0,text width=29.6cm,align=left,text=ink,font=\fontsize{15.5}{19.5}\selectfont\bfseries] at (1.2cm,-15.32cm) {#1};
+ \node[anchor=north west,inner sep=0,outer sep=0,text width=27.8cm,align=left,text=muted,font=\fontsize{9.6}{11.8}\selectfont] at (1.2cm,-17.02cm) {#2};
+ \node[anchor=north east,inner sep=0,outer sep=0,text=muted,font=\fontsize{9.6}{11.8}\selectfont] at (30.8cm,-17.02cm) {\insertframenumber};}
+\newcommand{\ptitle}[4]{\node[anchor=north west,inner sep=0,outer sep=0,text width=#3cm,align=left,text=ink,font=\fpanel] at (#1cm,#2cm) {#4};}
+\newcommand{\ptext}[4]{\node[anchor=north west,inner sep=0,outer sep=0,text width=#3cm,align=left,text=ink,font=\fbody] at (#1cm,#2cm) {#4};}
+\newcommand{\plab}[3][east]{\node[anchor=#1,inner sep=2pt,text=ink,font=\flab] at (axis cs:#2) {#3};}
+
+% ---- chart styles
+\pgfplotsset{
+ chart/.style={
+  scale only axis,axis lines=left,axis line style={axisc,line width=.5pt,-},
+  tick style={draw=none},tick label style={font=\ftick,text=inksec},
+  xlabel style={font=\flab,text=inksec},ylabel style={font=\flab,text=inksec},
+  ymajorgrids=true,grid style={gridc,line width=.4pt},
+  xticklabel style={yshift=-1.5pt},yticklabel style={xshift=-1.5pt},
+  scaled ticks=false,enlargelimits=false,clip mode=individual,
+  /pgf/number format/1000 sep={},/pgf/number format/fixed,
+  unbounded coords=jump,
+  legend cell align=left,
+  legend style={draw=none,fill=none,font=\flab,text=ink,at={(0,1.015)},anchor=south west,legend columns=-1,
+   /tikz/every even column/.append style={column sep=11pt},inner sep=0pt,outer sep=0pt},
+  legend image post style={line width=1.9pt},
+ },
+ d/.style={color=dataC,line width=1.7pt,line join=round,line cap=round,mark=none},
+ dd/.style={color=dataD,line width=1.7pt,line join=round,line cap=round,mark=none},
+ dm/.style={color=dataM,line width=1.7pt,line join=round,line cap=round,mark=none},
+ dl/.style={color=dataL,line width=1.7pt,line join=round,line cap=round,mark=none},
+ m/.style={color=modelC,line width=1.7pt,line join=round,line cap=round,mark=none},
+ md/.style={color=modelD,line width=1.7pt,line join=round,line cap=round,mark=none},
+ ml/.style={color=modelL,line width=1.7pt,line join=round,line cap=round,mark=none},
+ ctx/.style={color=muted,line width=.9pt,mark=none},
+ ovdot/.style={only marks,mark=*,mark size=3.6pt,color=modelC,mark options={draw=white,line width=.8pt,fill=modelC}},
+ ovflip/.style={only marks,mark=*,mark size=3.6pt,color=modelC,mark options={draw=modelC,line width=1.4pt,fill=white}},
+ ovstem/.style={color=modelL,line width=1.2pt,forget plot,mark=none},
+}
+\pgfplotsset{swatch/.style={legend image code/.code={\draw[##1,draw=none] (0cm,-0.11cm) rectangle (0.42cm,0.11cm);}}}
+\newcommand{\csvplot}[4][]{\addplot[#2,#1] table[col sep=comma,x=#3,y=#4]}
+
+% ---- overview rows and implication-matrix cells
+\newcommand{\ovgroup}[2]{\node[anchor=west,inner sep=0,text=muted,font=\fsmall\bfseries,xshift=-11.2cm] at (axis cs:0.001,#1) {#2};}
+\newcommand{\ovrow}[4]{%
+ \node[anchor=west,inner sep=0,text=ink,font=\flab,xshift=-8.75cm] at (axis cs:0.001,#1) {#2};
+ \node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=2.5cm] at (axis cs:10,#1) {#3};
+ \node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=5.1cm] at (axis cs:10,#1) {#4};}
+\newcommand{\mx}{10.6}\newcommand{\mdx}{1.72}\newcommand{\my}{-6.15}\newcommand{\mdy}{1.5}
+\newcommand{\cellfull}[2]{\fill[modelC] ({\mx+#1*\mdx},{\my-#2*\mdy}) circle (.25);}
+\newcommand{\cellpart}[2]{\draw[modelC,line width=1.6pt,fill=white] ({\mx+#1*\mdx},{\my-#2*\mdy}) circle (.22);}
+
+\begin{document}
+\hyphenpenalty=10000\exhyphenpenalty=10000
+\input{data/values.tex}
+
+% ================ 01 Title and reading guide ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\node[anchor=north west,inner sep=0,text=muted,font=\fontsize{13}{16}\selectfont\bfseries] at (1.2cm,-1.5cm) {CALIBRATION R1, CHECK PHASE};
+\node[anchor=north west,inner sep=0,text width=29cm,align=left,text=ink,font=\fontsize{38}{45}\selectfont\bfseries] at (1.2cm,-2.3cm) {Where the V6 model misses the data};
+\node[anchor=north west,inner sep=0,text width=29cm,align=left,text=inksec,font=\fontsize{17}{22}\selectfont] at (1.2cm,-4.3cm) {Zero-exponent simulations, the pilot production calibration and the empirical package, compared figure by figure.\\Companion note: \texttt{On\_Model\_vs\_Data\_Failed\_Dimensions.md}.};
+\ptitle{1.2}{-6.9}{9}{How to read the charts}
+\draw[dataC,line width=2.4pt] (1.2cm,-8.05cm) -- (2.6cm,-8.05cm);
+\node[anchor=west,inner sep=0,font=\fbody] at (2.9cm,-8.05cm) {Data};
+\draw[modelC,line width=2.4pt] (1.2cm,-8.95cm) -- (2.6cm,-8.95cm);
+\node[anchor=west,inner sep=0,font=\fbody] at (2.9cm,-8.95cm) {Model};
+\node[anchor=north west,inner sep=0,text width=8.6cm,align=left,text=inksec,font=\fontsize{14}{18}\selectfont] at (1.2cm,-9.75cm) {Shades of one hue separate variants of the same object. Every plotted series is rebuilt from saved outputs by \texttt{build\_slide\_data.py}.};
+\ptitle{11.6}{-6.9}{19}{Three different model objects appear in this deck}
+\node[anchor=north west,inner sep=0,text width=19.2cm,align=left,font=\fontsize{14}{17.5}\selectfont] at (11.6cm,-7.75cm) {%
+\renewcommand{\arraystretch}{1.5}\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.3cm}>{\raggedright\arraybackslash}p{13.4cm}@{}}\toprule
+\textbf{AHP seed} & Solved GE, all-$u$ paths to $T=80$. $\beta=.45$, $\vartheta=.85$, $aH=.2$, $A_X/A_L=10$, $\rho=2$, $\xi_u=2.25$, $\nu_u\in\{.75,1,1.25\}$, $\nu_b=\xi_W=0$ (notebook 05).\\
+\textbf{Notebook 06 best point} & Same production block with $\nu_u=1.75$, $T=16$, portfolio block searched to match post-2008 NFA. Its 16 periods are plotted over 2008Q1--2023Q3; the notebook calls this a plotting convention.\\
+\textbf{R1 conditional inversion} & No GE solve. Production parameters inverted from data at a diagnostic markup $\mu=3.5$ (Run 1 observed labor, Run 2 fixed mean labor).\\\bottomrule\end{tabular}};
+\node[anchor=north west,inner sep=0,text=muted,font=\fontsize{11}{14}\selectfont] at (1.2cm,-16.7cm) {30 October 2026};
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 02 Overview ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{OVERVIEW}{One solved path against the same window: most moments miss by far}{Notebook 06 best point at its end date against 2023 data or the 2008Q1--2023Q3 window. Dot position is model $\div$ data, on a log scale.}
+\begin{axis}[chart,at={(12.4cm,-14.55cm)},anchor=south west,width=13.2cm,height=10.75cm,
+ xmode=log,log basis x=10,xmin=0.001,xmax=10,ymin=-.7,ymax=19.8,
+ xtick={0.001,0.01,0.1,1,10},xticklabels={$\times$0.001,$\times$0.01,$\times$0.1,match,$\times$10},
+ ytick=\empty,ymajorgrids=false,xmajorgrids=true,axis y line=none,minor x tick num=0,x axis line style={draw=none}]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(0.5,-.7) (2,-.7) (2,19.8) (0.5,19.8)} -- cycle;
+\addplot[inksec,line width=.8pt,forget plot] coordinates {(1,-.7) (1,19.8)};
+\input{data/overview_rows.tex}
+\input{data/overview_labels.tex}
+\node[anchor=east,inner sep=0,text=inksec,font=\fsmall\bfseries,xshift=2.5cm] at (axis cs:10,20.65) {Data};
+\node[anchor=east,inner sep=0,text=inksec,font=\fsmall\bfseries,xshift=5.1cm] at (axis cs:10,20.65) {Model};
+\end{axis}
+\slidefoot{Within a factor of two: only $D/Q$, the two price indices and the liability share of VA. The scale objects miss by 10 to 600 times.}{Open dot: sign reversed, plotted at the absolute ratio. Gray band: within a factor of two. Asset VA and CA have the opposite sign in the model. Skill premium: CPS re-censored; R\&D share: NSCG RD1 for-profit. Sources: \texttt{outputs\_zero\_nu\_b/06\_*}, \texttt{AHP\_NFA}, \texttt{Empirical\_Mapping\_Annual}, \texttt{Skill\_Premium\_and\_RD\_Share\_2026-10-26}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 03 Valuation ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 1: VALUATION AND THE FUNDING CAP}{The model ties equity value to one cohort's saving; the data do not}{Exact model identity on every path: $Q_{US,t}+\text{NFA}_t=A_t=\beta e_{US,t}$, with $\beta<1$.}
+\ptitle{2.2}{-3.35}{13}{Data and model on one scale}
+\begin{axis}[chart,at={(2.2cm,-14.1cm)},anchor=south west,width=11.9cm,height=9cm,xmin=1990,xmax=2025,ymin=0,ymax=9,xtick={1990,2000,2010,2020},ytick={0,1,3,5,7,9},legend columns=2]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(1990,0) (2025,0) (2025,1) (1990,1)} \closedcycle;
+\csvplot{d}{year}{Q_COMP}{data/val_us.csv};\addlegendentry{Data $Q/\text{COMP}$}
+\csvplot{dd}{year}{A_e}{data/val_us.csv};\addlegendentry{Data implied $\beta$}
+\csvplot{m}{year}{Q_e}{data/model_nb06_path.csv};\addlegendentry{Model $Q/e$, notebook 06}
+\addplot[md] coordinates {(2008,.45) (2023,.45)};\addlegendentry{Model $\beta=.45$}
+\plab[west]{2025,8.34}{8.3}
+\plab[west]{2025,6.32}{6.3}
+\plab[south west]{1990.3,1.0}{Admissible $\beta<1$}
+\plab[south]{2015.5,.68}{\fsmall Model .79 to .53}
+\end{axis}
+\ptitle{17.7}{-3.35}{13}{A longer period rescales the level, not the rise}
+\begin{axis}[chart,at={(17.7cm,-14.1cm)},anchor=south west,width=11.9cm,height=9cm,xmin=1990,xmax=2025,ymin=0,ymax=7,xtick={1990,2000,2010,2020},ytick={0,1,2,3,4,5,6,7}]
+\addplot[inksec,line width=.8pt,forget plot] coordinates {(1990,1) (2025,1)};
+\csvplot{dd}{year}{A_e}{data/val_us.csv};\addlegendentry{$T=1$}
+\csvplot{d}{year}{A_e_T5}{data/val_us.csv};\addlegendentry{$T=5$}
+\csvplot{dm}{year}{A_e_T7}{data/val_us.csv};\addlegendentry{$T=7$}
+\csvplot{dl}{year}{A_e_T10}{data/val_us.csv};\addlegendentry{$T=10$ years per period}
+\plab[west]{2025,6.32}{6.32}
+\plab[west]{2025,1.34}{1.26}
+\plab[west]{2025,.88}{.90}
+\plab[west]{2025,.53}{.63}
+\plab[south west]{1990.3,1}{$\beta=1$}
+\end{axis}
+\slidefoot{Implied $\beta$ rises $\times$3.2 over 1990--2025 and $T\geq7$ only moves its 2025 level below one. Net foreign funding is just \valforeignshare\% of $Q$ in 2025.}{Implied $\beta=(Q+\text{NFA})/e$, $Q$ = AHP enterprise value, $e$ = corporate compensation; a wealth-to-annual-income ratio. Rescaling by $T$ without rebuilding cohorts is arbitrary (see implied-beta readme). Sources: \texttt{data\_final/implied\_beta\_US\_main.csv}, notebook 06 path rebuilt from \texttt{best\_candidate\_path.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 04 Prices ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 1: VALUATION AND THE FUNDING CAP}{Capped $Q$ and growing $N$ push per-variety prices down}{The model's price is $q_t=Q_t/N_{t+1}$. Empirical counterparts are AHP revaluation-implied dollar price indices, 2008Q1 = 1.}
+\ptitle{2.2}{-3.35}{13}{Post-2008 window: best searched point}
+\begin{axis}[chart,at={(2.2cm,-13.75cm)},anchor=south west,width=11.9cm,height=8.65cm,xmin=2008,xmax=2024,ymin=0.4,ymax=2.6,xtick={2008,2012,2016,2020,2024},ytick={0.5,1,1.5,2,2.5},legend columns=2]
+\csvplot{d}{year}{liab_idx}{data/ext_quarterly.csv};\addlegendentry{Data US-equity price}
+\csvplot{dl}{year}{asset_idx}{data/ext_quarterly.csv};\addlegendentry{Data RoW-equity price}
+\csvplot{m}{q_year}{q_US_idx}{data/model_nb06_path.csv};\addlegendentry{Model $q_{US}$}
+\csvplot{ml}{q_year}{q_W_idx}{data/model_nb06_path.csv};\addlegendentry{Model $q_W$}
+\plab[south west]{2023.55,2.22}{$\times$2.22}
+\plab[west]{2023.55,1.33}{$\times$1.29}
+\plab[south west]{2023.55,1.04}{$\times$1.05}
+\plab[north west]{2023.55,.97}{$\times$.97}
+\end{axis}
+\ptitle{17.7}{-3.35}{13}{AHP seed: long all-$u$ paths}
+\begin{axis}[chart,at={(17.7cm,-13.75cm)},anchor=south west,width=11.9cm,height=8.65cm,xmin=1,xmax=80,ymode=log,log basis y=10,ymin=0.05,ymax=3,xtick={1,20,40,60,80},ytick={0.05,0.1,0.2,0.5,1,2},yticklabels={.05,.1,.2,.5,1,2},minor y tick num=0,xlabel={Model period $t$},legend columns=2]
+\csvplot{ml}{t}{nu125}{data/sweep_q_US.csv};\addlegendentry{$q_{US}$, $\nu_u=1.25$}
+\csvplot{m}{t}{nu100}{data/sweep_q_US.csv};\addlegendentry{$q_{US}$, $\nu_u=1$}
+\csvplot{md}{t}{nu075}{data/sweep_q_US.csv};\addlegendentry{$q_{US}$, $\nu_u=.75$}
+\addplot[color=muted,line width=1.7pt,mark=none] table[col sep=comma,x=t,y=nu125]{data/sweep_q_W.csv};\addlegendentry{$q_W$, $\nu_u=1.25$}
+\plab[west]{80,.91}{.91}
+\plab[west]{80,.59}{.59}
+\plab[west]{80,.118}{.12}
+\plab[west]{80,.061}{.06}
+\end{axis}
+\slidefoot{The search reaches a rising $q_{US}$ only with $\bar\omega=.95$, $\bar\omega^*=.425$, $\eta=.086$, and its log growth is still 32\% of the data. MSCI USA rose $\times$5.4 over 2011--25.}{Data: \texttt{AHP\_NFA/ahp\_us\_nfa\_decomposition\_latest.csv} (June 2026 release, same vintage as notebook 06 targets). Model: \texttt{outputs\_zero\_nu\_b/06\_*/best\_candidate\_path.csv}, \texttt{05\_*/all\_u\_and\_realized\_switch\_state\_paths.csv}. MSCI: \texttt{Mechanism\_Evidence\_US\_ROW}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 05 External ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 1: VALUATION AND THE FUNDING CAP}{External positions and valuation effects are 1 to 8\% of the data}{Notebook 06 best point against 2008Q1--2023Q3. All ratios use end-period corporate GVA or its model analog $Y_{US}$.}
+\ptitle{1.2}{-3.35}{10}{Cumulative flows, share of GVA}
+\begin{axis}[chart,at={(4.6cm,-14.1cm)},anchor=south west,width=6.6cm,height=9cm,xbar,bar width=.42cm,xmin=-1.42,xmax=0.3,ymin=0.45,ymax=4.55,ytick={1,2,3,4},yticklabels={CA,Asset VA,Liability VA,$\Delta$NFA},xtick={-1,-.5,0},xticklabels={$-1$,$-.5$,0},ymajorgrids=false,xmajorgrids=true,axis y line=none,swatch,legend style={at={(0,1.015)}}]
+\addplot[fill=dataC,draw=white,line width=.8pt,bar shift=.23cm] table[col sep=comma,x=data,y=ypos]{data/ext_bars.csv};\addlegendentry{Data}
+\addplot[fill=modelC,draw=white,line width=.8pt,bar shift=-.23cm] table[col sep=comma,x=model,y=ypos]{data/ext_bars.csv};\addlegendentry{Model}
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(0,.45) (0,4.55)};
+\node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=-.2cm] at (axis cs:-1.42,4) {$\Delta$NFA};
+\node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=-.2cm] at (axis cs:-1.42,3) {Liability VA};
+\node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=-.2cm] at (axis cs:-1.42,2) {Asset VA};
+\node[anchor=east,inner sep=0,text=ink,font=\flab,xshift=-.2cm] at (axis cs:-1.42,1) {CA};
+\plab[east]{-1.02,4.105}{$-1.02$}
+\plab[east]{-.72,3.105}{$-.72$}
+\plab[west]{.05,2.105}{$+.05$}
+\plab[east]{-.52,1.105}{$-.52$}
+\plab[east]{-.002,3.895}{$-.002$}
+\plab[east]{-.011,2.895}{$-.011$}
+\plab[east]{-.0005,1.895}{$-.0005$}
+\plab[west]{.01,.895}{$+.010$}
+\end{axis}
+\ptitle{12.5}{-3.35}{9}{Gross equity positions, share of GVA}
+\begin{axis}[chart,at={(12.5cm,-14.1cm)},anchor=south west,width=7.9cm,height=9cm,xmin=2008,xmax=2026,ymin=0,ymax=2.2,xtick={2008,2012,2016,2020,2024},ytick={0,.5,1,1.5,2},yticklabels={0,.5,1,1.5,2},legend columns=2,legend style={/tikz/every even column/.append style={column sep=5pt}}]
+\csvplot{d}{year}{liab_Y}{data/ext_quarterly.csv};\addlegendentry{Data liab.}
+\csvplot{dl}{year}{asset_Y}{data/ext_quarterly.csv};\addlegendentry{Data assets}
+\csvplot{m}{q_year}{liab_Y}{data/model_nb06_path.csv};\addlegendentry{Model liab.}
+\csvplot{ml}{q_year}{asset_Y}{data/model_nb06_path.csv};\addlegendentry{Model assets}
+\plab[west]{2023.5,1.55}{1.55}
+\plab[west]{2023.5,1.17}{1.17}
+\plab[west]{2023.5,.12}{.09}
+\plab[west]{2023.5,.0}{.02}
+\end{axis}
+\ptitle{22.6}{-3.35}{9}{Net foreign assets, share of GVA}
+\begin{axis}[chart,at={(22.6cm,-14.1cm)},anchor=south west,width=7.9cm,height=9cm,xmin=2008,xmax=2026.5,ymin=-1.3,ymax=0,xtick={2008,2012,2016,2020,2024},ytick={-1.25,-1,-.75,-.5,-.25,0},yticklabels={$-$1.25,$-$1,$-$.75,$-$.5,$-$.25,0}]
+\csvplot{d}{year}{NFA_Y}{data/ext_quarterly.csv};\addlegendentry{Data}
+\csvplot{m}{q_year}{NFA_Y}{data/model_nb06_path.csv};\addlegendentry{Model}
+\plab[west]{2023.5,-1.06}{$-1.06$}
+\plab[west]{2023.5,-.08}{$-.08$}
+\end{axis}
+\slidefoot{Signs of $\Delta$NFA and liability VA are right, but the scale miss is 13 to 620 times, CA has the wrong sign, and model NFA/GVA moves toward zero.}{The model's NFA level barely moves ($-.92$ to $-.96$) while $Y_{US}$ rises $\times$4.5, so high output growth also compresses every /GVA ratio. Data: \texttt{AHP\_NFA} (June 2026 release). Model: \texttt{06\_*/model\_empirical\_comparison.csv}, \texttt{best\_candidate\_path.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 06 GVA stack ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 2: INCOME SHARES AND THE MARKUP}{The model has no slot for capital, so its cash flow is 3.7 times FCF}{Where a dollar of corporate GVA goes. Model accounting without capital: $Y=e+\mathcal D-\mathcal I$, so net cash flow $\mathcal D-\mathcal I=Y-e$.}
+\begin{axis}[chart,at={(2.4cm,-14.1cm)},anchor=south west,width=17.6cm,height=9.1cm,ybar stacked,bar width=1.05cm,xmin=0.2,xmax=10.8,ymin=0,ymax=100,xtick={1,2,3,4,5,6,7,8,10},xticklabels={1990,2000,2007,2009,2015,2019,2022,2025,{Model, 2022 data}},ytick={0,25,50,75,100},yticklabel={\pgfmathprintnumber{\tick}\%},legend columns=5,swatch,legend style={/tikz/every even column/.append style={column sep=9pt}}]
+\addplot[fill=axisc,draw=white,line width=1pt] table[col sep=comma,x=xpos,y expr=\thisrow{comp}*100]{data/gva_stack.csv};\addlegendentry{Compensation}
+\addplot[fill=dataL,draw=white,line width=1pt] table[col sep=comma,x=xpos,y expr=\thisrow{cfc_tax}*100]{data/gva_stack.csv};\addlegendentry{CFC and taxes}
+\addplot[fill=dataC,draw=white,line width=1pt] table[col sep=comma,x=xpos,y expr=\thisrow{ncf}*100]{data/gva_stack.csv};\addlegendentry{Net capital formation}
+\addplot[fill=dataD,draw=white,line width=1pt] table[col sep=comma,x=xpos,y expr=\thisrow{fcf}*100]{data/gva_stack.csv};\addlegendentry{FCF}
+\addplot[fill=modelC,draw=white,line width=1pt] table[col sep=comma,x=xpos,y expr=\thisrow{model_net}*100]{data/gva_stack.csv};\addlegendentry{Model $\mathcal D-\mathcal I$}
+\coordinate (g1) at (axis cs:7,28);\coordinate (g2) at (axis cs:7,69.4);\coordinate (g3) at (axis cs:7,85.4);\coordinate (g4) at (axis cs:7,94);\coordinate (g5) at (axis cs:10,28);\coordinate (g6) at (axis cs:10,78);
+\end{axis}
+\node[text=ink,font=\fsmall] at (g1) {56.0};
+\node[text=ink,font=\fsmall] at (g2) {26.7};
+\node[text=white,font=\fsmall] at (g3) {5.3};
+\node[text=white,font=\fsmall] at (g4) {12.0};
+\node[text=ink,font=\fsmall] at (g5) {$e$: 56.0};
+\node[text=white,font=\fsmall] at (g6) {44.0};
+\ptext{21.5}{-4.4}{9.3}{\textbf{2022, percent of GVA}\\[4pt]
+Model net cash flow\hfill 44.0\\
+\quad CFC and taxes\hfill 26.7\\
+\quad Net capital formation\hfill 5.3\\
+\quad AHP FCF\hfill 12.0\\[12pt]
+\textbf{The notebooks take the other route}\\[4pt]
+With $\vartheta=.85$, $\mathcal D/Y=1.4\%$, far below FCF/GVA. Net of $\mathcal I$, cash flow is negative at the notebook 06 point ($-2.8\%$ to $-1.7\%$ of $Y$).}
+\slidefoot{$\mathcal D$ can be matched to the 44\% residual (R1, high $\mu$) or to a small dividend (notebooks, low $\mu$), but not to FCF at a plausible $\mu$ and $\varphi$.}{Data identity: $Y-\text{COMP}=\text{CFC}+\text{taxes}+\text{NCF}+\text{FCF}$; AHP FCF $=$ NOS $-$ tax $-$ NCF, and NCF includes capitalized R\&D. NCF is $-0.6\%$ in 2009, so that column has no visible NCF segment. Source: \texttt{data\_intermediate/us\_corporate\_external\_corporate.csv} (total corporate, latest vintage).}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 07 Markup ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 2: INCOME SHARES AND THE MARKUP}{Adding capital moves the implied markup into the external range}{P1 in closed form with $\varphi=1-$ NSCG RD1 share. Bands span three skill-premium series; only the income term differs between them.}
+\begin{axis}[chart,at={(2.4cm,-14.1cm)},anchor=south west,width=17.6cm,height=9.1cm,xmin=2009,xmax=2024,ymin=1,ymax=3.25,xtick={2009,2012,2015,2018,2021,2024},ytick={1,1.5,2,2.5,3},yticklabels={1,1.5,2,2.5,3}]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(2009,1.10) (2024,1.10) (2024,1.84) (2009,1.84)} \closedcycle;
+\addplot[fill=modelC,fill opacity=.16,draw=none,forget plot] table[col sep=comma,x=x,y=y]{data/markup_band_nocap.csv} -- cycle;
+\addplot[fill=thirdC,fill opacity=.18,draw=none,forget plot] table[col sep=comma,x=x,y=y]{data/markup_band_cap.csv} -- cycle;
+\csvplot{m}{year}{nocap_recensor}{data/markup.csv};\addlegendentry{No capital (current model), CPS re-censored}
+\addplot[color=thirdC,line width=1.7pt,mark=none] table[col sep=comma,x=year,y=cap_recensor]{data/markup.csv};\addlegendentry{Capital absorbs $Y-\text{COMP}-\text{FCF}$}
+\plab[south west]{2009.2,1.11}{External candidates 1.10--1.84}
+\plab[south]{2012,3.03}{\valmuNocapLo--\valmuNocapHi}
+\plab[north]{2013,1.43}{\valmuCapLo--\valmuCapHi}
+\end{axis}
+\ptext{21.5}{-4.2}{9.3}{\textbf{No capital}\\[3pt]
+$\displaystyle\mu=\frac{1+(Y-\text{COMP})/B_H}{\varphi}$\\[16pt]
+\textbf{Capital absorbs CFC, taxes, NCF}\\[3pt]
+$\displaystyle\mu=\frac{1+\text{FCF}/B_H}{\varphi}$\\[16pt]
+Since $PX=B_H+\text{FCF}$ and $\mathcal D-\mathcal I=\text{FCF}$ in that case. Worked year 2022: 2.79 falls to 1.54.}
+\slidefoot{The P1 rejection, the $\mu\geq2.7$ floor and R1's 250\% untargeted FCF error are one problem. This is accounting, not estimation.}{Upper bound on the pure-rent markup, since FCF still contains the net return to capital. Premia: package CPS, CPS re-censored, ACS annual. Closed form reproduces the saved P1 values. Sources: \texttt{Skill\_Premium\_and\_RD\_Share\_2026-10-26/data/derived/one\_minus\_phi\_candidates.csv} and that package's README (external range).}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 08 Q/D decomposition ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 3: THE EXPLOSIVE $Q/D$ CHANNEL}{Data: $Q/D$ rises through $Q/Y$. Model: through a collapsing $D/Y$}{$\Delta\log(Q/D)=\Delta\log(Q/Y)-\Delta\log(D/Y)$. Bars show the two contributions, in log points.}
+\ptitle{7.1}{-3.35}{6}{From $Q/Y$}
+\begin{axis}[chart,at={(7.1cm,-14.1cm)},anchor=south west,width=5.2cm,height=9.6cm,xbar,bar width=.62cm,xmin=-1,xmax=2.1,ymin=.4,ymax=6.6,ytick=\empty,ymajorgrids=false,xmajorgrids=true,xtick={-1,0,1},xticklabels={$-$1,0,1},axis y line=none]
+\addplot[fill=dataC,draw=white,line width=.8pt,bar shift=0pt,forget plot] table[col sep=comma,x=qy,y=ypos]{data/decomp_data.csv};
+\addplot[fill=modelC,draw=white,line width=.8pt,bar shift=0pt,forget plot] table[col sep=comma,x=qy,y=ypos]{data/decomp_model.csv};
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(0,.4) (0,6.6)};
+\plab[west]{1.286,6}{+1.29}\plab[west]{.74,5}{+.74}\plab[west]{.832,4}{+.83}
+\plab[east]{-.541,3}{$-$.54}\plab[east]{-.465,2}{$-$.47}\plab[east]{-.414,1}{$-$.41}
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,6) {Data 1990--2025};
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,5) {Data 2007--2025};
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,4) {Data 2009--2024};
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,3) {Model $\nu_u=1$, $t=1$--80};
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,2) {Model $\nu_u=1.25$, $t=1$--80};
+\node[anchor=west,inner sep=0,font=\flab,text=ink,xshift=-6cm] at (axis cs:-1,1) {Notebook 06, $t=1$--16};
+\end{axis}
+\ptitle{13.3}{-3.35}{6}{From $D/Y$}
+\begin{axis}[chart,at={(13.3cm,-14.1cm)},anchor=south west,width=5.5cm,height=9.6cm,xbar,bar width=.62cm,xmin=-1.5,xmax=3.3,ymin=.4,ymax=6.6,ytick=\empty,ymajorgrids=false,xmajorgrids=true,xtick={-1,0,1,2,3},xticklabels={$-$1,0,1,2,3},axis y line=none]
+\addplot[fill=dataC,draw=white,line width=.8pt,bar shift=0pt,forget plot] table[col sep=comma,x=dy,y=ypos]{data/decomp_data.csv};
+\addplot[fill=modelC,draw=white,line width=.8pt,bar shift=0pt,forget plot] table[col sep=comma,x=dy,y=ypos]{data/decomp_model.csv};
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(0,.4) (0,6.6)};
+\plab[east]{-.676,6}{$-$.68}\plab[east]{-.447,5}{$-$.45}\plab[west]{.143,4}{+.14}
+\plab[west]{.784,2}{+.78}\plab[west]{.391,1}{+.39}
+\node[anchor=east,inner sep=2pt,font=\flab,text=white] at (axis cs:2.75,3) {+2.79};
+\end{axis}
+\ptitle{20.6}{-3.35}{10}{Data: FCF/GVA has no downward trend}
+\begin{axis}[chart,at={(20.6cm,-8.75cm)},anchor=south west,width=9.3cm,height=4.05cm,xmin=1990,xmax=2025,ymin=0,ymax=16,xtick={1990,2000,2010,2020},ytick={0,5,10,15},yticklabel={\pgfmathprintnumber{\tick}\%}]
+\addplot[d] table[col sep=comma,x=year,y expr=\thisrow{fcf_y}*100]{data/dy_us.csv};
+\plab[west]{2025,12.66}{12.7}
+\end{axis}
+\ptitle{20.6}{-9.55}{10}{Model: $D/Y$ goes to zero (same scale)}
+\begin{axis}[chart,at={(20.6cm,-14.1cm)},anchor=south west,width=9.3cm,height=3.65cm,xmin=1,xmax=80,ymin=0,ymax=16,xtick={1,20,40,60,80},ytick={0,5,10,15},yticklabel={\pgfmathprintnumber{\tick}\%},legend style={at={(1,1)},anchor=north east,legend columns=3}]
+\addplot[ml] table[col sep=comma,x=t,y expr=\thisrow{nu125}*100]{data/sweep_D_Y.csv};\addlegendentry{$\nu_u=1.25$}
+\addplot[m] table[col sep=comma,x=t,y expr=\thisrow{nu100}*100]{data/sweep_D_Y.csv};\addlegendentry{1}
+\addplot[md] table[col sep=comma,x=t,y expr=\thisrow{nu075}*100]{data/sweep_D_Y.csv};\addlegendentry{.75}
+\end{axis}
+\slidefoot{In the data $Q/Y$ accounts for at least 85\% of the rise in every window. In the model $Q/Y$ always falls, so any rise must come from dividends.}{``$D/Y$ rose'' depends on the window: 2009 FCF is unusually high because NCF is negative. Model $Y$ and $\mathcal D$ rebuilt from solved paths; notebook 06 has almost no net change in $Q/D$. Sources: \texttt{us\_corporate\_external\_corporate.csv}; \texttt{05\_*/production\_wage\_and\_force\_paths.csv}; \texttt{06\_*/best\_candidate\_path.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 09 R&D share ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 3: THE EXPLOSIVE $Q/D$ CHANNEL}{The measured R\&D share is small and nearly flat; the model's is not}{With $a,\vartheta,H$ constant, $d/q=a\frac{1-\vartheta}{\vartheta}\varphi H$ moves only with $\varphi$, so a falling yield requires a large rise in $1-\varphi$.}
+\ptitle{2.2}{-3.35}{13}{Data: counterparts of $1-\varphi$}
+\begin{axis}[chart,at={(2.2cm,-13.75cm)},anchor=south west,width=10.7cm,height=8.65cm,xmin=2009,xmax=2024,ymin=0,ymax=12,xtick={2009,2012,2015,2018,2021,2024},ytick={0,2,4,6,8,10,12},yticklabel={\pgfmathprintnumber{\tick}\%}]
+\addplot[dl] table[col sep=comma,x=year,y expr=\thisrow{researchers}*100]{data/rd_data.csv};
+\addplot[d] table[col sep=comma,x=year,y expr=\thisrow{personnel}*100]{data/rd_data.csv};
+\addplot[color=dataD,only marks,mark=*,mark size=3.4pt,mark options={draw=white,line width=.7pt}] table[col sep=comma,x=year,y expr=\thisrow{nscg}*100]{data/rd_data.csv};
+\addplot[dd] table[col sep=comma,x=year,y expr=\thisrow{labor_cost_cps}*100]{data/rd_data.csv};
+\addplot[dd,opacity=.55] table[col sep=comma,x=year,y expr=\thisrow{labor_cost_acs}*100]{data/rd_data.csv};
+\plab[north west]{2015.2,3.2}{BERD researchers$/H$}
+\plab[north west]{2015.2,4.6}{BERD personnel$/H$}
+\plab[north west]{2009.2,5.85}{NSCG RD1, for-profit (dots)}
+\plab[south east]{2019.2,8.75}{BERD labor cost$/$skilled bill (CPS)}
+\plab[west]{2015.1,7.82}{(ACS premium)}
+\end{axis}
+\ptitle{16.7}{-3.35}{14}{Model: paths of $1-\varphi_{US}$ (gray band: data range)}
+\begin{axis}[chart,at={(16.7cm,-13.75cm)},anchor=south west,width=12.9cm,height=8.65cm,xmin=1,xmax=80,ymin=0,ymax=100,xtick={1,20,40,60,80},ytick={0,25,50,75,100},yticklabel={\pgfmathprintnumber{\tick}\%},xlabel={Model period $t$},legend columns=3,legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(1,3) (80,3) (80,10) (1,10)} \closedcycle;
+\addplot[ml] table[col sep=comma,x=t,y expr=\thisrow{nu125}*100]{data/sweep_rd_share.csv};\addlegendentry{$\nu_u=1.25$}
+\addplot[m] table[col sep=comma,x=t,y expr=\thisrow{nu100}*100]{data/sweep_rd_share.csv};\addlegendentry{$\nu_u=1$}
+\addplot[md] table[col sep=comma,x=t,y expr=\thisrow{nu075}*100]{data/sweep_rd_share.csv};\addlegendentry{$\nu_u=.75$}
+\addplot[color=muted,line width=1.7pt,mark=none] table[col sep=comma,x=t,y expr=\thisrow{nu175}*100]{data/sweep_rd_share_nu175.csv};\addlegendentry{$\nu_u=1.75$, $T=30$}
+\addplot[color=ink,line width=1.7pt,mark=none] table[col sep=comma,x=t,y expr=\thisrow{rd_share}*100]{data/model_nb06_path.csv};\addlegendentry{Notebook 06}
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(1,\valneedA) (24,\valneedA)};
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(1,\valneedB) (24,\valneedB)};
+\plab[south west]{1,\valneedA}{$D/Q$ $-26\%$ needs \valneedA\%}
+\plab[south west]{1,\valneedB}{$D/Q$ $-46\%$ needs \valneedB\%}
+\plab[west]{80,25.3}{25\%}
+\plab[south east]{80,88}{88\%}
+\plab[south east]{74,99}{99\%}
+\plab[west]{30,.6}{0.6\%}
+\end{axis}
+\slidefoot{No solved path holds the share near 7\% while the yield falls. Measured $1-\varphi$ moves 1--2 points per decade, so it cannot be the source of the valuation rise.}{NSCG points are survey years; BERD labor cost uses the skilled bill from the CPS re-censored or ACS annual premium. ``Needs'' takes $\varphi=.93$ and scales it by the fall in FCF/EV over 2007--25 and 1990--2025. Sources: \texttt{Skill\_Premium\_and\_RD\_Share\_2026-10-26/data}; \texttt{05\_*}, \texttt{04\_*/spillover\_sweep\_paths.csv}, \texttt{06\_*}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 10 Free entry ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 3: THE EXPLOSIVE $Q/D$ CHANNEL}{Free entry is one restriction, and it fails in trend}{$q=w_H/(aN)$ is equivalent to $Q=G_Nw_H/a$ and to $B_H/Q=aH/G_N$. Implied $a$, the log-growth residual and R1's fit are three views of it.}
+\ptitle{1.9}{-3.35}{9.3}{Implied $aH$ under four $N$ mappings}
+\begin{axis}[chart,at={(1.9cm,-14.1cm)},anchor=south west,width=8.1cm,height=8.95cm,xmin=1995,xmax=2024,ymin=0,ymax=.24,xtick={1995,2005,2015,2024},ytick={0,.05,.1,.15,.2},yticklabels={0,.05,.10,.15,.20},legend columns=2,legend style={/tikz/every even column/.append style={column sep=6pt}}]
+\addplot[dd] table[col sep=comma,x=year,y=rd_cap]{data/free_entry_aH.csv};\addlegendentry{R\&D capital}
+\addplot[d] table[col sep=comma,x=year,y=rd_real]{data/free_entry_aH.csv};\addlegendentry{Real R\&D cap.}
+\addplot[dl] table[col sep=comma,x=year,y=triadic]{data/free_entry_aH.csv};\addlegendentry{Triadic}
+\addplot[color=muted,line width=1.7pt,mark=none] table[col sep=comma,x=year,y=patent]{data/free_entry_aH.csv};\addlegendentry{Patents}
+\addplot[m,forget plot] coordinates {(1995,.2) (2024,.2)};
+\plab[south east]{2024,.2}{Model AHP seed $aH=.2$}
+\end{axis}
+\ptitle{11.8}{-3.35}{9.3}{$Q/w_H$ outgrows entry cost}
+\begin{axis}[chart,at={(11.8cm,-14.1cm)},anchor=south west,width=8.1cm,height=8.95cm,xmin=1995,xmax=2026,ymin=0,ymax=3.6,xtick={1995,2005,2015,2022},ytick={0,1,2,3},legend style={legend columns=2}]
+\addplot[d] table[col sep=comma,x=year,y=Q_wH_idx]{data/free_entry_data.csv};\addlegendentry{Data, 1995 = 1}
+\addplot[m] coordinates {(1995,1) (2022,1)};\addlegendentry{Constant $a$, $G_N\approx1$}
+\plab[west]{2022.1,2.86}{$\times$2.86}
+\end{axis}
+\ptitle{21.7}{-3.35}{9.3}{R1 constant-$a$ fit of $Q$}
+\begin{axis}[chart,at={(21.7cm,-14.1cm)},anchor=south west,width=8.1cm,height=8.95cm,xmin=2009,xmax=2024,ymin=0,ymax=70,xtick={2009,2014,2019,2024},ytick={0,20,40,60},legend style={legend columns=2}]
+\csvplot{d}{year}{Q}{data/r1_run2_mu35.csv};\addlegendentry{Data}
+\csvplot{m}{year}{Q_free_entry_fit}{data/r1_run2_mu35.csv};\addlegendentry{Fit, Run 2, $\mu=3.5$}
+\plab[south east]{2024,60.3}{60.3}
+\plab[north east]{2024,36.8}{41.1}
+\plab[south west]{2009.1,26.8}{26.3}
+\plab[north west]{2009.1,16.8}{17.2}
+\end{axis}
+\slidefoot{Implied $aH$ falls about 20\% (38\% on the patent stock) and $a$ itself 54\% to 62\%. The moment alone cannot separate falling $a_t$, a different entry cost, or a rent or bubble in the price.}{Windows: 1995--2007 mean vs 2018--24 mean; the patent stock starts in 2001 with an initial-stock effect. R1 RMSE 25--31\%. EV contains physical capital, so recompute after adding capital. $Q/w_H$ stops in 2022 (CPS top-code break). Sources: \texttt{implied\_ai\_US\_main.csv}; R1 \texttt{conditional\_paths.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 11 Identity ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 3: THE EXPLOSIVE $Q/D$ CHANNEL}{One identity links valuation, free entry and the skilled wage bill}{Free entry implies $\dfrac{w_HH}{e}=\dfrac{Q}{e}\cdot\dfrac{aH}{G_N}$. Any two of these objects pin the third.}
+\ptitle{1.9}{-4.0}{13}{Level gap, log scale}
+\begin{axis}[chart,at={(4.7cm,-14.1cm)},anchor=south west,width=10.2cm,height=8.2cm,xmode=log,log basis x=10,xmin=0.03,xmax=10,ymin=.4,ymax=3.6,xtick={0.05,0.1,0.2,0.5,1,2,5,10},xticklabels={.05,.1,.2,.5,1,2,5,10},minor x tick num=0,ytick=\empty,ymajorgrids=false,xmajorgrids=true,axis y line=none,legend columns=2,legend style={at={(0,1.015)}}]
+\addplot[color=axisc,line width=1.6pt,forget plot] coordinates {(.495,3) (.081,3)};
+\addplot[color=axisc,line width=1.6pt,forget plot] coordinates {(6.271,2) (.4064,2)};
+\addplot[color=axisc,line width=1.6pt,forget plot] coordinates {(.0789,1) (.1993,1)};
+\addplot[only marks,mark=*,mark size=4.6pt,color=dataC,mark options={draw=white,line width=.8pt}] table[col sep=comma,x=data,y=ypos]{data/identity_dumbbell.csv};\addlegendentry{Data 2022}
+\addplot[only marks,mark=*,mark size=4.6pt,color=modelC,mark options={draw=white,line width=.8pt}] table[col sep=comma,x=model,y=ypos]{data/identity_dumbbell.csv};\addlegendentry{Model AHP seed, $t=1$}
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.25cm] at (axis cs:0.03,3) {$w_HH/e$};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.25cm] at (axis cs:0.03,2) {$Q/e$};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.25cm] at (axis cs:0.03,1) {$aH/G_N$};
+\plab[south]{.495,3.13}{.495}\plab[south]{.081,3.13}{.081}
+\plab[south]{6.27,2.13}{6.27}\plab[south]{.406,2.13}{.406}
+\plab[south]{.0789,1.13}{.079}\plab[south]{.199,1.13}{.199}
+\end{axis}
+\ptitle{17.7}{-4.0}{13}{The three objects over time, log scale}
+\begin{axis}[chart,at={(17.7cm,-14.1cm)},anchor=south west,width=11.5cm,height=8.2cm,xmin=1995,xmax=2022,ymode=log,log basis y=10,ymin=.05,ymax=10,xtick={1995,2005,2015,2022},ytick={.05,.1,.2,.5,1,2,5,10},yticklabels={.05,.1,.2,.5,1,2,5,10},minor y tick num=0,legend columns=3]
+\addplot[dd] table[col sep=comma,x=year,y=Q_e]{data/free_entry_data.csv};\addlegendentry{$Q/e$}
+\addplot[d] table[col sep=comma,x=year,y=BH_e]{data/free_entry_data.csv};\addlegendentry{$B_H/e$}
+\addplot[dl] table[col sep=comma,x=year,y=BH_Q]{data/free_entry_data.csv};\addlegendentry{$B_H/Q=aH/G_N$}
+\plab[west]{2022,6.27}{6.27}
+\plab[west]{2022,.495}{.495}
+\plab[west]{2022,.0789}{.079}
+\end{axis}
+\slidefoot{The low skilled bill share comes from the funding cap: with $Q/e\approx6$ and $aH\approx.08$, free entry delivers a share near .5. What is left is the fall in $aH/G_N$.}{$B_H$ = BA+ wage bill from the CPS bridge, $e$ = corporate compensation, $G_N\approx1$. Model $aH=.2$ is 2.5 times the data value, while its $Q/e$ is 15 times too low. The identity holds to $10^{-9}$ on all solved all-$u$ dates. Sources: \texttt{us\_corporate\_external\_corporate.csv}, \texttt{labor\_wages.csv}, \texttt{05\_*}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 12 Premium and bill share ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 4: FACTOR PROPORTIONS}{With $A_X/A_L=10$ the skilled wage is far below the unskilled wage}{With $\rho=2$: $\log(w_H/w_L)=\log[\vartheta\alpha/(1-\alpha)]-(\rho-1)\log(A_X/A_L)-\rho\log(X/L)$. Model dates: one period = one year.}
+\ptitle{2.2}{-3.35}{13}{Skill premium $w_H/w_L$, log scale}
+\begin{axis}[chart,at={(2.2cm,-14.1cm)},anchor=south west,width=11.9cm,height=9cm,xmin=2008,xmax=2024,ymode=log,log basis y=10,ymin=.05,ymax=4,xtick={2008,2012,2016,2020,2024},ytick={.05,.1,.2,.5,1,2,4},yticklabels={.05,.1,.2,.5,1,2,4},minor y tick num=0,legend columns=3,legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\csvplot{dd}{year}{acs_annual}{data/premium_data.csv};\addlegendentry{ACS annual}
+\csvplot{d}{year}{acs_hourly}{data/premium_data.csv};\addlegendentry{ACS hourly}
+\csvplot{dl}{year}{cps}{data/premium_data.csv};\addlegendentry{CPS re-censored}
+\csvplot{m}{year}{premium}{data/model_nb06_path.csv};\addlegendentry{Notebook 06}
+\addplot[md] table[col sep=comma,x expr=\thisrow{t}+2007,y=nu100]{data/sweep_premium.csv};\addlegendentry{AHP seed}
+\plab[south east]{2024,2.5}{2.44}
+\plab[north east]{2024,1.74}{1.78}
+\plab[south east]{2023.9,.113}{.11}
+\plab[north east]{2023.9,.079}{.08}
+\end{axis}
+\ptitle{17.7}{-3.35}{13}{Skilled wage-bill share}
+\begin{axis}[chart,at={(17.7cm,-14.1cm)},anchor=south west,width=11.9cm,height=9cm,xmin=1994,xmax=2024,ymin=0,ymax=70,xtick={1994,2000,2008,2016,2024},ytick={0,10,20,30,40,50,60,70},yticklabel={\pgfmathprintnumber{\tick}\%},legend columns=3,legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\addplot[dd] table[col sep=comma,x=year,y expr=\thisrow{acs}*100]{data/bill_share_data.csv};\addlegendentry{ACS annual}
+\addplot[d] table[col sep=comma,x=year,y expr=\thisrow{cps}*100]{data/bill_share_data.csv};\addlegendentry{CPS bridge}
+\addplot[m] table[col sep=comma,x=year,y expr=\thisrow{bill_share}*100]{data/model_nb06_path.csv};\addlegendentry{Notebook 06}
+\addplot[md] table[col sep=comma,x expr=\thisrow{t}+2007,y expr=\thisrow{nu100}*100]{data/sweep_bill_share.csv};\addlegendentry{AHP seed}
+\addplot[inksec,line width=.7pt,forget plot] coordinates {(1994,7.5) (2007,7.5)};
+\plab[south west]{1994.3,7.5}{Model limit $\beta aH/(1+aH)=7.5\%$}
+\plab[south east]{2024,58.5}{58\%}
+\plab[north east]{2024,49}{50\%}
+\plab[south east]{2023.9,10.2}{10\%}
+\plab[north east]{2023.9,7.2}{8\%}
+\end{axis}
+\slidefoot{The premium is 16 to 30 times too low and the bill share 5 to 7 times too low. The share converges to 7.5\%, not to zero; what vanishes is the production part.}{CPS through 2022 equals the package series; 2023--24 are re-censored at \$2,884.61. ACS annual is the per-worker level concept. Model $H=L=1$ and the data's $H/L\approx.55$: a bill share near .5 would by itself imply a premium near 1.8. Sources: \texttt{premium\_variants.csv}, \texttt{acs\_skill\_premium\_wide.csv}, \texttt{05\_*/production\_wage\_and\_force\_paths.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 13 xi nu ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 4: FACTOR PROPORTIONS}{Rising $H/L$ with a flat premium forces $\xi<\nu$ under $\rho>1$}{At $\rho=2$: $\hat\xi-\hat\nu=-\text{slope}(\log(w_H/w_L)\text{ on }\log N)-2\,\text{slope}(\log(X/L)\text{ on }\log N)$. V6 needs $\xi_u>\nu_u>\nu_b\geq0$.}
+\ptitle{2.2}{-3.35}{13}{Skill quantities and price, 1994 = 1}
+\begin{axis}[chart,at={(2.2cm,-14.1cm)},anchor=south west,width=11.9cm,height=9cm,xmin=1994,xmax=2024,ymin=.8,ymax=2.6,xtick={1994,2000,2008,2016,2024},ytick={1,1.5,2,2.5},yticklabels={1,1.5,2,2.5}]
+\csvplot{dd}{year}{HL_idx}{data/hl_premium.csv};\addlegendentry{BA+/non-BA employment $H/L$}
+\csvplot{d}{year}{prem_idx}{data/hl_premium.csv};\addlegendentry{Skill premium}
+\plab[south east]{2024,2.36}{$\times$2.34}
+\plab[south east]{2024,1.06}{$\times$1.03}
+\end{axis}
+\ptitle{17.7}{-3.35}{13}{Fitted $\xi-\nu$ under eight premium series ($\mu=3.5$)}
+\begin{axis}[chart,at={(21.2cm,-14.1cm)},anchor=south west,width=8.4cm,height=9cm,xmin=-2,xmax=.5,ymin=.4,ymax=8.6,ytick=\empty,ymajorgrids=false,xmajorgrids=true,xtick={-2,-1.5,-1,-.5,0,.5},xticklabels={$-$2,$-$1.5,$-$1,$-$.5,0,.5},axis y line=none,legend columns=2,legend style={at={(-.42,1.015)}}]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(0,.4) (.5,.4) (.5,8.6) (0,8.6)} \closedcycle;
+\addplot[only marks,mark=*,mark size=4pt,color=dataD,mark options={draw=white,line width=.8pt}] table[col sep=comma,x=observed,y=ypos]{data/xi_nu.csv};\addlegendentry{Observed labor}
+\addplot[only marks,mark=*,mark size=4pt,color=dataL,mark options={draw=white,line width=.8pt}] table[col sep=comma,x=sample_mean,y=ypos]{data/xi_nu.csv};\addlegendentry{Fixed mean labor}
+\addplot[inksec,line width=.8pt,forget plot] coordinates {(0,.4) (0,8.6)};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,8) {Package CPS};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,7) {CPS re-censored};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,6) {CPS + Pareto tail};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,5) {CPS cap $\times1.5$};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,4) {CPS cell medians};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,3) {BLS medians};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,2) {ACS annual};
+\node[anchor=east,inner sep=0,font=\flab,text=ink,xshift=-.2cm] at (axis cs:-2,1) {ACS hourly};
+\node[anchor=south,inner sep=2pt,font=\fsmall,text=inksec,align=center] at (axis cs:.25,6.6) {Model\\needs\\$\xi>\nu$};
+\end{axis}
+\slidefoot{No mapping reaches $\xi>\nu$. Fixing labor shrinks the gap by over 90\%, but imposing $\xi\geq\nu\geq0$ only lands on the boundary $\xi=\nu$.}{Conditional on $\mu=3.5$, $\rho=2$; not adopted parameters. Mean-labor gaps: $-.03$ to $-.13$; observed-labor gaps: $-1.32$ to $-1.86$. BA+ as the model's $H$ is a mapping assumption; the model itself has fixed $H,L$. Sources: \texttt{Skill\_Premium\_and\_RD\_Share\_2026-10-26/data/derived/calibration\_sensitivity.csv}, \texttt{data\_intermediate/labor\_wages.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 14 Growth and RoW ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 5: GROWTH AND THE REST OF THE WORLD}{US output grows too fast, and RoW output cannot grow at all}{$Y_{US}\propto N^{\nu_u}$ with $\nu_u=1.75$ and $G_N\approx1.06$. With $\xi_W=0$, RoW varieties raise neither productivity nor output.}
+\ptitle{1.9}{-3.35}{9.3}{Output, 2008 = 1}
+\begin{axis}[chart,at={(1.9cm,-13.75cm)},anchor=south west,width=8.1cm,height=8.6cm,xmin=2008,xmax=2023,ymin=0,ymax=5,xtick={2008,2013,2018,2023},ytick={0,1,2,3,4,5},legend columns=2]
+\csvplot{d}{year}{data}{data/growth.csv};\addlegendentry{Data real GVA}
+\csvplot{m}{year}{model}{data/growth.csv};\addlegendentry{Model $Y_{US}$}
+\plab[north east]{2023,1.33}{\valgrowthData\%/yr}
+\plab[south east]{2019.8,3.3}{\valgrowthModel\%/period}
+\end{axis}
+\ptitle{11.8}{-3.35}{9.3}{Data: research intensity rises in both}
+\begin{axis}[chart,at={(11.8cm,-13.75cm)},anchor=south west,width=8.1cm,height=8.6cm,xmin=2008,xmax=2024,ymin=0,ymax=1,xtick={2008,2012,2016,2020,2024},ytick={0,.25,.5,.75,1},yticklabels={0,.25,.5,.75,1},legend columns=2]
+\csvplot{d}{year}{us}{data/row_research.csv};\addlegendentry{US}
+\csvplot{dl}{year}{g4}{data/row_research.csv};\addlegendentry{G4}
+\plab[south east]{2023,.84}{.82}
+\plab[south east]{2024,.68}{.66}
+\plab[south west]{2008.2,.05}{Business researcher FTE per 100 employed}
+\end{axis}
+\ptitle{21.7}{-3.35}{9.3}{Model RoW, $t=1$ = 1, log scale}
+\begin{axis}[chart,at={(21.7cm,-13.75cm)},anchor=south west,width=8.1cm,height=8.6cm,xmin=1,xmax=80,ymode=log,log basis y=10,ymin=.5,ymax=100,xtick={1,20,40,60,80},ytick={.5,1,2,5,10,20,50,100},yticklabels={.5,1,2,5,10,20,50,100},minor y tick num=0,xlabel={Model period $t$},legend columns=2]
+\csvplot{md}{t}{N_W}{data/row_model.csv};\addlegendentry{Varieties $N_W$}
+\csvplot{m}{t}{Y_W}{data/row_model.csv};\addlegendentry{Output $Y_W$}
+\plab[south east]{80,70}{$\times$69}
+\plab[north east]{80,.94}{$\times$.95}
+\end{axis}
+\slidefoot{At one period per year, notebook 06 grows 4.4 times too fast. A longer period fixes the rate but then 16 periods no longer span 2008--2023.}{G4 = DEU, FRA, GBR, ITA, not the full RoW; US window 2008--23, G4 has gaps. $Y_W$ shown for $\nu_u=1.25$; $e_W$ stays near 5.0--5.1 to $t=60$, and when it rises later that is the IPO transfer, not output. Real GVA uses the GDP deflator. Sources: \texttt{us\_corporate\_external\_corporate.csv}; \texttt{Mechanism\_Evidence\_US\_ROW/processed}; \texttt{05\_*}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 15 Switch and bubble ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{BLOCK 5: GROWTH AND THE REST OF THE WORLD}{The regime switch is unidentified, and early-date bubble bounds are tiny}{No observed event is an operational $b$ regime. The left panel is a size comparison, not an identification of 2008 as a switch.}
+\ptitle{2.2}{-3.35}{13}{Around the event, pre-event level = 1}
+\begin{axis}[chart,at={(2.2cm,-13.75cm)},anchor=south west,width=11.9cm,height=8.65cm,xmin=-3,xmax=7,ymin=.5,ymax=1.8,xtick={-3,-1,0,1,3,5,7},ytick={.6,.8,1,1.2,1.4,1.6,1.8},yticklabels={.6,.8,1,1.2,1.4,1.6,1.8},xlabel={Years or periods from the event (data: 2008; model: $\tau=16$)},legend columns=2]
+\csvplot{d}{rel}{real_gva}{data/switch_data.csv};\addlegendentry{Data real GVA}
+\csvplot{dl}{rel}{ev}{data/switch_data.csv};\addlegendentry{Data EV}
+\csvplot{md}{rel}{e_b}{data/switch_model.csv};\addlegendentry{Model $e_{US}$, switch}
+\csvplot{m}{rel}{Q_b}{data/switch_model.csv};\addlegendentry{Model $Q_{US}$, switch}
+\plab[south east]{7,.8}{.79}
+\plab[south east]{7,.62}{.62}
+\end{axis}
+\ptitle{17.7}{-3.35}{13}{Finite-prefix upper bound on the US bubble share}
+\begin{axis}[chart,at={(17.7cm,-13.75cm)},anchor=south west,width=11.9cm,height=8.65cm,xmin=1,xmax=80,ymode=log,log basis y=10,ymin=1e-9,ymax=1,xtick={1,16,40,60,80},ytick={1e-9,1e-7,1e-5,1e-3,1e-1},yticklabels={$10^{-9}$,$10^{-7}$,$10^{-5}$,$10^{-3}$,$10^{-1}$},minor y tick num=0,xlabel={Model period $t$},legend columns=3]
+\addplot[draw=none,fill=washc,forget plot] coordinates {(1,1e-9) (16,1e-9) (16,1) (1,1)} -- cycle;
+\csvplot{ml}{t}{nu125}{data/bubble_bound.csv};\addlegendentry{$\nu_u=1.25$}
+\csvplot{m}{t}{nu100}{data/bubble_bound.csv};\addlegendentry{$\nu_u=1$}
+\csvplot{md}{t}{nu075}{data/bubble_bound.csv};\addlegendentry{$\nu_u=.75$}
+\plab[south west]{1.3,1e-1}{First 16 periods}
+\end{axis}
+\slidefoot{A switch means $-39\%$ in $e_{US}$ with zero growth after, unlike 2008--09. Switch leakage of .29 per period keeps the bound below $10^{-6}$ at date 1.}{Switch size reflects $\nu_b=0$ and $\bar A_b$ of (10, 1) below the $u$ scales (15, 1.5). The bound equals one mechanically at the horizon and is not a certified infinite-horizon share. $\pi$, $b$-regime technology and the bubble share remain scenarios. Sources: \texttt{05\_*/all\_u\_and\_realized\_switch\_state\_paths.csv}, \texttt{us\_bubble\_share\_bound\_leakage.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 16 What matches ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{WHAT WORKS}{What the model already gets right}{These fits are real but narrow: each depends on a parameter choice or on the portfolio search.}
+\ptitle{2.2}{-3.35}{13}{Yield: $D/Q$ against FCF/EV}
+\begin{axis}[chart,at={(2.2cm,-14.1cm)},anchor=south west,width=12.6cm,height=9cm,xmin=1990,xmax=2025,ymin=0,ymax=8,xtick={1990,2000,2010,2020},ytick={0,2,4,6,8},yticklabel={\pgfmathprintnumber{\tick}\%},legend columns=3,legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\addplot[d] table[col sep=comma,x=year,y expr=\thisrow{d_q}*100]{data/dy_us.csv};\addlegendentry{Data}
+\addplot[m] table[col sep=comma,x=year,y expr=\thisrow{D_Q}*100]{data/model_nb06_path.csv};\addlegendentry{Notebook 06}
+\addplot[md] table[col sep=comma,x expr=\thisrow{t}+2007,y expr=\thisrow{nu100}*100]{data/sweep_D_Q.csv};\addlegendentry{AHP seed}
+\plab[west]{2025,2.7}{2.7\%}
+\end{axis}
+\node[anchor=north west,inner sep=0,text width=13.6cm,align=left,font=\fontsize{14.5}{18}\selectfont] at (17.2cm,-3.45cm) {%
+\renewcommand{\arraystretch}{1.42}\begin{tabular}{@{}p{6.8cm}>{\raggedleft\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{3cm}@{}}\toprule
+\textbf{Moment} & \textbf{Data} & \textbf{Model}\\\midrule
+$D/Q$, 2023 & 3.3\% & 2.4--3.4\%\\
+RoW equity price, end/base & $\times$1.05 & $\times$.97\\
+Liability share of gross VA & .93 & .96\\
+Sign of $\Delta$NFA & $-$ & $-$\\
+Sign of liability VA & $-$ & $-$\\
+$N$ growth, R1 conditional & about 3\%/yr & 2.1--2.8\%/yr\\\bottomrule\end{tabular}};
+\node[anchor=north west,inner sep=0,text width=13.6cm,align=left,text=inksec,font=\fontsize{13.5}{17}\selectfont] at (17.2cm,-10.5cm) {RoW yield level: model 13.5--18\%, G4 FCF/EV 6--9\%. R1 $N$ growth is a by-product of fitting $Q$, and comes with 3.5--6 times the measured R\&D workers. R1's fits of $Y$ and wages are inversions, not validation.};
+\slidefoot{The yield level follows from $\vartheta=.85$ and $aH=.2$; the signs and $q_W$ come from searching the portfolio block. None of these resolves the scale failures.}{Model $D/Q$: 2.4\% notebook 06, 3.4\% AHP seed at $t=16$. Data $N$ growth: real net R\&D capital $+$52.7\% over 2007--21. Sources: \texttt{us\_corporate\_external\_corporate.csv}, \texttt{06\_*/model\_empirical\_comparison.csv}, \texttt{05\_*}, \texttt{1\_Do/runs/02\_fixed\_mean\_labor/results/conditional\_paths.csv}, \texttt{Mechanism\_Evidence\_US\_ROW}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 17 Implications ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{READING FOR MODEL CHANGES}{The funding cap comes first, then corporate capital}{Which proposed change addresses which failed dimension. This ranking is a judgment to be tested by solving each variant, not a result.}
+% column headers
+\foreach \i/\t in {0/{$Q/e$, implied $\beta$},1/{Positions, VA},2/{Prices $q$},3/{Markup, $D$ map},4/{$Q/D$ channel},5/{R\&D share},6/{$aH/G_N$ trend},7/{Skilled bill level},8/{Premium},9/{$\xi>\nu$},10/{Output growth},11/{RoW growth}}{
+ \node[anchor=south west,inner sep=0,rotate=38,text=ink,font=\flab] at ({\mx+\i*\mdx-.2},-5.25) {\t};}
+\foreach \j/\t in {0/{1. Relax funding: cohorts, wealth, outside demand},1/{2. Corporate capital},2/{3. Entry cost, or a price wedge above $w_H/(aN)$},3/{4. Factor block: $H_t$, mapping, $\rho$},4/{5. Growth calibration, $\xi_W,\nu_b>0$}}{
+ \node[anchor=west,inner sep=0,text width=8.6cm,align=left,text=ink,font=\fontsize{14}{17}\selectfont] at (1.2,{\my-\j*\mdy}) {\t};
+ \draw[gridc,line width=.5pt] (1.2,{\my-\j*\mdy-.75}) -- (30.8,{\my-\j*\mdy-.75});}
+\cellfull{0}{0}\cellfull{1}{0}\cellpart{2}{0}\cellpart{4}{0}\cellfull{7}{0}\cellpart{8}{0}
+\cellfull{3}{1}\cellpart{2}{1}\cellpart{4}{1}\cellpart{5}{1}\cellpart{6}{1}
+\cellpart{2}{2}\cellfull{4}{2}\cellfull{5}{2}\cellfull{6}{2}
+\cellpart{7}{3}\cellfull{8}{3}\cellfull{9}{3}
+\cellfull{10}{4}\cellfull{11}{4}
+\fill[modelC] (1.3,-13.95) circle (.2);\node[anchor=west,inner sep=0,text=inksec,font=\flab] at (1.7,-13.95) {Direct effect};
+\draw[modelC,line width=1.6pt,fill=white] (4.9,-13.95) circle (.18);\node[anchor=west,inner sep=0,text=inksec,font=\flab] at (5.3,-13.95) {Partial, or needs a recomputed moment};
+\slidefoot{Only change 1 can reach the 10-to-600-times scale gaps. Changes 2 and 3 fix the income mapping and the $Q/D$ channel, but $Q/e$ stays capped until change 1.}{Row 1 also pins the skilled bill level through $w_HH/e=(Q/e)(aH/G_N)$. Row 2 removes the 3.7-times ambiguity in $\mathcal D$ but needs the free-entry residual recomputed, because EV contains capital. Row 5 has a fixed-exponent solver in \texttt{Two\_country\_proudction\_fixed\_nu\_b}. See section 3 of the note.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 18 Limits ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{LIMITS OF THIS CHECK}{What the data cannot discipline, and what to keep in mind}{}
+\ptitle{1.2}{-3.05}{14}{Scenarios, not targets}
+\node[anchor=north west,inner sep=0,outer sep=0,text width=14.6cm,align=left,text=ink,font=\fontsize{14.5}{18.5}\selectfont] at (1.2cm,-3.85cm) {%
+$\pi$ and $b$-regime technology: no operational regime classifier, and an all-$u$ sample is right-censored.\\[6pt]
+Bubble share: not measurable; finite-prefix bounds are not certified infinite-horizon shares.\\[6pt]
+$\gamma<1$: external evidence centers on $\gamma\approx1$.\\[6pt]
+RoW safe rate $R_f^W$: a zero-supply shadow rate with no verified counterpart.};
+\ptitle{1.2}{-9.55}{14}{Measurement}
+\node[anchor=north west,inner sep=0,outer sep=0,text width=14.6cm,align=left,text=ink,font=\fontsize{14.5}{18.5}\selectfont] at (1.2cm,-10.35cm) {%
+CPS mean wages break in 2023--24 (top code); re-censored CPS has a falling-cap bias, so ACS is the trend check.\\[6pt]
+Perimeters differ: total corporate accounts, CPS private for-profit, BERD business.\\[6pt]
+G4 or G6 is not the full RoW.};
+\ptitle{17.7}{-3.05}{13}{External accounts come in two vintages}
+\begin{axis}[chart,at={(17.7cm,-14.1cm)},anchor=south west,width=11.9cm,height=9.5cm,xmin=2007,xmax=2027,ymin=0,ymax=2.5,xtick={2007,2012,2017,2022,2025},ytick={0,.5,1,1.5,2,2.5},yticklabels={0,.5,1,1.5,2,2.5},legend columns=2]
+\csvplot{dd}{year}{june}{data/vintage_liab.csv};\addlegendentry{June 2026 release}
+\csvplot{dl}{year}{sept}{data/vintage_liab.csv};\addlegendentry{September 2026 release}
+\plab[west]{2025,2.27}{2.27}
+\plab[west]{2025,1.94}{1.94}
+\plab[south west]{2007.3,.02}{Equity liabilities/corporate GVA, year-end}
+\end{axis}
+\slidefoot{Charts use the June release to match notebook 06 targets; implied $\beta$ uses September. Model-side numbers are conditional on the seed, but the identities on slides 3, 7, 9 and 11 hold for any parameters.}{Both vintages share the same corporate GVA denominator (September 2026 snapshot). Full discussion: \texttt{On\_Model\_vs\_Data\_Failed\_Dimensions.md}, sections 2 and 4. Source: \texttt{data\_intermediate/us\_corporate\_external\_external.csv}.}
+\end{scope}\end{tikzpicture}\end{frame}
+
+% ================ 19 Appendix sources ================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)}]
+\slidehead{APPENDIX}{Where each figure's numbers come from}{Everything is read only. \texttt{build\_slide\_data.py} writes \texttt{data/*.csv}, one file per chart family, and stops if a check below fails.}
+\node[anchor=north west,inner sep=0,text width=29.6cm,align=left,text=inksec,font=\fontsize{12.5}{16}\selectfont] at (1.2cm,-3.45cm) {\texttt{EMA} = \texttt{Empirical\_Data/Variable\_mappings/Empirical\_Mapping\_Annual}\qquad \texttt{SK} = \texttt{Empirical\_Data/Skill\_Premium\_and\_RD\_Share\_2026-10-26/data}\\ \texttt{SIM} = \texttt{Codes/Two\_country\_proudction\_zero\_nu\_b/outputs\_zero\_nu\_b}\qquad \texttt{R1} = \texttt{Codes/Calibration\_R1/1\_Do/runs}};
+\node[anchor=north west,inner sep=0,text width=29.6cm,align=left,font=\fontsize{12}{15}\selectfont] at (1.2cm,-4.95cm) {%
+\renewcommand{\arraystretch}{1.3}\begin{tabular}{@{}p{2.2cm}p{27.2cm}@{}}\toprule
+\textbf{Slides} & \textbf{Source files}\\\midrule
+2 & All of the below; model column is \texttt{SIM/06\_post2008\_ahp\_nfa\_calibration\_search/best\_candidate\_path.csv}, \texttt{model\_empirical\_comparison.csv}\\
+3, 6, 8, 16 & \texttt{EMA/data\_final/implied\_beta\_US\_main.csv}; \texttt{EMA/data\_intermediate/us\_corporate\_external\_corporate.csv}\\
+4, 5 & \texttt{Empirical\_Data/AHP\_NFA/ahp\_us\_nfa\_decomposition\_latest.csv}; \texttt{SIM/06\_*}; \texttt{SIM/05\_nu\_u\_funding\_regime\_sweeps/}\\
+7, 9 & \texttt{SK/derived/one\_minus\_phi\_candidates.csv}; \texttt{SK/inputs\_copied/nscg\_rd1\_share\_by\_sector.csv}; \texttt{SIM/04\_*/spillover\_sweep\_paths.csv}\\
+10, 11 & \texttt{EMA/data\_final/implied\_ai\_US\_main.csv}; \texttt{EMA/data\_intermediate/labor\_wages.csv}; \texttt{R1/02\_*/results/conditional\_paths.csv}\\
+12, 13 & \texttt{SK/derived/premium\_variants.csv}, \texttt{calibration\_sensitivity.csv}; \texttt{SK/inputs\_copied/acs\_skill\_premium\_wide.csv}; \texttt{SIM/05\_*}\\
+14 & \texttt{EMA/Mechanism\_Evidence\_US\_ROW/processed/labor\_formal\_rd\_intensity.csv}; \texttt{SIM/05\_*}\\
+15 & \texttt{SIM/05\_*/all\_u\_and\_realized\_switch\_state\_paths.csv}, \texttt{us\_bubble\_share\_bound\_leakage.csv}\\
+18 & \texttt{EMA/data\_intermediate/us\_corporate\_external\_external.csv} (two vintages)\\\bottomrule\end{tabular}};
+\node[anchor=north west,inner sep=0,text width=29.6cm,align=left,text=ink,font=\fontsize{13.5}{17.5}\selectfont] at (1.2cm,-12.9cm) {\textbf{Checks on every build:} notebook 06 $Y$ and $q$ rebuilt from $\varphi$ match the saved path; $Y=e+\mathcal D-\mathcal I$; $\text{NFA}=\beta e-Q$; $w_HH/e=\beta\zeta aH/G_N$ on all sweep dates; RoW $Y_W=e_W+\mathcal D_W-\mathcal I_W$; closed-form $\mu$ reproduces the saved P1 values; AHP price and exposure targets match notebook 06.};
+\node[anchor=north west,inner sep=0,text width=29.6cm,align=left,text=inksec,font=\fontsize{11.5}{15}\selectfont] at (1.2cm,-14.9cm) {\textbf{Rebuild, from \texttt{Codes/Calibration\_R1/2\_Check/slides}:}\\ \texttt{uv run -{}-no-project -{}-python 3.12 -{}-with numpy==2.3.5 -{}-with pandas==2.2.3 python -B build\_slide\_data.py}\\ \texttt{latexmk -pdf model\_vs\_data\_slides.tex}};
+\end{scope}\end{tikzpicture}\end{frame}
+
+\end{document}

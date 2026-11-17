@@ -1,0 +1,3 @@
+variable,mean,unit,first_year,last_year,n,observed_min,observed_max
+H,1.0,normalized to one at every date,2009,2024,16,1.0,1.0
+L,2.217584734989052,"observed L_t/H_t, unskilled per skilled worker",2009,2024,16,1.771445306938904,2.7723055360243056

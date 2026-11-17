@@ -1,0 +1,44 @@
+{
+  "sample": [
+    2009,
+    2024
+  ],
+  "rho": 2.0,
+  "diagnostic_markup": 3.5,
+  "central_parameters": {
+    "a": 0.08941433515418958,
+    "xi": 1.3377468455510877,
+    "nu": 3.411007103764964,
+    "AX": 8.731462502617527,
+    "AL": 4.86436004007056,
+    "objective": 0.031130381139640975,
+    "free_entry_relative_rmse": 0.17218324928869785,
+    "log_CX_rmse": 0.027973497659041873,
+    "log_CL_rmse": 0.026472499556080498,
+    "optimizer_at_search_boundary": false,
+    "jacobian_rank": 5,
+    "jacobian_condition": 14.206890845173506,
+    "column_scaled_jacobian_condition": 3.7841851879537383,
+    "xi_gt_nu_ge_zero": false
+  },
+  "xi_minus_nu": -2.0732602582138764,
+  "premium_gap_contribution": -0.07454948366636228,
+  "relative_input_gap_contribution": -1.9987107745475161,
+  "constrained": {
+    "a": 0.08941438817847969,
+    "xi": 2.3743755825048343,
+    "nu": 2.3743755825048343,
+    "AX": 7.446107382563342,
+    "AL": 5.704051135711953,
+    "objective": 0.05349202494074086,
+    "free_entry_relative_rmse": 0.17218324931133758,
+    "log_CX_rmse": 0.10937704726753557,
+    "log_CL_rmse": 0.10900282165323019,
+    "constraint": "xi >= nu >= 0; closure of the strict restriction",
+    "at_equal_spillover_boundary": true,
+    "at_a_search_boundary": false,
+    "meaning": "Lower-bound fit cost; equality is not an admissible unbalanced-growth calibration",
+    "objective_ratio": 1.718322197880992
+  },
+  "static_CES_max_relative_error": 4.440892098500626e-16
+}

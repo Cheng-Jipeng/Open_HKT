@@ -1,0 +1,17 @@
+{
+  "ratio_OLS": {
+    "theta": 10.969811044474435,
+    "a": 0.02511109531669204,
+    "intercept": 39.82303389750077,
+    "regressor_sd": 0.13603387958804428,
+    "design_rank": 2,
+    "r_squared": 0.6017622481017942,
+    "admissible": false,
+    "note": "Unconstrained P3 diagnostic, not a replacement externally disciplined calibration"
+  },
+  "relative_Q_WLS": {
+    "a": 0.02374826918795641,
+    "theta": 11.94489601466894,
+    "admissible": false
+  }
+}

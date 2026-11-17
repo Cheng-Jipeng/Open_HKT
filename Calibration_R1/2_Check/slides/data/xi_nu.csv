@@ -1,0 +1,9 @@
+label,observed,sample_mean,ypos
+Package CPS,-1.81961,-0.114491,8
+CPS re-censored,-1.71692,-0.0348234,7
+CPS + Pareto tail,-1.60089,-0.127406,6
+CPS cap $\times 1.5$,-1.61536,-0.0745957,5
+CPS cell medians,-1.62994,-0.0510982,4
+BLS medians,-1.86078,-0.0970064,3
+ACS annual,-1.32008,-0.05718,2
+ACS hourly,-1.55571,-0.0996777,1

@@ -1,0 +1,12 @@
+{
+  "sample_start": 2009,
+  "sample_end": 2024,
+  "n_years": 16,
+  "holdout_years": [],
+  "data_vintage": "preserved September 2026 snapshot",
+  "averaging_rule": "no averaging: H_t=1 and L_t=L_t^obs/H_t^obs for each of the 16 annual fitting rows, before wage bridging",
+  "labor_constants": {
+    "H": 1.0,
+    "L": 2.217584734989052
+  }
+}

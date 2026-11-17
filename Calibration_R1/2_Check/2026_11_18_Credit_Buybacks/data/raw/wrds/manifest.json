@@ -1,0 +1,27 @@
+{
+  "retrieved_utc": "2026-11-17T20:19:27+00:00",
+  "route": "direct PostgreSQL to wrds-pgdata.wharton.upenn.edu:9737 via the wrds Python package; credentials from ~/.pgpass (not stored here)",
+  "queries": {
+    "funda_us_1989_2026": "select gvkey, tic, conm, fyear, datadate, fyr, fic, curcd, exchg, sich, at, sale, ib, ni, oancf, ivncf, fincf, capx, xrd, aqc, dp, dvc, dvt, prstkc, sstk, dltt, dlc, dltis, dltr, dlcch, dclo, xint, che, lt, ceq, llot, lloo, mrct, csho, prcc_f, mkvalt from comp.funda where fyear between 1989 and 2026 and indfmt='INDL' and datafmt='STD' and popsrc='D' and consol='C' and fic='USA' and curcd='USD'",
+    "company_us": "select gvkey, conm, sic, naics, ipodate, dldte, dlrsn, loc, fic from comp.company",
+    "fundq_ai_firms": "select gvkey, tic, conm, datadate, fyearq, fqtr, fyr, rdq, atq, saleq, ibq, xrdq, xintq, dlttq, dlcq, cheq, ltq, cshoq, prccq, mkvaltq, oancfy, capxy, prstkcy, sstky, dvy, dltisy, dltry, aqcy from comp.fundq where gvkey in ('001690','012141','012142','051139','064768','117768','160329','170617') and datadate >= '2014-01-01' and indfmt='INDL' and datafmt='STD' and popsrc='D' and consol='C'"
+  },
+  "rows": {
+    "funda_us_1989_2026": 327906,
+    "company_us": 58786,
+    "fundq_ai_firms": 372
+  },
+  "ai_firms": {
+    "001690": "AAPL",
+    "012141": "MSFT",
+    "012142": "ORCL",
+    "051139": "CRWV",
+    "064768": "AMZN",
+    "117768": "NVDA",
+    "160329": "GOOGL",
+    "170617": "META"
+  },
+  "seconds": 44.2,
+  "units": "Compustat USD millions; csho/cshoq in millions of shares; prcc in USD per share. fundq *y items are fiscal year-to-date.",
+  "license": "WRDS/Compustat extract for this project's research use only; do not redistribute"
+}

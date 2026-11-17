@@ -1,0 +1,19 @@
+group,label,data,model,ratio,flip,abs_ratio,ypos
+Valuation,$Q/\text{COMP}$,6.92377,0.528646,0.0763524,False,0.0763524,18.8
+Valuation,Implied $\beta=(Q+\text{NFA})/e$,5.14245,0.45,0.087507,False,0.087507,17.8
+Valuation,"US equity price, end/base",2.22363,1.29319,0.581566,False,0.581566,16.8
+Valuation,"RoW equity price, end/base",1.0521,0.970684,0.922614,False,0.922614,15.8
+Income,$D/Q$ (FCF/EV),0.0327244,0.0237143,0.724668,False,0.724668,14.2
+Income,$D/Y$ (FCF/GVA),0.127244,0.0127451,0.100163,False,0.100163,13.2
+Production,R\&D share $1-\varphi$,0.073251,0.289228,3.94845,False,3.94845,11.6
+Production,$aH/G_N$ ($=B_H/Q$),0.0717324,0.189064,2.63568,False,2.63568,10.6
+Production,Skilled bill share $w_HH/e$,0.496658,0.0999477,0.20124,False,0.20124,9.6
+Production,Skill premium $w_H/w_L$,1.78032,0.111047,0.0623746,False,0.0623746,8.6
+Production,Output growth per year,0.0238234,0.105149,4.41369,False,4.41369,7.6
+External,Equity liabilities/GVA,1.54868,0.0182587,0.0117899,False,0.0117899,6
+External,Equity assets/GVA,1.1736,0.0931269,0.0793516,False,0.0793516,5
+External,$\Delta$NFA/GVA,-1.02367,-0.00164515,0.00160711,False,0.00160711,4
+External,Liability VA/GVA,-0.723358,-0.0109455,0.0151315,False,0.0151315,3
+External,Asset VA/GVA,0.0517898,-0.000487139,-0.00940608,True,0.00940608,2
+External,Current account/GVA,-0.521721,0.0097875,-0.01876,True,0.01876,1
+External,Liability share of gross VA,0.933187,0.957391,1.02594,False,1.02594,0

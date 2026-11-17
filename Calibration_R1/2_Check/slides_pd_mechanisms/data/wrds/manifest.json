@@ -1,0 +1,19 @@
+{
+  "retrieved_utc": "2026-11-13T08:26:01+00:00",
+  "route": "direct PostgreSQL to wrds-pgdata.wharton.upenn.edu:9737 via the wrds Python package; credentials from ~/.pgpass (not stored here)",
+  "tables": {
+    "comp.funda": "select gvkey, fyear, datadate, fic, curcd, exchg, at, sale, ni, oancf, capx, xrd,\n       dvc, dvt, dv, prstkc, sstk, csho, prcc_f, mkvalt\nfrom comp.funda\nwhere fyear between 1989 and 2024\n  and indfmt='INDL' and datafmt='STD' and popsrc='D' and consol='C'\n  and fic='USA' and curcd='USD'",
+    "comp.company": "select gvkey, conm, sic, ipodate, dldte, dlrsn, loc, fic from comp.company"
+  },
+  "rows": {
+    "funda": 317793,
+    "company": 58761
+  },
+  "fyear_range": [
+    1989,
+    2024
+  ],
+  "seconds": 21.9,
+  "units": "Compustat USD millions; csho in millions of shares; prcc_f USD per share",
+  "license": "WRDS/Compustat extract for this project's research use only; do not redistribute"
+}
