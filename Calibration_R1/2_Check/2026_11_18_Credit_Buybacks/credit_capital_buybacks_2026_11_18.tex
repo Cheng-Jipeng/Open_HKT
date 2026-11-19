@@ -1,0 +1,426 @@
+% !TEX program = pdflatex
+% Credit, capital and buybacks: can Q/Y rise without the dividend channel? 18 Nov 2026.
+% Numbers: data/values.tex (\val{key}), written by scripts/build.py; figures: figures/ (drawn by build.py).
+% Preamble and colors as in Logistics/Discussion_note/29_11_16/slides/main.tex.
+\documentclass[aspectratio=169,10pt,t]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,array,xcolor}
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{\hfill\textcolor{muted}{\scriptsize\insertframenumber}\hspace{0.4cm}\vspace{0.25cm}}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{frametitle}{\vspace{0.3cm}\textbf{\large\insertframetitle}\ifx\insertframesubtitle\empty\else\\[-0.05cm]{\small\textcolor{inksec}{\insertframesubtitle}}\fi\vspace{0.05cm}}
+\definecolor{ink}{HTML}{0B0B0B}\definecolor{inksec}{HTML}{52514E}\definecolor{muted}{HTML}{898781}
+\definecolor{dataC}{HTML}{2A78D6}\definecolor{dataD}{HTML}{104281}\definecolor{modelC}{HTML}{EB6834}\definecolor{washc}{HTML}{F0EFEC}
+\setbeamercolor{normal text}{fg=ink,bg=white}\setbeamercolor{structure}{fg=dataD}\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{block title}{fg=white,bg=dataD}\setbeamercolor{block body}{fg=ink,bg=washc}
+\setlength{\leftmargini}{1.1em}
+\newcommand{\val}[1]{\csname v:#1\endcsname}
+\input{data/values.tex}
+\newcommand{\src}[1]{\vfill{\tiny\textcolor{muted}{#1}\par}\vspace{0.1cm}}
+\hypersetup{pdftitle={Credit, capital and buybacks, 18 Nov 2026},colorlinks=true,urlcolor=dataD,linkcolor=ink}
+
+\begin{document}
+
+% ---------------------------------------------------------------- 1
+\begin{frame}[plain]
+\vspace{1.3cm}
+{\scriptsize\textcolor{muted}{\textbf{TWO-COUNTRY HKT \textperiodcentered{} DATA CHECK \textperiodcentered{} 18 NOVEMBER 2026}}}\\[0.3cm]
+{\Large\textbf{Can $Q/Y$ rise through credit and capital instead of dividends?}}\\[0.3cm]
+{\normalsize\textcolor{inksec}{Debt, capital at replacement cost and buybacks in the US nonfinancial corporate sector, 1990--2026}}\\[0.7cm]
+{\small Sector: Z.1 nonfinancial corporate business (NFC), \val{nfc_share_q2025}\% of AHP total-corporate $Q$ in 2025; $Y$ = NFC gross value added. Main window 2009--2025, with 2011 bases alongside; pre-2009 shaded as context. Firm-level checks: Compustat (US nonfinancial firms; five AI hyperscalers through \val{ai_last_q}).}
+\end{frame}
+
+% ---------------------------------------------------------------- 2
+\begin{frame}{Summary}
+\vspace{0cm}
+\begin{enumerate}\setlength{\itemsep}{0.1cm}
+\item \textbf{Buybacks are already in $D$.} $D$ = AHP free cash flow is measured before financing, so it does not depend on whether firms pay dividends or buy back shares. Using the shareholder payout instead (net dividends + net buybacks), $D/Y$ rises from \val{DEQY2009}\% (2009) and \val{DEQY2011}\% (2011) to \val{DEQY2025}\% (2025). The payout yield still falls (\val{rob_deqa_yield_start}\% $\to$ \val{rob_deqa_yield_end}\%), and only because equity value rises. Over 2009--25, \val{fd_cuma_share_payout}\% of FCF went to shareholders.
+\item \textbf{Credit does not move $Q/Y$.} Debt securities + loans: \val{DEBTY2009}\% of GVA in 2009, \val{DEBTY2025}\% in 2025 (range \val{debt_min_post}--\val{debt_max_post}\%). Debt adds $+$\val{dec2009_dDEBTY_pp} pp of the $+$\val{dec2009_dQY_pp} pp rise in $Q/Y$; equity at market value adds $+$\val{dec2009_dEY_pp} pp, and FDI equity $+$\val{dec2009_dFDIY_pp} pp.
+\item \textbf{Capital does not move $Q/Y$.} Capital at replacement cost $K/Y$: \val{KY2009}\% $\to$ \val{KY2025}\%. Tobin's $q=Q/K$: \val{q2009} $\to$ \val{q2025}, all of $\Delta\log(Q/Y)$ (\val{dec2009_sh_q}\%; \val{dec2011_sh_q}\% from 2011).
+\item \textbf{Borrowing cannot be traced to one use.} Of \$\val{du_ndp} tn borrowed by net borrowers (Compustat, 2009--25): payouts \val{du_PAY_lo}--\val{du_PAY_hi}\%, payouts + cash M\&A \val{du_PAYMA_lo}--\val{du_PAYMA_hi}\%, capex \val{du_INV_lo}--\val{du_INV_hi}\%.
+\item \textbf{The AI cycle is a credit-and-capital story, but it is recent.} Five hyperscalers: capex \$\val{b5_capx_2023q4}bn $\to$ \$\val{b5_capx_2026q3}bn a year (2023Q4 $\to$ 2026Q3), debt \$\val{b5_debt_2023q4}bn $\to$ \$\val{b5_debt_2026q3}bn, buybacks falling. Their debt rise is \val{b5_ddebt_share_nb}\% of NFC net borrowing in the four quarters to \val{latest_q}, but their debt is still \val{b5_debt_share_nfc}\% of NFC debt.
+\end{enumerate}
+\end{frame}
+
+% ---------------------------------------------------------------- 3
+\begin{frame}{Accounting: where credit, capital and buybacks enter}
+\vspace{0.1cm}
+\begin{columns}[T]
+\column{0.57\textwidth}
+{\small\textbf{Value side} (Fed series FL102010405, the AHP $Q$):}
+{\footnotesize\[
+Q=\underbrace{E+\mathrm{FDI}^{mv}}_{\text{equity at market value}}+\underbrace{\mathrm{Debt}}_{\text{securities + loans}}+\underbrace{(\mathrm{OL}-\mathrm{FA})}_{\text{other liab.} - \text{fin. assets}}
+\]}
+{\small\textbf{Capital side}, with $K$ = nonfinancial assets at replacement cost:}
+{\footnotesize\[
+\frac{Q}{Y}=\underbrace{\frac{Q}{K}}_{\text{Tobin's }q}\times\frac{K}{Y}
+\]}
+{\small\textbf{Cash-flow side} (Z.1 S.5.a, exact; drawn on slide 7):}
+{\scriptsize\begin{align*}
+\underbrace{\mathrm{NOS}-T-\mathrm{NCF}}_{D=\mathrm{FCF}}&=\underbrace{\mathrm{Div}+\mathrm{BB}}_{\text{to shareholders}}+\underbrace{\mathrm{Int}-\Delta\mathrm{Debt}}_{\text{to creditors}}\\[-0.1cm]
+&\quad+\underbrace{\mathrm{NAFA}-\Delta\mathrm{OL}-\mathrm{RE}}_{\text{net fin.\ saving}}+\underbrace{\mathrm{Rent}+\mathrm{Tr}+\mathrm{KT}+\mathrm{SD}}_{\text{other}}
+\end{align*}}
+\column{0.39\textwidth}
+\begin{block}{What each channel can do}
+\small
+\begin{itemize}\setlength{\itemsep}{0.08cm}
+\item A debt-financed buyback swaps $E$ for Debt: $Q$ and FCF unchanged.
+\item Debt-financed investment raises $K$; $Q$ rises by $q\,\Delta K$ and FCF falls by NCF.
+\item $Q/Y$ can rise with $D/Y$ flat only through $K/Y$ (capital deepening) or $q$ (valuation).
+\end{itemize}
+\end{block}
+\vspace{0.12cm}
+{\scriptsize So the question splits into: does $\mathrm{Debt}/Y$ or $K/Y$ rise, and does the payout form change $D$? \textcolor{inksec}{New to these data: slides \hyperlink{xvalue}{12}--\hyperlink{xlink}{14} explain both sides.}\par}
+\end{columns}
+\src{Fed Z.1 series analyzer: FL102010405 = FL103164105 + FL103192105 + FL104190005 $-$ FL104090005. Identity holds exactly in the downloaded data. Same vintage as the project mapping file (max difference \val{vintage_q_diff}\%).}
+\end{frame}
+
+% ---------------------------------------------------------------- 4
+\begin{frame}{Credit: debt is flat relative to GVA; equity carries the rise in $Q/Y$}{NFC sector, end-year stocks over annual GVA}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f1_credit_q_funding.pdf}}
+\vspace{-0.1cm}
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+\% of NFC GVA & 2007 & 2009 & 2011 & 2019 & 2025 & \val{latest_q}\\\midrule
+Debt securities + loans & \val{DEBTY2007} & \val{DEBTY2009} & \val{DEBTY2011} & \val{DEBTY2019} & \val{DEBTY2025} & \val{lat_DEBTY}\\
+\quad bonds / loans & \val{BONDSY2007} / \val{LOANSY2007} & \val{BONDSY2009} / \val{LOANSY2009} & \val{BONDSY2011} / \val{LOANSY2011} & \val{BONDSY2019} / \val{LOANSY2019} & \val{BONDSY2025} / \val{LOANSY2025} & \\
+\quad private-credit loans & -- & -- & -- & \val{PCY2019} & \val{PCY2025} & \val{lat_PCY}\\
+$Q$ & \val{QY2007} & \val{QY2009} & \val{QY2011} & \val{QY2019} & \val{QY2025} & \val{lat_QY}\\\bottomrule
+\end{tabular}}
+\src{Z.1 B.103/L.103 via FRED (BCNSDODNS, NCBDBIQ027S, BOGZ1FL103167205Q, NCBEILQ027S, BOGZ1LM103192105Q, TLBSNNCB, TFAABSNNCB, BOGZ1LM102010405Q); GVA BOGZ1FU106902501Q. \val{latest_q}: stocks at end-quarter over trailing four-quarter GVA.}
+\end{frame}
+
+% ---------------------------------------------------------------- 5
+\begin{frame}{Capital: $K/Y$ is flat; the rise in $Q/Y$ is a rise in Tobin's $q$}{Nonfinancial assets at replacement cost (real estate at market value)}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f2_capital_tobin_q.pdf}}
+\vspace{-0.1cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+ & $\Delta\log\frac{Q}{Y}$ & $=\Delta\log q$ & $+\Delta\log\frac{K}{Y}$ & $q$ share\\\midrule
+2009--25 & $\val{dec2009_dlogQY}$ & $\val{dec2009_dlog_q}$ & $\val{dec2009_dlog_KY}$ & \val{dec2009_sh_q}\%\\
+2011--25 & $\val{dec2011_dlogQY}$ & $\val{dec2011_dlog_q}$ & $\val{dec2011_dlog_KY}$ & \val{dec2011_sh_q}\%\\\bottomrule
+\end{tabular}}
+\column{0.46\textwidth}
+{\scriptsize Inside $K$, IPP (R\&D, software) rises from \val{IPPY2009}\% to \val{IPPY2025}\% of GVA and equipment falls from \val{EQPY2009}\% to \val{EQPY2025}\%; real estate is \val{REY2009}\% in 2009 and \val{REY2025}\% in 2025, after \val{REY2007}\% at the 2007 peak. $K$ excludes intangibles that the national accounts do not capitalize (organization capital, brands, data), so part of the rise in $q$ may be unmeasured capital rather than price.\par}
+\end{columns}
+\src{Z.1 B.103: BOGZ1LM102010005Q (total), BOGZ1FL105035023Q + BOGZ1FL105035033Q (real estate), BOGZ1LM105015205Q, BOGZ1LM105013765Q, BOGZ1LM105020015Q.}
+\end{frame}
+
+% ---------------------------------------------------------------- 6
+\begin{frame}{Flows: internal funds covered net investment}{NFC sector, \% of GVA}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f3_nfc_flows.pdf}}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Mean, \% of GVA & 1990--2007 & 2009--25 & 2011--25\\\midrule
+FCF ($D$) & \val{avg_pre_FCF} & \val{avg_post_FCF} & \val{avg_postB_FCF}\\
+Net dividends & \val{avg_pre_DIV} & \val{avg_post_DIV} & \val{avg_postB_DIV}\\
+Net buybacks & \val{avg_pre_BUY} & \val{avg_post_BUY} & \val{avg_postB_BUY}\\
+Net borrowing & \val{avg_pre_NB} & \val{avg_post_NB} & \val{avg_postB_NB}\\
+Net capital formation & \val{avg_pre_NCF} & \val{avg_post_NCF} & \val{avg_postB_NCF}\\\bottomrule
+\end{tabular}}
+\column{0.46\textwidth}
+{\scriptsize Cumulated 2009--25 (tn USD): net borrowing \val{cum_NB}, net capital formation \val{cum_NCF}, net buybacks \val{cum_BUY}, net dividends \val{cum_DIV}. Against this, $Q$ rose by \val{cum_dQ} tn and equity at market value by \val{cum_dEQ} tn. Four quarters to \val{latest_q}: net borrowing \val{lat_NBY}\%, NCF \val{lat_NCFY}\%, net buybacks \val{lat_BUYY}\% (net issuance).\par}
+\end{columns}
+\src{Z.1 F.103 via FRED: BOGZ1FU104104005Q, BOGZ1FU103164103Q (net buybacks $=-$net equity issuance, includes cash-financed M\&A retirements), BOGZ1FU106121075Q, BOGZ1FU105050985Q; four NSA quarters summed. 2018: TCJA repatriation lowers net dividends.}
+\end{frame}
+
+% ---------------------------------------------------------------- 7
+\begin{frame}{Where FCF goes: almost all of it to shareholders}{The cash-flow identity of slide 3, NFC sector, Z.1 table S.5.a (closes exactly)}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f6_fcf_decomposition.pdf}}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.55\textwidth}
+{\scriptsize\setlength{\tabcolsep}{2.2pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Mean, \% of GVA & 1990--2007 & 2009--25 & 2011--25\\\midrule
+FCF $=\mathrm{NOS}-T-\mathrm{NCF}$ & \val{fd_avg_pre_FCF} & \val{fd_avg_post_FCF} & \val{fd_avg_postB_FCF}\\
+\quad Div $+$ BB & \val{fd_avg_pre_DIV} $+$ \val{fd_avg_pre_BUY} & \val{fd_avg_post_DIV} $+$ \val{fd_avg_post_BUY} & \val{fd_avg_postB_DIV} $+$ \val{fd_avg_postB_BUY}\\
+\quad Int $-\,\Delta$Debt & \val{fd_avg_pre_INT} $-$ \val{fd_avg_pre_NB} & \val{fd_avg_post_INT} $-$ \val{fd_avg_post_NB} & \val{fd_avg_postB_INT} $-$ \val{fd_avg_postB_NB}\\
+\quad Net direct investment & \val{fd_avg_pre_NDI} & \val{fd_avg_post_NDI} & \val{fd_avg_postB_NDI}\\
+\quad Other FA $-$ other liab. & \val{fd_avg_pre_NOF} & \val{fd_avg_post_NOF} & \val{fd_avg_postB_NOF}\\
+\quad Rent, Tr, KT, SD & \val{fd_avg_pre_OTH} & \val{fd_avg_post_OTH} & \val{fd_avg_postB_OTH}\\\bottomrule
+\end{tabular}}
+\column{0.42\textwidth}
+{\scriptsize 2009--25 (tn USD): $\mathrm{NOS}-T=\val{fd_cuma_NOS_T}$ against $\mathrm{NCF}=\val{fd_cuma_NCF}$, so internal funds alone covered net investment and left FCF $=\val{fd_cuma_FCF}$. Shareholders received \val{fd_cuma_DEQ} (\val{fd_cuma_share_payout}\% of FCF; \val{fd_cumb_share_payout}\% over 2011--25). Creditors put money in on net: borrowing \val{fd_cuma_NB} $>$ interest \val{fd_cuma_INT}. Gross acquisition of financial assets is \val{fd_cuma_NAFA}, but other liabilities rose \val{fd_cuma_OL}: net of them, other financial saving is only \val{fd_cuma_NOF}.\par}
+\end{columns}
+\src{Z.1 S11.1.i.a (= S.5.a), annual, release of 10 Sep 2026. Div, Int: paid $-$ received. Direct investment: equity flows excluding reinvested earnings (outward $-$ inward). Other liabilities: all except debt securities, loans, corporate equities and FDI equity. Div differs from the FRED net dividends of slide 6 by at most \val{fd_div_diff} tn a year.}
+\end{frame}
+
+% ---------------------------------------------------------------- 8
+\begin{frame}{Buybacks: payout including buybacks rises with GVA; its yield still falls}{Compustat US nonfinancial firms, and the decomposition with $D$ = shareholder payout}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f4_compustat_payout.pdf}}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.56\textwidth}
+{\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Base & $D/Q$, NFC (Z.1) & start & 2025 & $\Delta\log\frac{Q}{Y}$ & $\Delta\log\frac{D}{Y}$\\\midrule
+2009 & FCF / $Q$ & \val{rob_fcfa_yield_start}\% & \val{rob_fcfa_yield_end}\% & $\val{rob_fcfa_dlog_QY}$ & $\val{rob_fcfa_dlog_DY}$\\
+ & payout / equity & \val{rob_deqa_yield_start}\% & \val{rob_deqa_yield_end}\% & $\val{rob_deqa_dlog_QY}$ & $\val{rob_deqa_dlog_DY}$\\
+2011 & FCF / $Q$ & \val{rob_fcfb_yield_start}\% & \val{rob_fcfb_yield_end}\% & $\val{rob_fcfb_dlog_QY}$ & $\val{rob_fcfb_dlog_DY}$\\
+ & payout / equity & \val{rob_deqb_yield_start}\% & \val{rob_deqb_yield_end}\% & $\val{rob_deqb_dlog_QY}$ & $\val{rob_deqb_dlog_DY}$\\
+3-yr avg & FCF / $Q$ & \val{rob_fcfc_yield_start}\% & \val{rob_fcfc_yield_end}\% & $\val{rob_fcfc_dlog_QY}$ & $\val{rob_fcfc_dlog_DY}$\\
+ & payout / equity & \val{rob_deqc_yield_start}\% & \val{rob_deqc_yield_end}\% & $\val{rob_deqc_dlog_QY}$ & $\val{rob_deqc_dlog_DY}$\\\bottomrule
+\end{tabular}}
+\column{0.4\textwidth}
+{\scriptsize Compustat 2009--25: buybacks \$\val{cs_cumbuy} tn, dividends \$\val{cs_cumdiv} tn, issuance \$\val{cs_cumiss} tn; buybacks are \val{cs_buy_share2025}\% of gross payout in 2025. Market equity $\times$\val{cs_me_mult}, gross payout $\times$\val{cs_pay_mult} (2011 base: $\times$\val{cs_me_multB} vs $\times$\val{cs_pay_multB}). Seven AI-related firms are \val{ai7_me_share2009}\% of market equity in 2009, \val{ai7_me_share2025}\% in 2025, and \val{ai7_share_dme}\% of its rise.\par}
+\end{columns}
+\src{Payout = net dividends + net buybacks; equity = $E+\mathrm{FDI}^{mv}$. 3-yr avg: 2009--11 vs 2023--25. Compustat funda, fic = USA, SIC outside 6000--6999; ME = csho$\times$prcc\_f. AI-related seven: AAPL, MSFT, GOOGL, AMZN, META, NVDA, ORCL.}
+\end{frame}
+
+% ---------------------------------------------------------------- 9
+\begin{frame}{Where firm borrowing went: a range, not a point}{Compustat US nonfinancial firms: positive net borrowing split by use inside each firm-year}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f7_debt_use_bounds.pdf}}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\scriptsize \textbf{How the bounds work.} Each firm-year: OCF $+$ net borrowing $=$ capex $+$ cash M\&A $+$ net payout $+$ cash and other financial uses. Money is fungible inside a firm, so a use's share of the borrowing is only bounded: \emph{lower} if internal funds pay that use first, \emph{upper} if they pay it last; \emph{pro rata} splits the borrowing in proportion to the uses. Firms with positive net borrowing raised \$\val{du_ndp} tn in 2009--25; the others repaid \$\val{du_ndm} tn (net \$\val{du_nd_net} tn; Z.1 NFC \$\val{cum_NB} tn).\par}
+\column{0.46\textwidth}
+{\scriptsize \textbf{What is robust.} Only \val{du_PAY_lo}\% of the borrowing must have paid shareholders, against \val{du_INV_lo}\% for capex and \val{du_MA_lo}\% for cash M\&A. Pro rata, payout + cash M\&A (the Z.1 shareholder line) takes \val{du_PAYMA_pr}\% and capex \val{du_INV_pr}\%, but the ranges overlap. Debt paid \val{du_paydebt_lo}--\val{du_paydebt_hi}\% of payouts (\val{du_paydebt_pr}\% pro rata). Capex's pro-rata share: \val{du_inv_pr_min_pre}--\val{du_inv_pr_max_pre}\% a year to 2021, \val{du_inv_pr_min_ai}--\val{du_inv_pr_max_ai}\% in 2022--25.\par}
+\end{columns}
+\src{Compustat funda as on slide 8, oancf reported: \val{du_nfy} firm-years, \val{du_nfirms} firms. Net borrowing $=$ dltis $-$ dltr $+$ dlcch; net payout $=$ dvt $+$ prstkc $-$ sstk; cash M\&A $=$ aqc; cash and other is the residual. Gross payout: payout \val{dug_PAY_lo}--\val{dug_PAY_hi}\%; R\&D as investment: capex $+$ R\&D \val{dur_INV_lo}--\val{dur_INV_hi}\%. Global consolidated firms; Z.1 is domestic.}
+\end{frame}
+
+% ---------------------------------------------------------------- 10
+\begin{frame}{The AI cycle: debt-financed capex since late 2025}{MSFT, GOOGL, AMZN, META, ORCL (and CoreWeave), Compustat quarterly}
+\centerline{\includegraphics[height=0.47\textheight]{figures/f5_ai_hyperscalers.pdf}}
+\vspace{-0.1cm}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Big five, USD bn & 2019Q4 & 2023Q4 & 2025Q4 & \val{ai_last_q}\\\midrule
+Capex, trailing 4Q & \val{b5_capx_2019q4} & \val{b5_capx_2023q4} & \val{b5_capx_2025q4} & \val{b5_capx_2026q3}\\
+Operating cash flow, 4Q & \val{b5_oancf_2019q4} & \val{b5_oancf_2023q4} & \val{b5_oancf_2025q4} & \val{b5_oancf_2026q3}\\
+Capex / OCF & \val{b5_ratio_2019q4}\% & \val{b5_ratio_2023q4}\% & \val{b5_ratio_2025q4}\% & \val{b5_ratio_2026q3}\%\\
+Debt, end of quarter & \val{b5_debt_2019q4} & \val{b5_debt_2023q4} & \val{b5_debt_2025q4} & \val{b5_debt_2026q3}\\\bottomrule
+\end{tabular}}
+\column{0.46\textwidth}
+{\scriptsize Until 2024 capex was paid out of operating cash flow and buybacks continued. Since 2025Q4: gross long-term debt issuance \$\val{b5_dltis_2026q3}bn over four quarters (net \$\val{b5_netiss_2026q3}bn), buybacks down to \$\val{b5_buy_2026q2}bn (to \val{ai_last_qbuy}). CoreWeave debt \$\val{crwv_debt_last}bn. Off-balance-sheet data-center financing (joint ventures, leases not yet commenced) is not in these numbers.\par}
+\end{columns}
+\src{Compustat fundq; flows from fiscal year-to-date items; quarters mapped to calendar quarters by datadate (ORCL ends one month earlier). Debt = dlttq + dlcq; cash = cheq. Global consolidated firms; Z.1 NFC is domestic, so the shares on slide 2 are orders of magnitude.}
+\end{frame}
+
+% ---------------------------------------------------------------- 11
+\begin{frame}{What this means for the model}
+\vspace{0.15cm}
+\begin{columns}[T]
+\column{0.48\textwidth}
+{\small
+\textbf{What the data rule out for 2009--2025}
+\begin{itemize}\setlength{\itemsep}{0.12cm}
+\item A credit channel: NFC debt/GVA is flat, internal funds alone covered net investment, and \val{fd_cuma_share_payout}\% of FCF went to shareholders.
+\item A measured-capital channel: $K/Y$ is flat, so $Q/Y$ rises only through $q=Q/K$.
+\item A buyback reading of the yield fall: including buybacks raises $D/Y$.
+\end{itemize}}
+\column{0.48\textwidth}
+{\small
+\textbf{What is left}
+\begin{itemize}\setlength{\itemsep}{0.12cm}
+\item A rise in $q$: the price of claims over replacement cost, concentrated in a few large firms (\val{ai7_share_dme}\% of the rise in market equity). Candidates: rents, unmeasured intangibles, or a lower required return (the funding side of the 16 Nov deck).
+\item The AI cycle (2025--26) is the first episode in the window where capex and debt rise together; it can be tracked quarter by quarter in Z.1 and Compustat.
+\end{itemize}}
+\end{columns}
+\vfill
+{\small\textcolor{inksec}{Next data, if useful: Z.1 2026Q3 (December 2026) for the NFC aggregates; gross bond issuance by issuer (SIFMA, or Mergent FISD on WRDS) to separate AI issuers; S\&P 500 buyback series (S\&P Dow Jones Indices) as a third buyback source; stated use of proceeds for bonds (Capital IQ Transactions or LSEG Workspace; DealScan already gives loan purposes).}}
+\vspace{0.4cm}
+\end{frame}
+
+% ---------------------------------------------------------------- 12-14: slide 3 explained, for readers new to these data
+\begin{frame}[label=xvalue]{Appendix: the value side of slide 3, explained}{What $Q$ measures, and why it is split by type of claim}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.47\textwidth}
+{\scriptsize\textbf{Market-value balance sheet, NFC, end-2025 (USD tn)}\\[0.08cm]
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lr|lr@{}}\toprule
+\multicolumn{2}{@{}l|}{\textbf{What firms own}} & \multicolumn{2}{l@{}}{\textbf{Claims on firms}}\\\midrule
+\textcolor{dataD}{\textbf{Nonfinancial assets $Q$}} & \textcolor{dataD}{\textbf{\val{bs2025_Q}}} & Equity $E$ & \val{bs2025_E}\\
+\quad\textcolor{inksec}{(backed out)} & & Foreign parents, FDI$^{mv}$ & \val{bs2025_FDI}\\
+Financial assets FA & \val{bs2025_FA} & Debt & \val{bs2025_DEBT}\\
+ & & Other liabilities OL & \val{bs2025_OL}\\\midrule
+Total & \val{bs2025_TOT} & Total & \val{bs2025_TOT}\\\bottomrule
+\end{tabular}\\[0.12cm]
+Market prices exist for the claims on the right, not for the factories, software and brands on the left. Z.1 therefore backs $Q$ out of the two totals:
+\[Q=E+\mathrm{FDI}^{mv}+\mathrm{Debt}+\mathrm{OL}-\mathrm{FA}.\]
+\textcolor{inksec}{FDI$^{mv}$: equity of foreign parents in their US affiliates. FA: cash and deposits, receivables, securities, US firms' equity in their foreign affiliates. OL: trade and tax payables, pension liabilities, intercompany debt owed to foreign parents.}\par}
+\column{0.49\textwidth}
+{\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.07cm}
+\item \textbf{What $Q$ is.} The price of the whole business: buy every share, take over every debt and payable, keep the cash and other financial assets.
+\item \textbf{Why it is the model's $Q$.} In the model the firm has one claim, worth the present value of future $D$. In the data the cash flows are shared by shareholders, creditors and others; the sum of all claims does not depend on how the firm is financed.
+\item \textbf{Why FA is netted out.} Cash and securities are not productive capital; foreign affiliates are not US capital. A firm that borrows to hold cash raises Debt and FA together, and $Q$ does not move.
+\item \textbf{Why split by claim.} Divided by $Y$, the terms add up to $Q/Y$, so a change in $Q/Y$ splits exactly by claim: credit shows up in Debt$/Y$, equity (issued or revalued) in $E/Y$. 2009$\to$2025, pp of GVA (slide 4): $Q/Y$ $+\val{dec2009_dQY_pp}$ $=$ $E$ $+\val{dec2009_dEY_pp}$, FDI$^{mv}$ $+\val{dec2009_dFDIY_pp}$, Debt $+\val{dec2009_dDEBTY_pp}$, OL$-$FA $\val{dec2009_dOTHERY_pp}$.
+\item \textbf{What it cannot say.} A debt-financed buyback swaps $E$ for Debt one for one, so the split shows which claims grew, not why. Telling new money from price changes needs the flows (slide \hyperlink{xlink}{14}).
+\end{itemize}}
+\end{columns}
+\src{Z.1 B.103/L.103 via FRED, as on slides 3--4; the identity is the Fed's definition of FL102010405 (market value estimate of nonfinancial assets). Unlisted firms' equity is not traded; its market value is a Fed estimate.}
+\end{frame}
+
+\begin{frame}[label=xcash]{Appendix: the cash-flow side of slide 3, explained}{What FCF measures, and why it is split by who receives it}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.41\textwidth}
+{\scriptsize\textbf{Worked example: one firm, one year}\\[0.05cm]
+Operating surplus after wages, production taxes and depreciation (NOS) 100; income tax 20; net investment 30; interest 5. So $\mathrm{FCF}=100-20-30=50$, whatever the firm does next:\\[0.08cm]
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+ & (a) & (b) & (c) & (d)\\\midrule
+Dividends & 45 & 0 & 45 & 25\\
+Buybacks & 0 & 45 & 20 & 0\\
+Interest & 5 & 5 & 5 & 5\\
+$-$ New borrowing & 0 & 0 & $-20$ & 0\\
+Kept as cash & 0 & 0 & 0 & 20\\\midrule
+$=$ FCF & 50 & 50 & 50 & 50\\\midrule
+To shareholders & 45 & 45 & 65 & 25\\
+To creditors & 5 & 5 & $-15$ & 5\\\bottomrule
+\end{tabular}\\[0.08cm]
+(a) pays dividends; (b) buys back shares instead; (c) also borrows 20 to buy back more; (d) keeps 20 as cash. Dividends alone would fall to 0 in (b), with nothing changed in the business.\par}
+\column{0.55\textwidth}
+{\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.07cm}
+\item \textbf{What FCF is.} Cash left after wages, taxes, depreciation and net investment (NCF), before any payment to shareholders or creditors.
+\item \textbf{Why it is the model's $D$.} $D$ must be the cash flow of the claims that $Q$ values: all claims, net of financial assets. So $D$ is all payments to them, net of new borrowing and of cash kept: FCF.
+\item \textbf{Why not dividends.} US payout has shifted from dividends to buybacks since the 1980s. Dividends alone would show a fall that is only a change of form (column b).
+\item \textbf{Why split by recipient.} Does payout form matter (shareholder line)? Did borrowing pay for payouts (sign of the creditor line)? Do firms hoard cash (net financial saving)? 2009--25: \val{fd_cuma_share_payout}\% of FCF went to shareholders (slide 7).
+\item \textbf{Why it closes exactly.} Income not taxed or invested is paid out or changes financial assets or liabilities. Income data are from BEA, financial data from the Fed; SD is the gap. The identity always holds; the content is in the size of each term.
+\item \textbf{What it cannot say.} Money is fungible: the split says how much went to each group, not which source paid for which use. A cash takeover of one US firm by another is a buyback for the sector.
+\end{itemize}}
+\end{columns}
+\src{In the data, ``kept as cash'' is net financial saving, NAFA $-\,\Delta$OL $-$ RE (slide 3): purchases of all financial assets, net of other new liabilities and of foreign affiliates' reinvested earnings (income earned abroad, so not in NOS). Rent, Tr, KT and SD are the remaining small items (glossary, slide 16). Which firm's borrowing paid for which use: slide 9.}
+\end{frame}
+
+\begin{frame}[label=xlink]{Appendix: how the two sides connect}{Change in a stock $=$ net transactions (the cash-flow side) $+$ revaluation; NFC sector, USD tn}
+\vspace{-0.15cm}
+\begin{columns}[T]
+\column{0.52\textwidth}
+{\scriptsize\setlength{\tabcolsep}{3pt}\textbf{End-2009 to end-2025}\\[0.05cm]
+\begin{tabular}{@{}lrrrr@{}}\toprule
+ & Change & $=$ Net & $+$ Reval- & $+$ Other\\
+ & in stock & transactions & uation & changes\\\midrule
+Equity, $E$ & $\val{sf2009_E_change}$ & $\val{sf2009_E_flows}$ & $\val{sf2009_E_reval}$ & $\val{sf2009_E_other}$\\
+FDI$^{mv}$ & $\val{sf2009_FDI_change}$ & $\val{sf2009_FDI_flows}$ & $\val{sf2009_FDI_reval}$ & $\val{sf2009_FDI_other}$\\
+Debt & $\val{sf2009_DEBT_change}$ & $\val{sf2009_DEBT_flows}$ & -- & $\val{sf2009_DEBT_other}$\\
+Other liabilities, OL & $\val{sf2009_OL_change}$ & $\val{sf2009_OL_flows}$ & $\val{sf2009_OL_reval}$ & $\val{sf2009_OL_other}$\\
+$-$ Financial assets, FA & $\val{sf2009_MFA_change}$ & $\val{sf2009_MFA_flows}$ & $\val{sf2009_MFA_reval}$ & $\val{sf2009_MFA_other}$\\\midrule
+$=Q$ & $\mathbf{\val{sf2009_Q_change}}$ & $\mathbf{\val{sf2009_Q_flows}}$ & $\mathbf{\val{sf2009_Q_reval}}$ & $\val{sf2009_Q_other}$\\\bottomrule
+\end{tabular}\\[0.1cm]
+\textcolor{inksec}{Net transactions are the flows of the cash-flow side: new shares minus shares retired ($-$BB), net borrowing, purchases of financial assets (NAFA). Revaluation is the change in the value of a stock that is not a transaction: holding gains and losses (Fed revaluation account). Debt is at book value, so it has none. Other changes: reclassifications, write-offs and breaks in the source data.}\par}
+\column{0.44\textwidth}
+{\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.1cm}
+\item \textbf{Equity.} Firms retired a net \$\val{sf2009_E_flows_abs} tn of their own shares, yet the market value of their equity rose \$\val{sf2009_E_change} tn. None of the rise came from new shares.
+\item \textbf{All claims.} $Q$ rose \$\val{sf2009_Q_change} tn. Net new money from all claim holders, net of financial assets bought, was \$\val{sf2009_Q_flows} tn: \val{sf2009_Q_reval_share}\% of the rise is revaluation (\val{sf2011_Q_reval_share}\% from end-2011).
+\item \textbf{What revaluation contains.} The value of investment paid for out of retained earnings (no new claims are issued for it) and price changes. The capital side separates the two: $K$ at replacement cost rose \$\val{sf2009_dK} tn, so most of the rise in $Q$ is a rise in $q=Q/K$ (slide 5).
+\item \textbf{Why both sides.} The value side alone cannot tell new claims from higher prices; the cash-flow side alone says nothing about prices.
+\end{itemize}}
+\end{columns}
+\src{Z.1 S11.1.i.a (= S.5.a): levels, transactions (FU) and revaluations (FR) from one table; other changes $=$ change $-$ transactions $-$ revaluation. Stocks at end-2009 and end-2025, so flows are summed over 2010--25 (slide 7 sums 2009--25). Rounded to 0.1. From end-2011: $Q$ $+$\val{sf2011_Q_change}, transactions $+$\val{sf2011_Q_flows}, revaluation $+$\val{sf2011_Q_reval}.}
+\end{frame}
+
+% ---------------------------------------------------------------- 15
+\begin{frame}{Appendix: sources and rebuild}
+\vspace{0.1cm}
+{\scriptsize
+\textbf{Z.1 / NIPA via FRED} (retrieved 2026-11-18, data through \val{latest_q}): 30 series, listed with titles and units in data/raw/fred/\_metadata.csv. Annual flows are sums of four NSA quarters; stocks are end of Q4.\\[0.12cm]
+\textbf{Z.1 table S11.1.i.a (= S.5.a)} (Fed CSV release of 10 Sep 2026, retrieved 2026-11-18): annual NFC integrated accounts for the FCF decomposition; data/raw/fed\_z1 with the line dictionary and manifest.json.\\[0.12cm]
+\textbf{Compustat} (WRDS, retrieved 2026-11-18): comp.funda for US-incorporated USD filers, fiscal 1989--2026 (2026 incomplete, not used); comp.fundq for AAPL, MSFT, ORCL, CRWV, AMZN, NVDA, GOOGL, META from 2014. Manifest in data/raw/wrds/manifest.json. Licensed data: not for redistribution.\\[0.12cm]
+\textbf{Processed data}: data/processed (z1\_nfc\_annual\_trn.csv, z1\_nfc\_ratios\_pct\_gva.csv, z1\_q\_decomposition.csv, fcf\_decomposition\_nfc\_trn.csv, fcf\_decomposition\_nfc\_pct\_gva.csv, stock\_flow\_reconciliation\_nfc\_trn.csv, payout\_robustness\_nfc.csv, compustat\_nonfin\_annual\_bn.csv, debt\_use\_bounds\_annual.csv, debt\_use\_bounds\_summary.csv, ai\_big5\_quarterly\_bn.csv, ai\_firms\_debt\_by\_firm\_bn.csv, ai\_firms\_quarterly\_musd.csv).\\[0.12cm]
+\textbf{Definitions.} Net buybacks $=-$Z.1 net equity issuance (net of IPOs and issuance, includes cash M\&A retirements). Compustat buybacks are gross (prstkc: common and preferred). NFC $D=\mathrm{NOS}-T-\mathrm{NCF}$, the AHP FCF for the NFC sector.\\[0.12cm]
+\textbf{Rebuild.} \texttt{cd scripts}; \texttt{uv run --no-project --python 3.12 python -I fetch\_fred.py}; the same for fetch\_z1.py; WRDS pull with fetch\_wrds.py (see its header); debt\_use\_bounds.py (same uv line, without matplotlib); \texttt{uv run --no-project --python 3.12 --with numpy==2.3.5 --with pandas==2.2.3 --with matplotlib==3.10.0 python -I build.py}; then \texttt{latexmk -pdf credit\_capital\_buybacks\_2026\_11\_18.tex} in the folder.}
+\end{frame}
+
+% ---------------------------------------------------------------- 16-17
+\newcommand{\gl}[2]{\textbf{#1} & #2\\}
+\begin{frame}{Appendix: abbreviations and symbols (1/2)}{Accounting terms; NFC sector unless stated; flows are annual transactions, stocks end of year}
+\vspace{-0.05cm}
+\begin{columns}[T]
+\column{0.49\textwidth}
+{\tiny\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright}p{0.17\linewidth}p{0.79\linewidth}@{}}\toprule
+\gl{NFC}{Nonfinancial corporate business, the Z.1 sector used throughout}
+\gl{$Y$, GVA}{Gross value added of the NFC sector}
+\gl{$Q$}{Enterprise value: market value of NFC nonfinancial assets (Z.1 FL102010405) $=E+\mathrm{FDI}^{mv}+\mathrm{TL}-\mathrm{FA}$; the AHP $Q$}
+\gl{$E$}{Corporate equities issued by NFCs, market value}
+\gl{FDI$^{mv}$}{Foreign direct investment in the US (equity in US affiliates of foreign parents), market value}
+\gl{TL, FA}{Total liabilities (excluding equity); total financial assets}
+\gl{Debt}{Debt securities (corporate bonds, commercial paper, municipal) $+$ loans (bank, private credit, mortgages, other)}
+\gl{OL}{Other liabilities $=\mathrm{TL}-\mathrm{Debt}$: trade payables, taxes payable, pension entitlements, FDI intercompany debt, miscellaneous}
+\gl{$K$}{Nonfinancial assets at replacement cost: real estate at market value; equipment, IPP and inventories at current cost}
+\gl{$q$}{Tobin's $q=Q/K$}
+\gl{IPP}{Intellectual property products: R\&D, software, entertainment and artistic originals}
+\gl{$D$, FCF}{Free cash flow $=\mathrm{NOS}-T-\mathrm{NCF}$, the AHP dividend measure}
+\gl{NOS}{Net operating surplus: GVA $-$ compensation of employees $-$ taxes on production and imports (less subsidies) $-$ consumption of fixed capital}\bottomrule
+\end{tabular}}
+\column{0.49\textwidth}
+{\tiny\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright}p{0.17\linewidth}p{0.79\linewidth}@{}}\toprule
+\gl{$T$}{Current taxes on corporate income, wealth, etc.}
+\gl{NCF}{Net capital formation: gross fixed investment $+$ inventory change $+$ net purchases of nonproduced assets $-$ consumption of fixed capital}
+\gl{Div}{Net dividends: dividends paid $-$ dividends received}
+\gl{BB}{Net buybacks $=-$ net issuance of corporate equities (net of IPOs and new issues; includes shares retired in cash M\&A)}
+\gl{Int}{Net interest: interest paid $-$ interest received}
+\gl{$\Delta$Debt, NB}{Net borrowing: net incurrence of debt securities and loans}
+\gl{NAFA}{Net acquisition of financial assets}
+\gl{$\Delta$OL}{Net incurrence of OL, plus inward FDI equity flows}
+\gl{RE}{Reinvested earnings on direct investment, net: earned by US firms' foreign affiliates $-$ earned by foreign parents on US affiliates. Recorded as income and as a direct-investment flow, but not in NOS}
+\gl{Net direct inv.}{Outward direct-investment equity flow $-$ inward FDI equity flow, both excluding reinvested earnings}
+\gl{Rent}{Rents paid on land and natural resources}
+\gl{Tr}{Other current transfers paid (e.g.\ legal settlements, donations)}
+\gl{KT}{Net capital transfers paid}
+\gl{SD}{Statistical discrepancy of the NFC accounts (capital-account minus financial-account net lending)}\bottomrule
+\end{tabular}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Appendix: abbreviations and symbols (2/2)}{Models, data sources, firm-level items and other shorthand}
+\vspace{-0.05cm}
+\begin{columns}[T]
+\column{0.49\textwidth}
+{\tiny\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright}p{0.17\linewidth}p{0.79\linewidth}@{}}\toprule
+\gl{HKT}{Hirano, Kishi and Toda, \emph{Technological innovation and bursting bubbles}; the project's model}
+\gl{AHP}{Atkeson, Heathcote and Perri; source of the $Q$ (enterprise value) and $D$ (FCF) mappings from Z.1}
+\gl{MM}{Modigliani--Miller: financing and payout form do not change firm value or FCF}
+\gl{Z.1}{Financial Accounts of the United States (Federal Reserve)}
+\gl{B.103, L.103, F.103}{Z.1 tables for the NFC sector: balance sheet, liabilities and assets (levels), flows}
+\gl{S.5.a (S11.1.i.a)}{Z.1 integrated macroeconomic accounts for the NFC sector, annual (new table name in brackets)}
+\gl{IMA}{Integrated macroeconomic accounts (Fed--BEA)}
+\gl{NIPA, BEA}{National Income and Product Accounts; Bureau of Economic Analysis}
+\gl{FRED}{Federal Reserve Economic Data (St.\ Louis Fed), used to download Z.1 series}
+\gl{FL, FU, LM, FR}{Z.1 series prefixes: level, unadjusted flow (transactions), market-value level, revaluation}
+\gl{NSA}{Not seasonally adjusted}
+\gl{TTM, 4Q}{Trailing twelve months: sum of the last four quarters}
+\gl{pp}{Percentage points}
+\gl{Lower, upper, pro rata}{Slide 9: share of a firm's positive net borrowing that went to a use if internal funds pay that use first, last, or in proportion to the uses}
+\gl{tn, bn}{Trillion, billion (USD, nominal)}\bottomrule
+\end{tabular}}
+\column{0.49\textwidth}
+{\tiny\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright}p{0.17\linewidth}p{0.79\linewidth}@{}}\toprule
+\gl{WRDS}{Wharton Research Data Services}
+\gl{Compustat}{S\&P firm accounts: funda (annual), fundq (quarterly)}
+\gl{prstkc}{Purchase of common and preferred stock (gross buybacks)}
+\gl{sstk, dvt}{Sale of common and preferred stock (issuance); total dividends}
+\gl{dltt, dlc}{Long-term debt; debt in current liabilities}
+\gl{dltis, dltr, dlcch}{Long-term debt issuance; long-term debt reduction; change in current debt}
+\gl{che, oancf, capx, aqc}{Cash and short-term investments; operating cash flow (OCF); capital expenditure (capex); acquisitions (cash M\&A)}
+\gl{ME}{Market equity $=$ shares outstanding (csho) $\times$ fiscal-year-end price (prcc\_f)}
+\gl{SIC}{Standard Industrial Classification; 6000--6999 (finance) excluded}
+\gl{Big five}{AI hyperscalers MSFT (Microsoft), GOOGL (Alphabet), AMZN (Amazon), META (Meta), ORCL (Oracle)}
+\gl{AI-related seven}{Big five $+$ AAPL (Apple), NVDA (Nvidia)}
+\gl{CRWV}{CoreWeave}
+\gl{TCJA}{Tax Cuts and Jobs Act (2017), which triggered the 2018 repatriation of foreign earnings}
+\gl{M\&A, IPO}{Mergers and acquisitions; initial public offering}\bottomrule
+\end{tabular}}
+\end{columns}
+\end{frame}
+
+\end{document}

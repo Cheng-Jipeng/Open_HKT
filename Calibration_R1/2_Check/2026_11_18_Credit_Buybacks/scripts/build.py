@@ -176,6 +176,112 @@ for _, x in rob.iterrows():
     for c in ["yield_start", "yield_end", "dlog_QD", "dlog_QY", "dlog_DY", "share_QY"]:
         V(f"rob_{key}{bk}_{c}", x[c])
 
+# ---- FCF decomposition from Z.1 table S.5.a (S11.1.i.a), annual; closes exactly
+# FCF = NOS - T - NCF = net dividends + net buybacks + net interest - net borrowing
+#       + net direct investment (outward - inward, both excl. reinvested earnings)
+#       + (other financial assets - other liabilities) + (rents + other current transfers + net capital transfers + stat. discrepancy)
+s5 = pd.read_csv(ROOT / "data" / "raw" / "fed_z1" / "S11_1_i_a.csv", na_values=["ND"]).set_index("date")
+s5 = s5.loc[:, ~s5.columns.duplicated()].apply(pd.to_numeric, errors="coerce").loc[1990:Y1] / 1e6  # trn USD
+
+
+def g5(code):
+    return s5[f"{code}.A"]
+
+
+fd = pd.DataFrame(index=s5.index)
+fd["NOS"], fd["TAX"], fd["NCF"] = g5("FU106402101"), g5("FU106220001"), g5("FU105050985")
+fd["FCF"] = fd.NOS - fd.TAX - fd.NCF
+fd["NOS_T"] = fd.NOS - fd.TAX
+fd["DIV"] = g5("FU106121001") - g5("FU106121101")  # dividends paid - received
+fd["BUY"] = -g5("FU103164105")  # - net equity issuance
+fd["INT"] = g5("FU106130001") - g5("FU106130101")  # interest paid - received
+fd["NB"] = g5("FU104122005") + g5("FU104135005")  # debt securities + loans, liability transactions
+fd["ODI"] = g5("FU103092105") - g5("FU103092201")  # US direct investment abroad, equity, minus reinvested earnings received
+fd["IDI"] = g5("FU103192105") - g5("FU103192201")  # FDI in US, equity, minus reinvested earnings paid
+fd["NDI"] = fd.ODI - fd.IDI
+fd["OFA"] = g5("FU104090005") - g5("FU103092105")  # financial assets other than direct investment equity
+fd["OL"] = g5("FU104194005") - fd.NB + fd.BUY - g5("FU103192105")  # liabilities other than debt, equity, FDI equity
+fd["NOF"] = fd.OFA - fd.OL
+fd["RENT"], fd["TR"], fd["NKT"], fd["SD"] = g5("FU106112001"), g5("FU106403001"), g5("FU105440005"), g5("FU107005045")
+fd["OTH"] = fd.RENT + fd.TR + fd.NKT + fd.SD
+fd["CRED"] = fd.INT - fd.NB
+fd["NAFA"] = g5("FU104090005")
+FD_PARTS = ["DIV", "BUY", "CRED", "NDI", "NOF", "OTH"]
+res5 = (fd[FD_PARTS].sum(axis=1) - fd.FCF).abs().max()
+assert res5 < 1e-4, f"S.5.a FCF identity residual {res5}"
+assert (fd.FCF - z.FCF).abs().max() < 1e-4, "S.5.a FCF differs from the FRED-based FCF"
+print(f"FCF decomposition closes: max residual {res5:.1e} trn; S.5.a DIV vs FRED net dividends max diff {(fd.DIV - z.DIV).abs().max():.3f} trn")
+fd.round(6).to_csv(PROC / "fcf_decomposition_nfc_trn.csv")
+V("fd_div_diff", (fd.DIV - z.DIV).abs().max())
+fdr = fd.div(z.Y, axis=0)
+fdr.mul(100).round(3).to_csv(PROC / "fcf_decomposition_nfc_pct_gva.csv")
+FD_FINE = ["NOS_T", "NCF", "FCF", "DIV", "BUY", "INT", "NB", "ODI", "IDI", "OFA", "OL", "RENT", "TR", "NKT", "SD", "OTH", "CRED", "NDI", "NOF", "NAFA"]
+for p, (a, bb) in per.items():
+    for k in FD_FINE:
+        V(f"fd_avg_{p}_{k}", 100 * fdr.loc[a:bb, k].mean())
+for lab, a in [("a", Y0), ("b", YB)]:
+    for k in FD_FINE:
+        V(f"fd_cum{lab}_{k}", fd.loc[a:Y1, k].sum())
+    V(f"fd_cum{lab}_DEQ", fd.loc[a:Y1, ["DIV", "BUY"]].sum().sum())
+    V(f"fd_cum{lab}_share_payout", 100 * fd.loc[a:Y1, ["DIV", "BUY"]].sum().sum() / fd.loc[a:Y1, "FCF"].sum())
+
+# ---- stock-flow link between the two sides, from the same table (appendix explainer)
+# change in each end-year stock = transactions (the cash-flow side) + revaluation (FR) + other volume changes and breaks
+# Q = total liabilities and equity - financial assets, so the rows add up to Q.
+s5full = pd.read_csv(ROOT / "data" / "raw" / "fed_z1" / "S11_1_i_a.csv", na_values=["ND"]).set_index("date")
+s5full = s5full.loc[:, ~s5full.columns.duplicated()].apply(pd.to_numeric, errors="coerce") / 1e6
+zero = pd.Series(0.0, index=s5full.index)
+
+
+def g5f(*codes):
+    return sum(s5full[f"{c}.A"] for c in codes)
+
+
+SF = {  # level, transactions, revaluation
+    "E": (g5f("LM103164105"), g5f("FU103164105"), g5f("FR103164105")),
+    "FDI": (g5f("FL103192105"), g5f("FU103192105"), g5f("FR103192105")),
+    "DEBT": (g5f("FL104122005", "FL104135005"), g5f("FU104122005", "FU104135005"), zero),  # book value: no revaluation line
+    "TLE": (g5f("FL104194005"), g5f("FU104194005"), g5f("FR104194005")),
+    "FA": (g5f("FL104090005"), g5f("FU104090005"), g5f("FR104090005")),
+}
+SF["OL"] = tuple(t - e - f - d for t, e, f, d in zip(SF["TLE"], SF["E"], SF["FDI"], SF["DEBT"]))
+SF["MFA"] = tuple(-x for x in SF["FA"])  # minus financial assets
+SF["Q"] = tuple(t - f for t, f in zip(SF["TLE"], SF["FA"]))
+chkS = {k: (SF[k][0].reindex(z.index) - z[c]).abs().max() for k, c in [("E", "E"), ("FDI", "FDI"), ("DEBT", "DEBT"), ("Q", "Q")]}
+assert max(chkS.values()) < 1e-3, f"S.5.a stocks differ from the FRED stocks: {chkS}"
+SF_ROWS = ["E", "FDI", "DEBT", "OL", "MFA", "Q"]
+sf_rows = []
+
+
+def f1(x):  # USD tn with one decimal, as a string for values.tex; no "-0.0"
+    t = f"{x:.1f}"
+    return "0.0" if t == "-0.0" else t
+
+
+for b in [Y0, YB]:
+    for k in SF_ROWS:
+        lv, fu, fr = SF[k]
+        d = lv.loc[Y1] - lv.loc[b]
+        fl, rv = fu.loc[b + 1:Y1].sum(), fr.loc[b + 1:Y1].sum()
+        sf_rows.append(dict(base=b, item=k, level_base=lv.loc[b], level_end=lv.loc[Y1], change=d, flows=fl, reval=rv, other=d - fl - rv))
+sf = pd.DataFrame(sf_rows)
+for b in [Y0, YB]:
+    s = sf[sf.base == b].set_index("item")
+    assert (s.loc[SF_ROWS[:-1], ["change", "flows", "reval", "other"]].sum() - s.loc["Q", ["change", "flows", "reval", "other"]]).abs().max() < 1e-6
+    for k in SF_ROWS:
+        for c in ["change", "flows", "reval", "other"]:
+            V(f"sf{b}_{k}_{c}", f1(s.loc[k, c]))  # one decimal throughout the explainer table
+    V(f"sf{b}_E_flows_abs", f1(-s.loc["E", "flows"]))  # net shares retired
+    V(f"sf{b}_E_reval_share", 100 * s.loc["E", "reval"] / s.loc["E", "change"])
+    V(f"sf{b}_Q_reval_share", 100 * s.loc["Q", "reval"] / s.loc["Q", "change"])
+    V(f"sf{b}_dK", z.loc[Y1, "K"] - z.loc[b, "K"])
+sf.round(6).to_csv(PROC / "stock_flow_reconciliation_nfc_trn.csv", index=False)
+print(f"stock-flow, end-{Y0} to end-{Y1}:\n" + sf[sf.base == Y0].round(2).to_string(index=False))
+# 2025 market-value balance sheet (for the value-side explainer)
+for k, v in {"Q": z.loc[Y1, "Q"], "FA": z.loc[Y1, "FA"], "E": z.loc[Y1, "E"], "FDI": z.loc[Y1, "FDI"], "DEBT": z.loc[Y1, "DEBT"],
+             "OL": z.loc[Y1, "TL"] - z.loc[Y1, "DEBT"], "TOT": z.loc[Y1, "Q"] + z.loc[Y1, "FA"]}.items():
+    V(f"bs{Y1}_{k}", f1(v))
+
 # ================================================================== 2. Compustat, US nonfinancial public firms
 f = pd.read_csv(WRDS / "funda_us_1989_2026.csv.gz", dtype={"gvkey": str})
 co = pd.read_csv(WRDS / "company_us.csv.gz", dtype={"gvkey": str})
@@ -222,6 +328,34 @@ for y in [Y0, YB, Y1]:
     V(f"ai7_me_share{y}", 100 * cs.loc[y, "ai7_me"] / cs.loc[y, "me"])
 V("ai7_share_dme", 100 * (cs.loc[Y1, "ai7_me"] - cs.loc[Y0, "ai7_me"]) / (cs.loc[Y1, "me"] - cs.loc[Y0, "me"]))
 V("ai7_me2025_tn", cs.loc[Y1, "ai7_me"] / 1e3)
+
+# ---- where firm borrowing went: sources-and-uses bounds, from debt_use_bounds.py (run it before this file)
+DU_S, DU_A = PROC / "debt_use_bounds_summary.csv", PROC / "debt_use_bounds_annual.csv"
+if not (DU_S.exists() and DU_A.exists()):
+    raise SystemExit("run debt_use_bounds.py first: it writes data/processed/debt_use_bounds_{summary,annual}.csv")
+dus = pd.read_csv(DU_S).set_index(["variant", "window"])
+dua = pd.read_csv(DU_A)
+DU_K = ["PAY", "INV", "MA", "FIN", "OPD", "PAYMA"]
+DU_ROWS = {"": ("base", f"{Y0}-{Y1} firm-years"), "c": ("base", f"{Y0}-{Y1} firm-cumulative"), "B": ("base", f"{YB}-{Y1} firm-years"),
+           "g": ("gross_payout", f"{Y0}-{Y1} firm-years"), "r": ("rnd_as_investment", f"{Y0}-{Y1} firm-years")}
+for tag, key in DU_ROWS.items():  # keys du{tag}_{use}_{lo,pr,hi}: % of positive net borrowing, whole percent
+    row = dus.loc[key]
+    for k in DU_K:
+        for b in ["lo", "pr", "hi"]:
+            V(f"du{tag}_{k}_{b}", f"{row[f'{b}_{k}_pct_ndp']:.0f}")
+    for b in ["lo", "pr", "hi"]:
+        V(f"du{tag}_paydebt_{b}", f"{row[f'{b}_PAY_pct_pay']:.0f}")  # % of payout paid by debt
+        V(f"du{tag}_invdebt_{b}", f"{row[f'{b}_INV_pct_inv']:.0f}")  # % of capex paid by debt
+    for k in ["ndp", "ndm", "nd_net"]:
+        V(f"du{tag}_{k}", f"{row[f'{k}_tn']:.1f}")
+V("du_nfy", int(dus.loc[DU_ROWS[""], "n_firmyears"]))
+V("du_nfirms", int(dus.loc[DU_ROWS[""], "n_firms"]))
+dub = dua[dua.variant == "base"].set_index("fyear")
+du_inv = 100 * dub.pr_INV / dub.ndp
+V("du_inv_pr_min_pre", f"{du_inv.loc[Y0:2021].min():.0f}")
+V("du_inv_pr_max_pre", f"{du_inv.loc[Y0:2021].max():.0f}")
+V("du_inv_pr_min_ai", f"{du_inv.loc[2022:Y1].min():.0f}")
+V("du_inv_pr_max_ai", f"{du_inv.loc[2022:Y1].max():.0f}")
 
 # ================================================================== 3. AI firms, quarterly
 q = pd.read_csv(WRDS / "fundq_ai_firms.csv.gz", dtype={"gvkey": str}, parse_dates=["datadate"])
@@ -447,6 +581,99 @@ a2.set_title("(b) Debt (long-term + current), by firm", loc="left", fontsize=10.
 h, l = a2.get_legend_handles_labels()
 a2.legend(h, l, loc="upper center", bbox_to_anchor=(0.5, -0.11), ncol=4)
 save(fig, "f5_ai_hyperscalers")
+
+# ---- F6: FCF decomposition (S.5.a). (a) annual uses of FCF, % of GVA; (b) cumulated 2009-25 waterfall, USD tn
+GRAY = "#A9A7A1"
+FD_STYLE = {"DIV": ("Net dividends", BLUE), "BUY": ("Net buybacks", ORANGE), "CRED": ("Net interest − net borrowing", VIOLET),
+            "NDI": ("Net direct investment (out − in)", AQUA), "NOF": ("Other fin. assets − other liabilities", YELLOW),
+            "OTH": ("Rents, transfers, stat. discrepancy", GRAY)}
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.4, 4.9), gridspec_kw=dict(width_ratios=[1.35, 1], wspace=0.5))
+context(a1)
+pos_b, neg_b = np.zeros(len(fdr)), np.zeros(len(fdr))
+for k in FD_PARTS:
+    lab, c = FD_STYLE[k]
+    v = 100 * fdr[k].values
+    p, n = np.clip(v, 0, None), np.clip(v, None, 0)
+    a1.bar(fdr.index, p, bottom=pos_b, width=0.8, color=c, label=lab, edgecolor="white", linewidth=0.5)
+    a1.bar(fdr.index, n, bottom=neg_b, width=0.8, color=c, edgecolor="white", linewidth=0.5)
+    pos_b, neg_b = pos_b + p, neg_b + n
+a1.plot(fdr.index, 100 * fdr.FCF, color=INK, lw=2.0, label="FCF = NOS − T − NCF (AHP D)", zorder=4)
+a1.axhline(0, color=MUTED, lw=0.8)
+a1.set_xlim(1989.5, Y1 + 0.6)
+a1.set_ylim(-12.5, 23)
+a1.yaxis.set_major_locator(MultipleLocator(5))
+a1.yaxis.set_major_formatter(pct0)
+a1.set_ylabel("% of NFC gross value added")
+a1.set_title("(a) Where FCF goes, NFC sector, annual", loc="left", fontsize=10.5)
+below(a1, 3, fontsize=8.5)
+wf = [("DIV", "Net dividends", BLUE), ("BUY", "Net buybacks", ORANGE), ("INT", "Net interest", VIOLET), ("NB", "− Net borrowing", VIOLET),
+      ("ODI", "Outward direct inv.", AQUA), ("IDI", "− Inward direct inv.", AQUA), ("OFA", "Other fin. assets", YELLOW),
+      ("OL", "− Other liabilities", YELLOW), ("OTH", "Rents, transfers, SD", GRAY)]
+cum5 = fd.loc[Y0:Y1].sum()
+run = 0.0
+for i, (k, lab, c) in enumerate(wf):
+    v = cum5[k] * (-1 if lab.startswith("−") else 1)
+    a2.barh(i, v, left=run, height=0.62, color=c)
+    a2.annotate(f"{v:+.1f}".replace("-", "−"), (run + v, i), xytext=(4 if v >= 0 else -4, 0), textcoords="offset points",
+                va="center", ha="left" if v >= 0 else "right", fontsize=8.5, color=INK)
+    a2.plot([run + v, run + v], [i + 0.31, i + 0.69], color=MUTED, lw=0.6)  # connector to the next bar
+    run += v
+a2.barh(len(wf), cum5["FCF"], height=0.62, color=INK)
+a2.annotate(f"{cum5['FCF']:.1f}", (cum5["FCF"], len(wf)), xytext=(4, 0), textcoords="offset points", va="center", fontsize=8.5, color=INK)
+assert abs(run - cum5["FCF"]) < 1e-4
+a2.set_yticks(range(len(wf) + 1), [l for _, l, _ in wf] + ["= FCF"])
+a2.invert_yaxis()
+a2.axvline(0, color=MUTED, lw=0.8)
+a2.grid(axis="y", visible=False)
+a2.grid(axis="x", color=GRID)
+a2.set_xlim(0, 31)
+a2.set_xlabel("USD trillion, summed over 2009–2025")
+a2.set_title(f"(b) Cumulated {Y0}–{Y1}: FCF of {cum5['FCF']:.1f} tn", loc="left", fontsize=10.5)
+save(fig, "f6_fcf_decomposition")
+
+# ---- F7: where firm borrowing went (Compustat). (a) bounds by use, 2009-25; (b) pro-rata shares by fiscal year
+from matplotlib.lines import Line2D
+
+DU_USES = [("PAY", "Net payout\n(div. + buybacks − issuance)", ORANGE), ("MA", "Cash M&A", MAGENTA),
+           ("PAYMA", "Payout + cash M&A\n(Z.1 shareholder line)", DARK), ("INV", "Capex", AQUA),
+           ("FIN", "Cash and financial assets", YELLOW), ("OPD", "Operating deficit", GRAY)]
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.4, 4.6), gridspec_kw=dict(width_ratios=[1.1, 1], wspace=0.45))
+fy, fcum = dus.loc[DU_ROWS[""]], dus.loc[DU_ROWS["c"]]
+for i, (k, lab, c) in enumerate(DU_USES):
+    lo, pr, hi = (fy[f"{b}_{k}_pct_ndp"] for b in ["lo", "pr", "hi"])
+    a1.plot([lo, hi], [i - 0.12] * 2, color=c, lw=8, solid_capstyle="butt")
+    a1.plot([pr], [i - 0.12], "o", color="white", mec=INK, mew=1.4, ms=7, zorder=3)
+    clo, cpr, chi = (fcum[f"{b}_{k}_pct_ndp"] for b in ["lo", "pr", "hi"])
+    a1.plot([clo, chi], [i + 0.22] * 2, color=c, lw=2, alpha=0.6)
+    a1.plot([cpr], [i + 0.22], "o", color=c, ms=4.5, zorder=3)
+    a1.annotate(f"{lo:.0f}–{hi:.0f}%, pro rata {pr:.0f}%", (hi, i - 0.12), xytext=(6, 0), textcoords="offset points",
+                va="center", fontsize=8.5, color=INK)
+a1.set_yticks(range(len(DU_USES)), [l for _, l, _ in DU_USES], fontsize=9)
+a1.invert_yaxis()
+a1.grid(axis="y", visible=False)
+a1.grid(axis="x", color=GRID)
+a1.set_xlim(0, 100)
+a1.xaxis.set_major_formatter(pct0)
+a1.set_xlabel(f"% of positive net borrowing, {Y0}–{Y1} (USD {fy.ndp_tn:.1f} tn)")
+a1.set_title("(a) Share of borrowing that went to each use: bounds", loc="left", fontsize=10.5)
+a1.legend([Line2D([], [], color=MUTED, lw=8), Line2D([], [], ls="", marker="o", color="white", mec=INK, mew=1.4, ms=7),
+           Line2D([], [], color=MUTED, lw=2, alpha=0.6)],
+          ["lower–upper bound, firm-years", "pro rata", f"same, firm flows summed over {Y0}–{Y1}"],
+          loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3, handlelength=1.8, columnspacing=1.2)
+context(a2)
+for k, lab, c, lw, dy in [("PAYMA", "Payout + cash M&A", DARK, 2.2, -6), ("INV", "Capex", AQUA, 2.2, 6),
+                          ("PAY", "Net payout", ORANGE, 1.6, None), ("FIN", "Cash and financial assets", YELLOW, 1.6, None)]:
+    s = 100 * dub[f"pr_{k}"] / dub.ndp
+    a2.plot(s.index, s, color=c, lw=lw, label=lab)
+    if dy is not None:  # end labels only on the two lines the slide compares
+        endval(a2, Y1, s.loc[Y1], f"{s.loc[Y1]:.0f}%", dy=dy)
+a2.set_xlim(*XL)
+a2.set_ylim(0, None)
+a2.yaxis.set_major_formatter(pct0)
+a2.set_ylabel("% of positive net borrowing, pro rata")
+a2.set_title("(b) Pro-rata shares by fiscal year", loc="left", fontsize=10.5)
+below(a2, 2)
+save(fig, "f7_debt_use_bounds")
 
 # ================================================================== 5. values
 def fmt(v):

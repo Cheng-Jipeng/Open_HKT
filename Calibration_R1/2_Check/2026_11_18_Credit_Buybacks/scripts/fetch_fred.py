@@ -53,6 +53,7 @@ SERIES = {
     "BOGZ1FU106902501Q": "gross value added",
     "BOGZ1FU106025005Q": "compensation of employees paid",
 }
+# The FCF decomposition uses the full Z.1 table S.5.a (S11.1.i.a) instead: see fetch_z1.py.
 
 
 def get(url: str) -> bytes:

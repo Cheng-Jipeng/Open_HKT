@@ -1,0 +1,11 @@
+{
+  "retrieved_utc": "2026-11-18T03:10:05+00:00",
+  "source": "https://www.federalreserve.gov/releases/z1/current/z1_csv_files.zip",
+  "table": "S11.1.i.a (old name S.5.a), Nonfinancial corporate business, integrated macroeconomic accounts, annual",
+  "file_dates_in_zip": {
+    "S11_1_i_a.csv": "2026-09-10",
+    "S11_1_i_a_dictionary.txt": "2026-09-10"
+  },
+  "units": "millions of USD, transactions, not seasonally adjusted (annual)",
+  "note": "column names are Z.1 series codes with suffix .A; some codes appear twice (subtotal lines repeated in the table)"
+}
